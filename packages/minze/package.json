@@ -1,0 +1,9 @@
+{
+  "name": "minze",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "main.js",
+  "devDependencies": {
+    "typescript": "^4.5.3"
+  }
+}

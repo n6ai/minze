@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "allowJs": false,
+    "strict": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist"
+  },
+  "include": ["./packages"]
+}

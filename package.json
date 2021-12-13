@@ -1,0 +1,22 @@
+{
+  "name": "minze-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/minze",
+    "packages/playground"
+  ],
+  "scripts": {
+    "dev:p": "npm run dev -w playground",
+    "lint": "eslint **/*.{js,ts}",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "format:eslint": "eslint **/*.{js,ts} --fix",
+    "format:prettier": "prettier **/*.{html,md,json,js,ts} --write"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.4.1",
+    "prettier": "2.5.1",
+    "typescript": "^4.5.3"
+  }
+}
