@@ -1,3 +1,3 @@
-<img src="./packages/minze/logo.svg" alt="Minze" width="315" height="100">
+<img src="./packages/minze/logo.svg" alt="Minze" width="250">
 
 ### Effortless web components
