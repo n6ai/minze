@@ -3,14 +3,14 @@
   "private": true,
   "workspaces": [
     "packages/minze",
-    "packages/playground"
+    "packages/minze-vite-ts"
   ],
   "scripts": {
-    "dev:p": "npm run dev -w playground",
+    "dev:vite-ts": "npm run dev -w minze-vite-ts",
     "lint": "eslint **/*.{js,ts}",
     "format": "npm run format:eslint && npm run format:prettier",
     "format:eslint": "eslint **/*.{js,ts} --fix",
-    "format:prettier": "prettier **/*.{html,md,json,js,ts} --write",
+    "format:prettier": "prettier **/*.{html,css,md,json,js,ts} --write",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -23,7 +23,7 @@
     "typescript": "^4.5.3"
   },
   "lint-staged": {
-    "**/*.{html,md,json,js,ts}": "prettier --write",
+    "**/*.{html,css,md,json,js,ts}": "prettier --write",
     "**/*.{js,ts}": "eslint --fix"
   }
 }

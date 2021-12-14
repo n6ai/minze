@@ -1,8 +1,22 @@
 {
   "name": "minze",
+  "description": "",
+  "author": "Sergej Samsonenko",
   "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/n6ai/minze.git",
+    "directory": "packages/minze"
+  },
   "type": "module",
-  "main": "main.js",
+  "module": "index.js",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "default": "./index.js"
+    }
+  },
   "devDependencies": {
     "typescript": "^4.5.3"
   }
