@@ -1,13 +1,15 @@
 import './main.css'
 
 /**
- * Here we are importing and registering
- * all Minze components
+ * Import and register all Minze components
+ * with Minze's define method
  */
-import { MinzeButton, MinzeLogo } from './components'
+import Minze from 'minze'
+import { MinzeLogo, MinzeCounter, MinzeButton } from './components'
 
-customElements.define('minze-element', MinzeButton)
-customElements.define('minze-logo', MinzeLogo)
+Minze.define('minze-logo', MinzeLogo)
+Minze.define('minze-counter', MinzeCounter)
+Minze.define('minze-button', MinzeButton)
 
 /**
  * Get the #app element
@@ -24,10 +26,10 @@ if (app) {
         Welcome to <strong>Minze</strong>!
       </p>
 
-      <!-- minze-button in action -->
-      <minze-element>
-        Click me!
-      </minze-element>
+      <minze-counter>
+        <span slot="amount">Amount:</span>
+        <minze-button slot="button">Click Me!</minze-button>
+      </minze-counter>
     </div>
   `
 }
