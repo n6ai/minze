@@ -20,7 +20,7 @@ export class MinzeCounter extends MinzeElement {
 
   css() {
     return `
-      [part="amount"] {
+      [part=amount] {
         text-align: center;
         margin-bottom: 1rem;
       }
@@ -29,8 +29,15 @@ export class MinzeCounter extends MinzeElement {
 
   handleClick() {
     this.data.amount++
-    this.render()
+    this.cast('update', this.data)
   }
 
-  events: minzeEvent[] = [['button', 'click', this.handleClick.bind(this)]]
+  handleCast(event: Event) {
+    if (event.type === 'minze:update') this.render()
+  }
+
+  eventListeners: minzeEvent[] = [
+    ['[part=button]', 'click', this.handleClick.bind(this)],
+    [this, 'minze:update', this.handleCast.bind(this)]
+  ]
 }

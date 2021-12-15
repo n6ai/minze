@@ -1,14 +1,18 @@
 /**
  * Types
  */
-export type minzeEvent = [part: string, type: string, fn: () => void]
+export type minzeEvent = [
+  selector: string | MinzeElement,
+  type: string,
+  fn: (event: Event) => void
+]
 
 /**
  * Base MinzeElement class
  */
 export class MinzeElement extends HTMLElement {
   data?: Record<string, unknown>
-  events?: minzeEvent[]
+  eventListeners?: minzeEvent[]
   html?(): string
   css?(): string
 
@@ -55,27 +59,35 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Dispatches a custom event
+   */
+  cast(id: string, detail: unknown) {
+    this.dispatchEvent(
+      new CustomEvent(`minze:${id}`, {
+        detail
+      })
+    )
+  }
+
+  /**
    * Adds or removes all event listeners
-   * inside the events property
+   * defined in the eventListeners property
    */
   private registerEvents(action: 'add' | 'remove') {
-    if (this.events?.length) {
-      this.events.forEach((eventTuple) => {
-        const [part, type, fn] = eventTuple
+    if (this.eventListeners?.length) {
+      this.eventListeners.forEach((eventTuple) => {
+        const [selector, type, fn] = eventTuple
 
-        if (
-          typeof part === 'string' &&
-          typeof type === 'string' &&
-          typeof fn === 'function'
-        ) {
-          const parts = this.shadowRoot?.querySelectorAll(`[part='${part}']`)
+        const elements =
+          selector instanceof MinzeElement
+            ? [this]
+            : this.shadowRoot?.querySelectorAll(selector)
 
-          parts?.forEach((part) => {
-            action === 'add'
-              ? part.addEventListener(type, fn)
-              : part.removeEventListener(type, fn)
-          })
-        }
+        elements?.forEach((element) => {
+          action === 'add'
+            ? element.addEventListener(type, fn)
+            : element.removeEventListener(type, fn)
+        })
       })
     }
   }
