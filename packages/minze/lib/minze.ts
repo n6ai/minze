@@ -44,9 +44,12 @@ export class Minze {
    */
   static cast(id: string, detail?: unknown) {
     dispatchEvent(
-      new CustomEvent(`minze:${id}`, {
-        detail
-      })
+      new CustomEvent(
+        `minze:${id.match(/^minze:/) ? id.replace(/^minze:/, '') : id}`,
+        {
+          detail
+        }
+      )
     )
   }
 

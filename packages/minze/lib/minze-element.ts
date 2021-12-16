@@ -72,9 +72,12 @@ export class MinzeElement extends HTMLElement {
    */
   cast(id: string, detail?: unknown) {
     this.dispatchEvent(
-      new CustomEvent(`minze:${id}`, {
-        detail
-      })
+      new CustomEvent(
+        `minze:${id.match(/^minze:/) ? id.replace(/^minze:/, '') : id}`,
+        {
+          detail
+        }
+      )
     )
   }
 
