@@ -89,7 +89,7 @@ export class MinzeElement extends HTMLElement {
   eventListeners?: MinzeEvent[]
 
   /**
-   * Lifecycle - Defines default event listeners that always will be registered when the element is rendered.
+   * Defines default event listeners that always will be registered when the element is rendered.
    */
   private eventListenersFactory: MinzeEvent[] = [
     [this, 'minze:render', () => this.render()]
@@ -110,7 +110,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Runs each time the element is moved to a new document.
+   * Lifecycle - Runs each time the element is moved to a new document.
    */
   adoptedCallback() {
     this.render()
