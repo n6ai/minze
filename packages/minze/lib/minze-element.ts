@@ -121,13 +121,18 @@ export class MinzeElement extends HTMLElement {
    * removes any previous event listeners and attaches all event listeners.
    */
   render() {
-    this.registerAllEvents('remove')
-
     if (this.shadowRoot) {
-      this.shadowRoot.innerHTML = this.template()
-    }
+      const template = this.template()
 
-    this.registerAllEvents('add')
+      if (template !== this.cachedTemplate) {
+        this.registerAllEvents('remove')
+
+        this.shadowRoot.innerHTML = template
+        this.cachedTemplate = template
+
+        this.registerAllEvents('add')
+      }
+    }
   }
 
   /**
@@ -139,6 +144,11 @@ export class MinzeElement extends HTMLElement {
       ${(this.html && this.html()) || '<slot></slot>'}
     `
   }
+
+  /**
+   * Stores the previously rendered template.
+   */
+  private cachedTemplate: string | undefined
 
   /**
    * Dispatches a custom event from the web component.
