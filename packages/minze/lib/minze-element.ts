@@ -62,11 +62,17 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Dispatches a custom event
+   * Dispatches a custom event from the element
+   * with the prefix `minze:`
+   *
+   * Usage: this.cast('update', { amount: 10 })
+   *
+   * When listening for an event, write `minze:` infront of the event name
+   * Example: addEventListener(`minze:update`, (event) => {})
    */
-  cast(id: string, detail: unknown, prefix: string | false = 'minze') {
+  cast(id: string, detail?: unknown) {
     this.dispatchEvent(
-      new CustomEvent(`${prefix}${prefix && ':'}${id}`, {
+      new CustomEvent(`minze:${id}`, {
         detail
       })
     )
