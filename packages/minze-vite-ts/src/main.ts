@@ -7,9 +7,7 @@ import './main.css'
 import Minze from 'minze'
 import { MinzeLogo, MinzeCounter, MinzeButton } from './components'
 
-Minze.define('minze-logo', MinzeLogo)
-Minze.define('minze-counter', MinzeCounter)
-Minze.define('minze-button', MinzeButton)
+Minze.defineAll([MinzeLogo, MinzeCounter, MinzeButton])
 
 /**
  * Get the #app element
