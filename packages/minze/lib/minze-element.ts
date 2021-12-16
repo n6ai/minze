@@ -1,8 +1,8 @@
 /**
  * Types
  */
-export type minzeEvent = [
-  selector: string | MinzeElement,
+export type MinzeEvent = [
+  listenerTarget: string | MinzeElement | typeof window | typeof document,
   type: string,
   fn: (event: Event) => void
 ]
@@ -12,7 +12,7 @@ export type minzeEvent = [
  */
 export class MinzeElement extends HTMLElement {
   data?: Record<string, unknown>
-  eventListeners?: minzeEvent[]
+  eventListeners?: MinzeEvent[]
   html?(): string
   css?(): string
 
@@ -42,10 +42,13 @@ export class MinzeElement extends HTMLElement {
    * and attaches all event listeners
    */
   render() {
+    this.registerEvents('remove')
+
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = this.template()
-      this.registerEvents('add')
     }
+
+    this.registerEvents('add')
   }
 
   /**
@@ -61,32 +64,47 @@ export class MinzeElement extends HTMLElement {
   /**
    * Dispatches a custom event
    */
-  cast(id: string, detail: unknown) {
+  cast(id: string, detail: unknown, prefix: string | false = 'minze') {
     this.dispatchEvent(
-      new CustomEvent(`minze:${id}`, {
+      new CustomEvent(`${prefix}${prefix && ':'}${id}`, {
         detail
       })
     )
   }
 
   /**
-   * Adds or removes all event listeners
-   * defined in the eventListeners property
+   * Adds or removes all event listeners defined in the eventListeners property
+   *
+   * possible targets are:
+   * > global: window, document (limited only to these to to prevent global polution)
+   * > local: this, or any elements inside the shadow DOM (by passing a valid CSS selector string)
    */
   private registerEvents(action: 'add' | 'remove') {
     if (this.eventListeners?.length) {
       this.eventListeners.forEach((eventTuple) => {
-        const [selector, type, fn] = eventTuple
+        const [listenerTarget, type, fn] = eventTuple
 
-        const elements =
-          selector instanceof MinzeElement
-            ? [this]
-            : this.shadowRoot?.querySelectorAll(selector)
+        let elements:
+          | NodeList
+          | MinzeElement[]
+          | typeof document[]
+          | typeof window[]
+          | undefined
+
+        if (listenerTarget === document) {
+          elements = [document]
+        } else if (listenerTarget === window) {
+          elements = [window]
+        } else if (listenerTarget instanceof MinzeElement) {
+          elements = [this]
+        } else if (typeof listenerTarget === 'string') {
+          elements = this.shadowRoot?.querySelectorAll(listenerTarget)
+        }
 
         elements?.forEach((element) => {
           action === 'add'
-            ? element.addEventListener(type, fn)
-            : element.removeEventListener(type, fn)
+            ? element.addEventListener(type, fn, true)
+            : element.removeEventListener(type, fn, true)
         })
       })
     }

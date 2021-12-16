@@ -1,4 +1,4 @@
-import { MinzeElement, minzeEvent } from 'minze'
+import { MinzeElement, MinzeEvent } from 'minze'
 
 export class MinzeCounter extends MinzeElement {
   data = {
@@ -36,7 +36,7 @@ export class MinzeCounter extends MinzeElement {
     if (event.type === 'minze:update') this.render()
   }
 
-  eventListeners: minzeEvent[] = [
+  eventListeners: MinzeEvent[] = [
     ['[part=button]', 'click', this.handleClick.bind(this)],
     [this, 'minze:update', this.handleCast.bind(this)]
   ]
