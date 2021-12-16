@@ -89,24 +89,31 @@ export class MinzeElement extends HTMLElement {
   eventListeners?: MinzeEvent[]
 
   /**
-   * Defines default event listeners that always will be registered when the element is rendered.
+   * Lifecycle - Defines default event listeners that always will be registered when the element is rendered.
    */
   private eventListenersFactory: MinzeEvent[] = [
     [this, 'minze:render', () => this.render()]
   ]
 
   /**
-   * Runs whenever the element is appended into a document-connected element.
+   * Lifecycle - Runs whenever the element is appended into a document-connected element.
    */
   connectedCallback() {
     this.render()
   }
 
   /**
-   * Runs each time the element is disconnected from the document's DOM.
+   * Lifecycle - Runs each time the element is disconnected from the document's DOM.
    */
   disconnectedCallback() {
     this.registerAllEvents('remove')
+  }
+
+  /**
+   * Runs each time the element is moved to a new document.
+   */
+  adoptedCallback() {
+    this.render()
   }
 
   /**
