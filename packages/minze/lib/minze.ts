@@ -54,7 +54,7 @@ export class Minze {
   }
 
   /**
-   * Listens for events
+   * Listens for the provided event and executed the callback function on match
    * Usage: Minze.listen('update', (event) => {})
    */
   static listen(id: string, callback: (event: Event) => void) {
@@ -62,7 +62,7 @@ export class Minze {
   }
 
   /**
-   * Removes event listeners
+   * Removes provided event listener and callback function
    * Usage: Minze.stopListen('update', (event) => {})
    */
   static stopListen(id: string, callback: (event: Event) => void) {

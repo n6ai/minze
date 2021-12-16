@@ -4,7 +4,7 @@
 export type MinzeEvent = [
   listenerTarget: string | MinzeElement | typeof window | typeof document,
   type: string,
-  fn: (event: Event) => void
+  callback: (event: Event) => void
 ]
 
 /**
@@ -91,7 +91,7 @@ export class MinzeElement extends HTMLElement {
   private registerEvents(action: 'add' | 'remove') {
     if (this.eventListeners?.length) {
       this.eventListeners.forEach((eventTuple) => {
-        const [listenerTarget, type, fn] = eventTuple
+        const [listenerTarget, type, callback] = eventTuple
 
         let elements:
           | NodeList
@@ -112,8 +112,8 @@ export class MinzeElement extends HTMLElement {
 
         elements?.forEach((element) => {
           action === 'add'
-            ? element.addEventListener(type, fn, true)
-            : element.removeEventListener(type, fn, true)
+            ? element.addEventListener(type, callback, true)
+            : element.removeEventListener(type, callback, true)
         })
       })
     }
