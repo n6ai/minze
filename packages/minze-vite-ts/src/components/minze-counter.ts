@@ -7,17 +7,17 @@ export class MinzeCounter extends MinzeElement {
 
   html = () => `
     <div>
-      <div part="amount">
+      <div class="amount">
         <slot name="amount"></slot>
         ${this.data.amount}
       </div>
 
-      <slot name="button" part="button"></slot>
+      <slot name="button" class="button"></slot>
     </div>
   `
 
   css = () => `
-    [part=amount] {
+    .amount {
       text-align: center;
       margin-bottom: 1rem;
     }
@@ -28,5 +28,5 @@ export class MinzeCounter extends MinzeElement {
     this.cast('minze:render')
   }
 
-  eventListeners: MinzeEvent[] = [['[part=button]', 'click', this.handleClick]]
+  eventListeners: MinzeEvent[] = [['.button', 'click', this.handleClick]]
 }

@@ -2,13 +2,13 @@ import { MinzeElement } from 'minze'
 
 export class MinzeButton extends MinzeElement {
   html = () => `
-    <button part="button">
+    <button class="button">
       <slot></slot>
     </button>
   `
 
   css = () => `
-    [part="button"] {
+    .button {
       background-color: #73f5b9;
       color: #324b41;
       font-size: 1rem;
@@ -21,7 +21,7 @@ export class MinzeButton extends MinzeElement {
       transition: background-color 0.1s ease-in-out;
     }
 
-    [part="button"]:hover {
+    .button:hover {
       background-color: #5be0a6;
     }
   `
