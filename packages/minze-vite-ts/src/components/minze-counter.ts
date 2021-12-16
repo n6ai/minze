@@ -5,39 +5,28 @@ export class MinzeCounter extends MinzeElement {
     amount: 0
   }
 
-  html() {
-    return `
-      <div>
-        <div part="amount">
-          <slot name="amount"></slot>
-          ${this.data.amount}
-        </div>
-
-        <slot name="button" part="button"></slot>
+  html = () => `
+    <div>
+      <div part="amount">
+        <slot name="amount"></slot>
+        ${this.data.amount}
       </div>
-    `
-  }
 
-  css() {
-    return `
-      [part=amount] {
-        text-align: center;
-        margin-bottom: 1rem;
-      }
-    `
-  }
+      <slot name="button" part="button"></slot>
+    </div>
+  `
 
-  handleClick() {
+  css = () => `
+    [part=amount] {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  `
+
+  handleClick = () => {
     this.data.amount++
-    this.cast('update', this.data)
+    this.cast('minze:render')
   }
 
-  handleCast(event: Event) {
-    if (event.type === 'minze:update') this.render()
-  }
-
-  eventListeners: MinzeEvent[] = [
-    ['[part=button]', 'click', this.handleClick.bind(this)],
-    [this, 'minze:update', this.handleCast.bind(this)]
-  ]
+  eventListeners: MinzeEvent[] = [['[part=button]', 'click', this.handleClick]]
 }
