@@ -1,7 +1,7 @@
-import { MinzeElement } from 'minze'
+import { MinzeElement, MinzeAttrs } from 'minze'
 
 export interface MinzeLogo {
-  text: string
+  text: { value: string }
 }
 
 export class MinzeLogo extends MinzeElement {
@@ -9,12 +9,12 @@ export class MinzeLogo extends MinzeElement {
     return ['text']
   }
 
-  props = ['text']
+  attrs: MinzeAttrs = [['text']]
 
   html = () => `
     <div>
       <img src="logo.svg" width="200px" alt="Minze">
-      ${this.text ? `<div class="text">${this.text}</div>` : ''}
+      ${this.text.value ? `<div class="text">${this.text.value}</div>` : ''}
     </div>
   `
 

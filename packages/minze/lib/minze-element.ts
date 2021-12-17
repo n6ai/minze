@@ -1,18 +1,23 @@
-import { dashToCamel } from './utils'
+import { camelToDash, dashToCamel } from './utils'
 
 /**
  * Types
  */
-type MinzeRegisterAction = 'add' | 'remove'
+type MinzeProp = [name: string, property: unknown, attr?: boolean]
+type MinzeAttr = [name: string, property?: unknown]
 
-export type MinzeEvent = [
+type MinzeEvent = [
   eventTarget: string | MinzeElement | typeof window | typeof document,
   eventName: string,
   callback: (event: Event) => void
 ]
 
+export type MinzeProps = ReadonlyArray<MinzeProp>
+export type MinzeAttrs = ReadonlyArray<MinzeAttr>
+export type MinzeEvents = ReadonlyArray<MinzeEvent>
+
 /**
- * MinzeElement class witch can be extended from to create web components.
+ * MinzeElement: Can be extended from to create web components.
  *
  * @example
  * ```
@@ -28,26 +33,42 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Optional data property.
+   * Defines properties whitch should be created as reactive.
+   *
+   * reactive takes an array of tuples: [[ name, value, attrs? ], ...]
    *
    * @example
    * ```
    * class MyElement extends MinzeElement {
-   *   data: {
-   *     active: false
-   *   }
+   *   reactive = [
+   *     ['active', false],
+   *     ['amount', 0, true]
+   *   ]
    * }
    * ```
    */
-  data?: Record<string, unknown>
+  reactive?: MinzeProps
 
   /**
-   * Props array which will be used to register attribute getters and setters.
+   * Defines properties whitch should be created as reactive.
+   * Thay listen for attribute changes.
+   *
+   * attrs takes an array of tuples: [[ name, value? ], ...]
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   attrs = [
+   *     ['active'],
+   *     ['amount', 0]
+   *   ]
+   * }
+   * ```
    */
-  props: string[] = []
+  attrs?: MinzeAttrs
 
   /**
-   * Defines the shadow DOM HTML elements.
+   * Defines the shadow DOM HTML content.
    *
    * @example
    * ```
@@ -96,118 +117,164 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  eventListeners?: MinzeEvent[]
+  eventListeners?: MinzeEvents
 
   /**
-   * Defines default event listeners that always will be registered when the element is rendered.
+   * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
    */
-  private eventListenersFactory: MinzeEvent[] = [
-    [this, 'minze:render', () => this.render()]
-  ]
-
-  /**
-   * Lifecycle - Runs whenever the element is appended into a document-connected element.
-   */
-  connectedCallback() {
+  private connectedCallback() {
+    this.reactive?.forEach((prop) => this.registerProp(prop))
+    this.attrs?.forEach((attr) => this.registerAttr(attr))
     this.render()
   }
 
   /**
-   * Lifecycle - Runs each time the element is disconnected from the document's DOM.
+   * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
    */
-  disconnectedCallback() {
-    this.registerAllEvents('remove')
+  private disconnectedCallback() {
+    this.eventListeners?.forEach((eventTuple) =>
+      this.registerEvent(eventTuple, 'remove')
+    )
   }
 
   /**
-   * Lifecycle - Runs each time the element is moved to a new document.
+   * Lifecycle (Internal) - Runs each time the element is moved to a new document.
    */
-  adoptedCallback() {
+  private adoptedCallback() {
     this.render()
   }
 
   /**
-   * Lifecycle - Runs whenever one of the element's attributes is changed.
+   * Lifecycle (Internal) - Runs whenever one of the element's attributes is changed.
    */
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+  private attributeChangedCallback(
+    name: string,
+    oldValue: string,
+    newValue: string
+  ) {
     if (name in this && newValue !== oldValue) {
-      this.render()
+      this[name].value = newValue
     }
   }
 
   /**
-   * Defines getters and setters for provided prop.
+   * Makes provided property reactive.
    *
    * @example
    * ```
    * this.registerProp(prop)
    * ```
    */
-  registerProp(prop: string) {
-    const propCamel = dashToCamel(prop)
+  private registerProp(prop: MinzeProp) {
+    const [name, value, attr] = prop
+    const dashName = camelToDash(name)
 
-    if (!(propCamel in this)) {
-      Object.defineProperty(this, propCamel, {
-        get: () => this.getAttribute(prop) ?? undefined,
-        set: (value: unknown) => this.setAttribute(prop, `${value}`)
-      })
+    if (!(name in this)) {
+      // mirror property changes to attribute
+      attr && this.setAttribute(dashName, String(value))
+
+      const proxy = new Proxy(
+        { value },
+        {
+          get: (target) => target.value,
+          set: (target, prop, value) => {
+            if (value !== target.value) {
+              target.value = value
+              attr && this.setAttribute(dashName, String(value))
+
+              this.render()
+            }
+
+            return true
+          }
+        }
+      )
+
+      Object.defineProperty(this, name, { writable: true, value: proxy })
     }
   }
 
   /**
-   * Registers props for all provided props.
+   * Makes provided property reactive to attribute changes on component.
    *
    * @example
    * ```
-   * this.registerProps(props)
+   * this.registerAttr(attr)
    * ```
    */
-  registerProps(props: string[]) {
-    props.forEach((prop) => this.registerProp(prop))
+  private registerAttr(attr: MinzeAttr) {
+    const [name, value] = attr
+    const camelName = dashToCamel(name)
+
+    if (!(camelName in this)) {
+      // if no attribute exists, and an attribute is provided set it
+      if (value)
+        this.getAttribute(name) ?? this.setAttribute(name, String(value))
+
+      const proxy = new Proxy(
+        { value },
+        {
+          get: () => this.getAttribute(name) ?? undefined,
+          set: (target, prop, value) => {
+            if (value !== target.value) {
+              this.setAttribute(name, value)
+              this.render()
+            }
+
+            return true
+          }
+        }
+      )
+
+      Object.defineProperty(this, name, { writable: true, value: proxy })
+    }
   }
 
   /**
-   * Registers for all provided props on the props property.
-   *
-   * @example
-   * ```
-   * this.registerAllProps()
-   * ```
-   */
-  registerAllProps() {
-    this.registerProps(this.props)
-  }
-
-  /**
-   * Renders the template into the shadow DOM,
-   * removes any previous event listeners and attaches all event listeners.
+   * Renders the template into the shadow DOM.
+   * Removes any previously registered event listeners
+   * Attaches all new event listeners.
    *
    * @example
    * ```
    * this.render()
    * ```
    */
-  render() {
-    this.registerAllProps()
-
+  private render() {
     if (this.shadowRoot) {
       const template = this.template()
 
       if (template !== this.cachedTemplate) {
-        this.registerAllEvents('remove')
+        this.eventListeners?.forEach((eventTuple) =>
+          this.registerEvent(eventTuple, 'remove')
+        )
 
         this.shadowRoot.innerHTML = template
         this.cachedTemplate = template
 
-        this.registerAllEvents('add')
+        this.eventListeners?.forEach((eventTuple) =>
+          this.registerEvent(eventTuple, 'add')
+        )
       }
     }
   }
 
   /**
+   * Rerenders the component.
+   *
+   * @example
+   * ```
+   * this.rerender()
+   * ```
+   */
+  rerender() {
+    this.render()
+  }
+
+  /**
    * Creates the template for the shadow root, which will be inserted into the Shadow root.
    */
-  template() {
+  private template() {
     return `
       ${this.css && this.css() !== '' ? `<style>${this.css()}</style>` : ''}
       ${(this.html && this.html()) || '<slot></slot>'}
@@ -241,7 +308,7 @@ export class MinzeElement extends HTMLElement {
    * this.registerEvent(this.eventListeners[0], 'add')
    * ```
    */
-  private registerEvent(eventTuple: MinzeEvent, action: MinzeRegisterAction) {
+  private registerEvent(eventTuple: MinzeEvent, action: 'add' | 'remove') {
     const [eventTarget, eventName, callback] = eventTuple
 
     let elements:
@@ -266,39 +333,5 @@ export class MinzeElement extends HTMLElement {
         ? element.addEventListener(eventName, callback, true)
         : element.removeEventListener(eventName, callback, true)
     })
-  }
-
-  /**
-   * Adds or removes all event listeners provided.
-   *
-   * @example
-   * ```
-   * this.registerEvents(this.eventListeners, 'add')
-   * ```
-   */
-  private registerEvents(
-    eventListeners: MinzeEvent[],
-    action: MinzeRegisterAction
-  ) {
-    if (eventListeners?.length) {
-      eventListeners.forEach((eventTuple) => {
-        this.registerEvent(eventTuple, action)
-      })
-    }
-  }
-
-  /**
-   * Adds or removes all event listeners from eventListenersFactory and eventListeners properties.
-   *
-   * @example
-   * ```
-   * this.registerAllEvents('add')
-   * ```
-   */
-  private registerAllEvents(action: MinzeRegisterAction) {
-    this.registerEvents(
-      [...this.eventListenersFactory, ...(this.eventListeners || [])],
-      action
-    )
   }
 }

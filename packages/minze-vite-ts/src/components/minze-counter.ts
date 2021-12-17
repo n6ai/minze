@@ -1,15 +1,17 @@
-import { MinzeElement, MinzeEvent } from 'minze'
+import { MinzeElement, MinzeProps, MinzeEvents } from 'minze'
+
+export interface MinzeCounter {
+  amount: { value: number }
+}
 
 export class MinzeCounter extends MinzeElement {
-  data = {
-    amount: 0
-  }
+  reactive: MinzeProps = [['amount', 0]]
 
   html = () => `
     <div>
       <div class="amount">
         <slot name="amount"></slot>
-        ${this.data.amount}
+        ${this.amount.value}
       </div>
 
       <slot name="button" class="button"></slot>
@@ -24,9 +26,8 @@ export class MinzeCounter extends MinzeElement {
   `
 
   handleClick = () => {
-    this.data.amount++
-    this.cast('minze:render')
+    this.amount.value++
   }
 
-  eventListeners: MinzeEvent[] = [['.button', 'click', this.handleClick]]
+  eventListeners: MinzeEvents = [['.button', 'click', this.handleClick]]
 }
