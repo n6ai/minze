@@ -1,4 +1,4 @@
-import { pascalToDashCase } from './utils'
+import { camelToDash } from './utils'
 import { MinzeElement } from './minze-element'
 
 /**
@@ -30,7 +30,7 @@ export class Minze {
    */
   static defineAll(elements: typeof MinzeElement[]) {
     elements.forEach((element) => {
-      const name = pascalToDashCase(element.name)
+      const name = camelToDash(element.name)
       customElements.define(name, element)
     })
   }
