@@ -68,6 +68,28 @@ export class MinzeElement extends HTMLElement {
   attrs?: MinzeAttrs
 
   /**
+   * Defines event listeners that will be registered when the element is rendered.
+   *
+   * eventListeners takes an array of tuples: [[ eventTarget, eventName, callback ], ...]
+   *
+   * possible event targets are:
+   * - global: window, document (limited only to these to to prevent global polution)
+   * - local: this, or any elements inside the shadow DOM (by passing a valid CSS selector string)
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   eventListeners = [
+   *     ['.my-class', 'click', () => {}],
+   *     [window, 'resize', () => {}],
+   *     [this, 'minze:event', () => {}]
+   *   ]
+   * }
+   * ```
+   */
+  eventListeners?: MinzeEvents
+
+  /**
    * Defines the shadow DOM HTML content.
    *
    * @example
@@ -98,63 +120,59 @@ export class MinzeElement extends HTMLElement {
   css?(): string
 
   /**
-   * Defines event listeners that will be registered when the element is rendered.
-   *
-   * eventListeners takes an array of tuples: [[ eventTarget, eventName, callback ], ...]
-   *
-   * possible event targets are:
-   * - global: window, document (limited only to these to to prevent global polution)
-   * - local: this, or any elements inside the shadow DOM (by passing a valid CSS selector string)
+   * Creates the template for the shadow root, which will be inserted into the Shadow root.
+   */
+  private template() {
+    return `
+      ${this.css && this.css() !== '' ? `<style>${this.css()}</style>` : ''}
+      ${(this.html && this.html()) || '<slot></slot>'}
+    `
+  }
+
+  /**
+   * Stores the previously rendered template.
+   */
+  private cachedTemplate: string | undefined
+
+  /**
+   * Renders the template into the shadow DOM.
+   * Removes any previously registered event listeners
+   * Attaches all new event listeners.
    *
    * @example
    * ```
-   * class MyElement extends MinzeElement {
-   *   eventListeners = [
-   *     ['.my-class', 'click', () => {}],
-   *     [window, 'resize', () => {}],
-   *     [this, 'minze:event', () => {}]
-   *   ]
-   * }
+   * this.render()
    * ```
    */
-  eventListeners?: MinzeEvents
+  private render() {
+    if (this.shadowRoot) {
+      const template = this.template()
 
-  /**
-   * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
-   */
-  private connectedCallback() {
-    this.reactive?.forEach((prop) => this.registerProp(prop))
-    this.attrs?.forEach((attr) => this.registerAttr(attr))
-    this.render()
-  }
+      if (template !== this.cachedTemplate) {
+        this.eventListeners?.forEach((eventTuple) =>
+          this.registerEvent(eventTuple, 'remove')
+        )
 
-  /**
-   * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
-   */
-  private disconnectedCallback() {
-    this.eventListeners?.forEach((eventTuple) =>
-      this.registerEvent(eventTuple, 'remove')
-    )
-  }
+        this.shadowRoot.innerHTML = template
+        this.cachedTemplate = template
 
-  /**
-   * Lifecycle (Internal) - Runs each time the element is moved to a new document.
-   */
-  private adoptedCallback() {
-    this.render()
-  }
-
-  /**
-   * Lifecycle (Internal) - Runs whenever one of the element's attributes is changed.
-   */
-  private attributeChangedCallback(
-    name: string,
-    oldValue: string,
-    newValue: string
-  ) {
-    if (name in this && newValue !== oldValue) {
-      this[name].value = newValue
+        this.eventListeners?.forEach((eventTuple) =>
+          this.registerEvent(eventTuple, 'add')
+        )
+      }
     }
+  }
+
+  /**
+   * Rerenders the component.
+   *
+   * @example
+   * ```
+   * this.rerender()
+   * ```
+   */
+  rerender() {
+    this.render()
   }
 
   /**
@@ -231,76 +249,6 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Renders the template into the shadow DOM.
-   * Removes any previously registered event listeners
-   * Attaches all new event listeners.
-   *
-   * @example
-   * ```
-   * this.render()
-   * ```
-   */
-  private render() {
-    if (this.shadowRoot) {
-      const template = this.template()
-
-      if (template !== this.cachedTemplate) {
-        this.eventListeners?.forEach((eventTuple) =>
-          this.registerEvent(eventTuple, 'remove')
-        )
-
-        this.shadowRoot.innerHTML = template
-        this.cachedTemplate = template
-
-        this.eventListeners?.forEach((eventTuple) =>
-          this.registerEvent(eventTuple, 'add')
-        )
-      }
-    }
-  }
-
-  /**
-   * Rerenders the component.
-   *
-   * @example
-   * ```
-   * this.rerender()
-   * ```
-   */
-  rerender() {
-    this.render()
-  }
-
-  /**
-   * Creates the template for the shadow root, which will be inserted into the Shadow root.
-   */
-  private template() {
-    return `
-      ${this.css && this.css() !== '' ? `<style>${this.css()}</style>` : ''}
-      ${(this.html && this.html()) || '<slot></slot>'}
-    `
-  }
-
-  /**
-   * Stores the previously rendered template.
-   */
-  private cachedTemplate: string | undefined
-
-  /**
-   * Dispatches a custom event from the web component.
-   *
-   * Is's a good idea to namespace the event name. For example: `minze:render`
-   *
-   * @example
-   * ```
-   * this.cast('minze:render', { amount: 10 })
-   * ```
-   */
-  cast(eventName: string, detail?: unknown) {
-    this.dispatchEvent(new CustomEvent(eventName, { detail }))
-  }
-
-  /**
    * Adds or removes a provided event listener.
    *
    * @example
@@ -333,5 +281,57 @@ export class MinzeElement extends HTMLElement {
         ? element.addEventListener(eventName, callback, true)
         : element.removeEventListener(eventName, callback, true)
     })
+  }
+
+  /**
+   * Dispatches a custom event from the web component.
+   *
+   * Is's a good idea to namespace the event name. For example: `minze:render`
+   *
+   * @example
+   * ```
+   * this.cast('minze:render', { amount: 10 })
+   * ```
+   */
+  cast(eventName: string, detail?: unknown) {
+    this.dispatchEvent(new CustomEvent(eventName, { detail }))
+  }
+
+  /**
+   * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
+   */
+  private connectedCallback() {
+    this.reactive?.forEach((prop) => this.registerProp(prop))
+    this.attrs?.forEach((attr) => this.registerAttr(attr))
+    this.render()
+  }
+
+  /**
+   * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
+   */
+  private disconnectedCallback() {
+    this.eventListeners?.forEach((eventTuple) =>
+      this.registerEvent(eventTuple, 'remove')
+    )
+  }
+
+  /**
+   * Lifecycle (Internal) - Runs each time the element is moved to a new document.
+   */
+  private adoptedCallback() {
+    this.render()
+  }
+
+  /**
+   * Lifecycle (Internal) - Runs whenever one of the element's attributes is changed.
+   */
+  private attributeChangedCallback(
+    name: string,
+    oldValue: string,
+    newValue: string
+  ) {
+    if (name in this && newValue !== oldValue) {
+      this[name].value = newValue
+    }
   }
 }
