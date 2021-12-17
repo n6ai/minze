@@ -18,11 +18,7 @@ const app = document.querySelector<HTMLDivElement>('#app') ?? null
 if (app) {
   app.innerHTML = `
     <div class="minze">
-      <minze-logo></minze-logo>
-
-      <p>
-        Welcome to <strong>Minze</strong>!
-      </p>
+      <minze-logo text="Welcome to Minze!"></minze-logo>
 
       <minze-counter>
         <span slot="amount">Amount:</span>

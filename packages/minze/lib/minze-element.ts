@@ -1,3 +1,8 @@
+import { dashToCamel } from './utils'
+
+/**
+ * Types
+ */
 type MinzeRegisterAction = 'add' | 'remove'
 
 export type MinzeEvent = [
@@ -35,6 +40,11 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   data?: Record<string, unknown>
+
+  /**
+   * Props array which will be used to register attribute getters and setters.
+   */
+  props: string[] = []
 
   /**
    * Defines the shadow DOM HTML elements.
@@ -117,10 +127,69 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Lifecycle - Runs whenever one of the element's attributes is changed.
+   */
+  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+    if (name in this && newValue !== oldValue) {
+      this.render()
+    }
+  }
+
+  /**
+   * Defines getters and setters for provided prop.
+   *
+   * @example
+   * ```
+   * this.registerProp(prop)
+   * ```
+   */
+  registerProp(prop: string) {
+    const propCamel = dashToCamel(prop)
+
+    if (!(propCamel in this)) {
+      Object.defineProperty(this, propCamel, {
+        get: () => this.getAttribute(prop) ?? undefined,
+        set: (value: unknown) => this.setAttribute(prop, `${value}`)
+      })
+    }
+  }
+
+  /**
+   * Registers props for all provided props.
+   *
+   * @example
+   * ```
+   * this.registerProps(props)
+   * ```
+   */
+  registerProps(props: string[]) {
+    props.forEach((prop) => this.registerProp(prop))
+  }
+
+  /**
+   * Registers for all provided props on the props property.
+   *
+   * @example
+   * ```
+   * this.registerAllProps()
+   * ```
+   */
+  registerAllProps() {
+    this.registerProps(this.props)
+  }
+
+  /**
    * Renders the template into the shadow DOM,
    * removes any previous event listeners and attaches all event listeners.
+   *
+   * @example
+   * ```
+   * this.render()
+   * ```
    */
   render() {
+    this.registerAllProps()
+
     if (this.shadowRoot) {
       const template = this.template()
 
