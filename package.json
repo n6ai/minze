@@ -1,17 +1,18 @@
 {
   "name": "minze-monorepo",
   "private": true,
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "workspaces": [
-    "packages/minze",
-    "packages/minze-vite-ts"
+    "packages/*"
   ],
   "scripts": {
-    "dev:vite-ts": "npm run dev -w minze-vite-ts",
-    "lint": "eslint **/*.{js,ts}",
-    "format": "npm run format:eslint && npm run format:prettier",
-    "format:eslint": "eslint **/*.{js,ts} --fix",
-    "format:prettier": "prettier **/*.{html,css,md,json,js,ts} --write",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint **/*.{ts,js}",
+    "format": "prettier --write .",
+    "build": "npm run build:minze",
+    "build:minze": "npm run build -w minze"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.7.0",
@@ -23,7 +24,11 @@
     "typescript": "^4.5.3"
   },
   "lint-staged": {
-    "**/*.{html,css,md,json,js,ts}": "prettier --write",
-    "**/*.{js,ts}": "eslint --fix"
+    "*": [
+      "prettier --write --ignore-unknown"
+    ],
+    "packages/**/*.{ts,js}": [
+      "eslint --fix"
+    ]
   }
 }
