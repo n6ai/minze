@@ -290,11 +290,11 @@ export class MinzeElement extends HTMLElement {
   /**
    * Dispatches a custom event from the web component.
    *
-   * Is's a good idea to namespace the event name. For example: `minze:render`
+   * Is's a good idea to namespace the event name. For example: `minze:update`
    *
    * @example
    * ```
-   * this.cast('minze:render', { amount: 10 })
+   * this.cast('minze:update', { amount: 10 })
    * ```
    */
   cast(eventName: string, detail?: unknown) {
