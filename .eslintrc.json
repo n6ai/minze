@@ -8,5 +8,8 @@
   "plugins": ["@typescript-eslint"],
   "env": {
     "browser": true
+  },
+  "globals": {
+    "__dirname": "readonly"
   }
 }
