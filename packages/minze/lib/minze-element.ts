@@ -249,7 +249,7 @@ export class MinzeElement extends HTMLElement {
         }
       )
 
-      Object.defineProperty(this, name, { writable: true, value: proxy })
+      Object.defineProperty(this, camelName, { writable: true, value: proxy })
     }
   }
 
