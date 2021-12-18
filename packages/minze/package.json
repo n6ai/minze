@@ -1,14 +1,9 @@
 {
   "name": "minze",
-  "description": "",
-  "author": "Sergej Samsonenko",
   "version": "0.0.1",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/n6ai/minze.git",
-    "directory": "packages/minze"
-  },
+  "author": "Sergej Samsonenko",
+  "description": "Build native web components insanely fast.",
   "type": "module",
   "module": "index.js",
   "main": "index.js",
@@ -17,6 +12,18 @@
       "default": "./index.js"
     }
   },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n6ai/minze.git",
+    "directory": "packages/minze"
+  },
+  "bugs": {
+    "url": "https://github.com/n6ai/minze/issues"
+  },
+  "scripts": {},
   "devDependencies": {
     "typescript": "^4.5.3"
   }
