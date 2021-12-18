@@ -12,6 +12,8 @@ type MinzeEvent = [
   callback: (event: Event) => void
 ]
 
+type MinzeProxyProp = { value: unknown }
+
 export type MinzeProps = ReadonlyArray<MinzeProp>
 export type MinzeAttrs = ReadonlyArray<MinzeAttr>
 export type MinzeEvents = ReadonlyArray<MinzeEvent>
@@ -27,6 +29,8 @@ export type MinzeEvents = ReadonlyArray<MinzeEvent>
  * ```
  */
 export class MinzeElement extends HTMLElement {
+  [key: string]: unknown
+
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -331,7 +335,7 @@ export class MinzeElement extends HTMLElement {
     newValue: string
   ) {
     if (name in this && newValue !== oldValue) {
-      this[name].value = newValue
+      (this[name] as MinzeProxyProp).value = newValue
     }
   }
 }
