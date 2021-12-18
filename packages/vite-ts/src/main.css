@@ -1,11 +1,20 @@
+/* variables inside custom web components can be overwritten */
+:root {
+  --color-primary: rgb(115 245 185);
+  --color-primary-dark: rgb(90 225 165);
+  --color-primary-darker: rgb(50 75 65);
+  --shadow-primary-50: rgb(115 245 185 / 50%);
+}
+
+/* hide all custom web components until they are defined */
+:not(:defined) {
+  display: none;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-:not(:defined) {
-  display: none;
 }
 
 body {
@@ -19,6 +28,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 8px solid var(--color-primary);
   gap: 2rem;
   padding: 40px;
 }

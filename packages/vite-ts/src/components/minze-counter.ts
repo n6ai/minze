@@ -1,17 +1,17 @@
 import { MinzeElement, MinzeProps, MinzeEvents } from 'minze'
 
 export interface MinzeCounter {
-  amount: { value: number }
+  counter: { value: number }
 }
 
 export class MinzeCounter extends MinzeElement {
-  reactive: MinzeProps = [['amount', 0]]
+  reactive: MinzeProps = [['counter', 0]]
 
   html = () => `
     <div>
-      <div class="amount">
-        <slot name="amount"></slot>
-        ${this.amount.value}
+      <div class="counter">
+        <slot name="counter"></slot>
+        ${this.counter.value}
       </div>
 
       <slot name="button" class="button"></slot>
@@ -19,7 +19,7 @@ export class MinzeCounter extends MinzeElement {
   `
 
   css = () => `
-    .amount {
+    .counter {
       text-align: center;
       margin-bottom: 1rem;
     }
@@ -36,7 +36,7 @@ export class MinzeCounter extends MinzeElement {
   }
 
   handleClick = () => {
-    this.amount.value++
+    this.counter.value++
   }
 
   eventListeners: MinzeEvents = [['.button', 'click', this.handleClick]]
