@@ -1,5 +1,5 @@
 {
-  "name": "minze-vite-ts",
+  "name": "vite-ts",
   "version": "0.0.0",
   "main": "dist/index.es.js",
   "exports": {

@@ -2,7 +2,7 @@ import './main.css'
 
 /**
  * Import and register all Minze components
- * with Minze's define method
+ * with Minze's defineAll method
  */
 import Minze from 'minze'
 import { MinzeLogo, MinzeCounter, MinzeButton } from './components'
