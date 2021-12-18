@@ -305,38 +305,164 @@ export class MinzeElement extends HTMLElement {
   /**
    * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
    */
-  private connectedCallback() {
+  private async connectedCallback() {
+    await this.onStart?.()
+
     this.reactive?.forEach((prop) => this.registerProp(prop))
     this.attrs?.forEach((attr) => this.registerAttr(attr))
     this.render()
+
+    await this.onReady?.()
   }
 
   /**
    * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
    */
-  private disconnectedCallback() {
+  private async disconnectedCallback() {
+    await this.beforeDestroy?.()
+
     this.eventListeners?.forEach((eventTuple) =>
       this.registerEvent(eventTuple, 'remove')
     )
+
+    await this.afterDestroy?.()
   }
 
   /**
    * Lifecycle (Internal) - Runs each time the element is moved to a new document.
    */
-  private adoptedCallback() {
+  private async adoptedCallback() {
+    await this.beforeMove?.()
+
     this.render()
+
+    await this.afterMove?.()
   }
 
   /**
    * Lifecycle (Internal) - Runs whenever one of the element's attributes is changed.
    */
-  private attributeChangedCallback(
+  private async attributeChangedCallback(
     name: string,
     oldValue: string,
     newValue: string
   ) {
+    await this.beforeAttributeChange?.(name, oldValue, newValue)
+
     if (name in this && newValue !== oldValue) {
       (this[name] as MinzeProxyProp).value = newValue
     }
+
+    await this.afterAttributeChange?.(name, oldValue, newValue)
   }
+
+  /**
+   * Lifecycle - Runs at the start of the connectedCallback method.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   onStart = () => console.log('onStart')
+   * }
+   * ```
+   */
+  onStart?(): Promise<void> | void
+
+  /**
+   * Lifecycle - Runs at the end of the connectedCallback method.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   onReady = () => console.log('onReady')
+   * }
+   * ```
+   */
+  onReady?(): Promise<void> | void
+
+  /**
+   * Lifecycle - Runs at the start of the disconnectedCallback method.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   beforeDestroy = () => console.log('beforeDestroy')
+   * }
+   * ```
+   */
+  beforeDestroy?(): Promise<void> | void
+
+  /**
+   * Lifecycle - Runs at the end of the disconnectedCallback method.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   afterDestroy = () => console.log('afterDestroy')
+   * }
+   * ```
+   */
+  afterDestroy?(): Promise<void> | void
+
+  /**
+   * Lifecycle - Runs at the start of the adoptedCallback method.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   beforeMove = () => console.log('beforeMove')
+   * }
+   * ```
+   */
+  beforeMove?(): Promise<void> | void
+
+  /**
+   * Lifecycle - Runs at the end of the adoptedCallback method.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   afterMove = () => console.log('afterMove')
+   * }
+   * ```
+   */
+  afterMove?(): Promise<void> | void
+
+  /**
+   * Lifecycle - Runs at the start of the attributeChangedCallback method.
+   *
+   * This hook runs before the onStart lifecycle if an attribute is set on the element:
+   * `<minze-element text="Hello world" /></minze-element>`
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   beforeAttributeChange = (name, oldValue, newValue) => console.log('beforeAttributeChange')
+   * }
+   * ```
+   */
+  beforeAttributeChange?(
+    name?: string,
+    oldValue?: string,
+    newValue?: string
+  ): Promise<void> | void
+
+  /**
+   * Lifecycle - Runs at the end of the attributeChangedCallback method.
+   *
+   * This hook runs before the onStart lifecycle if an attribute is set on the element:
+   * `<minze-element text="Hello world" /></minze-element>`
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   afterAttributeChange = (name, oldValue, newValue) => console.log('afterAttributeChange')
+   * }
+   * ```
+   */
+  afterAttributeChange?(
+    name?: string,
+    oldValue?: string,
+    newValue?: string
+  ): Promise<void> | void
 }

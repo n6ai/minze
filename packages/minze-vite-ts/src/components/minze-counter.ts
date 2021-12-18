@@ -25,6 +25,16 @@ export class MinzeCounter extends MinzeElement {
     }
   `
 
+  onStart = async () => {
+    const delay = 0
+    await new Promise((resolve) => setTimeout(resolve, delay))
+    console.log(`start: simulated response time: ${delay}`)
+  }
+
+  onReady = () => {
+    console.log('ready')
+  }
+
   handleClick = () => {
     this.amount.value++
   }
