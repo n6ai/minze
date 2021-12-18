@@ -37,6 +37,26 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Defines options for the web component.
+   *
+   * @example
+   * ```
+   * MyElement extends MinzeElement {
+   *   options = {
+   *     exposeAttrs: {
+   *       rendered: true
+   *     }
+   *   }
+   * }
+   * ```
+   */
+  options?: {
+    exposeAttrs?: {
+      rendered?: boolean
+    }
+  }
+
+  /**
    * Defines properties whitch should be created as reactive.
    *
    * reactive takes an array of tuples: [[ name, value, attrs? ], ...]
@@ -143,16 +163,18 @@ export class MinzeElement extends HTMLElement {
    * Removes any previously registered event listeners
    * Attaches all new event listeners.
    *
+   * @param force - Forces the rerendering of the template regardless of caching.
+   *
    * @example
    * ```
    * this.render()
    * ```
    */
-  private render() {
+  private render(force?: boolean) {
     if (this.shadowRoot) {
       const template = this.template()
 
-      if (template !== this.cachedTemplate) {
+      if (template !== this.cachedTemplate || force) {
         this.eventListeners?.forEach((eventTuple) =>
           this.registerEvent(eventTuple, 'remove')
         )
@@ -168,15 +190,17 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Rerenders the component.
+   * Rerenders the component template.
+   *
+   * @param force - Forces the rerendering of the template regardless of caching.
    *
    * @example
    * ```
    * this.rerender()
    * ```
    */
-  rerender() {
-    this.render()
+  rerender(force?: boolean) {
+    this.render(force)
   }
 
   /**
@@ -311,6 +335,9 @@ export class MinzeElement extends HTMLElement {
     this.reactive?.forEach((prop) => this.registerProp(prop))
     this.attrs?.forEach((attr) => this.registerAttr(attr))
     this.render()
+
+    // sets rendered attribute on the component
+    this.options?.exposeAttrs?.rendered && this.setAttribute('rendered', '')
 
     await this.onReady?.()
   }
