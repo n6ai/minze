@@ -229,9 +229,10 @@ export class MinzeElement extends HTMLElement {
     const camelName = dashToCamel(name)
 
     if (!(camelName in this)) {
-      // if no attribute exists, and an attribute is provided set it
-      if (value)
+      // set an attribute if no attribute exists, and an attribute is provided
+      if (value) {
         this.getAttribute(name) ?? this.setAttribute(name, String(value))
+      }
 
       const proxy = new Proxy(
         { value },
