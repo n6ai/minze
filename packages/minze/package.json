@@ -5,8 +5,9 @@
   "author": "Sergej Samsonenko",
   "description": "Framework for insanely fast native web components.",
   "type": "module",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/module.js",
+  "typings": "dist/module.d.ts",
+  "browser": "dist/cdn.js",
   "engines": {
     "node": ">=14.0.0"
   },
