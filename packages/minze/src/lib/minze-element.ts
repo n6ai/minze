@@ -1,15 +1,13 @@
 import { camelToDash, dashToCamel } from './utils'
 
-export type MinzeProp = [name: string, property: unknown, attr?: boolean]
-export type MinzeAttr = [name: string, property?: unknown]
+export type MinzeProp = [name: string, value: unknown, exposeAttr?: boolean]
+export type MinzeAttr = [name: string, value?: unknown]
 
 export type MinzeEvent = [
   eventTarget: string | MinzeElement | typeof window | typeof document,
   eventName: string,
   callback: (event: Event) => void
 ]
-
-type MinzeProxyProp = { value: unknown }
 
 export type MinzeProps = ReadonlyArray<MinzeProp>
 export type MinzeAttrs = ReadonlyArray<MinzeAttr>
@@ -87,6 +85,17 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   attrs?: MinzeAttrs
+
+  /**
+   * Stores all provided properties and attributes for reactive getter / setter reference.
+   */
+  private reactiveStash: {
+    props: { [key: string]: unknown }
+    attrs: { [key: string]: unknown }
+  } = {
+    props: {},
+    attrs: {}
+  }
 
   /**
    * Defines event listeners that will be registered when the element is rendered.
@@ -209,31 +218,33 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   private registerProp(prop: MinzeProp) {
-    const [name, value, attr] = prop
+    const [name, value, exposeAttr] = prop
+    const camelName = name
     const dashName = camelToDash(name)
+    const stash = this.reactiveStash.props
 
-    if (!(name in this)) {
+    if (!(camelName in this)) {
       // mirror property changes to attribute
-      attr && this.setAttribute(dashName, String(value))
+      exposeAttr && this.setAttribute(dashName, String(value))
 
-      const proxy = new Proxy(
-        { value },
-        {
-          get: (target) => target.value,
-          set: (target, prop, value) => {
-            if (value !== target.value) {
-              target.value = value
-              attr && this.setAttribute(dashName, String(value))
+      // set stash property
+      stash[camelName] = value
 
-              this.render()
-            }
+      // make initial property reactive
+      Object.defineProperty(this, camelName, {
+        get: () => stash[camelName],
+        set: (value) => {
+          if (stash[camelName] !== value) {
+            stash[camelName] = value
 
-            return true
+            // mirror property changes to attribute
+            exposeAttr && this.setAttribute(dashName, String(value))
+
+            // request render
+            this.render()
           }
         }
-      )
-
-      Object.defineProperty(this, name, { writable: true, value: proxy })
+      })
     }
   }
 
@@ -248,29 +259,29 @@ export class MinzeElement extends HTMLElement {
   private registerAttr(attr: MinzeAttr) {
     const [name, value] = attr
     const camelName = dashToCamel(name)
+    const dashName = name
+    const stash = this.reactiveStash.attrs
 
     if (!(camelName in this)) {
-      // set an attribute if no attribute exists, and an attribute is provided
-      if (value) {
-        this.getAttribute(name) ?? this.setAttribute(name, String(value))
-      }
+      // set an attribute on the element if no attribute exists
+      if (value)
+        this.getAttribute(dashName) ??
+          this.setAttribute(dashName, String(value))
 
-      const proxy = new Proxy(
-        { value },
-        {
-          get: () => this.getAttribute(name) ?? undefined,
-          set: (target, prop, value) => {
-            if (value !== target.value) {
-              this.setAttribute(name, value)
-              this.render()
-            }
+      // set stash property
+      stash[camelName] = value
 
-            return true
+      Object.defineProperty(this, camelName, {
+        get: () => this.getAttribute(dashName),
+        set: (value) => {
+          if (stash[camelName] !== value) {
+            stash[camelName] = value
+
+            // request render
+            this.render()
           }
         }
-      )
-
-      Object.defineProperty(this, camelName, { writable: true, value: proxy })
+      })
     }
   }
 
@@ -373,8 +384,9 @@ export class MinzeElement extends HTMLElement {
   ) {
     await this.beforeAttributeChange?.(name, oldValue, newValue)
 
-    if (name in this && newValue !== oldValue) {
-      (this[name] as MinzeProxyProp).value = newValue
+    const camelName = dashToCamel(name)
+    if (camelName in this && newValue !== oldValue) {
+      this[camelName] = newValue
     }
 
     await this.afterAttributeChange?.(name, oldValue, newValue)

@@ -1,7 +1,7 @@
 import { MinzeElement, MinzeProps, MinzeEvents } from 'minze'
 
 export interface MinzeCounter {
-  counter: { value: number }
+  counter: number
 }
 
 export class MinzeCounter extends MinzeElement {
@@ -11,7 +11,7 @@ export class MinzeCounter extends MinzeElement {
     <div>
       <div class="counter">
         <slot name="counter"></slot>
-        ${this.counter.value}
+        ${this.counter}
       </div>
 
       <slot name="button" class="button"></slot>
@@ -36,7 +36,7 @@ export class MinzeCounter extends MinzeElement {
   }
 
   handleClick = () => {
-    this.counter.value++
+    this.counter++
   }
 
   eventListeners: MinzeEvents = [['.button', 'click', this.handleClick]]
