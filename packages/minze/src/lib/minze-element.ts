@@ -210,6 +210,70 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Creates a desriptor with a getter/setter stash-value binding for a given property
+   * and requests a rerender on each value change.
+   */
+  private makeReactiveDescriptor(
+    stashValue: unknown,
+    camelName?: string,
+    exposeAttr?: boolean
+  ) {
+    return {
+      get: () => stashValue,
+      set: (value: unknown) => {
+        if (stashValue !== value) {
+          stashValue = value
+
+          // mirror property changes to attribute
+          if (exposeAttr && camelName) {
+            const dashName = camelToDash(camelName)
+            this.setAttribute(dashName, JSON.stringify(value))
+          }
+
+          this.render()
+        }
+      }
+    }
+  }
+
+  /**
+   * Makes all possible properties deeply reactive.
+   */
+  private makeReactive(
+    target: MinzeElement | Record<string, unknown>,
+    stash: Record<string, unknown>,
+    camelName: string,
+    exposeAttr?: boolean
+  ) {
+    const stashValue = stash[camelName]
+    const dashName = camelToDash(camelName)
+
+    const descriptor = this.makeReactiveDescriptor(
+      stashValue,
+      camelName,
+      exposeAttr
+    )
+    Object.defineProperty(target, camelName, descriptor)
+
+    // expose property to attribute
+    exposeAttr && this.setAttribute(dashName, JSON.stringify(stashValue))
+
+    if (
+      stashValue &&
+      typeof stashValue === 'object' &&
+      !Array.isArray(stashValue)
+    ) {
+      Object.keys(stashValue).forEach((camelName) => {
+        this.makeReactive(
+          stashValue as Record<string, unknown>,
+          stashValue as Record<string, unknown>,
+          camelName
+        )
+      })
+    }
+  }
+
+  /**
    * Makes provided property reactive.
    *
    * @example
@@ -220,31 +284,14 @@ export class MinzeElement extends HTMLElement {
   private registerProp(prop: MinzeProp) {
     const [name, value, exposeAttr] = prop
     const camelName = name
-    const dashName = camelToDash(name)
-    const stash = this.reactiveStash.props
 
     if (!(camelName in this)) {
-      // mirror property changes to attribute
-      exposeAttr && this.setAttribute(dashName, String(value))
+      // initialize stash for property
+      const propStash = this.reactiveStash.props
+      propStash[camelName] = value
 
-      // set stash property
-      stash[camelName] = value
-
-      // make initial property reactive
-      Object.defineProperty(this, camelName, {
-        get: () => stash[camelName],
-        set: (value) => {
-          if (stash[camelName] !== value) {
-            stash[camelName] = value
-
-            // mirror property changes to attribute
-            exposeAttr && this.setAttribute(dashName, String(value))
-
-            // request render
-            this.render()
-          }
-        }
-      })
+      // make property reactive
+      this.makeReactive(this, propStash, camelName, exposeAttr)
     }
   }
 
@@ -260,24 +307,25 @@ export class MinzeElement extends HTMLElement {
     const [name, value] = attr
     const camelName = dashToCamel(name)
     const dashName = name
-    const stash = this.reactiveStash.attrs
 
     if (!(camelName in this)) {
-      // set an attribute on element if no attribute exists and fallback value is provided
+      const attrStash = this.reactiveStash.attrs
+
+      // set an attribute on element if no attribute exists and a fallback value is provided
       if (value) {
         this.getAttribute(dashName) ??
           this.setAttribute(dashName, String(value))
       }
 
       // set stash property
-      stash[camelName] = value
+      attrStash[camelName] = value
 
-      // make initial property reactive
+      // make property reactive
       Object.defineProperty(this, camelName, {
         get: () => this.getAttribute(dashName),
         set: (value) => {
-          if (stash[camelName] !== value) {
-            stash[camelName] = value
+          if (attrStash[camelName] !== value) {
+            attrStash[camelName] = value
 
             // request render
             this.render()
