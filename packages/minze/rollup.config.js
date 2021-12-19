@@ -1,6 +1,5 @@
 // @ts-check
 import { resolve } from 'path'
-import del from 'rollup-plugin-delete'
 import typescript from '@rollup/plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
 
@@ -16,11 +15,10 @@ const createConfig = (isDev, isProd) => {
   const config = {
     input: resolve(__dirname, 'src/index.ts'),
     plugins: [
-      del({ targets: resolve(__dirname, 'dist/*') }),
       typescript({
         tsconfig: 'tsconfig.json',
-        declaration: true,
-        declarationDir: resolve(__dirname, 'dist/')
+        declaration: isDev,
+        declarationDir: isDev && resolve(__dirname, 'dist/')
       }),
       isProd && terser()
     ],

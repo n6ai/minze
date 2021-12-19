@@ -1,12 +1,9 @@
 import { camelToDash, dashToCamel } from './utils'
 
-/**
- * Types
- */
-type MinzeProp = [name: string, property: unknown, attr?: boolean]
-type MinzeAttr = [name: string, property?: unknown]
+export type MinzeProp = [name: string, property: unknown, attr?: boolean]
+export type MinzeAttr = [name: string, property?: unknown]
 
-type MinzeEvent = [
+export type MinzeEvent = [
   eventTarget: string | MinzeElement | typeof window | typeof document,
   eventName: string,
   callback: (event: Event) => void

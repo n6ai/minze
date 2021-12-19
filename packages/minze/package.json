@@ -19,13 +19,17 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "scripts": {
-    "dev": "rollup -c -w",
-    "build": "rollup -c"
+    "dev": "rimraf dist/ && rollup -c -w",
+    "build": "run-s clean lint build-bundle build-types roll-types",
+    "build-bundle": "rollup -c",
+    "build-types": "tsc --emitDeclarationOnly --declaration true --outDir .temp/",
+    "roll-types": "api-extractor run && rimraf .temp/",
+    "lint": "eslint **/*.ts",
+    "clean": "rimraf dist/ .temp/"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.0",
     "rollup": "^2.61.1",
-    "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.5.3"
   }

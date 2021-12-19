@@ -11,16 +11,19 @@
     "prepare": "husky install",
     "lint": "eslint **/*.{ts,js}",
     "format": "prettier --write .",
-    "build": "npm run build:minze",
-    "build:minze": "npm run build -w minze"
+    "build": "run-s build-minze",
+    "build-minze": "npm run build -w minze"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.19.2",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
     "eslint": "^8.4.1",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
+    "npm-run-all": "^4.1.5",
     "prettier": "2.5.1",
+    "rimraf": "^3.0.2",
     "typescript": "^4.5.3"
   },
   "lint-staged": {
