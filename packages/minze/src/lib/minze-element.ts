@@ -263,14 +263,16 @@ export class MinzeElement extends HTMLElement {
     const stash = this.reactiveStash.attrs
 
     if (!(camelName in this)) {
-      // set an attribute on the element if no attribute exists
-      if (value)
+      // set an attribute on element if no attribute exists and fallback value is provided
+      if (value) {
         this.getAttribute(dashName) ??
           this.setAttribute(dashName, String(value))
+      }
 
       // set stash property
       stash[camelName] = value
 
+      // make initial property reactive
       Object.defineProperty(this, camelName, {
         get: () => this.getAttribute(dashName),
         set: (value) => {
