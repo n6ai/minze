@@ -87,7 +87,7 @@ export class MinzeElement extends HTMLElement {
   attrs?: MinzeAttrs
 
   /**
-   * Stores all provided properties for reactive getter / setter reference.
+   * Stores all provided properties and attributes for reactive getter / setter reference.
    */
   private reactiveStash: {
     props: { [key: string]: unknown }
