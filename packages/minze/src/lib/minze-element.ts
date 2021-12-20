@@ -87,17 +87,6 @@ export class MinzeElement extends HTMLElement {
   attrs?: MinzeAttrs
 
   /**
-   * Stores all provided properties and attributes for reactive getter / setter reference.
-   */
-  private reactiveStash: {
-    props: { [key: string]: unknown }
-    attrs: { [key: string]: unknown }
-  } = {
-    props: {},
-    attrs: {}
-  }
-
-  /**
    * Defines event listeners that will be registered when the element is rendered.
    *
    * eventListeners takes an array of tuples: [[ eventTarget, eventName, callback ], ...]
@@ -210,67 +199,79 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Creates a desriptor with a getter/setter stash-value binding for a given property
-   * and requests a rerender on each value change.
+   * Makes a complex object deeply reactive.
+   *
+   * @example
+   * ```
+   * this.makeComplexReactive(this, 'active', {deeply: {nested: true}})
+   * ```
    */
-  private makeReactiveDescriptor(
-    stashValue: unknown,
-    camelName?: string,
-    exposeAttr?: boolean
+  private makeComplexReactive(
+    target: MinzeElement | Record<string, unknown>,
+    name: string,
+    prop: Record<string, unknown>
   ) {
-    return {
-      get: () => stashValue,
-      set: (value: unknown) => {
-        if (stashValue !== value) {
-          stashValue = value
+    if (prop && typeof prop === 'object') {
+      // create a proxy
+      const proxy = new Proxy(prop, {
+        get: (target, prop, receiver) => Reflect.get(target, prop, receiver),
+        set: (target, prop, value) => {
+          if (Reflect.get(target, prop) !== value) {
+            Reflect.set(target, prop, value)
 
-          // mirror property changes to attribute
-          if (exposeAttr && camelName) {
-            const dashName = camelToDash(camelName)
-            this.setAttribute(dashName, JSON.stringify(value))
+            // request render
+            this.render()
           }
+          return true
+        }
+      })
 
-          this.render()
+      // assign the proxy
+      target[name] = proxy
+
+      // check if the property has keys
+      if (Object.keys(prop)) {
+        // recursively call this method on each key
+        for (const key in prop) {
+          typeof prop[key] === 'object' &&
+            this.makeComplexReactive(
+              target[name] as Record<string, unknown>,
+              key,
+              prop[key] as Record<string, unknown>
+            )
         }
       }
     }
   }
 
   /**
-   * Makes all possible properties deeply reactive.
+   * Makes a primitive value reactive.
+   *
+   * @example
+   * ```
+   * this.makePrimitiveReactive(this, 'count', 99)
+   * ```
    */
-  private makeReactive(
-    target: MinzeElement | Record<string, unknown>,
-    stash: Record<string, unknown>,
-    camelName: string,
-    exposeAttr?: boolean
+  private makePrimitiveReactive(
+    target: MinzeElement,
+    name: string,
+    prop: unknown
   ) {
-    const stashValue = stash[camelName]
-    const dashName = camelToDash(camelName)
+    const stashPrefix = '$minze_stash_prop_'
+    const stashName = `${stashPrefix}${name}`
+    target[stashName] = prop
 
-    const descriptor = this.makeReactiveDescriptor(
-      stashValue,
-      camelName,
-      exposeAttr
-    )
-    Object.defineProperty(target, camelName, descriptor)
+    Object.defineProperty(target, name, {
+      get: () => target[stashName],
+      set: (newValue) => {
+        if (target[stashName] !== newValue) {
+          target[stashName] = newValue
 
-    // expose property to attribute
-    exposeAttr && this.setAttribute(dashName, JSON.stringify(stashValue))
-
-    if (
-      stashValue &&
-      typeof stashValue === 'object' &&
-      !Array.isArray(stashValue)
-    ) {
-      Object.keys(stashValue).forEach((camelName) => {
-        this.makeReactive(
-          stashValue as Record<string, unknown>,
-          stashValue as Record<string, unknown>,
-          camelName
-        )
-      })
-    }
+          // request render
+          this.render()
+        }
+      }
+    })
   }
 
   /**
@@ -282,16 +283,21 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   private registerProp(prop: MinzeProp) {
-    const [name, value, exposeAttr] = prop
+    const [name, value] = prop
     const camelName = name
 
-    if (!(camelName in this)) {
-      // initialize stash for property
-      const propStash = this.reactiveStash.props
-      propStash[camelName] = value
+    // stop right here if a property with the same name already exists
+    if (camelName in this) return
 
-      // make property reactive
-      this.makeReactive(this, propStash, camelName, exposeAttr)
+    // run a different method based on the type of the provided value
+    if (typeof value === 'object') {
+      this.makeComplexReactive(
+        this,
+        camelName,
+        value as Record<string, unknown>
+      )
+    } else {
+      this.makePrimitiveReactive(this, camelName, value)
     }
   }
 
@@ -306,33 +312,36 @@ export class MinzeElement extends HTMLElement {
   private registerAttr(attr: MinzeAttr) {
     const [name, value] = attr
     const camelName = dashToCamel(name)
+
+    // stop right here if a property with the same name already exists
+    if (camelName in this) return
+
     const dashName = name
+    const stashPrefix = '$minze_stash_attr_'
+    const stashName = `${stashPrefix}${camelName}`
+    this[stashName] = value
 
-    if (!(camelName in this)) {
-      const attrStash = this.reactiveStash.attrs
-
-      // set an attribute on element if no attribute exists and a fallback value is provided
-      if (value) {
-        this.getAttribute(dashName) ??
-          this.setAttribute(dashName, String(value))
-      }
-
-      // set stash property
-      attrStash[camelName] = value
-
-      // make property reactive
-      Object.defineProperty(this, camelName, {
-        get: () => this.getAttribute(dashName),
-        set: (value) => {
-          if (attrStash[camelName] !== value) {
-            attrStash[camelName] = value
-
-            // request render
-            this.render()
-          }
-        }
-      })
+    // set an attribute on the element if no attribute exists
+    // and a fallback value is provided
+    if (value) {
+      this.getAttribute(dashName) ?? this.setAttribute(dashName, String(value))
     }
+
+    // set stash property
+    this[stashName] = value
+
+    // make property reactive
+    Object.defineProperty(this, camelName, {
+      get: () => this.getAttribute(dashName),
+      set: (newValue) => {
+        if (this[stashName] !== newValue) {
+          this[stashName] = newValue
+
+          // request render
+          this.render()
+        }
+      }
+    })
   }
 
   /**
