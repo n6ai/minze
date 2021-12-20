@@ -17,8 +17,6 @@ const builds = [
  * @returns { import('rollup').RollupOptions }
  */
 const createConfig = ({ format, file }, { isDev, isProd }) => {
-  const outputDeclaration = isDev && format === 'es'
-
   /**
    * @type { import('rollup').RollupOptions }
    */
@@ -27,8 +25,10 @@ const createConfig = ({ format, file }, { isDev, isProd }) => {
     plugins: [
       typescript({
         tsconfig: 'tsconfig.json',
-        declaration: outputDeclaration,
-        declarationDir: outputDeclaration && resolve(__dirname, 'dist/')
+        ...(isDev && {
+          declaration: true,
+          declarationDir: resolve(__dirname, 'dist/')
+        })
       }),
       isProd && terser()
     ],

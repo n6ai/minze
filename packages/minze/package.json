@@ -7,7 +7,7 @@
   "type": "module",
   "main": "dist/module.js",
   "typings": "dist/module.d.ts",
-  "browser": "dist/cdn.js",
+  "unpkg": "dist/cdn.js",
   "engines": {
     "node": ">=14.0.0"
   },
