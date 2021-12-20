@@ -199,6 +199,19 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Exposes property as an attribute on the element.
+   *
+   * @example
+   * ```
+   * this.exposeAttr('active', false)
+   * ```
+   */
+  private exposeAttr(name: string, value: unknown) {
+    const dashName = camelToDash(name)
+    this.setAttribute(dashName, JSON.stringify(value))
+  }
+
+  /**
    * Makes a complex object deeply reactive.
    *
    * @example
@@ -209,15 +222,22 @@ export class MinzeElement extends HTMLElement {
   private makeComplexReactive(
     target: MinzeElement | Record<string, unknown>,
     name: string,
-    prop: Record<string, unknown>
+    prop: Record<string, unknown>,
+    exposeAttr?: boolean
   ) {
     if (prop && typeof prop === 'object') {
+      // expose attribute
+      exposeAttr && this.exposeAttr(name, prop)
+
       // create a proxy
       const proxy = new Proxy(prop, {
         get: (target, prop, receiver) => Reflect.get(target, prop, receiver),
         set: (target, prop, value) => {
           if (Reflect.get(target, prop) !== value) {
             Reflect.set(target, prop, value)
+
+            // expose attribute
+            exposeAttr && this.exposeAttr(name, value)
 
             // request render
             this.render()
@@ -255,17 +275,24 @@ export class MinzeElement extends HTMLElement {
   private makePrimitiveReactive(
     target: MinzeElement,
     name: string,
-    prop: unknown
+    prop: unknown,
+    exposeAttr?: boolean
   ) {
     const stashPrefix = '$minze_stash_prop_'
     const stashName = `${stashPrefix}${name}`
     target[stashName] = prop
+
+    // expose attribute
+    exposeAttr && this.exposeAttr(name, prop)
 
     Object.defineProperty(target, name, {
       get: () => target[stashName],
       set: (newValue) => {
         if (target[stashName] !== newValue) {
           target[stashName] = newValue
+
+          // expose attribute
+          exposeAttr && this.exposeAttr(name, newValue)
 
           // request render
           this.render()
@@ -283,21 +310,22 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   private registerProp(prop: MinzeProp) {
-    const [name, value] = prop
+    const [name, value, exposeAttr] = prop
     const camelName = name
 
     // stop right here if a property with the same name already exists
     if (camelName in this) return
 
     // run a different method based on the type of the provided value
-    if (typeof value === 'object') {
+    if (value && typeof value === 'object') {
       this.makeComplexReactive(
         this,
         camelName,
-        value as Record<string, unknown>
+        value as Record<string, unknown>,
+        exposeAttr
       )
     } else {
-      this.makePrimitiveReactive(this, camelName, value)
+      this.makePrimitiveReactive(this, camelName, value, exposeAttr)
     }
   }
 
