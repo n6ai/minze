@@ -4,11 +4,11 @@ import typescript from '@rollup/plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
 
 /**
- * @type { {format: 'es' | 'umd', file: string}[] }
+ * @type { {format: 'es' | 'umd', file: string, onlyProd?: boolean}[] }
  */
 const builds = [
   { format: 'es', file: 'src/module.ts' },
-  { format: 'umd', file: 'src/cdn.ts' }
+  { format: 'umd', file: 'src/cdn.ts', onlyProd: true }
 ]
 
 /**
@@ -47,9 +47,11 @@ export default (commandLineArgs) => {
   const isProd = !isDev
   const configs = []
 
-  builds.forEach((build) => {
-    configs.push(createConfig(build, { isDev, isProd }))
-  })
+  builds
+    .filter((build) => !build.onlyProd || isProd)
+    .forEach((build) => {
+      configs.push(createConfig(build, { isDev, isProd }))
+    })
 
   return configs
 }
