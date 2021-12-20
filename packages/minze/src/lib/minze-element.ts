@@ -199,6 +199,32 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Selects a single element inside the shadow DOM.
+   *
+   * @example
+   * ```
+   * this.select('div')
+   * ```
+   */
+  select(selector: string) {
+    const root = this.shadowRoot
+    return root?.querySelector(selector)
+  }
+
+  /**
+   * Selects element(s) inside the shadow DOM.
+   *
+   * @example
+   * ```
+   * this.selectAll('div')
+   * ```
+   */
+  selectAll(selector: string) {
+    const root = this.shadowRoot
+    return root?.querySelectorAll(selector)
+  }
+
+  /**
    * Exposes property as an attribute on the element.
    *
    * @example
