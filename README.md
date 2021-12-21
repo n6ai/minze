@@ -23,6 +23,13 @@ It provides an intuitive abstraction layer around the web components API with it
 - 🎲 Framework agnostic - Use Minze anywhere - React, Vue, Angular...
 - 🔒 Typed API - Work in TypeSctipt
 
+## Packages
+
+| Project                     | Version                                                                                | Description                                |
+| --------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------ |
+| [minze](packages/minze)     | <img src="https://img.shields.io/static/v1?label=version&message=v1.0.0&color=37F5DC"> | The intuitive web components framework.    |
+| [vite-ts](packages/vite-ts) | <img src="https://img.shields.io/static/v1?label=version&message=v1.0.0&color=37F5DC"> | Minze / Vite / Typescript starter project. |
+
 ## Contribution
 
 See [Contributing Guide](https://github.com/n6ai/minze/blob/main/.github/CONTRIBUTING.md).
