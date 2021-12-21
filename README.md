@@ -4,18 +4,24 @@
   </a>
 </p>
 
-# Minze 🌿
+# Minze
 
 > The intuitive web component framework.
 
-- 👶 Simple: Dive in right away
-- ⚡ Fast: Tiny footprint
-- 🚀 Modern: Based on the latest web standards
-- 📦 Sharable: Build components or design systems
-- 🎲 Framework agnostic: Use Minze anywhere - React, Vue, Angular...
-- 🔒 Typed API: Work in TypeSctipt
-
 Minze (German shorthand for "Peppermint", pronounced `/ˈmɪnt͡sə/`) lets you rapidly build native web components.
+
+It provides an intuative abstraction layer around the web components API with it's own fully typed [JavaScript API](https://minze.dev/api/). Including Reactivity, Lifecycle hooks, scoped styles, one-shot component registration, and more.
+
+[Read the Docs to Learn More](https://minze.dev).
+
+## Features
+
+- 👶 Simple - Dive in right away
+- ⚡ Fast - Tiny footprint
+- 🚀 Modern - Based on the latest web standards
+- 📦 Sharable - Build components or design systems
+- 🎲 Framework agnostic - Use Minze anywhere - React, Vue, Angular...
+- 🔒 Typed API - Work in TypeSctipt
 
 ## Contribution
 
