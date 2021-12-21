@@ -1,9 +1,9 @@
 /* variables inside custom web components can be overwritten */
 :root {
-  --color-primary: rgb(115 245 185);
-  --color-primary-dark: rgb(90 225 165);
-  --color-primary-darker: rgb(50 75 65);
-  --shadow-primary-50: rgb(115 245 185 / 50%);
+  --color-primary: rgb(55 245 220);
+  --color-secondary: rgb(50 255 160);
+  --color-dark: rgb(45 80 60);
+  --shadow-primary-50: rgb(55 245 220 / 50%);
 }
 
 /* hide all custom web components until they are defined */
@@ -28,7 +28,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 8px solid var(--color-primary);
   gap: 2rem;
   padding: 40px;
 }

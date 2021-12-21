@@ -9,20 +9,20 @@ export class MinzeButton extends MinzeElement {
 
   css = () => `
     .button {
-      background-color: var(--color-primary, rgb(115 245 185));
-      color: var(--color-primary-darker, rgb(50 75 65));
+      background: linear-gradient(45deg, var(--color-primary, rgb(55 245 220)) 0%,  var(--color-secondary, rgb(50 255 160)) 100%);
+      color: var(--color-dark, rgb(45 80 60));
       font-size: 1rem;
       font-weight: 600;
       border: none;
       border-radius: 0.25rem;
-      box-shadow: 0 10px 15px -3px var(--shadow-primary-50, rgb(115 245 185 / 50%)), 0 4px 6px -4px var(--shadow-primary-50, rgb(115 245 185 / 50%));
+      box-shadow: 0 10px 15px -3px var(--shadow-primary-50, rgb(55 245 220 / 50%)), 0 4px 6px -4px var(--shadow-primary-50, rgb(55 245 220 / 50%));
       padding: 0.5rem 1rem;
       cursor: pointer;
-      transition: background-color 0.1s ease-in-out;
+      transition: filter 0.1s ease-in-out;
     }
 
     .button:hover {
-      background-color: var(--color-primary-dark, rgb(90 225 165));
+      filter: hue-rotate(5deg) brightness(110%);
     }
   `
 }

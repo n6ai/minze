@@ -13,7 +13,7 @@ export class MinzeLogo extends MinzeElement {
 
   html = () => `
     <div>
-      <img src="logo.svg" width="200px" alt="Minze">
+      <img src="/icon.svg" width="200px" alt="Minze">
       ${this.text ? `<div class="text">${this.text}</div>` : ''}
     </div>
   `
@@ -21,7 +21,9 @@ export class MinzeLogo extends MinzeElement {
   css = () => `
     .text {
       text-align: center;
-      margin-top: 1rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-top: 1.75rem;
     }
   `
 }
