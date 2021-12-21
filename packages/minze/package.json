@@ -26,7 +26,7 @@
     "build-types": "tsc --emitDeclarationOnly --declaration true --outDir .temp/",
     "roll-types": "api-extractor run && rimraf .temp/",
     "lint": "eslint **/*.ts",
-    "clean": "rimraf dist/ .temp/"
+    "clean": "rimraf dist .temp"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.0",

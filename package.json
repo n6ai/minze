@@ -12,7 +12,8 @@
     "lint": "eslint **/*.{ts,js}",
     "format": "prettier --write .",
     "build": "run-s build-minze",
-    "build-minze": "npm run build -w minze"
+    "build-minze": "npm run build -w minze",
+    "clean": "npm run clean --workspaces --if-present"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.19.2",
