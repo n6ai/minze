@@ -11,7 +11,10 @@
     "prepare": "husky install",
     "lint": "eslint **/*.{ts,js}",
     "format": "prettier --write .",
-    "build": "run-s build-minze",
+    "dev": "run-p -rs dev-*",
+    "dev-minze": "npm run dev -w minze",
+    "dev-vite-ts": "(wait-on packages/minze/dist/module.js) && (npm run dev -w vite-ts)",
+    "build": "run-s build-*",
     "build-minze": "npm run build -w minze",
     "clean": "npm run clean --workspaces --if-present"
   },
@@ -25,7 +28,8 @@
     "npm-run-all": "^4.1.5",
     "prettier": "2.5.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "wait-on": "^6.0.0"
   },
   "lint-staged": {
     "*": [
