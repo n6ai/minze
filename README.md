@@ -10,7 +10,7 @@
 
 Minze (German shorthand for "Peppermint", pronounced `/ˈmɪnt͡sə/`) lets you rapidly build native web components.
 
-It provides an intuative abstraction layer around the web components API with it's own fully typed [JavaScript API](https://minze.dev/api/). Including Reactivity, Lifecycle hooks, scoped styles, one-shot component registration, and more.
+It provides an intuitive abstraction layer around the web components API with its own fully typed [JavaScript API](https://minze.dev/api/). Including Reactivity, Lifecycle hooks, scoped styles, one-shot component registration, and more.
 
 [Read the Docs to Learn More](https://minze.dev).
 
