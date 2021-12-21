@@ -258,12 +258,12 @@ export class MinzeElement extends HTMLElement {
       // create a proxy
       const proxy = new Proxy(prop, {
         get: (target, prop, receiver) => Reflect.get(target, prop, receiver),
-        set: (target, prop, value) => {
-          if (Reflect.get(target, prop) !== value) {
-            Reflect.set(target, prop, value)
+        set: (target, prop, newValue) => {
+          if (Reflect.get(target, prop) !== newValue) {
+            Reflect.set(target, prop, newValue)
 
             // expose attribute
-            exposeAttr && this.exposeAttr(name, value)
+            exposeAttr && this.exposeAttr(name, newValue)
 
             // request render
             this.render()
