@@ -4,11 +4,6 @@
   </a>
 </p>
 
-<p>
-  <a href="https://npmjs.com/package/minze"><img src="https://img.shields.io/static/v1?style=flat-square&color=37F5DC&label=version&message=v1.0.0&logo=npm" alt="npm package version"></a>
-  <a href="https://npmjs.com/package/minze"><img src="https://img.shields.io/static/v1?style=flat-square&color=32FFA0&label=CI&message=passing&logo=github" alt="build status"></a>
-</p>
-
 # Minze
 
 > The intuitive web components framework.
@@ -17,7 +12,7 @@ Minze (German shorthand for "Peppermint", pronounced `/ˈmɪnt͡sə/`) lets you 
 
 It provides an intuitive abstraction layer around the web components API with its own fully typed [JavaScript API](https://minze.dev/api/). Including Reactivity, Lifecycle hooks, scoped styles, one-shot component registration, and more.
 
-ℹ [Read the Docs to Learn More](https://minze.dev).
+[Read the Docs to Learn More](https://minze.dev).
 
 ## Features
 
