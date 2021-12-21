@@ -9,7 +9,7 @@
   "typings": "dist/module.d.ts",
   "unpkg": "dist/cdn.js",
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=v14.18.2"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,6 @@
     "@rollup/plugin-typescript": "^8.3.0",
     "rollup": "^2.61.1",
     "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.5.3"
+    "typescript": "^4.5.4"
   }
 }
