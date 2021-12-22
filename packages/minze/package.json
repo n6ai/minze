@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "author": "Sergej Samsonenko",
-  "description": "Framework for insanely fast native web components.",
+  "description": "The intuitive web components framework.",
   "type": "module",
   "main": "dist/module.js",
   "typings": "dist/module.d.ts",
