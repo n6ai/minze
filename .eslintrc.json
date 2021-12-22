@@ -10,6 +10,7 @@
     "browser": true
   },
   "globals": {
+    "process": "readonly",
     "__dirname": "readonly"
   }
 }
