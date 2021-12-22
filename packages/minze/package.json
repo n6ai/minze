@@ -9,7 +9,7 @@
   "typings": "dist/module.d.ts",
   "unpkg": "dist/cdn.js",
   "engines": {
-    "node": ">=v14.18.2"
+    "node": ">=v16.13.1"
   },
   "repository": {
     "type": "git",
