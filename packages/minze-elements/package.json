@@ -1,0 +1,41 @@
+{
+  "name": "@minze/elements",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Sergej Samsonenko",
+  "description": "Minze Web components library.",
+  "type": "module",
+  "main": "dist/module.js",
+  "types": "dist/module.d.ts",
+  "unpkg": "dist/cdn.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n6ai/minze.git",
+    "directory": "packages/minze-elements"
+  },
+  "bugs": {
+    "url": "https://github.com/n6ai/minze/issues"
+  },
+  "scripts": {
+    "dev": "rimraf dist && vite",
+    "build": "npm run clean && npm run bundle && npm run types",
+    "bundle": "rollup -c",
+    "types": "npm run types-build && npm run types-roll",
+    "types-build": "tsc --emitDeclarationOnly --declaration true --outDir .temp",
+    "types-roll": "api-extractor run && rimraf .temp",
+    "clean": "rimraf dist .temp"
+  },
+  "dependencies": {
+    "minze": "^0.0.1"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.19.2",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "rollup": "^2.61.1",
+    "rollup-plugin-license": "^2.6.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4",
+    "vite": "^2.7.6"
+  }
+}

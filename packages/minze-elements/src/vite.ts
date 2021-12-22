@@ -1,18 +1,9 @@
-import './main.css'
-
-/**
- * Import and register all Minze components
- * with Minze's defineAll method
- */
+import './assets/vite.css'
 import Minze from 'minze'
-import { MinzeLogo, MinzeCounter, MinzeButton } from './components'
+import { MinzeButton, MinzeCounter, MinzeLogo } from './module'
 
-Minze.defineAll([MinzeLogo, MinzeCounter, MinzeButton])
+Minze.defineAll([MinzeButton, MinzeCounter, MinzeLogo])
 
-/**
- * Get the #app element
- * and render the provided string template
- */
 const app = document.querySelector<HTMLDivElement>('#app') ?? null
 
 if (app) {
