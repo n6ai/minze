@@ -9,12 +9,12 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "lint": "eslint **/*.{ts,js}",
-    "format": "prettier --write .",
     "dev": "run-p -rs dev-*",
     "dev-minze": "npm run dev -w minze",
     "dev-minze-elements": "(wait-on packages/minze/dist/module.js) && (npm run dev -w @minze/elements)",
     "build": "npm run build --workspaces --if-present",
+    "format": "prettier --write .",
+    "lint": "eslint **/*.{ts,js}",
     "clean": "npm run clean --workspaces --if-present"
   },
   "devDependencies": {
