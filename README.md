@@ -25,10 +25,10 @@ It provides an intuitive abstraction layer around the web components API with it
 
 ## Packages
 
-| Project                     | Version                                                                         | Description                               |
-| --------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------- |
-| [minze](packages/minze)     | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | The intuitive web components framework    |
-| [vite-ts](packages/vite-ts) | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Minze / Vite / Typescript starter project |
+| Project                                    | Version                                                                         | Description                            |
+| ------------------------------------------ | ------------------------------------------------------------------------------- | -------------------------------------- |
+| [minze](packages/minze)                    | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | The intuitive web components framework |
+| [@minze/elements](packages/minze-elements) | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Minze web components library           |
 
 ## Contribution
 
