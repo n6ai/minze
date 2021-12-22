@@ -1,7 +1,8 @@
 // @ts-check
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import typescript from '@rollup/plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
+import license from 'rollup-plugin-license'
 
 /**
  * @type { {format: 'es' | 'umd', file: string, onlyProd?: boolean}[] }
@@ -30,7 +31,20 @@ const createConfig = ({ format, file }, { isDev, isProd }) => {
           declarationDir: resolve(__dirname, 'dist/')
         })
       }),
-      isProd && terser()
+      isProd &&
+        terser({
+          output: {
+            comments: false
+          }
+        }),
+      isProd &&
+        license({
+          thirdParty: {
+            output: {
+              file: join(__dirname, 'dist', 'DEPENDENCIES')
+            }
+          }
+        })
     ],
     output: {
       dir: resolve(__dirname, 'dist'),
