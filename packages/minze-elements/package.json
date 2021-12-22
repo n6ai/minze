@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "author": "Sergej Samsonenko",
-  "description": "Minze web components library.",
+  "description": "Native web components library built with Minze.",
   "type": "module",
   "main": "dist/module.js",
   "types": "dist/module.d.ts",
