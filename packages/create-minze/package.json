@@ -1,0 +1,35 @@
+{
+  "name": "create-minze",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Sergej Samsonenko",
+  "description": "Minze scaffolding tool.",
+  "bin": {
+    "create-minze": "index.js"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "template-*"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n6ai/minze.git",
+    "directory": "packages/create-minze"
+  },
+  "bugs": {
+    "url": "https://github.com/n6ai/minze/issues"
+  },
+  "homepage": "https://github.com/n6ai/minze/tree/main/packages/create-minze#readme",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "dependencies": {
+    "kolorist": "^1.5.1",
+    "minimist": "^1.2.5",
+    "prompts": "^2.4.2"
+  }
+}
