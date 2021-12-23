@@ -1,5 +1,5 @@
 import { MinzeElement } from 'minze'
-import { MinzeButton, MinzeCounter, MinzeLogo } from './module'
+import { MinzeComponent } from './module'
 
 interface MinzeWindow extends Window {
   minzeElements: Record<string, typeof MinzeElement>
@@ -8,7 +8,5 @@ interface MinzeWindow extends Window {
 declare const window: MinzeWindow
 
 window.minzeElements = {
-  MinzeButton,
-  MinzeCounter,
-  MinzeLogo
+  MinzeComponent
 }
