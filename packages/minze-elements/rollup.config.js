@@ -28,6 +28,7 @@ const createConfig = ({ format, file }) => {
         exclude: ['node_modules', 'src/vite.ts']
       }),
       terser({
+        keep_classnames: true,
         output: {
           comments: false
         }
@@ -44,7 +45,7 @@ const createConfig = ({ format, file }) => {
     output: {
       dir: resolve(__dirname, 'dist'),
       globals: {
-        minze: 'MinzeElement' // used in cdn build
+        minze: 'window' // used in cdn build
       },
       format: format
     }

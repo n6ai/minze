@@ -33,6 +33,7 @@ const createConfig = ({ format, file }, { isDev, isProd }) => {
       }),
       isProd &&
         terser({
+          keep_classnames: true,
           output: {
             comments: false
           }
