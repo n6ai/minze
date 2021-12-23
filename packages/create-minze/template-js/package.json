@@ -4,6 +4,9 @@
   "type": "module",
   "main": "dist/module.js",
   "unpkg": "dist/cdn.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "rollup -c"

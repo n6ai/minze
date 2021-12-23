@@ -8,6 +8,9 @@
   "main": "dist/module.js",
   "types": "dist/module.d.ts",
   "unpkg": "dist/cdn.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/n6ai/minze.git",

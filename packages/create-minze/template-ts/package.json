@@ -5,6 +5,9 @@
   "main": "dist/module.js",
   "types": "dist/module.d.ts",
   "unpkg": "dist/cdn.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "rimraf dist && vite",
     "build": "npm run clean && npm run bundle && npm run types",
