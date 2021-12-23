@@ -28,8 +28,8 @@ It provides an intuitive abstraction layer around the web components API with it
 | Project                                    | Version                                                                         | Description                                     |
 | ------------------------------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------- |
 | [minze](packages/minze)                    | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | The intuitive web components framework.         |
-| [@minze/elements](packages/minze-elements) | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Native web components library built with Minze. |
 | [create-minze](packages/create-minze)      | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Minze scaffolding tool.                         |
+| [@minze/elements](packages/minze-elements) | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Native web components library built with Minze. |
 
 ## Contribution
 
