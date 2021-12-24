@@ -24,9 +24,6 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "homepage": "https://github.com/n6ai/minze/tree/main/packages/create-minze#readme",
-  "scripts": {
-    "test": "node index.js"
-  },
   "dependencies": {
     "kolorist": "^1.5.1",
     "minimist": "^1.2.5",
