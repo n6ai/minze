@@ -1,7 +1,4 @@
+import Minze from 'minze'
 import { MinzeButton, MinzeCounter, MinzeLogo } from './module'
 
-window.minzeElements = {
-  MinzeButton,
-  MinzeCounter,
-  MinzeLogo
-}
+Minze.defineAll([MinzeButton, MinzeCounter, MinzeLogo])

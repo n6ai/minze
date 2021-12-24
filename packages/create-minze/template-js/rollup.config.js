@@ -1,4 +1,5 @@
 import { resolve, join } from 'path'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 import license from 'rollup-plugin-license'
 
@@ -11,6 +12,7 @@ const createConfig = ({ format, file }) => {
   const config = {
     input: resolve(__dirname, file),
     plugins: [
+      nodeResolve(),
       terser({
         keep_classnames: true,
         output: {
@@ -25,12 +27,9 @@ const createConfig = ({ format, file }) => {
         }
       })
     ],
-    external: /^minze/,
+    external: format !== 'umd' && /^minze/, // embed minze only in cdn build
     output: {
       dir: resolve(__dirname, 'dist'),
-      globals: {
-        minze: 'window' // used in cdn build
-      },
       format: format
     }
   }

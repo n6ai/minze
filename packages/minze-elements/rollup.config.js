@@ -1,5 +1,6 @@
 // @ts-check
 import { resolve, join } from 'path'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
 import license from 'rollup-plugin-license'
@@ -23,6 +24,7 @@ const createConfig = ({ format, file }) => {
   const config = {
     input: resolve(__dirname, file),
     plugins: [
+      nodeResolve(),
       typescript({
         tsconfig: 'tsconfig.json',
         exclude: ['node_modules', 'src/vite.ts']
@@ -41,12 +43,9 @@ const createConfig = ({ format, file }) => {
         }
       })
     ],
-    external: /^minze/,
+    external: format !== 'umd' && /^minze/, // embed minze only in cdn build
     output: {
       dir: resolve(__dirname, 'dist'),
-      globals: {
-        minze: 'window' // used in cdn build
-      },
       format: format
     }
   }
