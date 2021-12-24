@@ -1,0 +1,13 @@
+:root {
+  --c-brand: rgb(90 250 175);
+  --c-brand-light: rgb(110 255 195);
+}
+
+.action .item {
+  color: rgb(45 80 60) !important;
+}
+
+.nav-bar .logo {
+  height: 25px;
+  margin-right: 4px;
+}
