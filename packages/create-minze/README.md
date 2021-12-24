@@ -22,7 +22,7 @@ $ yarn create minze@latest
 $ pnpm create minze
 ```
 
-**Then follow the prompts!**
+Then follow the prompts!
 
 ### Templates
 
