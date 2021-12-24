@@ -5,7 +5,9 @@
     "node": ">=v14.0.0"
   },
   "workspaces": [
-    "packages/*"
+    "packages/minze",
+    "packages/minze-elements",
+    "packages/create-minze"
   ],
   "scripts": {
     "prepare": "husky install",
