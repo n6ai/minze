@@ -467,24 +467,20 @@ export class MinzeElement extends HTMLElement {
    * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
    */
   private async disconnectedCallback() {
-    await this.beforeDestroy?.()
-
     this.eventListeners?.forEach((eventTuple) =>
       this.registerEvent(eventTuple, 'remove')
     )
 
-    await this.afterDestroy?.()
+    await this.onDestroy?.()
   }
 
   /**
    * Lifecycle (Internal) - Runs each time the element is moved to a new document.
    */
   private async adoptedCallback() {
-    await this.beforeMove?.()
+    await this.onMove?.()
 
     this.render()
-
-    await this.afterMove?.()
   }
 
   /**
@@ -502,7 +498,7 @@ export class MinzeElement extends HTMLElement {
       this[camelName] = newValue
     }
 
-    await this.afterAttributeChange?.(name, oldValue, newValue)
+    await this.onAttributeChange?.(name, oldValue, newValue)
   }
 
   /**
@@ -530,28 +526,16 @@ export class MinzeElement extends HTMLElement {
   onReady?(): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the start of the disconnectedCallback method.
-   *
-   * @example
-   * ```
-   * class MyElement extends MinzeElement {
-   *   beforeDestroy = () => console.log('beforeDestroy')
-   * }
-   * ```
-   */
-  beforeDestroy?(): Promise<void> | void
-
-  /**
    * Lifecycle - Runs at the end of the disconnectedCallback method.
    *
    * @example
    * ```
    * class MyElement extends MinzeElement {
-   *   afterDestroy = () => console.log('afterDestroy')
+   *   onDestroy = () => console.log('onDestroy')
    * }
    * ```
    */
-  afterDestroy?(): Promise<void> | void
+  onDestroy?(): Promise<void> | void
 
   /**
    * Lifecycle - Runs at the start of the adoptedCallback method.
@@ -559,23 +543,11 @@ export class MinzeElement extends HTMLElement {
    * @example
    * ```
    * class MyElement extends MinzeElement {
-   *   beforeMove = () => console.log('beforeMove')
+   *   onMove = () => console.log('onMove')
    * }
    * ```
    */
-  beforeMove?(): Promise<void> | void
-
-  /**
-   * Lifecycle - Runs at the end of the adoptedCallback method.
-   *
-   * @example
-   * ```
-   * class MyElement extends MinzeElement {
-   *   afterMove = () => console.log('afterMove')
-   * }
-   * ```
-   */
-  afterMove?(): Promise<void> | void
+  onMove?(): Promise<void> | void
 
   /**
    * Lifecycle - Runs at the start of the attributeChangedCallback method.
@@ -605,11 +577,11 @@ export class MinzeElement extends HTMLElement {
    * @example
    * ```
    * class MyElement extends MinzeElement {
-   *   afterAttributeChange = (name, oldValue, newValue) => console.log('afterAttributeChange')
+   *   onAttributeChange = (name, oldValue, newValue) => console.log('onAttributeChange')
    * }
    * ```
    */
-  afterAttributeChange?(
+  onAttributeChange?(
     name?: string,
     oldValue?: string,
     newValue?: string
