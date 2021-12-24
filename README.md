@@ -6,7 +6,7 @@
 
 # Minze
 
-> The intuitive web components framework.
+> Dead-simple framework for sharable web components.
 
 Minze (German shorthand for "Peppermint", pronounced `/ˈmɪnt͡sə/`) lets you rapidly build native web components.
 
@@ -27,7 +27,7 @@ It provides an intuitive abstraction layer around the web components API with it
 
 | Project                                    | Version                                                                         | Description                                                             |
 | ------------------------------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [minze](packages/minze)                    | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | The intuitive web components framework.                                 |
+| [minze](packages/minze)                    | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Dead-simple framework for sharable web components.                      |
 | [create-minze](packages/create-minze)      | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Minze scaffolding tool: Sets up a Minze dev and publishing environment. |
 | [@minze/elements](packages/minze-elements) | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Native web components library built with Minze.                         |
 

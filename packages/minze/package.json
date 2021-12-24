@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "author": "Sergej Samsonenko",
-  "description": "The intuitive web components framework.",
+  "description": "Dead-simple framework for sharable web components.",
   "type": "module",
   "main": "dist/module.js",
   "types": "dist/module.d.ts",
