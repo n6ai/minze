@@ -187,7 +187,7 @@ Individual components can be customized by declaring an options property. All cu
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  options: {
+  options = {
     exposeAttrs: {
       rendered: false // After the component is rendered for the first time, exposes a 'rendered' attribute on the element. E.g. <my-element rendered></my-element>
     }
@@ -318,7 +318,7 @@ export class MyElement extends MinzeElement {
 
   attrs = [['text'], ['bg-color', '#000']]
 
-  onReady() {
+  onAttributeChange() {
     console.log(this.text, this.bgColor)
   }
 }
@@ -429,6 +429,7 @@ import { MinzeElement } from 'minze'
 export class MyElement extends MinzeElement {
   css = () => `
     :host {
+      display: block;
       background: red;
     }
   `
@@ -607,6 +608,10 @@ export class MyElement extends MinzeElement {
 
 A Hook that runs after the element is moved to a new document but before it's rendered. Can either be a regular or async method.
 
+::: tip
+If the element is moved within the same document, this hook will not be called.
+:::
+
 - **Method**
 
 - **Type:** `(): Promise<void> | void`
@@ -685,7 +690,7 @@ export interface MyElement {
 }
 
 export class MyElement extends MinzeElement {
-  reactive: MinzeProps = [[foo, 'bar']]
+  reactive: MinzeProps = [['foo', 'bar']]
 }
 ```
 
@@ -727,8 +732,8 @@ export class MyElement extends MinzeElement {
     </button>
   `
 
-  handleClick = () => {
-    // do something
+  handleClick = (event: Event) => {
+    console.log(event)
   }
 
   eventListeners: MinzeEvents = [['.button', 'click', this.handleClick]]
