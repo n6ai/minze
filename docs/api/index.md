@@ -2,6 +2,8 @@
 
 All publicly intended API methods, properties and types are listed below.
 
+In this reference, the term `component` usually refers to the JavaScript instance of the web component, while the term `element` refers to the DOM representation of the web component, but both mean pretty much the same thing and are sometimes used interchangeably.
+
 <!------- Minze class ------->
 
 ## Minze
