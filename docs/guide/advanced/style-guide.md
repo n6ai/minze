@@ -140,7 +140,7 @@ export class MyElement extends MinzeElement {
   amount = 0
 
   // methods
-  increment() {
+  increment = () => {
     this.amount++
   }
 
@@ -157,11 +157,11 @@ export class MyElement extends MinzeElement {
   `
 
   // lifecycle hooks
-  onStart() {
+  onStart = () => {
     console.log('onStart')
   }
 
-  onReady() {
+  onReady = () => {
     console.log('onReady')
   }
 
