@@ -8,6 +8,22 @@ All publicly intended API methods, properties and types are listed below.
 
 Minze class with multiple static methods and properties for common tasks.
 
+### version
+
+Displays the used version of Minze.
+
+- **Property**
+
+- **Type:** `readonly string`
+
+- **Example:**
+
+```js
+import Minze from 'minze'
+
+console.log(Minze.version)
+```
+
 ### define
 
 Defines a custom web component.
@@ -136,6 +152,26 @@ Minze.stopListen('minze:my-event-name', callback)
 ## MinzeElement
 
 Base class which can be extended from to create custom web components.
+
+### version
+
+Displays the used version of Minze.
+
+- **Property**
+
+- **Type:** `readonly string`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+export class MyElement extends MinzeElement {
+  onReady() {
+    console.log(this.version)
+  }
+}
+```
 
 ### options
 
@@ -304,6 +340,10 @@ Tuple structure: [`eventTarget`, `eventName`, `callback`]
 Web components are ment to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object, to prevent `event-listener-pollution`.
 :::
 
+::: danger
+When passing a method as a callback, make sure it's either defined as an arrow function or properly bound to the component.
+:::
+
 - **Property**
 
 - **Type:** `readonly [eventTarget: string | MinzeElement | (Window & typeof globalThis), eventName: string, callback: (event: Event) => void][]`
@@ -332,11 +372,25 @@ export class MyElement extends MinzeElement {
     console.log(event.detail)
   }
 
+  /*
+   * Passing a callback to eventListeners
+   *
+   * Regular methods have to be bound to the component
+   * in order to access any properties or methods of the component.
+   * Properties defined with arrow functions don't need to be bound,
+   * since they don't have their own this binding
+   * and instead are bound to the component by default.
+   */
+  handleNestedCast(event) {
+    console.log(event.detail)
+  }
+
   eventListeners = [
     ['.button', 'click', this.handleClick],
     [window, 'minze:my-event-name', this.handleCast],
-    [this, 'minze:my-nested-component-event-name', this.handleCast]
+    [this, 'minze:my-nested-event-name', this.handleNestedCast.bind(this)]
   ]
+}
 ```
 
 ### html
@@ -399,7 +453,7 @@ export class MyElement extends MinzeElement {
     <div>Hello Minze!</div>
   `
 
-  onReady = () => {
+  onReady() {
     this.rerender(true)
   }
 }
@@ -424,7 +478,7 @@ export class MyElement extends MinzeElement {
     <div></div>
   `
 
-  onReady = () => {
+  onReady() {
     const element = this.select('#my-div')
     console.log(element)
   }
@@ -450,7 +504,7 @@ export class MyElement extends MinzeElement {
     <div></div>
   `
 
-  onReady = () => {
+  onReady() {
     const elements = this.selectAll('div')
     console.log(elements)
   }
@@ -475,7 +529,7 @@ It's a good idea to prefix your custom event names to avoid collisions with othe
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  onReady = () => {
+  onReady() {
     const myDetailData = {
       foo: 'bar'
     }
@@ -503,7 +557,7 @@ This hook runs after the `beforeAttributeChange` and `afterAttributeChange` hook
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  onStart = () => {
+  onStart() {
     console.log('start')
   }
 }
@@ -523,7 +577,7 @@ A Hook which runs after the element is added to the DOM and the entire component
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  onReady = () => {
+  onReady() {
     console.log('ready')
   }
 }
@@ -543,7 +597,7 @@ A Hook which runs after the element is disconnected from the document's DOM and 
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  onDestroy = () => {
+  onDestroy() {
     console.log('destroyed')
   }
 }
@@ -563,7 +617,7 @@ A Hook which runs after the element is moved to a new document but before it's r
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  onMove = () => {
+  onMove() {
     console.log('moved')
   }
 }
@@ -583,7 +637,7 @@ A Hook which runs before every [observed attribute](#observedattributes) change.
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  beforeAttributeCahnge = (name, oldValue, newValue) => {
+  beforeAttributeCahnge(name, oldValue, newValue) {
     console.log(name, oldValue, newValue)
   }
 }
@@ -603,7 +657,7 @@ A Hook which runs after every [observed attribute](#observedattributes) change. 
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  onAttributeCahnge = (name, oldValue, newValue) => {
+  onAttributeCahnge(name, oldValue, newValue) {
     console.log(name, oldValue, newValue)
   }
 }
