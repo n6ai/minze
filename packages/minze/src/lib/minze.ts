@@ -8,7 +8,7 @@ export class Minze {
   /**
    * The current Minze version.
    */
-  readonly version = '__VERSION__'
+  static readonly version = '__VERSION__'
 
   /**
    * Defines a custom element.
