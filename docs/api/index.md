@@ -71,6 +71,10 @@ Minze.defineAll([MyFirstElement, MySecondElement])
 
 Dispatches a custom event from the `window` object. Shorthand for `Broadcasting`, not to be confused with `Type casting`.
 
+::: tip
+It's a good idea to prefix your custom event names to avoid collisions with other libraries.
+:::
+
 - **Method**
 
 - **Type:** `(eventName: string, detail?: unknown): void`
@@ -149,7 +153,7 @@ import { MinzeElement } from 'minze'
 export class MyElement extends MinzeElement {
   options: {
     exposeAttrs: {
-      rendered: false // After the component is rendered, exposes a 'rendered' attribute on the element. E.g. <my-element rendered></my-element>
+      rendered: false // After the component is rendered for the first time, exposes a 'rendered' attribute on the element. E.g. <my-element rendered></my-element>
     }
   }
 }
@@ -157,14 +161,14 @@ export class MyElement extends MinzeElement {
 
 ### reactive
 
-Dynamically creates reactive properties on the element. A change to a reactive property will request a component rerender, if the property is used in either `html` or `css` properties. `reactive` should be an array containing one or more tuples.
+Dynamically creates reactive properties on the element. A change to a reactive property will request a component rerender. `reactive` should be an array containing one or more tuples.
 In JavaScript tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
 Every tuple takes up to 3 values. The first 2 are required, the third is optional.
 
 Tuple structure: [`name`, `value`, `exposeAttr?`]
 
-1. **name:** has to be be a `camlCase` string.
+1. **name:** has to be a `camelCase` string.
 2. **value:** can be any value.
 3. **exposeAttr:** (optional) not defined or `true`
 
@@ -210,6 +214,28 @@ export class MyElement extends MinzeElement {
 
 ### attrs
 
+Dynamically creates reactive properties for attributes. A change to a reactive attribute property will request a component rerender. `attrs` should be an array containing one or more tuples.
+In JavaScript tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
+
+Every tuple takes up to 2 values. The first 1 is required, the second is optional.
+
+Tuple structure: [`name`, `value?`]
+
+1. **name:** has to be a `dash-case` string.
+2. **value:** (optional) not defined or any value type, which will be used to set the initial attribute, if none is found on the HTML element.
+
+::: tip
+The attribute on the component is always the source of truth and not the created attribute property. So when the attribute value changes, the property will be updated. But changing the property will **not** update the attribute.
+:::
+
+::: warning
+All attributes are always going to be from type `string` and can be accesed inside the component with the `camelCase` notation.
+:::
+
+::: danger
+For attribute property updates to be effective, when changing an attribute, you have to make these attributes **observable**. You can define all attributes which should be observed in the **[observedAttributes](#observedattributes)** getter.
+:::
+
 - **Property**
 
 - **Type:** `readonly [name: string, value?: unknown][]`
@@ -228,7 +254,17 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+```html
+<!-- usage -->
+<my-element text="Hello Minze!"></my-element>
+
+<!-- bg-color attribute will be created on the element, since no attribute was provided and an initial value is defined -->
+<my-element text="Hello Minze!" bg-color="#000"></my-element>
+```
+
 ### observedAttributes
+
+Observes the provided attribute names and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChanged` and `afterAttributeChanged` hooks are called.
 
 - **Getter**
 
@@ -254,9 +290,23 @@ export class MyElement extends MinzeElement {
 
 ### eventListeners
 
+Dynamically creates event listeners, either on/inside the component or on the `window` object. `eventListeners` should be an array containing one or more tuples. In JavaScript tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
+
+Every tuple takes exacltly 3 values.
+
+Tuple structure: [`eventTarget`, `eventName`, `callback`]
+
+1. **eventTarget:** where the event listener should be attached to. Can be a valid CSS selector (for elements inside the `html` property), `this` (The component itself) or `window`.
+2. **eventName:** the name of the event to listen to.
+3. **callback:** a callback function which runs when the eventName is matched.
+
+::: warning
+Web components are ment to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object, to prevent `event-listener-pollution`.
+:::
+
 - **Property**
 
-- **Type:** `readonly [eventTarget: string | MinzeElement | (Window & typeof globalThis) | Document, eventName: string, callback: (event: Event) => void][]`
+- **Type:** `readonly [eventTarget: string | MinzeElement | (Window & typeof globalThis), eventName: string, callback: (event: Event) => void][]`
 
 - **Example:**
 
@@ -271,11 +321,15 @@ export class MyElement extends MinzeElement {
   `
 
   handleClick = () => {
-    // do something
+    const myDetailData = {
+      foo: 'bar'
+    }
+
+    this.cast('minze:my-event-name', myDetailData)
   }
 
-  handleCast = () => {
-    // do something
+  handleCast = (event) => {
+    console.log(event.detail)
   }
 
   eventListeners = [
@@ -406,6 +460,10 @@ export class MyElement extends MinzeElement {
 ### cast
 
 Dispatches a custom event from the element. Shorthand for `Broadcasting`, not to be confused with `Type casting`.
+
+::: tip
+It's a good idea to prefix your custom event names to avoid collisions with other libraries.
+:::
 
 - **Method**
 
@@ -601,7 +659,7 @@ export class MyElement extends MinzeElement {
 
 Declares `eventListeners` property as an array of tuples.
 
-- **Type:** `readonly [eventTarget: string | MinzeElement | (Window & typeof globalThis) | Document, eventName: string, callback: (event: Event) => void][]`
+- **Type:** `readonly [eventTarget: string | MinzeElement | (Window & typeof globalThis), eventName: string, callback: (event: Event) => void][]`
 
 - **Example:**
 
