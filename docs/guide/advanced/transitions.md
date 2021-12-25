@@ -3,7 +3,7 @@
 By exposing the `rendered` attribute you can add animations to rendered components to make their apperance more pleasant. This can be especially useful if you are using an async call to an external API and are awaiting an answer. You can basically control how the component will appear.
 
 ::: tip
-CSS transition are not 100% reliable, since the transition isn't triggered when the component is imidiatly rendered.
+CSS transitions are not 100% reliable, since a transition isn't triggered when the component is imidiatly rendered.
 :::
 
 **Example**
