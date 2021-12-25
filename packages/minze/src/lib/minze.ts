@@ -6,6 +6,11 @@ import { MinzeElement } from './minze-element'
  */
 export class Minze {
   /**
+   * The current Minze version.
+   */
+  readonly version = '__VERSION__'
+
+  /**
    * Defines a custom element.
    *
    * @example

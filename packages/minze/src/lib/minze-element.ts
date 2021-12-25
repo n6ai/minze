@@ -32,6 +32,11 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * The current Minze version.
+   */
+  readonly version = '__VERSION__'
+
+  /**
    * Defines options for the web component.
    *
    * @example

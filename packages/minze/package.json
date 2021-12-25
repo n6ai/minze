@@ -32,6 +32,7 @@
     "clean": "rimraf dist .temp"
   },
   "devDependencies": {
+    "@rollup/plugin-replace": "^3.0.0",
     "@rollup/plugin-typescript": "^8.3.0",
     "rollup": "^2.61.1",
     "rollup-plugin-license": "^2.6.0",

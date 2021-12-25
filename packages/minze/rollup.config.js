@@ -1,8 +1,10 @@
 // @ts-check
 import { resolve, join } from 'path'
+import replace from '@rollup/plugin-replace'
 import typescript from '@rollup/plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
 import license from 'rollup-plugin-license'
+import { version } from './package.json'
 
 /**
  * @type { {format: 'es' | 'umd', file: string, onlyProd?: boolean}[] }
@@ -31,6 +33,11 @@ const createConfig = ({ format, file }, { isDev, isProd }) => {
           declarationDir: resolve(__dirname, 'dist/')
         })
       }),
+      isProd &&
+        replace({
+          preventAssignment: true,
+          __VERSION__: version
+        }),
       isProd &&
         terser({
           keep_classnames: true,
