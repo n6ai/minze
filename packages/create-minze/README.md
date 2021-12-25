@@ -26,7 +26,7 @@ Then follow the prompts!
 
 ### Templates
 
-There're currently the following templates available:
+There are currently the following templates available:
 
 - JavaScript - `js`
 - TypeScript - `ts`
