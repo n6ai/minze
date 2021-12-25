@@ -19,7 +19,7 @@ export type MinzeEvents = ReadonlyArray<MinzeEvent>
  * @example
  * ```
  * class MyElement extends MinzeElement {
- *   html = () => `<div>Hello World</div>`
+ *   html = () => `<div>Hello Minze</div>`
  * }
  * ```
  */
@@ -119,7 +119,7 @@ export class MinzeElement extends HTMLElement {
    * ```
    * class MyElement extends MinzeElement {
    *   html = () => `
-   *     <div>Hello World</div>
+   *     <div>Hello Minze</div>
    *   `
    * }
    * ```
@@ -574,7 +574,7 @@ export class MinzeElement extends HTMLElement {
    * Life cycle - Runs at the end of the attributeChangedCallback method.
    *
    * This hook runs before the onStart life cycle, if an attribute is set on the element:
-   * `<minze-element text="Hello world" /></minze-element>`
+   * `<minze-element text="Hello Minze" /></minze-element>`
    *
    * @example
    * ```
