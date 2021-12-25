@@ -1,5 +1,5 @@
 /**
- * Converts a camelCase or PascalCase string to kebab-case.
+ * Converts a camelCase or PascalCase string to dash-case.
  *
  * @example
  * ```
@@ -13,7 +13,7 @@ export function camelToDash(value: string) {
 }
 
 /**
- * Converts a kebab-case string to camelCase.
+ * Converts a dash-case string to camelCase.
  *
  * @example
  * ```

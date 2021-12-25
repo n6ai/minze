@@ -14,7 +14,7 @@ export type MinzeAttrs = ReadonlyArray<MinzeAttr>
 export type MinzeEvents = ReadonlyArray<MinzeEvent>
 
 /**
- * MinzeElement: Can be extended from to create web components.
+ * MinzeElement: Can be used to extend from to create custom web components.
  *
  * @example
  * ```
@@ -57,7 +57,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Defines properties whitch should be created as reactive.
+   * Defines properties that should be created as reactive.
    *
    * reactive takes an array of tuples: [[ name, value, attrs? ], ...]
    *
@@ -74,8 +74,7 @@ export class MinzeElement extends HTMLElement {
   reactive?: MinzeProps
 
   /**
-   * Defines properties whitch should be created as reactive.
-   * Thay listen for attribute changes.
+   * Defines attribute properties that should be created as reactive.
    *
    * attrs takes an array of tuples: [[ name, value? ], ...]
    *
@@ -97,7 +96,7 @@ export class MinzeElement extends HTMLElement {
    * eventListeners takes an array of tuples: [[ eventTarget, eventName, callback ], ...]
    *
    * possible event targets are:
-   * - global: window, document (limited only to these to to prevent global polution)
+   * - global: window (limited to prevent event-listener-pollution)
    * - local: this, or any elements inside the shadow DOM (by passing a valid CSS selector string)
    *
    * @example
@@ -160,10 +159,10 @@ export class MinzeElement extends HTMLElement {
 
   /**
    * Renders the template into the shadow DOM.
-   * Removes any previously registered event listeners
+   * Removes any previously registered event listeners.
    * Attaches all new event listeners.
    *
-   * @param force - Forces the rerendering of the template regardless of caching.
+   * @param force - Forces the re-rendering of the template regardless of caching.
    *
    * @example
    * ```
@@ -190,9 +189,9 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Rerenders the component template.
+   * Re-renders the component template.
    *
-   * @param force - Forces the rerendering of the template regardless of caching.
+   * @param force - Forces the re-rendering of the template regardless of caching.
    *
    * @example
    * ```
@@ -204,7 +203,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Selects a single element inside the shadow DOM.
+   * Selects the first matching element inside the shadow DOM.
    *
    * @example
    * ```
@@ -361,7 +360,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Makes provided property reactive to attribute changes on component.
+   * Makes provided property reactive to attribute changes on the component.
    *
    * @example
    * ```
@@ -439,7 +438,7 @@ export class MinzeElement extends HTMLElement {
   /**
    * Dispatches a custom event from the web component.
    *
-   * Is's a good idea to namespace the event name. For example: `minze:update`
+   * It's a good idea to namespace the event name. For example: `minze:update`
    *
    * @example
    * ```
@@ -451,7 +450,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
+   * Life cycle (Internal) - Runs whenever the element is appended into a document-connected element.
    */
   private async connectedCallback() {
     await this.onStart?.()
@@ -467,7 +466,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
+   * Life cycle (Internal) - Runs each time the element is disconnected from the document's DOM.
    */
   private async disconnectedCallback() {
     this.eventListeners?.forEach((eventTuple) =>
@@ -478,7 +477,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Lifecycle (Internal) - Runs each time the element is moved to a new document.
+   * Life cycle (Internal) - Runs each time the element is moved to a new document.
    */
   private async adoptedCallback() {
     await this.onMove?.()
@@ -487,7 +486,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Lifecycle (Internal) - Runs whenever one of the element's attributes is changed.
+   * Life cycle (Internal) - Runs whenever one of the element's attributes is changed.
    */
   private async attributeChangedCallback(
     name: string,
@@ -505,7 +504,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Lifecycle - Runs at the start of the connectedCallback method.
+   * Life cycle - Runs at the start of the connectedCallback method.
    *
    * @example
    * ```
@@ -517,7 +516,7 @@ export class MinzeElement extends HTMLElement {
   onStart?(): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the end of the connectedCallback method.
+   * Life cycle - Runs at the end of the connectedCallback method.
    *
    * @example
    * ```
@@ -529,7 +528,7 @@ export class MinzeElement extends HTMLElement {
   onReady?(): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the end of the disconnectedCallback method.
+   * Life cycle - Runs at the end of the disconnectedCallback method.
    *
    * @example
    * ```
@@ -541,7 +540,7 @@ export class MinzeElement extends HTMLElement {
   onDestroy?(): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the start of the adoptedCallback method.
+   * Life cycle - Runs at the start of the adoptedCallback method.
    *
    * @example
    * ```
@@ -553,10 +552,10 @@ export class MinzeElement extends HTMLElement {
   onMove?(): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the start of the attributeChangedCallback method.
+   * Life cycle - Runs at the start of the attributeChangedCallback method.
    *
-   * This hook runs before the onStart lifecycle if an attribute is set on the element:
-   * `<minze-element text="Hello world" /></minze-element>`
+   * This hook runs before the onStart life cycle, if an attribute is set on the element:
+   * `<minze-element text="Hello Minze" /></minze-element>`
    *
    * @example
    * ```
@@ -572,9 +571,9 @@ export class MinzeElement extends HTMLElement {
   ): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the end of the attributeChangedCallback method.
+   * Life cycle - Runs at the end of the attributeChangedCallback method.
    *
-   * This hook runs before the onStart lifecycle if an attribute is set on the element:
+   * This hook runs before the onStart life cycle, if an attribute is set on the element:
    * `<minze-element text="Hello world" /></minze-element>`
    *
    * @example

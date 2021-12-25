@@ -2,7 +2,7 @@ import { camelToDash } from './utils'
 import { MinzeElement } from './minze-element'
 
 /**
- * Minze class which can be used to run multiple utility methods.
+ * Minze class with multiple static methods and properties for common tasks.
  */
 export class Minze {
   /**
@@ -66,7 +66,7 @@ export class Minze {
   }
 
   /**
-   * Removes event listener based on provided event name and
+   * Removes event listener based on the provided event name and
    * callback function from the `window` object.
    *
    * @example
