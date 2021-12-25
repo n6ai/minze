@@ -1,6 +1,6 @@
 # Hooks
 
-Hooks are methods that can be defined within a component and are called at various points in the life cycle of a component. All hooks can by asynchronous.
+Hooks are methods that can be defined within a component and are called at various points in the lifecycle of a component. All hooks can by asynchronous.
 
 **Example**
 
@@ -10,7 +10,7 @@ import Minze, { MinzeElement } from 'minze'
 class MyElement extends MinzeElement {
   /**
    * Component has been inserted into the DOM,
-   * but the internal life cycle hasn't started yet.
+   * but the internal lifecycle hasn't started yet.
    * If you want to make any API calls before rendering,
    * this is the place.
    */
@@ -19,7 +19,7 @@ class MyElement extends MinzeElement {
   }
 
   /**
-   * The internal life cycle has finished,
+   * The internal lifecycle has finished,
    * and the component is rendered.
    */
   onReady() {

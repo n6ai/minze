@@ -544,7 +544,7 @@ export class MyElement extends MinzeElement {
 
 ### onStart
 
-A Hook that runs after the element is added to the DOM, but before the internal life cycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
+A Hook that runs after the element is added to the DOM, but before the internal lifecycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
 
 ::: tip
 This hook runs after the `beforeAttributeChange` and `afterAttributeChange` hooks if any attributes are present on the element.
@@ -568,7 +568,7 @@ export class MyElement extends MinzeElement {
 
 ### onReady
 
-A Hook that runs after the element is added to the DOM and the entire component life cycle is finished. Can either be a regular or async method.
+A Hook that runs after the element is added to the DOM and the entire component lifecycle is finished. Can either be a regular or async method.
 
 - **Method**
 

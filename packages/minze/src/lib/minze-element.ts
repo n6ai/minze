@@ -450,7 +450,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Life cycle (Internal) - Runs whenever the element is appended into a document-connected element.
+   * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
    */
   private async connectedCallback() {
     await this.onStart?.()
@@ -466,7 +466,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Life cycle (Internal) - Runs each time the element is disconnected from the document's DOM.
+   * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
    */
   private async disconnectedCallback() {
     this.eventListeners?.forEach((eventTuple) =>
@@ -477,7 +477,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Life cycle (Internal) - Runs each time the element is moved to a new document.
+   * Lifecycle (Internal) - Runs each time the element is moved to a new document.
    */
   private async adoptedCallback() {
     await this.onMove?.()
@@ -486,7 +486,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Life cycle (Internal) - Runs whenever one of the element's attributes is changed.
+   * Lifecycle (Internal) - Runs whenever one of the element's attributes is changed.
    */
   private async attributeChangedCallback(
     name: string,
@@ -504,7 +504,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Life cycle - Runs at the start of the connectedCallback method.
+   * Lifecycle - Runs at the start of the connectedCallback method.
    *
    * @example
    * ```
@@ -516,7 +516,7 @@ export class MinzeElement extends HTMLElement {
   onStart?(): Promise<void> | void
 
   /**
-   * Life cycle - Runs at the end of the connectedCallback method.
+   * Lifecycle - Runs at the end of the connectedCallback method.
    *
    * @example
    * ```
@@ -528,7 +528,7 @@ export class MinzeElement extends HTMLElement {
   onReady?(): Promise<void> | void
 
   /**
-   * Life cycle - Runs at the end of the disconnectedCallback method.
+   * Lifecycle - Runs at the end of the disconnectedCallback method.
    *
    * @example
    * ```
@@ -540,7 +540,7 @@ export class MinzeElement extends HTMLElement {
   onDestroy?(): Promise<void> | void
 
   /**
-   * Life cycle - Runs at the start of the adoptedCallback method.
+   * Lifecycle - Runs at the start of the adoptedCallback method.
    *
    * @example
    * ```
@@ -552,9 +552,9 @@ export class MinzeElement extends HTMLElement {
   onMove?(): Promise<void> | void
 
   /**
-   * Life cycle - Runs at the start of the attributeChangedCallback method.
+   * Lifecycle - Runs at the start of the attributeChangedCallback method.
    *
-   * This hook runs before the onStart life cycle, if an attribute is set on the element:
+   * This hook runs before the onStart lifecycle, if an attribute is set on the element:
    * `<minze-element text="Hello Minze" /></minze-element>`
    *
    * @example
@@ -571,9 +571,9 @@ export class MinzeElement extends HTMLElement {
   ): Promise<void> | void
 
   /**
-   * Life cycle - Runs at the end of the attributeChangedCallback method.
+   * Lifecycle - Runs at the end of the attributeChangedCallback method.
    *
-   * This hook runs before the onStart life cycle, if an attribute is set on the element:
+   * This hook runs before the onStart lifecycle, if an attribute is set on the element:
    * `<minze-element text="Hello Minze" /></minze-element>`
    *
    * @example
