@@ -6,7 +6,7 @@ All publicly intended API methods, properties and types are listed below.
 
 ## Minze
 
-Minze class with multiple static methods for common tasks.
+Minze class with multiple static methods and properties for common tasks.
 
 ### define
 
@@ -49,7 +49,7 @@ Your component class names have to be either in `PascalCase` or `camelCase` when
 ```js
 import Minze, { MinzeElement } from 'minze'
 
-class MyElement extends MinzeElement {
+class MyFirstElement extends MinzeElement {
   // ...
 }
 
@@ -57,16 +57,19 @@ class MySecondElement extends MinzeElement {
   // ...
 }
 
-Minze.defineAll([MyElement, MySecondElement])
+Minze.defineAll([MyFirstElement, MySecondElement])
 ```
 
+<!-- prettier-ignore-start -->
 ```html
-<my-element></my-element> <my-second-element></my-second-element>
+<my-first-element></my-first-element>
+<my-second-element></my-second-element>
 ```
+<!-- prettier-ignore-end -->
 
 ### cast
 
-Dispatches a custom event from the `window` object.
+Dispatches a custom event from the `window` object. Shorthand for `Broadcasting`, not to be confused with `Type casting`.
 
 - **Method**
 
@@ -77,11 +80,11 @@ Dispatches a custom event from the `window` object.
 ```js
 import Minze from 'minze'
 
-const myData = {
+const myDetailData = {
   foo: 'bar'
 }
 
-Minze.cast('minze:my-event-name', myData)
+Minze.cast('minze:my-event-name', myDetailData)
 ```
 
 ### listen
@@ -98,9 +101,7 @@ Adds an event listener to the `window` object.
 import Minze from 'minze'
 
 const callback = (event) => {
-  if (event.type === 'minze:my-event-name') {
-    // do something
-  }
+  console.log(event.detail)
 }
 
 Minze.listen('minze:my-event-name', callback)
@@ -119,7 +120,7 @@ Remove an event listener from the `window` object.
 ```js
 import Minze from 'minze'
 
-const callback = () => {
+const callback = (event) => {
   // do something
 }
 
@@ -134,7 +135,7 @@ Base class which can be extended from to create custom web components.
 
 ### options
 
-Indevidual components can be customized by declaring an options property. All currently available options are listed in the example below.
+Individual components can be customized by declaring an options property. All currently available options are listed in the example below with their **default values**.
 
 - **Property**
 
@@ -155,6 +156,21 @@ export class MyElement extends MinzeElement {
 ```
 
 ### reactive
+
+Dynamically creates reactive properties on the element. A change to a reactive property will request a component rerender, if the property is used in either `html` or `css` properties. `reactive` should be an array containing one or more tuples.
+In JavaScript tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
+
+Every tuple takes up to 3 values. The first 2 are required, the third is optional.
+
+Tuple structure: [`name`, `value`, `exposeAttr?`]
+
+1. **name:** has to be be a `camlCase` string.
+2. **value:** can be any value.
+3. **exposeAttr:** (optional) not defined or `true`
+
+::: tip
+The created property is always the source of truth and not the exposed attribute. So when changing the attribute value, the property will not be updated. But changing the property value will update the attribute.
+:::
 
 - **Property**
 
@@ -182,6 +198,14 @@ export class MyElement extends MinzeElement {
     console.log(this.aString, this.aBoolean, this.anArray, this.anObject)
   }
 }
+```
+
+```html
+<!-- usage -->
+<my-element></my-element>
+
+<!-- an-array attribute will be exposed automatically and look like this: -->
+<my-element an-array="[1, 2, 3]"></my-element>
 ```
 
 ### attrs
@@ -263,6 +287,8 @@ export class MyElement extends MinzeElement {
 
 ### html
 
+Defines the element structure.
+
 - **Property | Method**
 
 - **Type:** `(): string`
@@ -280,6 +306,8 @@ export class MyElement extends MinzeElement {
 ```
 
 ### css
+
+Defines the scoped styles of an element.
 
 - **Property | Method**
 
@@ -300,6 +328,8 @@ export class MyElement extends MinzeElement {
 ```
 
 ### rerender
+
+Requests a component rerender. The current template will be compared to the cached template and if they are different, the component will be rerendered. If you want to force-rerender, without any checks, pass `true` as the first argument.
 
 - **Method**
 
@@ -322,6 +352,8 @@ export class MyElement extends MinzeElement {
 ```
 
 ### select
+
+Selects the first matching element for the given `CSS` string selector inside the `html` property.
 
 - **Method**
 
@@ -347,6 +379,8 @@ export class MyElement extends MinzeElement {
 
 ### selectAll
 
+Selects all elements matching the given `CSS` string selector inside the `html` property.
+
 - **Method**
 
 - **Type:** `(selector: string): NodeListOf<Element> | undefined`
@@ -371,6 +405,8 @@ export class MyElement extends MinzeElement {
 
 ### cast
 
+Dispatches a custom event from the element. Shorthand for `Broadcasting`, not to be confused with `Type casting`.
+
 - **Method**
 
 - **Type:** `(eventName: string, detail?: unknown): void`
@@ -382,16 +418,22 @@ import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onReady = () => {
-    const myData = {
+    const myDetailData = {
       foo: 'bar'
     }
 
-    this.cast('minze:ready', myData)
+    this.cast('minze:ready', myDetailData)
   }
 }
 ```
 
 ### onStart
+
+A Hook which runs after the element is added to the DOM, but before the internal life cycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
+
+::: tip
+This hook runs after the `beforeAttributeChange` and `afterAttributeChange` hooks if any attributes are present on the element.
+:::
 
 - **Method**
 
@@ -411,6 +453,8 @@ export class MyElement extends MinzeElement {
 
 ### onReady
 
+A Hook which runs after the element is added to the DOM and the entire component life cycle is finished. Can either be a regular or async method.
+
 - **Method**
 
 - **Type:** `(): Promise<void> | void`
@@ -428,6 +472,8 @@ export class MyElement extends MinzeElement {
 ```
 
 ### onDestroy
+
+A Hook which runs after the element is disconnected from the document's DOM and all it's eventListeners are removed. Can either be a regular or async method.
 
 - **Method**
 
@@ -447,6 +493,8 @@ export class MyElement extends MinzeElement {
 
 ### onMove
 
+A Hook which runs after the element is moved to a new document but before it's rendered. Can either be a regular or async method.
+
 - **Method**
 
 - **Type:** `(): Promise<void> | void`
@@ -465,6 +513,8 @@ export class MyElement extends MinzeElement {
 
 ### beforeAttributeChange
 
+A Hook which runs before every [observed attribute](#observedattributes) change. Can either be a regular or async method.
+
 - **Method**
 
 - **Type:** `(name?: string | undefined, oldValue?: string | undefined, newValue?: string | undefined): Promise<void> | void`
@@ -482,6 +532,8 @@ export class MyElement extends MinzeElement {
 ```
 
 ### onAttributeChange
+
+A Hook which runs after every [observed attribute](#observedattributes) change. Can either be a regular or async method.
 
 - **Method**
 
