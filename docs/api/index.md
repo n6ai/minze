@@ -151,7 +151,7 @@ Minze.stopListen('minze:my-event-name', callback)
 
 ## MinzeElement
 
-Base class which can be extended from to create custom web components.
+Base class which can be used to extend from to create custom web components.
 
 ### version
 
@@ -197,8 +197,8 @@ export class MyElement extends MinzeElement {
 
 ### reactive
 
-Dynamically creates reactive properties on the element. A change to a reactive property will request a component rerender. `reactive` should be an array containing one or more tuples.
-In JavaScript tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
+Dynamically creates reactive properties on the element. A change to a reactive property will request a component re-render. `reactive` should be an array containing one or more tuples.
+In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
 Every tuple takes up to 3 values. The first 2 are required, the third is optional.
 
@@ -250,8 +250,8 @@ export class MyElement extends MinzeElement {
 
 ### attrs
 
-Dynamically creates reactive properties for attributes. A change to a reactive attribute property will request a component rerender. `attrs` should be an array containing one or more tuples.
-In JavaScript tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
+Dynamically creates reactive properties for attributes. A change to a reactive attribute property will request a component re-render. `attrs` should be an array containing one or more tuples.
+In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
 Every tuple takes up to 2 values. The first 1 is required, the second is optional.
 
@@ -265,11 +265,11 @@ The attribute on the component is always the source of truth and not the created
 :::
 
 ::: warning
-All attributes are always going to be from type `string` and can be accesed inside the component with the `camelCase` notation.
+All attribute properties will always be from type `string`, no matter the provided value type, and can be accessed inside the component with the `camelCase` notation.
 :::
 
 ::: danger
-For attribute property updates to be effective, when changing an attribute, you have to make these attributes **observable**. You can define all attributes which should be observed in the **[observedAttributes](#observedattributes)** getter.
+For attribute property updates to be effective (on attribute changes), you have to make these attributes **observable**. It can be done by providing them to the **[observedAttributes](#observedattributes)** getter.
 :::
 
 - **Property**
@@ -326,18 +326,18 @@ export class MyElement extends MinzeElement {
 
 ### eventListeners
 
-Dynamically creates event listeners, either on/inside the component or on the `window` object. `eventListeners` should be an array containing one or more tuples. In JavaScript tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
+Dynamically creates event listeners, either on/inside the component or on the `window` object. `eventListeners` should be an array containing one or more tuples. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
-Every tuple takes exacltly 3 values.
+Every tuple takes exactly 3 values.
 
 Tuple structure: [`eventTarget`, `eventName`, `callback`]
 
 1. **eventTarget:** where the event listener should be attached to. Can be a valid CSS selector (for elements inside the `html` property), `this` (The component itself) or `window`.
 2. **eventName:** the name of the event to listen to.
-3. **callback:** a callback function which runs when the eventName is matched.
+3. **callback:** a callback function that runs when the eventName is matched.
 
 ::: warning
-Web components are ment to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object, to prevent `event-listener-pollution`.
+Web components are meant to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object, to prevent `event-listener-pollution`.
 :::
 
 ::: danger
@@ -378,7 +378,7 @@ export class MyElement extends MinzeElement {
    * Regular methods have to be bound to the component
    * in order to access any properties or methods of the component.
    * Properties defined with arrow functions don't need to be bound,
-   * since they don't have their own this binding
+   * since they don't have their own 'this' binding
    * and instead are bound to the component by default.
    */
   handleNestedCast(event) {
@@ -395,7 +395,7 @@ export class MyElement extends MinzeElement {
 
 ### html
 
-Defines the element structure.
+Defines the elements `HTML` template.
 
 - **Property | Method**
 
@@ -415,7 +415,7 @@ export class MyElement extends MinzeElement {
 
 ### css
 
-Defines the scoped styles of an element.
+Defines the elements scoped `CSS` template.
 
 - **Property | Method**
 
@@ -437,7 +437,7 @@ export class MyElement extends MinzeElement {
 
 ### rerender
 
-Requests a component rerender. The current template will be compared to the cached template and if they are different, the component will be rerendered. If you want to force-rerender, without any checks, pass `true` as the first argument.
+Requests a component re-render. The current template will be compared to the cached template and if they are different, the component will be rerendered. If you want to force-rerender, without any checks, pass `true` as the first argument.
 
 - **Method**
 
@@ -461,7 +461,7 @@ export class MyElement extends MinzeElement {
 
 ### select
 
-Selects the first matching element for the given `CSS` string selector inside the `html` property.
+Selects the first matching element for the given `CSS` selector inside the `html` template.
 
 - **Method**
 
@@ -487,7 +487,7 @@ export class MyElement extends MinzeElement {
 
 ### selectAll
 
-Selects all elements matching the given `CSS` string selector inside the `html` property.
+Selects all elements matching the given `CSS` selector inside the `html` template.
 
 - **Method**
 
@@ -541,7 +541,7 @@ export class MyElement extends MinzeElement {
 
 ### onStart
 
-A Hook which runs after the element is added to the DOM, but before the internal life cycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
+A Hook that runs after the element is added to the DOM, but before the internal life cycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
 
 ::: tip
 This hook runs after the `beforeAttributeChange` and `afterAttributeChange` hooks if any attributes are present on the element.
@@ -565,7 +565,7 @@ export class MyElement extends MinzeElement {
 
 ### onReady
 
-A Hook which runs after the element is added to the DOM and the entire component life cycle is finished. Can either be a regular or async method.
+A Hook that runs after the element is added to the DOM and the entire component life cycle is finished. Can either be a regular or async method.
 
 - **Method**
 
@@ -585,7 +585,7 @@ export class MyElement extends MinzeElement {
 
 ### onDestroy
 
-A Hook which runs after the element is disconnected from the document's DOM and all it's eventListeners are removed. Can either be a regular or async method.
+A Hook that runs after the element is disconnected from the document's DOM and all its event listeners are removed. Can either be a regular or async method.
 
 - **Method**
 
@@ -605,7 +605,7 @@ export class MyElement extends MinzeElement {
 
 ### onMove
 
-A Hook which runs after the element is moved to a new document but before it's rendered. Can either be a regular or async method.
+A Hook that runs after the element is moved to a new document but before it's rendered. Can either be a regular or async method.
 
 - **Method**
 
@@ -625,7 +625,7 @@ export class MyElement extends MinzeElement {
 
 ### beforeAttributeChange
 
-A Hook which runs before every [observed attribute](#observedattributes) change. Can either be a regular or async method.
+A Hook that runs before every [observed attribute](#observedattributes) change. Can either be a regular or async method.
 
 - **Method**
 
@@ -645,7 +645,7 @@ export class MyElement extends MinzeElement {
 
 ### onAttributeChange
 
-A Hook which runs after every [observed attribute](#observedattributes) change. Can either be a regular or async method.
+A Hook that runs after every [observed attribute](#observedattributes) change. Can either be a regular or async method.
 
 - **Method**
 
@@ -667,7 +667,7 @@ export class MyElement extends MinzeElement {
 
 ## Type Helpers
 
-Some properties you can define are from the `tuple` type, but TypeScript doesn't automatically infer tuples and rather asumes that they are arrays. So you have to explicitly declare them as tuples. If you are using `reactive`, `attrs` or `eventListeners`, you can use the following types to do so:
+Some properties you can define are from the `tuple` type, but TypeScript doesn't automatically infer tuples and rather assumes that they are arrays. So you have to explicitly declare them as tuples. If you are using `reactive`, `attrs` or `eventListeners`, you can use the following types to do so:
 
 ### MinzeProps
 
