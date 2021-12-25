@@ -4,7 +4,7 @@ export type MinzeProp = [name: string, value: unknown, exposeAttr?: boolean]
 export type MinzeAttr = [name: string, value?: unknown]
 
 export type MinzeEvent = [
-  eventTarget: string | MinzeElement | typeof window | typeof document,
+  eventTarget: string | MinzeElement | typeof window,
   eventName: string,
   callback: (event: Event) => void
 ]
@@ -416,9 +416,7 @@ export class MinzeElement extends HTMLElement {
       | typeof window[]
       | undefined
 
-    if (eventTarget === document) {
-      elements = [document]
-    } else if (eventTarget === window) {
+    if (eventTarget === window) {
       elements = [window]
     } else if (eventTarget instanceof MinzeElement) {
       elements = [this]
