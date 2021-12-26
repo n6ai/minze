@@ -24,7 +24,7 @@ a.sidebar-link-item.active {
   color: var(--c-link);
 }
 
-a.sidebar-link-item:hover {
+a.sidebar-link-item:not(.active):hover {
   color: var(--c-link);
   text-decoration: underline;
 }
