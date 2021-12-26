@@ -1,6 +1,6 @@
 # Quick Start
 
-The easiest way to get started is to scaffold a new Minze dev and publishing environment. It comes with everything you need to develop custom web components and publish them to npm. Out of the box it comes with [rollup](https://rollupjs.org/) and [vite](https://vitejs.dev/).
+The easiest way to get started is to scaffold a new Minze dev and publishing environment. It comes with everything you need to develop custom web components and publish them to npm. Out of the box, it comes with [rollup](https://rollupjs.org/) and [vite](https://vitejs.dev/).
 
 ## Scaffolding a project
 
@@ -32,7 +32,7 @@ $ yarn install
 
 ## Creating a component
 
-1. In the root directory of your project start the development server and open the `localhost` url.
+1. In the root directory of your project start the development server and open the `localhost` URL.
 
 **npm**
 

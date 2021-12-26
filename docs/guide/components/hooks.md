@@ -46,7 +46,7 @@ class MyElement extends MinzeElement {
 
   /**
    * The component is removed from the DOM.
-   * All internaly defined event listeners have been removed.
+   * All internally defined event listeners have been removed.
    *
    * Runs once.
    */
@@ -65,7 +65,7 @@ class MyElement extends MinzeElement {
   }
 
   /**
-   * The template hasn't been rendered yet,
+   * The template hasn't been rendered yet
    * but is about to.
    *
    * Can run multiple times.

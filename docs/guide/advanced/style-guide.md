@@ -6,7 +6,7 @@ By following this Style Guide you will be able to write better code and have a b
 
 - Should always consist of at least two words.
 - Should be defined in `PascalCase`.
-- Should't start with the `Minze` prefix unless they are part of one of the core packages.
+- Shouldn't start with the `Minze` prefix unless they are part of one of the core packages.
 - Should start with a unique prefix like your company name.
 
 ```js
@@ -22,7 +22,7 @@ class UniqueButton extends MinzeElement {}
 
 ## Component File Naming
 
-- Should be named consistantly in either `dash-case` or `PascalCase`.
+- Should be named consistently in either `dash-case` or `PascalCase`.
 - Should be named after the component they are exporting.
 
 ```
@@ -43,7 +43,7 @@ MyUniqueNameTwo.js
 
 ## Number of Components
 
-- Create only one component per file. Otherwise the file may become too big and hard to maintain.
+- Create only one component per file. Otherwise, the file may become too big and hard to maintain.
 
 ```js
 // ✖ Bad
@@ -57,7 +57,7 @@ export class MyElement extends MinzeElement {}
 ## Property and Method Naming
 
 - Attributes defined in the `attrs` property or the `observedAttributes` getter should always be named in `dash-case`.
-- All other properties and Methods should be named in `camelCase`.
+- All other properties and methods should be named in `camelCase`.
 
 ```js
 // ✖ Bad
@@ -104,7 +104,7 @@ class MyElement extends MinzeElement {
 
 ## Component Structure
 
-- The structure isn't set in stone, but by following the below example you will have a well structured component that is easy to maintain.
+- The structure isn't set in stone, but by following the below example you will have a well-structured component that is easy to maintain.
 - The structure should be as follows:
   1. Properties (Data)
   2. Methods

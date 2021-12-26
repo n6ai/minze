@@ -1,10 +1,10 @@
 # Data
 
-A Minze component hast multiple ways of defining data. Every method serves it's own purpose. But at the end of the day all data is going to be accessible from the component in the form of properties.
+A Minze component has multiple ways of defining data. Every method serves its own purpose. But at the end of the day, all data is going to be accessible from the component in the form of properties.
 
 ## this
 
-Accesing any property or method that is defined on the component requires the use of `this`. Inside the component `this` refers to the component itself. The example below illustrates this.
+Accessing any property or method that is defined on the component requires the use of `this`. Inside the component, `this` refers to the component itself. The example below illustrates this.
 
 **Example**
 

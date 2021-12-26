@@ -6,7 +6,7 @@
 
 Minze (German shorthand for "Peppermint", pronounced `/ˈmɪnt͡sə/`) lets you rapidly build native web components.
 
-It is not another framework for building complex user interfaces or single page apps, like React, Vue or Angular. Instead you can use Minze to create `encapsulated`, `reusable`, `maintainable`, `cross-framework` native web components.
+It is not another framework for building complex user interfaces or single-page apps, like React, Vue or Angular. Instead, you can use Minze to create `encapsulated`, `reusable`, `maintainable`, `cross-framework` native web components.
 
 Minze was made to be accessible to everyone, and to be easy to use. It removes a lot of complexity from the creation of custom web components.
 
@@ -14,9 +14,9 @@ Possible use cases:
 
 - **Design Systems**: Create cross-framework design system libraries and share them with your team or the world. Define once, use anywhere.
 
-- **Light Alternative**: If you dont want to use a common framework, but still want to create some components with JavaScript functionality for your site, you can use Minze.
+- **Light Alternative**: If you don't want to use a common framework, but still want to create some components with JavaScript functionality for your site, you can use Minze.
 
-- **Browser Native Extending**: You can add Minze to any web project and create components without using any build tools to extend it's functionality.
+- **Browser Native Extending**: You can add Minze to any web project and create components without using any build tools to extend its functionality.
 
 ## Features
 
@@ -34,7 +34,7 @@ Minze consists of two main classes:
 - **Minze** - A class with multiple static methods and properties for common tasks, like defining several components at once.
 - **MinzeElement** - A class that can be used to extend from to create custom web components. It adds an abstraction layer around the web components API and adds several additional features like reactivity.
 
-There's also a [CLI tool](/guide/basics/installation.html#cli) that can be used to create a development and publishing environment for Minze components. Out of the box it comes with [rollup](https://rollupjs.org/) and [vite](https://vitejs.dev/) and optionaly `TypeScript`.
+There's also a [CLI tool](/guide/basics/installation.html#cli) that can be used to create a development and publishing environment for Minze components. Out of the box, it comes with [rollup](https://rollupjs.org/) and [vite](https://vitejs.dev/) and optionally `TypeScript`.
 
 ## Browser Support
 

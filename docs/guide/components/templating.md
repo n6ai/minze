@@ -1,9 +1,9 @@
 # Templating
 
-By default, templating is done through JavaScripts template literals. The `html` property expects a function with a return value of type `string`.
+By default, templating is done through template literals. The `html` property expects a function with a return value of type `string`.
 
 ::: tip
-There is a private property called `template` that combines the defined `html` and `css` properties into one. The final result is what's beeing rendered.
+There is a private property called `template` that combines the defined `html` and `css` properties into one. The final result is what's being rendered.
 :::
 
 ## HTML
@@ -52,7 +52,7 @@ Minze.defineAll([MyElement])
 
 Slots are a way to add elements from the outside world to the element. There are two types of slots:
 
-- **default slots** - only one slot per components can be the default slot.
+- **default slots** - only one slot per component can be the default slot.
 - **named slots** - as many as you like.
 
 **Example**
@@ -79,11 +79,11 @@ Minze.defineAll([MyElement])
 
 ## Rendering
 
-Some advanced techniques that can be used in `html` and `css` templates.
+Some advanced techniques can be used in `html` and `css` templates.
 
 ### Conditional Rendering
 
-If you want to render a part of a component based on a specific condition you can use the `ternary` operator, or define the logic in a separate method.
+If you want to render a part of the template based on a specific condition, you can use the `ternary` operator, or define the logic in a separate method.
 
 **Example**
 
@@ -138,7 +138,7 @@ Minze.defineAll([MyElement])
 
 ### Destructuring
 
-You can destructure the properties and methods of an component to avoid writing `this` over and over again. Simply pass them as an argument to the template.
+You can destructure the properties and methods of a component to avoid writing `this` over and over again. Simply pass them as an argument to the template.
 
 **Example**
 

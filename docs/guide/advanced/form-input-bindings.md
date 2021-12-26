@@ -1,6 +1,6 @@
 # Form Input Bindings
 
-Here's an axample how to get and set the value of an input element.
+Here's an example of how to get and set the value of an input element.
 
 **Example**
 

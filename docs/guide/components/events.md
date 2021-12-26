@@ -5,7 +5,7 @@ Events can be used to communicate between components and the outside world.
 ## Event Listeners
 
 An event Listener can listen for specific events and run a callback function whenever the event is triggered.
-In an MinzeElement you can add event listeners in bulk by specifing an array of tuples for the `eventListeners` property. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
+In a MinzeElement, you can add event listeners in bulk by specifying an array of tuples for the `eventListeners` property. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
 Every eventListeners tuple takes exactly 3 values.
 
