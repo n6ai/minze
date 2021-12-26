@@ -155,7 +155,7 @@ export class MinzeElement extends HTMLElement {
   /**
    * Stores the previously rendered template.
    */
-  private cachedTemplate: string | undefined
+  private cachedTemplate: string | null = null
 
   /**
    * Renders the template into the shadow DOM.
@@ -210,9 +210,15 @@ export class MinzeElement extends HTMLElement {
    * this.select('div')
    * ```
    */
-  select(selector: string) {
+  select<K extends keyof HTMLElementTagNameMap>(
+    selectors: K
+  ): HTMLElementTagNameMap[K] | null
+  select<K extends keyof SVGElementTagNameMap>(
+    selectors: K
+  ): SVGElementTagNameMap[K] | null
+  select<E extends Element = Element>(selectors: string): E | null {
     const root = this.shadowRoot
-    return root?.querySelector(selector)
+    return root?.querySelector<E>(selectors) ?? null
   }
 
   /**
@@ -223,9 +229,17 @@ export class MinzeElement extends HTMLElement {
    * this.selectAll('div')
    * ```
    */
-  selectAll(selector: string) {
+  selectAll<K extends keyof HTMLElementTagNameMap>(
+    selectors: K
+  ): NodeListOf<HTMLElementTagNameMap[K]> | null
+  selectAll<K extends keyof SVGElementTagNameMap>(
+    selectors: K
+  ): NodeListOf<SVGElementTagNameMap[K]> | null
+  selectAll<E extends Element = Element>(
+    selectors: string
+  ): NodeListOf<E> | null {
     const root = this.shadowRoot
-    return root?.querySelectorAll(selector)
+    return root?.querySelectorAll<E>(selectors) ?? null
   }
 
   /**
