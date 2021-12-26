@@ -67,6 +67,10 @@ module.exports = {
               link: '/guide/components/templating'
             },
             {
+              text: 'Styling',
+              link: '/guide/components/styling'
+            },
+            {
               text: 'Selectors',
               link: '/guide/components/selectors'
             },

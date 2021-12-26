@@ -1,6 +1,6 @@
 # Hooks
 
-Hooks are methods that can be defined within a component and are called at various points in the lifecycle of a component. All hooks can by asynchronous.
+Hooks are methods that can be defined within a component and are called at various points in the lifecycle of a component. All hooks can be asynchronous.
 
 **Run only once:**
 
