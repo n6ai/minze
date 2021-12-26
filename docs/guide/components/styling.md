@@ -10,9 +10,9 @@ By default, all [typography](https://cssreference.io/typography/) properties are
 Custom elements are `display: inline` by default, in Minze however they are initialy set to `display: block`. To overwrite the bahavior use the `:host` selector.
 :::
 
-## Template
+## CSS Template
 
-The `css` property is used to define the scoped CSS for the component.
+The `css` property is used to define the scoped CSS for the component. It expects a function with a return value of type `string`.
 
 **Example**
 

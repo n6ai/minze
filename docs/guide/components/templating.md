@@ -1,10 +1,10 @@
 # Templating
 
-...
+By default, templating is done through JavaScripts template literals. The `html` property expects a function with a return value of type `string`.
 
 ## HTML
 
-...
+The `html` property defines the template of the component. If no `html` property is defined on the component it defaults to `<slot></slot>`.
 
 **Example**
 
@@ -12,8 +12,10 @@
 import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
+  myText = 'Hello Minze!'
+
   html = () => `
-    <div>Hello Minze!</div>
+    <div>${this.myText}</div>
   `
 }
 
@@ -26,7 +28,10 @@ Minze.defineAll([MyElement])
 
 ### Slots
 
-...
+Slots are a way to add elements from the outside world to the element. There are two types of slots:
+
+- **default slots** - only one slot per components can be the default slot.
+- **named slots** - as many as you like.
 
 **Example**
 
@@ -46,17 +51,13 @@ Minze.defineAll([MyElement])
 ```html
 <my-element>
   <div>Hello Minze</div>
-  <div slot="my-slot">Hello Minze<div>
+  <div slot="my-slot">Hello Minze again<div>
 </my-element>
 ```
 
-### Parts
-
-...
-
 ## Rendering
 
-Some advanced techniques that can be used `html` and `css` in templates.
+Some advanced techniques that can be used in `html` and `css` templates.
 
 ### Conditional Rendering
 
