@@ -26,6 +26,24 @@ Minze.defineAll([MyElement])
 <my-element></my-element>
 ```
 
+**Example**
+
+::: tip
+You can get started without even declaring any properties, it still will be a valid component.
+:::
+
+```js
+import Minze, { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {}
+
+Minze.defineAll([MyElement])
+```
+
+```html
+<my-element>Hello Minze</my-element>
+```
+
 ### Slots
 
 Slots are a way to add elements from the outside world to the element. There are two types of slots:
