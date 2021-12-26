@@ -1,6 +1,9 @@
 # Selectors
 
-You can use selector methods to select elements within the componets `html` template (shadow DOM) by providing a valid `CSS` selector.
+You can use selectors to select elements within the components `html` template (shadow DOM) by providing a valid `CSS` selector.
+
+- `select` - Selects the first element that matches the selector.
+- `selectAll` - Selects all elements that match the selector.
 
 **Example**
 

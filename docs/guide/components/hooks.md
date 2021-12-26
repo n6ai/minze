@@ -2,6 +2,20 @@
 
 Hooks are methods that can be defined within a component and are called at various points in the lifecycle of a component. All hooks can by asynchronous.
 
+**Run only once:**
+
+- `onStart`
+- `onReady`
+- `onDestroy`
+- `onMove`
+
+**Can run multiple times:**
+
+- `beforeRender`
+- `onRender`
+- `beforeAttributeChanged`
+- `onAttributeChanged`
+
 **Example**
 
 ```js
