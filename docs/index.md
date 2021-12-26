@@ -16,7 +16,7 @@ features:
     details: Based on the latest technologies around web components.
   - title: 📦 Sharable
     details: Build component libraries or design systems. Define once, use anywhere.
-  - title: 🎲 Framework agnostic
+  - title: 🎲 Framework Agnostic
     details: Use Minze with any common framework - React, Vue, Angular ...
   - title: 🔒 Typed API
     details: Scale your component library with ease by using TypeScript.

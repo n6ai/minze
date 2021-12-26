@@ -17,5 +17,5 @@ It provides an intuitive abstraction layer around the web components API with it
 - ⚡ Fast - Tiny footprint ~1KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
 - 📦 Sharable - Build component libraries or design systems. Define once, use anywhere.
-- 🎲 Framework agnostic - Use Minze with any common framework - React, Vue, Angular ...
+- 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, Angular ...
 - 🔒 Typed API - Scale your component library with ease by using TypeScript.
