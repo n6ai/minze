@@ -19,12 +19,12 @@ It provides an intuitive abstraction layer around the web components API with it
 
 ## Features
 
-- 👶 Simple - Dive in right away by [scaffolding](packages/create-minze) a project.
+- 👶 Simple - Dive right in by [scaffolding](packages/create-minze) a project or using a CDN link.
 - ⚡ Fast - Tiny footprint ~1KB (minified and compressed).
-- 🚀 Modern - Based on the latest web technologies.
-- 📦 Sharable - Build component libraries or design systems.
-- 🎲 Framework agnostic - Use Minze anywhere - React, Vue, Angular...
-- 🔒 Typed API - Work in TypeSctipt.
+- 🚀 Modern - Based on the latest technologies around web components.
+- 📦 Sharable - Build component libraries or design systems. Define once, use anywhere.
+- 🎲 Framework agnostic - Use Minze with any common framework - React, Vue, Angular ...
+- 🔒 Typed API - Scale your component library with ease by using TypeScript.
 
 ## Packages
 
