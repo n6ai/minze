@@ -4,7 +4,7 @@ The easiest way to get started is to scaffold a new Minze dev and publishing env
 
 ## Scaffolding a project
 
-Follow these steps in your command line and you're ready to go.
+Follow these steps in your command line to get started.
 
 **npm**
 
@@ -18,6 +18,14 @@ $ npm install
 
 ```bash
 $ yarn create minze my-project --template js
+$ cd my-project
+$ yarn install
+```
+
+**pnpm**
+
+```bash
+$ pnpm create minze my-minze-env -- --template js
 $ cd my-project
 $ yarn install
 ```
@@ -36,6 +44,12 @@ $ npm run dev
 
 ```bash
 $ yarn dev
+```
+
+**pnpm**
+
+```bash
+$ pnpm run dev
 ```
 
 2. Navigate to the `lib` directory and create a new file.

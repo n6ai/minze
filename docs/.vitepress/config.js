@@ -37,12 +37,12 @@ module.exports = {
           text: 'Basics',
           children: [
             {
-              text: 'Quick Start',
-              link: '/guide/basics/quick-start'
-            },
-            {
               text: 'Installation',
               link: '/guide/basics/installation'
+            },
+            {
+              text: 'Quick Start',
+              link: '/guide/basics/quick-start'
             },
             {
               text: 'Introduction',

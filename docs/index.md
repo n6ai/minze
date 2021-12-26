@@ -31,4 +31,7 @@ $ npm init minze@latest
 
 # with yarn
 $ yarn create minze
+
+# with pnpm
+$ pnpm create minze
 ```
