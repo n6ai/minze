@@ -33,7 +33,7 @@ Minze.defineAll([MyElement])
 ```
 
 ```html
-<my-element>Hello Minze</my-element>
+<my-element>Hello Minze!</my-element>
 ```
 
 ## Variables
@@ -57,7 +57,7 @@ Minze.defineAll([MyElement])
 ```
 
 ```html
-<my-element>Hello Minze</my-element>
+<my-element>Hello Minze!</my-element>
 ```
 
 ```css
@@ -77,7 +77,7 @@ import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `
-    <div part="my-part">Hello Minze</div>
+    <div part="my-part">Hello Minze!</div>
   `
 }
 
@@ -85,7 +85,7 @@ Minze.defineAll([MyElement])
 ```
 
 ```html
-<my-element>Hello Minze</my-element>
+<my-element>Hello Minze!</my-element>
 ```
 
 ```css

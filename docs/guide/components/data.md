@@ -39,10 +39,10 @@ Regular non-reactive property.
 import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  myProperty = 'Hello Minze'
+  myProperty = 'Hello Minze!'
 
   onReady() {
-    console.log(this.myProperty) // Hello Minze
+    console.log(this.myProperty) // Hello Minze!
   }
 }
 
@@ -77,13 +77,13 @@ import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   reactive = [
-    ['myProperty', 'Hello Minze'],
+    ['myProperty', 'Hello Minze!'],
     ['myNumber', 99]
     // ...
   ]
 
   onReady() {
-    console.log(this.myProperty) // Hello Minze
+    console.log(this.myProperty) // Hello Minze!
     console.log(this.myNumber) // 99
   }
 }
@@ -131,7 +131,7 @@ class MyElement extends MinzeElement {
   ]
 
   onReady() {
-    console.log(this.myAttribute) // Hello Minze
+    console.log(this.myAttribute) // Hello Minze!
   }
 }
 
@@ -139,7 +139,7 @@ Minze.defineAll([MyElement])
 ```
 
 ```html
-<my-element my-attribute="Hello Minze"></my-element>
+<my-element my-attribute="Hello Minze!"></my-element>
 ```
 
 ## Observed Attributes
@@ -162,7 +162,7 @@ class MyElement extends MinzeElement {
   }
 
   onReady() {
-    console.log(this.myAttribute) // Hello Minze
+    console.log(this.myAttribute) // Hello Minze!
   }
 }
 
@@ -170,5 +170,5 @@ Minze.defineAll([MyElement])
 ```
 
 ```html
-<my-element my-attribute="Hello Minze"></my-element>
+<my-element my-attribute="Hello Minze!"></my-element>
 ```

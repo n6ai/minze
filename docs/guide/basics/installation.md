@@ -14,7 +14,7 @@ $ npm install minze
 import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  html = () => `Hello Minze`
+  html = () => `Hello Minze!`
 }
 
 Minze.defineAll([MyElement])
@@ -95,7 +95,7 @@ Loading Minze via `unpkg` CDN link:
     <!-- custom component definition -->
     <script type="module">
       class MyElement extends MinzeElement {
-        html = () => `Hello Minze`
+        html = () => `Hello Minze!`
       }
 
       Minze.defineAll([MyElement])

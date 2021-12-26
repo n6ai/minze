@@ -21,7 +21,7 @@ class MyElement extends MinzeElement {
   }
 
   onReady() {
-    this.inputValue = 'Hello Minze'
+    this.inputValue = 'Hello Minze!'
   }
 
   handleInput = () => {

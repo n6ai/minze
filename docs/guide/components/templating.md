@@ -45,7 +45,7 @@ Minze.defineAll([MyElement])
 ```
 
 ```html
-<my-element>Hello Minze</my-element>
+<my-element>Hello Minze!</my-element>
 ```
 
 ### Slots
@@ -72,8 +72,8 @@ Minze.defineAll([MyElement])
 
 ```html
 <my-element>
-  <div>Hello Minze</div>
-  <div slot="my-slot">Hello Minze again<div>
+  <div>Hello Minze!</div>
+  <div slot="my-slot">Hello Minze again!<div>
 </my-element>
 ```
 
@@ -94,11 +94,11 @@ class MyElement extends MinzeElement {
   isVisible = false
 
   whenVisible = () => {
-    if (this.isVisible) return `<div>Hello Minze</div>`
+    if (this.isVisible) return `<div>Hello Minze!</div>`
   }
 
   html = () => `
-    ${this.isVisible ? '<div>Hello Minze</div>' : ''}
+    ${this.isVisible ? '<div>Hello Minze!</div>' : ''}
     ${this.whenVisible()}
   `
 }
@@ -146,7 +146,7 @@ You can destructure the properties and methods of a component to avoid writing `
 import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  someValue = 'Hello Minze'
+  someValue = 'Hello Minze!'
 
   html = ({ someValue } = this) => `
     <div>${someValue}</div>

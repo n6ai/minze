@@ -9,7 +9,7 @@ import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   myMethod() {
-    console.log('Hello Minze')
+    console.log('Hello Minze!')
   }
 
   onReady() {
