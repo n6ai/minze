@@ -169,11 +169,13 @@ export class MinzeElement extends HTMLElement {
    * this.render()
    * ```
    */
-  private render(force?: boolean) {
+  private async render(force?: boolean) {
     if (this.shadowRoot) {
       const template = this.template()
 
       if (template !== this.cachedTemplate || force) {
+        await this.beforeRender?.()
+
         this.eventListeners?.forEach((eventTuple) =>
           this.registerEvent(eventTuple, 'remove')
         )
@@ -184,6 +186,8 @@ export class MinzeElement extends HTMLElement {
         this.eventListeners?.forEach((eventTuple) =>
           this.registerEvent(eventTuple, 'add')
         )
+
+        await this.onRender?.()
       }
     }
   }
@@ -471,7 +475,7 @@ export class MinzeElement extends HTMLElement {
 
     this.reactive?.forEach((prop) => this.registerProp(prop))
     this.attrs?.forEach((attr) => this.registerAttr(attr))
-    this.render()
+    await this.render()
 
     // sets rendered attribute on the component
     this.options?.exposeAttrs?.rendered && this.setAttribute('rendered', '')
@@ -518,7 +522,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Lifecycle - Runs at the start of the connectedCallback method.
+   * Lifecycle - Runs once at the start of the connectedCallback method.
    *
    * @example
    * ```
@@ -530,7 +534,7 @@ export class MinzeElement extends HTMLElement {
   onStart?(): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the end of the connectedCallback method.
+   * Lifecycle - Runs once at the end of the connectedCallback method.
    *
    * @example
    * ```
@@ -542,7 +546,7 @@ export class MinzeElement extends HTMLElement {
   onReady?(): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the end of the disconnectedCallback method.
+   * Lifecycle - Runs once at the end of the disconnectedCallback method.
    *
    * @example
    * ```
@@ -554,7 +558,7 @@ export class MinzeElement extends HTMLElement {
   onDestroy?(): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the start of the adoptedCallback method.
+   * Lifecycle - Runs once at the start of the adoptedCallback method.
    *
    * @example
    * ```
@@ -566,7 +570,31 @@ export class MinzeElement extends HTMLElement {
   onMove?(): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the start of the attributeChangedCallback method.
+   * Lifecycle - Runs each time at before of every render.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   onRender = () => console.log('onRender')
+   * }
+   * ```
+   */
+  beforeRender?(): Promise<void> | void
+
+  /**
+   * Lifecycle - Runs each time at the end of every render.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   onRender = () => console.log('onRender')
+   * }
+   * ```
+   */
+  onRender?(): Promise<void> | void
+
+  /**
+   * Lifecycle - Runs each time at the start of the attributeChangedCallback method.
    *
    * This hook runs before the onStart lifecycle, if an attribute is set on the element:
    * `<minze-element text="Hello Minze" /></minze-element>`
@@ -585,7 +613,7 @@ export class MinzeElement extends HTMLElement {
   ): Promise<void> | void
 
   /**
-   * Lifecycle - Runs at the end of the attributeChangedCallback method.
+   * Lifecycle - Runs each time at the end of the attributeChangedCallback method.
    *
    * This hook runs before the onStart lifecycle, if an attribute is set on the element:
    * `<minze-element text="Hello Minze" /></minze-element>`
