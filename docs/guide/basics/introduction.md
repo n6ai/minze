@@ -12,20 +12,20 @@ Minze was made to be accessible to everyone, and to be easy to use. It removes a
 
 Possible use cases:
 
-- **Design Systems**: Create cross-framework design system libraries and share them with your team or the world. Define a component once, and use it anywhere.
+- **Design Systems**: Create cross-framework design system libraries and share them with your team or the world. Define once, use anywhere.
 
 - **Light Alternative**: If you dont want to use a common framework, but still want to create some components with JavaScript functionality for your site, you can use Minze.
 
-- **Browser Native**: You can add Minze to any web project and create components without using any build tools.
+- **Browser Native Extending**: You can add Minze to any web project and create components without using any build tools to extend it's functionality.
 
 ## Features
 
-- 👶 Simple - Dive in right away by scaffolding a project.
+- 👶 Simple - Dive right in by scaffolding a project or using a CDN link.
 - ⚡ Fast - Tiny footprint ~1KB (minified and compressed).
-- 🚀 Modern - Based on the latest web technologies.
-- 📦 Sharable - Build component libraries or design systems.
-- 🎲 Framework agnostic - Use Minze anywhere - React, Vue, Angular...
-- 🔒 Typed API - Work in TypeSctipt.
+- 🚀 Modern - Based on the latest technologies around web components.
+- 📦 Sharable - Build component libraries or design systems. Define once, use anywhere.
+- 🎲 Framework agnostic - Use Minze with any common framework - React, Vue, Angular ...
+- 🔒 Typed API - Scale your component library with ease by using TypeScript.
 
 ## Architecture
 

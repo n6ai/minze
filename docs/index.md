@@ -9,17 +9,17 @@ altActionLink: /guide/basics/introduction
 
 features:
   - title: 👶 Simple
-    details: Dive in right away by scaffolding a project.
+    details: Dive right in by scaffolding a project or using a CDN link.
   - title: ⚡ Fast
     details: Tiny footprint ~1KB (minified and compressed).
   - title: 🚀 Modern
-    details: Based on the latest web technologies.
+    details: Based on the latest technologies around web components.
   - title: 📦 Sharable
-    details: Build component libraries or design systems.
+    details: Build component libraries or design systems. Define once, use anywhere.
   - title: 🎲 Framework agnostic
-    details: Use Minze anywhere - React, Vue, Angular...
+    details: Use Minze with any common framework - React, Vue, Angular ...
   - title: 🔒 Typed API
-    details: Work in TypeSctipt.
+    details: Scale your component library with ease by using TypeScript.
 footer: MIT Licensed | Copyright © 2021-present Sergej Samsonenko
 ---
 
