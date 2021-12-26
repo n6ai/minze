@@ -6,19 +6,19 @@
 
 **npm**
 
-```sh
+```bash
 $ npm init minze@latest
 ```
 
 **yarn**
 
-```sh
+```bash
 $ yarn create minze@latest
 ```
 
 **pnpm**
 
-```sh
+```bash
 $ pnpm create minze
 ```
 
@@ -37,7 +37,7 @@ There are currently the following templates available:
 
 You can directly specify the project name and template via additional command line options. For example, to scaffold a TypeScript environment, run:
 
-```sh
+```bash
 # npm
 $ npm init minze@latest my-minze-env -- --template ts
 

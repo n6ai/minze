@@ -10,19 +10,19 @@ Install `minze` and `@minze/elements`:
 
 **npm**
 
-```sh
+```bash
 $ npm install minze @minze/elements
 ```
 
 **yarn**
 
-```sh
+```bash
 $ yarn add minze @minze/elements
 ```
 
 **pnpm**
 
-```sh
+```bash
 $ pnpm add minze @minze/elements
 ```
 

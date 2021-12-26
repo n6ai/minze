@@ -8,7 +8,7 @@ Follow these steps in your command line and you're ready to go.
 
 **npm**
 
-```sh
+```bash
 $ npm init minze@latest my-project -- --template js
 $ cd my-project
 $ npm install
@@ -16,7 +16,7 @@ $ npm install
 
 **yarn**
 
-```sh
+```bash
 $ yarn create minze my-project --template js
 $ cd my-project
 $ yarn install
@@ -28,13 +28,13 @@ $ yarn install
 
 **npm**
 
-```sh
+```bash
 $ npm run dev
 ```
 
 **yarn**
 
-```sh
+```bash
 $ yarn dev
 ```
 
