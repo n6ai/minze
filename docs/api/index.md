@@ -302,7 +302,7 @@ export class MyElement extends MinzeElement {
 
 ### observedAttributes
 
-Observes the provided attribute names and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChanged` and `afterAttributeChanged` hooks are called.
+Observes the provided attribute names and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChange` and `afterAttributeChange` hooks are called.
 
 - **Getter**
 
@@ -431,7 +431,6 @@ import { MinzeElement } from 'minze'
 export class MyElement extends MinzeElement {
   css = () => `
     :host {
-      display: block;
       background: red;
     }
   `
@@ -684,8 +683,8 @@ A Hook that runs `each time` before any [observed attribute](#observedattributes
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  beforeAttributeCahnge(name, oldValue, newValue) {
-    console.log('beforeAttributeCahnge: ', name, oldValue, newValue)
+  beforeAttributeChange(name, oldValue, newValue) {
+    console.log('beforeAttributeChange: ', name, oldValue, newValue)
   }
 }
 ```
@@ -704,7 +703,7 @@ A Hook that runs `each time` after any [observed attribute](#observedattributes)
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  onAttributeCahnge(name, oldValue, newValue) {
+  onAttributeChange(name, oldValue, newValue) {
     console.log('onAttributeChange: ', name, oldValue, newValue)
   }
 }

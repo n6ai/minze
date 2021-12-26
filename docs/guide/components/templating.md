@@ -91,10 +91,11 @@ If you want to render a part of the template based on a specific condition, you 
 import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  isVisible = false
+  isVisible = true
 
   whenVisible = () => {
     if (this.isVisible) return `<div>Hello Minze!</div>`
+    else return ''
   }
 
   html = () => `
@@ -112,7 +113,7 @@ Minze.defineAll([MyElement])
 
 ### List Rendering
 
-To render a list in a template literal you can use the `map` method.
+To render a list in a template literal you can use the `map` method in cobination with `join`.
 
 **Example**
 

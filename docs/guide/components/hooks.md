@@ -13,8 +13,8 @@ Hooks are methods that can be defined within a component and are called at vario
 
 - `beforeRender`
 - `onRender`
-- `beforeAttributeChanged`
-- `onAttributeChanged`
+- `beforeAttributeChange`
+- `onAttributeChange`
 
 **Example**
 
@@ -89,8 +89,8 @@ class MyElement extends MinzeElement {
    *
    * Can run multiple times.
    */
-  beforeAttributeCahnge() {
-    console.log('beforeAttributeCahnge')
+  beforeAttributeChange() {
+    console.log('beforeAttributeChange')
   }
 
   /**
@@ -99,8 +99,8 @@ class MyElement extends MinzeElement {
    *
    * Can run multiple times.
    */
-  onAttributeCahnge() {
-    console.log('onAttributeCahnge')
+  onAttributeChange() {
+    console.log('onAttributeChange')
   }
 }
 

@@ -83,8 +83,8 @@ export class MyElement extends MinzeElement {
    * Otherwise, TypeScript will infer them as an array of arrays.
    */
   eventListener: MinzeEvents = [
-    ['.button', 'click', handleClick],
-    [this, 'minze:click', handleCast]
+    ['.button', 'click', this.handleClick],
+    [this, 'minze:click', this.handleCast]
   ]
 }
 ```

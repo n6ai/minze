@@ -22,6 +22,8 @@ import Minze, { MinzeElement } from 'minze'
 class MyElement extends MinzeElement {
   color = 'red'
 
+  html = () => `<div>Hello Minze!</div>`
+
   css = () => `
     :host {
       background: ${this.color};
@@ -46,6 +48,8 @@ All `CSS` variables defined inside the component can be externally overwritten.
 import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
+  html = () => `<div>Hello Minze!</div>`
+
   css = () => `
     :host {
       background: var(--my-color, red);

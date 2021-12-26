@@ -164,6 +164,10 @@ class MyElement extends MinzeElement {
   onReady() {
     console.log(this.myAttribute) // Hello Minze!
   }
+
+  onAttributeChange() {
+    console.log(this.myAttribute) // whatever the new attribute value is
+  }
 }
 
 Minze.defineAll([MyElement])

@@ -88,6 +88,7 @@ class MyElement extends MinzeElement {
 
   renderDiv() {
     if (this.active) return `<div>Hello Minze!</div>`
+    else return ''
   }
 
   html = () => `${this.renderDiv()}`
@@ -99,6 +100,7 @@ class MyElement extends MinzeElement {
 
   whenActive() {
     if (this.active) return `<div>Hello Minze!</div>`
+    else return ''
   }
 
   html = () => `${this.whenActive()}`
