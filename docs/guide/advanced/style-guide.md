@@ -77,6 +77,34 @@ class MyElement extends MinzeElement {
 }
 ```
 
+## Conditional Rendering Methods
+
+- Should start with the word `when`.
+
+```js
+// ✖ Bad
+class MyElement extends MinzeElement {
+  active = true
+
+  renderDiv() {
+    if (this.active) return `<div>Hello Minze</div>`
+  }
+
+  html = () => `${this.renderDiv()}`
+}
+
+// ✔ Good
+class MyElement extends MinzeElement {
+  active = true
+
+  whenActive() {
+    if (this.active) return `<div>Hello Minze</div>`
+  }
+
+  html = () => `${this.whenActive()}`
+}
+```
+
 ## Component Callbacks
 
 - Use arrow functions when defining callbacks. They are automatically bound to the component.
