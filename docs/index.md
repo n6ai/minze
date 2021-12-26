@@ -22,3 +22,13 @@ features:
     details: Work in TypeSctipt.
 footer: MIT Licensed | Copyright © 2021-present Sergej Samsonenko
 ---
+
+### Dive right in
+
+```bash
+# with npm
+$ npm init minze@latest
+
+# with yarn
+$ yarn create minze
+```
