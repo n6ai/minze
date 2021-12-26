@@ -214,12 +214,6 @@ export class MinzeElement extends HTMLElement {
    * this.select('div')
    * ```
    */
-  select<K extends keyof HTMLElementTagNameMap>(
-    selectors: K
-  ): HTMLElementTagNameMap[K] | null
-  select<K extends keyof SVGElementTagNameMap>(
-    selectors: K
-  ): SVGElementTagNameMap[K] | null
   select<E extends Element = Element>(selectors: string): E | null {
     const root = this.shadowRoot
     return root?.querySelector<E>(selectors) ?? null
@@ -233,12 +227,6 @@ export class MinzeElement extends HTMLElement {
    * this.selectAll('div')
    * ```
    */
-  selectAll<K extends keyof HTMLElementTagNameMap>(
-    selectors: K
-  ): NodeListOf<HTMLElementTagNameMap[K]> | null
-  selectAll<K extends keyof SVGElementTagNameMap>(
-    selectors: K
-  ): NodeListOf<SVGElementTagNameMap[K]> | null
   selectAll<E extends Element = Element>(
     selectors: string
   ): NodeListOf<E> | null {
