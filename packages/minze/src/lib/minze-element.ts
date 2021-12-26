@@ -147,7 +147,11 @@ export class MinzeElement extends HTMLElement {
    */
   private template() {
     return `
-      ${this.css && this.css() !== '' ? `<style>${this.css()}</style>` : ''}
+      <style>
+        :host { display: inline-block; }
+        :host([hidden]) { display: none }
+        ${this.css && this.css() !== '' ? `${this.css()}` : ''}
+      </style>
       ${(this.html && this.html()) || '<slot></slot>'}
     `
   }
