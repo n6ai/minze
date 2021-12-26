@@ -216,7 +216,7 @@ The created property is always the source of truth and not the exposed attribute
 
 - **Property**
 
-- **Type:** `readonly [name: string, value: unknown, exposeAttr?: boolean | undefined][]`
+- **Type:** `readonly [name: string, value: unknown, exposeAttr?: boolean][]`
 
 - **Example:**
 
@@ -348,7 +348,7 @@ When passing a method as a callback, make sure it's either defined as an arrow f
 
 - **Property**
 
-- **Type:** `readonly [eventTarget: string | MinzeElement | (Window & typeof globalThis), eventName: string, callback: (event: Event) => void][]`
+- **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window, eventName: string, callback: (event: Event) => void][]`
 
 - **Example:**
 
@@ -444,7 +444,7 @@ Requests a component re-render. The current template will be compared to the cac
 
 - **Method**
 
-- **Type:** `(force?: boolean | undefined): void`
+- **Type:** `(force?: boolean): void`
 
 - **Example:**
 
@@ -468,7 +468,7 @@ Selects the first matching element for the given `CSS` selector inside the `html
 
 - **Method**
 
-- **Type:** `(selector: string): Element | null | undefined`
+- **Type:** `(selectors: string): Element | null`
 
 - **Example:**
 
@@ -494,7 +494,7 @@ Selects all elements matching the given `CSS` selector inside the `html` templat
 
 - **Method**
 
-- **Type:** `(selector: string): NodeListOf<Element> | undefined`
+- **Type:** `(selectors: string): NodeListOf<Element> | null`
 
 - **Example:**
 
@@ -636,7 +636,7 @@ A Hook that runs before every [observed attribute](#observedattributes) change. 
 
 - **Method**
 
-- **Type:** `(name?: string | undefined, oldValue?: string | undefined, newValue?: string | undefined): Promise<void> | void`
+- **Type:** `(name?: string, oldValue?: string, newValue?: string): Promise<void> | void`
 
 - **Example:**
 
@@ -656,7 +656,7 @@ A Hook that runs after every [observed attribute](#observedattributes) change. C
 
 - **Method**
 
-- **Type:** `(name?: string | undefined, oldValue?: string | undefined, newValue?: string | undefined): Promise<void> | void`
+- **Type:** `(name?: string, oldValue?: string, newValue?: string): Promise<void> | void`
 
 - **Example:**
 
@@ -680,7 +680,7 @@ Some properties you can define are from the `tuple` type, but TypeScript doesn't
 
 Declares `reactive` property as an array of tuples.
 
-- **Type:** `readonly [name: string, value: unknown, exposeAttr?: boolean | undefined][]`
+- **Type:** `readonly [name: string, value: unknown, exposeAttr?: boolean][]`
 
 - **Example:**
 
@@ -720,7 +720,7 @@ export class MyElement extends MinzeElement {
 
 Declares `eventListeners` property as an array of tuples.
 
-- **Type:** `readonly [eventTarget: string | MinzeElement | (Window & typeof globalThis), eventName: string, callback: (event: Event) => void][]`
+- **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window, eventName: string, callback: (event: Event) => void][]`
 
 - **Example:**
 
