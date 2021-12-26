@@ -544,7 +544,7 @@ export class MyElement extends MinzeElement {
 
 ### onStart
 
-A Hook that runs after the element is added to the DOM, but before the internal lifecycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
+A Hook that runs `once` after the element is added to the DOM, but before the internal lifecycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
 
 ::: tip
 This hook runs after the `beforeAttributeChange` and `afterAttributeChange` hooks if any attributes are present on the element.
@@ -561,14 +561,14 @@ import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onStart() {
-    console.log('start')
+    console.log('onStart')
   }
 }
 ```
 
 ### onReady
 
-A Hook that runs after the element is added to the DOM and the entire component lifecycle is finished. Can either be a regular or async method.
+A Hook that runs `once` after the element is added to the DOM and the entire component lifecycle is finished. Can either be a regular or async method.
 
 - **Method**
 
@@ -581,14 +581,14 @@ import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onReady() {
-    console.log('ready')
+    console.log('onReady')
   }
 }
 ```
 
 ### onDestroy
 
-A Hook that runs after the element is disconnected from the document's DOM and all its event listeners are removed. Can either be a regular or async method.
+A Hook that runs `once` after the element is disconnected from the document's DOM and all its event listeners are removed. Can either be a regular or async method.
 
 - **Method**
 
@@ -601,14 +601,14 @@ import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onDestroy() {
-    console.log('destroyed')
+    console.log('onDestroy')
   }
 }
 ```
 
 ### onMove
 
-A Hook that runs after the element is moved to a new document but before it's rendered. Can either be a regular or async method.
+A Hook that runs `once` after the element is moved to a new document but before it's rendered. Can either be a regular or async method.
 
 ::: tip
 If the element is moved within the same document, this hook will not be called.
@@ -625,14 +625,54 @@ import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onMove() {
-    console.log('moved')
+    console.log('onMove')
+  }
+}
+```
+
+### beforeRender
+
+A Hook that runs `each time` bofore a template render. Can either be a regular or async method.
+
+- **Method**
+
+- **Type:** `(): Promise<void> | void`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+export class MyElement extends MinzeElement {
+  beforeRender() {
+    console.log('beforeRender')
+  }
+}
+```
+
+### onRender
+
+A Hook that runs `each time` after a template render. Can either be a regular or async method.
+
+- **Method**
+
+- **Type:** `(): Promise<void> | void`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+export class MyElement extends MinzeElement {
+  onRender() {
+    console.log('onRender')
   }
 }
 ```
 
 ### beforeAttributeChange
 
-A Hook that runs before every [observed attribute](#observedattributes) change. Can either be a regular or async method.
+A Hook that runs `each time` before any [observed attribute](#observedattributes) changes. Can either be a regular or async method.
 
 - **Method**
 
@@ -645,14 +685,14 @@ import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   beforeAttributeCahnge(name, oldValue, newValue) {
-    console.log(name, oldValue, newValue)
+    console.log('beforeAttributeCahnge: ', name, oldValue, newValue)
   }
 }
 ```
 
 ### onAttributeChange
 
-A Hook that runs after every [observed attribute](#observedattributes) change. Can either be a regular or async method.
+A Hook that runs `each time` after any [observed attribute](#observedattributes) changes. Can either be a regular or async method.
 
 - **Method**
 
@@ -665,7 +705,7 @@ import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onAttributeCahnge(name, oldValue, newValue) {
-    console.log(name, oldValue, newValue)
+    console.log('onAttributeChange: ', name, oldValue, newValue)
   }
 }
 ```
