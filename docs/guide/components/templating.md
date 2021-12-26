@@ -2,9 +2,13 @@
 
 By default, templating is done through JavaScripts template literals. The `html` property expects a function with a return value of type `string`.
 
+::: tip
+There is a private property called `template` that combines the defined `html` and `css` properties into one. The final result is what's beeing rendered.
+:::
+
 ## HTML
 
-The `html` property defines the template of the component. If no `html` property is defined on the component it defaults to `<slot></slot>`.
+The `html` property defines the `html` template of the component. If no `html` property is defined on the component it defaults to `<slot></slot>`.
 
 **Example**
 
@@ -29,7 +33,7 @@ Minze.defineAll([MyElement])
 **Example**
 
 ::: tip
-You can get started without even declaring any properties, it still will be a valid component.
+You can get started without even declaring any properties, it's still a valid component.
 :::
 
 ```js

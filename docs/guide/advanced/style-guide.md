@@ -109,7 +109,7 @@ class MyElement extends MinzeElement {
   1. Properties (Data)
   2. Methods
   3. Templates
-  4. Lifecycle Hooks
+  4. Hooks
   5. Callbacks
   6. Event Listeners
 
@@ -156,7 +156,7 @@ export class MyElement extends MinzeElement {
     }
   `
 
-  // lifecycle hooks
+  // hooks
   onStart = () => {
     console.log('onStart')
   }
