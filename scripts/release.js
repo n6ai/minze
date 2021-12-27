@@ -2,7 +2,9 @@
 
 import prompts from 'prompts'
 import { execa } from 'execa'
+import ora from 'ora'
 
+const spinner = ora()
 const packages = ['minze', '@minze/elements', 'create-minze']
 
 const main = async () => {
@@ -16,8 +18,12 @@ const main = async () => {
   if (!pkg) process.exit()
 
   try {
+    spinner.start('preparing release ...')
+
     await execa(`npm run release -w ${pkg}`)
     await execa(`npm i`) // update the monorepo lock file with the new version
+
+    spinner.stop()
   } catch (err) {
     console.error(err)
   }
