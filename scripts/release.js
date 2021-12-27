@@ -26,9 +26,11 @@ const main = async () => {
     spinner.stop()
   } catch (err) {
     console.error(err)
+    spinner.stop()
   }
 }
 
 main().catch((err) => {
   console.error(err)
+  spinner.stop()
 })
