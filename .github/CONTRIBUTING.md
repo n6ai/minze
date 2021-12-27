@@ -29,14 +29,14 @@ minze-monorepo/            📁 root directory
 ### minze core and @minze/elements
 
 1. Run `npm run dev` in the root directory.
-2. Open the browser and navigate to [`http://localhost:3000`](http://localhost:3000).
+2. Open the browser and navigate to [http://localhost:3000](http://localhost:3000).
 
-The `dev` task will start `rollup` in watch mode for the `minze` core package and start a `vite` server for the `@minze/elements` package. During development, the `minze` dependency for `@minze/elements` is linked to the local version of `minze`. Any changes to the `minze` core package can be immediately tried out and previewed in `@minze/elements`.
+The `dev` task will start rollup in watch mode for the `minze` core package and start a vite server for the `@minze/elements` package. During development, the minze dependency for @minze/elements is linked to the local version of minze. Any changes to the minze core package can be immediately tried out and previewed in @minze/elements.
 
 ### Docs
 
 1. Run `npm run docs` in the root directory.
-2. Open the browser and navigate to [`http://localhost:3000`](http://localhost:3000).
+2. Open the browser and navigate to [http://localhost:3000](http://localhost:3000).
 
 Vitepress will start a server in dev mode for the documentation.
 
