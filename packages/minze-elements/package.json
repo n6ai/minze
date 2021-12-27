@@ -27,7 +27,7 @@
     "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
     "types-roll": "api-extractor run && rimraf temp",
     "clean": "rimraf dist temp",
-    "release": "echo 'releasing ...'"
+    "release": "standard-version --no-verify --path . -t @minze/elements@ --skip.commit"
   },
   "dependencies": {
     "minze": "^0.0.1"
