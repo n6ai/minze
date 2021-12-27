@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "target": "ES6",
     "module": "ESNext",
