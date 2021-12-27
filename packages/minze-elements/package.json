@@ -26,7 +26,8 @@
     "types": "npm run types-build && npm run types-roll",
     "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
     "types-roll": "api-extractor run && rimraf temp",
-    "clean": "rimraf dist temp"
+    "clean": "rimraf dist temp",
+    "release": "echo 'releasing ...'"
   },
   "dependencies": {
     "minze": "^0.0.1"
