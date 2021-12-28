@@ -43,7 +43,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postchangelog": "cd ../../ && npm i"
+      "postcommit": "cd ../../ && npm i && git add package-lock.json && git commit -m \"chore(deps): lock file bump\""
     }
   }
 }
