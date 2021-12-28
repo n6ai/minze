@@ -22,7 +22,7 @@
     "format": "prettier --write .",
     "lint": "eslint **/*.{ts,js}",
     "clean": "npm run clean --workspaces --if-present",
-    "release": "node scripts/release.js"
+    "release": "echo \"[use]: npm run release -w <minze | @minze/elements | create-minze>\""
   },
   "devDependencies": {
     "@commitlint/cli": "^16.0.0",
