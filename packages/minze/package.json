@@ -30,7 +30,7 @@
     "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
     "types-roll": "api-extractor run && rimraf temp",
     "clean": "rimraf dist temp",
-    "release": "standard-version --no-verify --path . --skip.commit"
+    "release": "standard-version --no-verify --path ."
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^3.0.0",
@@ -40,5 +40,10 @@
     "rollup-plugin-license": "^2.6.0",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.5.4"
+  },
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "cd ../../ && npm i"
+    }
   }
 }

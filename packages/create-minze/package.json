@@ -25,11 +25,16 @@
   },
   "homepage": "https://github.com/n6ai/minze/tree/main/packages/create-minze#readme",
   "scripts": {
-    "release": "standard-version --no-verify --path . -t create-minze@ --skip.commit"
+    "release": "standard-version --no-verify --path . -t create-minze@"
   },
   "dependencies": {
     "kolorist": "^1.5.1",
     "minimist": "^1.2.5",
     "prompts": "^2.4.2"
+  },
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "cd ../../ && npm i"
+    }
   }
 }

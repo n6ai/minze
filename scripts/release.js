@@ -16,7 +16,6 @@ const main = async () => {
   if (!pkg) process.exit()
 
   await execAsync(`npm run release -w ${pkg}`)
-  await execAsync(`npm i`) // update the monorepo lock file with the new version
 
   console.log('prepared release for: ', pkg)
 }
