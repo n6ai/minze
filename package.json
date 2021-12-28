@@ -35,7 +35,6 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.1.4",
     "npm-run-all": "^4.1.5",
-    "ora": "^6.0.1",
     "prettier": "2.5.1",
     "prompts": "^2.4.2",
     "standard-version": "^9.3.2",
