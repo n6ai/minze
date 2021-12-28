@@ -2,7 +2,7 @@
 
 By following this Style Guide you will be able to write better code and have a better developer experience when working with Minze.
 
-## Component Naming
+## Component Names
 
 - Should always consist of at least two words.
 - Should be defined in `PascalCase`.
@@ -20,7 +20,7 @@ class UniqueName extends MinzeElement {}
 class UniqueButton extends MinzeElement {}
 ```
 
-## Component File Naming
+## Component File Names
 
 - Should be named consistently in either `dash-case` or `PascalCase`.
 - Should be named after the component they are exporting.
@@ -54,7 +54,7 @@ export class MySecondElement extends MinzeElement {}
 export class MyElement extends MinzeElement {}
 ```
 
-## Property and Method Naming
+## Property and Method Names
 
 - Attributes defined in the `attrs` property or the `observedAttributes` getter should always be named in `dash-case`.
 - All other properties and methods should be named in `camelCase`.
@@ -77,7 +77,7 @@ class MyElement extends MinzeElement {
 }
 ```
 
-## Conditional Rendering Methods
+## Conditional Render Methods
 
 - Should start with the word `when`.
 
