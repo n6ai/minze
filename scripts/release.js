@@ -2,9 +2,7 @@
 
 import prompts from 'prompts'
 import { exec } from 'child_process'
-import ora from 'ora'
 
-const spinner = ora()
 const packages = ['minze', '@minze/elements', 'create-minze']
 
 const main = async () => {
@@ -17,27 +15,25 @@ const main = async () => {
 
   if (!pkg) process.exit()
 
-  try {
-    spinner.start('preparing release ...')
+  await execAsync(`npm run release -w ${pkg}`)
+  await execAsync(`npm i`) // update the monorepo lock file with the new version
+}
 
-    const handleError = (err) => {
-      if (err) {
-        spinner.fail(err)
-        process.exit()
-      }
-    }
-
-    exec(`npm run release -w ${pkg}`, handleError)
-    exec(`npm i`, handleError) // update the monorepo lock file with the new version
-
-    spinner.stop()
-  } catch (err) {
-    spinner.fail(err)
-    process.exit()
-  }
+/**
+ * Executes a shell command and return it as a Promise.
+ * @param cmd {string}
+ * @return {Promise<string>}
+ */
+function execAsync(cmd) {
+  return new Promise((resolve, reject) => {
+    exec(cmd, (error, stdout, stderr) => {
+      if (error) reject(error)
+      else resolve(stdout)
+    })
+  })
 }
 
 main().catch((err) => {
-  spinner.fail(err)
+  console.error(err.message)
   process.exit()
 })
