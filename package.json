@@ -1,7 +1,6 @@
 {
   "name": "minze-monorepo",
   "private": true,
-  "type": "module",
   "engines": {
     "node": ">=v14.0.0"
   },
