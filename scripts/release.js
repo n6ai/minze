@@ -17,10 +17,12 @@ const main = async () => {
 
   await execAsync(`npm run release -w ${pkg}`)
   await execAsync(`npm i`) // update the monorepo lock file with the new version
+
+  console.log('prepared release for: ', pkg)
 }
 
 /**
- * Executes a shell command and return it as a Promise.
+ * Executes a shell command and returns it as a Promise.
  * @param cmd {string}
  * @return {Promise<string>}
  */
