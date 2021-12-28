@@ -34,21 +34,14 @@ $ yarn install
 
 1. In the root directory of your project start the development server and open the `localhost` URL.
 
-**npm**
-
 ```bash
+# npm
 $ npm run dev
-```
 
-**yarn**
-
-```bash
+# yarn
 $ yarn dev
-```
 
-**pnpm**
-
-```bash
+# pnpm
 $ pnpm run dev
 ```
 
