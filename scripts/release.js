@@ -1,7 +1,7 @@
 // @ts-check
 
 import prompts from 'prompts'
-import { execa } from 'execa'
+import { exec } from 'child_process'
 import ora from 'ora'
 
 const spinner = ora()
@@ -20,17 +20,24 @@ const main = async () => {
   try {
     spinner.start('preparing release ...')
 
-    await execa(`npm run release -w ${pkg}`)
-    await execa(`npm i`) // update the monorepo lock file with the new version
+    const handleError = (err) => {
+      if (err) {
+        spinner.fail(err)
+        process.exit()
+      }
+    }
+
+    exec(`npm run release -w ${pkg}`, handleError)
+    exec(`npm i`, handleError) // update the monorepo lock file with the new version
 
     spinner.stop()
   } catch (err) {
-    console.error(err)
-    spinner.stop()
+    spinner.fail(err)
+    process.exit()
   }
 }
 
 main().catch((err) => {
-  console.error(err)
-  spinner.stop()
+  spinner.fail(err)
+  process.exit()
 })
