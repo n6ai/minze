@@ -16,7 +16,7 @@ module.exports = {
     editLinkText: 'Suggest changes to this page',
 
     nav: [
-      { text: 'Guide', link: '/guide/basics/installation' },
+      { text: 'Guide', link: '/guide/' },
       { text: 'API Reference', link: '/api/' },
       {
         text: 'Links',
@@ -38,15 +38,15 @@ module.exports = {
           children: [
             {
               text: 'Installation',
-              link: '/guide/basics/installation'
+              link: '/guide/installation'
             },
             {
               text: 'Quick Start',
-              link: '/guide/basics/quick-start'
+              link: '/guide/'
             },
             {
               text: 'Introduction',
-              link: '/guide/basics/introduction'
+              link: '/guide/introduction'
             }
           ]
         },
@@ -56,35 +56,35 @@ module.exports = {
           children: [
             {
               text: 'Data',
-              link: '/guide/components/data'
+              link: '/guide/components-data'
             },
             {
               text: 'Methods',
-              link: '/guide/components/methods'
+              link: '/guide/components-methods'
             },
             {
               text: 'Templating',
-              link: '/guide/components/templating'
+              link: '/guide/components-templating'
             },
             {
               text: 'Styling',
-              link: '/guide/components/styling'
+              link: '/guide/components-styling'
             },
             {
               text: 'Selectors',
-              link: '/guide/components/selectors'
+              link: '/guide/components-selectors'
             },
             {
               text: 'Events',
-              link: '/guide/components/events'
+              link: '/guide/components-events'
             },
             {
               text: 'Hooks',
-              link: '/guide/components/hooks'
+              link: '/guide/components-hooks'
             },
             {
               text: 'Options',
-              link: '/guide/components/options'
+              link: '/guide/components-options'
             }
           ]
         },
@@ -94,11 +94,11 @@ module.exports = {
           children: [
             {
               text: 'Component Registration',
-              link: '/guide/minze/component-registration'
+              link: '/guide/minze-component-registration'
             },
             {
               text: 'Events',
-              link: '/guide/minze/events'
+              link: '/guide/minze-events'
             }
           ]
         },
@@ -108,23 +108,23 @@ module.exports = {
           children: [
             {
               text: 'TypeScript',
-              link: '/guide/advanced/typescript'
+              link: '/guide/advanced-typescript'
             },
             {
               text: 'Mixins',
-              link: '/guide/advanced/mixins'
+              link: '/guide/advanced-mixins'
             },
             {
               text: 'Transitions',
-              link: '/guide/advanced/transitions'
+              link: '/guide/advanced-transitions'
             },
             {
               text: 'Form Input Bindings',
-              link: '/guide/advanced/form-input-bindings'
+              link: '/guide/advanced-form-input-bindings'
             },
             {
               text: 'Style Guide',
-              link: '/guide/advanced/style-guide'
+              link: '/guide/advanced-style-guide'
             }
           ]
         }

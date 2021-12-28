@@ -34,7 +34,7 @@ Minze consists of two main classes:
 - **Minze** - A class with multiple static methods and properties for common tasks, like defining several components at once.
 - **MinzeElement** - A class that can be used to extend from to create custom web components. It adds an abstraction layer around the web components API and adds several additional features like reactivity.
 
-There's also a [CLI tool](/guide/basics/installation.html#cli) that can be used to create a development and publishing environment for Minze components. Out of the box, it comes with [rollup](https://rollupjs.org/) and [vite](https://vitejs.dev/) and optionally `TypeScript`.
+There's also a [CLI tool](/guide/installation.html#cli) that can be used to create a development and publishing environment for Minze components. Out of the box, it comes with [rollup](https://rollupjs.org/) and [vite](https://vitejs.dev/) and optionally `TypeScript`.
 
 ## Browser Support
 

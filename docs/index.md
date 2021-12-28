@@ -2,10 +2,10 @@
 home: true
 heroImage: /logo.svg
 actionText: Quick Start
-actionLink: /guide/basics/quick-start
+actionLink: /guide/
 
 altActionText: Learn More
-altActionLink: /guide/basics/introduction
+altActionLink: /guide/introduction
 
 features:
   - title: 👶 Simple
