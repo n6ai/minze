@@ -111,6 +111,10 @@ module.exports = {
               link: '/guide/advanced/typescript'
             },
             {
+              text: 'Mixins',
+              link: '/guide/advanced/mixins'
+            },
+            {
               text: 'Transitions',
               link: '/guide/advanced/transitions'
             },
