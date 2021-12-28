@@ -47,6 +47,10 @@ module.exports = {
             {
               text: 'Introduction',
               link: '/guide/introduction'
+            },
+            {
+              text: 'Publishing',
+              link: '/guide/publishing'
             }
           ]
         },
