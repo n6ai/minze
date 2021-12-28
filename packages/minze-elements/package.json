@@ -30,7 +30,7 @@
     "release": "standard-version --no-verify --path . -t @minze/elements@ --skip.commit"
   },
   "dependencies": {
-    "minze": "^0.0.1"
+    "minze": ">=0.0.0 <1.0.0"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.19.3",
