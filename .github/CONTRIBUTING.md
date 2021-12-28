@@ -14,7 +14,7 @@ minze-monorepo/            📁 root directory
 │   └── ...
 ├── packages/              📁 all packages
 │   ├── create-minze/      📁 create-minze
-│   ├── minze-elements/    📁 @minze/elements
+│   ├── minze-elements/    📁 @minzejs/elements
 │   └── minze/             📁 minze core
 └── ...
 ```
@@ -26,12 +26,12 @@ minze-monorepo/            📁 root directory
 1. Clone this repo.
 2. Run `npm i` in the root directory.
 
-### minze core and @minze/elements
+### minze core and @minzejs/elements
 
 1. Run `npm run dev` in the root directory.
 2. Open the browser and navigate to [http://localhost:3000](http://localhost:3000).
 
-The `dev` task will start rollup in watch mode for the `minze` core package and start a vite server for the `@minze/elements` package. During development, the minze dependency for @minze/elements is linked to the local version of minze. Any changes to the minze core package can be immediately tried out and previewed in @minze/elements.
+The `dev` task will start rollup in watch mode for the `minze` core package and start a vite server for the `@minzejs/elements` package. During development, the minze dependency for @minzejs/elements is linked to the local version of minze. Any changes to the minze core package can be immediately tried out and previewed in @minzejs/elements.
 
 ### Docs
 

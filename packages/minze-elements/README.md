@@ -6,31 +6,31 @@ To scaffold a similar environment follow this [guide](https://github.com/n6ai/mi
 
 ## Installation
 
-Install `minze` and `@minze/elements`:
+Install `minze` and `@minzejs/elements`:
 
 **npm**
 
 ```bash
-$ npm install minze @minze/elements
+$ npm install minze @minzejs/elements
 ```
 
 **yarn**
 
 ```bash
-$ yarn add minze @minze/elements
+$ yarn add minze @minzejs/elements
 ```
 
 **pnpm**
 
 ```bash
-$ pnpm add minze @minze/elements
+$ pnpm add minze @minzejs/elements
 ```
 
 ## Usage
 
 ```js
 import Minze from 'minze'
-import { MinzeComponent } from '@minze/elements'
+import { MinzeComponent } from '@minzejs/elements'
 
 Minze.defineAll([
   MinzeComponent,

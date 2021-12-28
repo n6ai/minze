@@ -14,7 +14,7 @@
     "prepare": "husky install",
     "dev": "run-p -rs dev-*",
     "dev-minze": "npm run dev -w minze",
-    "dev-minze-elements": "(wait-on packages/minze/dist/module.js) && (npm run dev -w @minze/elements)",
+    "dev-minze-elements": "(wait-on packages/minze/dist/module.js) && (npm run dev -w @minzejs/elements)",
     "build": "npm run build --workspaces --if-present",
     "docs": "vitepress dev docs",
     "docs-build": "vitepress build docs",
@@ -22,7 +22,7 @@
     "format": "prettier --write .",
     "lint": "eslint **/*.{ts,js}",
     "clean": "npm run clean --workspaces --if-present",
-    "release": "echo \"[use]: npm run release -w <minze | @minze/elements | create-minze>\""
+    "release": "echo \"[use]: npm run release -w <minze | @minzejs/elements | create-minze>\""
   },
   "devDependencies": {
     "@commitlint/cli": "^16.0.0",

@@ -1,5 +1,5 @@
 {
-  "name": "@minze/elements",
+  "name": "@minzejs/elements",
   "version": "0.0.1",
   "license": "MIT",
   "author": "Sergej Samsonenko",
@@ -27,7 +27,7 @@
     "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
     "types-roll": "api-extractor run && rimraf temp",
     "clean": "rimraf dist temp",
-    "release": "standard-version --no-verify --path . -t @minze/elements@"
+    "release": "standard-version --no-verify --path . -t @minzejs/elements@"
   },
   "dependencies": {
     "minze": ">=0.0.0 <1.0.0"
