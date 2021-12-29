@@ -4,7 +4,7 @@ Playground and Test environment for Minze.
 
 ## Commands
 
-> Run the the following commands from the root directory of the monorepo.
+> Run the following commands in the monorepo root directory.
 
 If you're running the test commands for the first time, you'll need to run `npm run build` first.
 
