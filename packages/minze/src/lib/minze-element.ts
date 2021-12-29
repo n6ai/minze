@@ -148,7 +148,7 @@ export class MinzeElement extends HTMLElement {
   private template() {
     return `
       <style>
-        :host { display: block; }
+        :host { box-sizing: border-box; display: block; }
         :host([hidden]) { display: none }
         ${this.css && this.css() !== '' ? `${this.css()}` : ''}
       </style>
