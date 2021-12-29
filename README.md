@@ -28,11 +28,11 @@ It provides an intuitive abstraction layer around the web components API with it
 
 ## Packages
 
-| Project                                      | Version                                                                         | Description                                                             |
-| -------------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [minze](packages/minze)                      | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Dead-simple framework for sharable web components.                      |
-| [create-minze](packages/create-minze)        | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Minze scaffolding tool: Sets up a Minze dev and publishing environment. |
-| [@minzejs/elements](packages/minze-elements) | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232"> | Native web components library built with Minze.                         |
+| Project                               | Version                                                                          | Description                                                             |
+| ------------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [minze](packages/minze)               | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232">  | Dead-simple framework for sharable web components.                      |
+| [create-minze](packages/create-minze) | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232">  | Minze scaffolding tool: Sets up a Minze dev and publishing environment. |
+| [playground](packages/playground)     | <img src="https://img.shields.io/static/v1?label=&message=private&color=323232"> | Playground and Test environment for Minze.                              |
 
 ## Contribution
 

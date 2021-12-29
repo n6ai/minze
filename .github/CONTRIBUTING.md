@@ -14,8 +14,8 @@ minze-monorepo/            📁 root directory
 │   └── ...
 ├── packages/              📁 all packages
 │   ├── create-minze/      📁 create-minze
-│   ├── minze-elements/    📁 @minzejs/elements
-│   └── minze/             📁 minze core
+│   ├── minze/             📁 minze
+│   └── playground/        📁 playground (private)
 └── ...
 ```
 
@@ -26,12 +26,12 @@ minze-monorepo/            📁 root directory
 1. Clone this repo.
 2. Run `npm i` in the root directory.
 
-### minze core and @minzejs/elements
+### Minze and Playground
 
 1. Run `npm run dev` in the root directory.
 2. Open the browser and navigate to [http://localhost:3000](http://localhost:3000).
 
-The `dev` task will start rollup in watch mode for the `minze` core package and start a vite server for the `@minzejs/elements` package. During development, the minze dependency for @minzejs/elements is linked to the local version of minze. Any changes to the minze core package can be immediately tried out and previewed in @minzejs/elements.
+The `dev` task will start rollup in watch mode for the `minze` package and start a vite server for the `playground` package. The minze dependency for playground is linked to the local version of minze. Any changes to the minze package can be immediately tried out and previewed in the playground.
 
 ### Docs
 

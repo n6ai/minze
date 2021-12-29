@@ -6,27 +6,28 @@
   },
   "workspaces": [
     "packages/minze",
-    "packages/minze-elements",
-    "packages/create-minze"
+    "packages/create-minze",
+    "packages/playground"
   ],
   "scripts": {
     "prepare": "husky install",
     "dev": "run-p -rs dev-*",
     "dev-minze": "npm run dev -w minze",
-    "dev-minze-elements": "(wait-on packages/minze/dist/module.js) && (npm run dev -w @minzejs/elements)",
+    "dev-playground": "(wait-on packages/minze/dist/module.js) && (npm run dev -w playground)",
     "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test-debug": "npm run test-debug --workspaces --if-present",
     "docs": "vitepress dev docs",
     "docs-build": "vitepress build docs",
     "docs-serve": "vitepress serve docs",
     "format": "prettier --write .",
     "lint": "eslint **/*.{ts,js}",
     "clean": "npm run clean --workspaces --if-present",
-    "release": "echo \"[use]: npm run release -w <minze | @minzejs/elements | create-minze>\""
+    "release": "echo \"[use]: npm run release -w <minze | create-minze>\""
   },
   "devDependencies": {
     "@commitlint/cli": "^16.0.0",
     "@commitlint/config-conventional": "^16.0.0",
-    "@microsoft/api-extractor": "^7.19.3",
     "@types/node": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
