@@ -127,6 +127,6 @@ jobs:
         run: npm run build -w ${{ github.event.inputs.package }} --if-present
 
       - name: Publish
-        run: npm publish
+        run: npm publish -w ${{ github.event.inputs.package }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
