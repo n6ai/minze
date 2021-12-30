@@ -101,7 +101,7 @@ jobs:
         with:
           tag_name: ${{ steps.tag.outputs.tagName }}
           body: |
-            Please refer to [CHANGELOG.md](https://github.com/sergejcodes/release-test/blob/${{ steps.tag.outputs.tagName }}/packages/${{ github.event.inputs.package }}/CHANGELOG.md) for details.
+            Please refer to [CHANGELOG.md](https://github.com/n6ai/minze/blob/${{ steps.tag.outputs.tagName }}/packages/${{ github.event.inputs.package }}/CHANGELOG.md) for details.
 
   # Build package and publish to NPM.
   publish-npm:
