@@ -31,4 +31,3 @@
 - [ ] Read the [Pull Request Guidelines](https://github.com/n6ai/minze/blob/main/.github/CONTRIBUTING.md#pull-request-guidelines) and follow the [Commit Convention](https://github.com/n6ai/minze/blob/main/.github/COMMIT_CONVENTION.md).
 - [ ] Check that there isn't already a PR that solves the problem the same way to avoid creating a duplicate.
 - [ ] Provide a description in this PR that addresses **what** the PR is solving, or reference the issue that it solves (e.g. `fixes #123`).
-- [ ] Ideally, include relevant tests that fail without this PR but pass with it.
