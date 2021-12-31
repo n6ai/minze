@@ -16,6 +16,7 @@ on:
           - create-minze
 
 env:
+  NODE_VERSION: '16'
   PACKAGE_NAME: ${{ github.event.inputs.package }}
   PACKAGE_DIR: ${{ (
     contains(github.event.inputs.package, '@minzejs/elements') && 'minze-elements' ||
@@ -33,10 +34,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Node.js 16
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
         run: npm install
@@ -44,8 +45,12 @@ jobs:
       - name: Create builds
         run: npm run build --workspaces --if-present # build all packages
 
-      - name: Run tests
+      - name: Run package tests
         run: npm run test -w ${{ env.PACKAGE_NAME }} --if-present
+
+      - name: Run playground tests
+        if: ${{ env.PACKAGE_NAME != 'create-minze' }}
+        run: npm run test -w playground
 
   # Prepare the release with standard version.
   #
@@ -68,10 +73,10 @@ jobs:
           ref: main
           fetch-depth: 0 # required, otherwise changelog won't be properly updated
 
-      - name: Use Node.js 16
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
         run: npm install
@@ -122,10 +127,10 @@ jobs:
         with:
           ref: main # needs to be explicitly set to pull the latest changes
 
-      - name: Use Node.js 16
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
         run: npm install
