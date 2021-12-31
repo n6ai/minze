@@ -40,10 +40,36 @@ The `dev` task will start rollup in watch mode for the `minze` package and start
 
 Vitepress will start a server in dev mode for the documentation.
 
+### Tests
+
+1. Run `npm run build` in the root directory.
+2. Run `npm test` in the root directory.
+
+All `minze` core tests are located in [playground/tests](https://github.com/n6ai/minze/tree/main/packages/playground/tests).
+
 ## External Dependencies
 
 Minze aims to be extremely lightweight and as such the core and elements packages don't include any external dependencies in the published build. Unless not otherwise possible, all fixes and features should be implemented without external dependencies.
 
 ## Pull Request Guidelines
 
-...
+- Checkout a topic branch from a base branch, e.g. `main`, and merge back against that branch.
+
+- If adding a new feature:
+
+  - Add accompanying test case in [playground/tests](https://github.com/n6ai/minze/tree/main/packages/playground/tests) if the feature is added to the `minze` package.
+  - Provide a convincing reason to add this feature. Ideally, you should open a suggestion issue first and have it approved before working on it.
+
+- If fixing bug:
+
+  - If you are resolving a special issue, add `(fix #xxxx[,#xxxx])` (#xxxx is the issue id) in your PR title for a better release log, e.g. `fix: update entities encoding/decoding (fix #3899)`.
+  - Provide a detailed description of the bug in the PR.
+  - Add appropriate tests if applicable.
+
+- It's OK to have multiple small commits as you work on the PR - GitHub can automatically squash them before merging.
+
+- Make sure tests pass!
+
+- Commit messages must follow the [commit message convention](./commit-convention.md) so that changelogs can be automatically generated. Commit messages are automatically validated before committing (by invoking [Git Hooks](https://git-scm.com/docs/githooks) via [husky](https://typicode.github.io/husky/).
+
+- No need to worry about code style as long as you installed the dev dependencies - modified files are automatically formatted with Prettier on commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks) via [husky](https://typicode.github.io/husky/).
