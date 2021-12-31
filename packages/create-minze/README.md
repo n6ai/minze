@@ -1,6 +1,6 @@
 # Create Minze
 
-## Scaffolding a Minze dev and publishing environment
+## Scaffolding a Minze Dev and Publishing environment
 
 > Minze requires [Node.js](https://nodejs.dev/) version >= `14.0.0`
 
