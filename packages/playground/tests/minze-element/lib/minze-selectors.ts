@@ -7,7 +7,7 @@ export class MinzeSelectors extends MinzeElement {
   `
 
   onReady() {
-    this.select('.div-2').classList.add('selected')
-    this.selectAll('div').forEach((el) => el.classList.add('selected-all'))
+    this.select('.div-2')?.classList.add('selected')
+    this.selectAll('div')?.forEach((el) => el.classList.add('selected-all'))
   }
 }

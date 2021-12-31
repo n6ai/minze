@@ -22,7 +22,8 @@ test(element, async ({ page }) => {
 
   // move the element withing the same document
   await page.locator('#app').evaluate((node, element) => {
-    node.appendChild(node.querySelector(`${element}`))
+    const el = node.querySelector(`${element}`)
+    if (el) node.appendChild(el)
   }, element)
 
   const movedHookSequence = [
