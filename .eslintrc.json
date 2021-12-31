@@ -11,6 +11,5 @@
   },
   "globals": {
     "__dirname": "readonly"
-  },
-  "ignorePatterns": ["packages/create-minze/index.js"]
+  }
 }
