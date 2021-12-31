@@ -15,7 +15,7 @@ features:
   - title: 🚀 Modern
     details: Based on the latest technologies around web components.
   - title: 📦 Sharable
-    details: Build component libraries or design systems. Define once, use anywhere.
+    details: Build component libraries or design systems. Define once, use everywhere.
   - title: 🎲 Framework Agnostic
     details: Use Minze with any common framework - React, Vue, Angular ...
   - title: 🔒 Typed API

@@ -22,7 +22,7 @@ It provides an intuitive abstraction layer around the web components API with it
 - 👶 Simple - Dive right in by [scaffolding](packages/create-minze) a project or using a CDN link.
 - ⚡ Fast - Tiny footprint ~1KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
-- 📦 Sharable - Build component libraries or design systems. Define once, use anywhere.
+- 📦 Sharable - Build component libraries or design systems. Define once, use everywhere.
 - 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, Angular ...
 - 🔒 Typed API - Scale your component library with ease by using TypeScript.
 
@@ -31,7 +31,7 @@ It provides an intuitive abstraction layer around the web components API with it
 | Project                               | Version                                                                          | Description                                                             |
 | ------------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | [minze](packages/minze)               | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232">  | Dead-simple framework for sharable web components.                      |
-| [create-minze](packages/create-minze) | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232">  | Minze scaffolding tool: Sets up a Minze dev and publishing environment. |
+| [create-minze](packages/create-minze) | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232">  | Minze scaffolding tool: Sets up a Minze Dev and Publishing environment. |
 | [playground](packages/playground)     | <img src="https://img.shields.io/static/v1?label=&message=private&color=323232"> | Playground and Test environment for Minze.                              |
 
 ## Contribution
