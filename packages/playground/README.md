@@ -8,13 +8,28 @@ Playground and Test environment for Minze.
 
 If you're running the test commands for the first time, you'll need to run `npm run build` first.
 
+**Playground**
+
 ```bash
 # run minze + playground in watch mode with a vite server
 $ npm run dev
+```
 
-# run tests with playwright
+**Tests**
+
+```bash
+# run all tests
 $ npm test
 
-# run tests with playwright in debug mode
+# run specific tests based on their filenames
+$ npm test -- minze-options.spec.ts
+
+# run specific tests with keywords in their filenames
+$ npm test -- options reactive
+
+# run tests in debug mode
+# this will open a UI for each test, it's more useful when running a specific test
+# options can be provided in a similar manner like above
 $ npm run test-debug
+$ npm run test-debug -- minze-options.spec.ts
 ```
