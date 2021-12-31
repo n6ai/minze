@@ -35,13 +35,13 @@ a.sidebar-link-item:not(.active):hover {
   text-decoration: underline;
 }
 
-/* paragraph links */
-p a {
+/* content links */
+.content a {
   color: var(--c-text);
   text-decoration: underline;
 }
 
-p a:hover {
+.content a:hover {
   color: var(--c-link);
 }
 
