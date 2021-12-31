@@ -4,12 +4,14 @@ import {
   MinzeEventListeners,
   MinzeOptions,
   MinzeReactiveAttrs,
-  MinzeReactiveProps
+  MinzeReactiveProps,
+  MinzeTemplating
 } from './module'
 
 Minze.defineAll([
   MinzeEventListeners,
   MinzeOptions,
   MinzeReactiveAttrs,
-  MinzeReactiveProps
+  MinzeReactiveProps,
+  MinzeTemplating
 ])
