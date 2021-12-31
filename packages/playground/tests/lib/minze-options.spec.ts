@@ -4,6 +4,8 @@ import { start } from 'playground/tests/utils'
 const element = 'minze-options'
 
 test(element, async ({ page }) => {
-  await start(page, element)
+  const template = `<${element}></${element}>`
+  await start(page, template)
+
   expect(await page.getAttribute(element, 'rendered')).toBe('')
 })
