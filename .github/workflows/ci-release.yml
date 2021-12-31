@@ -15,6 +15,13 @@ on:
           - minze
           - create-minze
 
+env:
+  PACKAGE_NAME: ${{ github.event.inputs.package }}
+  PACKAGE_DIR: ${{ (
+    contains(github.event.inputs.package, '@minzejs/elements') && 'minze-elements' ||
+    github.event.inputs.package
+    ) }}
+
 jobs:
   # Build all packages and run tests
   # for the specified package if a test task is defined.
@@ -38,7 +45,7 @@ jobs:
         run: npm run build --workspaces --if-present # build all packages
 
       - name: Run tests
-        run: npm run test -w ${{ github.event.inputs.package }} --if-present
+        run: npm run test -w ${{ env.PACKAGE_NAME }} --if-present
 
   # Prepare the release with standard version.
   #
@@ -70,7 +77,7 @@ jobs:
         run: npm install
 
       - name: Run standard version
-        run: npm run release -w ${{ github.event.inputs.package }}
+        run: npm run release -w ${{ env.PACKAGE_NAME }}
 
       - name: Push to repo
         run: git push --follow-tags origin main
@@ -101,7 +108,7 @@ jobs:
         with:
           tag_name: ${{ steps.tag.outputs.tagName }}
           body: |
-            Please refer to [CHANGELOG.md](https://github.com/n6ai/minze/blob/${{ steps.tag.outputs.tagName }}/packages/${{ github.event.inputs.package }}/CHANGELOG.md) for details.
+            Please refer to [CHANGELOG.md](https://github.com/n6ai/minze/blob/${{ steps.tag.outputs.tagName }}/packages/${{ env.PACKAGE_DIR }}/CHANGELOG.md) for details.
 
   # Build package and publish to NPM.
   publish-npm:
@@ -124,9 +131,9 @@ jobs:
         run: npm install
 
       - name: Create builds
-        run: npm run build -w ${{ github.event.inputs.package }} --if-present
+        run: npm run build -w ${{ env.PACKAGE_NAME }} --if-present
 
       - name: Publish
-        run: npm publish -w ${{ github.event.inputs.package }}
+        run: npm publish -w ${{ env.PACKAGE_NAME }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
