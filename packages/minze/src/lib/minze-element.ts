@@ -391,7 +391,7 @@ export class MinzeElement extends HTMLElement {
 
     // set an attribute on the element if no attribute exists
     // and a fallback value is provided
-    if (value) {
+    if (value !== undefined) {
       this.getAttribute(dashName) ?? this.setAttribute(dashName, String(value))
     }
 
