@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test'
 
 /**
- * Navigates to http://localhost:3000/tests/
+ * Navigates to http://localhost:3000/tests/minze-element/
  * and inserts the provided template into <div id="app"></div>.
  *
  * @example
@@ -12,7 +12,7 @@ import { Page } from '@playwright/test'
  * ```
  */
 export async function start(page: Page, template: string) {
-  await page.goto('')
+  await page.goto('minze-element/')
 
   await page.locator('#app').evaluate((node, template) => {
     node.innerHTML = template
