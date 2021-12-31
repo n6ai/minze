@@ -23,13 +23,13 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "scripts": {
-    "dev": "rimraf dist && rollup -c -w",
+    "dev": "rimraf dist/* && rollup -c -w",
     "build": "npm run clean && npm run bundle && npm run types",
     "bundle": "rollup -c",
     "types": "npm run types-build && npm run types-roll",
     "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
     "types-roll": "api-extractor run && rimraf temp",
-    "clean": "rimraf dist temp",
+    "clean": "rimraf dist/* temp",
     "release": "standard-version --no-verify --path ."
   },
   "devDependencies": {
