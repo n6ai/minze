@@ -36,12 +36,16 @@ a.sidebar-link-item:not(.active):hover {
 }
 
 /* content links */
-.content a {
+.content p a,
+.content ul a,
+.content ol a {
   color: var(--c-text);
   text-decoration: underline;
 }
 
-.content a:hover {
+.content p a:hover,
+.content ul a:hover,
+.content ol a:hover {
   color: var(--c-link);
 }
 
