@@ -1,5 +1,5 @@
 import './assets/vite.css'
 import Minze from 'minze'
-import * as MinzeElements from './module'
+import * as Elements from './module'
 
-Minze.defineAll(Object.values(MinzeElements))
+Minze.defineAll(Elements)
