@@ -13,9 +13,8 @@ import { Page } from '@playwright/test'
  */
 export async function start(page: Page, template: string) {
   await page.goto('')
-  await page.$eval(
-    '#app',
-    (el: HTMLDivElement, template) => (el.innerHTML = template),
-    template
-  )
+
+  await page.locator('#app').evaluate((node, template) => {
+    node.innerHTML = template
+  }, template)
 }

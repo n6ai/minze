@@ -18,6 +18,9 @@ test(element, async ({ page }) => {
     'rgb(55, 245, 220)'
   )
 
-  await page.$eval(element, (el) => el.setAttribute('hidden', ''))
+  await page.locator(element).evaluate((node) => {
+    node.setAttribute('hidden', '')
+  })
+
   await expect(page.locator(selector)).toHaveCSS('display', 'none')
 })

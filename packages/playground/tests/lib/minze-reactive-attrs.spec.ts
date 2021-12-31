@@ -12,7 +12,9 @@ test(element, async ({ page }) => {
   expect(await page.locator(selector).innerText()).toBe('0')
   expect(await page.getAttribute(element, 'count')).toBe('0')
 
-  await page.$eval(element, (el) => el.setAttribute('count', '1'))
+  await page.locator(element).evaluate((node) => {
+    node.setAttribute('count', '1')
+  })
 
   expect(await page.locator(selector).innerText()).toBe('1')
   expect(await page.getAttribute(element, 'count')).toBe('1')
