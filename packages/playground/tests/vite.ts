@@ -2,6 +2,7 @@ import './assets/vite.css'
 import Minze from 'minze'
 import {
   MinzeEventListeners,
+  MinzeHooks,
   MinzeOptions,
   MinzeReactiveAttrs,
   MinzeReactiveProps,
@@ -10,6 +11,7 @@ import {
 
 Minze.defineAll([
   MinzeEventListeners,
+  MinzeHooks,
   MinzeOptions,
   MinzeReactiveAttrs,
   MinzeReactiveProps,
