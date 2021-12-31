@@ -32,7 +32,7 @@ $ yarn install
 
 ## Creating a component
 
-1. In the root directory of your project start the development server and open the `localhost` URL.
+1. In the root directory of your project start the development server and open the [`http://localhost/3000`](http://localhost/3000) URL.
 
 ```bash
 # npm
@@ -54,7 +54,7 @@ src/
    └─ my-element.js
 ```
 
-3. Paste the following code into the file:
+3. Paste the following code into the file.
 
 ```js
 import { MinzeElement } from 'minze'
@@ -72,39 +72,31 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-4. Open the `module.js` and `vite.js` files.
+4. Open the `module.js` and `template.js` files.
 
 ```
 src/
 ├─ ...
 ├─ module.js
-└─ vite.js
+└─ template.js
 ```
 
-5. Replace the contents of `module.js` with:
+5. Define an export for your component at the bottom of `module.js`.
 
 ```js
+// ...
 export * from './lib/my-element'
 ```
 
-5. Replace the contents of `vite.js` with:
+5. Add your component to the template inside `template.js`.
 
 ```js
-import Minze from 'minze'
-import { MyElement } from './module'
-
-// define all components in a one-shot manner
-Minze.defineAll([MyElement])
-
-// get the #app element
-const app = document.querySelector('#app') || null
-
-// insert our component into the DOM
-if (app) {
-  app.innerHTML = `
+export default `
+  <div class="minze-wrap">
+    <!-- ... -->
     <my-element></my-element>
-  `
-}
+  </div>
+`
 ```
 
 6. Profit. Your component should be displayed in the browser.
