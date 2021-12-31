@@ -1,5 +1,5 @@
 import './assets/vite.css'
-import { template } from './module'
+import Minze from 'minze'
+import { MinzeOptions } from './module'
 
-const app = document.querySelector<HTMLDivElement>('#app') ?? null
-if (app) app.innerHTML = template
+Minze.defineAll([MinzeOptions])
