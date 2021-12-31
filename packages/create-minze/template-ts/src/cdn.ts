@@ -1,4 +1,4 @@
 import Minze from 'minze'
-import { MinzeButton, MinzeCounter, MinzeLogo } from './module'
+import * as Elements from './module'
 
-Minze.defineAll([MinzeButton, MinzeCounter, MinzeLogo])
+Minze.defineAll(Elements)
