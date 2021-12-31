@@ -1,12 +1,13 @@
 import Minze from 'minze'
+import { appendToApp } from 'playground/tests/minze/utils'
 
 export function run() {
   const callback = (event: Event) => {
-    document.querySelector('#app').innerHTML += `
+    appendToApp(`
       <div class="minze-events">
         ${(event as CustomEvent).detail}
       </div>
-    `
+    `)
 
     Minze.stopListen('minze:events-test', callback)
   }

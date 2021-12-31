@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { start } from 'playground/tests/minze/utils'
 
-test('Minze: version', async ({ page }) => {
+test('Minze: events', async ({ page }) => {
   await start(page)
 
   const selector = '.minze-events'
