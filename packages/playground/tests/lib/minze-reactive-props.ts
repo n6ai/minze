@@ -1,10 +1,10 @@
 import { MinzeElement, MinzeProps, MinzeEvents } from 'minze'
 
-export interface MinzeReactive {
+export interface MinzeReactiveProps {
   count: number
 }
 
-export class MinzeReactive extends MinzeElement {
+export class MinzeReactiveProps extends MinzeElement {
   reactive: MinzeProps = [['count', 0, true]]
 
   html = () => `

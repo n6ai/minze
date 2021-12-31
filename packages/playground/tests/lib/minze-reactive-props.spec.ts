@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { start } from 'playground/tests/utils'
 
-const element = 'minze-reactive'
+const element = 'minze-reactive-props'
 
 test(element, async ({ page }) => {
   const template = `<${element}></${element}>`
