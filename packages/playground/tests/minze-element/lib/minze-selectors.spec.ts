@@ -3,7 +3,7 @@ import { start } from 'playground/tests/minze-element/utils'
 
 const element = 'minze-selectors'
 
-test(element, async ({ page }) => {
+test(`MinzeElement: ${element}`, async ({ page }) => {
   const template = `<${element}></${element}>`
   await start(page, template)
 
