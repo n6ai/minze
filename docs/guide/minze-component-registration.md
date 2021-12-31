@@ -52,3 +52,33 @@ Minze.defineAll([MyFirstElement, MySecondElement])
 <my-second-element></my-second-element>
 ```
 <!-- prettier-ignore-end -->
+
+**Modules**
+
+If you are using modules you can register all exported components at once:
+
+```js
+// elements.js
+import { MinzeElement } from 'minze'
+
+export class MyFirstElement extends MinzeElement {
+  // ...
+}
+
+export class MySecondElement extends MinzeElement {
+  // ...
+}
+```
+
+```js
+import * as Elements from './elements'
+
+Minze.defineAll(Elements)
+```
+
+<!-- prettier-ignore-start -->
+```html
+<my-first-element></my-first-element>
+<my-second-element></my-second-element>
+```
+<!-- prettier-ignore-end -->

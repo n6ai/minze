@@ -60,7 +60,7 @@ Your component class names have to be either in `PascalCase` or `camelCase` when
 
 - **Method**
 
-- **Type:** `(elements: (typeof MinzeElement)[]): void`
+- **Type:** `(elements: (typeof MinzeElement)[] | Record<string, typeof MinzeElement>): void`
 
 - **Example:**
 
@@ -76,6 +76,34 @@ class MySecondElement extends MinzeElement {
 }
 
 Minze.defineAll([MyFirstElement, MySecondElement])
+```
+
+<!-- prettier-ignore-start -->
+```html
+<my-first-element></my-first-element>
+<my-second-element></my-second-element>
+```
+<!-- prettier-ignore-end -->
+
+- **Modules Example:**
+
+```js
+// elements.js
+import { MinzeElement } from 'minze'
+
+export class MyFirstElement extends MinzeElement {
+  // ...
+}
+
+export class MySecondElement extends MinzeElement {
+  // ...
+}
+```
+
+```js
+import * as Elements from './elements'
+
+Minze.defineAll(Elements)
 ```
 
 <!-- prettier-ignore-start -->
