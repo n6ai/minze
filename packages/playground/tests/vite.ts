@@ -1,19 +1,5 @@
 import './assets/vite.css'
 import Minze from 'minze'
-import {
-  MinzeEventListeners,
-  MinzeHooks,
-  MinzeOptions,
-  MinzeReactiveAttrs,
-  MinzeReactiveProps,
-  MinzeTemplating
-} from './module'
+import * as MinzeElements from './module'
 
-Minze.defineAll([
-  MinzeEventListeners,
-  MinzeHooks,
-  MinzeOptions,
-  MinzeReactiveAttrs,
-  MinzeReactiveProps,
-  MinzeTemplating
-])
+Minze.defineAll(Object.values(MinzeElements))
