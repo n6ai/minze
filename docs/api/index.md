@@ -459,7 +459,7 @@ import { MinzeElement } from 'minze'
 export class MyElement extends MinzeElement {
   css = () => `
     :host {
-      background: red;
+      background: rgb(55 245 220);
     }
   `
 }

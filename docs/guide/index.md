@@ -66,7 +66,8 @@ export class MyElement extends MinzeElement {
   // scoped stylesheet
   css = () => `
     div {
-      background: red;
+      background: rgb(55 245 220);
+      padding: 1rem;
     }
   `
 }

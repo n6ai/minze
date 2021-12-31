@@ -94,6 +94,6 @@ Minze.defineAll([MyElement])
 
 ```css
 ::part(my-part) {
-  background: red;
+  background: rgb(55 245 220);
 }
 ```
