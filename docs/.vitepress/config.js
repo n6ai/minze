@@ -119,6 +119,10 @@ module.exports = {
               link: '/guide/advanced-mixins'
             },
             {
+              text: 'Extending',
+              link: '/guide/advanced-extending'
+            },
+            {
               text: 'Transitions',
               link: '/guide/advanced-transitions'
             },
