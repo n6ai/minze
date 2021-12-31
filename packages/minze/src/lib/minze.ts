@@ -30,10 +30,20 @@ export class Minze {
    *
    * @example
    * ```
+   * import * as Elements from './module'
+   * Minze.defineAll(Elements)
+   * // or
+   * import { MinzeElement, MinzeElementTwo } from './module'
    * Minze.define([ MinzeElement, MinzeElementTwo ])
    * ```
    */
-  static defineAll(elements: typeof MinzeElement[]) {
+  static defineAll(
+    elements: typeof MinzeElement[] | Record<string, typeof MinzeElement>
+  ) {
+    if (!Array.isArray(elements)) {
+      elements = Object.values(elements)
+    }
+
     elements.forEach((element) => {
       const name = camelToDash(element.name)
       customElements.define(name, element)
