@@ -4,6 +4,7 @@
   "type": "module",
   "main": "dist/module.js",
   "unpkg": "dist/cdn.js",
+  "jsdelivr": "dist/cdn.js",
   "files": [
     "dist"
   ],
