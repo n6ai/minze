@@ -178,6 +178,8 @@ export class MinzeElement extends HTMLElement {
       const template = this.template()
 
       if (template !== this.cachedTemplate || force) {
+        this.cachedTemplate = template
+
         await this.beforeRender?.()
 
         this.eventListeners?.forEach((eventTuple) =>
@@ -185,7 +187,6 @@ export class MinzeElement extends HTMLElement {
         )
 
         this.shadowRoot.innerHTML = template
-        this.cachedTemplate = template
 
         this.eventListeners?.forEach((eventTuple) =>
           this.registerEvent(eventTuple, 'add')
