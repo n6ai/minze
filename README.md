@@ -28,11 +28,11 @@ It provides an intuitive abstraction layer around the web components API with it
 
 ## Packages
 
-| Project                               | Version                                                                          | Description                                                             |
-| ------------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [minze](packages/minze)               | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232">  | Dead-simple framework for sharable web components.                      |
-| [create-minze](packages/create-minze) | <img src="https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232">  | Minze scaffolding tool: Sets up a Minze Dev and Publishing environment. |
-| [playground](packages/playground)     | <img src="https://img.shields.io/static/v1?label=&message=private&color=323232"> | Playground and Test environment for Minze.                              |
+| Project                               | Version                                                                                                                            | Description                                                            |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [minze](packages/minze)               | [![minze version](https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232)](packages/minze/CHANGELOG.md)               | Dead-simple framework for sharable web components.                     |
+| [create-minze](packages/create-minze) | [![create-minze version](https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232)](packages/create-minze/CHANGELOG.md) | Minze scaffolding tool: Set up a Minze Dev and Publishing environment. |
+| [playground](packages/playground)     | ![playground version](https://img.shields.io/static/v1?label=&message=private&color=323232)                                        | Playground and Test environment for Minze.                             |
 
 ## Contribution
 
