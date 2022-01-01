@@ -33,6 +33,9 @@ class MyElementTwo extends MyBaseElement {
 Minze.defineAll([MyElement, MyElementTwo])
 ```
 
+<!-- prettier-ignore-start -->
 ```html
-<my-element></my-element> <my-element-two></my-element-two>
+<my-element></my-element>
+<my-element-two></my-element-two>
 ```
+<!-- prettier-ignore-end -->
