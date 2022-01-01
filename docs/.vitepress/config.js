@@ -216,6 +216,10 @@ module.exports = {
               link: '/guide/advanced-form-input-bindings'
             },
             {
+              text: 'Testing',
+              link: '/guide/advanced-testing'
+            },
+            {
               text: 'Style Guide',
               link: '/guide/advanced-style-guide'
             }
