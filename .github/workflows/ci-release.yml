@@ -139,6 +139,6 @@ jobs:
         run: npm run build -w ${{ env.PACKAGE_NAME }} --if-present
 
       - name: Publish
-        run: npm publish -w ${{ env.PACKAGE_NAME }}
+        run: npm publish -w ${{ env.PACKAGE_NAME }} --ignore-scripts --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
