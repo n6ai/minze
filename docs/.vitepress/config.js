@@ -220,6 +220,10 @@ module.exports = {
               link: '/guide/advanced-testing'
             },
             {
+              text: 'Performance',
+              link: '/guide/advanced-performance'
+            },
+            {
               text: 'Style Guide',
               link: '/guide/advanced-style-guide'
             }
