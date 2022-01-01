@@ -30,7 +30,7 @@
     "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
     "types-roll": "api-extractor run && rimraf temp",
     "clean": "rimraf dist/* temp",
-    "release": "standard-version --no-verify --path ."
+    "release": "standard-version --no-verify --header --path ."
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.19.3",

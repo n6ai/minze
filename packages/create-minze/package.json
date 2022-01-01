@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/n6ai/minze/tree/main/packages/create-minze#readme",
   "scripts": {
-    "release": "standard-version --no-verify --path . -t create-minze@"
+    "release": "standard-version --no-verify --header --path . -t create-minze@"
   },
   "dependencies": {
     "kolorist": "^1.5.1",
