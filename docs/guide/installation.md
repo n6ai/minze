@@ -4,10 +4,17 @@ Minze can be installed in several different ways.
 
 ## npm
 
-Installing via npm:
+Installing from npm:
 
 ```bash
+# npm
 $ npm install minze
+
+# yarn
+$ yarn add minze
+
+# pnpm
+$ pnpm add minze
 ```
 
 ```js
@@ -37,18 +44,13 @@ The CLI method scaffolds a Minze Dev and Publishing environment including `rollu
 **npm**
 
 ```bash
+# npm
 $ npm init minze@latest
-```
 
-**yarn**
+# yarn
+$ yarn create minze
 
-```bash
-$ yarn create minze@latest
-```
-
-**pnpm**
-
-```bash
+# pnpm
 $ pnpm create minze
 ```
 
@@ -80,7 +82,19 @@ $ pnpm create minze my-minze-env -- --template ts
 
 ## CDN
 
-Loading Minze via `unpkg` CDN link:
+Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the following:
+
+**unpkg**
+
+- `//unpkg.com/minze@latest` for latest version
+- `//unpkg.com/minze@0.0.1` pin to specific version
+
+**jsdelivr**
+
+- `//cdn.jsdelivr.net/npm/minze@latest` for latest version
+- `//cdn.jsdelivr.net/npm/minze@0.1.0` pin to specific version
+
+**Example**
 
 ```html
 <html>
@@ -90,7 +104,7 @@ Loading Minze via `unpkg` CDN link:
     <my-element></my-element>
 
     <!-- minze -->
-    <script src="https://..." defer></script>
+    <script src="//unpkg.com/minze@latest" defer></script>
 
     <!-- custom component definition -->
     <script type="module">
