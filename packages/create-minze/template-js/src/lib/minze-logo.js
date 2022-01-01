@@ -1,11 +1,11 @@
 import { MinzeElement } from 'minze'
 
 export class MinzeLogo extends MinzeElement {
+  attrs = [['text']]
+
   static get observedAttributes() {
     return ['text']
   }
-
-  attrs = [['text']]
 
   html = () => `
     <div>

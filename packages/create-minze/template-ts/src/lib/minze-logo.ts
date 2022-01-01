@@ -5,11 +5,11 @@ export interface MinzeLogo {
 }
 
 export class MinzeLogo extends MinzeElement {
+  attrs: MinzeAttrs = [['text']]
+
   static get observedAttributes() {
     return ['text']
   }
-
-  attrs: MinzeAttrs = [['text']]
 
   html = () => `
     <div>
