@@ -6,7 +6,7 @@ By following this Style Guide you will be able to write better code and have a b
 
 - Should always consist of at least two words.
 - Should be defined in `PascalCase`.
-- Shouldn't start with the `Minze` prefix unless they are part of one of the core packages.
+- Shouldn't start with the `Minze` prefix unless they are part of one of the core `minze` packages.
 - Should start with a unique prefix like your company name.
 
 ```js
