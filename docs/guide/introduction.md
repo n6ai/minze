@@ -20,7 +20,7 @@ Possible use cases:
 
 ## Features
 
-- 👶 Simple - Dive right in by scaffolding a project or using a CDN link.
+- 👶 Simple - Dive right in by [scaffolding a project](/guide/installation#cli) or using a [CDN link](/guide/installation#cdn).
 - ⚡ Fast - Tiny footprint ~1KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
 - 📦 Sharable - Build component libraries or design systems. Define once, use everywhere.

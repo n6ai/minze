@@ -87,7 +87,7 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 **unpkg**
 
 - `//unpkg.com/minze@latest` for latest version
-- `//unpkg.com/minze@0.0.1` pin to specific version
+- `//unpkg.com/minze@0.1.0` pin to specific version
 
 **jsdelivr**
 
