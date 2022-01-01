@@ -4,6 +4,11 @@
   "license": "MIT",
   "author": "Sergej Samsonenko",
   "description": "Dead-simple framework for sharable web components.",
+  "keywords": [
+    "minze",
+    "minzejs",
+    "web components"
+  ],
   "type": "module",
   "main": "dist/module.js",
   "types": "dist/module.d.ts",

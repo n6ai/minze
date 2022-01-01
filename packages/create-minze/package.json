@@ -4,6 +4,13 @@
   "license": "MIT",
   "author": "Sergej Samsonenko",
   "description": "Minze scaffolding tool.",
+  "keywords": [
+    "minze",
+    "minzejs",
+    "scaffolding",
+    "starter",
+    "template"
+  ],
   "bin": {
     "create-minze": "index.js"
   },
