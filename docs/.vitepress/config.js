@@ -1,12 +1,97 @@
 // @ts-check
 
+const META_URL = 'https://minze.dev'
+const META_TITLE = 'Minze'
+const META_DESCRIPTION = 'Dead-simple framework for sharable web components.'
+const META_IMAGE = 'https://minze.dev/social.jpg'
+
 /**
  * @type {import('vitepress').UserConfig}
  */
 module.exports = {
   title: 'Minze',
-  description: 'Dead-simple framework for sharable web components',
-  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
+  lang: 'en-US',
+  description: META_DESCRIPTION,
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    [
+      'meta',
+      {
+        property: 'og:type',
+        content: 'website'
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:url',
+        content: META_URL
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:title',
+        content: META_TITLE
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:description',
+        content: META_DESCRIPTION
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:image',
+        content: META_IMAGE
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:image:alt',
+        content: 'Preview of Minze'
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'twitter:card',
+        content: 'summary_large_image'
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'twitter:url',
+        content: META_URL
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'twitter:title',
+        content: META_TITLE
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'twitter:description',
+        content: META_DESCRIPTION
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'twitter:image',
+        content: META_IMAGE
+      }
+    ]
+  ],
   themeConfig: {
     repo: 'n6ai/minze',
     logo: '/logo.svg',
