@@ -13,6 +13,7 @@
   "main": "dist/module.js",
   "types": "dist/module.d.ts",
   "unpkg": "dist/cdn.js",
+  "jsdelivr": "dist/cdn.js",
   "files": [
     "dist"
   ],
