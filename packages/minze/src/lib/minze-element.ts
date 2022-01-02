@@ -545,6 +545,9 @@ export class MinzeElement extends HTMLElement {
 
     this.reactive?.forEach((prop) => this.registerProp(prop))
     this.attrs?.forEach((attr) => this.registerAttr(attr))
+
+    await this.onReactive?.()
+
     await this.render()
 
     // sets rendered attribute on the component
@@ -602,6 +605,18 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   onStart?(): Promise<void> | void
+
+  /**
+   * Lifecycle - Runs once after reactive properties are initialized.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   onReactive = () => console.log('onReactive')
+   * }
+   * ```
+   */
+  onReactive?(): Promise<void> | void
 
   /**
    * Lifecycle - Runs once at the end of the connectedCallback method.
