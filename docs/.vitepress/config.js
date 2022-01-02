@@ -164,6 +164,10 @@ module.exports = {
               link: '/guide/components-selectors'
             },
             {
+              text: 'Watchers',
+              link: '/guide/components-watchers'
+            },
+            {
               text: 'Events',
               link: '/guide/components-events'
             },
