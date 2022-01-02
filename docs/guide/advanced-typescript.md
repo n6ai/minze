@@ -13,7 +13,13 @@ By going through and understanding the example below, you will have a firm grasp
  * We are importing the base MinzeElement class
  * plus some tuple-type helpers.
  */
-import { MinzeElement, MinzeProps, MinzeAttrs, MinzeEvents } from 'minze'
+import {
+  MinzeElement,
+  MinzeProps,
+  MinzeAttrs,
+  MinzeWatchers,
+  MinzeEvents
+} from 'minze'
 
 /**
  * Since all properties and attribute properties
@@ -57,6 +63,12 @@ export class MyElement extends MinzeElement {
   static get observedAttributes() {
     return ['text', 'bg-color']
   }
+
+  /**
+   * Watchers have to be explicitly defined as an array of tuples.
+   * Otherwise, TypeScript will infer them as an array of arrays.
+   */
+  watch: MinzeWatchers = [['aBoolean', () => {}]]
 
   /**
    * A click callback handler.

@@ -138,10 +138,11 @@ class MyElement extends MinzeElement {
 - The structure should be as follows:
   1. Properties (Data)
   2. Methods
-  3. Templates
-  4. Hooks
-  5. Callbacks
-  6. Event Listeners
+  3. Watchers
+  4. Templates
+  5. Hooks
+  6. Callbacks
+  7. Event Listeners
 
 **Example**
 
@@ -173,6 +174,9 @@ export class MyElement extends MinzeElement {
   increment = () => {
     this.amount++
   }
+
+  // watchers
+  watch = [['foo', () => {}]]
 
   // html template
   html = () => `
