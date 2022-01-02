@@ -1,6 +1,6 @@
 # Storage
 
-You can use the JaveScript native `sessionStorage` or `localStorage` properties for accessing the Storage object.
+You can use the JavaScript native `sessionStorage` or `localStorage` properties for accessing the Storage object.
 
 ## Session Storage
 
