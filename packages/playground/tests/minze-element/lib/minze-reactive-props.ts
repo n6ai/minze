@@ -1,44 +1,41 @@
 import { MinzeElement, MinzeProps, MinzeEvents } from 'minze'
 
 export interface MinzeReactiveProps {
-  count: number
-  complex: {
-    deep: {
-      nested: {
-        value: string
-      }
+  str: string
+  arr: number[]
+  obj: {
+    nested: {
+      prop: string
     }
   }
 }
 
 export class MinzeReactiveProps extends MinzeElement {
   reactive: MinzeProps = [
-    ['count', 0, true],
+    ['str', 'initial text', true],
+    ['arr', [1, 2, 3], true],
     [
-      'complex',
+      'obj',
       {
-        deep: {
-          nested: {
-            value: 'nested'
-          }
+        nested: {
+          prop: 'initial value'
         }
-      }
+      },
+      true
     ]
   ]
 
   html = () => `
-    <button>
-      ${this.count}
-    </button>
-
-    <div>
-      ${this.complex.deep.nested.value}
-    </div>
+    <div class="str">${this.str}</div>
+    <div class="arr">${this.arr}</div>
+    <div class="obj">${this.obj.nested.prop}</div>
+    <button></button>
   `
 
   handleClick = () => {
-    this.count++
-    this.complex.deep.nested.value = 'changed'
+    this.str = 'changed text'
+    this.arr.push(4)
+    this.obj.nested.prop = 'changed value'
   }
 
   eventListeners: MinzeEvents = [['button', 'click', this.handleClick]]
