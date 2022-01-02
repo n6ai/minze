@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES6",
     "module": "ESNext",
     "moduleResolution": "node",
+    "allowJs": false,
     "strict": true,
     "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "jsx": "react-jsx"
+    "outDir": "./dist"
   },
-  "include": ["src/**/*", "tests/**/*", "types/**/*"]
+  "include": ["./src/**/*.ts"]
 }
