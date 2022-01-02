@@ -273,7 +273,10 @@ export class MinzeElement extends HTMLElement {
    */
   private exposeAttr(name: string, value: unknown) {
     const dashName = camelToDash(name)
-    this.setAttribute(dashName, JSON.stringify(value))
+    this.setAttribute(
+      dashName,
+      typeof value === 'object' ? JSON.stringify(value) : String(value)
+    )
   }
 
   /**
