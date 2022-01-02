@@ -2,6 +2,7 @@ import { isProxy, camelToDash, dashToCamel } from './utils'
 
 export type MinzeProp = [name: string, value: unknown, exposeAttr?: boolean]
 export type MinzeAttr = [name: string, value?: unknown]
+
 export type MinzeWatcher = [
   name: string,
   callback: (newValue: unknown, oldValue: unknown) => Promise<void> | void
