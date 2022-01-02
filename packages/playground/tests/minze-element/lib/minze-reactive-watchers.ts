@@ -59,7 +59,6 @@ export class MinzeReactiveWatchers extends MinzeElement {
   handleClick = () => {
     this.str = 'changed text'
     this.arr.push(4)
-    // console.log(this.obj.nested.prop)
     this.obj.nested.prop = 'changed value'
   }
 
