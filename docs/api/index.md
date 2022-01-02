@@ -354,6 +354,48 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+### watch
+
+Watches the given reactive properties and calls the provided callback whenever a change is detected. `wacth` should be an array containing one or more tuples. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
+
+Every tuple takes exactly 2 values.
+
+Tuple structure: [`name`, `callback`]
+
+1. **name:** the reactive property name to watch. Has to be `camelCase`, can be optionally `dash-case` for reactive attributes declared in `attrs`.
+2. **callback:** a callback function that runs whenever one of the property's values changes. Can be asynchronous.
+
+::: warning
+`watch` only works with reactive properties that where defined with `reactive` or `attrs`.
+:::
+
+- **Property**
+
+- **Type:** `readonly [name: string, callback: (newValue: unknown, oldValue: unknown) => Promise<void> | void][]`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+export class MyElement extends MinzeElement {
+  reactive = [['foo', 'bar']]
+
+  watch = [
+    [
+      'foo',
+      (newValue, oldValue) => {
+        console.log(newValue, oldValue) // baz, bar
+      }
+    ]
+  ]
+
+  onReady() {
+    this.foo = 'baz'
+  }
+}
+```
+
 ### eventListeners
 
 Dynamically creates event listeners, either on/inside the component or on the `window` object. `eventListeners` should be an array containing one or more tuples. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
@@ -741,7 +783,7 @@ export class MyElement extends MinzeElement {
 
 ## Type Helpers
 
-Some properties you can define are from the `tuple` type, but TypeScript doesn't automatically infer tuples and rather assumes that they are arrays. So you have to explicitly declare them as tuples. If you are using `reactive`, `attrs` or `eventListeners`, you can use the following types to do so:
+Some properties you can define are from the `tuple` type, but TypeScript doesn't automatically infer tuples and rather assumes that they are arrays. So you have to explicitly declare them as tuples. If you are using `reactive`, `attrs`, `watch` or `eventListeners`, you can use the following types to do so:
 
 ### MinzeProps
 
@@ -780,6 +822,29 @@ export interface MyElement {
 
 export class MyElement extends MinzeElement {
   attrs: MinzeAttrs = [['foo']]
+}
+```
+
+### MinzeWatchers
+
+Declares `watch` property as an array of tuples.
+
+- **Type:** `readonly [name: string, callback: (newValue: unknown, oldValue: unknown) => Promise<void> | void][]`
+
+- **Example:**
+
+```ts
+import { MinzeElement, MinzeWatchers } from 'minze'
+
+export class MyElement extends MinzeElement {
+  watch: MinzeWatchers = [
+    [
+      'foo',
+      (newValue, oldValue) => {
+        console.log('foo changed from ', oldValue, ' to ', newValue)
+      }
+    ]
+  ]
 }
 ```
 
