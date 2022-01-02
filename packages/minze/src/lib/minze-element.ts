@@ -304,26 +304,30 @@ export class MinzeElement extends HTMLElement {
         set: (target, prop, newValue) => {
           const oldValue = Reflect.get(target, prop)
 
-          // run if the old value is undefined or
-          // if the oldValue is not undefined and not equal to the newValue
-          // and both the oldValue and newValue are proxies
-          // this logic prevents unnecessary re-rendering
-          if (
-            oldValue === undefined ||
-            (oldValue !== undefined &&
-              oldValue !== newValue &&
-              oldValue[isProxy] === newValue[isProxy])
-          ) {
+          if (oldValue !== newValue) {
             Reflect.set(target, prop, newValue)
 
-            // expose attribute
-            exposeAttr && this.exposeAttr(name, newValue)
+            // run if the old value is undefined or
+            // if the oldValue is not undefined
+            // and both the oldValue and newValue are proxies
+            // this logic prevents unnecessary
+            // exposing, firing of callbacks and re-rendering
+            if (
+              oldValue === undefined ||
+              (oldValue !== undefined &&
+                oldValue[isProxy] === newValue[isProxy])
+            ) {
+              // expose attribute
+              exposeAttr && this.exposeAttr(name, newValue)
 
-            // run watcher callbacks
-            watchers?.forEach(async (watcher) => watcher[1](newValue, oldValue))
+              // run watcher callbacks
+              watchers?.forEach(async (watcher) =>
+                watcher[1](newValue, oldValue)
+              )
 
-            // request render
-            this.render()
+              // request render
+              this.render()
+            }
           }
           return true
         }
