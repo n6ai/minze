@@ -841,7 +841,7 @@ export class MyElement extends MinzeElement {
     [
       'foo',
       (newValue, oldValue) => {
-        console.log('foo changed from ', oldValue, ' to ', newValue)
+        console.log(newValue, oldValue)
       }
     ]
   ]
