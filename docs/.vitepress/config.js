@@ -220,6 +220,10 @@ module.exports = {
               link: '/guide/advanced-form-input-bindings'
             },
             {
+              text: 'Storage',
+              link: '/guide/advanced-storage'
+            },
+            {
               text: 'Testing',
               link: '/guide/advanced-testing'
             },
