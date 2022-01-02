@@ -15,7 +15,8 @@ minze-monorepo/            📁 root directory
 ├── packages/              📁 all packages
 │   ├── create-minze/      📁 create-minze
 │   ├── minze/             📁 minze
-│   └── playground/        📁 playground (private)
+│   ├── playground/        📁 playground (private)
+│   └── tests/             📁 tests (private)
 └── ...
 ```
 
@@ -45,7 +46,7 @@ Vitepress will start a server in dev mode for the documentation.
 1. Run `npm run build` in the root directory.
 2. Run `npm test` in the root directory.
 
-All `minze` core tests are located in [playground/tests](https://github.com/n6ai/minze/tree/main/packages/playground/tests).
+All `minze` core tests are located in [tests](https://github.com/n6ai/minze/tree/main/packages/tests).
 
 ## External Dependencies
 
@@ -57,7 +58,7 @@ Minze aims to be extremely lightweight and as such the core and elements package
 
 - If adding a new feature:
 
-  - Add accompanying test case in [playground/tests](https://github.com/n6ai/minze/tree/main/packages/playground/tests) if the feature is added to the `minze` package.
+  - Add accompanying test case in [tests](https://github.com/n6ai/minze/tree/main/packages/tests) if the feature is added to the `minze` package.
   - Provide a convincing reason to add this feature. Ideally, you should open a suggestion issue first and have it approved before working on it.
 
 - If fixing bug:

@@ -32,7 +32,8 @@ It provides an intuitive abstraction layer around the web components API with it
 | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | [minze](packages/minze)               | [![minze version](https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232)](packages/minze/CHANGELOG.md)               | Dead-simple framework for sharable web components.                     |
 | [create-minze](packages/create-minze) | [![create-minze version](https://img.shields.io/static/v1?label=&message=v1.0.0&color=323232)](packages/create-minze/CHANGELOG.md) | Minze scaffolding tool: Set up a Minze Dev and Publishing environment. |
-| [playground](packages/playground)     | ![playground version](https://img.shields.io/static/v1?label=&message=private&color=323232)                                        | Playground and Test environment for Minze.                             |
+| [playground](packages/playground)     | ![playground version](https://img.shields.io/static/v1?label=&message=private&color=323232)                                        | Playground environment for Minze.                                      |
+| [Tests](packages/tests)               | ![tests version](https://img.shields.io/static/v1?label=&message=private&color=323232)                                             | Test environment for Minze.                                            |
 
 ## Contribution
 
