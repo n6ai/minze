@@ -506,12 +506,7 @@ export class MinzeElement extends HTMLElement {
   private registerEvent(eventTuple: MinzeEvent, action: 'add' | 'remove') {
     const [eventTarget, eventName, callback] = eventTuple
 
-    let elements:
-      | NodeList
-      | MinzeElement[]
-      | typeof document[]
-      | typeof window[]
-      | undefined
+    let elements: NodeList | MinzeElement[] | typeof window[] | undefined
 
     if (eventTarget === window) {
       elements = [window]
