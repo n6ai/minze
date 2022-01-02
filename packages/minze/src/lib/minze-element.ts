@@ -281,19 +281,24 @@ export class MinzeElement extends HTMLElement {
    *
    * @example
    * ```
-   * this.makeComplexReactive(this, 'active', {deeply: {nested: true}})
+   * this.makeComplexReactive(this, 'active', {deeply: {nested: true}}, true)
    * ```
    */
   private makeComplexReactive(
     target: MinzeElement | Record<string, unknown>,
     name: string,
     prop: Record<string, unknown>,
+    root: boolean | { name: string; prop: Record<string, unknown> },
     exposeAttr?: boolean,
     watchers?: MinzeWatchers
   ) {
     if (prop && typeof prop === 'object') {
+      if (root === true) root = { name, prop }
+
       // expose attribute
-      exposeAttr && this.exposeAttr(name, prop)
+      if (typeof root === 'object' && exposeAttr) {
+        this.exposeAttr(root.name, root.prop)
+      }
 
       // create a proxy
       const proxy = new Proxy(prop, {
@@ -318,7 +323,9 @@ export class MinzeElement extends HTMLElement {
                 oldValue[isProxy] === newValue[isProxy])
             ) {
               // expose attribute
-              exposeAttr && this.exposeAttr(name, newValue)
+              if (typeof root === 'object' && exposeAttr) {
+                this.exposeAttr(root.name, root.prop)
+              }
 
               // run watcher callbacks
               watchers?.forEach(async (watcher) =>
@@ -345,7 +352,8 @@ export class MinzeElement extends HTMLElement {
               target[name] as Record<string, unknown>,
               key,
               prop[key] as Record<string, unknown>,
-              false,
+              root, // pass the root object
+              exposeAttr,
               watchers // run watchers also when deep nested properties change
             )
         }
@@ -422,6 +430,7 @@ export class MinzeElement extends HTMLElement {
         this,
         camelName,
         value as Record<string, unknown>,
+        true,
         exposeAttr,
         watchers
       )
