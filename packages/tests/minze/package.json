@@ -1,0 +1,8 @@
+{
+  "name": "@tests/minze",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "minze": "*"
+  }
+}

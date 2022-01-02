@@ -1,0 +1,12 @@
+{
+  "name": "@tests/integration-vue",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "minze": "*",
+    "vue": "^3.2.26"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.1"
+  }
+}
