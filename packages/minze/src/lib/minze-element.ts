@@ -1,7 +1,11 @@
-import { camelToDash, dashToCamel } from './utils'
+import { isProxy, camelToDash, dashToCamel } from './utils'
 
 export type MinzeProp = [name: string, value: unknown, exposeAttr?: boolean]
 export type MinzeAttr = [name: string, value?: unknown]
+export type MinzeWatcher = [
+  name: string,
+  callback: (newValue: unknown, oldValue: unknown) => Promise<void> | void
+]
 
 export type MinzeEvent = [
   eventTarget: string | MinzeElement | typeof window,
@@ -11,6 +15,7 @@ export type MinzeEvent = [
 
 export type MinzeProps = ReadonlyArray<MinzeProp>
 export type MinzeAttrs = ReadonlyArray<MinzeAttr>
+export type MinzeWatchers = ReadonlyArray<MinzeWatcher>
 export type MinzeEvents = ReadonlyArray<MinzeEvent>
 
 /**
@@ -89,6 +94,24 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   attrs?: MinzeAttrs
+
+  /**
+   * Defines watchers with callbacks for reactive properties and attrs.
+   * Whenever a property changes the watcher will be called.
+   *
+   * watch takes an array of tuples: [[ name, callback ], ...]
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   watch = [
+   *     ['active', (newValue, oldValue) => {}],
+   *     ['amount', async (newValue, oldValue) => {}]
+   *   ]
+   * }
+   * ```
+   */
+  watch?: MinzeWatchers
 
   /**
    * Defines event listeners that will be registered when the element is rendered.
@@ -264,7 +287,8 @@ export class MinzeElement extends HTMLElement {
     target: MinzeElement | Record<string, unknown>,
     name: string,
     prop: Record<string, unknown>,
-    exposeAttr?: boolean
+    exposeAttr?: boolean,
+    watchers?: MinzeWatchers
   ) {
     if (prop && typeof prop === 'object') {
       // expose attribute
@@ -272,13 +296,30 @@ export class MinzeElement extends HTMLElement {
 
       // create a proxy
       const proxy = new Proxy(prop, {
-        get: (target, prop, receiver) => Reflect.get(target, prop, receiver),
+        get: (target, prop, receiver) => {
+          if (prop === isProxy) return true
+          else return Reflect.get(target, prop, receiver)
+        },
         set: (target, prop, newValue) => {
-          if (Reflect.get(target, prop) !== newValue) {
+          const oldValue = Reflect.get(target, prop)
+
+          // run if the old value is undefined or
+          // if the oldValue is not undefined and not equal to the newValue
+          // and both the oldValue and newValue are proxies
+          // this logic prevents unnecessary re-rendering
+          if (
+            oldValue === undefined ||
+            (oldValue !== undefined &&
+              oldValue !== newValue &&
+              oldValue[isProxy] === newValue[isProxy])
+          ) {
             Reflect.set(target, prop, newValue)
 
             // expose attribute
             exposeAttr && this.exposeAttr(name, newValue)
+
+            // run watcher callbacks
+            watchers?.forEach(async (watcher) => watcher[1](newValue, oldValue))
 
             // request render
             this.render()
@@ -298,7 +339,9 @@ export class MinzeElement extends HTMLElement {
             this.makeComplexReactive(
               target[name] as Record<string, unknown>,
               key,
-              prop[key] as Record<string, unknown>
+              prop[key] as Record<string, unknown>,
+              false,
+              watchers // run watchers also when deep nested properties change
             )
         }
       }
@@ -317,7 +360,8 @@ export class MinzeElement extends HTMLElement {
     target: MinzeElement,
     name: string,
     prop: unknown,
-    exposeAttr?: boolean
+    exposeAttr?: boolean,
+    watchers?: MinzeWatchers
   ) {
     const stashPrefix = '$minze_stash_prop_'
     const stashName = `${stashPrefix}${name}`
@@ -329,11 +373,16 @@ export class MinzeElement extends HTMLElement {
     Object.defineProperty(target, name, {
       get: () => target[stashName],
       set: (newValue) => {
-        if (target[stashName] !== newValue) {
+        const oldValue = target[stashName]
+
+        if (oldValue !== newValue) {
           target[stashName] = newValue
 
           // expose attribute
           exposeAttr && this.exposeAttr(name, newValue)
+
+          // run watcher callbacks
+          watchers?.forEach(async (watcher) => watcher[1](newValue, oldValue))
 
           // request render
           this.render()
@@ -357,16 +406,22 @@ export class MinzeElement extends HTMLElement {
     // stop right here if a property with the same name already exists
     if (camelName in this) return
 
+    // filter watchers based on name
+    const watchers = this.watch?.filter(
+      ([watcherName]) => watcherName === camelName
+    )
+
     // run a different method based on the type of the provided value
     if (value && typeof value === 'object') {
       this.makeComplexReactive(
         this,
         camelName,
         value as Record<string, unknown>,
-        exposeAttr
+        exposeAttr,
+        watchers
       )
     } else {
-      this.makePrimitiveReactive(this, camelName, value, exposeAttr)
+      this.makePrimitiveReactive(this, camelName, value, exposeAttr, watchers)
     }
   }
 
@@ -381,11 +436,16 @@ export class MinzeElement extends HTMLElement {
   private registerAttr(attr: MinzeAttr) {
     const [name, value] = attr
     const camelName = dashToCamel(name)
+    const dashName = name
 
     // stop right here if a property with the same name already exists
     if (camelName in this) return
 
-    const dashName = name
+    // filter watchers based on name
+    const watchers = this.watch?.filter(
+      ([watcherName]) => watcherName === camelName || watcherName === dashName
+    )
+
     const stashPrefix = '$minze_stash_attr_'
     const stashName = `${stashPrefix}${camelName}`
     this[stashName] = value
@@ -403,8 +463,13 @@ export class MinzeElement extends HTMLElement {
     Object.defineProperty(this, camelName, {
       get: () => this.getAttribute(dashName),
       set: (newValue) => {
-        if (this[stashName] !== newValue) {
+        const oldValue = this[stashName]
+
+        if (oldValue !== newValue) {
           this[stashName] = newValue
+
+          // run watcher callbacks
+          watchers?.forEach(async (watcher) => watcher[1](newValue, oldValue))
 
           // request render
           this.render()

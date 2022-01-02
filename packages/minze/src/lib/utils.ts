@@ -1,4 +1,10 @@
 /**
+ * Creates a symbol that makes it possible to check
+ * if an object is a proxy.
+ */
+export const isProxy = Symbol('isProxy')
+
+/**
  * Converts a camelCase or PascalCase string to dash-case.
  *
  * @example
