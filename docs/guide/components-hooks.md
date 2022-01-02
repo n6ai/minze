@@ -5,6 +5,7 @@ Hooks are methods that can be defined within a component and are called at vario
 **Run only once:**
 
 - `onStart`
+- `onReactive`
 - `onReady`
 - `onDestroy`
 - `onMove`
@@ -25,13 +26,20 @@ class MyElement extends MinzeElement {
   /**
    * Component has been inserted into the DOM,
    * but the internal lifecycle hasn't started yet.
-   * If you want to make any API calls before rendering,
-   * this is the place.
    *
    * Runs once.
    */
   onStart() {
     console.log('onStart')
+  }
+
+  /**
+   * Reactive properties have been initialized.
+   *
+   * Runs once.
+   */
+  onReactive() {
+    console.log('onReactive')
   }
 
   /**
