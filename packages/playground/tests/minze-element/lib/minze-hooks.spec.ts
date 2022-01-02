@@ -13,8 +13,8 @@ test(`MinzeElement: ${element}`, async ({ page }) => {
     'onStart',
     'beforeAttributeChange',
     'onReactive',
-    'onAttributeChange',
     'beforeRender',
+    'onAttributeChange',
     'onRender',
     'onReady'
   ].join(' ')

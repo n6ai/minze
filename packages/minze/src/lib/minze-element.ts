@@ -206,17 +206,17 @@ export class MinzeElement extends HTMLElement {
 
         await this.beforeRender?.()
 
-        this.eventListeners?.forEach((eventTuple) =>
+        this.eventListeners?.forEach(async (eventTuple) =>
           this.registerEvent(eventTuple, 'remove')
         )
 
         this.shadowRoot.innerHTML = template
 
-        this.eventListeners?.forEach((eventTuple) =>
+        this.eventListeners?.forEach(async (eventTuple) =>
           this.registerEvent(eventTuple, 'add')
         )
 
-        await this.onRender?.()
+        this.onRender?.()
       }
     }
   }
@@ -541,19 +541,19 @@ export class MinzeElement extends HTMLElement {
    * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
    */
   private async connectedCallback() {
-    await this.onStart?.()
+    this.onStart?.()
 
-    this.reactive?.forEach((prop) => this.registerProp(prop))
-    this.attrs?.forEach((attr) => this.registerAttr(attr))
+    this.reactive?.forEach(async (prop) => this.registerProp(prop))
+    this.attrs?.forEach(async (attr) => this.registerAttr(attr))
 
-    await this.onReactive?.()
+    this.onReactive?.()
 
     await this.render()
 
     // sets rendered attribute on the component
     this.options?.exposeAttrs?.rendered && this.setAttribute('rendered', '')
 
-    await this.onReady?.()
+    this.onReady?.()
   }
 
   /**
@@ -564,14 +564,14 @@ export class MinzeElement extends HTMLElement {
       this.registerEvent(eventTuple, 'remove')
     )
 
-    await this.onDestroy?.()
+    this.onDestroy?.()
   }
 
   /**
    * Lifecycle (Internal) - Runs each time the element is moved to a new document.
    */
   private async adoptedCallback() {
-    await this.onMove?.()
+    this.onMove?.()
 
     this.render()
   }
@@ -591,7 +591,7 @@ export class MinzeElement extends HTMLElement {
       this[camelName] = newValue
     }
 
-    await this.onAttributeChange?.(name, oldValue, newValue)
+    this.onAttributeChange?.(name, oldValue, newValue)
   }
 
   /**
