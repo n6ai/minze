@@ -19,6 +19,10 @@ export class MinzeHooks extends MinzeElement {
     this.text += 'onStart '
   }
 
+  onReactive() {
+    this.text += 'onReactive '
+  }
+
   onReady() {
     this.text += 'onReady '
     this.rerender()

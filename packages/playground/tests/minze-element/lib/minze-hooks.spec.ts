@@ -12,8 +12,9 @@ test(`MinzeElement: ${element}`, async ({ page }) => {
   const hookSequence = [
     'onStart',
     'beforeAttributeChange',
-    'beforeRender',
+    'onReactive',
     'onAttributeChange',
+    'beforeRender',
     'onRender',
     'onReady'
   ].join(' ')
@@ -29,6 +30,7 @@ test(`MinzeElement: ${element}`, async ({ page }) => {
   const movedHookSequence = [
     'onDestroy',
     'onStart',
+    'onReactive',
     'beforeRender',
     'onRender',
     'onReady'
