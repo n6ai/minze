@@ -616,7 +616,7 @@ export class MyElement extends MinzeElement {
 A Hook that runs `once` after the element is added to the DOM, but before the internal lifecycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
 
 ::: tip
-This hook runs after the `beforeAttributeChange` hook if any attributes are present on the element.
+This hook runs after the `beforeAttributeChange` and `afterAttributeChange` hooks if any `observed` attributes are present on the element.
 :::
 
 - **Method**
