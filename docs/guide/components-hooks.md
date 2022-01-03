@@ -20,7 +20,7 @@ Hooks are methods that can be defined within a component and are called at vario
 ## Lifecycle
 
 <p align="center">
-  <img src="/hooks.svg" style="width: 100%; max-width: 550px;">
+  <img src="/hooks.svg" style="width: 100%; max-width: 500px;">
 </p>
 
 ## Example
