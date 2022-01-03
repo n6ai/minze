@@ -560,7 +560,7 @@ export class MinzeElement extends HTMLElement {
    * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
    */
   private async disconnectedCallback() {
-    this.eventListeners?.forEach((eventTuple) =>
+    this.eventListeners?.forEach(async (eventTuple) =>
       this.registerEvent(eventTuple, 'remove')
     )
 
