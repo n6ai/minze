@@ -284,27 +284,24 @@ export class MinzeElement extends HTMLElement {
    *
    * @example
    * ```
-   * this.makeComplexReactive(this, 'active', {deeply: {nested: true}}, true)
+   * this.makeComplexReactive('active', {deeply: {nested: true}}, true)
    * ```
    */
   private makeComplexReactive(
-    target: MinzeElement | Record<string, unknown>,
     name: string,
     prop: Record<string, unknown>,
-    root: boolean | { name: string; prop: Record<string, unknown> },
     exposeAttr?: boolean,
     watchers?: MinzeWatchers
   ) {
-    if (prop && typeof prop === 'object') {
-      if (root === true) root = { name, prop }
+    const rootName = name
+    const rootProp = prop
 
-      // expose attribute
-      if (typeof root === 'object' && exposeAttr) {
-        this.exposeAttr(root.name, root.prop)
-      }
+    // expose attribute
+    if (exposeAttr) this.exposeAttr(rootName, rootProp)
 
-      // create a proxy
-      const proxy = new Proxy(prop, {
+    // create a proxy function
+    const createProxy = (prop: Record<string, unknown>) => {
+      return new Proxy(prop, {
         get: (target, prop, receiver) => {
           if (prop === isProxy) return true
           else return Reflect.get(target, prop, receiver)
@@ -326,9 +323,7 @@ export class MinzeElement extends HTMLElement {
                 oldValue[isProxy] === newValue[isProxy])
             ) {
               // expose attribute
-              if (typeof root === 'object' && exposeAttr) {
-                this.exposeAttr(root.name, root.prop)
-              }
+              if (exposeAttr) this.exposeAttr(rootName, rootProp)
 
               // run watcher callbacks
               watchers?.forEach(async (watcher) =>
@@ -342,26 +337,23 @@ export class MinzeElement extends HTMLElement {
           return true
         }
       })
+    }
 
-      // assign the proxy
-      target[name] = proxy
+    // assign the root property
+    this[rootName] = createProxy(rootProp)
 
-      // check if the property has keys
-      if (Object.keys(prop)) {
-        // recursively call this method on each key
-        for (const key in prop) {
-          typeof prop[key] === 'object' &&
-            this.makeComplexReactive(
-              target[name] as Record<string, unknown>,
-              key,
-              prop[key] as Record<string, unknown>,
-              root, // pass the root object
-              exposeAttr,
-              watchers // run watchers also when deep nested properties change
-            )
+    // iterator for nested properties
+    const deepIterator = (target: Record<string, unknown>) => {
+      for (const key in target) {
+        if (typeof target[key] === 'object') {
+          target[key] = createProxy(target[key] as Record<string, unknown>)
+          deepIterator(target[key] as Record<string, unknown>)
         }
       }
     }
+
+    // iterate through the root property
+    deepIterator(this[rootName] as Record<string, unknown>)
   }
 
   /**
@@ -369,11 +361,10 @@ export class MinzeElement extends HTMLElement {
    *
    * @example
    * ```
-   * this.makePrimitiveReactive(this, 'count', 99)
+   * this.makePrimitiveReactive('count', 99)
    * ```
    */
   private makePrimitiveReactive(
-    target: MinzeElement,
     name: string,
     prop: unknown,
     exposeAttr?: boolean,
@@ -381,18 +372,18 @@ export class MinzeElement extends HTMLElement {
   ) {
     const stashPrefix = '$minze_stash_prop_'
     const stashName = `${stashPrefix}${name}`
-    target[stashName] = prop
+    this[stashName] = prop
 
     // expose attribute
     exposeAttr && this.exposeAttr(name, prop)
 
-    Object.defineProperty(target, name, {
-      get: () => target[stashName],
+    Object.defineProperty(this, name, {
+      get: () => this[stashName],
       set: (newValue) => {
-        const oldValue = target[stashName]
+        const oldValue = this[stashName]
 
         if (oldValue !== newValue) {
-          target[stashName] = newValue
+          this[stashName] = newValue
 
           // expose attribute
           exposeAttr && this.exposeAttr(name, newValue)
@@ -430,15 +421,13 @@ export class MinzeElement extends HTMLElement {
     // run a different method based on the type of the provided value
     if (value && typeof value === 'object') {
       this.makeComplexReactive(
-        this,
         camelName,
         value as Record<string, unknown>,
-        true,
         exposeAttr,
         watchers
       )
     } else {
-      this.makePrimitiveReactive(this, camelName, value, exposeAttr, watchers)
+      this.makePrimitiveReactive(camelName, value, exposeAttr, watchers)
     }
   }
 
