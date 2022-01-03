@@ -17,7 +17,13 @@ Hooks are methods that can be defined within a component and are called at vario
 - `beforeAttributeChange`
 - `onAttributeChange`
 
-**Example**
+## Lifecycle
+
+<p align="center">
+  <img src="/hooks.svg" style="width: 100%; max-width: 550px;">
+</p>
+
+## Example
 
 ```js
 import Minze, { MinzeElement } from 'minze'
