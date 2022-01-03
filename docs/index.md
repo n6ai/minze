@@ -11,7 +11,7 @@ features:
   - title: 👶 Simple
     details: Dive right in by scaffolding a project or using a CDN link.
   - title: ⚡ Fast
-    details: Tiny footprint ~1KB (minified and compressed).
+    details: Tiny footprint ~2KB (minified and compressed).
   - title: 🚀 Modern
     details: Based on the latest technologies around web components.
   - title: 📦 Sharable
