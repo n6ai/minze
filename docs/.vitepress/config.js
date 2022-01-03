@@ -1,5 +1,7 @@
 // @ts-check
 
+const isProduction = process.env.NODE_ENV
+
 const META_URL = 'https://minze.dev'
 const META_TITLE = 'Minze'
 const META_DESCRIPTION = 'Dead-simple framework for sharable web components.'
@@ -90,7 +92,29 @@ module.exports = {
         property: 'twitter:image',
         content: META_IMAGE
       }
-    ]
+    ],
+    ...(isProduction
+      ? [
+          [
+            'script',
+            {
+              src: 'https://www.googletagmanager.com/gtag/js?id=G-DD0MESPTFW',
+              async: '',
+              type: 'text/javascript'
+            }
+          ],
+          [
+            'script',
+            {
+              type: 'text/javascript'
+            },
+            `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DD0MESPTFW', { 'anonymize_ip': true });`
+          ]
+        ]
+      : [])
   ],
   themeConfig: {
     repo: 'n6ai/minze',
