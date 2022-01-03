@@ -111,6 +111,32 @@ Minze.defineAll([MyElement])
 <my-element></my-element>
 ```
 
+### Contitional Attributes
+
+Conditional rendering can also be used for attributes.
+
+**Example**
+
+```js
+import Minze, { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  isActive = true
+
+  html = () => `
+    <div ${this.isActive ? 'class="active"' : ''}>
+      Hello Minze!
+    </div>
+  `
+}
+
+Minze.defineAll([MyElement])
+```
+
+```html
+<my-element></my-element>
+```
+
 ### List Rendering
 
 To render a list in a template literal you can use the `map` method in cobination with `join`.

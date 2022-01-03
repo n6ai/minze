@@ -97,3 +97,33 @@ Minze.defineAll([MyElement])
   background: rgb(55 245 220);
 }
 ```
+
+## Contitional Styling
+
+You can use the `ternary` operator to conditionally render properties inside `css`.
+
+**Example**
+
+```js
+import Minze, { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  isActive = true
+
+  html = () => `
+    <div>Hello Minze!</div>
+  `
+
+  css = () => `
+    div {
+      background: ${this.isActive ? 'rgb(55 245 220)' : 'transparent'};
+    }
+  `
+}
+
+Minze.defineAll([MyElement])
+```
+
+```html
+<my-element></my-element>
+```
