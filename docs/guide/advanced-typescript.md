@@ -29,7 +29,7 @@ import {
  * Attribute properties will always be strings
  * no matter the initial value.
  */
-export interface MeElement {
+export interface MyElement {
   aBoolean: boolean
   anObject: {
     foo: string
