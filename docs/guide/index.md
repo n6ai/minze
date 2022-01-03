@@ -101,3 +101,10 @@ export default `
 ```
 
 6. Profit. Your component should be displayed in the browser.
+
+::: tip
+Next steps:
+
+- Learn how to [publish and use](/guide/publishing) your components.
+- Learn how to use Minze with [TypeScript](/guide/advanced-typescript).
+  :::
