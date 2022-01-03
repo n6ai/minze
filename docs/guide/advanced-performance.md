@@ -57,19 +57,19 @@ import Minze, { MinzeElement } from 'minze'
 const nestedArray = []
 
 for (let i = 0; i < 100; i++) {
-  nesteArray.push({ num: i })
+  nestedArray.push({ num: i })
 }
 
 class MyElement extends MinzeElement {
   nestedArray = nestedArray
 
   html = () => `
-    ${this.nesteArray[0].num}
+    ${this.nestedArray[0].num}
   `
 
   onReady() {
     for (let i = 0; i < 100; i++) {
-      this.nesteArray[0].num = i
+      this.nestedArray[0].num = i
     }
 
     this.rerender()
