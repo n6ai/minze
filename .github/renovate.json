@@ -3,6 +3,7 @@
   "labels": ["dependencies"],
   "pin": false,
   "rangeStrategy": "bump",
+  "ignorePaths": ["node_modules"],
   "packageRules": [
     {
       "packageNames": ["node"],
