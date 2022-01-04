@@ -74,7 +74,7 @@ Minze.defineAll([MyElement])
 
 ## Host Context
 
-The `:host-context` pseudo-class selector applies styles conditionally based on the parent element.
+The `:host-context` pseudo-class selector applies styles conditionally based on parent elements.
 
 **Example**
 
