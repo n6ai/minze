@@ -371,7 +371,7 @@ Tuple structure: [`name`, `callback`]
 
 - **Property**
 
-- **Type:** `readonly [name: string, callback: (newValue: unknown, oldValue: unknown) => Promise<void> | void][]`
+- **Type:** `readonly [name: string, callback: (newValue: unknown, oldValue: unknown, key: string, target: object | typeof MinzeElement) => Promise<void> | void][]`
 
 - **Example:**
 
@@ -384,8 +384,8 @@ export class MyElement extends MinzeElement {
   watch = [
     [
       'foo',
-      (newValue, oldValue) => {
-        console.log(newValue, oldValue) // baz, bar
+      (newValue, oldValue, key, target) => {
+        console.log(newValue, oldValue, key, target) // baz, bar, foo, this
       }
     ]
   ]
@@ -849,7 +849,7 @@ export class MyElement extends MinzeElement {
 
 Declares `watch` property as an array of tuples.
 
-- **Type:** `readonly [name: string, callback: (newValue: unknown, oldValue: unknown) => Promise<void> | void][]`
+- **Type:** `readonly [name: string, callback: (newValue: unknown, oldValue: unknown, key: string, target: object | typeof MinzeElement) => Promise<void> | void][]`
 
 - **Example:**
 
@@ -860,8 +860,8 @@ export class MyElement extends MinzeElement {
   watch: MinzeWatchers = [
     [
       'foo',
-      (newValue, oldValue) => {
-        console.log(newValue, oldValue)
+      (newValue, oldValue, key, target) => {
+        console.log(newValue, oldValue, key, target)
       }
     ]
   ]

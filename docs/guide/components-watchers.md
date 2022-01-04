@@ -24,8 +24,8 @@ class MyElement extends MinzeElement {
   watch = [
     [
       'foo',
-      (newValue, oldValue) => {
-        console.log(newValue, oldValue) // baz, bar
+      (newValue, oldValue, key, target) => {
+        console.log(newValue, oldValue, key, target) // baz, bar, foo, this
       }
     ]
   ]
