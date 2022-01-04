@@ -221,7 +221,7 @@ class MyElement extends MinzeElement {
     const delay = 2000 // ms
     await new Promise((resolve) => setTimeout(resolve, delay))
 
-    this.data = 'Hello, Minze!'
+    this.data = 'Hello Minze!'
     console.log(`simulated response time: ${delay}`)
   }
 }
