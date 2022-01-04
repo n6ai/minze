@@ -25,7 +25,7 @@ class MyElement extends MinzeElement {
   html = () => `<div>Hello Minze!</div>`
 
   css = () => `
-    :host {
+    div {
       background: ${this.color};
     }
   `
@@ -36,6 +36,111 @@ Minze.defineAll([MyElement])
 
 ```html
 <my-element>Hello Minze!</my-element>
+```
+
+## Host
+
+The `:host` pseudo-class selector styles the component itself, and not something inside its template.
+
+**Example**
+
+```js
+import Minze, { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  html = () => `Hello Minze!`
+
+  css = () => `
+    :host {
+      background: red;
+    }
+
+    :host(:hover) {
+      background: blue;
+    }
+
+    :host(:active) {
+      background: green;
+    }
+  `
+}
+
+Minze.defineAll([MyElement])
+```
+
+```html
+<my-element>Hello Minze!</my-element>
+```
+
+## Host Context
+
+The `:host-context` pseudo-class selector applies styles conditionally based on the parent element.
+
+**Example**
+
+```js
+import Minze, { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  html = () => `<div>Hello Minze!</div>`
+
+  css = () => `
+    :host-context(.light) {
+      background: white;
+      color: black;
+    }
+
+    :host-context(.dark) {
+      background: black;
+      color: white;
+    }
+  `
+}
+
+Minze.defineAll([MyElement])
+```
+
+```html
+<div class="light">
+  <div>
+    <my-element>Hello Minze!</my-element>
+    <div></div>
+
+    <div class="dark">
+      <div>
+        <my-element>Hello Minze!</my-element>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Parts
+
+The `part` attribute can be accessed outside the component.
+
+**Example**
+
+```js
+import Minze, { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  html = () => `
+    <div part="my-part">Hello Minze!</div>
+  `
+}
+
+Minze.defineAll([MyElement])
+```
+
+```html
+<my-element>Hello Minze!</my-element>
+```
+
+```css
+::part(my-part) {
+  background: rgb(55 245 220);
+}
 ```
 
 ## Variables
@@ -67,34 +172,6 @@ Minze.defineAll([MyElement])
 ```css
 :root {
   --my-color: blue;
-}
-```
-
-## Parts
-
-The `part` attribute can be accessed outside the component.
-
-**Example**
-
-```js
-import Minze, { MinzeElement } from 'minze'
-
-class MyElement extends MinzeElement {
-  html = () => `
-    <div part="my-part">Hello Minze!</div>
-  `
-}
-
-Minze.defineAll([MyElement])
-```
-
-```html
-<my-element>Hello Minze!</my-element>
-```
-
-```css
-::part(my-part) {
-  background: rgb(55 245 220);
 }
 ```
 
