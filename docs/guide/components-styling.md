@@ -104,20 +104,19 @@ Minze.defineAll([MyElement])
 <div class="light">
   <div>
     <my-element>Hello Minze!</my-element>
-    <div></div>
+  </div>
+</div>
 
-    <div class="dark">
-      <div>
-        <my-element>Hello Minze!</my-element>
-      </div>
-    </div>
+<div class="dark">
+  <div>
+    <my-element>Hello Minze!</my-element>
   </div>
 </div>
 ```
 
 ## Parts
 
-The `part` attribute can be accessed outside the component.
+The `part` attribute can be accessed outside the component with the `::part` pseudo-class selector.
 
 **Example**
 
