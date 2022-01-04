@@ -5,7 +5,12 @@ export type MinzeAttr = [name: string, value?: unknown]
 
 export type MinzeWatcher = [
   name: string,
-  callback: (newValue: unknown, oldValue: unknown) => Promise<void> | void
+  callback: (
+    newValue: unknown,
+    oldValue: unknown,
+    key: string,
+    target: object | typeof MinzeElement
+  ) => Promise<void> | void
 ]
 
 export type MinzeEvent = [
@@ -278,6 +283,38 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Callback, executes a set of methods on reactive changes.
+   *
+   * @example
+   * ```
+   * this.reactiveChange(type, rootName, rootProp, target, prop, newValue, oldValue)
+   * ```
+   */
+  private reactiveChange<T = object>(
+    type: 'complex' | 'primitive' | 'attr',
+    rootName: string,
+    rootProp: T,
+    target: object | typeof MinzeElement,
+    key: string,
+    newValue: unknown,
+    oldValue: unknown
+  ) {
+    const camelName = rootName
+    const dashName = camelToDash(rootName)
+
+    this.watch?.forEach(async ([watcherName, callback]) => {
+      if (
+        watcherName === camelName ||
+        (type === 'attr' && watcherName === dashName)
+      ) {
+        callback(newValue, oldValue, key, target)
+      }
+    })
+
+    this.render()
+  }
+
+  /**
    * Makes a complex object deeply reactive.
    *
    * @example
@@ -288,8 +325,7 @@ export class MinzeElement extends HTMLElement {
   private makeComplexReactive(
     name: string,
     prop: Record<string, unknown>,
-    exposeAttr?: boolean,
-    watchers?: MinzeWatchers
+    exposeAttr?: boolean
   ) {
     const rootName = name
     const rootProp = prop
@@ -321,11 +357,15 @@ export class MinzeElement extends HTMLElement {
             // expose attribute
             if (exposeAttr) this.exposeAttr(rootName, rootProp)
 
-            // run watcher callbacks
-            watchers?.forEach(async (watcher) => watcher[1](newValue, oldValue))
-
-            // request render
-            this.render()
+            this.reactiveChange(
+              'complex',
+              rootName,
+              rootProp,
+              target,
+              prop,
+              newValue,
+              oldValue
+            )
           }
 
           return true
@@ -353,9 +393,9 @@ export class MinzeElement extends HTMLElement {
   private makePrimitiveReactive(
     name: string,
     prop: unknown,
-    exposeAttr?: boolean,
-    watchers?: MinzeWatchers
+    exposeAttr?: boolean
   ) {
+    const rootName = name
     const stashPrefix = '$minze_stash_prop_'
     const stashName = `${stashPrefix}${name}`
     this[stashName] = prop
@@ -374,11 +414,15 @@ export class MinzeElement extends HTMLElement {
           // expose attribute
           exposeAttr && this.exposeAttr(name, newValue)
 
-          // run watcher callbacks
-          watchers?.forEach(async (watcher) => watcher[1](newValue, oldValue))
-
-          // request render
-          this.render()
+          this.reactiveChange<unknown>(
+            'primitive',
+            rootName,
+            this[stashName],
+            this,
+            rootName,
+            newValue,
+            oldValue
+          )
         }
       }
     })
@@ -399,21 +443,15 @@ export class MinzeElement extends HTMLElement {
     // stop right here if a property with the same name already exists
     if (camelName in this) return
 
-    // filter watchers based on name
-    const watchers = this.watch?.filter(
-      ([watcherName]) => watcherName === camelName
-    )
-
     // run a different method based on the type of the provided value
     if (value && typeof value === 'object') {
       this.makeComplexReactive(
         camelName,
         value as Record<string, unknown>,
-        exposeAttr,
-        watchers
+        exposeAttr
       )
     } else {
-      this.makePrimitiveReactive(camelName, value, exposeAttr, watchers)
+      this.makePrimitiveReactive(camelName, value, exposeAttr)
     }
   }
 
@@ -429,26 +467,21 @@ export class MinzeElement extends HTMLElement {
     const [name, value] = attr
     const camelName = dashToCamel(name)
     const dashName = name
+    const rootName = camelName
+    const rootProp =
+      typeof value === 'object' ? JSON.stringify(value) : String(value)
 
     // stop right here if a property with the same name already exists
     if (camelName in this) return
 
-    // filter watchers based on name
-    const watchers = this.watch?.filter(
-      ([watcherName]) => watcherName === camelName || watcherName === dashName
-    )
-
     const stashPrefix = '$minze_stash_attr_'
     const stashName = `${stashPrefix}${camelName}`
-    this[stashName] = value
+    this[stashName] = rootProp
 
     // set an attribute on the element if no attribute exists
     // and a fallback value is provided
-    if (value !== undefined && !this.getAttribute(dashName)) {
-      this.setAttribute(
-        dashName,
-        typeof value === 'object' ? JSON.stringify(value) : String(value)
-      )
+    if (rootProp !== undefined && !this.getAttribute(dashName)) {
+      this.setAttribute(dashName, rootProp)
     }
 
     // make property reactive
@@ -460,11 +493,15 @@ export class MinzeElement extends HTMLElement {
         if (oldValue !== newValue) {
           this[stashName] = newValue
 
-          // run watcher callbacks
-          watchers?.forEach(async (watcher) => watcher[1](newValue, oldValue))
-
-          // request render
-          this.render()
+          this.reactiveChange<string>(
+            'attr',
+            rootName,
+            this[stashName] as string,
+            this,
+            rootName,
+            newValue,
+            oldValue
+          )
         }
       }
     })
