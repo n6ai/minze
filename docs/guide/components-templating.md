@@ -187,6 +187,52 @@ Minze.defineAll([MyElement])
 <my-element></my-element>
 ```
 
+### Loading indicators
+
+If you are fetching some data from an external API you can use a loading indicator to display a loading state. In the example below the template is automatically rerendered after the reactive data property is reassigned.
+
+**Example**
+
+```js
+import Minze, { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  reactive = [['data', undefined]]
+
+  html = () => `
+    ${this.data ? `<div>${this.data}</div>` : '<div class="loading"></div>'}
+  `
+
+  css = () => `
+    .loading {
+      width: 1rem;
+      height: 1rem;
+      background: rgb(55 245 220);
+      animation: loading 1s infinite;
+    }
+
+    @keyframes loading {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  `
+
+  async onReactive() {
+    const delay = 2000 // ms
+    await new Promise((resolve) => setTimeout(resolve, delay))
+
+    this.data = 'Hello, Minze!'
+    console.log(`simulated response time: ${delay}`)
+  }
+}
+
+Minze.defineAll([MyElement])
+```
+
+```html
+<my-element></my-element>
+```
+
 ### Cloaking
 
 Cloaking is the process of hiding elements from the user until they are defined.
