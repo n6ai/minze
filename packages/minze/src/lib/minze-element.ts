@@ -243,7 +243,7 @@ export class MinzeElement extends HTMLElement {
    * this.select('div')
    * ```
    */
-  select<E extends Element = Element>(selectors: string): E | null {
+  select<E extends Element = Element>(selectors: string) {
     const root = this.shadowRoot
     return root?.querySelector<E>(selectors) ?? null
   }
@@ -256,9 +256,7 @@ export class MinzeElement extends HTMLElement {
    * this.selectAll('div')
    * ```
    */
-  selectAll<E extends Element = Element>(
-    selectors: string
-  ): NodeListOf<E> | null {
+  selectAll<E extends Element = Element>(selectors: string) {
     const root = this.shadowRoot
     return root?.querySelectorAll<E>(selectors) ?? null
   }
@@ -458,12 +456,12 @@ export class MinzeElement extends HTMLElement {
 
     // set an attribute on the element if no attribute exists
     // and a fallback value is provided
-    if (value !== undefined) {
-      this.getAttribute(dashName) ?? this.setAttribute(dashName, String(value))
+    if (value !== undefined && !this.getAttribute(dashName)) {
+      this.setAttribute(
+        dashName,
+        typeof value === 'object' ? JSON.stringify(value) : String(value)
+      )
     }
-
-    // set stash property
-    this[stashName] = value
 
     // make property reactive
     Object.defineProperty(this, camelName, {
@@ -560,9 +558,11 @@ export class MinzeElement extends HTMLElement {
    * Lifecycle (Internal) - Runs each time the element is moved to a new document.
    */
   private async adoptedCallback() {
-    this.onMove?.()
+    this.eventListeners?.forEach(async (eventTuple) =>
+      this.registerEvent(eventTuple, 'remove')
+    )
 
-    this.render()
+    this.onMove?.()
   }
 
   /**
