@@ -36,6 +36,7 @@
     "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
     "types-roll": "api-extractor run && rimraf temp",
     "clean": "rimraf dist/* temp",
+    "size": "npx gzip-size-cli dist/module.js --include-original",
     "release": "standard-version --no-verify --header --path ."
   },
   "devDependencies": {
