@@ -27,24 +27,23 @@ export class MinzeReactiveWatchers extends MinzeElement {
   watch: MinzeWatchers = [
     [
       'str',
-      (newValue, oldValue) => {
+      (newValue, oldValue, key, target) => {
         const el = this.select<HTMLDivElement>('.str')
-        if (el) el.innerHTML = `${newValue}, ${oldValue}`
+        if (el) el.innerHTML = `${newValue}, ${oldValue}, ${key}, ${target}`
       }
     ],
     [
       'arr',
-      (newValue, oldValue) => {
+      (newValue, oldValue, key, target) => {
         const el = this.select<HTMLDivElement>('.arr')
-        if (el) el.innerHTML = `${newValue}, ${oldValue}`
+        if (el) el.innerHTML = `${newValue}, ${oldValue}, ${key}, ${target}`
       }
     ],
     [
       'obj',
-      (newValue, oldValue) => {
-        console.log('working!!!')
+      (newValue, oldValue, key, target) => {
         const el = this.select<HTMLDivElement>('.obj')
-        if (el) el.innerHTML = `${newValue}, ${oldValue}`
+        if (el) el.innerHTML = `${newValue}, ${oldValue}, ${key}, ${target}`
       }
     ]
   ]

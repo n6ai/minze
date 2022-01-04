@@ -18,10 +18,12 @@ test(`MinzeElement: ${element}`, async ({ page }) => {
   await page.click(`${element} button`)
 
   expect(await page.locator(selectorStr).innerText()).toBe(
-    'changed text, initial text'
+    'changed text, initial text, str, [object HTMLElement]'
   )
-  expect(await page.locator(selectorArr).innerText()).toBe('4, undefined')
+  expect(await page.locator(selectorArr).innerText()).toBe(
+    '4, undefined, 3, 1,2,3,4'
+  )
   expect(await page.locator(selectorObj).innerText()).toBe(
-    'changed value, initial value'
+    'changed value, initial value, prop, [object Object]'
   )
 })
