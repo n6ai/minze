@@ -297,61 +297,49 @@ export class MinzeElement extends HTMLElement {
     // expose attribute
     if (exposeAttr) this.exposeAttr(rootName, rootProp)
 
-    // create a proxy function
-    const createProxy = (prop: Record<string, unknown>) => {
-      return new Proxy(prop, {
-        get: (target, prop, receiver) => {
+    // create trap function
+    const createTrap = () => {
+      return {
+        get: (target: object, prop: symbol) => {
           if (prop === isProxy) return true
-          else return Reflect.get(target, prop, receiver)
+          let value = Reflect.get(target, prop)
+
+          // create proxy on demand and assign it
+          if (typeof value === 'object' && !value[isProxy]) {
+            value = createProxy(value)
+            Reflect.set(target, prop, value)
+          }
+
+          return value
         },
-        set: (target, prop, newValue) => {
+        set: (target: object, prop: string, newValue: unknown) => {
           const oldValue = Reflect.get(target, prop)
 
           if (oldValue !== newValue) {
             Reflect.set(target, prop, newValue)
 
-            // run if the old value is undefined or
-            // if the oldValue is not undefined
-            // and both the oldValue and newValue are proxies
-            // this logic prevents unnecessary
-            // exposing, firing of callbacks and re-rendering
-            if (
-              oldValue === undefined ||
-              (oldValue !== undefined &&
-                oldValue[isProxy] === newValue[isProxy])
-            ) {
-              // expose attribute
-              if (exposeAttr) this.exposeAttr(rootName, rootProp)
+            // expose attribute
+            if (exposeAttr) this.exposeAttr(rootName, rootProp)
 
-              // run watcher callbacks
-              watchers?.forEach(async (watcher) =>
-                watcher[1](newValue, oldValue)
-              )
+            // run watcher callbacks
+            watchers?.forEach(async (watcher) => watcher[1](newValue, oldValue))
 
-              // request render
-              this.render()
-            }
+            // request render
+            this.render()
           }
+
           return true
-        }
-      })
-    }
-
-    // assign the root property
-    this[rootName] = createProxy(rootProp)
-
-    // iterator for nested properties
-    const deepIterator = (target: Record<string, unknown>) => {
-      for (const key in target) {
-        if (typeof target[key] === 'object') {
-          target[key] = createProxy(target[key] as Record<string, unknown>)
-          deepIterator(target[key] as Record<string, unknown>)
         }
       }
     }
 
-    // iterate through the root property
-    deepIterator(this[rootName] as Record<string, unknown>)
+    // create a proxy function
+    const createProxy = (target: Record<string, unknown>) => {
+      return new Proxy(target, createTrap())
+    }
+
+    // assign the root property
+    this[rootName] = createProxy(rootProp)
   }
 
   /**
