@@ -290,7 +290,7 @@ export class MinzeElement extends HTMLElement {
    * this.reactiveChange(type, rootName, rootProp, target, prop, newValue, oldValue)
    * ```
    */
-  private reactiveChange<T = object>(
+  private async reactiveChange<T = object>(
     type: 'complex' | 'primitive' | 'attr',
     rootName: string,
     rootProp: T,
