@@ -4,7 +4,7 @@
 
 ## Overview
 
-Minze (German shorthand for "Peppermint", pronounced `/ˈmɪnt͡sə/`) lets you rapidly build native web components.
+Minze (German shorthand for "Peppermint", pronounced [`/ˈmɪnt͡sə/`](https://upload.wikimedia.org/wikipedia/commons/c/c2/De-Minze.ogg)) lets you rapidly build native web components.
 
 It is not a framework for building complex user interfaces or single-page apps, like React, Vue or Angular. Instead, you can use Minze to create `encapsulated`, `reusable`, `maintainable`, `cross-framework` native web components.
 
