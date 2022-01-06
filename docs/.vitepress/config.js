@@ -252,6 +252,10 @@ module.exports = {
               link: '/guide/advanced-testing'
             },
             {
+              text: 'TensorFlow.js',
+              link: '/guide/advanced-tfjs'
+            },
+            {
               text: 'Performance',
               link: '/guide/advanced-performance'
             },
