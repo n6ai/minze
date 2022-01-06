@@ -20,6 +20,10 @@
 /**
  * Light mode
  */
+html:not(.dark) .img-dark {
+  display: none;
+}
+
 html:not(.dark) blockquote {
   color: rgb(120, 120, 120);
 }
@@ -99,6 +103,10 @@ html.dark:root {
 
 html.dark ::selection {
   background: rgb(80 80 80);
+}
+
+html.dark .img-light {
+  display: none;
 }
 
 html.dark blockquote {
