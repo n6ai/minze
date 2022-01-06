@@ -1,0 +1,128 @@
+:root {
+  --c-brand: rgb(90 250 175);
+  --c-brand-light: rgb(110 255 195);
+}
+
+/**
+ * General
+ */
+.nav-bar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-bar .logo {
+  height: 24px;
+  margin-right: 0;
+}
+
+/**
+ * Light mode
+ */
+html:not(.dark) blockquote {
+  color: rgb(120, 120, 120);
+}
+
+html:not(.dark) .action .item {
+  color: var(--c-black) !important;
+}
+
+/**
+ * Brand colors in combination with text have bad contrast on light backgrounds.
+ * So don't use them with links.
+ */
+/* sidebar */
+html:not(.dark) a.sidebar-link-item.active {
+  color: var(--c-text);
+}
+
+html:not(.dark) a.sidebar-link-item:not(.active):hover {
+  color: var(--c-text);
+  text-decoration: underline;
+}
+
+/* nav dropdown link */
+html:not(.dark) .nav-dropdown-link-item a.item:hover {
+  color: var(--c-text);
+  text-decoration: underline;
+}
+
+/* content links */
+html:not(.dark) .content p a,
+html:not(.dark) .content ul a,
+html:not(.dark) .content ol a {
+  color: var(--c-text);
+  text-decoration: underline;
+}
+
+html:not(.dark) .content p a:hover,
+html:not(.dark) .content ul a:hover,
+html:not(.dark) .content ol a:hover {
+  color: var(--c-text);
+}
+
+/* suggest changes link */
+html:not(.dark) .edit-link a.link:hover {
+  color: var(--c-text);
+  text-decoration: underline;
+}
+
+/* pagination */
+html:not(.dark) .next-and-prev-link a {
+  color: var(--c-text);
+}
+
+/**
+ * Dark mode
+ */
+html.dark:root {
+  --c-brand-light: rgb(130 255 215);
+
+  --c-black: rgb(32 32 32);
+  --c-black-light: rgb(40 40 40); /* cutom */
+  --c-black-lighter: rgb(50 50 50); /* cutom */
+
+  --c-text-light-1: rgb(195 195 195);
+  --c-text-light-2: rgb(170 170 170);
+  --c-text-light-3: rgb(150 150 150);
+
+  --c-divider-dark: rgb(84 84 88 / 60%);
+  --c-divider: var(--c-divider-dark);
+
+  --c-bg: var(--c-black);
+  --c-bg-accent: var(--c-black-light);
+
+  --code-inline-bg-color: rgba(100, 100, 100, 0.2);
+  --code-bg-color: var(--c-black-light);
+}
+
+html.dark ::selection {
+  background: rgb(80 80 80);
+}
+
+html.dark blockquote {
+  color: var(--c-text-light-3);
+  border-left-color: var(--c-text-light-3);
+}
+
+html.dark .action .item.alt {
+  color: var(--c-brand);
+}
+
+html.dark .nav-bar .nav-bar-title {
+  color: var(--c-white-dark);
+}
+
+html.dark .sidebar > .sidebar-links > .sidebar-link > .sidebar-link-item {
+  color: var(--c-white-dark);
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: var(--c-white-dark);
+}

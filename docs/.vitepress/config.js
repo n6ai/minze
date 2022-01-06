@@ -7,6 +7,43 @@ const META_TITLE = 'Minze'
 const META_DESCRIPTION = 'Dead-simple framework for sharable web components.'
 const META_IMAGE = 'https://minze.dev/social.jpg'
 
+const darkMode = `
+  ;(() => {
+    try {
+      const savedTheme = localStorage.getItem('minze-color-scheme')
+      const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+      if (savedTheme === 'dark' || !savedTheme && prefersDarkTheme) {
+        document.documentElement.classList.add('dark')
+      }
+    } catch (err) {}
+  })()
+`
+
+/**
+ * @type {import('vitepress').UserConfig['head']}
+ */
+const productionHead = [
+  [
+    'script',
+    {
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-DD0MESPTFW',
+      async: '',
+      type: 'text/javascript'
+    }
+  ],
+  [
+    'script',
+    {
+      type: 'text/javascript'
+    },
+    `window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DD0MESPTFW', { 'anonymize_ip': true });`
+  ]
+]
+
 /**
  * @type {import('vitepress').UserConfig}
  */
@@ -93,28 +130,8 @@ module.exports = {
         content: META_IMAGE
       }
     ],
-    ...(isProduction
-      ? [
-          [
-            'script',
-            {
-              src: 'https://www.googletagmanager.com/gtag/js?id=G-DD0MESPTFW',
-              async: '',
-              type: 'text/javascript'
-            }
-          ],
-          [
-            'script',
-            {
-              type: 'text/javascript'
-            },
-            `window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-DD0MESPTFW', { 'anonymize_ip': true });`
-          ]
-        ]
-      : [])
+    ['script', {}, darkMode],
+    ...(isProduction ? productionHead : [])
   ],
   themeConfig: {
     repo: 'n6ai/minze',
@@ -123,6 +140,12 @@ module.exports = {
     docsBranch: 'main',
     editLinks: true,
     editLinkText: 'Suggest changes to this page',
+
+    // algolia: {
+    //   appId: '',
+    //   apiKey: '',
+    //   indexName: ''
+    // },
 
     nav: [
       { text: 'Guide', link: '/guide/' },

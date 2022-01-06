@@ -1,0 +1,34 @@
+html.dark .custom-block.tip,
+html.dark .custom-block.info,
+html.dark .custom-block.details {
+  background-color: var(--c-black-lighter);
+  color: var(--c-text-light-1);
+}
+
+html.dark .custom-block.tip .custom-block-title {
+  color: var(--c-brand);
+}
+
+html.dark .custom-block.warning {
+  border-color: rgb(252 211 77);
+  background-color: var(--c-black-lighter);
+  color: var(--c-text-light-1);
+}
+
+html.dark .custom-block.warning .custom-block-title {
+  color: rgb(252 211 77);
+}
+
+html:not(.dark) .custom-block.danger a {
+  color: #4d0000;
+}
+
+html.dark .custom-block.danger {
+  background-color: var(--c-black-lighter);
+  color: var(--c-text-light-1);
+  border-color: rgb(250 100 100);
+}
+
+html.dark .custom-block.danger .custom-block-title {
+  color: rgb(250 100 100);
+}
