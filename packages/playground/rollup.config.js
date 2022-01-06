@@ -43,10 +43,16 @@ const createConfig = ({ format, file }) => {
         }
       })
     ],
-    external: format !== 'umd' && /^minze/, // embed minze only in cdn build
+    external: [
+      format !== 'umd' && /^minze/ // embed minze only in cdn build
+      // ...
+    ],
     output: {
       dir: resolve(__dirname, 'dist'),
-      format: format
+      format: format,
+      globals: {
+        // ...
+      }
     }
   }
 
