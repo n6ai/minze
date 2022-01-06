@@ -15,6 +15,7 @@ const darkMode = `
 
       if (savedTheme === 'dark' || !savedTheme && prefersDarkTheme) {
         document.documentElement.classList.add('dark')
+        localStorage.setItem('minze-color-scheme', 'dark')
       }
     } catch (err) {}
   })()

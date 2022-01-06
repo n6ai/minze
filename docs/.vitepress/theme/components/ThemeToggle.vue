@@ -54,10 +54,10 @@ const label = computed(() =>
 
 const toggleTheme = () => {
   try {
-    localStorage.setItem('minze-color-scheme', isDark.value ? 'light' : 'dark')
+    isDark.value = !isDark.value
+    document.documentElement.classList.toggle('dark')
+    localStorage.setItem('minze-color-scheme', isDark.value ? 'dark' : 'light')
   } catch (err) {}
-  document.documentElement.classList.toggle('dark')
-  isDark.value = !isDark.value
 }
 
 // run on color s change
