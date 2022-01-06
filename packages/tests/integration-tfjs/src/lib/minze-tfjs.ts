@@ -38,13 +38,13 @@ export class MinzeTfjs extends MinzeElement {
 
     // make prediction (the result should be around 400)
     const xPred = tf.tensor([200], [1, 1])
-    const prediction = model.predict(xPred) as tf.Tensor
+    const yPred = model.predict(xPred) as tf.Tensor
 
     // assign to reactive property
-    this.prediction = ((await prediction.array()) as number[])[0]
+    this.prediction = ((await yPred.array()) as number[])[0]
 
     // clean up
-    tf.dispose([x, y, xPred, prediction])
+    tf.dispose([x, y, xPred, yPred])
     tf.disposeVariables()
   }
 }
