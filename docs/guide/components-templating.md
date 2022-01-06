@@ -1,6 +1,6 @@
 # Templating
 
-By default, templating is done through template literals. The `html` property expects a function with a return value of type `string`.
+By default, templating is done through [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). The `html` property expects a function with a return value of type `string`.
 
 ::: tip
 There is a private property called `template` that combines the defined `html` and `css` properties into one. The final result is what's being rendered.

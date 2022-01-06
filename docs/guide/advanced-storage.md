@@ -18,7 +18,7 @@ class MyElement extends MinzeElement {
 
   onReady() {
     const msg = sessionStorage.getItem('minze:msg')
-    console.log(msg) // 'Helo Minze!'
+    console.log(msg) // Helo Minze!
   }
 }
 
@@ -45,7 +45,7 @@ class MyElement extends MinzeElement {
 
   onReady() {
     const msg = localStorage.getItem('minze:msg')
-    console.log(msg) // 'Helo Minze!'
+    console.log(msg) // Helo Minze!
   }
 }
 
