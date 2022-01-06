@@ -8,7 +8,7 @@
 
 > Dead-simple framework for sharable web components.
 
-Minze (German shorthand for "Peppermint", pronounced `/ˈmɪnt͡sə/`) lets you rapidly build native web components.
+Minze (German shorthand for "Peppermint", pronounced [`/ˈmɪnt͡sə/`](https://upload.wikimedia.org/wikipedia/commons/c/c2/De-Minze.ogg)) lets you rapidly build native web components.
 
 It provides an intuitive abstraction layer around the web components API with its own fully typed [JavaScript API](https://minze.dev/api/). Including reactivity, lifecycle hooks, scoped styles, one-shot components registration, and more.
 
