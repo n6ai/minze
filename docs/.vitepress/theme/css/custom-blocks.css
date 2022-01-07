@@ -20,7 +20,7 @@ html.dark .custom-block.warning .custom-block-title {
 }
 
 html:not(.dark) .custom-block.danger a {
-  color: #4d0000;
+  color: rgb(77 0 0);
 }
 
 html.dark .custom-block.danger {
