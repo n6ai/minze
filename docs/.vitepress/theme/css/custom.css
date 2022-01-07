@@ -18,11 +18,17 @@
 }
 
 .content h1,
+.home-content h1,
 .content h2,
+.home-content h2,
 .content h3,
+.home-content h3,
 .content h4,
+.home-content h4,
 .content h5,
-.content h6 {
+.home-content h5,
+.content h6,
+.home-content h6 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
