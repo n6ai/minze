@@ -17,18 +17,12 @@
   margin-right: 0;
 }
 
-.content h1,
-.home-content h1,
-.content h2,
-.home-content h2,
-.content h3,
-.home-content h3,
-.content h4,
-.home-content h4,
-.content h5,
-.home-content h5,
-.content h6,
-.home-content h6 {
+[class$='content'] h1,
+[class$='content'] h2,
+[class$='content'] h3,
+[class$='content'] h4,
+[class$='content'] h5,
+[class$='content'] h6 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
