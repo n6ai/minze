@@ -17,6 +17,22 @@
   margin-right: 0;
 }
 
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+a.header-anchor {
+  position: absolute;
+}
+
 /**
  * Light mode
  */
