@@ -26,15 +26,18 @@ import {
  * are defined dynamically, we are defining
  * their types separately in an interface.
  *
- * Attribute properties will always be strings
+ * With the exception of undefined, null, false or true
+ * all attribute properties will always be strings
  * no matter the initial value.
  */
 export interface MyElement {
+  // reactive properties
   aBoolean: boolean
   anObject: {
     foo: string
   }
-  text: string
+  // reactive attribute properties
+  text: string | null
   bgColor: string
 }
 
