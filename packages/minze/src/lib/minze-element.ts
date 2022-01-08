@@ -179,9 +179,9 @@ export class MinzeElement extends HTMLElement {
       <style>
         :host { box-sizing: border-box; display: block; }
         :host([hidden]) { display: none }
-        ${this.css && this.css() !== '' ? `${this.css()}` : ''}
+        ${this.css?.()}
       </style>
-      ${(this.html && this.html()) || '<slot></slot>'}
+      ${this.html?.() || '<slot></slot>'}
     `
   }
 
