@@ -28,3 +28,14 @@ export function camelToDash(value: string) {
 export function dashToCamel(value: string) {
   return value.replace(/-([a-z])/g, (g) => g[1].toUpperCase())
 }
+
+/**
+ * Logs a waring to the console.
+ *
+ * @example
+ * ```
+ * warn('This is a warning')
+ */
+export function warn(msg: string, ...args: unknown[]) {
+  console.warn(`[Minze warn] ${msg}`, ...args)
+}

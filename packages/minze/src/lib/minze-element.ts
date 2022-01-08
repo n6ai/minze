@@ -1,4 +1,4 @@
-import { isProxy, camelToDash, dashToCamel } from './utils'
+import { isProxy, camelToDash, dashToCamel, warn } from './utils'
 
 export type MinzeProp = [name: string, value: unknown, exposeAttr?: boolean]
 export type MinzeAttr = [name: string, value?: unknown]
@@ -441,7 +441,12 @@ export class MinzeElement extends HTMLElement {
     const camelName = name
 
     // stop right here if a property with the same name already exists
-    if (camelName in this) return
+    if (camelName in this) {
+      warn(
+        `A property with the name "${camelName}" already exists in this component.`
+      )
+      return
+    }
 
     // run a different method based on the type of the provided value
     if (value && typeof value === 'object') {
@@ -472,7 +477,10 @@ export class MinzeElement extends HTMLElement {
       typeof value === 'object' ? JSON.stringify(value) : String(value)
 
     // stop right here if a property with the same name already exists
-    if (camelName in this) return
+    if (camelName in this) {
+      warn(`A property with the name "${camelName}" already exists.`)
+      return
+    }
 
     const stashPrefix = '$minze_stash_attr_'
     const stashName = `${stashPrefix}${camelName}`
