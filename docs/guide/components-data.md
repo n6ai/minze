@@ -108,11 +108,15 @@ Tuple structure: [`name`, `value?`]
 2. **value:** (optional) not defined or any value type, which will be used to set the initial attribute, if none is found on the HTML element.
 
 ::: tip
+All created attribute properties can be accessed inside the component with the `camelCase` notation. E.g. for `my-attribute` the attribute property will be `myAttribute`.
+:::
+
+::: tip
 The attribute on the component is always the source of truth and not the created attribute property. So when the attribute value changes, the property will be updated. But changing the property will **not** update the attribute.
 :::
 
 ::: warning
-All attribute properties will always be from type `string`, no matter the provided value type, and can be accessed inside the component with the `camelCase` notation.
+With the exception of `undefined`, `null`, `false` or `true`, all attribute properties will always be from type `string`, no matter the provided value type.
 :::
 
 ::: danger
