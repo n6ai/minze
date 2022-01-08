@@ -10,6 +10,7 @@ export const isProxy = Symbol('isProxy')
  * @example
  * ```
  * camelToDashCase('someString') // 'some-string'
+ * ```
  */
 export function camelToDash(value: string) {
   return value
@@ -24,6 +25,7 @@ export function camelToDash(value: string) {
  * @example
  * ```
  * dashToCamelCase('some-string') // 'someString'
+ * ```
  */
 export function dashToCamel(value: string) {
   return value.replace(/-([a-z])/g, (g) => g[1].toUpperCase())
@@ -35,6 +37,7 @@ export function dashToCamel(value: string) {
  * @example
  * ```
  * warn('This is a warning')
+ * ```
  */
 export function warn(msg: string, ...args: unknown[]) {
   console.warn(`[Minze warn] ${msg}`, ...args)
