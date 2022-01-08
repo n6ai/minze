@@ -264,10 +264,6 @@ module.exports = {
               link: '/guide/advanced-transitions'
             },
             {
-              text: 'Form Input Bindings',
-              link: '/guide/advanced-form-input-bindings'
-            },
-            {
               text: 'Storage',
               link: '/guide/advanced-storage'
             },
