@@ -480,13 +480,21 @@ export class MinzeElement extends HTMLElement {
 
     // set an attribute on the element if no attribute exists
     // and a fallback value is provided
-    if (rootProp !== undefined && !this.getAttribute(dashName)) {
+    if (attr.length === 2 && !this.getAttribute(dashName)) {
       this.setAttribute(dashName, rootProp)
     }
 
     // make property reactive
     Object.defineProperty(this, camelName, {
-      get: () => this.getAttribute(dashName),
+      get: () => {
+        const value = this.getAttribute(dashName)
+
+        // convert undefined, null and booleans
+        if (value == 'undefined') return undefined
+        else if (value == 'null') return null
+        else if (value?.match(/^(true|false)$/)) return JSON.parse(value)
+        else return value
+      },
       set: (newValue) => {
         const oldValue = this[stashName]
 
