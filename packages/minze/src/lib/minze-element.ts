@@ -509,10 +509,10 @@ export class MinzeElement extends HTMLElement {
         if (oldValue !== newValue) {
           this[stashName] = newValue
 
-          this.reactiveChange<string>(
+          this.reactiveChange<undefined | null | boolean | string>(
             'attr',
             rootName,
-            this[stashName] as string,
+            this[stashName] as undefined | null | boolean | string,
             this,
             rootName,
             newValue,
