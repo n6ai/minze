@@ -5,15 +5,42 @@ export interface MinzeReactiveAttrs {
 }
 
 export class MinzeReactiveAttrs extends MinzeElement {
-  attrs: MinzeAttrs = [['count', 0]]
+  attrs: MinzeAttrs = [
+    ['count', 0],
+    ['empty'],
+    ['undefined', undefined],
+    ['null', null],
+    ['boolean', false],
+    ['object', {}]
+  ]
 
   static get observedAttributes() {
     return ['count']
   }
 
   html = () => `
-    <div>
+    <div class="count">
       ${this.count}
+    </div>
+
+    <div class="empty">
+      ${typeof this.empty}
+    </div>
+
+    <div class="undefined">
+      ${typeof this.undefined}
+    </div>
+
+    <div class="null">
+      ${typeof this.null}
+    </div>
+
+    <div class="boolean">
+      ${typeof this.boolean}
+    </div>
+
+    <div class="object">
+      ${typeof this.object}
     </div>
   `
 }
