@@ -268,6 +268,10 @@ module.exports = {
               link: '/guide/advanced-storage'
             },
             {
+              text: 'Element Examples',
+              link: '/guide/advanced-element-examples'
+            },
+            {
               text: 'Testing',
               link: '/guide/advanced-testing'
             },
