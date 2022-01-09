@@ -7,6 +7,7 @@ export interface MinzeReactiveAttrs {
 export class MinzeReactiveAttrs extends MinzeElement {
   attrs: MinzeAttrs = [
     ['count', 0],
+    'shorthand',
     ['empty'],
     ['undefined', undefined],
     ['null', null],
@@ -21,6 +22,10 @@ export class MinzeReactiveAttrs extends MinzeElement {
   html = () => `
     <div class="count">
       ${this.count}
+    </div>
+
+    <div class="shorthand">
+      ${typeof this.shorthand}
     </div>
 
     <div class="empty">

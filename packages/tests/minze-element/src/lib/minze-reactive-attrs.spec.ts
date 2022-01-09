@@ -10,6 +10,9 @@ test(`MinzeElement: ${element}`, async ({ page }) => {
   expect(await page.locator(`${element} .count`).innerText()).toBe('0')
   expect(await page.getAttribute(element, 'count')).toBe('0')
 
+  expect(await page.locator(`${element} .shorthand`).innerText()).toBe('object') // null object
+  expect(await page.getAttribute(element, 'shorthand')).toBeFalsy()
+
   expect(await page.locator(`${element} .empty`).innerText()).toBe('object') // null object
   expect(await page.getAttribute(element, 'empty')).toBeFalsy()
 

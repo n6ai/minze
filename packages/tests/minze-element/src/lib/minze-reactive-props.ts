@@ -12,6 +12,7 @@ export interface MinzeReactiveProps {
 
 export class MinzeReactiveProps extends MinzeElement {
   reactive: MinzeProps = [
+    'shorthand',
     ['str', 'initial text', true],
     ['arr', [1, 2, 3], true],
     [
@@ -26,6 +27,7 @@ export class MinzeReactiveProps extends MinzeElement {
   ]
 
   html = () => `
+    <div class="shorthand">${this.shorthand}</div>
     <div class="str">${this.str}</div>
     <div class="arr">${this.arr}</div>
     <div class="obj">${this.obj.nested.prop}</div>
@@ -33,6 +35,7 @@ export class MinzeReactiveProps extends MinzeElement {
   `
 
   handleClick = () => {
+    this.shorthand = 'not undefined'
     this.str = 'changed text'
     this.arr.push(4)
     this.obj.nested.prop = 'changed value'
