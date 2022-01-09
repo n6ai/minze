@@ -17,8 +17,10 @@ class MyElement extends MinzeElement {
   myProperty = 'Component Property'
 
   onReady() {
-    console.log(myProperty) // Constant
-    console.log(this.myProperty) // Component Property
+    console.log(
+      myProperty, // Constant
+      this.myProperty // Component Property
+    )
   }
 }
 
@@ -55,7 +57,7 @@ Minze.defineAll([MyElement])
 
 ## Reactive Properties
 
-`reactive` dynamically creates reactive properties on the element. A change to a reactive property will request a component re-render. `reactive` should be an array containing one or more tuples.
+`reactive` dynamically creates reactive properties on the element. A change to a reactive property will request a component re-render. `reactive` should be an array containing one or more strings or tuples.
 In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
 Every tuple takes up to 3 values. The first 2 are required, the third is optional.
@@ -70,6 +72,10 @@ Tuple structure: [`name`, `value`, `exposeAttr?`]
 The created property is always the source of truth and not the exposed attribute. So when changing the attribute value, the property will not be updated. But changing the property value will update the attribute.
 :::
 
+::: warning
+If you use the shorthand notation and provide a `camelCase` string instead of a tuple for a reactive property, the reactive property will be created with a default value of `undefined`.
+:::
+
 **Example**
 
 ```js
@@ -77,14 +83,18 @@ import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   reactive = [
+    'myValue',
     ['myProperty', 'Hello Minze!'],
     ['myNumber', 99]
     // ...
   ]
 
   onReady() {
-    console.log(this.myProperty) // Hello Minze!
-    console.log(this.myNumber) // 99
+    console.log(
+      this.myValue, // undefined
+      this.myProperty, // Hello Minze!
+      this.myNumber // 99
+    )
   }
 }
 
@@ -97,7 +107,7 @@ Minze.defineAll([MyElement])
 
 ## Attribute Properties / Attributes
 
-`attrs` dynamically creates reactive properties for attributes. A change to a reactive attribute property will request a component re-render. `attrs` should be an array containing one or more tuples.
+`attrs` dynamically creates reactive properties for attributes. A change to a reactive attribute property will request a component re-render. `attrs` should be an array containing one or more strings or tuples.
 In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
 Every tuple takes up to 2 values. The first 1 is required, the second is optional.
@@ -119,6 +129,10 @@ The attribute on the component is always the source of truth and not the created
 With the exception of `undefined`, `null`, `false` or `true`, all attribute properties will always be from type `string`, no matter the provided value type.
 :::
 
+::: warning
+If you use the shorthand notation and provide a `dash-case` string instead of a tuple for a reactive attribute property, the reactive attribute property will be created with a default value of `undefined`.
+:::
+
 ::: danger
 For attribute property updates to be effective (on attribute changes), you have to make these attributes **observable**. It can be done by providing them to the **[observedAttributes](#observed-attributes)** getter.
 :::
@@ -130,12 +144,17 @@ import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   attrs = [
-    ['my-attribute']
+    'my-attribute'['my-second-attribute'],
+    ['my-third-attribute', 'Hello Minze again!']
     // ...
   ]
 
   onReady() {
-    console.log(this.myAttribute) // Hello Minze!
+    console.log(
+      this.myAttribute, // undefined
+      this.mySecondAttribute, // Hello Minze!
+      this.myThirdAttribute // Hello Minze again!
+    )
   }
 }
 
@@ -143,7 +162,7 @@ Minze.defineAll([MyElement])
 ```
 
 ```html
-<my-element my-attribute="Hello Minze!"></my-element>
+<my-element my-second-attribute="Hello Minze!"></my-element>
 ```
 
 ## Observed Attributes
@@ -157,7 +176,7 @@ import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   attrs = [
-    ['my-attribute']
+    'my-attribute'
     // ...
   ]
 

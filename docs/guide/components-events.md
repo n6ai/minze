@@ -67,7 +67,8 @@ import Minze, { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onReady() {
-    this.cast('minze:ready')
+    const optionalDetail = { msg: 'Hello Minze!' }
+    this.cast('minze:ready', optionalDetail)
   }
 }
 

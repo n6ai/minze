@@ -130,11 +130,11 @@ It's a good idea to prefix your custom event names to avoid collisions with othe
 ```js
 import Minze from 'minze'
 
-const myDetailData = {
-  foo: 'bar'
+const optionalDetail = {
+  msg: 'Hello Minze!'
 }
 
-Minze.cast('minze:my-event-name', myDetailData)
+Minze.cast('minze:my-event-name', optionalDetail)
 ```
 
 ### listen
@@ -227,7 +227,7 @@ export class MyElement extends MinzeElement {
 
 ### reactive
 
-Dynamically creates reactive properties on the element. A change to a reactive property will request a component re-render. `reactive` should be an array containing one or more tuples.
+Dynamically creates reactive properties on the element. A change to a reactive property will request a component re-render. `reactive` should be an array containing one or more strings or tuples.
 In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
 Every tuple takes up to 3 values. The first 2 are required, the third is optional.
@@ -242,9 +242,13 @@ Tuple structure: [`name`, `value`, `exposeAttr?`]
 The created property is always the source of truth and not the exposed attribute. So when changing the attribute value, the property will not be updated. But changing the property value will update the attribute.
 :::
 
+::: warning
+If you use the shorthand notation and provide a `camelCase` string instead of a tuple for a reactive property, the reactive property will be created with a default value of `undefined`.
+:::
+
 - **Property**
 
-- **Type:** `readonly [name: string, value: unknown, exposeAttr?: boolean][]`
+- **Type:** `readonly (string | [name: string, value: unknown, exposeAttr?: boolean])[]`
 
 - **Example:**
 
@@ -253,6 +257,7 @@ import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   reactive = [
+    'anUndefined', // will be created as undefined
     ['aString', 'foo'],
     ['aBoolean', false],
     ['anArray', [1, 2, 3], true],
@@ -265,7 +270,14 @@ export class MyElement extends MinzeElement {
 
   onReady() {
     this.aString = 'bar'
-    console.log(this.aString, this.aBoolean, this.anArray, this.anObject)
+
+    console.log(
+      this.anUndefined, // undefined
+      this.aString, // bar
+      this.aBoolean, // false
+      this.anArray, // [1, 2, 3]
+      this.anObject // { foo: 'bar' }
+    )
   }
 }
 ```
@@ -280,7 +292,7 @@ export class MyElement extends MinzeElement {
 
 ### attrs
 
-Dynamically creates reactive properties for attributes. A change to a reactive attribute property will request a component re-render. `attrs` should be an array containing one or more tuples.
+Dynamically creates reactive properties for attributes. A change to a reactive attribute property will request a component re-render. `attrs` should be an array containing one or more strings or tuples.
 In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
 Every tuple takes up to 2 values. The first 1 is required, the second is optional.
@@ -302,13 +314,17 @@ The attribute on the component is always the source of truth and not the created
 With the exception of `undefined`, `null`, `false` or `true`, all attribute properties will always be from type `string`, no matter the provided value type.
 :::
 
+::: warning
+If you use the shorthand notation and provide a `dash-case` string instead of a tuple for a reactive attribute property, the reactive attribute property will be created with a default value of `undefined`.
+:::
+
 ::: danger
 For attribute property updates to be effective (on attribute changes), you have to make these attributes **observable**. It can be done by providing them to the **[observedAttributes](#observedattributes)** getter.
 :::
 
 - **Property**
 
-- **Type:** `readonly [name: string, value?: unknown][]`
+- **Type:** `readonly (string | [name: string, value?: unknown])[]`
 
 - **Example:**
 
@@ -316,7 +332,7 @@ For attribute property updates to be effective (on attribute changes), you have 
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  attrs = [['text'], ['bg-color', '#000']]
+  attrs = ['text', ['bg-color', '#000']]
 
   onReady() {
     console.log(this.text, this.bgColor)
@@ -346,7 +362,7 @@ Observes the provided attribute names and updates any attribute properties defin
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  attrs = [['text'], ['bg-color', '#000']]
+  attrs = ['text', ['bg-color', '#000']]
 
   static get observedAttributes() {
     return ['text', 'bg-color']
@@ -383,19 +399,16 @@ Tuple structure: [`name`, `callback`]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  reactive = [['foo', 'bar']]
+  reactive = [['count', 0]]
 
-  watch = [
-    [
-      'foo',
-      (newValue, oldValue, key, target) => {
-        console.log(newValue, oldValue, key, target) // baz, bar, foo, this
-      }
-    ]
-  ]
+  watchCount = (newValue, oldValue, key, target) => {
+    console.log(newValue, oldValue, key, target) // 1, 0, count, this
+  }
+
+  watch = [['count', this.watchCount]]
 
   onReady() {
-    this.foo = 'baz'
+    this.count = 1
   }
 }
 ```
@@ -437,11 +450,11 @@ export class MyElement extends MinzeElement {
   `
 
   handleClick = () => {
-    const myDetailData = {
-      foo: 'bar'
+    const optionalDetail = {
+      msg: 'Hello Minze!'
     }
 
-    this.cast('minze:my-event-name', myDetailData)
+    this.cast('minze:my-event-name', optionalDetail)
   }
 
   handleCast = (event) => {
@@ -606,11 +619,11 @@ import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onReady() {
-    const myDetailData = {
-      foo: 'bar'
+    const optionalDetail = {
+      msg: 'Hello Minze!'
     }
 
-    this.cast('minze:ready', myDetailData)
+    this.cast('minze:ready', optionalDetail)
   }
 }
 ```
@@ -811,9 +824,9 @@ Some properties you can define are from the `tuple` type, but TypeScript doesn't
 
 ### MinzeProps
 
-Declares `reactive` property as an array of tuples.
+Declares `reactive` property as a mixed array of strings and tuples.
 
-- **Type:** `readonly [name: string, value: unknown, exposeAttr?: boolean][]`
+- **Type:** `readonly (string | [name: string, value: unknown, exposeAttr?: boolean])[]`
 
 - **Example:**
 
@@ -821,19 +834,20 @@ Declares `reactive` property as an array of tuples.
 import { MinzeElement, MinzeProps } from 'minze'
 
 export interface MyElement {
-  foo: string
+  foo: undefined
+  count: number
 }
 
 export class MyElement extends MinzeElement {
-  reactive: MinzeProps = [['foo', 'bar']]
+  reactive: MinzeProps = ['foo', ['count', 0]]
 }
 ```
 
 ### MinzeAttrs
 
-Declares `attrs` property as an array of tuples.
+Declares `attrs` property as a mixed array of strings and tuples.
 
-- **Type:** `readonly [name: string, value?: unknown][]`
+- **Type:** `readonly (string | [name: string, value?: unknown])[]`
 
 - **Example:**
 
@@ -841,11 +855,12 @@ Declares `attrs` property as an array of tuples.
 import { MinzeElement, MinzeAttrs } from 'minze'
 
 export interface MyElement {
-  foo: string
+  foo: undefined
+  count: string
 }
 
 export class MyElement extends MinzeElement {
-  attrs: MinzeAttrs = [['foo']]
+  attrs: MinzeAttrs = ['foo', ['count', 0]]
 }
 ```
 
@@ -861,14 +876,16 @@ Declares `watch` property as an array of tuples.
 import { MinzeElement, MinzeWatchers } from 'minze'
 
 export class MyElement extends MinzeElement {
-  watch: MinzeWatchers = [
-    [
-      'foo',
-      (newValue, oldValue, key, target) => {
-        console.log(newValue, oldValue, key, target)
-      }
-    ]
-  ]
+  watchCount = (
+    newValue: unknown,
+    oldValue: unknown,
+    key: string,
+    target: object | typeof MinzeElement
+  ) => {
+    console.log(newValue, oldValue, key, target)
+  }
+
+  watch: MinzeWatchers = [['count', this.watchCount]]
 }
 ```
 

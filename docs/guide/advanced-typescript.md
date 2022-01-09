@@ -37,7 +37,7 @@ export interface MyElement {
     foo: string
   }
   // reactive attribute properties
-  text: string | null
+  text: string | undefined
   bgColor: string
 }
 
@@ -46,8 +46,9 @@ export interface MyElement {
  */
 export class MyElement extends MinzeElement {
   /**
-   * Reactive properties have to be explicitly defined as an array of tuples.
-   * Otherwise, TypeScript will infer them as an array of arrays.
+   * Reactive properties have to be explicitly defined
+   * as a mixed array of strings and tuples.
+   * Otherwise, TypeScript will infer them as an array of strings and arrays.
    */
   reactive: MinzeProps = [
     ['aBoolean', false],
@@ -55,10 +56,11 @@ export class MyElement extends MinzeElement {
   ]
 
   /**
-   * Reactive attribute properties have to be explicitly defined as an array of tuples.
-   * Otherwise, TypeScript will infer them as an array of arrays.
+   * Reactive attribute properties have to be explicitly defined
+   * as a mixed array of strings and tuples.
+   * Otherwise, TypeScript will infer them as an array of strings and arrays.
    */
-  attrs: MinzeAttrs = [['text'], ['bg-color', '#000']]
+  attrs: MinzeAttrs = ['text', ['bg-color', '#000']]
 
   /**
    * Here we are defining which attributes should be observed.

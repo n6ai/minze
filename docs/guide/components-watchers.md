@@ -19,19 +19,16 @@ Tuple structure: [`name`, `callback`]
 import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  reactive = [['foo', 'bar']]
+  reactive = [['count', 0]]
 
-  watch = [
-    [
-      'foo',
-      (newValue, oldValue, key, target) => {
-        console.log(newValue, oldValue, key, target) // baz, bar, foo, this
-      }
-    ]
-  ]
+  watchCount = (newValue, oldValue, key, target) => {
+    console.log(newValue, oldValue, key, target) // 1, 0, count, this
+  }
+
+  watch = [['count', this.watchCount]]
 
   onReady() {
-    this.foo = 'baz'
+    this.count = 1
   }
 }
 

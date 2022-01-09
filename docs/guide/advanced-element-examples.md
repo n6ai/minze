@@ -12,7 +12,7 @@ Recreating some basic functionality of the `<a></a>` link element with Minze.
 import Minze, { MinzeElement } from 'minze'
 
 class CustomLink extends MinzeElement {
-  attrs = [['href'], ['target']]
+  attrs = ['href', 'target']
 
   css = () => `
     :host {
@@ -59,11 +59,11 @@ class CustomInput extends MinzeElement {
     ['firstRender', true]
   ]
 
-  attrs = [['placeholder'], ['type'], ['name']]
+  attrs = ['placeholder', 'type', 'name']
 
   html = () => `
     <input
-      ${this.attrs.map((attr) => `${attr[0]}="${this[attr[0]]}"`).join(' ')}
+      ${this.attrs.map((attr) => `${attr}="${this[attr]}"`).join(' ')}
       ${this.value ? `value="${this.value}"` : ''}
     />
   `

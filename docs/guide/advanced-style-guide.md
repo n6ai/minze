@@ -63,7 +63,7 @@ export class MyElement extends MinzeElement {}
 // ✖ Bad
 class MyElement extends MinzeElement {
   reactive = [['my-propery', 'value']]
-  attrs = [['myAttribute']]
+  attrs = ['myAttribute']
   MYPROPERTY = 'value'
   my_method() {}
 }
@@ -71,7 +71,7 @@ class MyElement extends MinzeElement {
 // ✔ Good
 class MyElement extends MinzeElement {
   reactive = [['myPropery', 'value']]
-  attrs = [['my-attribute']]
+  attrs = ['my-attribute']
   myProperty = 'value'
   myMethod() {}
 }
@@ -157,10 +157,10 @@ export interface MyElement {
 // custom component
 export class MyElement extends MinzeElement {
   // reactive properties
-  reactive = [['foo', 'bar']]
+  reactive = [['count', 0]]
 
   // reactive attributes
-  attrs = [['text'], ['bg-color']]
+  attrs = ['text', 'bg-color']
 
   // observed attributes
   static get observedAttributes() {
@@ -176,7 +176,7 @@ export class MyElement extends MinzeElement {
   }
 
   // watchers
-  watch = [['foo', () => {}]]
+  watch = [['count', () => {}]]
 
   // html template
   html = () => `
