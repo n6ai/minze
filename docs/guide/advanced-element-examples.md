@@ -25,7 +25,7 @@ class CustomLink extends MinzeElement {
     }
   `
 
-  handleClick() {
+  handleClick = () => {
     if (this.target && this.href) window.open(this.href, this.target)
     else if (this.href) location.href = this.href
   }
