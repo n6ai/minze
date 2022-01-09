@@ -1,7 +1,10 @@
 import { isProxy, camelToDash, dashToCamel, warn } from './utils'
 
-export type MinzeProp = [name: string, value: unknown, exposeAttr?: boolean]
-export type MinzeAttr = [name: string, value?: unknown]
+export type MinzeProp =
+  | string
+  | [name: string, value: unknown, exposeAttr?: boolean]
+
+export type MinzeAttr = string | [name: string, value?: unknown]
 
 export type MinzeWatcher = [
   name: string,
@@ -70,12 +73,14 @@ export class MinzeElement extends HTMLElement {
   /**
    * Defines properties that should be created as reactive.
    *
-   * reactive takes an array of tuples: [[ name, value, attrs? ], ...]
+   * reactive takes a mixed array of strings and tuples:
+   * [name, [ name, value, exposeAttr? ], ...]
    *
    * @example
    * ```
    * class MyElement extends MinzeElement {
    *   reactive = [
+   *     'foo',
    *     ['active', false],
    *     ['amount', 0, true]
    *   ]
@@ -87,12 +92,14 @@ export class MinzeElement extends HTMLElement {
   /**
    * Defines attribute properties that should be created as reactive.
    *
-   * attrs takes an array of tuples: [[ name, value? ], ...]
+   * attrs takes a mixed array of strings and tuples:
+   * [name [ name, value? ], ...]
    *
    * @example
    * ```
    * class MyElement extends MinzeElement {
    *   attrs = [
+   *     'foo',
    *     ['active'],
    *     ['amount', 0]
    *   ]
@@ -437,7 +444,9 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   private registerProp(prop: MinzeProp) {
-    const [name, value, exposeAttr] = prop
+    const name = typeof prop === 'string' ? prop : prop[0]
+    const value = typeof prop === 'string' ? undefined : prop[1]
+    const exposeAttr = typeof prop === 'string' ? undefined : prop[2]
     const camelName = name
 
     // stop right here if a property with the same name already exists
@@ -469,7 +478,8 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   private registerAttr(attr: MinzeAttr) {
-    const [name, value] = attr
+    const name = typeof attr === 'string' ? attr : attr[0]
+    const value = typeof attr === 'string' ? undefined : attr[1]
     const camelName = dashToCamel(name)
     const dashName = name
     const rootName = camelName
@@ -488,7 +498,11 @@ export class MinzeElement extends HTMLElement {
 
     // set an attribute on the element if no attribute exists
     // and a fallback value is provided
-    if (attr.length === 2 && !this.getAttribute(dashName)) {
+    if (
+      Array.isArray(attr) &&
+      attr.length === 2 &&
+      !this.getAttribute(dashName)
+    ) {
       this.setAttribute(dashName, rootProp)
     }
 
