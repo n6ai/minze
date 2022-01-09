@@ -346,11 +346,11 @@ Observes the provided attribute names and updates any attribute properties defin
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
+  attrs = [['text'], ['bg-color', '#000']]
+
   static get observedAttributes() {
     return ['text', 'bg-color']
   }
-
-  attrs = [['text'], ['bg-color', '#000']]
 
   onAttributeChange() {
     console.log(this.text, this.bgColor)
