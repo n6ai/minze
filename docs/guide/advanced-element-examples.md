@@ -39,7 +39,9 @@ Minze.defineAll([CustomLink])
 <!-- prettier-start-ignore -->
 
 ```html
-<custom-link href="https://google.com" target="_blank"> Hi there! </custom-link>
+<custom-link href="https://google.com" target="_blank">
+  Hello Minze!
+</custom-link>
 ```
 
 <!-- prettier-end-ignore -->
