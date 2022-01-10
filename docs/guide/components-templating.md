@@ -152,7 +152,7 @@ class MyElement extends MinzeElement {
   html = () => `
     <ul>
       ${this.myList.map((item) => `<li>${item}</li>`).join('')}
-    <ul>
+    </ul>
   `
 }
 
