@@ -110,6 +110,20 @@ export class MinzeElement extends HTMLElement {
   attrs?: MinzeAttrs
 
   /**
+   * Defines attributes which should be observed.
+   *
+   * observedAttributes takes an array strings.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   static observedAttributes = ['active', 'amount']
+   * }
+   * ```
+   */
+  static observedAttributes?: string[]
+
+  /**
    * Defines watchers with callbacks for reactive properties and attrs.
    * Whenever a property changes the watcher will be called.
    *
