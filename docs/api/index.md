@@ -352,6 +352,10 @@ export class MyElement extends MinzeElement {
 
 Observes the provided attribute names and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChange` and `afterAttributeChange` hooks are called.
 
+::: warning
+`observedAttributes` has to be a `static` property.
+:::
+
 - **Static Property**
 
 - **Type:** `string[]`

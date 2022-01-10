@@ -169,6 +169,10 @@ Minze.defineAll([MyElement])
 
 The `observedAttributes` property defines attribute names that should be observed and updates any attribute properties defined by `attrs` accordingly.
 
+::: warning
+`observedAttributes` has to be a `static` property.
+:::
+
 **Example**
 
 ```js
