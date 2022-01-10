@@ -15,9 +15,7 @@ export class MinzeReactiveAttrs extends MinzeElement {
     ['object', {}]
   ]
 
-  static get observedAttributes() {
-    return ['count']
-  }
+  static observedAttributes = ['count']
 
   html = () => `
     <div class="count">

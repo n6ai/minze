@@ -3,9 +3,7 @@ import { MinzeElement, MinzeAttrs } from 'minze'
 export class MinzeHooks extends MinzeElement {
   attrs: MinzeAttrs = [['hooks', 'test']]
 
-  static get observedAttributes() {
-    return ['hooks']
-  }
+  static observedAttributes = ['hooks']
 
   text = ''
 
