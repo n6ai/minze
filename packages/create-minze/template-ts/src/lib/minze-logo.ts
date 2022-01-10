@@ -7,9 +7,7 @@ export interface MinzeLogo {
 export class MinzeLogo extends MinzeElement {
   attrs: MinzeAttrs = [['text']]
 
-  static get observedAttributes() {
-    return ['text']
-  }
+  static observedAttributes = ['text']
 
   html = () => `
     <div>
