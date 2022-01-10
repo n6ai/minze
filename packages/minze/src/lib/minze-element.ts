@@ -28,6 +28,11 @@ export type MinzeAttrs = ReadonlyArray<MinzeAttr>
 export type MinzeWatchers = ReadonlyArray<MinzeWatcher>
 export type MinzeEvents = ReadonlyArray<MinzeEvent>
 
+// aliases
+export type MinzeReactive = MinzeProps
+export type MinzeWatch = MinzeWatchers
+export type MinzeEventListeners = MinzeEvents
+
 /**
  * MinzeElement: Can be used to extend from to create custom web components.
  *
