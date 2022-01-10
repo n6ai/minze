@@ -56,7 +56,7 @@ export class MyElement extends MinzeElement {}
 
 ## Property and Method Names
 
-- Attributes defined in the `attrs` property or the `observedAttributes` getter should always be named in `dash-case`.
+- Attributes defined in the `attrs` or `observedAttributes` should always be named in `dash-case`.
 - All other properties and methods should be named in `camelCase`.
 
 ```js
@@ -163,9 +163,7 @@ export class MyElement extends MinzeElement {
   attrs = ['text', 'bg-color']
 
   // observed attributes
-  static get observedAttributes() {
-    return ['text', 'bg-color']
-  }
+  static observedAttributes = ['text', 'bg-color']
 
   // non-reactive properties
   amount = 0

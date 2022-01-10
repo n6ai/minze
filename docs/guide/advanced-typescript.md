@@ -65,9 +65,7 @@ export class MyElement extends MinzeElement {
   /**
    * Here we are defining which attributes should be observed.
    */
-  static get observedAttributes() {
-    return ['text', 'bg-color']
-  }
+  static observedAttributes = ['text', 'bg-color']
 
   /**
    * Watchers have to be explicitly defined as an array of tuples.

@@ -134,7 +134,7 @@ If you use the shorthand notation and provide a `dash-case` string instead of a 
 :::
 
 ::: danger
-For attribute property updates to be effective (on attribute changes), you have to make these attributes **observable**. It can be done by providing them to the **[observedAttributes](#observed-attributes)** getter.
+For attribute property updates to be effective (on attribute changes), you have to make these attributes **observable**. It can be done by providing them to **[observedAttributes](#observed-attributes)**.
 :::
 
 **Example**
@@ -167,7 +167,7 @@ Minze.defineAll([MyElement])
 
 ## Observed Attributes
 
-The `observedAttributes` getter observes the provided attribute names and updates any attribute properties defined by `attrs` accordingly.
+The `observedAttributes` property defines attribute names that should be observed and updates any attribute properties defined by `attrs` accordingly.
 
 **Example**
 
@@ -180,9 +180,7 @@ class MyElement extends MinzeElement {
     // ...
   ]
 
-  static get observedAttributes() {
-    return ['my-attribute']
-  }
+  static observedAttributes = ['my-attribute']
 
   onReady() {
     console.log(this.myAttribute) // Hello Minze!

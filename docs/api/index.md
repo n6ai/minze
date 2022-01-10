@@ -319,7 +319,7 @@ If you use the shorthand notation and provide a `dash-case` string instead of a 
 :::
 
 ::: danger
-For attribute property updates to be effective (on attribute changes), you have to make these attributes **observable**. It can be done by providing them to the **[observedAttributes](#observedattributes)** getter.
+For attribute property updates to be effective (on attribute changes), you have to make these attributes **observable**. It can be done by providing them to **[observedAttributes](#observedattributes)**.
 :::
 
 - **Property**
@@ -352,7 +352,7 @@ export class MyElement extends MinzeElement {
 
 Observes the provided attribute names and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChange` and `afterAttributeChange` hooks are called.
 
-- **Getter**
+- **Static Property**
 
 - **Type:** `string[]`
 
@@ -364,9 +364,7 @@ import { MinzeElement } from 'minze'
 export class MyElement extends MinzeElement {
   attrs = ['text', ['bg-color', '#000']]
 
-  static get observedAttributes() {
-    return ['text', 'bg-color']
-  }
+  static observedAttributes = ['text', 'bg-color']
 
   onAttributeChange() {
     console.log(this.text, this.bgColor)
