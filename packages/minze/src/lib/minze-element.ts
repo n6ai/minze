@@ -1,3 +1,4 @@
+import { deepPatch } from './patcher'
 import { isProxy, camelToDash, dashToCamel, warn } from './utils'
 
 export type MinzeProp =
@@ -214,7 +215,8 @@ export class MinzeElement extends HTMLElement {
       const template = this.template()
 
       if (template !== this.cachedTemplate || force) {
-        this.cachedTemplate = template
+        const previousCachedTemplate = this.cachedTemplate
+        this.cachedTemplate = template // cache early
 
         await this.beforeRender?.()
 
@@ -222,7 +224,12 @@ export class MinzeElement extends HTMLElement {
           this.registerEvent(eventTuple, 'remove')
         )
 
-        this.shadowRoot.innerHTML = template
+        if (!previousCachedTemplate || force) {
+          this.shadowRoot.innerHTML = template
+        } else {
+          // patches only the difference between the new template and the current shadow dom
+          deepPatch(template, this.shadowRoot)
+        }
 
         this.eventListeners?.forEach(async (eventTuple) =>
           this.registerEvent(eventTuple, 'add')
