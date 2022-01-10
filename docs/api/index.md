@@ -830,6 +830,8 @@ Declares `reactive` property as a mixed array of strings and tuples.
 
 - **Type:** `readonly (string | [name: string, value: unknown, exposeAttr?: boolean])[]`
 
+- **Alias:** `MinzeReactive`
+
 - **Example:**
 
 ```ts
@@ -872,6 +874,8 @@ Declares `watch` property as an array of tuples.
 
 - **Type:** `readonly [name: string, callback: (newValue?: unknown, oldValue?: unknown, key?: string, target?: object | typeof MinzeElement) => Promise<void> | void][]`
 
+- **Alias:** `MinzeWatch`
+
 - **Example:**
 
 ```ts
@@ -896,6 +900,8 @@ export class MyElement extends MinzeElement {
 Declares `eventListeners` property as an array of tuples.
 
 - **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window, eventName: string, callback: (event: Event) => void][]`
+
+- **Alias:** `MinzeEventListeners`
 
 - **Example:**
 
