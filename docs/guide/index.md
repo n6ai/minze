@@ -27,7 +27,7 @@ $ yarn install
 ```bash
 $ pnpm create minze my-minze-env -- --template js
 $ cd my-project
-$ yarn install
+$ pnpm install
 ```
 
 ## Creating a component
