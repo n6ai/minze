@@ -12,7 +12,7 @@
     "prepare": "husky install",
     "dev": "run-p -rs dev-*",
     "dev-minze": "npm run dev -w minze",
-    "dev-playground": "(wait-on -d 100 packages/minze/dist/module.js) && (npm run dev -w playground)",
+    "dev-playground": "(wait-on -d 200 packages/minze/dist/module.js) && (npm run dev -w playground)",
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "test-debug": "npm run test-debug --workspaces --if-present",
