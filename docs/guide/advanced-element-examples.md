@@ -54,31 +54,20 @@ Creating a wrapper element around the `<input />` element with Minze.
 import Minze, { MinzeElement } from 'minze'
 
 class CustomInput extends MinzeElement {
-  reactive = [
-    ['value', '', true],
-    ['firstRender', true]
-  ]
+  reactive = [['value', '', true]]
 
   attrs = ['placeholder', 'type', 'name']
 
+  static observedAttributes = ['placeholder', 'type', 'name']
+
   html = () => `
     <input
-      ${this.attrs.map((attr) => `${attr}="${this[attr]}"`).join(' ')}
-      ${this.value ? `value="${this.value}"` : ''}
+      ${this.attrs
+        .map((attr) => (this[attr] ? `${attr}="${this[attr]}"` : ''))
+        .join(' ')}
+      value="${this.value}"
     />
   `
-
-  onRender() {
-    if (!this.firstRender) {
-      // refocus the input and set the cursor to the end
-      const input = this.select('input')
-      input.focus()
-      input.value = ''
-      input.value = this.value
-    }
-
-    this.firstRender = false
-  }
 
   handleInput = (event) => {
     this.value = event.target.value
