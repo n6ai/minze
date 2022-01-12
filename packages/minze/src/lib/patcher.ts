@@ -91,12 +91,19 @@ function deepPatchElement(
     return
   }
 
-  Array.from(newTemplateChildren).forEach((element, index) => {
+  Array.from(newTemplateChildren).some((element, index) => {
     const newEl = element
     const oldEl = oldTemplate.children[index]
     const isEqual = newEl.isEqualNode(oldEl)
 
     if (!isEqual) {
+      // if the new element and the old element aren't from the same type,
+      // replace the old element with the new one and stop patching
+      if (newEl.nodeName !== oldEl.nodeName) {
+        oldEl.replaceWith(newEl)
+        return
+      }
+
       Array.from(newEl.attributes).forEach((attr) => {
         if (attr.value !== oldEl.getAttribute(attr.name)) {
           oldEl.setAttribute(attr.name, attr.value)
