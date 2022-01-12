@@ -243,3 +243,73 @@ You can hide all custom web components until they are defined with the following
   display: none;
 }
 ```
+
+## Patching
+
+Under the hood, Minze uses a concept called `patching`. It always tries to gracefully patch in and out all attributes and text before hard rerendering parts of, or the whole template. It achieves this by comparing the new template to the current one and changing only what's needed. Patching only works if the number of elements plus their types and amount of text nodes stay the same during reactive changes.
+
+::: tip
+Patching is not necessary for every component, sometimes a hard rerender can be a better choice.
+:::
+
+::: tip
+If you want to take advantage of patching, your templates should always return the exact same amount of elements and text nodes between different states.
+:::
+
+**Example**
+
+```js
+import Minze, { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  reactive = [['active', false]]
+
+  html = () => `
+    <button>
+      Toggle state
+    </button>
+
+    <!-- div is patched -->
+    <div>
+      <div>${this.active}</div>
+    </div>
+
+    <!-- div is patched -->
+    <div>
+      <div>${this.active ? 'true' : 'false'}</div>
+    </div>
+
+    <!-- div is patched -->
+    <div>
+      ${this.active ? '<div>true</div>' : '<div>false</div>'}
+    </div>
+
+    <!-- div isn't patched, but rerendered -->
+    <div>
+      ${this.active ? '<div>true</div>' : 'false'}
+    </div>
+
+    <!-- div isn't patched, but rerendered -->
+    <div>
+      ${this.active ? '<div>true</div>' : '<span>false</span>'}
+    </div>
+
+    <!-- div isn't patched, but rerendered -->
+    <div>
+      ${this.active ? '<div>true</div> <div>&nbsp;</div>' : '<div>false</div>'}
+    </div>
+  `
+
+  handleClick = () => {
+    this.active = !this.active
+  }
+
+  eventListeners = [['button', 'click', this.handleClick]]
+}
+
+Minze.defineAll([MyElement])
+```
+
+```html
+<my-element></my-element>
+```
