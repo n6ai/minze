@@ -23,15 +23,16 @@ export type MinzeEvent = [
   callback: (event: Event) => void
 ]
 
-export type MinzeProps = ReadonlyArray<MinzeProp>
-export type MinzeAttrs = ReadonlyArray<MinzeAttr>
-export type MinzeWatchers = ReadonlyArray<MinzeWatcher>
-export type MinzeEvents = ReadonlyArray<MinzeEvent>
+export type Reactive = ReadonlyArray<MinzeProp>
+export type Attrs = ReadonlyArray<MinzeAttr>
+export type Watch = ReadonlyArray<MinzeWatcher>
+export type EventListeners = ReadonlyArray<MinzeEvent>
 
 // aliases
-export type MinzeReactive = MinzeProps
-export type MinzeWatch = MinzeWatchers
-export type MinzeEventListeners = MinzeEvents
+export type MinzeReactive = Reactive
+export type MinzeAttrs = Attrs
+export type MinzeWatch = Watch
+export type MinzeEventListeners = EventListeners
 
 /**
  * MinzeElement: Can be used to extend from to create custom web components.
@@ -93,7 +94,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  reactive?: MinzeProps
+  reactive?: Reactive
 
   /**
    * Defines attribute properties that should be created as reactive.
@@ -112,7 +113,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  attrs?: MinzeAttrs
+  attrs?: Attrs
 
   /**
    * Defines attributes which should be observed.
@@ -144,7 +145,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  watch?: MinzeWatchers
+  watch?: Watch
 
   /**
    * Defines event listeners that will be registered when the element is rendered.
@@ -166,7 +167,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  eventListeners?: MinzeEvents
+  eventListeners?: EventListeners
 
   /**
    * Defines the shadow DOM HTML content.
