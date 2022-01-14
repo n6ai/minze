@@ -1,11 +1,11 @@
-import { MinzeElement, MinzeProps, MinzeEvents } from 'minze'
+import { MinzeElement, Reactive, EventListeners } from 'minze'
 
 export interface MinzeCounter {
   counter: number
 }
 
 export class MinzeCounter extends MinzeElement {
-  reactive: MinzeProps = [['counter', 0]]
+  reactive: Reactive = [['counter', 0]]
 
   html = () => `
     <div>
@@ -39,5 +39,5 @@ export class MinzeCounter extends MinzeElement {
     this.counter++
   }
 
-  eventListeners: MinzeEvents = [['.button', 'click', this.handleClick]]
+  eventListeners: EventListeners = [['.button', 'click', this.handleClick]]
 }

@@ -1,11 +1,11 @@
-import { MinzeElement, MinzeAttrs } from 'minze'
+import { MinzeElement, Attrs } from 'minze'
 
 export interface MinzeLogo {
   text: string
 }
 
 export class MinzeLogo extends MinzeElement {
-  attrs: MinzeAttrs = [['text']]
+  attrs: Attrs = [['text']]
 
   static observedAttributes = ['text']
 
