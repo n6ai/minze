@@ -1,4 +1,4 @@
-import { MinzeElement, MinzeProps, MinzeEvents } from 'minze'
+import { MinzeElement, Reactive, EventListeners } from 'minze'
 
 export interface MinzeReactiveProps {
   str: string
@@ -11,7 +11,7 @@ export interface MinzeReactiveProps {
 }
 
 export class MinzeReactiveProps extends MinzeElement {
-  reactive: MinzeProps = [
+  reactive: Reactive = [
     'shorthand',
     ['str', 'initial text', true],
     ['arr', [1, 2, 3], true],
@@ -41,5 +41,5 @@ export class MinzeReactiveProps extends MinzeElement {
     this.obj.nested.prop = 'changed value'
   }
 
-  eventListeners: MinzeEvents = [['button', 'click', this.handleClick]]
+  eventListeners: EventListeners = [['button', 'click', this.handleClick]]
 }

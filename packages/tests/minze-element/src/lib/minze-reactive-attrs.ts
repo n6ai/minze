@@ -1,11 +1,11 @@
-import { MinzeElement, MinzeAttrs } from 'minze'
+import { MinzeElement, Attrs } from 'minze'
 
 export interface MinzeReactiveAttrs {
   count: string
 }
 
 export class MinzeReactiveAttrs extends MinzeElement {
-  attrs: MinzeAttrs = [
+  attrs: Attrs = [
     ['count', 0],
     'shorthand',
     ['empty'],

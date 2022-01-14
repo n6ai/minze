@@ -1,11 +1,11 @@
-import { MinzeElement, MinzeProps, MinzeEvents } from 'minze'
+import { MinzeElement, Reactive, EventListeners } from 'minze'
 
 export interface MinzeReactivePatch {
   count: number
 }
 
 export class MinzeReactivePatch extends MinzeElement {
-  reactive: MinzeProps = [['value', 0]]
+  reactive: Reactive = [['value', 0]]
 
   html = () => `
     <input type="number" value="${this.value}" />
@@ -20,7 +20,7 @@ export class MinzeReactivePatch extends MinzeElement {
     this.rerender(true)
   }
 
-  eventListeners: MinzeEvents = [
+  eventListeners: EventListeners = [
     ['input', 'keyup', this.handleKeyUp],
     ['button', 'click', this.handleClick]
   ]

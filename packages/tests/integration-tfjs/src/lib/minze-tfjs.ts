@@ -1,12 +1,12 @@
 import * as tf from '@tensorflow/tfjs'
-import { MinzeElement, MinzeProps } from 'minze'
+import { MinzeElement, Reactive } from 'minze'
 
 export interface MinzeTfjs {
   prediction: number | null
 }
 
 export class MinzeTfjs extends MinzeElement {
-  reactive: MinzeProps = [['prediction', null]]
+  reactive: Reactive = [['prediction', null]]
 
   html = () => `
     ${

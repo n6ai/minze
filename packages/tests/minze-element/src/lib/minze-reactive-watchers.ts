@@ -1,4 +1,4 @@
-import { MinzeElement, MinzeProps, MinzeWatchers, MinzeEvents } from 'minze'
+import { MinzeElement, Reactive, Watch, EventListeners } from 'minze'
 
 export interface MinzeReactiveWatchers {
   str: string
@@ -11,7 +11,7 @@ export interface MinzeReactiveWatchers {
 }
 
 export class MinzeReactiveWatchers extends MinzeElement {
-  reactive: MinzeProps = [
+  reactive: Reactive = [
     ['str', 'initial text'],
     ['arr', [1, 2, 3]],
     [
@@ -24,7 +24,7 @@ export class MinzeReactiveWatchers extends MinzeElement {
     ]
   ]
 
-  watch: MinzeWatchers = [
+  watch: Watch = [
     [
       'str',
       (newValue, oldValue, key, target) => {
@@ -61,5 +61,5 @@ export class MinzeReactiveWatchers extends MinzeElement {
     this.obj.nested.prop = 'changed value'
   }
 
-  eventListeners: MinzeEvents = [['button', 'click', this.handleClick]]
+  eventListeners: EventListeners = [['button', 'click', this.handleClick]]
 }

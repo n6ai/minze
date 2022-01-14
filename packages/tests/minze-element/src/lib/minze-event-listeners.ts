@@ -1,4 +1,4 @@
-import { MinzeElement, MinzeEvents } from 'minze'
+import { MinzeElement, EventListeners } from 'minze'
 
 type clickDetail = string
 
@@ -20,7 +20,7 @@ export class MinzeEventListeners extends MinzeElement {
     this.rerender()
   }
 
-  eventListeners: MinzeEvents = [
+  eventListeners: EventListeners = [
     ['button', 'click', this.handleClick],
     [window, 'minze:click', this.handleCast]
   ]
