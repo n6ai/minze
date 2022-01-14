@@ -824,7 +824,7 @@ export class MyElement extends MinzeElement {
 
 Some properties you can define are from the `tuple` type, but TypeScript doesn't automatically infer tuples and rather assumes that they are arrays. So you have to explicitly declare them as tuples. If you are using `reactive`, `attrs`, `watch` or `eventListeners`, you can use the following types to do so:
 
-### MinzeProps
+### Reactive
 
 Declares `reactive` property as a mixed array of strings and tuples.
 
@@ -835,7 +835,7 @@ Declares `reactive` property as a mixed array of strings and tuples.
 - **Example:**
 
 ```ts
-import { MinzeElement, MinzeProps } from 'minze'
+import { MinzeElement, Reactive } from 'minze'
 
 export interface MyElement {
   foo: undefined
@@ -843,20 +843,22 @@ export interface MyElement {
 }
 
 export class MyElement extends MinzeElement {
-  reactive: MinzeProps = ['foo', ['count', 0]]
+  reactive: Reactive = ['foo', ['count', 0]]
 }
 ```
 
-### MinzeAttrs
+### Attrs
 
 Declares `attrs` property as a mixed array of strings and tuples.
 
 - **Type:** `readonly (string | [name: string, value?: unknown])[]`
 
+- **Alias:** `MinzeAttrs`
+
 - **Example:**
 
 ```ts
-import { MinzeElement, MinzeAttrs } from 'minze'
+import { MinzeElement, Attrs } from 'minze'
 
 export interface MyElement {
   foo: undefined
@@ -864,11 +866,11 @@ export interface MyElement {
 }
 
 export class MyElement extends MinzeElement {
-  attrs: MinzeAttrs = ['foo', ['count', 0]]
+  attrs: Attrs = ['foo', ['count', 0]]
 }
 ```
 
-### MinzeWatchers
+### Watch
 
 Declares `watch` property as an array of tuples.
 
@@ -879,7 +881,7 @@ Declares `watch` property as an array of tuples.
 - **Example:**
 
 ```ts
-import { MinzeElement, MinzeWatchers } from 'minze'
+import { MinzeElement, Watch } from 'minze'
 
 export class MyElement extends MinzeElement {
   watchCount = (
@@ -891,11 +893,11 @@ export class MyElement extends MinzeElement {
     console.log(newValue, oldValue, key, target)
   }
 
-  watch: MinzeWatchers = [['count', this.watchCount]]
+  watch: Watch = [['count', this.watchCount]]
 }
 ```
 
-### MinzeEvents
+### EventListeners
 
 Declares `eventListeners` property as an array of tuples.
 
@@ -906,7 +908,7 @@ Declares `eventListeners` property as an array of tuples.
 - **Example:**
 
 ```ts
-import { MinzeElement, MinzeEvents } from 'minze'
+import { MinzeElement, EventListeners } from 'minze'
 
 export class MyElement extends MinzeElement {
   html = () => `
@@ -919,6 +921,6 @@ export class MyElement extends MinzeElement {
     console.log(event)
   }
 
-  eventListeners: MinzeEvents = [['.button', 'click', this.handleClick]]
+  eventListeners: EventListeners = [['.button', 'click', this.handleClick]]
 }
 ```

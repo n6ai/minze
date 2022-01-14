@@ -13,13 +13,7 @@ By going through and understanding the example below, you will have a firm grasp
  * We are importing the base MinzeElement class
  * plus some tuple-type helpers.
  */
-import {
-  MinzeElement,
-  MinzeProps,
-  MinzeAttrs,
-  MinzeWatchers,
-  MinzeEvents
-} from 'minze'
+import { MinzeElement, Reactive, Attrs, Watch, EventListeners } from 'minze'
 
 /**
  * Since all properties and attribute properties
@@ -50,7 +44,7 @@ export class MyElement extends MinzeElement {
    * as a mixed array of strings and tuples.
    * Otherwise, TypeScript will infer them as an array of strings and arrays.
    */
-  reactive: MinzeProps = [
+  reactive: Reactive = [
     ['aBoolean', false],
     ['anObject', { foo: 'bar' }]
   ]
@@ -60,7 +54,7 @@ export class MyElement extends MinzeElement {
    * as a mixed array of strings and tuples.
    * Otherwise, TypeScript will infer them as an array of strings and arrays.
    */
-  attrs: MinzeAttrs = ['text', ['bg-color', '#000']]
+  attrs: Attrs = ['text', ['bg-color', '#000']]
 
   /**
    * Here we are defining which attributes should be observed.
@@ -71,7 +65,7 @@ export class MyElement extends MinzeElement {
    * Watchers have to be explicitly defined as an array of tuples.
    * Otherwise, TypeScript will infer them as an array of arrays.
    */
-  watch: MinzeWatchers = [['aBoolean', () => {}]]
+  watch: Watch = [['aBoolean', () => {}]]
 
   /**
    * A click callback handler.
@@ -97,7 +91,7 @@ export class MyElement extends MinzeElement {
    * eventListeners have to be explicitly defined as an array of tuples.
    * Otherwise, TypeScript will infer them as an array of arrays.
    */
-  eventListener: MinzeEvents = [
+  eventListeners: EventListeners = [
     ['.button', 'click', this.handleClick],
     [this, 'minze:click', this.handleCast]
   ]
