@@ -16,7 +16,7 @@ By going through and understanding the example below, you will have a firm grasp
 import { MinzeElement, Reactive, Attrs, Watch, EventListeners } from 'minze'
 
 /**
- * Since all properties and attribute properties
+ * Since all reactive properties and attribute properties
  * are defined dynamically, we are defining
  * their types separately in an interface.
  *
