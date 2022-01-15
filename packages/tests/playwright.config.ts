@@ -9,7 +9,8 @@ const config: PlaywrightTestConfig = {
     command: 'npm run dev',
     port: 3000,
     reuseExistingServer: !process.env.CI
-  }
+  },
+  testMatch: ['{e2e,integration}/**/*.spec.*']
 }
 
 export default config

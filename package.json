@@ -6,7 +6,7 @@
   },
   "workspaces": [
     "packages/*",
-    "packages/tests/*"
+    "packages/tests/**/*"
   ],
   "scripts": {
     "prepare": "husky install",
@@ -15,7 +15,9 @@
     "dev-playground": "(wait-on -d 200 packages/minze/dist/module.js) && (npm run dev -w playground)",
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
-    "test-debug": "npm run test-debug --workspaces --if-present",
+    "test-jest": "npm run test-jest --workspaces --if-present",
+    "test-pw": "npm run test-pw --workspaces --if-present",
+    "test-pw-debug": "npm run test-pw-debug --workspaces --if-present",
     "docs": "vitepress dev docs",
     "docs-build": "vitepress build docs",
     "docs-serve": "vitepress serve docs",

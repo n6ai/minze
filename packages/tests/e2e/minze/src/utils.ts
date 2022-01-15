@@ -4,7 +4,7 @@ import { Page } from '@playwright/test'
  * Navigates to http://localhost:3000/minze/
  */
 export async function start(page: Page) {
-  await page.goto('minze/')
+  await page.goto('e2e/minze/')
 }
 
 /**

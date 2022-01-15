@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test'
 
 /**
- * Navigates to http://localhost:3000/integration-tfjs/
+ * Navigates to http://localhost:3000/minze-element/
  * and inserts the provided template into <div id="app"></div>.
  *
  * @example
@@ -12,7 +12,7 @@ import { Page } from '@playwright/test'
  * ```
  */
 export async function start(page: Page, template: string) {
-  await page.goto('integration-tfjs/')
+  await page.goto('e2e/minze-element/')
 
   await page.locator('#app').evaluate((node, template) => {
     node.innerHTML = template
