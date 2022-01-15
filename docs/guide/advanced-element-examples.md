@@ -92,3 +92,46 @@ Minze.defineAll([CustomInput])
 ```
 
 <!-- prettier-end-ignore -->
+
+## Persistent Storage
+
+Implementing persistent storage inside a Minze Element with Local Storage.
+
+**Example**
+
+```js
+import Minze, { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  reactive = [['count', 0]]
+
+  countWatcher = (newValue) => {
+    localStorage.setItem('count', String(newValue))
+  }
+
+  watch = [['count', this.countWatcher]]
+
+  html = () => `
+    <button>
+      Count: ${this.count}
+    </button>
+  `
+
+  onReactive() {
+    const count = localStorage.getItem('count')
+    if (count) this.count = Number(count)
+  }
+
+  handleClick = () => {
+    this.count++
+  }
+
+  eventListeners = [['button', 'click', this.handleClick]]
+}
+
+Minze.defineAll([MyElement])
+```
+
+```html
+<my-element></my-element>
+```
