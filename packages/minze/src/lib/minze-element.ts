@@ -472,7 +472,7 @@ export class MinzeElement extends HTMLElement {
    */
   private registerProp(prop: MinzeProp) {
     const name = typeof prop === 'string' ? prop : prop[0]
-    const value = typeof prop === 'string' ? undefined : prop[1]
+    const value = typeof prop === 'string' ? null : prop[1]
     const exposeAttr = typeof prop === 'string' ? undefined : prop[2]
     const camelName = name
 
