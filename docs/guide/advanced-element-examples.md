@@ -105,11 +105,11 @@ import Minze, { MinzeElement } from 'minze'
 class MyElement extends MinzeElement {
   reactive = [['count', 0]]
 
-  countWatcher = (newValue) => {
+  watchCount = (newValue) => {
     localStorage.setItem('count', String(newValue))
   }
 
-  watch = [['count', this.countWatcher]]
+  watch = [['count', this.watchCount]]
 
   html = () => `
     <button>
