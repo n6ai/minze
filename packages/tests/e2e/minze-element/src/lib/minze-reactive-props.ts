@@ -35,7 +35,7 @@ export class MinzeReactiveProps extends MinzeElement {
   `
 
   handleClick = () => {
-    this.shorthand = 'not undefined'
+    this.shorthand = 'not null'
     this.str = 'changed text'
     this.arr.push(4)
     this.obj.nested.prop = 'changed value'
