@@ -506,7 +506,7 @@ export class MinzeElement extends HTMLElement {
    */
   private registerAttr(attr: MinzeAttr) {
     const name = typeof attr === 'string' ? attr : attr[0]
-    const value = typeof attr === 'string' ? undefined : attr[1]
+    const value = typeof attr === 'string' ? null : attr[1]
     const camelName = dashToCamel(name)
     const dashName = name
     const rootName = camelName
