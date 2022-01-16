@@ -243,7 +243,7 @@ The created property is always the source of truth and not the exposed attribute
 :::
 
 ::: warning
-If you use the shorthand notation and provide a `camelCase` string instead of a tuple for a reactive property, the reactive property will be created with a default value of `undefined`.
+If you use the shorthand notation and provide a `camelCase` string instead of a tuple for a reactive property, the reactive property will be created with a default value of `null`.
 :::
 
 - **Property**
@@ -257,7 +257,7 @@ import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   reactive = [
-    'anUndefined', // will be created as undefined
+    'aShorthand', // will be created as null
     ['aString', 'foo'],
     ['aBoolean', false],
     ['anArray', [1, 2, 3], true],
@@ -272,7 +272,7 @@ export class MyElement extends MinzeElement {
     this.aString = 'bar'
 
     console.log(
-      this.anUndefined, // undefined
+      this.aShorthand, // null
       this.aString, // bar
       this.aBoolean, // false
       this.anArray, // [1, 2, 3]
@@ -315,7 +315,7 @@ With the exception of `undefined`, `null`, `false` or `true`, all attribute prop
 :::
 
 ::: warning
-If you use the shorthand notation and provide a `dash-case` string instead of a tuple for a reactive attribute property, the reactive attribute property will be created with a default value of `undefined`.
+If you use the shorthand notation and provide a `dash-case` string instead of a tuple for a reactive attribute property, the reactive attribute property will be created with a default value of `null`.
 :::
 
 ::: danger
@@ -838,7 +838,7 @@ Declares `reactive` property as a mixed array of strings and tuples.
 import { MinzeElement, Reactive } from 'minze'
 
 export interface MyElement {
-  foo: undefined
+  foo: null
   count: number
 }
 
@@ -861,7 +861,7 @@ Declares `attrs` property as a mixed array of strings and tuples.
 import { MinzeElement, Attrs } from 'minze'
 
 export interface MyElement {
-  foo: undefined
+  foo: null
   count: string
 }
 

@@ -73,7 +73,7 @@ The created property is always the source of truth and not the exposed attribute
 :::
 
 ::: warning
-If you use the shorthand notation and provide a `camelCase` string instead of a tuple for a reactive property, the reactive property will be created with a default value of `undefined`.
+If you use the shorthand notation and provide a `camelCase` string instead of a tuple for a reactive property, the reactive property will be created with a default value of `null`.
 :::
 
 **Example**
@@ -83,7 +83,7 @@ import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   reactive = [
-    'myValue',
+    'myShorthand',
     ['myProperty', 'Hello Minze!'],
     ['myNumber', 99]
     // ...
@@ -91,7 +91,7 @@ class MyElement extends MinzeElement {
 
   onReady() {
     console.log(
-      this.myValue, // undefined
+      this.myShorthand, // null
       this.myProperty, // Hello Minze!
       this.myNumber // 99
     )
@@ -130,7 +130,7 @@ With the exception of `undefined`, `null`, `false` or `true`, all attribute prop
 :::
 
 ::: warning
-If you use the shorthand notation and provide a `dash-case` string instead of a tuple for a reactive attribute property, the reactive attribute property will be created with a default value of `undefined`.
+If you use the shorthand notation and provide a `dash-case` string instead of a tuple for a reactive attribute property, the reactive attribute property will be created with a default value of `null`.
 :::
 
 ::: danger
@@ -144,14 +144,15 @@ import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   attrs = [
-    'my-attribute'['my-second-attribute'],
+    'my-attribute',
+    ['my-second-attribute'],
     ['my-third-attribute', 'Hello Minze again!']
     // ...
   ]
 
   onReady() {
     console.log(
-      this.myAttribute, // undefined
+      this.myAttribute, // null
       this.mySecondAttribute, // Hello Minze!
       this.myThirdAttribute // Hello Minze again!
     )

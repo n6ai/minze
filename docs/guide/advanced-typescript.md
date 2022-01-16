@@ -31,7 +31,7 @@ export interface MyElement {
     foo: string
   }
   // reactive attribute properties
-  text: string | undefined
+  text: string | null
   bgColor: string
 }
 

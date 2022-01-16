@@ -197,7 +197,7 @@ If you are fetching some data from an external API you can use a loading indicat
 import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  reactive = [['data', undefined]]
+  reactive = [['data', null]]
 
   html = () => `
     ${this.data ? `<div>${this.data}</div>` : '<div class="loading"></div>'}

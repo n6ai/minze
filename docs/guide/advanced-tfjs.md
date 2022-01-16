@@ -28,7 +28,7 @@ import * as tf from '@tensorflow/tfjs'
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  reactive = [['data', undefined]]
+  reactive = [['data', null]]
 
   html = () => `
     ${this.data ? `<div>${this.data}</div>` : '<div>loading...</div>'}
