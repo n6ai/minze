@@ -10,8 +10,8 @@ export type MinzeAttr = string | [name: string, value?: unknown]
 export type MinzeWatcher = [
   name: string,
   callback: (
-    newValue?: unknown,
-    oldValue?: unknown,
+    newValue?: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    oldValue?: any, // eslint-disable-line @typescript-eslint/no-explicit-any
     key?: string,
     target?: object | typeof MinzeElement
   ) => Promise<void> | void
