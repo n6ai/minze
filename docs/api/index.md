@@ -235,9 +235,12 @@ MyElement.define()
 MyElement.define('my-custom-element')
 ```
 
+<!-- prettier-ignore-start -->
 ```html
-<my-element></my-element> <my-custom-element></my-custom-element>
+<my-element></my-element>
+<my-custom-element></my-custom-element>
 ```
+<!-- prettier-ignore-end -->
 
 ### options
 
