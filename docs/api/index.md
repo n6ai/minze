@@ -428,7 +428,7 @@ Tuple structure: [`name`, `callback`]
 
 - **Property**
 
-- **Type:** `readonly [name: string, callback: (newValue?: unknown, oldValue?: unknown, key?: string, target?: object | typeof MinzeElement) => Promise<void> | void][]`
+- **Type:** `readonly [name: string, callback: (newValue?: any, oldValue?: any, key?: string, target?: object | typeof MinzeElement) => Promise<void> | void][]`
 
 - **Example:**
 
@@ -909,7 +909,7 @@ export class MyElement extends MinzeElement {
 
 Declares `watch` property as an array of tuples.
 
-- **Type:** `readonly [name: string, callback: (newValue?: unknown, oldValue?: unknown, key?: string, target?: object | typeof MinzeElement) => Promise<void> | void][]`
+- **Type:** `readonly [name: string, callback: (newValue?: any, oldValue?: any, key?: string, target?: object | typeof MinzeElement) => Promise<void> | void][]`
 
 - **Alias:** `MinzeWatch`
 
@@ -920,8 +920,8 @@ import { MinzeElement, Watch } from 'minze'
 
 export class MyElement extends MinzeElement {
   watchCount = (
-    newValue: unknown,
-    oldValue: unknown,
+    newValue: any,
+    oldValue: any,
     key: string,
     target: object | typeof MinzeElement
   ) => {
