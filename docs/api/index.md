@@ -207,7 +207,7 @@ export class MyElement extends MinzeElement {
 
 Defines a custom web component for the current class.
 
-:::tip
+::: tip
 This method is pretty much identical to the `define` method in the `Minze` class.
 :::
 
