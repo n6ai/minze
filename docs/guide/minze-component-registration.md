@@ -2,13 +2,17 @@
 
 You can register components in two different ways: one by one or all at once.
 
-::: tip
-Custom component names should always consist of at least two words.
-:::
-
 ## define
 
 Define a single component by providing a name and a component class.
+
+::: tip
+Alternatively, you can define components by calling their respective `define` method. See the [API Reference](/api/#define-1) for more information.
+:::
+
+::: warning
+Custom component names should always consist of at least two words.
+:::
 
 ```js
 import Minze, { MinzeElement } from 'minze'
@@ -23,10 +27,6 @@ Minze.define('my-element', MyElement)
 ```html
 <my-element></my-element>
 ```
-
-::: tip
-Alternatively, you can define components by calling their respective `define` method. See the [API Reference](/api/#define-1) for more information.
-:::
 
 ## defineAll
 

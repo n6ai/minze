@@ -207,10 +207,6 @@ export class MyElement extends MinzeElement {
 
 Defines a custom web component for the current class.
 
-::: tip
-This method is pretty much identical to the `define` method in the `Minze` class.
-:::
-
 ::: warning
 Your component class name has to be either in `PascalCase` or `camelCase` when using this registration method.
 :::

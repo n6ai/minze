@@ -192,6 +192,10 @@ module.exports = {
           text: 'Components',
           children: [
             {
+              text: 'Registration',
+              link: '/guide/components-registration'
+            },
+            {
               text: 'Data',
               link: '/guide/components-data'
             },
