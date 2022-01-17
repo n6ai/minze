@@ -32,3 +32,17 @@ MyElement.define('my-custom-element')
 <my-custom-element></my-custom-element>
 ```
 <!-- prettier-ignore-end -->
+
+**Shorthand Example**
+
+```js
+import { MinzeElement } from 'minze'
+
+;(class MyElement extends MinzeElement {
+  // ...
+}.define())
+```
+
+```html
+<my-element></my-element>
+```
