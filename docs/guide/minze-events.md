@@ -4,7 +4,7 @@ The Minze class has an abstraction layer for custom events, which can be invoked
 
 See the [API Reference](/api/#cast) for more information.
 
-**Example:**
+**Example**
 
 ```js
 // some component
