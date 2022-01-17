@@ -203,6 +203,42 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+### define
+
+Defines a custom web component for the current class.
+
+:::tip
+This method is pretty much identical to the `define` method in the `Minze` class.
+:::
+
+::: warning
+Your component class name has to be either in `PascalCase` or `camelCase` when using this registration method.
+:::
+
+- **Static Method**
+
+- **Type:** `(name?: string): void`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  // ...
+}
+
+// automatic naming based on the class name
+MyElement.define()
+
+// manual naming
+MyElement.define('my-custom-element')
+```
+
+```html
+<my-element></my-element> <my-custom-element></my-custom-element>
+```
+
 ### options
 
 Individual components can be customized by declaring an options property. All currently available options are listed in the example below with their **default values**.

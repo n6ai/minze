@@ -24,6 +24,10 @@ Minze.define('my-element', MyElement)
 <my-element></my-element>
 ```
 
+::: tip
+Alternatively, you can define components by calling their respective `define` method. See the [API Reference](/api/#define-1) for more information.
+:::
+
 ## defineAll
 
 Define multiple components at once. They will be automatically defined in `dash-case` format.
