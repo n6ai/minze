@@ -58,6 +58,20 @@ export class MinzeElement extends HTMLElement {
   readonly version = '__VERSION__'
 
   /**
+   * Registers element as a custom web component.
+   *
+   * @example
+   * ```
+   * class MyElement exptends MinzeElement {}
+   * MyElement.define()
+   * ```
+   */
+  static define(name?: string) {
+    if (!name) name = camelToDash(this.name as string)
+    if (customElements) customElements.define(name, this)
+  }
+
+  /**
    * Defines options for the web component.
    *
    * @example
