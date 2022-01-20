@@ -107,10 +107,10 @@ class MyElement extends MinzeElement {
 }
 ```
 
-## Component Callbacks
+## Event Callbacks
 
 - Use arrow functions when defining callbacks. They are automatically bound to the component.
-- Should start with the word `handle`.
+- Should start with the word `handle` or a verb that describes what action is performed.
 
 ```js
 // ✖ Bad
@@ -129,6 +129,17 @@ class MyElement extends MinzeElement {
   }
 
   eventListeners = [['.button', 'click', this.handleClick]]
+}
+
+// ✔ Good
+class MyElement extends MinzeElement {
+  reactive = [['count', 0]]
+
+  increaseCount = () => {
+    this.count++
+  }
+
+  eventListeners = [['.button', 'click', this.increaseCount]]
 }
 ```
 
@@ -169,8 +180,8 @@ export class MyElement extends MinzeElement {
   amount = 0
 
   // methods
-  increment = () => {
-    this.amount++
+  increaseCount = () => {
+    this.count++
   }
 
   // watchers
