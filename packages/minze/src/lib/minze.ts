@@ -1,5 +1,5 @@
+import type { MinzeElement } from './minze-element'
 import { camelToDash } from './utils'
-import { MinzeElement } from './minze-element'
 
 /**
  * Minze class with multiple static methods and properties for common tasks.
