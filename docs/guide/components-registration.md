@@ -35,14 +35,16 @@ MyElement.define('my-custom-element')
 
 **Shorthand Example**
 
+<!-- prettier-ignore-start -->
 ```js
 import { MinzeElement } from 'minze'
 
-;(class MyElement extends MinzeElement {
+(class MyElement extends MinzeElement {
   // ...
-}.define())
+}).define()
 ```
 
 ```html
 <my-element></my-element>
 ```
+<!-- prettier-ignore-end -->
