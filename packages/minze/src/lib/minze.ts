@@ -13,9 +13,13 @@ export class Minze {
   /**
    * Defines a custom element.
    *
+   * @param name - The name of the custom element.
+   * @param element - The element extending the MinzeElement class.
+   *
    * @example
    * ```
-   * Minze.define('minze-element', MinzeElement)
+   * class MyElement extends MinzeElement {}
+   * Minze.define('my-element', MyElement)
    * ```
    */
   static define(name: string, element: typeof MinzeElement) {
@@ -27,6 +31,8 @@ export class Minze {
    *
    * All class names have to be either PascalCase or camelCase for automatic dash-case name conversion.
    * Example: `MinzeElement` will be registered as `<minze-element></minze-element>`.
+   *
+   * @param elements - A module object or an array of custom Minze elements.
    *
    * @example
    * ```
@@ -53,6 +59,9 @@ export class Minze {
   /**
    * Dispatches a custom event on the `window` object.
    *
+   * @param eventName - The name of the event.
+   * @param detail - The detail data to be passed with the event.
+   *
    * @example
    * ```
    * Minze.cast('minze:update', { amount: 10 })
@@ -66,9 +75,12 @@ export class Minze {
    * Adds an event listener to the `window` object
    * for the provided event name and callback function.
    *
+   * @param eventName - The name of the event.
+   * @param callback - The callback function to be called when the event is dispatched.
+   *
    * @example
    * ```
-   * Minze.listen('update', (event) => {})
+   * Minze.listen('minze:update', (event) => {})
    * ```
    */
   static listen(eventName: string, callback: (event: Event) => void) {
@@ -79,9 +91,12 @@ export class Minze {
    * Removes event listener based on the provided event name and
    * callback function from the `window` object.
    *
+   * @param eventName - The name of the event.
+   * @param callback - The callback function to be removed.
+   *
    * @example
    * ```
-   * Minze.stopListen('update', (event) => {})
+   * Minze.stopListen('minze:update', (event) => {})
    * ```
    */
   static stopListen(eventName: string, callback: (event: Event) => void) {

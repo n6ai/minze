@@ -2,6 +2,9 @@
  * Deeply patches the shadow root DOM.
  * Tries to gracefully replace, before hard replacing.
  *
+ * @param template - The new template.
+ * @param shadowRoot - The old shadow root.
+ *
  * @example
  * ```
  * deepPatch(template, shadowRoot)
@@ -26,6 +29,9 @@ export function deepPatch(
  *
  * If a new template/node has a text node that is not equal to the old template/node,
  * the old text node content is replaced with the new text node content.
+ *
+ * @param newTemplate - The new template.
+ * @param oldTemplate - The old template.
  *
  * @example
  * ```
@@ -70,6 +76,9 @@ function deepPatchText(
  *
  * If a new template has an element that is not equal to the old template element,
  * the old element is gracefully replaced with the new element.
+ *
+ * @param newTemplate - The new template.
+ * @param oldTemplate - The old template.
  *
  * @example
  * ```

@@ -7,6 +7,8 @@ export const isProxy = Symbol('isProxy')
 /**
  * Converts a camelCase or PascalCase string to dash-case.
  *
+ * @param value - The string to convert.
+ *
  * @example
  * ```
  * camelToDashCase('someString') // 'some-string'
@@ -22,6 +24,8 @@ export function camelToDash(value: string) {
 /**
  * Converts a dash-case string to camelCase.
  *
+ * @param value - The string to convert.
+ *
  * @example
  * ```
  * dashToCamelCase('some-string') // 'someString'
@@ -33,6 +37,8 @@ export function dashToCamel(value: string) {
 
 /**
  * Logs a waring to the console.
+ *
+ * @param msg - The message to log.
  *
  * @example
  * ```

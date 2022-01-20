@@ -60,10 +60,14 @@ export class MinzeElement extends HTMLElement {
   /**
    * Registers element as a custom web component.
    *
+   * @param name - The name of the custom web component.
+   *
    * @example
    * ```
    * class MyElement exptends MinzeElement {}
    * MyElement.define()
+   * // or
+   * MyElement.define('my-element')
    * ```
    */
   static define(name?: string) {
@@ -153,7 +157,7 @@ export class MinzeElement extends HTMLElement {
    * ```
    * class MyElement extends MinzeElement {
    *   watch = [
-   *     ['active', (newValue, oldValue) => {}],
+   *     ['active', (newValue, oldValue, key, target) => {}],
    *     ['amount', async (newValue, oldValue) => {}]
    *   ]
    * }
@@ -291,6 +295,8 @@ export class MinzeElement extends HTMLElement {
   /**
    * Selects the first matching element inside the shadow DOM.
    *
+   * @param selectors - A valid CSS selector string.
+   *
    * @example
    * ```
    * this.select('div')
@@ -304,6 +310,8 @@ export class MinzeElement extends HTMLElement {
   /**
    * Selects element(s) inside the shadow DOM.
    *
+   * @param selectors - A valid CSS selector string.
+   *
    * @example
    * ```
    * this.selectAll('div')
@@ -316,6 +324,9 @@ export class MinzeElement extends HTMLElement {
 
   /**
    * Exposes property as an attribute on the element.
+   *
+   * @param name - The name of the attribute.
+   * @param value - The value for the attribute.
    *
    * @example
    * ```
@@ -332,6 +343,14 @@ export class MinzeElement extends HTMLElement {
 
   /**
    * Callback, executes a set of methods on reactive changes.
+   *
+   * @param type - The type of property that changed.
+   * @param rootName - The name of the root property that changed.
+   * @param rootProp - The value of the root property that changed.
+   * @param target - The target of the property that changed.
+   * @param key - The name of the property that changed.
+   * @param newValue - The new value of the property that changed.
+   * @param oldValue - The old value of the property that changed.
    *
    * @example
    * ```
@@ -364,6 +383,10 @@ export class MinzeElement extends HTMLElement {
 
   /**
    * Makes a complex object deeply reactive.
+   *
+   * @param name - The name of the property.
+   * @param prop - The property to be made reactive.
+   * @param exposeAttr - Whether to expose the property as an attribute.
    *
    * @example
    * ```
@@ -433,6 +456,10 @@ export class MinzeElement extends HTMLElement {
   /**
    * Makes a primitive value reactive.
    *
+   * @param name - The name of the property.
+   * @param prop - The property to be made reactive.
+   * @param exposeAttr - Whether to expose the property as an attribute.
+   *
    * @example
    * ```
    * this.makePrimitiveReactive('count', 99)
@@ -479,6 +506,8 @@ export class MinzeElement extends HTMLElement {
   /**
    * Makes provided property reactive.
    *
+   * @param prop - The MinzeProp to be made reactive.
+   *
    * @example
    * ```
    * this.registerProp(prop)
@@ -512,6 +541,8 @@ export class MinzeElement extends HTMLElement {
 
   /**
    * Makes provided property reactive to attribute changes on the component.
+   *
+   * @param attr - The MinzeAttr to be made reactive.
    *
    * @example
    * ```
@@ -581,6 +612,9 @@ export class MinzeElement extends HTMLElement {
   /**
    * Adds or removes a provided event listener.
    *
+   * @param eventTuple - The event tuple to be added or removed.
+   * @param action - The action to be performed.
+   *
    * @example
    * ```
    * this.registerEvent(this.eventListeners[0], 'add')
@@ -610,6 +644,9 @@ export class MinzeElement extends HTMLElement {
    * Dispatches a custom event from the web component.
    *
    * It's a good idea to namespace the event name. For example: `minze:update`
+   *
+   * @param eventName - The name of the event to be dispatched.
+   * @param detail - The detail data to be passed with the event.
    *
    * @example
    * ```
@@ -663,6 +700,10 @@ export class MinzeElement extends HTMLElement {
 
   /**
    * Lifecycle (Internal) - Runs whenever one of the element's attributes is changed.
+   *
+   * @param name - The name of the attribute that was changed.
+   * @param oldValue - The previous value of the attribute.
+   * @param newValue - The new value of the attribute.
    */
   private async attributeChangedCallback(
     name: string,
@@ -769,6 +810,10 @@ export class MinzeElement extends HTMLElement {
    * This hook runs before the onStart lifecycle, if an attribute is set on the element:
    * `<minze-element text="Hello Minze!" /></minze-element>`
    *
+   * @param name - The name of the attribute that was changed.
+   * @param oldValue - The previous value of the attribute.
+   * @param newValue - The new value of the attribute.
+   *
    * @example
    * ```
    * class MyElement extends MinzeElement {
@@ -787,6 +832,10 @@ export class MinzeElement extends HTMLElement {
    *
    * This hook runs before the onStart lifecycle, if an attribute is set on the element:
    * `<minze-element text="Hello Minze!" /></minze-element>`
+   *
+   * @param name - The name of the attribute that was changed.
+   * @param oldValue - The previous value of the attribute.
+   * @param newValue - The new value of the attribute.
    *
    * @example
    * ```
