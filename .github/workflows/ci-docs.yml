@@ -15,7 +15,7 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build VitePress site
         run: npm run docs-build

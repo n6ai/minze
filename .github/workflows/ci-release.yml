@@ -40,7 +40,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Create builds
         run: npm run build --workspaces --if-present # build all packages
@@ -79,7 +79,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run standard version
         run: npm run release -w ${{ env.PACKAGE_NAME }}
@@ -133,7 +133,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Create builds
         run: npm run build -w ${{ env.PACKAGE_NAME }} --if-present
