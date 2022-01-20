@@ -48,9 +48,9 @@ jobs:
       - name: Run package tests
         run: npm run test -w ${{ env.PACKAGE_NAME }} --if-present
 
-      - name: Run playground tests
+      - name: Run tests for tests package
         if: ${{ env.PACKAGE_NAME != 'create-minze' }}
-        run: npm run test -w playground
+        run: npm run test -w tests
 
   # Prepare the release with standard version.
   #
