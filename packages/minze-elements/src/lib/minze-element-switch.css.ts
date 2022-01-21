@@ -1,13 +1,13 @@
 export default () => /* css */ `
   :host {
-    --color-white: rgb(255, 255, 255);
-    --color-primary: rgb(20 20 20);
-    --color-primary-light: rgb(40 40 40);
-    --color-primary-lighter: rgb(55 55 55);
-    --color-primary-lightest: rgb(70 70 70);
-    --color-shadow: rgb(50 50 50 / 20%);
+    --m-color-white: rgb(255, 255, 255);
+    --m-color-primary: rgb(20 20 20);
+    --m-color-primary-light: rgb(40 40 40);
+    --m-color-primary-lighter: rgb(55 55 55);
+    --m-color-primary-lightest: rgb(70 70 70);
+    --m-color-shadow: rgb(50 50 50 / 20%);
 
-    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --m-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   }
 
   ::-webkit-scrollbar {
@@ -16,11 +16,11 @@ export default () => /* css */ `
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--color-primary-lighter);
+    background: var(--m-color-primary-lighter);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-primary-lightest);
+    background: var(--m-color-primary-lightest);
   }
 
   ::-webkit-scrollbar-corner {
@@ -29,13 +29,13 @@ export default () => /* css */ `
 
   [part=aside-button] {
     display: inline-block;
-    background: var(--color-primary);
-    color: var(--color-white);
+    background: var(--m-color-primary);
+    color: var(--m-color-white);
     border: none;
-    box-shadow: 0 0.5rem 0.5rem var(--color-shadow);
+    box-shadow: 0 0.5rem 0.5rem var(--m-color-shadow);
     border-radius: 0.25rem;
     font-size: 0.825rem;
-    font-family: var(--font-family);
+    font-family: var(--m-font-family);
     overflow: hidden;
     cursor: pointer;
     position: fixed;
@@ -45,11 +45,11 @@ export default () => /* css */ `
   }
 
   [part=aside-button]:hover {
-    background: var(--color-primary-light);
+    background: var(--m-color-primary-light);
   }
 
   [part=aside-button]:active {
-    background: var(--color-primary-lighter);
+    background: var(--m-color-primary-lighter);
   }
 
   [part=aside-overlay] {
@@ -58,9 +58,9 @@ export default () => /* css */ `
     max-height: calc(100vh - 2rem);
     width: 100%;
     max-width: calc(100vw - 2rem);
-    background: var(--color-primary);
-    box-shadow: 0 0.5rem 0.5rem var(--color-shadow);
-    font-family: var(--font-family);
+    background: var(--m-color-primary);
+    box-shadow: 0 0.5rem 0.5rem var(--m-color-shadow);
+    font-family: var(--m-font-family);
     border-radius: 0.25rem;
     overflow-y: auto;
     position: fixed;
@@ -83,7 +83,7 @@ export default () => /* css */ `
     height: 3rem;
     flex-shrink: 0;
     background: transparent;
-    color: var(--color-white);
+    color: var(--m-color-white);
     font-size: 0.825rem;
     text-align: left;
     border: none;
@@ -100,15 +100,15 @@ export default () => /* css */ `
   }
 
   [part=aside-overlay] button:not(:last-child) {
-    border-bottom: 1px solid var(--color-primary-light);
+    border-bottom: 1px solid var(--m-color-primary-light);
   }
 
   [part=aside-overlay] button:hover {
-    background: var(--color-primary-light);
+    background: var(--m-color-primary-light);
   }
 
   [part=aside-overlay] button:active {
-    background: var(--color-primary-lighter);
+    background: var(--m-color-primary-lighter);
   }
 
   [part=aside-overlay] button.active:before {
@@ -122,7 +122,7 @@ export default () => /* css */ `
   }
 
   [part=aside-overlay] button.active {
-    color: var(--color-white);
+    color: var(--m-color-white);
   }
 
   slot {
