@@ -63,7 +63,8 @@ export function warn(msg: string, ...args: unknown[]) {
  * }
  * ```
  */
-export const html = (value: TemplateStringsArray) => value
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const html = (value: TemplateStringsArray, ...args: unknown[]) => value
 
 /**
  * Tags template literals for CSS syntax highlighting.
@@ -81,4 +82,5 @@ export const html = (value: TemplateStringsArray) => value
  * }
  * ```
  */
-export const css = (value: TemplateStringsArray) => value
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const css = (value: TemplateStringsArray, ...args: unknown[]) => value
