@@ -521,7 +521,7 @@ Defines the elements `HTML` template.
 
 - **Property | Method**
 
-- **Type:** `(): string`
+- **Type:** `(): TemplateStringsArray | string`
 
 - **Example:**
 
@@ -541,7 +541,7 @@ Defines the elements scoped `CSS` template.
 
 - **Property | Method**
 
-- **Type:** `(): string`
+- **Type:** `(): TemplateStringsArray | string`
 
 - **Example:**
 
