@@ -1,0 +1,61 @@
+{
+  "name": "@minzejs/elements",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Sergej Samsonenko",
+  "description": "Native web components built with Minze.",
+  "keywords": [
+    "minze",
+    "minzejs",
+    "minze elements",
+    "minzejs elements",
+    "minze components",
+    "minzejs components"
+  ],
+  "type": "module",
+  "main": "dist/module.js",
+  "types": "dist/module.d.ts",
+  "unpkg": "dist/cdn.js",
+  "jsdelivr": "dist/cdn.js",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/n6ai/minze/tree/main/packages/minze-elements#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n6ai/minze.git",
+    "directory": "packages/minze-elements"
+  },
+  "bugs": {
+    "url": "https://github.com/n6ai/minze/issues"
+  },
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "npm run clean && npm run bundle && npm run types",
+    "bundle": "rollup -c",
+    "types": "npm run types-build && npm run types-roll",
+    "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
+    "types-roll": "api-extractor run && rimraf temp",
+    "clean": "rimraf dist/* temp",
+    "size": "npx gzip-size-cli dist/module.js --include-original",
+    "release": "standard-version --no-verify --header --path ."
+  },
+  "dependencies": {
+    "minze": ">=0.1.0"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.19.4",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.64.0",
+    "rollup-plugin-license": "^2.6.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.5.4"
+  },
+  "standard-version": {
+    "scripts": {
+      "postcommit": "cd ../../ && npm i && git add package-lock.json && git commit -m \"chore(deps): lock file bump\""
+    }
+  }
+}
