@@ -37,9 +37,16 @@ export class MinzeElementSwitch extends MinzeElement {
 
   watchSelectedElementKey = (newValue: string) => {
     const dashName = newValue
+    const element = this.slottedElements.filter(
+      (element) => element.tagName.toLowerCase() === dashName
+    )
 
-    this.selectedElement = `<${dashName}></${dashName}>`
-    sessionStorage.setItem(this.storageKey, dashName)
+    if (element.length) {
+      this.selectedElement = element[0].outerHTML
+      sessionStorage.setItem(this.storageKey, dashName)
+    } else {
+      sessionStorage.removeItem(this.storageKey)
+    }
   }
 
   watch: Watch = [['selectedElementKey', this.watchSelectedElementKey]]
