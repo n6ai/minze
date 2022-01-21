@@ -14,6 +14,7 @@ minze-monorepo/            📁 root directory
 │   └── ...
 ├── packages/              📁 all packages
 │   ├── create-minze/      📁 create-minze
+│   ├── minze-elements/    📁 minze-elements
 │   ├── minze/             📁 minze
 │   ├── playground/        📁 playground (private)
 │   └── tests/             📁 tests (private)
