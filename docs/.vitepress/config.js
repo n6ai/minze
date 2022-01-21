@@ -256,6 +256,10 @@ module.exports = {
               link: '/guide/advanced-typescript'
             },
             {
+              text: 'Syntax Highlighting',
+              link: '/guide/advanced-syntax-highlighting'
+            },
+            {
               text: 'Mixins',
               link: '/guide/advanced-mixins'
             },
