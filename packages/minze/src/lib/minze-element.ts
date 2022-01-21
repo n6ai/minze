@@ -225,6 +225,7 @@ export class MinzeElement extends HTMLElement {
       <style>
         :host { box-sizing: border-box; display: block; }
         :host([hidden]) { display: none }
+        * { box-sizing: border-box; }
         ${this.css?.() ?? ''}
       </style>
       ${this.html?.() ?? '<slot></slot>'}
