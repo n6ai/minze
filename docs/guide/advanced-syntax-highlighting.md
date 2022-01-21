@@ -29,30 +29,3 @@ class MyElement extends MinzeElement {
 
 Minze.defineAll([MyElement])
 ```
-
-### Tagged templates
-
-With the following extensions you can add syntax highlighting to tagged template strings:
-
-- [lit-html](https://marketplace.visualstudio.com/items?itemName=bierner.lit-html)
-- [lit-plugin](https://marketplace.visualstudio.com/items?itemName=runem.lit-plugin)
-
-**Example**
-
-```js
-import Minze, { MinzeElement, html, css } from 'minze'
-
-class MyElement extends MinzeElement {
-  html () => html`
-    <div>Hello Minze!</div>
-  `
-
-  css () => css`
-    :host {
-      display: flex;
-    }
-  `
-}
-
-Minze.defineAll([MyElement])
-```
