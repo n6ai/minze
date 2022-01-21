@@ -3,5 +3,4 @@ node_modules
 *.log
 dist
 .idea
-.vscode
 temp
