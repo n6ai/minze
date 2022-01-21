@@ -48,3 +48,37 @@ export function dashToCamel(value: string) {
 export function warn(msg: string, ...args: unknown[]) {
   console.warn(`[Minze warn] ${msg}`, ...args)
 }
+
+/**
+ * Tags template literals for HTML syntax highlighting.
+ *
+ * @param value - Template literal.
+ *
+ * @example
+ * ```
+ * myElement extends MinzeElement {
+ *   html = () => html`
+ *     <div>Hello Minze!</div>
+ *   `
+ * }
+ * ```
+ */
+export const html = (value: TemplateStringsArray) => value
+
+/**
+ * Tags template literals for CSS syntax highlighting.
+ *
+ * @param value - Template literal.
+ *
+ * @example
+ * ```
+ * myElement extends MinzeElement {
+ *   css = () => css`
+ *     :host {
+ *       display: flex;
+ *     }
+ *   `
+ * }
+ * ```
+ */
+export const css = (value: TemplateStringsArray) => value
