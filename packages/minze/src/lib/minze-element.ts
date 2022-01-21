@@ -58,6 +58,19 @@ export class MinzeElement extends HTMLElement {
   readonly version = '__VERSION__'
 
   /**
+   * The class name of the component in dash-case.
+   *
+   * @example
+   * ```
+   * class MyElement exptends MinzeElement {}
+   * MyElement.dashName
+   * ```
+   */
+  static get dashName() {
+    return camelToDash(this.name)
+  }
+
+  /**
    * Registers element as a custom web component.
    *
    * @param name - The name of the custom web component.
@@ -71,7 +84,7 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   static define(name?: string) {
-    if (!name) name = camelToDash(this.name as string)
+    if (!name) name = camelToDash(this.name)
     if (customElements) customElements.define(name, this)
   }
 
