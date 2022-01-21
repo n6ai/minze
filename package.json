@@ -5,6 +5,7 @@
     "node": ">=v14.0.0"
   },
   "workspaces": [
+    "packages/minze",
     "packages/*",
     "packages/tests/**/*"
   ],
