@@ -14,7 +14,7 @@ features:
     details: Tiny footprint ~2KB (minified and compressed).
   - title: 🚀 Modern
     details: Based on the latest technologies around web components.
-  - title: 📦 Sharable
+  - title: 📦 Shareable
     details: Build component libraries or design systems. Define once, use everywhere.
   - title: 🎲 Framework Agnostic
     details: Use Minze with any common framework - React, Vue, Angular ...

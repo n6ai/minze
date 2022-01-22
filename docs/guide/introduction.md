@@ -23,7 +23,7 @@ Possible use cases:
 - 👶 Simple - Dive right in by [scaffolding a project](/guide/installation#cli) or using a [CDN link](/guide/installation#cdn).
 - ⚡ Fast - Tiny footprint ~2KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
-- 📦 Sharable - Build component libraries or design systems. Define once, use everywhere.
+- 📦 Shareable - Build component libraries or design systems. Define once, use everywhere.
 - 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, Angular ...
 - 🔒 Typed API - Scale your component library with ease by using TypeScript.
 
