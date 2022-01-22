@@ -5,9 +5,9 @@ import template from './template'
 
 Minze.defineAll(Elements)
 
-// dev component
-import { MinzeElementSwitch } from '@minzejs/elements'
-MinzeElementSwitch.define()
+// @minzejs/elements
+// import * as MinzeElements from '@minzejs/elements'
+// Minze.defineAll(MinzeElements)
 
 const app = document.querySelector<HTMLDivElement>('#app') ?? null
 if (app) app.innerHTML = template
