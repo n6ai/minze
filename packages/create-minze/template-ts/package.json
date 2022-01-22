@@ -19,7 +19,7 @@
     "clean": "rimraf dist/* temp"
   },
   "dependencies": {
-    "minze": "^0.0.1"
+    "minze": "^1.0.0"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.19.4",

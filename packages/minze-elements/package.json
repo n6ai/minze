@@ -41,7 +41,7 @@
     "release": "standard-version --no-verify --header \"\" --path . -t minze-elements@"
   },
   "dependencies": {
-    "minze": ">=0.1.0"
+    "minze": ">=1.0.0"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.19.4",
