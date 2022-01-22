@@ -71,14 +71,16 @@ html:not(.dark) .nav-dropdown-link-item a.item:hover {
 /* content links */
 html:not(.dark) .content p a,
 html:not(.dark) .content ul a,
-html:not(.dark) .content ol a {
+html:not(.dark) .content ol a,
+html:not(.dark) .content table a {
   color: var(--c-text);
   text-decoration: underline;
 }
 
 html:not(.dark) .content p a:hover,
 html:not(.dark) .content ul a:hover,
-html:not(.dark) .content ol a:hover {
+html:not(.dark) .content ol a:hover,
+html:not(.dark) .content table a:hover {
   color: var(--c-text);
 }
 
@@ -149,4 +151,14 @@ html.dark h4,
 html.dark h5,
 html.dark h6 {
   color: var(--c-white-dark);
+}
+
+html.dark tr,
+html.dark th,
+html.dark td {
+  border-color: var(--c-divider);
+}
+
+html.dark tr:nth-child(2n) {
+  background-color: var(--c-black-light);
 }
