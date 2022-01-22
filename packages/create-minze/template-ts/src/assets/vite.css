@@ -1,8 +1,3 @@
-/* hide all custom web components until they are defined */
-:not(:defined) {
-  display: none;
-}
-
 * {
   box-sizing: border-box;
 }
