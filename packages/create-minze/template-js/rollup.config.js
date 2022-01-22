@@ -9,6 +9,9 @@ const builds = [
 ]
 
 const createConfig = ({ format, file }) => {
+  /**
+   * @type { import('rollup').RollupOptions }
+   */
   const config = {
     input: resolve(__dirname, file),
     plugins: [
