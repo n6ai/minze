@@ -1,8 +1,17 @@
 # Quick Start
 
-The easiest way to get started is to scaffold a new Minze Dev and Publishing environment. It comes with everything you need to develop custom web components and publish them to npm. Out of the box, it comes with [rollup](https://rollupjs.org/) and [vite](https://vitejs.dev/).
+## Try Minze online
+
+Quickly check out what's Minze all about.
+
+| Site       |                                                                                                                             |                                                                                                                             |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| StackBlitz | [JavaScript](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-js?title=Minze&terminal=dev) | [TypeScript](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-ts?title=Minze&terminal=dev) |
+| CodePen    | [JavaScript](https://codepen.io/sergejcodes/pen/WNZVjPo)                                                                    |                                                                                                                             |
 
 ## Scaffolding a project
+
+The easiest way to get started locally is to scaffold a new Minze Dev and Publishing environment. It comes with everything you need to develop custom web components and publish them to npm. Out of the box, it comes with [rollup](https://rollupjs.org/) and [vite](https://vitejs.dev/).
 
 Follow these steps in your command line to get started.
 
