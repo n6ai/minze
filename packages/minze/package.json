@@ -21,7 +21,7 @@
   "engines": {
     "node": ">=v14.0.0"
   },
-  "homepage": "https://minze.dev/",
+  "homepage": "https://minze.dev",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/n6ai/minze.git",
