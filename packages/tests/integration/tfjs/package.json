@@ -1,9 +1,0 @@
-{
-  "name": "@tests/integration-tfjs",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "@tensorflow/tfjs": "^3.13.0",
-    "minze": "*"
-  }
-}
