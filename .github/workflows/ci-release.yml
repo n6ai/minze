@@ -112,7 +112,7 @@ jobs:
         id: tag
         run: echo "::set-output name=tagName::$(git describe --tags --abbrev=0)"
 
-      - name: Release
+      - name: Release ${{ env.PACKAGE_NAME }}
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.tag.outputs.tagName }}
@@ -146,7 +146,7 @@ jobs:
       - name: Create builds
         run: npm run build -w ${{ env.PACKAGE_NAME }} --if-present
 
-      - name: Publish
+      - name: Publish ${{ env.PACKAGE_NAME }}
         run: npm publish -w ${{ env.PACKAGE_NAME }} --ignore-scripts --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
