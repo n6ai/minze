@@ -212,7 +212,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  html?(): TemplateStringsArray | string
+  html?(): string
 
   /**
    * Defines the shadow DOM styling.
@@ -228,7 +228,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  css?(): TemplateStringsArray | string
+  css?(): string
 
   /**
    * Creates the template for the shadow root, which will be inserted into the Shadow root.
