@@ -29,7 +29,7 @@
     "lint": "eslint **/*.{ts,js}",
     "clean": "npm run clean --workspaces --if-present",
     "size": "npm run size --workspaces --if-present",
-    "release": "echo \"[use]: npm run release -w <minze | create-minze>\""
+    "release": "echo \"[use]: npm run release -w <minze | create-minze | @minzejs/elements>\""
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
