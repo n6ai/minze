@@ -93,10 +93,8 @@ export * from './lib/my-element'
 
 ```js
 export default `
-  <div class="minze-wrap">
-    <!-- ... -->
-    <my-element></my-element>
-  </div>
+  <my-element></my-element>
+  <minze-counter></minze-counter>
 `
 ```
 
