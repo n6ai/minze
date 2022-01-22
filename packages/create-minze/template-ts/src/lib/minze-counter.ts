@@ -7,37 +7,47 @@ export interface MinzeCounter {
 export class MinzeCounter extends MinzeElement {
   reactive: Reactive = [['counter', 0]]
 
-  html = () => `
-    <div>
-      <div class="counter">
-        <slot name="counter"></slot>
-        ${this.counter}
-      </div>
+  increaseCount = () => this.counter++
 
-      <slot name="button" class="button"></slot>
+  html = () => `
+    <minze-logo></minze-logo>
+
+    <div class="text">
+      Hello Minze!
     </div>
+
+    <div class="counter">
+      <span>Count is:</span>
+      ${this.counter}
+    </div>
+
+    <minze-button class="button">
+      Click Me
+    </minze-button>
   `
 
   css = () => `
+    :host {
+      width: 100%;
+      min-height: calc(100vh - 2rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 40px;
+    }
+
+    .text {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
     .counter {
       text-align: center;
-      margin-bottom: 1rem;
     }
   `
 
-  onStart = async () => {
-    const delay = 0
-    await new Promise((resolve) => setTimeout(resolve, delay))
-    console.log(`start: simulated response time: ${delay}`)
-  }
-
-  onReady = () => {
-    console.log('ready')
-  }
-
-  handleClick = () => {
-    this.counter++
-  }
-
-  eventListeners: EventListeners = [['.button', 'click', this.handleClick]]
+  eventListeners: EventListeners = [['.button', 'click', this.increaseCount]]
 }

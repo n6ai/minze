@@ -1,11 +1,3 @@
-/* variables inside custom web components can be overwritten */
-:root {
-  --color-primary: rgb(55 245 220);
-  --color-secondary: rgb(50 255 160);
-  --color-dark: rgb(45 80 60);
-  --shadow-primary-50: rgb(55 245 220 / 50%);
-}
-
 /* hide all custom web components until they are defined */
 :not(:defined) {
   display: none;
@@ -16,18 +8,8 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  padding: 1rem;
   margin: 0;
-  padding: 0;
-}
-
-.minze-wrap {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  padding: 40px;
 }

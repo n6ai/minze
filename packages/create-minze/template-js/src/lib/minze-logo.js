@@ -1,23 +1,7 @@
 import { MinzeElement } from 'minze'
 
 export class MinzeLogo extends MinzeElement {
-  attrs = [['text']]
-
-  static observedAttributes = ['text']
-
   html = () => `
-    <div>
-      <img src="/icon.svg" width="200px" alt="Minze">
-      ${this.text ? `<div class="text">${this.text}</div>` : ''}
-    </div>
-  `
-
-  css = () => `
-    .text {
-      text-align: center;
-      font-size: 1.25rem;
-      font-weight: bold;
-      margin-top: 1.75rem;
-    }
+    <img src="/icon.svg" width="200px" alt="Minze logo">
   `
 }
