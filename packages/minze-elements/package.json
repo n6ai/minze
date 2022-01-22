@@ -38,7 +38,7 @@
     "types-roll": "api-extractor run && rimraf temp",
     "clean": "rimraf dist/* temp",
     "size": "npx gzip-size-cli dist/module.js --include-original",
-    "release": "standard-version --no-verify --header --path . -t minze-elements@"
+    "release": "standard-version --no-verify --header \"\" --path . -t minze-elements@"
   },
   "dependencies": {
     "minze": ">=0.1.0"
