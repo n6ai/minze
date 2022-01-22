@@ -19,7 +19,7 @@ It provides an intuitive abstraction layer around the web components API with it
 
 ## Features
 
-- 👶 Simple - Dive right in by [scaffolding](packages/create-minze) a project or using a CDN link.
+- 👶 Simple - Dive right in by [scaffolding](packages/create-minze) a project or using a [CDN link](https://minze.dev/guide/installation.html#cdn).
 - ⚡ Fast - Tiny footprint ~2KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
 - 📦 Sharable - Build component libraries or design systems. Define once, use everywhere.
