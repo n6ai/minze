@@ -157,6 +157,10 @@ module.exports = {
           {
             text: 'Changelog',
             link: 'https://github.com/n6ai/minze/blob/main/packages/minze/CHANGELOG.md'
+          },
+          {
+            text: '@minzejs/elements',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/minze-elements'
           }
         ]
       }
