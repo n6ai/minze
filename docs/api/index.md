@@ -815,7 +815,7 @@ A Hook that runs `each time` before any [observed attribute](#observedattributes
 
 - **Method**
 
-- **Type:** `(name?: string, oldValue?: string, newValue?: string): Promise<void> | void`
+- **Type:** `(name?: string, oldValue?: string | null, newValue?: string | null): Promise<void> | void`
 
 - **Example:**
 
@@ -835,7 +835,7 @@ A Hook that runs `each time` after any [observed attribute](#observedattributes)
 
 - **Method**
 
-- **Type:** `(name?: string, oldValue?: string, newValue?: string): Promise<void> | void`
+- **Type:** `(name?: string, oldValue?: string | null, newValue?: string | null): Promise<void> | void`
 
 - **Example:**
 
