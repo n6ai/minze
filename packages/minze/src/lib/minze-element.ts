@@ -721,8 +721,8 @@ export class MinzeElement extends HTMLElement {
    */
   private async attributeChangedCallback(
     name: string,
-    oldValue: string,
-    newValue: string
+    oldValue: string | null,
+    newValue: string | null
   ) {
     await this.beforeAttributeChange?.(name, oldValue, newValue)
 
@@ -837,8 +837,8 @@ export class MinzeElement extends HTMLElement {
    */
   beforeAttributeChange?(
     name?: string,
-    oldValue?: string,
-    newValue?: string
+    oldValue?: string | null,
+    newValue?: string | null
   ): Promise<void> | void
 
   /**
@@ -860,7 +860,7 @@ export class MinzeElement extends HTMLElement {
    */
   onAttributeChange?(
     name?: string,
-    oldValue?: string,
-    newValue?: string
+    oldValue?: string | null,
+    newValue?: string | null
   ): Promise<void> | void
 }
