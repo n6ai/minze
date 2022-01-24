@@ -34,7 +34,7 @@ $ yarn install
 **pnpm**
 
 ```bash
-$ pnpm create minze my-minze-env -- --template js
+$ pnpm create minze my-project -- --template js
 $ cd my-project
 $ pnpm install
 ```
