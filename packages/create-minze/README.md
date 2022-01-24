@@ -13,7 +13,7 @@ $ npm init minze@latest
 **yarn**
 
 ```bash
-$ yarn create minze@latest
+$ yarn create minze
 ```
 
 **pnpm**
@@ -39,11 +39,11 @@ You can directly specify the project name and template via additional command li
 
 ```bash
 # npm
-$ npm init minze@latest my-minze-env -- --template ts
+$ npm init minze@latest my-project -- --template ts
 
 # yarn
-$ yarn create minze my-minze-env --template ts
+$ yarn create minze my-project --template ts
 
 # pnpm
-$ pnpm create minze my-minze-env -- --template ts
+$ pnpm create minze my-project -- --template ts
 ```
