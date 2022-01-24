@@ -1,6 +1,6 @@
 # Introduction
 
-> Minze is a dead-simple framework for sharable web components.
+> Minze is a dead-simple framework for shareable web components.
 
 ## Overview
 

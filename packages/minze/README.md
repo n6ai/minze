@@ -1,6 +1,6 @@
 # Minze
 
-> Dead-simple framework for sharable web components.
+> Dead-simple framework for shareable web components.
 
 Minze (German shorthand for "Peppermint", pronounced [/ˈmɪnt͡sə/](https://upload.wikimedia.org/wikipedia/commons/c/c2/De-Minze.ogg)) lets you rapidly build native web components.
 
