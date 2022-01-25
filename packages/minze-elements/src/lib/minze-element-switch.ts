@@ -4,9 +4,9 @@ import css from './minze-element-switch.css'
 
 export interface MinzeElementSwitch {
   overlayActive: boolean
-  slottedElements: Element[]
-  selectedElementKey: string
-  selectedElement: string
+  slottedElements: Element[] | null
+  selectedElementKey: string | null
+  selectedElement: string | null
 }
 
 /**
@@ -37,11 +37,13 @@ export class MinzeElementSwitch extends MinzeElement {
 
   watchSelectedElementKey = (newValue: string) => {
     const dashName = newValue
-    const element = this.slottedElements.filter(
-      (element) => element.tagName.toLowerCase() === dashName
-    )
+    const element = this.slottedElements
+      ? this.slottedElements.filter(
+          (element) => element.tagName.toLowerCase() === dashName
+        )
+      : null
 
-    if (element.length) {
+    if (element?.length) {
       this.selectedElement = element[0].outerHTML
       sessionStorage.setItem(this.storageKey, dashName)
     } else {
@@ -54,7 +56,7 @@ export class MinzeElementSwitch extends MinzeElement {
   templateOverlay() {
     const template: string[] = []
 
-    if (this.slottedElements.length) {
+    if (this.slottedElements?.length) {
       this.slottedElements.forEach((element) => {
         const dashName = element.tagName.toLowerCase()
         const isSelected = this.selectedElementKey === dashName
@@ -108,9 +110,9 @@ export class MinzeElementSwitch extends MinzeElement {
     if (slot) this.slottedElements = slot.assignedElements()
 
     const selectedElementKey = sessionStorage.getItem(this.storageKey)
-    const firstElementdashName = Object.values(
-      this.slottedElements
-    )[0].tagName.toLowerCase()
+    const firstElementdashName = this.slottedElements
+      ? Object.values(this.slottedElements)[0].tagName.toLowerCase()
+      : null
     this.selectedElementKey = selectedElementKey ?? firstElementdashName
   }
 
