@@ -1,3 +1,4 @@
 dist
 package-lock.json
 *.d.ts
+CHANGELOG.md
