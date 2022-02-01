@@ -1,3 +1,7 @@
+html:not(.dark) .DocSearch {
+  --c-brand: var(--c-text-light-3);
+}
+
 html.dark .DocSearch {
   --docsearch-text-color: var(--c-white-dark);
   --docsearch-container-background: rgba(10, 10, 10, 0.7);
@@ -6,7 +10,7 @@ html.dark .DocSearch {
   --docsearch-searchbox-background: var(--c-black-lighter);
   --docsearch-searchbox-focus-background: var(--c-black-light);
   --docsearch-hit-color: var(--c-text-dark-1);
-  --docsearch-hit-active-color: var(--c-brand-text);
+  --docsearch-hit-active-color: var(--c-black);
   --docsearch-hit-shadow: none;
   --docsearch-hit-background: var(--c-black-light);
   --docsearch-key-gradient: linear-gradient(-26.5deg, #6b6b6b, #494949);

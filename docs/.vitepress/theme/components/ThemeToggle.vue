@@ -98,7 +98,13 @@ watch(themeTransitionActive, function (value) {
   position: relative;
   padding-top: 4px;
   margin-left: 12px;
-  /* margin-right: -12px; */
+  margin-right: -6px;
+}
+
+@media (min-width: 720px) {
+  .toggle-button {
+    margin-right: -12px;
+  }
 }
 
 html.dark .toggle-button {

@@ -144,11 +144,11 @@ module.exports = {
     editLinks: true,
     editLinkText: 'Suggest changes to this page',
 
-    // algolia: {
-    //   appId: '',
-    //   apiKey: '',
-    //   indexName: ''
-    // },
+    algolia: {
+      appId: 'I0V1VHMVGH',
+      apiKey: '2a3df2bb4ca6d48291a52fb3f82e67f3',
+      indexName: 'minze'
+    },
 
     nav: [
       { text: 'Guide', link: '/guide/' },
