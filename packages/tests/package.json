@@ -9,7 +9,7 @@
     "test-pw-debug": "cross-env PWDEBUG=1 npm run test-pw"
   },
   "devDependencies": {
-    "@playwright/test": "^1.18.0",
+    "@playwright/test": "^1.18.1",
     "@types/jest": "^27.4.0",
     "cross-env": "^7.0.3",
     "jest": "^27.4.7",
