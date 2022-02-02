@@ -1,9 +1,9 @@
 import { MinzeElement } from 'minze'
 
 export class MinzeCounter extends MinzeElement {
-  reactive = [['counter', 0]]
+  reactive = [['count', 0]]
 
-  increaseCount = () => this.counter++
+  increaseCount = () => this.count++
 
   html = () => `
     <minze-logo></minze-logo>
@@ -12,9 +12,9 @@ export class MinzeCounter extends MinzeElement {
       Hello Minze!
     </div>
 
-    <div class="counter">
+    <div class="count">
       <span>Count is:</span>
-      ${this.counter}
+      ${this.count}
     </div>
 
     <minze-button class="button">
@@ -40,7 +40,7 @@ export class MinzeCounter extends MinzeElement {
       font-weight: bold;
     }
 
-    .counter {
+    .count {
       text-align: center;
     }
   `
