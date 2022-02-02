@@ -1,6 +1,6 @@
 # Playground
 
-Playground for Minze.
+Playground for Minze. This package is equivalent to the `create-minze` TypeScript template.
 
 ## Commands
 
