@@ -3,15 +3,17 @@
 /**
  * Script that generates a sitemap.txt file for vitepress.
  */
-const { resolve } = require('path')
+const { resolve, join } = require('path')
 const fs = require('fs')
 
 const rootUrl = 'https://minze.dev'
+const docsDir = resolve(__dirname, '../docs')
+const outputFile = join(docsDir, '.vitepress/dist/sitemap.txt')
+
 const dirs = {
-  guide: resolve(__dirname, '../docs/guide'),
-  api: resolve(__dirname, '../docs/api')
+  guide: join(docsDir, 'guide'),
+  api: join(docsDir, 'api')
 }
-const outputFile = resolve(__dirname, '../docs/.vitepress/dist/sitemap.txt')
 
 try {
   const urls = [rootUrl]
