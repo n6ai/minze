@@ -23,7 +23,7 @@
     "test-pw": "npm run test-pw --workspaces --if-present",
     "test-pw-debug": "npm run test-pw-debug --workspaces --if-present",
     "docs": "vitepress dev docs",
-    "docs-build": "vitepress build docs",
+    "docs-build": "vitepress build docs && node scripts/sitemap.js",
     "docs-serve": "vitepress serve docs",
     "format": "prettier --write .",
     "lint": "eslint **/*.{ts,js}",
