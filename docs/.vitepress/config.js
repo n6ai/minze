@@ -3,8 +3,9 @@
 const isProduction = process.env.NODE_ENV
 
 const META_URL = 'https://minze.dev'
-const META_TITLE = 'Minze'
-const META_DESCRIPTION = 'Dead-simple framework for shareable web components.'
+const META_TITLE = 'Minze | Dead-simple JS framework for native web components'
+const META_DESCRIPTION =
+  'Minze lets you rapidly build native web components. Create encapsulated, reusable, cross-framework web components and scale your component library with ease.'
 const META_IMAGE = 'https://minze.dev/social.jpg'
 
 const darkMode = `
@@ -49,7 +50,7 @@ const productionHead = [
  * @type {import('vitepress').UserConfig}
  */
 module.exports = {
-  title: 'Minze',
+  title: META_TITLE,
   lang: 'en-US',
   description: META_DESCRIPTION,
   head: [
