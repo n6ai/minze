@@ -4,9 +4,9 @@
   "type": "module",
   "dependencies": {
     "minze": "*",
-    "vue": "^3.2.30"
+    "vue": "^3.2.31"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.1.0"
+    "@vitejs/plugin-vue": "^2.2.0"
   }
 }
