@@ -381,7 +381,7 @@ export class MyElement extends MinzeElement {
 
 ### observedAttributes
 
-Observes the provided attribute names and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChange` and `afterAttributeChange` hooks are called.
+Observes the provided attribute names and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChange` and `onAttributeChange` hooks are called.
 
 ::: warning
 `observedAttributes` has to be a `static` property.
@@ -666,7 +666,7 @@ export class MyElement extends MinzeElement {
 A Hook that runs `once` after the element is added to the DOM, but before the internal lifecycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
 
 ::: tip
-This hook runs after the `beforeAttributeChange` and `afterAttributeChange` hooks if any `observed` attributes are present on the element.
+This hook runs after the `beforeAttributeChange` and `onAttributeChange` hooks if any `observed` attributes are present on the element.
 :::
 
 - **Method**
