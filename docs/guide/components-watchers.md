@@ -10,7 +10,7 @@ Tuple structure: [`name`, `callback`]
 2. **callback:** a callback function that runs whenever one of the property's values changes. Can be asynchronous.
 
 ::: warning
-`watch` only works with reactive properties that where defined with `reactive` or `attrs`.
+`watch` only works with reactive properties that were defined with `reactive` or `attrs`.
 :::
 
 **Example**
