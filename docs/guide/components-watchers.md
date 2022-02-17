@@ -1,6 +1,6 @@
 # Watchers
 
-`watch` watches the given reactive properties and calls the provided callback whenever a change is detected. `wacth` should be an array containing one or more tuples. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
+`watch` watches the given reactive properties and calls the provided callback whenever a change is detected. `watch` should be an array containing one or more tuples. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
 Every tuple takes exactly 2 values.
 
