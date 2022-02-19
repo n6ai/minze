@@ -62,7 +62,7 @@ export class MinzeElement extends HTMLElement {
    *
    * @example
    * ```
-   * class MyElement exptends MinzeElement {}
+   * class MyElement extends MinzeElement {}
    * MyElement.dashName
    * ```
    */
@@ -77,7 +77,7 @@ export class MinzeElement extends HTMLElement {
    *
    * @example
    * ```
-   * class MyElement exptends MinzeElement {}
+   * class MyElement extends MinzeElement {}
    * MyElement.define()
    * // or
    * MyElement.define('my-element')
