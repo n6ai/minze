@@ -9,15 +9,14 @@ const META_IMAGE = 'https://minze.dev/social.jpg'
 
 const darkMode = `
   ;(() => {
-    try {
-      const savedTheme = localStorage.getItem('minze-color-scheme')
-      const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-
-      if (savedTheme === 'dark' || !savedTheme && prefersDarkTheme) {
-        document.documentElement.classList.add('dark')
-        localStorage.setItem('minze-color-scheme', 'dark')
-      }
-    } catch (err) {}
+    const saved = localStorage.getItem('minze-color-scheme')
+    if (
+      !saved || saved === 'auto'
+        ? window.matchMedia('(prefers-color-scheme: dark)').matches
+        : saved === 'dark'
+    ) {
+      document.documentElement.classList.add('dark')
+    }
   })()
 `
 
