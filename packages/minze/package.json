@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "license": "MIT",
   "author": "Sergej Samsonenko",
-  "description": "Dead-simple framework for shareable web components.",
+  "description": "Dead-simple JS framework for native web components.",
   "keywords": [
     "minze",
     "minzejs",

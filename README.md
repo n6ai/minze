@@ -6,7 +6,7 @@
 
 # Minze
 
-> Dead-simple framework for shareable web components.
+> Dead-simple JS framework for native web components.
 
 Minze (German shorthand for "Peppermint", pronounced [/ˈmɪnt͡sə/](https://upload.wikimedia.org/wikipedia/commons/c/c2/De-Minze.ogg)) lets you rapidly build native web components.
 
@@ -30,7 +30,7 @@ It provides an intuitive abstraction layer around the web components API with it
 
 | Project                                      | Version                                                                                                                                      | Description                                                                 |
 | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [minze](packages/minze)                      | [![minze version](https://img.shields.io/npm/v/minze.svg?label=%20&color=323232)](packages/minze/CHANGELOG.md)                               | Dead-simple framework for shareable web components.                         |
+| [minze](packages/minze)                      | [![minze version](https://img.shields.io/npm/v/minze.svg?label=%20&color=323232)](packages/minze/CHANGELOG.md)                               | Dead-simple JS framework for native web components.                         |
 | [create-minze](packages/create-minze)        | [![create-minze version](https://img.shields.io/npm/v/create-minze.svg?label=%20&color=323232)](packages/create-minze/CHANGELOG.md)          | Scaffolding CLI tool for setting up a Minze Dev and Publishing environment. |
 | [@minzejs/elements](packages/minze-elements) | [![minze-elements version](https://img.shields.io/npm/v/@minzejs/elements.svg?label=%20&color=323232)](packages/minze-elements/CHANGELOG.md) | Native web components built with Minze.                                     |
 | [playground](packages/playground)            | [![playground private](https://img.shields.io/static/v1?label=&message=private&color=323232)](packages/playground)                           | Internal playground environment for Minze.                                  |
