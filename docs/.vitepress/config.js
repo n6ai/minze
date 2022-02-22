@@ -4,7 +4,7 @@ const isProduction = process.env.NODE_ENV
 
 const META_URL = 'https://minze.dev'
 const META_TITLE = 'Minze'
-const META_DESCRIPTION = 'Dead-simple framework for shareable web components.'
+const META_DESCRIPTION = 'Dead-simple JS framework for native web components.'
 const META_IMAGE = 'https://minze.dev/social.jpg'
 
 const darkMode = `
