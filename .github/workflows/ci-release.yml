@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -78,7 +78,7 @@ jobs:
           fetch-depth: 0 # required, otherwise changelog won't be properly updated
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -132,7 +132,7 @@ jobs:
           ref: main # needs to be explicitly set to pull the latest changes
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
