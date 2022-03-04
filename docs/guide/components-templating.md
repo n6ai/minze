@@ -111,7 +111,7 @@ Minze.defineAll([MyElement])
 <my-element></my-element>
 ```
 
-### Contitional Attributes
+### Conditional Attributes
 
 Conditional rendering can also be used for attributes.
 
