@@ -42,7 +42,7 @@ Minze.defineAll([MyElement])
 <my-element>Hello Minze!</my-element>
 ```
 
-### Contitional Styling
+### Conditional Styling
 
 You can use the `ternary` operator to conditionally render properties inside `css`.
 
