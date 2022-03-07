@@ -4,11 +4,11 @@
 
 Quickly check out what's Minze all about.
 
-| Site       |                                                                                                                             |                                                                                                                             |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| StackBlitz | [JavaScript](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-js?title=Minze&terminal=dev) | [TypeScript](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-ts?title=Minze&terminal=dev) |
-| CodePen    | [JavaScript](https://codepen.io/sergejcodes/pen/WNZVjPo)                                                                    |                                                                                                                             |
-| WebComponents.dev | [JavaScript](https://webcomponents.dev/edit/0W3vWxuoJlmRHGmgLVVx/src/index.js?p=stories) |                                                                                                                             |
+| Site              |                                                                                                                             |                                                                                                                             |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| StackBlitz        | [JavaScript](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-js?title=Minze&terminal=dev) | [TypeScript](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-ts?title=Minze&terminal=dev) |
+| CodePen           | [JavaScript](https://codepen.io/sergejcodes/pen/WNZVjPo)                                                                    |                                                                                                                             |
+| WebComponents.dev | [JavaScript](https://webcomponents.dev/edit/0W3vWxuoJlmRHGmgLVVx/src/index.js?p=stories)                                    |                                                                                                                             |
 
 ## Scaffolding a project
 
