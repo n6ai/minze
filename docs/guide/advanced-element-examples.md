@@ -2,6 +2,10 @@
 
 Below you can find some advanced examples on how to create certain element functionality with Minze.
 
+::: tip
+Check out the [Creating Native Web Components](https://tympanus.net/codrops/2022/03/04/creating-native-web-components/) article on codrops for a tutorial with practical examples about how to create native web components with Minze.
+:::
+
 ## Link
 
 Recreating some basic functionality of the `<a></a>` link element with Minze.
