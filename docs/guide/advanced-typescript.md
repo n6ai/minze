@@ -2,7 +2,10 @@
 
 This section assumes you already have a basic understanding of TypeScript. The process of writing Minze components in TypeScript is similar to writing them in vanilla JavaScript.
 
-There are some small differences, like using [Type Helpers](/api/#type-helpers) and defining types for dynamic properties.
+There are two main differences:
+
+1. The types for `reactive`, `attrs`, `watch` and `eventListeners` have to be explicitly declared. You can do so by using [Type Helpers](/api/#type-helpers) provided with Minze.
+2. Reactive properties and attributes are created dynamically so you have to explicitly declare their types in a separate `interface` named after the component and export it.
 
 By going through and understanding the example below, you will have a firm grasp of how to work with Minze components in TypeScript.
 
@@ -13,7 +16,8 @@ By going through and understanding the example below, you will have a firm grasp
  * We are importing the base MinzeElement class
  * plus some tuple-type helpers.
  */
-import { MinzeElement, Reactive, Attrs, Watch, EventListeners } from 'minze'
+import type { Reactive, Attrs, Watch, EventListeners } from 'minze'
+import { MinzeElement } from 'minze'
 
 /**
  * Since all reactive properties and attribute properties
