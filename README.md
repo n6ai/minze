@@ -1,4 +1,6 @@
-<p align="center" style="padding-top: 2rem;">
+&nbsp;
+
+<p align="center">
   <a href="https://minze.dev" target="_blank" rel="noopener noreferrer">
     <img src=".github/logo.svg" alt="Minze" width="180" height="auto">
   </a>
