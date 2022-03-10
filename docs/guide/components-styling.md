@@ -44,7 +44,7 @@ Minze.defineAll([MyElement])
 
 ### Conditional Styling
 
-You can use the `ternary` operator to conditionally render properties inside `css`.
+You can use conditional operators (`Ternary`, `Logical OR`, `Nullish coalescing`, ...) inside the `css` property to conditionally apply styling.
 
 **Example**
 
@@ -53,6 +53,7 @@ import Minze, { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   isActive = true
+  color = 'rgb(255 255 255)'
 
   html = () => `
     <div>Hello Minze!</div>
@@ -61,6 +62,8 @@ class MyElement extends MinzeElement {
   css = () => `
     div {
       background: ${this.isActive ? 'rgb(55 245 220)' : 'transparent'};
+      color: ${this.color || 'rgb(0 0 0)'};
+      border-color: ${this.color ?? 'rgb(0 0 0)'};
     }
   `
 }
