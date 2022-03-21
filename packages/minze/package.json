@@ -42,7 +42,7 @@
     "release": "standard-version --no-verify --header \"\" --path ."
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.19.4",
+    "@microsoft/api-extractor": "^7.19.5",
     "@rollup/plugin-replace": "^4.0.0",
     "@rollup/plugin-typescript": "^8.3.1",
     "rimraf": "^3.0.2",
