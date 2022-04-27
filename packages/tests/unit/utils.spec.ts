@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals'
 import { isProxy, camelToDash, dashToCamel, warn } from 'minze/src/lib/utils'
 
 describe('isProxy', () => {
@@ -55,7 +56,9 @@ describe('dashToCamel', () => {
 })
 
 describe('warn', () => {
-  jest.spyOn(global.console, 'warn').mockImplementation()
+  jest.spyOn(global.console, 'warn').mockImplementation(() => {
+    /* empty */
+  })
 
   const data = [
     { input: 'Hello Minze!', expected: '[Minze warn] Hello Minze!' }

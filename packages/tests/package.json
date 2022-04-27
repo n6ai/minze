@@ -1,11 +1,12 @@
 {
   "name": "tests",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "test": "npm run test-jest && npm run test-pw",
-    "test-jest": "jest",
-    "test-pw": "npx playwright test",
+    "test-jest": "cross-env NODE_NO_WARNINGS=1 NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "test-pw": "cross-env NODE_NO_WARNINGS=1 npx playwright test",
     "test-pw-debug": "cross-env PWDEBUG=1 npm run test-pw"
   },
   "devDependencies": {

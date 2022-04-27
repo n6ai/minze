@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test'
+import type { Page } from '@playwright/test'
 
 /**
  * Navigates to http://localhost:3000/minze-element/
