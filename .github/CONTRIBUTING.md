@@ -23,7 +23,7 @@ minze-monorepo/            📁 root directory
 
 ## Quick Start
 
-> This repo uses `npm workspaces`. In order to use npm workspaces you have to use [Node.js](https://nodejs.dev/) >= 14.0.0
+> This repo uses `npm workspaces`. In order to use npm workspaces you have to use [Node.js](https://nodejs.dev/) >= 16.0.0
 
 1. Clone this repo.
 2. Run `npm i` in the root directory.
