@@ -14,6 +14,8 @@ Quickly check out what's Minze all about.
 
 The easiest way to get started locally is to scaffold a new Minze Dev and Publishing environment. It comes with everything you need to develop custom web components and publish them to npm. Out of the box, it comes with [rollup](https://rollupjs.org/) and [vite](https://vitejs.dev/).
 
+> Minze requires [Node.js](https://nodejs.dev/) version >= `16.0.0`
+
 Follow these steps in your command line to get started.
 
 **npm**
