@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.9e2a54b3.js";const g='{"title":"Extending","description":"","frontmatter":{},"headers":[],"relativePath":"guide/advanced-extending.md"}',e={},p=t("",5),o=[p];function c(l,u,i,k,d,r){return a(),s("div",null,o)}var y=n(e,[["render",c]]);export{g as __pageData,y as default};

@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.9e2a54b3.js";const g='{"title":"Mixins","description":"","frontmatter":{},"headers":[],"relativePath":"guide/advanced-mixins.md"}',p={},e=t("",6),o=[e];function c(i,l,u,r,k,d){return a(),s("div",null,o)}var _=n(p,[["render",c]]);export{g as __pageData,_ as default};

@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.9e2a54b3.js";const g='{"title":"Performance","description":"","frontmatter":{},"headers":[{"level":2,"title":"Reactivity","slug":"reactivity"}],"relativePath":"guide/advanced-performance.md"}',p={},e=t("",16),o=[e];function c(l,u,i,r,k,d){return a(),s("div",null,o)}var y=n(p,[["render",c]]);export{g as __pageData,y as default};

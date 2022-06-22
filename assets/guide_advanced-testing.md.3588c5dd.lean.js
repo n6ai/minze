@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.9e2a54b3.js";const m='{"title":"Testing","description":"","frontmatter":{},"headers":[],"relativePath":"guide/advanced-testing.md"}',p={},o=t("",21),e=[o];function c(l,u,i,r,k,d){return a(),s("div",null,e)}var h=n(p,[["render",c]]);export{m as __pageData,h as default};

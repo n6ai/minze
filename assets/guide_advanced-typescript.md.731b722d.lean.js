@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.9e2a54b3.js";const y='{"title":"TypeScript","description":"","frontmatter":{},"headers":[],"relativePath":"guide/advanced-typescript.md"}',e={},p=t("",9),o=[p];function c(i,l,r,u,k,d){return a(),s("div",null,o)}var h=n(e,[["render",c]]);export{y as __pageData,h as default};

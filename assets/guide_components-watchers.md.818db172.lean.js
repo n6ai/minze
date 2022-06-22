@@ -1,0 +1,1 @@
+import{_ as n,c as a,o as s,a as t}from"./app.9e2a54b3.js";const m='{"title":"Watchers","description":"","frontmatter":{},"headers":[],"relativePath":"guide/components-watchers.md"}',e={},p=t("",9),o=[p];function c(l,u,i,r,k,d){return s(),a("div",null,o)}var g=n(e,[["render",c]]);export{m as __pageData,g as default};
