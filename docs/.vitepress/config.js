@@ -149,6 +149,11 @@ module.exports = {
       indexName: 'minze'
     },
 
+    carbonAds: {
+      carbon: 'CEAIV2JY',
+      placement: 'minzedev'
+    },
+
     nav: [
       { text: 'Guide', link: '/guide/' },
       { text: 'API Reference', link: '/api/' },
