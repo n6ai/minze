@@ -44,7 +44,7 @@ $ pnpm install
 
 ## Creating a component
 
-1. In the root directory of your project start the development server and open the `http://localhost:3000` URL.
+1. In the root directory of your project start the development server and open the `http://localhost:5173` URL.
 
 ```bash
 # npm

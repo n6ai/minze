@@ -93,7 +93,7 @@ export default `
 `
 ```
 
-6. Run the npm `dev` script, and navigate to `http://localhost:3000`.
+6. Run the npm `dev` script, and navigate to `http://localhost:5173`.
 
 ```bash
 $ npm run dev

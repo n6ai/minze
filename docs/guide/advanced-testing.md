@@ -29,11 +29,11 @@ $ npm install -D @playwright/test cross-env
 // playwright.config.js
 export default {
   use: {
-    baseURL: 'http://localhost:3000/tests/'
+    baseURL: 'http://localhost:5173/tests/'
   },
   webServer: {
     command: 'npm run dev',
-    port: 3000,
+    port: 5173,
     reuseExistingServer: true
   }
 }
