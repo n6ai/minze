@@ -23,6 +23,6 @@
     "rollup-plugin-license": "^2.8.1",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.7.4",
-    "vite": "^2.9.15"
+    "vite": "^3.0.9"
   }
 }
