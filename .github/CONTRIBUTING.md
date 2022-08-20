@@ -31,7 +31,7 @@ minze-monorepo/            📁 root directory
 ### Minze and Playground
 
 1. Run `npm run dev` in the root directory.
-2. Open the browser and navigate to [http://localhost:3000](http://localhost:3000).
+2. Open the browser and navigate to [http://localhost:5173](http://localhost:5173).
 
 The `dev` task will start rollup in watch mode for the `minze` package and start a vite server for the `playground` package. The minze dependency for playground is linked to the local version of minze. Any changes to the minze package can be immediately tried out and previewed in the playground.
 
@@ -39,7 +39,7 @@ The `dev` task will start rollup in watch mode for the `minze` package and start
 
 1. Run `npm run build -w minze` in the root directory.
 2. Run `npm run dev-el` in the root directory.
-3. Open the browser and navigate to [http://localhost:3000](http://localhost:3000).
+3. Open the browser and navigate to [http://localhost:5173](http://localhost:5173).
 
 First, you need to build the minze package. Then start the dev task for Minze Elements and Playground.
 The `dev` task will start rollup in watch mode for the `@minzejs/elements` package and start a vite server for the `playground` package. You can import anything from the locally linked `@minzejs/elements` package into the playground and try things out.
@@ -47,7 +47,7 @@ The `dev` task will start rollup in watch mode for the `@minzejs/elements` packa
 ### Docs
 
 1. Run `npm run docs` in the root directory.
-2. Open the browser and navigate to [http://localhost:3000](http://localhost:3000).
+2. Open the browser and navigate to [http://localhost:5173](http://localhost:5173).
 
 Vitepress will start a server in dev mode for the documentation.
 

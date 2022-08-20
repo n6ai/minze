@@ -1,7 +1,7 @@
 import type { Page } from '@playwright/test'
 
 /**
- * Navigates to http://localhost:3000/minze-element/
+ * Navigates to http://localhost:5173/minze-element/
  * and inserts the provided template into <div id="app"></div>.
  *
  * @example
