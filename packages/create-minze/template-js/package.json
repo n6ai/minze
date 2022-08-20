@@ -17,9 +17,9 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "rollup": "^2.75.7",
+    "rollup": "^2.78.0",
     "rollup-plugin-license": "^2.8.1",
     "rollup-plugin-terser": "^7.0.2",
-    "vite": "^2.9.13"
+    "vite": "^2.9.15"
   }
 }
