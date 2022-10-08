@@ -21,14 +21,18 @@ Your commit messages should follow the [Conventional Commits specification](http
   'build',
   'chore',
   'ci',
+  'deps',
   'docs',
+  'dx',
   'feat',
   'fix',
   'perf',
   'refactor',
-  'revert',
-  'style',
-  'test'
+  'release',
+  'test',
+  'types',
+  'wip',
+  'workflow'
 ]
 ```
 
