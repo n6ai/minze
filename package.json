@@ -10,7 +10,6 @@
     "packages/tests/**/*"
   ],
   "scripts": {
-    "prepare": "husky install",
     "dev": "run-p -rs dev-minze dev-playground",
     "dev-minze": "npm run dev -w minze",
     "dev-playground": "(wait-on -w 1500 packages/minze/dist/module.js) && (npm run dev -w playground)",
@@ -29,22 +28,25 @@
     "lint": "eslint **/*.{ts,js}",
     "clean": "npm run clean --workspaces --if-present",
     "size": "npm run size --workspaces --if-present",
-    "release": "echo \"[use]: npm run release -w <minze | create-minze | @minzejs/elements>\""
+    "release": "echo \"[use]: npm run release -w <minze | create-minze | @minzejs/elements>\"",
+    "postinstall": "simple-git-hooks"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
     "@types/node": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "eslint": "^8.24.0",
-    "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "npm-run-all": "^4.1.5",
     "prettier": "2.7.1",
+    "simple-git-hooks": "^2.8.0",
     "standard-version": "^9.3.2",
     "vitepress": "^0.22.4",
     "wait-on": "^6.0.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "npx @n6ai/verify-commit-msg@latest $1"
   },
   "lint-staged": {
     "*": [
