@@ -1,0 +1,37 @@
+:root {
+  --minze-c-brand-dark: rgb(50 210 135);
+  --minze-c-brand: rgb(90 250 175);
+  --minze-c-brand-light: rgb(110 255 195);
+
+  --vp-c-brand-dark: rgb(0 150 120);
+  --vp-c-brand: rgb(0 200 150);
+  --vp-c-brand-light: rgb(110 255 195);
+
+  /* Buttons */
+  --vp-button-brand-bg: var(--minze-c-brand);
+  --vp-button-brand-text: var(--vp-c-black);
+  --vp-button-brand-hover-bg: var(--minze-c-brand-light);
+  --vp-button-brand-hover-text: var(--vp-c-black);
+  --vp-button-brand-hover-bg: var(--minze-c-brand-light);
+  --vp-button-brand-active-text: var(--vp-c-black);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    45deg,
+    rgb(60 210 235) 0%,
+    rgb(0 210 160) 60%
+  );
+}
+
+:root.dark {
+  --vp-c-brand-dark: var(--minze-c-brand-dark);
+  --vp-c-brand: var(--minze-c-brand);
+  --vp-c-brand-light: var(--minze-c-brand-light);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    45deg,
+    rgb(110 255 195) 0%,
+    rgb(90 250 175) 100%
+  );
+}

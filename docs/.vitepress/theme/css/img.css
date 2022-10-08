@@ -1,0 +1,7 @@
+html:not(.dark) .img-dark {
+  display: none;
+}
+
+html.dark .img-light {
+  display: none;
+}

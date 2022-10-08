@@ -1,4 +1,5 @@
-// @ts-check
+import type { HeadConfig } from 'vitepress'
+import { defineConfig } from 'vitepress'
 
 const isProduction = process.env.NODE_ENV
 
@@ -7,23 +8,7 @@ const META_TITLE = 'Minze'
 const META_DESCRIPTION = 'Dead-simple JS framework for native web components.'
 const META_IMAGE = 'https://minze.dev/social.jpg'
 
-const darkMode = `
-  ;(() => {
-    const saved = localStorage.getItem('minze-color-scheme')
-    if (
-      !saved || saved === 'auto'
-        ? window.matchMedia('(prefers-color-scheme: dark)').matches
-        : saved === 'dark'
-    ) {
-      document.documentElement.classList.add('dark')
-    }
-  })()
-`
-
-/**
- * @type {import('vitepress').UserConfig['head']}
- */
-const productionHead = [
+const productionHead: HeadConfig[] = [
   [
     'script',
     {
@@ -44,104 +29,49 @@ const productionHead = [
   ]
 ]
 
-/**
- * @type {import('vitepress').UserConfig}
- */
-module.exports = {
-  title: 'Minze',
+export default defineConfig({
   lang: 'en-US',
+  title: META_TITLE,
   description: META_DESCRIPTION,
+
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
-
-    [
-      'meta',
-      {
-        property: 'og:type',
-        content: 'website'
-      }
-    ],
-    [
-      'meta',
-      {
-        property: 'og:url',
-        content: META_URL
-      }
-    ],
-    [
-      'meta',
-      {
-        property: 'og:title',
-        content: META_TITLE
-      }
-    ],
-    [
-      'meta',
-      {
-        property: 'og:description',
-        content: META_DESCRIPTION
-      }
-    ],
-    [
-      'meta',
-      {
-        property: 'og:image',
-        content: META_IMAGE
-      }
-    ],
-    [
-      'meta',
-      {
-        property: 'og:image:alt',
-        content: 'Preview of Minze'
-      }
-    ],
-    [
-      'meta',
-      {
-        property: 'twitter:card',
-        content: 'summary_large_image'
-      }
-    ],
-    [
-      'meta',
-      {
-        property: 'twitter:url',
-        content: META_URL
-      }
-    ],
-    [
-      'meta',
-      {
-        property: 'twitter:title',
-        content: META_TITLE
-      }
-    ],
-    [
-      'meta',
-      {
-        property: 'twitter:description',
-        content: META_DESCRIPTION
-      }
-    ],
-    [
-      'meta',
-      {
-        property: 'twitter:image',
-        content: META_IMAGE
-      }
-    ],
-    ['script', {}, darkMode],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:url', content: META_URL }],
+    ['meta', { property: 'og:title', content: META_TITLE }],
+    ['meta', { property: 'og:description', content: META_DESCRIPTION }],
+    ['meta', { property: 'og:image', content: META_IMAGE }],
+    ['meta', { property: 'og:image:alt', content: 'Preview of Minze' }],
+    ['meta', { property: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { property: 'twitter:url', content: META_URL }],
+    ['meta', { property: 'twitter:title', content: META_TITLE }],
+    ['meta', { property: 'twitter:description', content: META_DESCRIPTION }],
+    ['meta', { property: 'twitter:image', content: META_IMAGE }],
     ...(isProduction ? productionHead : [])
   ],
+
+  appearance: true,
+  lastUpdated: true,
+
+  vue: {
+    reactivityTransform: true
+  },
+
   themeConfig: {
-    repo: 'n6ai/minze',
     logo: '/logo.svg',
-    docsDir: 'docs',
-    docsBranch: 'main',
-    editLinks: true,
-    editLinkText: 'Suggest changes to this page',
+
+    editLink: {
+      pattern: 'https://github.com/n6ai/minze/edit/main/docs/:path',
+      text: 'Edit this page on GitHub'
+    },
+
+    socialLinks: [{ icon: 'github', link: 'https://github.com/n6ai/minze' }],
+
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2021-present Sergej Samsonenko'
+    },
 
     algolia: {
       appId: 'I0V1VHMVGH',
@@ -150,13 +80,13 @@ module.exports = {
     },
 
     carbonAds: {
-      carbon: 'CEAIV2JY',
+      code: 'CEAIV2JY',
       placement: 'minzedev'
     },
 
     nav: [
-      { text: 'Guide', link: '/guide/' },
-      { text: 'API Reference', link: '/api/' },
+      { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
+      { text: 'API Reference', link: '/api/', activeMatch: '/api/' },
       {
         text: 'Links',
         items: [
@@ -173,12 +103,11 @@ module.exports = {
     ],
 
     sidebar: {
-      '/api/': 'auto',
-      // catch-all fallback
-      '/': [
+      '/guide/': [
         {
           text: 'Basics',
-          children: [
+          collapsible: true,
+          items: [
             {
               text: 'Quick Start',
               link: '/guide/'
@@ -200,7 +129,8 @@ module.exports = {
 
         {
           text: 'Components',
-          children: [
+          collapsible: true,
+          items: [
             {
               text: 'Registration',
               link: '/guide/components-registration'
@@ -246,7 +176,8 @@ module.exports = {
 
         {
           text: 'Minze',
-          children: [
+          collapsible: true,
+          items: [
             {
               text: 'Component Registration',
               link: '/guide/minze-component-registration'
@@ -260,7 +191,8 @@ module.exports = {
 
         {
           text: 'Advanced',
-          children: [
+          collapsible: true,
+          items: [
             {
               text: 'TypeScript',
               link: '/guide/advanced-typescript'
@@ -307,7 +239,26 @@ module.exports = {
             }
           ]
         }
+      ],
+      '/api/': [
+        {
+          text: 'API Reference',
+          items: [
+            {
+              text: 'Minze',
+              link: '/api/minze'
+            },
+            {
+              text: 'MinzeElement',
+              link: '/api/minze-element'
+            },
+            {
+              text: 'Type Helpers',
+              link: '/api/type-helpers'
+            }
+          ]
+        }
       ]
     }
   }
-}
+})
