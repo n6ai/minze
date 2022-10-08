@@ -24,8 +24,8 @@
     "docs": "vitepress dev docs",
     "docs-build": "vitepress build docs && node scripts/sitemap.js",
     "docs-serve": "vitepress serve docs",
-    "format": "prettier --write .",
-    "lint": "eslint **/*.{ts,js}",
+    "format": "prettier --write --cache .",
+    "lint": "eslint --cache **/*.{ts,js}",
     "clean": "npm run clean --workspaces --if-present",
     "size": "npm run size --workspaces --if-present",
     "release": "echo \"[use]: npm run release -w <minze | create-minze | @minzejs/elements>\"",
@@ -50,10 +50,10 @@
   },
   "lint-staged": {
     "*": [
-      "prettier --write --ignore-unknown"
+      "prettier --write --cache --ignore-unknown"
     ],
     "packages/**/*.{ts,js}": [
-      "eslint --fix"
+      "eslint --cache --fix"
     ]
   }
 }
