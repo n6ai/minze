@@ -4,21 +4,27 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(225 225 225);
-}
-
-html.dark ::-webkit-scrollbar-thumb,
-.debug::-webkit-scrollbar-thumb {
-  background: rgb(60 60 60);
+  background: var(--vp-c-gray-light-4);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(210 210 210);
+  background: var(--vp-c-gray-light-3);
 }
 
-html.dark ::-webkit-scrollbar-thumb:hover,
-.debug::-webkit-scrollbar-thumb:hover {
-  background: rgb(80 80 80);
+html:not(.dark) [class^='language-'] ::-webkit-scrollbar-thumb {
+  background: rgb(91 95 112);
+}
+
+html:not(.dark) [class^='language-'] ::-webkit-scrollbar-thumb:hover {
+  background: rgb(121 125 132);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--vp-c-gray-dark-3);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-gray-dark-2);
 }
 
 ::-webkit-scrollbar-corner {

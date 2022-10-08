@@ -1,41 +1,43 @@
 ---
-home: true
+layout: home
 
 title: JS framework for native web components
 description: Minze lets you rapidly build native web components. Create encapsulated, reusable, cross-framework web components and scale your component library with ease.
 
 heroImage: /logo.svg
-actionText: Quick Start
-actionLink: /guide/
 
-altActionText: Learn More
-altActionLink: /guide/introduction
+hero:
+  name: Minze
+  text: Web components Dead-simple
+  tagline: JS framework for native web components.
+  image:
+    src: /logo.svg
+    alt: Minze
+  actions:
+    - theme: brand
+      text: Quick Start
+      link: /guide/
+    - theme: alt
+      text: Learn More
+      link: /guide/introduction
 
 features:
-  - title: 👶 Simple
+  - icon: 👶
+    title: Simple
     details: Dive right in by scaffolding a project or using a CDN link.
-  - title: ⚡ Fast
+  - icon: ⚡
+    title: Fast
     details: Tiny footprint ~2KB (minified and compressed).
-  - title: 🚀 Modern
+  - icon: 🚀
+    title: Modern
     details: Based on the latest technologies around web components.
-  - title: 📦 Shareable
+  - icon: 📦
+    title: Shareable
     details: Build component libraries or design systems. Define once, use everywhere.
-  - title: 🎲 Framework Agnostic
-    details: Use Minze with any common framework - React, Vue, Angular ...
-  - title: 🔒 Typed API
+  - icon: 🎲
+    title: Framework Agnostic
+    details: Use Minze with any common framework - React, Vue, etc ...
+  - icon: 🔒
+    title: Typed API
     details: Scale your component library with ease by using TypeScript.
-footer: MIT Licensed | Copyright © 2021-present Sergej Samsonenko
 ---
-
-### Dive right in
-
-```bash
-# with npm
-$ npm init minze@latest
-
-# with yarn
-$ yarn create minze
-
-# with pnpm
-$ pnpm create minze
-```

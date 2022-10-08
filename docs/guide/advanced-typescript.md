@@ -4,7 +4,7 @@ This section assumes you already have a basic understanding of TypeScript. The p
 
 There are two main differences:
 
-1. The types for `reactive`, `attrs`, `watch` and `eventListeners` have to be explicitly declared. You can do so by using [Type Helpers](/api/#type-helpers) provided with Minze.
+1. The types for `reactive`, `attrs`, `watch` and `eventListeners` have to be explicitly declared. You can do so by using [Type Helpers](/api/type-helpers) provided with Minze.
 2. Reactive properties and attributes are created dynamically so you have to explicitly declare their types in a separate `interface` named after the component and export it.
 
 By going through and understanding the example below, you will have a firm grasp of how to work with Minze components in TypeScript.
