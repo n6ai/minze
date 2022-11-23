@@ -1,10 +1,15 @@
 // @ts-check
-import { resolve, join } from 'path'
+import { resolve, join, dirname } from 'path'
+import { fileURLToPath } from 'url'
 import replace from '@rollup/plugin-replace'
 import typescript from '@rollup/plugin-typescript'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 import license from 'rollup-plugin-license'
-import { version } from './package.json'
+import packageJSON from './package.json' assert { type: 'json' }
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const version = packageJSON.version
 
 /**
  * @type { {format: 'es' | 'umd', file: string, onlyProd?: boolean}[] }

@@ -6,12 +6,7 @@ const config = {
   testEnvironment: 'node',
   clearMocks: true,
   testMatch: ['<rootDir>/unit/*.spec.*'],
-  transform: {},
-  globals: {
-    'ts-jest': {
-      useESM: true
-    }
-  }
+  transform: {}
 }
 
 export default config

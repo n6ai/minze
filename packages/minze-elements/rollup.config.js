@@ -1,9 +1,13 @@
 // @ts-check
-import { resolve, join } from 'path'
+import { resolve, join, dirname } from 'path'
+import { fileURLToPath } from 'url'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 import license from 'rollup-plugin-license'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 /**
  * @type { {format: 'es' | 'umd', file: string, onlyProd?: boolean}[] }
