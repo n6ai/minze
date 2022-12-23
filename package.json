@@ -42,7 +42,7 @@
     "simple-git-hooks": "^2.8.1",
     "standard-version": "^9.5.0",
     "vitepress": "^1.0.0-alpha.29",
-    "wait-on": "^6.0.1"
+    "wait-on": "^7.0.1"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
