@@ -1,153 +1,79 @@
 name: CI Release
 
-# Manual dispatch (with predefined input options) only,
-# that way we can control when to release a new version of a specific package.
-#
-# https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#onworkflow_dispatchinputs
 on:
-  workflow_dispatch:
-    inputs:
-      package:
-        type: choice
-        description: 'Package to release'
-        required: true
-        options:
-          - minze
-          - create-minze
-          - '@minzejs/elements'
+  push:
+    branches:
+      - main
 
 env:
-  NODE_VERSION: '16'
-  PACKAGE_NAME: ${{ github.event.inputs.package }}
-  PACKAGE_DIR: ${{ (
-    contains(github.event.inputs.package, '@minzejs/elements') && 'minze-elements' ||
-    github.event.inputs.package
-    ) }}
+  NODE_VERSION: 18
 
 jobs:
-  # Build all packages and run tests
-  # for the specified package if a test task is defined.
-  #
-  # If any of the tests fail, the release will not be created.
-  run-tests:
+  release-please:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
+      - uses: google-github-actions/release-please-action@v3
+        id: release
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          command: manifest
+    outputs:
+      releases-created: ${{ steps.release.outputs.releases_created }}
+      package-name: ${{ (
+        (steps.release.outputs['packages/create-minze--release_created'] && 'create-minze') ||
+        (steps.release.outputs['packages/minze--release_created'] && 'minze') ||
+        (steps.release.outputs['packages/minze-elements--release_created'] && '@minzejs/elements')
+        ) }}
 
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
-
-      - name: Update playwright
-        run: npx playwright install
-
-      - name: Create builds
-        run: npm run build --workspaces --if-present # build all packages
-
-      - name: Run package tests
-        run: npm run test -w ${{ env.PACKAGE_NAME }} --if-present
-
-      - name: Run tests for tests package
-        if: ${{ env.PACKAGE_NAME != 'create-minze' }}
-        run: npm run test -w tests
-
-  # Prepare the release with standard version.
-  #
-  # Update Changelog, bump package.json, bump lock file
-  # and create a git tag for the package that is being released.
-  # Finally, push the changes back to the repo.
-  prepare-release:
+  bump-lock-file:
     needs:
-      - run-tests
+      - release-please
     runs-on: ubuntu-latest
-    steps:
-      - name: Set user
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: main
-          fetch-depth: 0 # required, otherwise changelog won't be properly updated
-
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
-
-      - name: Run standard version
-        run: npm run release -w ${{ env.PACKAGE_NAME }}
-
-      - name: Push to repo
-        run: git push --follow-tags origin main
-
-  # Create a release for GitHub.
-  #
-  # Get the latest git tag.
-  # So we can dynamically name the release,
-  # plus create a changelog link for the provided package.
-  release-github:
-    needs:
-      - run-tests
-      - prepare-release
-    runs-on: ubuntu-latest
+    if: ${{ needs.release-please.outputs.releases-created }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           ref: main # needs to be explicitly set to pull the latest changes
-          fetch-depth: 0 # required, otherwise next step (Get latest tag) will fail
 
-      - name: Get latest tag
-        id: tag
-        run: echo "::set-output name=tagName::$(git describe --tags --abbrev=0)"
-
-      - name: Release ${{ env.PACKAGE_NAME }}
-        uses: softprops/action-gh-release@v1
+      - name: Bump lock file
+        uses: ./.github/actions/ci-lock-file-bump
         with:
-          tag_name: ${{ steps.tag.outputs.tagName }}
-          body: |
-            Please refer to [CHANGELOG.md](https://github.com/n6ai/minze/blob/${{ steps.tag.outputs.tagName }}/packages/${{ env.PACKAGE_DIR }}/CHANGELOG.md) for details.
+          node-version: ${{ env.NODE_VERSION }}
 
-  # Build package and publish to NPM.
+  run-tests:
+    needs:
+      - release-please
+    runs-on: ubuntu-latest
+    if: ${{ needs.release-please.outputs.releases-created }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: main # needs to be explicitly set to pull the latest changes
+
+      - name: Run tests
+        uses: ./.github/actions/ci-test
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          package-name: ${{ needs.release-please.outputs.package-name }}
+
   publish-npm:
     needs:
+      - release-please
+      - bump-lock-file
       - run-tests
-      - prepare-release
     runs-on: ubuntu-latest
+    if: ${{ needs.release-please.outputs.releases-created }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           ref: main # needs to be explicitly set to pull the latest changes
 
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
+      - name: Publish to npm
+        uses: ./.github/actions/ci-npm-publish
         with:
           node-version: ${{ env.NODE_VERSION }}
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
-
-      - name: Create minze build
-        if: ${{ env.PACKAGE_NAME != 'minze' }}
-        run: npm run build -w minze
-
-      - name: Create builds
-        run: npm run build -w ${{ env.PACKAGE_NAME }} --if-present
-
-      - name: Publish ${{ env.PACKAGE_NAME }}
-        run: npm publish -w ${{ env.PACKAGE_NAME }} --ignore-scripts --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          package-name: ${{ needs.release-please.outputs.package-name }}
+          npm-token: ${{ secrets.NPM_TOKEN }}

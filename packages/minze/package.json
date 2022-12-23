@@ -38,8 +38,7 @@
     "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
     "types-roll": "api-extractor run && rimraf temp",
     "clean": "rimraf dist/* temp",
-    "size": "npx gzip-size-cli dist/module.js --include-original",
-    "release": "standard-version --no-verify --header \"\" --path ."
+    "size": "npx gzip-size-cli dist/module.js --include-original"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.33.7",
@@ -50,10 +49,5 @@
     "rollup": "^3.8.1",
     "rollup-plugin-license": "^3.0.1",
     "typescript": "^4.9.4"
-  },
-  "standard-version": {
-    "scripts": {
-      "postcommit": "cd ../../ && npm i && git add package-lock.json && git commit -m \"chore(deps): lock file bump\""
-    }
   }
 }

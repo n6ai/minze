@@ -1,0 +1,30 @@
+name: CI Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        type: choice
+        description: 'Package to test'
+        required: true
+        options:
+          - minze
+          - create-minze
+          - '@minzejs/elements'
+
+env:
+  NODE_VERSION: 18
+  PACKAGE_NAME: ${{ github.event.inputs.package }}
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        uses: ./.github/actions/ci-test
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          package-name: ${{ env.PACKAGE_NAME }}

@@ -1,0 +1,37 @@
+name: CI NPM Publish
+
+inputs:
+  node-version:
+    description: Node.js version
+  package-name:
+    description: Package name
+  npm-token:
+    description: NPM tocken
+
+runs:
+  using: composite
+  steps:
+    - name: Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install dependencies
+      shell: bash
+      run: npm ci
+
+    - name: Create minze build
+      if: ${{ inputs.package-name != 'minze' }}
+      shell: bash
+      run: npm run build -w minze
+
+    - name: Create builds
+      shell: bash
+      run: npm run build -w ${{ inputs.package-name }} --if-present
+
+    - name: Publish ${{ inputs.package-name }}
+      shell: bash
+      run: npm publish -w ${{ inputs.package-name }} --ignore-scripts --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.npm-token }}

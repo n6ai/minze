@@ -1,0 +1,33 @@
+name: CI Lock File Bump
+
+inputs:
+  node-version:
+    description: Node.js version
+
+runs:
+  using: composite
+  steps:
+    - name: Set user
+      shell: bash
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install dependencies
+      shell: bash
+      run: npm install --ignore-scripts
+
+    - name: Git add and commit
+      shell: bash
+      run: |
+        git add package-lock.json
+        git commit -m 'chore(deps): lock file bump'
+
+    - name: Push to repo
+      shell: bash
+      run: git push origin main

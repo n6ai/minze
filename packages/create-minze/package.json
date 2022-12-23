@@ -31,17 +31,9 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "homepage": "https://github.com/n6ai/minze/tree/main/packages/create-minze#readme",
-  "scripts": {
-    "release": "standard-version --no-verify --header \"\" --path . -t create-minze@"
-  },
   "dependencies": {
     "kolorist": "^1.6.0",
     "minimist": "^1.2.7",
     "prompts": "^2.4.2"
-  },
-  "standard-version": {
-    "scripts": {
-      "postcommit": "cd ../../ && npm i && git add package-lock.json && git commit -m \"chore(deps): lock file bump\""
-    }
   }
 }

@@ -1,5 +1,6 @@
+# Changelog
 
-### [0.1.1](https://github.com/n6ai/minze/compare/minze-elements@0.1.0...minze-elements@0.1.1) (2022-01-25)
+## [0.1.1](https://github.com/n6ai/minze/compare/minze-elements@0.1.0...minze-elements@0.1.1) (2022-01-25)
 
 
 ### Bug Fixes

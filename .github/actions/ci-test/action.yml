@@ -1,0 +1,36 @@
+name: CI Test
+
+inputs:
+  node-version:
+    description: Node.js version
+  package-name:
+    description: Package name
+
+runs:
+  using: composite
+  steps:
+    - name: Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install dependencies
+      shell: bash
+      run: npm ci
+
+    - name: Update playwright
+      shell: bash
+      run: npx playwright install
+
+    - name: Create builds
+      shell: bash
+      run: npm run build --workspaces --if-present # build all packages
+
+    - name: Run package tests
+      shell: bash
+      run: npm run test -w ${{ inputs.package-name }} --if-present
+
+    - name: Run tests for tests package
+      if: ${{ inputs.package-name != 'create-minze' }}
+      shell: bash
+      run: npm run test -w tests
