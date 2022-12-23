@@ -1,0 +1,5 @@
+{
+  "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node",
+  "waitFor": "onCreateCommand",
+  "postCreateCommand": "npm install"
+}

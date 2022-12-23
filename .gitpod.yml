@@ -1,0 +1,9 @@
+tasks:
+  - init: npm install
+    command: npm run dev
+
+github:
+  prebuilds:
+    master: false
+    pullRequests: false
+    addCheck: false
