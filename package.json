@@ -41,7 +41,7 @@
     "prettier": "2.8.0",
     "simple-git-hooks": "^2.8.1",
     "standard-version": "^9.5.0",
-    "vitepress": "^1.0.0-alpha.29",
+    "vitepress": "^1.0.0-alpha.33",
     "wait-on": "^7.0.1"
   },
   "simple-git-hooks": {
