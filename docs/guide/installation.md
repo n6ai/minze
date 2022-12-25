@@ -6,16 +6,21 @@ Minze can be installed in several different ways.
 
 Installing from npm:
 
-```bash
-# npm
+::: code-group
+
+```bash [npm]
 $ npm install minze
+```
 
-# yarn
+```bash [yarn]
 $ yarn add minze
+```
 
-# pnpm
+```bash [pnpm]
 $ pnpm add minze
 ```
+
+:::
 
 ```js
 import Minze, { MinzeElement } from 'minze'
@@ -43,16 +48,21 @@ The CLI method scaffolds a Minze Dev and Publishing environment including `rollu
 
 **npm**
 
-```bash
-# npm
+::: code-group
+
+```bash [npm]
 $ npm init minze@latest
+```
 
-# yarn
+```bash [yarn]
 $ yarn create minze
+```
 
-# pnpm
+```bash [pnpm]
 $ pnpm create minze
 ```
+
+:::
 
 Then follow the prompts!
 
@@ -69,16 +79,21 @@ There are currently the following templates available:
 
 You can directly specify the project name and template via additional command line options. For example, to scaffold a TypeScript environment, run:
 
-```bash
-# npm
+::: code-group
+
+```bash [npm]
 $ npm init minze@latest my-project -- --template ts
+```
 
-# yarn
+```bash [yarn]
 $ yarn create minze my-project --template ts
+```
 
-# pnpm
+```bash [pnpm]
 $ pnpm create minze my-project -- --template ts
 ```
+
+:::
 
 ## CDN
 

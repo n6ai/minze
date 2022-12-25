@@ -8,16 +8,21 @@ If you set up an environment via the `create-minze` CLI, you can publish your co
 
 > This command creates a dist directory with an `es` build, a `CDN` build and Type Declarations (If you selected the TypeScript template).
 
-```bash
-# npm
+::: code-group
+
+```bash [npm]
 $ npm run build
+```
 
-# yarn
+```bash [yarn]
 $ yarn build
+```
 
-# pnpm
+```bash [pnpm]
 $ pnpm run build
 ```
+
+:::
 
 **2. Publish**
 
@@ -37,9 +42,21 @@ To use your package in a project simply install `minze` plus your package.
 
 ### npm
 
-```bash
+::: code-group
+
+```bash [npm]
 $ npm install minze my-awesome-package
 ```
+
+```bash [yarn]
+$ yarn add minz emy-awesome-package
+```
+
+```bash [pnpm]
+$ pnpm add minze my-awesome-package
+```
+
+:::
 
 ```js
 import Minze from 'minze'

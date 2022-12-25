@@ -18,44 +18,47 @@ The easiest way to get started locally is to scaffold a new Minze Dev and Publis
 
 Follow these steps in your command line to get started.
 
-**npm**
+::: code-group
 
-```bash
+```bash [npm]
 $ npm init minze@latest my-project -- --template js
 $ cd my-project
 $ npm install
 ```
 
-**yarn**
-
-```bash
+```bash [yarn]
 $ yarn create minze my-project --template js
 $ cd my-project
 $ yarn install
 ```
 
-**pnpm**
-
-```bash
+```bash [pnpm]
 $ pnpm create minze my-project -- --template js
 $ cd my-project
 $ pnpm install
 ```
 
+:::
+
 ## Creating a component
 
 1. In the root directory of your project start the development server and open the `http://localhost:5173` URL.
 
-```bash
-# npm
+::: code-group
+
+```bash [npm]
 $ npm run dev
+```
 
-# yarn
+```bash [yarn]
 $ yarn dev
+```
 
-# pnpm
+```bash [pnpm]
 $ pnpm run dev
 ```
+
+:::
 
 2. Navigate to the `lib` directory and create a new file.
 
