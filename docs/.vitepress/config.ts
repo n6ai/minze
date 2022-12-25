@@ -51,13 +51,6 @@ export default defineConfig({
     ...(isProduction ? productionHead : [])
   ],
 
-  appearance: true,
-  lastUpdated: true,
-
-  vue: {
-    reactivityTransform: true
-  },
-
   themeConfig: {
     logo: '/logo.svg',
 
