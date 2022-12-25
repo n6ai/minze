@@ -3,12 +3,20 @@
   height: 8px;
 }
 
+::-webkit-scrollbar-track {
+  background: var(--vp-c-bg);
+}
+
 ::-webkit-scrollbar-thumb {
   background: var(--vp-c-gray-light-4);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--vp-c-gray-light-3);
+}
+
+[class^='language-'] ::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 html:not(.dark) [class^='language-'] ::-webkit-scrollbar-thumb {
