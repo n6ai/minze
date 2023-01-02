@@ -54,6 +54,8 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo.svg',
 
+    outline: [2, 4],
+
     editLink: {
       pattern: 'https://github.com/n6ai/minze/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
