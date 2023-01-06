@@ -126,9 +126,9 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
     <!-- custom component -->
     <my-element></my-element>
 
-    <!-- minze import and custom component definition -->
+    <!-- import and custom component definition -->
     <script type="module">
-      import { Minze, MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
+      import { MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
 
       (class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
@@ -153,6 +153,32 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
       (class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
       }.define())
+    </script>
+  </body>
+</html>
+```
+
+```html [defineAll]
+<html>
+  <head></head>
+  <body>
+    <!-- custom components -->
+    <my-element></my-element>
+    <my-element-two></my-element-two>
+
+    <!-- import and custom component definition -->
+    <script type="module">
+      import { Minze, MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
+
+      class MyElement extends MinzeElement {
+        html = () => `Hello Minze!`
+      }
+
+      class MyElementTwo extends MinzeElement {
+        html = () => `Hello Minze again!`
+      }
+
+      Minze.defineAll([MyElement, MyElementTwo])
     </script>
   </body>
 </html>
