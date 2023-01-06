@@ -1,4 +1,5 @@
-name: CI Filebump
+# allows to trigger release-please manually by modifying the .bumpfile for selected package
+name: CI .bumpfile
 
 on:
   workflow_dispatch:
@@ -20,7 +21,6 @@ env:
     ) }}
 
 jobs:
-  # allows to trigger release-please manually by modifying the .bumpfile for selected package
   create-release-commit:
     runs-on: ubuntu-latest
     steps:
