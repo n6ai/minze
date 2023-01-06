@@ -46,7 +46,7 @@ jobs:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           command: manifest
           release-as: ${{ github.event.inputs.package && github.event.inputs.version }}
-          changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"docs","hidden":true}]'
+          changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"release","section":"Miscellaneous","hidden":false},{"type":"docs","hidden":true}]'
     outputs:
       releases-created: ${{ steps.release.outputs.releases_created }}
       package-name: ${{ (
