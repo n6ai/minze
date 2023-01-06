@@ -1,10 +1,10 @@
 name: CI Release Commit
 
 inputs:
-  release-package:
+  package:
     description: Package to release
     required: false
-  release-version:
+  version:
     description: Package release version
     required: false
 

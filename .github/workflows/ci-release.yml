@@ -31,8 +31,8 @@ jobs:
         if: ${{ github.event.inputs.package && github.event.inputs.version }}
         uses: ./.github/actions/ci-release-commit
         with:
-          release-package: ${{ github.event.inputs.package }}
-          release-version: ${{ github.event.inputs.version }}
+          package: ${{ github.event.inputs.package }}
+          version: ${{ github.event.inputs.version }}
 
   release-please:
     needs:
