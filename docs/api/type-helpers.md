@@ -13,7 +13,8 @@ Declares `reactive` property as a mixed array of strings and tuples.
 - **Example:**
 
 ```ts
-import { MinzeElement, Reactive } from 'minze'
+import type { Reactive } from 'minze'
+import { MinzeElement } from 'minze'
 
 export interface MyElement {
   foo: null
@@ -36,7 +37,8 @@ Declares `attrs` property as a mixed array of strings and tuples.
 - **Example:**
 
 ```ts
-import { MinzeElement, Attrs } from 'minze'
+import type { Attrs } from 'minze'
+import { MinzeElement } from 'minze'
 
 export interface MyElement {
   foo: null
@@ -59,7 +61,8 @@ Declares `watch` property as an array of tuples.
 - **Example:**
 
 ```ts
-import { MinzeElement, Watch } from 'minze'
+import type { Watch } from 'minze'
+import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   watchCount = (
@@ -86,7 +89,8 @@ Declares `eventListeners` property as an array of tuples.
 - **Example:**
 
 ```ts
-import { MinzeElement, EventListeners } from 'minze'
+import type { EventListeners } from 'minze'
+import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   html = () => `
