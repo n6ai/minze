@@ -5,39 +5,12 @@ on:
     branches:
       - main
   workflow_dispatch:
-    inputs:
-      package:
-        type: choice
-        description: 'Package to release manually'
-        options:
-          - minze
-          - create-minze
-          - '@minzejs/elements'
-      version:
-        description: Manual version release e.g. 1.4.9
+
 env:
   NODE_VERSION: 18
 
 jobs:
-  # allows to trigger release-please manually by modifying the .bumpfile for selected package
-  create-release-commit:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        if: ${{ github.event.inputs.package && github.event.inputs.version }}
-        uses: actions/checkout@v3
-
-      - name: Create commit
-        if: ${{ github.event.inputs.package && github.event.inputs.version }}
-        uses: ./.github/actions/ci-release-commit
-        with:
-          package-dir: ${{ (
-            contains(github.event.inputs.package, '@minzejs/elements') && 'minze-elements' || github.event.inputs.package
-            ) }}
-
   release-please:
-    needs:
-      - create-release-commit
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
@@ -45,7 +18,6 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           command: manifest
-          release-as: ${{ github.event.inputs.package && github.event.inputs.version }}
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"release","section":"Miscellaneous","hidden":false},{"type":"docs","hidden":true}]'
     outputs:
       releases-created: ${{ steps.release.outputs.releases_created }}

@@ -1,0 +1,33 @@
+name: CI Filebump
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        type: choice
+        description: 'Package to bump'
+        required: true
+        options:
+          - minze
+          - create-minze
+          - '@minzejs/elements'
+
+env:
+  PACKAGE_NAME: ${{ github.event.inputs.package }}
+  PACKAGE_DIR: ${{ (
+    contains(github.event.inputs.package, '@minzejs/elements') && 'minze-elements' ||
+    github.event.inputs.package
+    ) }}
+
+jobs:
+  # allows to trigger release-please manually by modifying the .bumpfile for selected package
+  create-release-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create commit
+        uses: ./.github/actions/ci-release-commit
+        with:
+          package-dir: ${{ env.PACKAGE_DIR }}
