@@ -1,0 +1,34 @@
+name: CI Release Commit
+
+inputs:
+  release-package:
+    description: Package to release
+    required: false
+  release-version:
+    description: Package release version
+    required: false
+
+env:
+  PACKAGE_DIR: ${{ (contains(inputs.package, '@minzejs/elements') && 'minze-elements' || inputs.package) }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set user
+      shell: bash
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Modify .bumpfile
+      shell: bash
+      run: echo $RANDOM > packages/${{ env.PACKAGE_DIR }}/.bumpfile
+
+    - name: Git commit
+      shell: bash
+      run: |
+        git commit -am 'release: manual release'
+
+    - name: Push to repo
+      shell: bash
+      run: git push origin main
