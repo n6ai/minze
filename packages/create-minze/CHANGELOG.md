@@ -6,8 +6,6 @@
 ### Miscellaneous
 
 * manual release ([9688264](https://github.com/n6ai/minze/commit/9688264145847462639a1d8fc3017e35cfbc7288))
-* manual release ([0c6ed73](https://github.com/n6ai/minze/commit/0c6ed7306aa21199b9e821ed2713866a13e592da))
-* manual release ([ff14d34](https://github.com/n6ai/minze/commit/ff14d34b95bfda30f415dddc153b811caee5326b))
 
 ## [1.1.0](https://github.com/n6ai/minze/compare/create-minze@1.0.4...create-minze-v1.1.0) (2022-12-23)
 
