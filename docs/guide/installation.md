@@ -115,6 +115,8 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 
 **Example**
 
+<!-- prettier-ignore-start -->
+
 ::: code-group
 
 ```html [ES Module]
@@ -126,11 +128,9 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 
     <!-- minze import and custom component definition -->
     <script type="module">
-      import {
-        Minze,
-        MinzeElement
-      } from '//unpkg.com/minze@latest/dist/module.js'
-      ;(class MyElement extends MinzeElement {
+      import { Minze, MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
+
+      (class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
       }.define())
     </script>
@@ -150,7 +150,7 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 
     <!-- custom component definition -->
     <script type="module">
-      ;(class MyElement extends MinzeElement {
+      (class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
       }.define())
     </script>
@@ -159,3 +159,5 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 ```
 
 :::
+
+<!-- prettier-ignore-end -->
