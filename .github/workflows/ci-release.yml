@@ -31,8 +31,9 @@ jobs:
         if: ${{ github.event.inputs.package && github.event.inputs.version }}
         uses: ./.github/actions/ci-release-commit
         with:
-          package: ${{ github.event.inputs.package }}
-          version: ${{ github.event.inputs.version }}
+          package-dir: ${{ (
+            contains(github.event.inputs.package, '@minzejs/elements') && 'minze-elements' || github.event.inputs.package
+            ) }}
 
   release-please:
     needs:

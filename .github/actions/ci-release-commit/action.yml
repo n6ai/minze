@@ -1,15 +1,9 @@
 name: CI Release Commit
 
 inputs:
-  package:
-    description: Package to release
+  package-dir:
+    description: Package directory
     required: false
-  version:
-    description: Package release version
-    required: false
-
-env:
-  PACKAGE_DIR: ${{ (contains(inputs.package, '@minzejs/elements') && 'minze-elements' || inputs.package) }}
 
 runs:
   using: composite
@@ -22,7 +16,7 @@ runs:
 
     - name: Modify .bumpfile
       shell: bash
-      run: echo $RANDOM > packages/${{ env.PACKAGE_DIR }}/.bumpfile
+      run: echo $RANDOM > packages/${{ inputs.package-dir }}/.bumpfile
 
     - name: Git commit
       shell: bash
