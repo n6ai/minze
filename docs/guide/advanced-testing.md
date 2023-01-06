@@ -6,9 +6,23 @@ If you used the [CLI method](/guide/installation#cli) to install Minze you can e
 
 1. Install `@playwright/test` and `cross-env`.
 
-```bash
+Installing from npm:
+
+::: code-group
+
+```bash [npm]
 $ npm install -D @playwright/test cross-env
 ```
+
+```bash [yarn]
+$ yarn add @playwright/test cross-env
+```
+
+```bash [pnpm]
+$ pnpm add @playwright/test cross-env
+```
+
+:::
 
 2. Add test scripts to `package.json`.
 
@@ -100,11 +114,27 @@ test('minze-button', async ({ page }) => {
 
 8. Run the test script.
 
-```bash
+::: code-group
+
+```bash [npm]
 $ npm test
 # or
 $ npm run test-debug
 ```
+
+```bash [yarn]
+$ yarn test
+# or
+$ yarn run test-debug
+```
+
+```bash [pnpm]
+$ pnpm test
+# or
+$ pnpm run test-debug
+```
+
+:::
 
 ::: tip
 For more details about Playwright refer to the [Playwright documentation](https://playwright.dev/).

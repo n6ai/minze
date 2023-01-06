@@ -8,9 +8,21 @@
 
 1. Install `@tensorflow/tfjs`.
 
-```bash
-$ npm i @tensorflow/tfjs
+::: code-group
+
+```bash [npm]
+$ npm install @tensorflow/tfjs
 ```
+
+```bash [yarn]
+$ yarn add @tensorflow/tfjs
+```
+
+```bash [pnpm]
+$ pnpm add @tensorflow/tfjs
+```
+
+:::
 
 2. Navigate to the `lib` directory and create a new file.
 
@@ -95,9 +107,21 @@ export default `
 
 6. Run the npm `dev` script, and navigate to `http://localhost:5173`.
 
-```bash
+::: code-group
+
+```bash [npm]
 $ npm run dev
 ```
+
+```bash [yarn]
+$ yarn dev
+```
+
+```bash [pnpm]
+$ pnpm run dev
+```
+
+:::
 
 7. Your component should be displayed in the browser. After a short while, the prediction will be shown.
 
@@ -138,9 +162,21 @@ const createConfig = ({ format, file }) => {
 
 ### npm
 
-```bash
+::: code-group
+
+```bash [npm]
 $ npm install minze @tensorflow/tfjs my-awesome-package
 ```
+
+```bash [yarn]
+$ yarn add minze @tensorflow/tfjs my-awesome-package
+```
+
+```bash [pnpm]
+$ pnpm add minze @tensorflow/tfjs my-awesome-package
+```
+
+:::
 
 ```js
 import Minze from 'minze'
