@@ -51,7 +51,7 @@ In total, our elements performed about `1000` steps that are not necessary for t
 
 **A much better approach**
 
-```js{10,21}
+```js
 import { Minze, MinzeElement } from 'minze'
 
 const nestedArray = []
@@ -61,7 +61,8 @@ for (let i = 0; i < 100; i++) {
 }
 
 class MyElement extends MinzeElement {
-  nestedArray = nestedArray
+  reactive = [['nestedArray', nestedArray]] // [!code --]
+  nestedArray = nestedArray // [!code ++]
 
   html = () => `
     ${this.nestedArray[0].num}
@@ -72,7 +73,7 @@ class MyElement extends MinzeElement {
       this.nestedArray[0].num = i
     }
 
-    this.rerender()
+    this.rerender() // [!code ++]
   }
 }
 

@@ -133,7 +133,7 @@ The TensorFlow.js library is quite big in size and shouldn't be included in the 
 
 For production, you need to adjust the `rollup.config.js` file, so that `@tensorflow/tfjs` package is not included in the output bundle. Additionally, you need to define a global for the CDN build.
 
-```js{9,15}
+```js
 // rollup.config.js
 
 // ...
@@ -142,13 +142,13 @@ const createConfig = ({ format, file }) => {
     // ...
     external: [
       format !== 'umd' && /^minze/,
-      /@tensorflow/
+      /@tensorflow/ // [!code ++]
     ],
     output: {
       dir: resolve(__dirname, 'dist'),
       format: format,
       globals: {
-        '@tensorflow/tfjs': 'tf'
+        '@tensorflow/tfjs': 'tf' // [!code ++]
       }
     }
   }
