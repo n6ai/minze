@@ -13,7 +13,7 @@ With the following extension you can add syntax highlighting to tagged template 
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html () => /* html */ `

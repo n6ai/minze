@@ -8,7 +8,7 @@ See the [API Reference](/api/minze.html#cast) for more information.
 
 ```js
 // some component
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   onReady() {

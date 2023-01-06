@@ -22,8 +22,12 @@ $ pnpm add minze
 
 :::
 
+::: tip
+You can also import the main `Minze` class as a default import: <br> `import Minze, { MinzeElement } from 'minze'`
+:::
+
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `Hello Minze!`
@@ -126,7 +130,6 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
         Minze,
         MinzeElement
       } from '//unpkg.com/minze@latest/dist/module.js'
-
       ;(class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
       }.define())

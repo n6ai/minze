@@ -13,7 +13,7 @@ The `html` property defines the `html` template of the component. If no `html` p
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   myText = 'Hello Minze!'
@@ -37,7 +37,7 @@ You can get started without even declaring any properties, it's still a valid co
 :::
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
 
@@ -58,7 +58,7 @@ Slots are a way to add elements from the outside world to the element. There are
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `
@@ -88,7 +88,7 @@ If you want to render a part of the template based on a specific condition, you 
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   isVisible = true
@@ -118,7 +118,7 @@ Conditional rendering can also be used for attributes.
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   isActive = true
@@ -144,7 +144,7 @@ To render a list in a template literal you can use the `map` method in cobinatio
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   myList = [1, 2, 3]
@@ -170,7 +170,7 @@ You can destructure the properties and methods of a component to avoid writing `
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   someValue = 'Hello Minze!'
@@ -194,7 +194,7 @@ If you are fetching some data from an external API you can use a loading indicat
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   reactive = [['data', null]]
@@ -259,7 +259,7 @@ If you want to take advantage of patching, your templates should always return t
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   reactive = [['active', false]]

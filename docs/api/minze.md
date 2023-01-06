@@ -29,7 +29,7 @@ Defines a custom web component.
 - **Example:**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   // ...
@@ -57,7 +57,7 @@ Your component class names have to be either in `PascalCase` or `camelCase` when
 - **Example:**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyFirstElement extends MinzeElement {
   // ...

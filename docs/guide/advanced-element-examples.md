@@ -13,7 +13,7 @@ Recreating some basic functionality of the `<a></a>` link element with Minze.
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class CustomLink extends MinzeElement {
   attrs = ['href', 'target']
@@ -57,7 +57,7 @@ Creating a wrapper element around the `<input />` element with Minze.
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class CustomInput extends MinzeElement {
   reactive = [['value', '', true]]
@@ -104,7 +104,7 @@ Implementing persistent storage inside a Minze Element with Local Storage.
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   reactive = [['count', 0]]

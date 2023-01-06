@@ -16,7 +16,7 @@ Tuple structure: [`name`, `callback`]
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   reactive = [['count', 0]]

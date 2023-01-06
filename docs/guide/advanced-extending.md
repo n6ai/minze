@@ -5,7 +5,7 @@ You can extend from `MinzeElement` and create your own custom base classes by ad
 **Example**
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyBaseElement extends MinzeElement {
   someMethod() {

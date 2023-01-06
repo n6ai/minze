@@ -15,7 +15,7 @@ Custom component names should always consist of at least two words.
 :::
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `<div>my element</div>`
@@ -37,7 +37,7 @@ Your component class names have to be either in `PascalCase` or `camelCase` when
 :::
 
 ```js
-import Minze, { MinzeElement } from 'minze'
+import { Minze, MinzeElement } from 'minze'
 
 class MyFirstElement extends MinzeElement {
   html = () => `<div>my first element</div>`
