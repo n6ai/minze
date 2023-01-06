@@ -111,7 +111,31 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 
 **Example**
 
-```html
+::: code-group
+
+```html [ES Module]
+<html>
+  <head></head>
+  <body>
+    <!-- custom component -->
+    <my-element></my-element>
+
+    <!-- minze import and custom component definition -->
+    <script type="module">
+      import {
+        Minze,
+        MinzeElement
+      } from '//unpkg.com/minze@latest/dist/module.js'
+
+      ;(class MyElement extends MinzeElement {
+        html = () => `Hello Minze!`
+      }.define())
+    </script>
+  </body>
+</html>
+```
+
+```html [UMD]
 <html>
   <head></head>
   <body>
@@ -123,12 +147,12 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 
     <!-- custom component definition -->
     <script type="module">
-      class MyElement extends MinzeElement {
+      ;(class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
-      }
-
-      Minze.defineAll([MyElement])
+      }.define())
     </script>
   </body>
 </html>
 ```
+
+:::
