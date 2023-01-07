@@ -101,17 +101,55 @@ $ pnpm create minze my-project -- --template ts
 
 ## CDN
 
-Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the following:
+Loading Minze via a CDN link from `minze.dev`, `unpkg` or `jsdelivr`. Pick one of the following:
 
-**unpkg**
+::: tip
+`Module` refers here to the `ES Module` build of Minze and `CDN` refers to the `UMD` build.
+:::
+
+::: details minze.dev
+
+This is a shorthand redirect to `unpkg`.
+
+**Module**
+
+- `//module.minze.dev/latest` for latest version
+- `//module.minze.dev/1.0.0` pin to specific version
+
+**CDN**
+
+- `//cdn.minze.dev/latest` for latest version
+- `//cdn.minze.dev/1.0.0` pin to specific version
+
+:::
+
+::: details unpkg
+
+**Module**
+
+- `//unpkg.com/minze@latest/dist/module.js` for latest version
+- `//unpkg.com/minze@1.0.0/dist/module.js` pin to specific version
+
+**CDN**
 
 - `//unpkg.com/minze@latest` for latest version
 - `//unpkg.com/minze@1.0.0` pin to specific version
 
-**jsdelivr**
+:::
+
+::: details jsdelivr
+
+**Module**
+
+- `//cdn.jsdelivr.net/npm/minze@latest/dist/module.js` for latest version
+- `//cdn.jsdelivr.net/npm/minze@1.0.0/dist/module.js` pin to specific version
+
+**CDN**
 
 - `//cdn.jsdelivr.net/npm/minze@latest` for latest version
 - `//cdn.jsdelivr.net/npm/minze@1.0.0` pin to specific version
+
+:::
 
 **Example**
 
@@ -119,7 +157,7 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 
 ::: code-group
 
-```html [ES Module]
+```html [Module]
 <html>
   <head></head>
   <body>
@@ -128,7 +166,7 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 
     <!-- import and custom component definition -->
     <script type="module">
-      import { MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
+      import { MinzeElement } from '//module.minze.dev/latest'
 
       (class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
@@ -138,7 +176,7 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 </html>
 ```
 
-```html [UMD]
+```html [CDN]
 <html>
   <head></head>
   <body>
@@ -146,7 +184,7 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
     <my-element></my-element>
 
     <!-- minze -->
-    <script src="//unpkg.com/minze@latest" defer></script>
+    <script src="//cdn.minze.dev/latest" defer></script>
 
     <!-- custom component definition -->
     <script type="module">
@@ -158,7 +196,7 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 </html>
 ```
 
-```html [defineAll]
+```html [Module > defineAll]
 <html>
   <head></head>
   <body>
@@ -168,7 +206,7 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 
     <!-- import and custom component definition -->
     <script type="module">
-      import { Minze, MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
+      import { Minze, MinzeElement } from '//module.minze.dev/latest'
 
       class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
