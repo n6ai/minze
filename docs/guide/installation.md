@@ -107,22 +107,6 @@ Loading Minze via a CDN link from `minze.dev`, `unpkg` or `jsdelivr`. Pick one o
 `Module` refers here to the `ES Module` build of Minze and `CDN` refers to the `UMD` build.
 :::
 
-::: details minze.dev
-
-This is a shorthand redirect to `unpkg`.
-
-**Module**
-
-- `//module.minze.dev/latest` for latest version
-- `//module.minze.dev/1.0.0` pin to specific version
-
-**CDN**
-
-- `//cdn.minze.dev/latest` for latest version
-- `//cdn.minze.dev/1.0.0` pin to specific version
-
-:::
-
 ::: details unpkg
 
 **Module**
@@ -151,6 +135,17 @@ This is a shorthand redirect to `unpkg`.
 
 :::
 
+::: details minze.dev
+
+This is a shorthand redirect to `unpkg`.
+
+**CDN**
+
+- `//cdn.minze.dev/latest` for latest version
+- `//cdn.minze.dev/1.0.0` pin to specific version
+
+:::
+
 **Example**
 
 <!-- prettier-ignore-start -->
@@ -166,7 +161,7 @@ This is a shorthand redirect to `unpkg`.
 
     <!-- import and custom component definition -->
     <script type="module">
-      import { MinzeElement } from '//module.minze.dev/latest'
+      import { MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
 
       (class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
@@ -184,7 +179,7 @@ This is a shorthand redirect to `unpkg`.
     <my-element></my-element>
 
     <!-- minze -->
-    <script src="//cdn.minze.dev/latest" defer></script>
+    <script src="//unpkg.com/minze@latest" defer></script>
 
     <!-- custom component definition -->
     <script type="module">
@@ -206,7 +201,7 @@ This is a shorthand redirect to `unpkg`.
 
     <!-- import and custom component definition -->
     <script type="module">
-      import { Minze, MinzeElement } from '//module.minze.dev/latest'
+      import { Minze, MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
 
       class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
