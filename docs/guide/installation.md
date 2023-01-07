@@ -101,7 +101,7 @@ $ pnpm create minze my-project -- --template ts
 
 ## CDN
 
-Loading Minze via a CDN link from `minze.dev`, `unpkg` or `jsdelivr`. Pick one of the following:
+Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the following:
 
 ::: tip
 `Module` refers here to the `ES Module` build of Minze and `CDN` refers to the `UMD` build.
