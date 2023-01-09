@@ -13,12 +13,12 @@ import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   onStart() {
-    sessionStorage.setItem('minze:msg', 'Helo Minze!')
+    sessionStorage.setItem('minze:msg', 'Hello Minze!')
   }
 
   onReady() {
     const msg = sessionStorage.getItem('minze:msg')
-    console.log(msg) // Helo Minze!
+    console.log(msg) // Hello Minze!
   }
 }
 
@@ -40,12 +40,12 @@ import { Minze, MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   onStart() {
-    localStorage.setItem('minze:msg', 'Helo Minze!')
+    localStorage.setItem('minze:msg', 'Hello Minze!')
   }
 
   onReady() {
     const msg = localStorage.getItem('minze:msg')
-    console.log(msg) // Helo Minze!
+    console.log(msg) // Hello Minze!
   }
 }
 
