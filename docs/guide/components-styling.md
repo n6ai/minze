@@ -3,7 +3,7 @@
 By default, any CSS defined in the `css` property is scoped to the component and is not affecting the global CSS. Global CSS doesn't affect the styling of the component either. However, there are ways to make the component's styling overwritable by the global CSS.
 
 ::: tip
-By default, all [typography](https://cssreference.io/typography/) properties are inherited from the global CSS, like `color`, `font-family`, etc.
+By default, all [typography](https://cssreference.io/typography/) properties are inherited from the global CSS, like `color`, `font-family`, `font-size`, `font-weight` etc.
 :::
 
 ::: warning
