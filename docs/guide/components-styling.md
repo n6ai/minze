@@ -197,34 +197,6 @@ Minze.defineAll([MyElement])
 
 By default, global CSS doesn't affect the styling of the component. You can however expose certain `"style-hooks"` that can be accessed from outside the component.
 
-### Parts
-
-The `part` attribute can be accessed outside the component with the `::part` pseudo-class selector.
-
-**Example**
-
-```js
-import { Minze, MinzeElement } from 'minze'
-
-class MyElement extends MinzeElement {
-  html = () => `
-    <div part="my-part">Hello Minze!</div>
-  `
-}
-
-Minze.defineAll([MyElement])
-```
-
-```html
-<my-element>Hello Minze!</my-element>
-```
-
-```css
-::part(my-part) {
-  background: rgb(55 245 220);
-}
-```
-
 ### Variables
 
 All `CSS` variables defined inside the component can be externally overwritten.
@@ -254,5 +226,79 @@ Minze.defineAll([MyElement])
 ```css
 :root {
   --my-color: blue;
+}
+```
+
+### Parts
+
+The `part` attribute can be accessed outside the component with the `::part` pseudo-class selector.
+
+**Example**
+
+```js
+import { Minze, MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  html = () => `
+    <div part="my-part">Hello Minze!</div>
+  `
+}
+
+Minze.defineAll([MyElement])
+```
+
+```html
+<my-element>Hello Minze!</my-element>
+```
+
+```css
+::part(my-part) {
+  background: rgb(55 245 220);
+}
+```
+
+### Exportparts
+
+The `exportparts` attribute allows you to select and style elements existing in nested components, by exporting their part names. This can be done by creating an [attribute property](/guide/components-data.html#attribute-properties-attributes) inside the component.
+
+::: warning
+The value of the `exportparts` attribute should be a comma-separated list of part names present in the component and which should be made available via a DOM outside of the current structure.
+:::
+
+**Example**
+
+```js
+import { Minze, MinzeElement } from 'minze'
+
+// nested component
+class MyElement extends MinzeElement {
+  attrs = [['exportparts', 'my-part, my-part-two']]
+
+  html = () => `
+    <div>
+      <span part="my-part">Hello</span>
+      <span part="my-part-two">Minze!</span>
+    </div>
+  `
+}
+
+// outer component
+class MyOuterElement extends MinzeElement {
+  html = () => `
+    <my-element></my-element>
+  `
+}
+
+Minze.defineAll([MyElement, MyOuterElement])
+```
+
+```html
+<my-outer-element>Hello Minze!</my-outer-element>
+```
+
+```css
+::part(my-part),
+::part(my-part-two) {
+  background: rgb(55 245 220);
 }
 ```
