@@ -600,6 +600,7 @@ export class MinzeElement extends HTMLElement {
         // convert undefined, null and booleans
         if (value == 'undefined') return undefined
         else if (value == 'null') return null
+        else if (value === '') return true // attributes without values
         else if (value?.match(/^(true|false)$/)) return JSON.parse(value)
         else return value
       },
