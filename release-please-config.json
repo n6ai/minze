@@ -2,7 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "separate-pull-requests": true,
   "release-type": "node",
-  "changelog-sections": [{ "type": "release", "section": "Miscellaneous" }],
+  "changelog-sections": [
+    { "type": "feat", "section": "Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "release", "section": "Miscellaneous" }
+  ],
   "packages": {
     "packages/create-minze": {},
     "packages/minze": {},
