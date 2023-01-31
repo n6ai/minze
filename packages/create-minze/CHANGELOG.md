@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/n6ai/minze/compare/create-minze-v1.1.1...create-minze-v1.1.2) (2023-01-31)
+
+
+### Bug Fixes
+
+* add tslib dependency to ts template dev-deps ([a04d227](https://github.com/n6ai/minze/commit/a04d22706263dd0afbe2a32f85a5309c30099648))
+
 ## [1.1.1](https://github.com/n6ai/minze/compare/create-minze-v1.1.0...create-minze-v1.1.1) (2023-01-06)
 
 
