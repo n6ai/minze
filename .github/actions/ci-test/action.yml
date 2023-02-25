@@ -3,8 +3,6 @@ name: CI Test
 inputs:
   node-version:
     description: Node.js version
-  package-name:
-    description: Package name
 
 runs:
   using: composite
@@ -28,9 +26,4 @@ runs:
 
     - name: Run package tests
       shell: bash
-      run: npm run test -w ${{ inputs.package-name }} --if-present
-
-    - name: Run tests for tests package
-      if: ${{ inputs.package-name != 'create-minze' }}
-      shell: bash
-      run: npm run test -w tests
+      run: npm run test

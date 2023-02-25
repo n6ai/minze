@@ -10,7 +10,20 @@ env:
   NODE_VERSION: 18
 
 jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        uses: ./.github/actions/ci-test
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
   release-please:
+    needs:
+      - run-tests
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
@@ -28,6 +41,7 @@ jobs:
 
   bump-lock-file:
     needs:
+      - run-tests
       - release-please
     runs-on: ubuntu-latest
     if: ${{ needs.release-please.outputs.releases-created }}
@@ -42,28 +56,11 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-  run-tests:
-    needs:
-      - release-please
-    runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.releases-created }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: main # needs to be explicitly set to pull the latest changes
-
-      - name: Run tests
-        uses: ./.github/actions/ci-test
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          package-name: ${{ needs.release-please.outputs.package-name }}
-
   publish-npm:
     needs:
+      - run-tests
       - release-please
       - bump-lock-file
-      - run-tests
     runs-on: ubuntu-latest
     if: ${{ needs.release-please.outputs.releases-created }}
     steps:
