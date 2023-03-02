@@ -1,4 +1,4 @@
-name: CI Release Commit
+name: Release Commit
 
 inputs:
   package-dir:

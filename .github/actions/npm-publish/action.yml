@@ -1,4 +1,4 @@
-name: CI NPM Publish
+name: npm Publish
 
 inputs:
   node-version:

@@ -1,4 +1,4 @@
-name: CI Release
+name: Release
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run tests
-        uses: ./.github/actions/ci-test
+        uses: ./.github/actions/test
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -39,7 +39,7 @@ jobs:
         (steps.release.outputs['packages/minze-elements--release_created'] && '@minzejs/elements')
         ) }}
 
-  bump-lock-file:
+  bump-lockfile:
     needs:
       - run-tests
       - release-please
@@ -52,7 +52,7 @@ jobs:
           ref: main # needs to be explicitly set to pull the latest changes
 
       - name: Bump lock file
-        uses: ./.github/actions/ci-lock-file-bump
+        uses: ./.github/actions/lockfile-bump
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -70,7 +70,7 @@ jobs:
           ref: main # needs to be explicitly set to pull the latest changes
 
       - name: Publish to npm
-        uses: ./.github/actions/ci-npm-publish
+        uses: ./.github/actions/npm-publish
         with:
           node-version: ${{ env.NODE_VERSION }}
           package-name: ${{ needs.release-please.outputs.package-name }}

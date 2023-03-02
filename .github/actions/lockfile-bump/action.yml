@@ -1,4 +1,4 @@
-name: CI Lock File Bump
+name: Lockfile Bump
 
 inputs:
   node-version:
