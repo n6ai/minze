@@ -60,7 +60,7 @@ jobs:
     needs:
       - run-tests
       - release-please
-      - bump-lock-file
+      - bump-lockfile
     runs-on: ubuntu-latest
     if: ${{ needs.release-please.outputs.releases-created }}
     steps:
