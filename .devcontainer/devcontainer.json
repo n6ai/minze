@@ -1,4 +1,4 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/typescript-node",
-  "postCreateCommand": "npm install"
+  "image": "n6ai/node-dev",
+  "postCreateCommand": "sudo npm install"
 }
