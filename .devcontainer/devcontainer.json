@@ -1,4 +1,4 @@
 {
   "image": "n6ai/node-dev",
-  "postCreateCommand": "sudo npm install"
+  "postCreateCommand": "npm install"
 }
