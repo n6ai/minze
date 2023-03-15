@@ -1,4 +1,4 @@
 {
-  "image": "n6ai/node-dev",
+  "image": "ghcr.io/n6ai/node-dev",
   "postCreateCommand": "npm install"
 }
