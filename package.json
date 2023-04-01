@@ -34,7 +34,7 @@
     "@types/node": "^18.14.2",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.47.1",
-    "eslint": "^8.31.0",
+    "eslint": "^8.37.0",
     "lint-staged": "^13.1.2",
     "npm-run-all": "^4.1.5",
     "prettier": "2.8.1",
