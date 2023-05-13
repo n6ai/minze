@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/n6ai/minze/tree/main/packages/create-minze#readme",
   "dependencies": {
-    "kolorist": "^1.6.0",
+    "kolorist": "^1.8.0",
     "minimist": "^1.2.8",
     "prompts": "^2.4.2"
   }
