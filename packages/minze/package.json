@@ -41,7 +41,7 @@
     "size": "npx gzip-size-cli dist/module.js --include-original"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.33.7",
+    "@microsoft/api-extractor": "^7.34.9",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
