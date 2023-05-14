@@ -13,7 +13,7 @@
     "build": "rollup -c"
   },
   "dependencies": {
-    "minze": "^1.1.0"
+    "minze": "^1.1.1"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.2",
