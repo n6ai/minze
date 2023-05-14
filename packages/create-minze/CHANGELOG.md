@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/n6ai/minze/compare/create-minze-v1.1.2...create-minze-v1.2.0) (2023-05-14)
+
+
+### Features
+
+* update templates to only use vite config ([a070ddc](https://github.com/n6ai/minze/commit/a070ddc032afb8a187aabbb8811ea3ca98df6dc0))
+
+
+### Bug Fixes
+
+* embed minze only in es build version ([69b15f4](https://github.com/n6ai/minze/commit/69b15f48f284aced5f9fa6021d26a0f983a0fa38))
+
 ## [1.1.2](https://github.com/n6ai/minze/compare/create-minze-v1.1.1...create-minze-v1.1.2) (2023-01-31)
 
 
