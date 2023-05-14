@@ -45,7 +45,7 @@ Minze.defineAll([MyElement])
 Installing via command line:
 
 ::: tip
-The CLI method scaffolds a Minze Dev and Publishing environment including `rollup` and `vite`.
+The CLI method scaffolds a Minze Dev and Publishing environment running `vite`.
 :::
 
 > Minze requires [Node.js](https://nodejs.dev/) version >= `16.0.0`

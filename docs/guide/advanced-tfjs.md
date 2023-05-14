@@ -131,29 +131,32 @@ $ pnpm run dev
 The TensorFlow.js library is quite big in size and shouldn't be included in the production build of your components, but loaded separately.
 :::
 
-For production, you need to adjust the `rollup.config.js` file, so that `@tensorflow/tfjs` package is not included in the output bundle. Additionally, you need to define a global for the CDN build.
+For production, you need to adjust the `vite.config.js` or `vite.config.ts` file, so that `@tensorflow/tfjs` package is not included in the output bundle. Additionally, you need to define a global for the CDN build.
 
 ```js
-// rollup.config.js
+// vite.config.js
 
 // ...
-const createConfig = ({ format, file }) => {
-  const config = {
-    // ...
-    external: [
-      format !== 'umd' && /^minze/,
-      /@tensorflow/ // [!code ++]
-    ],
-    output: {
-      dir: resolve(__dirname, 'dist'),
-      format: format,
-      globals: {
-        '@tensorflow/tfjs': 'tf' // [!code ++]
+export default defineConfig(({ command, mode }) => {
+  // ...
+
+  return {
+    build: {
+      // ...
+      rollupOptions: {
+        external: [
+          isModule ? /^minze/ : '', // embed minze only in cdn build
+          /@tensorflow/ // [!code ++]
+        ],
+        output: {
+          globals: {
+            '@tensorflow/tfjs': 'tf' // [!code ++]
+          }
+        }
       }
     }
   }
 })
-// ...
 ```
 
 ## Using
