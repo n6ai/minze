@@ -10,16 +10,13 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "rollup -c"
+    "build": "(vite build -m module) && (vite build -m cdn)"
   },
   "dependencies": {
     "minze": "^1.1.1"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.0.2",
-    "@rollup/plugin-terser": "^0.4.1",
-    "rollup": "^3.21.7",
-    "rollup-plugin-license": "^3.0.1",
+    "terser": "^5.17.3",
     "vite": "^4.3.5"
   }
 }
