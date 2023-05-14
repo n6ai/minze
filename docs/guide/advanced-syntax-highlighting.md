@@ -6,9 +6,11 @@ Once your HTML and CSS templates grow in size you might want to add some syntax 
 
 ### Comment tagged templates
 
-With the following extension you can add syntax highlighting to tagged template strings using language identifier comments:
+With the following extension you can add syntax highlighting to template strings:
 
+- [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html)
 - [Comment tagged templates](https://marketplace.visualstudio.com/items?itemName=bierner.comment-tagged-templates)
+- [Template Literals](https://marketplace.visualstudio.com/items?itemName=julienetie.vscode-template-literal)
 
 **Example**
 
