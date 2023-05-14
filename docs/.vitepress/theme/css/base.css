@@ -1,13 +1,3 @@
 html {
   overflow-y: scroll;
 }
-
-::selection {
-  background: var(--vp-c-gray-light-1);
-  color: var(--vp-c-black);
-}
-
-html.dark ::selection {
-  background: var(--vp-c-gray-dark-2);
-  color: var(--vp-c-white-mute);
-}
