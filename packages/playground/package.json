@@ -3,13 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "rimraf dist/ && vite",
+    "dev": "rimraf dist && vite",
     "build": "npm run clean && npm run bundle && npm run types",
     "bundle": "rollup -c",
     "types": "npm run types-build && npm run types-roll",
     "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
     "types-roll": "api-extractor run && rimraf temp",
-    "clean": "rimraf dist/ temp"
+    "clean": "rimraf dist temp"
   },
   "dependencies": {
     "minze": "*"
