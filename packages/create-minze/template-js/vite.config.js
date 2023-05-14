@@ -23,6 +23,16 @@ export default defineConfig(({ command, mode }) => {
         formats: [isModule ? 'es' : 'umd'],
         entry: isModule ? 'src/module.js' : 'src/cdn.js',
         fileName: () => (isModule ? 'module.js' : 'cdn.js')
+      },
+      rollupOptions: {
+        external: [
+          isModule ? /^minze/ : '' // embed minze only in cdn build
+        ],
+        output: {
+          globals: {
+            // ...
+          }
+        }
       }
     }
   }
