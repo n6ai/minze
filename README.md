@@ -8,6 +8,8 @@
 
 # Minze
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-js?title=Minze&terminal=dev)
+
 > Dead-simple JS framework for native web components.
 
 Minze (German shorthand for "Peppermint", pronounced [/ˈmɪnt͡sə/](https://upload.wikimedia.org/wikipedia/commons/c/c2/De-Minze.ogg)) lets you rapidly build native web components.
