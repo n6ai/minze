@@ -10,7 +10,7 @@ With the following extension you can add syntax highlighting to template strings
 
 - [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html)
 - [Comment tagged templates](https://marketplace.visualstudio.com/items?itemName=bierner.comment-tagged-templates)
-- [Template Literals](https://marketplace.visualstudio.com/items?itemName=julienetie.vscode-template-literal)
+- [Template Literals](https://marketplace.visualstudio.com/items?itemName=julienetie.vscode-template-literals)
 
 **Example**
 
