@@ -43,7 +43,7 @@
   "devDependencies": {
     "@microsoft/api-extractor": "^7.34.9",
     "@rollup/plugin-replace": "^5.0.2",
-    "@rollup/plugin-terser": "^0.4.1",
+    "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "^11.1.1",
     "rimraf": "^5.0.0",
     "rollup": "^3.24.0",
