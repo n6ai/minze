@@ -49,7 +49,7 @@ $ npm install minze my-awesome-package
 ```
 
 ```bash [yarn]
-$ yarn add minz emy-awesome-package
+$ yarn add minze my-awesome-package
 ```
 
 ```bash [pnpm]
