@@ -17,7 +17,8 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "template-*"
+    "template-js",
+    "template-ts"
   ],
   "engines": {
     "node": ">=16.0.0"
