@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/n6ai/minze/compare/create-minze-v1.2.0...create-minze-v1.2.1) (2023-06-18)
+
+
+### Bug Fixes
+
+* include templates in create-minze cli ([7c5fca8](https://github.com/n6ai/minze/commit/7c5fca8d00a747a734557b61d3b390c4f7b3cec9))
+
 ## [1.2.0](https://github.com/n6ai/minze/compare/create-minze-v1.1.2...create-minze-v1.2.0) (2023-05-14)
 
 
