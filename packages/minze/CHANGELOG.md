@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/n6ai/minze/compare/minze-v1.1.1...minze-v1.1.2) (2023-06-28)
+
+
+### Bug Fixes
+
+* clear cached template when removed from dom ([dd874f1](https://github.com/n6ai/minze/commit/dd874f172abe492c13a4f367a6678af1c268719b))
+
 ## [1.1.1](https://github.com/n6ai/minze/compare/minze-v1.1.0...minze-v1.1.1) (2023-01-26)
 
 
