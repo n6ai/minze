@@ -638,7 +638,7 @@ export class MinzeElement extends HTMLElement {
   private registerEvent(eventTuple: MinzeEvent, action: 'add' | 'remove') {
     const [eventTarget, eventName, callback] = eventTuple
 
-    let elements: NodeList | MinzeElement[] | typeof window[] | undefined
+    let elements: NodeList | MinzeElement[] | (typeof window)[] | undefined
 
     if (eventTarget === window) {
       elements = [window]
@@ -695,6 +695,8 @@ export class MinzeElement extends HTMLElement {
    * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
    */
   private async disconnectedCallback() {
+    this.cachedTemplate = null
+
     this.eventListeners?.forEach(async (eventTuple) =>
       this.registerEvent(eventTuple, 'remove')
     )
