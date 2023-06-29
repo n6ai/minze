@@ -36,7 +36,7 @@ This is a default npm command refer to the npm [docs](https://docs.npmjs.com/cli
 
 ## Using
 
-To use your package in a project simply install `minze` plus your package.
+To use your package in a project simply install your package and then import and define the elements. `Minze` is embedded directly into the published package.
 
 > Let's assume you published your library under the name `my-awesome-package`
 
@@ -45,48 +45,89 @@ To use your package in a project simply install `minze` plus your package.
 ::: code-group
 
 ```bash [npm]
-$ npm install minze my-awesome-package
+$ npm install my-awesome-package
 ```
 
 ```bash [yarn]
-$ yarn add minze my-awesome-package
+$ yarn add my-awesome-package
 ```
 
 ```bash [pnpm]
-$ pnpm add minze my-awesome-package
+$ pnpm add my-awesome-package
 ```
 
 :::
 
-```js
-import Minze from 'minze'
+<!-- prettier-ignore-start -->
+
+::: code-group
+
+```js [Define]
 import { MyAwesomeElement, MyAwesomeElementTwo } from 'my-awesome-package'
 
-Minze.defineAll([MyAwesomeElement, MyAwesomeElementTwo])
+MyAwesomeElement.define()
+MyAwesomeElementTwo.define()
 ```
+
+```js [Define All]
+import Minze from 'minze'
+import * as Elements from 'my-awesome-package'
+
+Minze.defineAll(Elements)
+```
+
+:::
 
 ```html
 <my-awesome-element></my-awesome-element>
 <my-awesome-element-two></my-awesome-element-two>
 ```
 
+<!-- prettier-ignore-end -->
+
 ### CDN
 
 If you have published your package to npm, you can also load it via a CDN link from `unpkg` or `jsdelivr`. Pick one of the following:
 
-**unpkg**
+::: tip
+`Module` refers here to the `ES Module` build of your package and `CDN` refers to the `UMD` build.
+:::
+
+::: details unpkg
+
+**Module**
+
+- `//unpkg.com/my-awesome-package@latest/dist/module.js` for latest version
+- `//unpkg.com/my-awesome-package@1.0.0/dist/module.js` pin to specific version
+
+**CDN**
 
 - `//unpkg.com/my-awesome-package@latest` for latest version
 - `//unpkg.com/my-awesome-package@1.0.0` pin to specific version
 
-**jsdelivr**
+:::
+
+::: details jsdelivr
+
+**Module**
+
+- `//cdn.jsdelivr.net/npm/my-awesome-package@latest/dist/module.js` for latest version
+- `//cdn.jsdelivr.net/npm/my-awesome-package@1.0.0/dist/module.js` pin to specific version
+
+**CDN**
 
 - `//cdn.jsdelivr.net/npm/my-awesome-package@latest` for latest version
 - `//cdn.jsdelivr.net/npm/my-awesome-package@1.0.0` pin to specific version
 
+:::
+
 **Example**
 
-```html
+<!-- prettier-ignore-start -->
+
+::: code-group
+
+```html [CDN]
 <html>
   <head></head>
   <body>
@@ -99,3 +140,45 @@ If you have published your package to npm, you can also load it via a CDN link f
   </body>
 </html>
 ```
+
+```html [Module]
+<html>
+  <head></head>
+  <body>
+    <!-- custom components -->
+    <my-awesome-element></my-awesome-element>
+    <my-awesome-element-two></my-awesome-element-two>
+
+    <!-- import and custom component definition -->
+    <script type="module">
+      const url = '//unpkg.com/my-awesome-package@latest/dist/module.js'
+      const elements = await import(url)
+      Object.values(elements).forEach(element => element.define())
+    </script>
+  </body>
+</html>
+```
+
+```html [Module > lib]
+<html>
+  <head></head>
+  <body>
+    <!-- custom components -->
+    <my-awesome-element></my-awesome-element>
+    <my-awesome-element-two></my-awesome-element-two>
+
+    <!-- import and custom component definition -->
+    <script type="module">
+      const { MyAwesomeElement } = await import('//unpkg.com/my-awesome-package@latest/dist/lib/my-awesome-element.js')
+      const { MyAwesomeElementTwo } = await import('//unpkg.com/my-awesome-package@latest/dist/lib/my-awesome-element-two.js')
+
+      MyAwesomeElement.define()
+      MyAwesomeElementTwo.define()
+    </script>
+  </body>
+</html>
+```
+
+:::
+
+<!-- prettier-ignore-end -->

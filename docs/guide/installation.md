@@ -135,41 +135,11 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 
 :::
 
-::: details minze.dev
-
-This is a shorthand redirect to `unpkg`.
-
-**CDN**
-
-- `//cdn.minze.dev/latest` for latest version
-- `//cdn.minze.dev/1.0.0` pin to specific version
-
-:::
-
 **Example**
 
 <!-- prettier-ignore-start -->
 
 ::: code-group
-
-```html [Module]
-<html>
-  <head></head>
-  <body>
-    <!-- custom component -->
-    <my-element></my-element>
-
-    <!-- import and custom component definition -->
-    <script type="module">
-      import { MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
-
-      (class MyElement extends MinzeElement {
-        html = () => `Hello Minze!`
-      }.define())
-    </script>
-  </body>
-</html>
-```
 
 ```html [CDN]
 <html>
@@ -183,6 +153,25 @@ This is a shorthand redirect to `unpkg`.
 
     <!-- custom component definition -->
     <script type="module">
+      (class MyElement extends MinzeElement {
+        html = () => `Hello Minze!`
+      }.define())
+    </script>
+  </body>
+</html>
+```
+
+```html [Module]
+<html>
+  <head></head>
+  <body>
+    <!-- custom component -->
+    <my-element></my-element>
+
+    <!-- import and custom component definition -->
+    <script type="module">
+      import { MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
+
       (class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
       }.define())
