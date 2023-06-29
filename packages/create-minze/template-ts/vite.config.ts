@@ -6,7 +6,7 @@ export default defineConfig(({ command, mode }) => {
   const modes = ['module', 'cdn']
 
   if (command === 'build' && !modes.includes(mode)) {
-    console.error('mode must be one of: ' + modes.join(', '))
+    console.error(`mode must be one of: ${modes.join(', ')}`)
     process.exit(1)
   }
 
@@ -26,13 +26,20 @@ export default defineConfig(({ command, mode }) => {
         fileName: () => (isModule ? 'module.js' : 'cdn.js')
       },
       rollupOptions: {
-        external: [
-          isModule ? /^minze/ : '' // embed minze only in cdn build
-        ],
         output: {
-          globals: {
-            // ...
-          }
+          inlineDynamicImports: !isModule,
+          minifyInternalExports: false,
+          chunkFileNames: '[name].js',
+          manualChunks: isModule
+            ? (id) => {
+                if (id.includes('lib')) {
+                  const name = id.match(/(?<=lib\/).*(?=\.(ts|js))/i)?.[0]
+                  return `lib/${name}`
+                } else if (id.match(/node_modules|minze\/dist/i)) {
+                  return 'vendor'
+                }
+              }
+            : undefined
         }
       }
     },
