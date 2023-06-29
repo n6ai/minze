@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/n6ai/minze/compare/create-minze-v1.2.2...create-minze-v1.2.3) (2023-06-29)
+
+
+### Bug Fixes
+
+* js template vite entry file extension ([1ec9e79](https://github.com/n6ai/minze/commit/1ec9e79b4d43eb51a0a9873d4e94f31851b1bd61))
+
 ## [1.2.2](https://github.com/n6ai/minze/compare/create-minze-v1.2.1...create-minze-v1.2.2) (2023-06-29)
 
 
