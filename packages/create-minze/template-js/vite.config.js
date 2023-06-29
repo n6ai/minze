@@ -21,7 +21,7 @@ export default defineConfig(({ command, mode }) => {
       lib: {
         name: 'minze',
         formats: [isModule ? 'es' : 'umd'],
-        entry: isModule ? 'src/module.ts' : 'src/cdn.ts',
+        entry: isModule ? 'src/module.js' : 'src/cdn.js',
         fileName: () => (isModule ? 'module.js' : 'cdn.js')
       },
       rollupOptions: {
