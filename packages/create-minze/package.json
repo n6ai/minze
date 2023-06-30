@@ -11,8 +11,15 @@
     "starter",
     "template"
   ],
+  "type": "module",
   "bin": {
     "create-minze": "index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
   "main": "index.js",
   "files": [
@@ -36,5 +43,10 @@
     "kolorist": "^1.8.0",
     "minimist": "^1.2.8",
     "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.2",
+    "@types/prompts": "^2.4.4",
+    "typescript": "^5.1.6"
   }
 }
