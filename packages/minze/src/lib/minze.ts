@@ -44,7 +44,7 @@ export class Minze {
    * ```
    */
   static defineAll(
-    elements: typeof MinzeElement[] | Record<string, typeof MinzeElement>
+    elements: (typeof MinzeElement)[] | Record<string, typeof MinzeElement>
   ) {
     if (!Array.isArray(elements)) {
       elements = Object.values(elements)
