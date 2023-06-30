@@ -1,7 +1,6 @@
-/**
- * @type {import('ts-jest').InitialOptionsTsJest}
- */
-const config = {
+import type { Config } from 'jest'
+
+const config: Config = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   clearMocks: true,
