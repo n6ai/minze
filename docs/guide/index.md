@@ -15,7 +15,7 @@ The easiest way to get started locally is to scaffold a new Minze Dev and Publis
 
 > Minze requires [Node.js](https://nodejs.dev/) version >= `16.0.0`
 
-Follow these steps in your command line to get started.
+Follow these steps in your command line to get started or [create a new StackBlitz project](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-js?title=Minze&terminal=dev).
 
 ::: code-group
 
