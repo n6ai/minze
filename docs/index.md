@@ -36,7 +36,7 @@ features:
     details: Build component libraries or design systems. Define once, use everywhere.
   - icon: 🎲
     title: Framework Agnostic
-    details: Use Minze with any common framework - React, Vue, etc ...
+    details: Use Minze with any common framework - React, Vue, Svelte, etc ...
   - icon: 🔒
     title: Typed API
     details: Scale your component library with ease by using TypeScript.

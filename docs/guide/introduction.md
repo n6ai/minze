@@ -24,7 +24,7 @@ Possible use cases:
 - ⚡ Fast - Tiny footprint ~2KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
 - 📦 Shareable - Build component libraries or design systems. Define once, use everywhere.
-- 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, etc ...
+- 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, Svelte, etc ...
 - 🔒 Typed API - Scale your component library with ease by using TypeScript.
 
 ## Architecture
