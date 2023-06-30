@@ -13,7 +13,7 @@ Native web components built with Minze.
 **Example**
 
 ```bash
-$ npm install minze @minzejs/elements
+npm install minze @minzejs/elements
 ```
 
 ```js

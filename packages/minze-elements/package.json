@@ -30,26 +30,17 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "scripts": {
-    "dev": "rollup -c -w",
-    "build": "npm run clean && npm run bundle && npm run types",
-    "bundle": "rollup -c",
-    "types": "npm run types-build && npm run types-roll",
-    "types-build": "tsc --emitDeclarationOnly --declaration true --outDir temp",
-    "types-roll": "api-extractor run && rimraf temp",
-    "clean": "rimraf dist temp",
-    "size": "npx gzip-size-cli dist/module.js --include-original"
+    "dev": "vite",
+    "build": "(vite build -m module) && (vite build -m cdn)"
   },
   "dependencies": {
-    "minze": ">=1.0.0"
+    "minze": "^1.1.2"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.34.9",
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "@rollup/plugin-terser": "^0.4.3",
-    "@rollup/plugin-typescript": "^11.1.1",
-    "rimraf": "^5.0.0",
-    "rollup": "^3.24.0",
-    "rollup-plugin-license": "^3.0.1",
-    "typescript": "^5.0.4"
+    "@types/node": "^20.3.2",
+    "terser": "^5.18.2",
+    "typescript": "^5.1.6",
+    "vite": "^4.3.9",
+    "vite-plugin-dts": "^3.0.0-beta.3"
   }
 }
