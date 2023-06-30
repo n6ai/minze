@@ -24,8 +24,6 @@
     "docs-serve": "vitepress serve docs",
     "format": "prettier --write --cache .",
     "lint": "eslint --cache **/*.{ts,js}",
-    "clean": "npm run clean --workspaces --if-present",
-    "size": "npm run size --workspaces --if-present",
     "postinstall": "simple-git-hooks"
   },
   "devDependencies": {
