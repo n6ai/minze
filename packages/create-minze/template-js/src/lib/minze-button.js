@@ -24,5 +24,9 @@ export class MinzeButton extends MinzeElement {
     .button:hover {
       filter: hue-rotate(5deg) brightness(110%);
     }
+
+    .button:active {
+      filter: hue-rotate(50deg) brightness(120%);
+    }
   `
 }

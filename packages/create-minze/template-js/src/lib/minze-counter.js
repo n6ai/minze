@@ -36,7 +36,7 @@ export class MinzeCounter extends MinzeElement {
 
     .text {
       text-align: center;
-      font-size: 1.25rem;
+      font-size: 2rem;
       font-weight: bold;
     }
 
