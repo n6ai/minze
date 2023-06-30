@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/n6ai/minze/compare/create-minze-v1.2.3...create-minze-v1.2.4) (2023-06-30)
+
+
+### Bug Fixes
+
+* use cmd flag as fallback for template name ([cf2912f](https://github.com/n6ai/minze/commit/cf2912f5b8753248dc0d568b06394b38e56edd72))
+
 ## [1.2.3](https://github.com/n6ai/minze/compare/create-minze-v1.2.2...create-minze-v1.2.3) (2023-06-29)
 
 
