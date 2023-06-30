@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/n6ai/minze/compare/elements-v0.1.2...elements-v0.2.0) (2023-06-30)
+
+
+### Features
+
+* update environment for separate lib builds ([21893a3](https://github.com/n6ai/minze/commit/21893a318faa6be04190f33d7762717e38fb881b))
+
 ## [0.1.2](https://github.com/n6ai/minze/compare/elements-v0.1.1...elements-v0.1.2) (2022-12-23)
 
 ## [0.1.1](https://github.com/n6ai/minze/compare/minze-elements@0.1.0...minze-elements@0.1.1) (2022-01-25)
