@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "license": "MIT",
   "author": "Sergej Samsonenko",
-  "description": "Native web components built with Minze.",
+  "description": "Helpers for native web component development.",
   "keywords": [
     "minze",
     "minzejs",
