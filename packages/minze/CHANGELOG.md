@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.0](https://github.com/n6ai/minze/compare/minze-v1.1.2...minze-v1.2.0) (2023-07-01)
+
+
+### Features
+
+* add defineAll loading for vite glob imports ([9c1afd7](https://github.com/n6ai/minze/commit/9c1afd76d5292267527d2904d78ef812f6482e9f))
+* add isMinzeElement property ([31f6838](https://github.com/n6ai/minze/commit/31f68386f4631867324d9d23c16f11401c778bae))
+* make version a static property ([996a853](https://github.com/n6ai/minze/commit/996a853f90b2b8baf7434ee4077b4e3acca49968))
+* use defineAll for vite glob eager import ([8b20085](https://github.com/n6ai/minze/commit/8b20085d7fb4dc7f1f3ef7086de5834dd7dc2570))
+
 ## [1.1.2](https://github.com/n6ai/minze/compare/minze-v1.1.1...minze-v1.1.2) (2023-06-28)
 
 
