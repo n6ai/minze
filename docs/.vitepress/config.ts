@@ -92,6 +92,10 @@ export default defineConfig({
           {
             text: '@minzejs/elements',
             link: 'https://github.com/n6ai/minze/blob/main/packages/minze-elements'
+          },
+          {
+            text: '@minzejs/vite-plugin-minze',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/vite-plugin-minze'
           }
         ]
       }

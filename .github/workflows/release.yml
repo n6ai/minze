@@ -36,7 +36,8 @@ jobs:
       package-name: ${{ (
         (steps.release.outputs['packages/create-minze--release_created'] && 'create-minze') ||
         (steps.release.outputs['packages/minze--release_created'] && 'minze') ||
-        (steps.release.outputs['packages/minze-elements--release_created'] && '@minzejs/elements')
+        (steps.release.outputs['packages/minze-elements--release_created'] && '@minzejs/elements') ||
+        (steps.release.outputs['packages/vite-plugin-minze--release_created'] && '@minzejs/vite-plugin-minze')
         ) }}
 
   bump-lockfile:

@@ -11,6 +11,7 @@ on:
           - minze
           - create-minze
           - '@minzejs/elements'
+          - '@minzejs/vite-plugin-minze'
 
 env:
   NODE_VERSION: 18
