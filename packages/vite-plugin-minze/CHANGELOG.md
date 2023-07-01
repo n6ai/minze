@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.1...vite-plugin-minze-v1.0.2) (2023-07-01)
+
+
+### Bug Fixes
+
+* add fallback for empty options ([0110de0](https://github.com/n6ai/minze/commit/0110de01acdd631838440349500536bfd910281a))
+
 ## [1.0.1](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.0...vite-plugin-minze-v1.0.1) (2023-07-01)
 
 
