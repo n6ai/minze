@@ -33,4 +33,8 @@
     rgb(110 255 195) 0%,
     rgb(90 250 175) 100%
   );
+
+  --vp-custom-block-tip-text: var(--vp-c-brand);
+  --vp-custom-block-warning-border: var(--vp-c-yellow-light);
+  --vp-custom-block-warning-text: var(--vp-c-yellow-lighter);
 }
