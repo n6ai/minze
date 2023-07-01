@@ -32,12 +32,12 @@ It provides an intuitive abstraction layer around the web components API with it
 
 ## Packages
 
-| Project                                                  | Version                                                                                                                                                     | Description                                                                 |
-| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [minze](packages/minze)                                  | [![minze version](https://img.shields.io/npm/v/minze.svg?label=%20&color=323232)](packages/minze/CHANGELOG.md)                                              | Dead-simple JS framework for native web components.                         |
-| [create-minze](packages/create-minze)                    | [![create-minze version](https://img.shields.io/npm/v/create-minze.svg?label=%20&color=323232)](packages/create-minze/CHANGELOG.md)                         | Scaffolding CLI tool for setting up a Minze dev and publishing environment. |
-| [@minzejs/elements](packages/minze-elements)             | [![minze-elements version](https://img.shields.io/npm/v/@minzejs/elements.svg?label=%20&color=323232)](packages/minze-elements/CHANGELOG.md)                | Helpers for native web component development.                               |
-| [@minzejs/vite-plugin-minze](packages/vite-plugin-minze) | [![vite-plugin-minze version](https://img.shields.io/npm/v/@minzejs/vite-plugin-minze.svg?label=%20&color=323232)](packages/vite-plugin-minze/CHANGELOG.md) | Vite plugin for Minze dev and publishing environment.                       |
+| Project                                                  | Version                                                                                                                                                     | Description                                                  |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| [minze](packages/minze)                                  | [![minze version](https://img.shields.io/npm/v/minze.svg?label=%20&color=323232)](packages/minze/CHANGELOG.md)                                              | Dead-simple JS framework for native web components.          |
+| [create-minze](packages/create-minze)                    | [![create-minze version](https://img.shields.io/npm/v/create-minze.svg?label=%20&color=323232)](packages/create-minze/CHANGELOG.md)                         | Scaffolding CLI tool for setting up a Minze dev environment. |
+| [@minzejs/elements](packages/minze-elements)             | [![minze-elements version](https://img.shields.io/npm/v/@minzejs/elements.svg?label=%20&color=323232)](packages/minze-elements/CHANGELOG.md)                | Helpers for native web component development.                |
+| [@minzejs/vite-plugin-minze](packages/vite-plugin-minze) | [![vite-plugin-minze version](https://img.shields.io/npm/v/@minzejs/vite-plugin-minze.svg?label=%20&color=323232)](packages/vite-plugin-minze/CHANGELOG.md) | Vite plugin for Minze dev environment.                       |
 
 ## Contribution
 

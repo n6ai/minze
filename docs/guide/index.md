@@ -11,7 +11,7 @@ Quickly check out what's Minze all about.
 
 ## Scaffolding a project
 
-The easiest way to get started locally is to scaffold a new Minze dev and publishing environment. It comes with everything you need to develop custom web components and publish them to npm. Out of the box, it comes with [vite](https://vitejs.dev/).
+The easiest way to get started locally is to scaffold a new Minze dev environment. It comes with everything you need to develop custom web components and publish them to npm. Out of the box, it comes with [vite](https://vitejs.dev/).
 
 > Minze requires [Node.js](https://nodejs.dev/) version >= `16.0.0`
 

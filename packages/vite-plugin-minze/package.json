@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "license": "MIT",
   "author": "Sergej Samsonenko",
-  "description": "Vite plugin for Minze dev and publishing environment.",
+  "description": "Vite plugin for Minze dev environment.",
   "keywords": [
     "vite-plugin",
     "minze",

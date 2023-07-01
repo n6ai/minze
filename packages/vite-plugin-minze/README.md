@@ -1,6 +1,6 @@
 # @minzejs/vite-plugin-minze
 
-Vite plugin for Minze dev and publishing environment.
+Vite plugin for Minze dev environment.
 
 ## Usage
 
