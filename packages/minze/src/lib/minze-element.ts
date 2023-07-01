@@ -55,7 +55,7 @@ export class MinzeElement extends HTMLElement {
   /**
    * The current Minze version.
    */
-  readonly version = '__VERSION__'
+  static readonly version = '__VERSION__'
 
   /**
    * The class name of the component in dash-case.
