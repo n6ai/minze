@@ -105,7 +105,7 @@ export default defineConfig({
       '/guide/': [
         {
           text: 'Basics',
-          collapsible: true,
+          collapsed: false,
           items: [
             {
               text: 'Quick Start',
@@ -128,7 +128,7 @@ export default defineConfig({
 
         {
           text: 'Components',
-          collapsible: true,
+          collapsed: false,
           items: [
             {
               text: 'Registration',
@@ -175,7 +175,7 @@ export default defineConfig({
 
         {
           text: 'Minze',
-          collapsible: true,
+          collapsed: false,
           items: [
             {
               text: 'Component Registration',
@@ -190,7 +190,7 @@ export default defineConfig({
 
         {
           text: 'Advanced',
-          collapsible: true,
+          collapsed: false,
           items: [
             {
               text: 'TypeScript',
