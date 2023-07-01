@@ -35,6 +35,7 @@
     "postbuild": "rimraf dist/types"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-typescript": "^11.1.2",
     "rimraf": "^5.0.1",
     "rollup": "^3.26.0",

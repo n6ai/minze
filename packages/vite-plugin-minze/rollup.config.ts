@@ -2,6 +2,7 @@ import type { RollupOptions } from 'rollup'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import typescript from '@rollup/plugin-typescript'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import dts from 'rollup-plugin-dts'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -11,6 +12,7 @@ const config: RollupOptions[] = [
   {
     input: resolve(__dirname, 'src/main.ts'),
     plugins: [
+      nodeResolve(),
       typescript({
         tsconfig: 'tsconfig.json',
         declaration: true,

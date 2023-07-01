@@ -1,27 +1,39 @@
 import type { Plugin, UserConfig } from 'vite'
+import fs from 'node:fs'
+import path from 'node:path'
 
 interface PluginOptions {
-  entry: {
-    module: string
-    cdn: string
+  entry?: {
+    module?: string
+    cdn?: string
   }
 }
 
-export default (options: PluginOptions): Plugin => {
+interface Context {
+  command: 'build' | 'serve'
+  mode: string
+}
+
+/**
+ * Vite plugin for Minze dev environment.
+ */
+export default (options?: PluginOptions): Plugin => {
+  const isTypeScript = fs.existsSync(path.join(process.cwd(), 'tsconfig.json'))
+  const moduleEntry =
+    options?.entry?.module ?? `src/module.${isTypeScript ? 'ts' : 'js'}`
+  const cdnEntry =
+    options?.entry?.cdn ?? `src/cdn.${isTypeScript ? 'ts' : 'js'}`
+
   return {
     name: 'vite-plugin-minze',
-    config: (
-      config,
-      { command, mode }: { command: 'build' | 'serve'; mode: string }
-    ): UserConfig => {
+    config: (config, { command, mode }: Context) => {
       const modes = ['module', 'cdn']
+      const isModule = mode === 'module'
 
       if (command === 'build' && !modes.includes(mode)) {
         console.error(`mode must be one of: ${modes.join(', ')}`)
         process.exit(1)
       }
-
-      const isModule = mode === 'module'
 
       return {
         build: {
@@ -33,7 +45,7 @@ export default (options: PluginOptions): Plugin => {
           lib: {
             name: 'minze',
             formats: [isModule ? 'es' : 'umd'],
-            entry: isModule ? options.entry.module : options.entry.cdn,
+            entry: isModule ? moduleEntry : cdnEntry,
             fileName: () => (isModule ? 'module.js' : 'cdn.js')
           },
           rollupOptions: {
