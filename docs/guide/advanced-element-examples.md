@@ -13,7 +13,7 @@ Recreating some basic functionality of the `<a></a>` link element with Minze.
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class CustomLink extends MinzeElement {
   attrs = ['href', 'target']
@@ -37,7 +37,7 @@ class CustomLink extends MinzeElement {
   eventListeners = [[this, 'click', this.handleClick]]
 }
 
-Minze.defineAll([CustomLink])
+CustomLink.define()
 ```
 
 <!-- prettier-start-ignore -->
@@ -57,7 +57,7 @@ Creating a wrapper element around the `<input />` element with Minze.
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class CustomInput extends MinzeElement {
   reactive = [['value', '', true]]
@@ -82,7 +82,7 @@ class CustomInput extends MinzeElement {
   eventListeners = [['input', 'keyup', this.handleInput]]
 }
 
-Minze.defineAll([CustomInput])
+CustomInput.define()
 ```
 
 <!-- prettier-start-ignore -->
@@ -104,7 +104,7 @@ Implementing persistent storage inside a Minze Element with Local Storage.
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   reactive = [['count', 0]]
@@ -133,7 +133,7 @@ class MyElement extends MinzeElement {
   eventListeners = [['button', 'click', this.handleClick]]
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html

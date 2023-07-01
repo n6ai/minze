@@ -10,6 +10,10 @@ Define a single component by providing a name and a component class.
 Alternatively, you can define components by calling their respective `define` method. See the [API Reference](/api/minze.html#define) for more information.
 :::
 
+::: tip
+You can also import the main `Minze` class as a default import: <br> `import Minze, { MinzeElement } from 'minze'`
+:::
+
 ::: warning
 Custom component names should always consist of at least two words.
 :::

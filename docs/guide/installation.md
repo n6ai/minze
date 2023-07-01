@@ -22,18 +22,14 @@ $ pnpm add minze
 
 :::
 
-::: tip
-You can also import the main `Minze` class as a default import: <br> `import Minze, { MinzeElement } from 'minze'`
-:::
-
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `Hello Minze!`
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html

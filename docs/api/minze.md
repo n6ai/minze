@@ -15,7 +15,7 @@ Displays the used version of Minze.
 ```js
 import Minze from 'minze'
 
-console.log(Minze.version)
+console.log(Minze.version) // 1.2.0
 ```
 
 ## define

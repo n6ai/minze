@@ -27,7 +27,7 @@ Hooks are methods that can be defined within a component and are called at vario
 ## Example
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   /**
@@ -119,7 +119,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
