@@ -168,11 +168,13 @@ If you have published your package to npm, you can also load it via a CDN link f
 
     <!-- import and custom component definition -->
     <script type="module">
-      const { MyAwesomeElement } = await import('//unpkg.com/my-awesome-package@latest/dist/lib/my-awesome-element.js')
-      const { MyAwesomeElementTwo } = await import('//unpkg.com/my-awesome-package@latest/dist/lib/my-awesome-element-two.js')
+      const root = '//unpkg.com/my-awesome-package@latest/dist'
 
-      MyAwesomeElement.define()
-      MyAwesomeElementTwo.define()
+      const { defineAll } = await import(`${root}/module.js`)
+      const { MyAwesomeElement } = await import(`${root}/lib/my-awesome-element.js`)
+      const { MyAwesomeElementTwo } = await import(`${root}/lib/my-awesome-element-two.js`)
+
+      defineAll([MyAwesomeElement, MyAwesomeElementTwo])
     </script>
   </body>
 </html>
