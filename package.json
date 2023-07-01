@@ -10,6 +10,7 @@
     "packages/tests/**/*"
   ],
   "scripts": {
+    "predev": "npm run build -w @minzejs/vite-plugin-minze",
     "dev": "run-p -rs dev-minze dev-playground",
     "dev-minze": "npm run dev -w minze",
     "dev-playground": "(wait-on -w 1500 packages/minze/dist/module.js) && (npm run dev -w playground)",
