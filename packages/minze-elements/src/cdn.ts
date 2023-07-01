@@ -1,4 +1,2 @@
-import Minze from 'minze'
-import * as Elements from './module'
-
-Minze.defineAll(Elements)
+import { modules, defineAll } from './module'
+defineAll(modules)
