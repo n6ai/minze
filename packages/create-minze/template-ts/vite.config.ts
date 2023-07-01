@@ -4,5 +4,8 @@ import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [minze(), dts({ rollupTypes: true })]
+  plugins: [
+    minze({ entry: { module: 'src/module.ts', cdn: 'src/cdn.ts' } }),
+    dts({ rollupTypes: true })
+  ]
 })
