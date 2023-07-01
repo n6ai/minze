@@ -52,7 +52,7 @@ Your component class names have to be either in `PascalCase` or `camelCase` when
 
 - **Method**
 
-- **Type:** `(elements: (typeof MinzeElement)[] | Record<string, typeof MinzeElement>): void`
+- **Type:** `(elements: (typeof MinzeElement)[] | Record<string, typeof MinzeElement | (() => Promise<Record<string, typeof MinzeElement>>)>): void`
 
 - **Example:**
 
@@ -93,6 +93,7 @@ export class MySecondElement extends MinzeElement {
 ```
 
 ```js
+import { Minze } from 'minze'
 import * as Elements from './elements'
 
 Minze.defineAll(Elements)

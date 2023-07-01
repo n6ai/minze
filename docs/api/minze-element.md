@@ -4,9 +4,9 @@ Base class which can be used to extend from to create custom web components.
 
 ## version
 
-Displays the used version of Minze.
+Displays the version of Minze the component was built with.
 
-- **Property**
+- **Static Property**
 
 - **Type:** `readonly string`
 
@@ -15,11 +15,45 @@ Displays the used version of Minze.
 ```js
 import { MinzeElement } from 'minze'
 
-export class MyElement extends MinzeElement {
-  onReady() {
-    console.log(this.version)
-  }
-}
+class MyElement extends MinzeElement {}
+
+console.log(MyElement.version) // 1.2.0
+```
+
+## isMinzeElement
+
+Can by used in conditional checks to determine if the class is a MinzeElement.
+
+- **Static Property**
+
+- **Type:** `readonly true`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {}
+
+console.log(MyElement.isMinzeElement) // true
+```
+
+## dashName
+
+The class name of the component in dash-case.
+
+- **Static Getter**
+
+- **Type:** `getter`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {}
+
+console.log(MyElement.dashName) // my-element
 ```
 
 ## define
