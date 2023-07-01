@@ -63,17 +63,16 @@ $ pnpm add my-awesome-package
 ::: code-group
 
 ```js [Define]
-import { MyAwesomeElement, MyAwesomeElementTwo } from 'my-awesome-package'
+import { MyAwesomeElement } from 'my-awesome-package/dist/lib/my-awesome-element'
+import { MyAwesomeElementTwo } from 'my-awesome-package/dist/lib/my-awesome-element-two'
 
 MyAwesomeElement.define()
 MyAwesomeElementTwo.define()
 ```
 
 ```js [Define All]
-import Minze from 'minze'
-import * as Elements from 'my-awesome-package'
-
-Minze.defineAll(Elements)
+import { modules, defineAll } from 'my-awesome-package'
+defineAll(modules)
 ```
 
 :::
@@ -152,8 +151,8 @@ If you have published your package to npm, you can also load it via a CDN link f
     <!-- import and custom component definition -->
     <script type="module">
       const url = '//unpkg.com/my-awesome-package@latest/dist/module.js'
-      const elements = await import(url)
-      Object.values(elements).forEach(element => element.define())
+      const { modules, defineAll } = await import(url)
+      defineAll(modules)
     </script>
   </body>
 </html>

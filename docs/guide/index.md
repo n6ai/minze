@@ -68,7 +68,7 @@ src/
    └─ my-element.js
 ```
 
-3. Paste the following code into the file.
+3. Paste the following code into the file. The component will be auto-registered with dash-case naming `my-element` inferred from the class name `MyElement`.
 
 ```js
 import { MinzeElement } from 'minze'
@@ -87,20 +87,12 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-4. Open the `module.js` and `template.js` files.
+4. Open the `template.js` file.
 
 ```
 src/
 ├─ ...
-├─ module.js
 └─ template.js
-```
-
-5. Define an export for your component at the bottom of `module.js`.
-
-```js
-// ...
-export * from './lib/my-element'
 ```
 
 5. Add your component to the template inside `template.js`.
