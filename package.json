@@ -6,6 +6,7 @@
   },
   "workspaces": [
     "packages/minze",
+    "packages/vite-plugin-minze",
     "packages/*",
     "packages/tests/**/*"
   ],
