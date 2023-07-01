@@ -54,8 +54,8 @@ export class Minze {
   ) {
     Object.values(elements).forEach(async (element) => {
       if ('isMinzeElement' in element && 'define' in element) element.define()
-      else if (typeof element === 'function') {
-        const module = await element()
+      else if (typeof element === 'object' || typeof element === 'function') {
+        const module = typeof element === 'function' ? await element() : element
 
         if (typeof module === 'object') {
           Object.values(module as Record<string, typeof MinzeElement>).forEach(
