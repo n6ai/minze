@@ -58,6 +58,17 @@ export class MinzeElement extends HTMLElement {
   static readonly version = '__VERSION__'
 
   /**
+   * Can by used in conditional checks to determine if the class is a MinzeElement.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {}
+   * MyElement.isMinzeElement
+   * ```
+   */
+  static readonly isMinzeElement = true
+
+  /**
    * The class name of the component in dash-case.
    *
    * @example
