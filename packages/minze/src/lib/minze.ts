@@ -1,5 +1,4 @@
 import type { MinzeElement } from './minze-element'
-import { camelToDash } from './utils'
 
 /**
  * Minze class with multiple static methods and properties for common tasks.
@@ -38,21 +37,34 @@ export class Minze {
    * ```
    * import * as Elements from './module'
    * Minze.defineAll(Elements)
+   *
    * // or
    * import { MinzeElement, MinzeElementTwo } from './module'
-   * Minze.define([ MinzeElement, MinzeElementTwo ])
+   * Minze.defineAll([ MinzeElement, MinzeElementTwo ])
+   *
+   * // or for vite glob import
+   * const modules = import.meta.glob('./lib/*.(ts|js)')
+   * Minze.defineAll(modules)
    * ```
    */
   static defineAll(
-    elements: (typeof MinzeElement)[] | Record<string, typeof MinzeElement>
+    elements:
+      | (typeof MinzeElement)[]
+      | Record<string, typeof MinzeElement | (() => Promise<unknown>)>
   ) {
-    if (!Array.isArray(elements)) {
-      elements = Object.values(elements)
-    }
+    Object.values(elements).forEach(async (element) => {
+      if ('isMinzeElement' in element && 'define' in element) element.define()
+      else if (typeof element === 'function') {
+        const module = await element()
 
-    elements.forEach((element) => {
-      const name = camelToDash(element.name)
-      customElements.define(name, element)
+        if (typeof module === 'object') {
+          Object.values(module as Record<string, typeof MinzeElement>).forEach(
+            async (value) => {
+              if ('isMinzeElement' in value && 'define' in value) value.define()
+            }
+          )
+        }
+      }
     })
   }
 
