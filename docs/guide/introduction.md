@@ -38,4 +38,4 @@ There's also a [CLI tool](/guide/installation.html#cli) that can be used to crea
 
 ## Browser Support
 
-By default, Minze is transpiled to `ES6`. Minze should be compatible with all [browsers supporting ES6](https://caniuse.com/?search=es6) and [Custom Elements](https://caniuse.com/?search=Custom%20Elements).
+By default, Minze is transpiled to `ES2020`. Minze should be compatible with all [browsers supporting ES2020](https://caniuse.com/?search=es2020) and [Custom Elements](https://caniuse.com/?search=Custom%20Elements).
