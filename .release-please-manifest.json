@@ -1,6 +1,6 @@
 {
   "packages/create-minze": "1.2.4",
-  "packages/minze": "1.1.2",
+  "packages/minze": "1.2.0",
   "packages/minze-elements": "0.2.0",
   "packages/vite-plugin-minze": "1.0.0"
 }
