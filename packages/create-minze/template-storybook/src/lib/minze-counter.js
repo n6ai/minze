@@ -25,12 +25,13 @@ export class MinzeCounter extends MinzeElement {
   css = () => `
     :host {
       width: 100%;
-      min-height: calc(100vh - 2rem);
+      min-height: calc(100% - 2rem);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 1.5rem;
+      font-family: sans-serif;
       padding: 40px;
     }
 
