@@ -2,16 +2,16 @@
 
 ## Try Minze online
 
-Quickly check out what's Minze all about.
+Quickly check out what's Minze all about. You can try Minze in a Sandbox on [CodePen](https://codepen.io/sergejcodes/pen/WNZVjPo) or on StackBlitz by selecting one of the links below.
 
-| Site       |                                                                                                                             |                                                                                                                             |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| StackBlitz | [JavaScript](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-js?title=Minze&terminal=dev) | [TypeScript](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-ts?title=Minze&terminal=dev) |
-| CodePen    | [JavaScript](https://codepen.io/sergejcodes/pen/WNZVjPo)                                                                    |                                                                                                                             |
+| JavaScript                                                                                                                        | TypeScript                                                                                                                              |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| [vite](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-vite?title=Minze&terminal=dev)           | [vite-ts](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-ts?title=Minze&terminal=dev)                |
+| [storybook](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-storybook?title=Minze&terminal=dev) | [storybook-ts](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-storybook-ts?title=Minze&terminal=dev) |
 
 ## Scaffolding a project
 
-The easiest way to get started locally is to scaffold a new Minze dev environment. It comes with everything you need to develop custom web components and publish them to npm. Out of the box, it comes with [Vite](https://vitejs.dev/).
+The easiest way to get started locally is to scaffold a new Minze dev environment. It comes with everything you need to develop custom web components and publish them to npm.
 
 > Minze requires [Node.js](https://nodejs.dev/) version >= `16.0.0`
 
@@ -20,19 +20,19 @@ Follow these steps in your command line to get started or [create a new StackBli
 ::: code-group
 
 ```bash [npm]
-$ npm init minze@latest my-project -- --template js
+$ npm create minze@latest my-project -- --template vite
 $ cd my-project
 $ npm install
 ```
 
 ```bash [yarn]
-$ yarn create minze my-project --template js
+$ yarn create minze my-project --template vite
 $ cd my-project
 $ yarn install
 ```
 
 ```bash [pnpm]
-$ pnpm create minze my-project -- --template js
+$ pnpm create minze my-project -- --template vite
 $ cd my-project
 $ pnpm install
 ```
@@ -123,14 +123,3 @@ export default `
 - Learn how to use Minze with [TypeScript](/guide/advanced-typescript).
 
 :::
-
-## Structure
-
-The Minze dev environment runs with Vite and is already optimized for a web components development workflow.
-In most cases you don't need to toch any files except for the component files in the `src/lib` directory and the `src/template.js` file.
-
-```
-src/
-├─ lib/
-└─ template.js
-```

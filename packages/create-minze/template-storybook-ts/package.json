@@ -1,0 +1,37 @@
+{
+  "name": "minze-vite-ts",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/module.js",
+  "types": "dist/module.d.ts",
+  "unpkg": "dist/cdn.js",
+  "jsdelivr": "dist/cdn.js",
+  "files": [
+    "dist",
+    "storybook"
+  ],
+  "scripts": {
+    "dev": "storybook dev -p 5173",
+    "build": "(storybook build --docs -o storybook) && (vite build -m module) && (vite build -m cdn)"
+  },
+  "dependencies": {
+    "minze": "^1.2.0"
+  },
+  "devDependencies": {
+    "@minzejs/vite-plugin-minze": "^1.0.1",
+    "@storybook/addon-essentials": "^7.0.24",
+    "@storybook/addon-links": "^7.0.24",
+    "@storybook/blocks": "^7.0.24",
+    "@storybook/web-components": "^7.0.24",
+    "@storybook/web-components-vite": "^7.0.24",
+    "@types/node": "^20.3.2",
+    "lit": "^2.7.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.0.24",
+    "terser": "^5.18.2",
+    "typescript": "^5.1.6",
+    "vite": "^4.3.9",
+    "vite-plugin-dts": "^3.0.0-beta.3"
+  }
+}

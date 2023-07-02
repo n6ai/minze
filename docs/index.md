@@ -40,4 +40,13 @@ features:
   - icon: 🔒
     title: Typed API
     details: Scale your component library with ease by using TypeScript.
+  - icon: 🧬
+    title: CLI
+    details: Use the command line to scaffold instant dev environments.
+  - icon: 📕
+    title: Storybook
+    details: Minze x Storybook dev environment integration.
+  - icon: 📖
+    title: Docs
+    details: Extensive documentation and API Reference.
 ---

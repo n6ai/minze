@@ -2,7 +2,7 @@
 
 If you used the [CLI method](/guide/installation#cli) to install Minze you can extend your environment with component tests quite quickly by using [Playwright](https://playwright.dev/).
 
-> The following guide is based on a fresh Minze CLI installation.
+> The following guide is based on a fresh Minze CLI installation of the `vite` template.
 
 1. Install `@playwright/test` and `cross-env`.
 

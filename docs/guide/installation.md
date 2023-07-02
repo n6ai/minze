@@ -40,10 +40,6 @@ MyElement.define()
 
 Installing via command line:
 
-::: tip
-The CLI method scaffolds a Minze dev environment running `Vite`.
-:::
-
 > Minze requires [Node.js](https://nodejs.dev/) version >= `16.0.0`
 
 **npm**
@@ -51,7 +47,7 @@ The CLI method scaffolds a Minze dev environment running `Vite`.
 ::: code-group
 
 ```bash [npm]
-$ npm init minze@latest
+$ npm create minze@latest
 ```
 
 ```bash [yarn]
@@ -66,34 +62,34 @@ $ pnpm create minze
 
 Then follow the prompts!
 
-### Templates
-
-There are currently the following templates available:
-
-- JavaScript - `js`
-- TypeScript - `ts`
-
-> The shorthand can be used in command line options, e.g. `--template ts`
-
 ### Command line options
 
-You can directly specify the project name and template via additional command line options. For example, to scaffold a TypeScript environment, run:
+You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite environment, run:
 
 ::: code-group
 
 ```bash [npm]
-$ npm init minze@latest my-project -- --template ts
+$ npm create minze@latest my-project -- --template vite
 ```
 
 ```bash [yarn]
-$ yarn create minze my-project --template ts
+$ yarn create minze my-project --template vite
 ```
 
 ```bash [pnpm]
-$ pnpm create minze my-project -- --template ts
+$ pnpm create minze my-project -- --template vite
 ```
 
 :::
+
+Currently supported template presets include:
+
+- `vite`
+- `vite-ts`
+- `storybook`
+- `storybook-ts`
+
+You can use `.` for the project name to scaffold in the current directory.
 
 ## CDN
 

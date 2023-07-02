@@ -1,9 +1,4 @@
 node_modules
 .DS_Store
-*.log
-.*cache
-cache
 dist
-.idea
-temp
 storybook

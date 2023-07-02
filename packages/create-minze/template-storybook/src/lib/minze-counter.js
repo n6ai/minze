@@ -1,12 +1,7 @@
-import type { Reactive, EventListeners } from 'minze'
 import { MinzeElement } from 'minze'
 
-export interface MinzeCounter {
-  count: number
-}
-
 export class MinzeCounter extends MinzeElement {
-  reactive: Reactive = [['count', 0]]
+  reactive = [['count', 0]]
 
   increaseCount = () => this.count++
 
@@ -30,12 +25,13 @@ export class MinzeCounter extends MinzeElement {
   css = () => `
     :host {
       width: 100%;
-      min-height: calc(100vh - 2rem);
+      min-height: calc(100% - 2rem);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 1.5rem;
+      font-family: sans-serif;
       padding: 40px;
     }
 
@@ -50,5 +46,5 @@ export class MinzeCounter extends MinzeElement {
     }
   `
 
-  eventListeners: EventListeners = [['.button', 'click', this.increaseCount]]
+  eventListeners = [['.button', 'click', this.increaseCount]]
 }

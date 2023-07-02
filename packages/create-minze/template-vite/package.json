@@ -1,9 +1,8 @@
 {
-  "name": "minze-typescript-starter",
+  "name": "minze-vite",
   "version": "0.0.0",
   "type": "module",
   "main": "dist/module.js",
-  "types": "dist/module.d.ts",
   "unpkg": "dist/cdn.js",
   "jsdelivr": "dist/cdn.js",
   "files": [
@@ -18,10 +17,7 @@
   },
   "devDependencies": {
     "@minzejs/vite-plugin-minze": "^1.0.1",
-    "@types/node": "^20.3.2",
     "terser": "^5.18.2",
-    "typescript": "^5.1.6",
-    "vite": "^4.3.9",
-    "vite-plugin-dts": "^3.0.0-beta.3"
+    "vite": "^4.3.9"
   }
 }

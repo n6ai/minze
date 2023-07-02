@@ -8,7 +8,7 @@
 
 # Minze
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-js?title=Minze&terminal=dev)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-vite?title=Minze&terminal=dev)
 
 > Dead-simple JS framework for native web components.
 
@@ -29,6 +29,9 @@ It provides an intuitive abstraction layer around the web components API with it
 - 📦 Shareable - Build component libraries or design systems. Define once, use everywhere.
 - 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, Svelte, etc ...
 - 🔒 Typed API - Scale your component library with ease by using TypeScript.
+- 🧬 CLI - Use the command line to scaffold instant dev environments.
+- 📕 Storybook - Minze x Storybook dev environment integration.
+- 📖 Docs - Extensive documentation and API Reference.
 
 ## Packages
 
