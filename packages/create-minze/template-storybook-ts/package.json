@@ -19,7 +19,13 @@
   },
   "devDependencies": {
     "@minzejs/vite-plugin-minze": "^1.0.1",
+    "@storybook/addon-essentials": "^7.0.24",
+    "@storybook/addon-links": "^7.0.24",
+    "@storybook/blocks": "^7.0.24",
+    "@storybook/web-components": "^7.0.24",
+    "@storybook/web-components-vite": "^7.0.24",
     "@types/node": "^20.3.2",
+    "storybook": "^7.0.24",
     "terser": "^5.18.2",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
