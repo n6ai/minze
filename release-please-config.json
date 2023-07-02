@@ -8,7 +8,9 @@
     { "type": "release", "section": "Miscellaneous" }
   ],
   "packages": {
-    "packages/create-minze": {},
+    "packages/create-minze": {
+      "release-as": "2.0.0"
+    },
     "packages/minze": {},
     "packages/minze-elements": {},
     "packages/vite-plugin-minze": {}
