@@ -3,7 +3,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import minimist from 'minimist'
 import prompts from 'prompts'
-import { blue, red, reset, yellow } from 'kolorist'
+import { blue, magenta, red, reset, yellow } from 'kolorist'
 
 // Avoids autoconversion to number of the project name by defining that the args
 // non associated with an option ( _ ) needs to be parsed as a string. See #4606
@@ -11,31 +11,62 @@ const argv = minimist<{
   t?: string
   template?: string
 }>(process.argv.slice(2), { string: ['_'] })
-
 const cwd = process.cwd()
 
 type ColorFunc = (str: string | number) => string
-
-type TemplateVariant = {
+type Framework = {
   name: string
   display: string
   color: ColorFunc
+  variants: FrameworkVariant[]
+}
+type FrameworkVariant = {
+  name: string
+  display: string
+  color: ColorFunc
+  customCommand?: string
 }
 
-const TEMPLATES: TemplateVariant[] = [
+const FRAMEWORKS: Framework[] = [
   {
-    name: 'js',
-    display: 'JavaScript',
-    color: yellow
+    name: 'vite',
+    display: 'Vite',
+    color: magenta,
+    variants: [
+      {
+        name: 'vite-ts',
+        display: 'TypeScript',
+        color: blue
+      },
+      {
+        name: 'vite',
+        display: 'JavaScript',
+        color: yellow
+      }
+    ]
   },
   {
-    name: 'ts',
-    display: 'TypeScript',
-    color: blue
+    name: 'storybook',
+    display: 'Storybook',
+    color: red,
+    variants: [
+      {
+        name: 'storybook-ts',
+        display: 'Storybook TypeScript',
+        color: blue
+      },
+      {
+        name: 'storybook',
+        display: 'Storybook JavaScript',
+        color: yellow
+      }
+    ]
   }
 ]
 
-const TEMPLATE_NAMES = TEMPLATES.map((f) => f.name)
+const TEMPLATES = FRAMEWORKS.map(
+  (f) => (f.variants && f.variants.map((v) => v.name)) || [f.name]
+).reduce((a, b) => a.concat(b), [])
 
 const renameFiles: Record<string, string | undefined> = {
   _gitignore: '.gitignore'
@@ -52,7 +83,7 @@ async function init() {
     targetDir === '.' ? path.basename(path.resolve()) : targetDir
 
   let result: prompts.Answers<
-    'projectName' | 'overwrite' | 'packageName' | 'template'
+    'projectName' | 'overwrite' | 'packageName' | 'framework' | 'variant'
   >
 
   try {
@@ -96,23 +127,36 @@ async function init() {
         },
         {
           type:
-            argTemplate && TEMPLATE_NAMES.includes(argTemplate)
-              ? null
-              : 'select',
-          name: 'template',
+            argTemplate && TEMPLATES.includes(argTemplate) ? null : 'select',
+          name: 'framework',
           message:
-            typeof argTemplate === 'string' &&
-            !TEMPLATE_NAMES.includes(argTemplate)
-              ? `"${argTemplate}" isn't a valid template. Please choose from below: `
-              : 'Select a template:',
+            typeof argTemplate === 'string' && !TEMPLATES.includes(argTemplate)
+              ? reset(
+                  `"${argTemplate}" isn't a valid template. Please choose from below: `
+                )
+              : reset('Select a framework:'),
           initial: 0,
-          choices: TEMPLATES.map((template) => {
-            const templateColor = template.color
+          choices: FRAMEWORKS.map((framework) => {
+            const frameworkColor = framework.color
             return {
-              title: templateColor(template.display),
-              value: template
+              title: frameworkColor(framework.display || framework.name),
+              value: framework
             }
           })
+        },
+        {
+          type: (framework: Framework) =>
+            framework && framework.variants ? 'select' : null,
+          name: 'variant',
+          message: reset('Select a variant:'),
+          choices: (framework: Framework) =>
+            framework.variants.map((variant) => {
+              const variantColor = variant.color
+              return {
+                title: variantColor(variant.display || variant.name),
+                value: variant.name
+              }
+            })
         }
       ],
       {
@@ -127,7 +171,7 @@ async function init() {
   }
 
   // user choice associated with prompts
-  const { template, overwrite, packageName } = result
+  const { framework, overwrite, packageName, variant } = result
 
   const root = path.join(cwd, targetDir)
 
@@ -138,7 +182,7 @@ async function init() {
   }
 
   // determine template
-  // let template: string = variant || framework?.name || argTemplate
+  const template: string = variant || framework?.name || argTemplate
 
   const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent)
   const pkgManager = pkgInfo ? pkgInfo.name : 'npm'
@@ -148,7 +192,7 @@ async function init() {
   const templateDir = path.resolve(
     fileURLToPath(import.meta.url),
     '../..',
-    `template-${template?.name ?? argTemplate}`
+    `template-${template}`
   )
 
   const write = (file: string, content?: string) => {

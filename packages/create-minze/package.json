@@ -18,14 +18,13 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "typecheck": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "typecheck": "tsc --noEmit"
   },
   "main": "index.js",
   "files": [
     "index.js",
-    "template-js",
-    "template-ts"
+    "template-*",
+    "dist"
   ],
   "engines": {
     "node": ">=16.0.0"
@@ -39,14 +38,12 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "homepage": "https://github.com/n6ai/minze/tree/main/packages/create-minze#readme",
-  "dependencies": {
-    "kolorist": "^1.8.0",
-    "minimist": "^1.2.8",
-    "prompts": "^2.4.2"
-  },
   "devDependencies": {
     "@types/minimist": "^1.2.2",
     "@types/prompts": "^2.4.4",
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2",
     "typescript": "^5.1.6"
   }
 }
