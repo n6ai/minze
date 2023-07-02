@@ -123,14 +123,3 @@ export default `
 - Learn how to use Minze with [TypeScript](/guide/advanced-typescript).
 
 :::
-
-## Structure
-
-The Minze dev environment runs with Vite and is already optimized for a web components development workflow.
-In most cases you don't need to toch any files except for the component files in the `src/lib` directory and the `src/template.js` file.
-
-```
-src/
-├─ lib/
-└─ template.js
-```
