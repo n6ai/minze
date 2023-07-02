@@ -48,7 +48,7 @@ The `dev` task will start start a vite server for the `@minzejs/elements` packag
 ### Vite Plugin Minze
 
 1. Run `npm run dev -w @minzejs/vite-plugin-minze` in the root directory.
-2. Run `npm run dev -w playground` in the root directory.
+2. Run `npm run dev -w playground` or `npm run build -w playground` in the root directory.
 3. Open the browser and navigate to [http://localhost:5173](http://localhost:5173).
 
 First, you need to start the dev task for vite-plugin-minze. Then start the dev task for playground.
