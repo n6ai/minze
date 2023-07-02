@@ -6,3 +6,4 @@ cache
 dist
 .idea
 temp
+storybook
