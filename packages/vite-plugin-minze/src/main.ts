@@ -1,4 +1,4 @@
-import type { Plugin, UserConfig } from 'vite'
+import type { Plugin } from 'vite'
 import fs from 'node:fs'
 import path from 'node:path'
 
@@ -28,9 +28,24 @@ export default (options?: PluginOptions): Plugin => {
     name: 'vite-plugin-minze',
     config: (config, { command, mode }: Context) => {
       const modes = ['module', 'cdn']
-
-      if (command === 'build' && !modes.includes(mode)) mode = 'module'
+      const hasMode = command === 'build' && modes.includes(mode)
       const isModule = mode === 'module'
+
+      if (!hasMode) {
+        console.warn(
+          `[vite-plugin-minze]: mode must be one of: ${modes.join(', ')}`
+        )
+
+        // return only terser config if no mode is provided to ensure original class names
+        return {
+          build: {
+            minify: 'terser',
+            terserOptions: {
+              keep_classnames: true
+            }
+          }
+        }
+      }
 
       return {
         build: {
