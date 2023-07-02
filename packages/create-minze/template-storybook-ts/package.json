@@ -11,8 +11,8 @@
     "storybook"
   ],
   "scripts": {
-    "dev": "storybook dev",
-    "build": "(storybook build -o storybook) && (vite build -m module) && (vite build -m cdn)"
+    "dev": "storybook dev -p 5173",
+    "build": "(storybook build --docs -o storybook) && (vite build -m module) && (vite build -m cdn)"
   },
   "dependencies": {
     "minze": "^1.2.0"
