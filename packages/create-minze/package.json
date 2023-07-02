@@ -1,5 +1,5 @@
 {
-  "name": "create-minze",
+  "name": "minze-cli-test-publish",
   "version": "1.2.5",
   "license": "MIT",
   "author": "Sergej Samsonenko",
@@ -23,7 +23,7 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "template-*",
+    "template-*/**/*",
     "dist"
   ],
   "engines": {
