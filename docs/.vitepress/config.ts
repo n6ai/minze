@@ -221,6 +221,10 @@ export default defineConfig({
               link: '/guide/advanced-element-examples'
             },
             {
+              text: 'UnoCSS',
+              link: '/guide/advanced-unocss'
+            },
+            {
               text: 'Testing',
               link: '/guide/advanced-testing'
             },
