@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.2...vite-plugin-minze-v1.0.3) (2023-07-02)
+
+
+### Bug Fixes
+
+* add module fallback when no mode is provided ([38bcd3d](https://github.com/n6ai/minze/commit/38bcd3dee5dcc032ef3043527b688975e46f35c4))
+
 ## [1.0.2](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.1...vite-plugin-minze-v1.0.2) (2023-07-01)
 
 
