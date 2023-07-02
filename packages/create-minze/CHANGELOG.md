@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/n6ai/minze/compare/create-minze-v2.0.0...create-minze-v2.0.1) (2023-07-02)
+
+
+### Bug Fixes
+
+* move required cli dev-deps to deps ([2d1c1e9](https://github.com/n6ai/minze/commit/2d1c1e9e49b1c1a206d573c0c5391785990dc8a6))
+
 ## [2.0.0](https://github.com/n6ai/minze/compare/create-minze-v1.2.5...create-minze-v2.0.0) (2023-07-02)
 
 
