@@ -4,7 +4,7 @@
 
 If you used the [CLI method](/guide/installation#cli) to install Minze you can extend your environment with UnoCSS quite quickly by adding `unocss` npm package.
 
-> The following guide is based on a fresh Minze CLI installation.
+> The following guide is based on a fresh Minze CLI installation of the `vite` template.
 
 1. Install `unocss` npm package.
 

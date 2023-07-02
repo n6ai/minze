@@ -11,7 +11,7 @@ Quickly check out what's Minze all about.
 
 ## Scaffolding a project
 
-The easiest way to get started locally is to scaffold a new Minze dev environment. It comes with everything you need to develop custom web components and publish them to npm. Out of the box, it comes with [Vite](https://vitejs.dev/).
+The easiest way to get started locally is to scaffold a new Minze dev environment. It comes with everything you need to develop custom web components and publish them to npm.
 
 > Minze requires [Node.js](https://nodejs.dev/) version >= `16.0.0`
 
@@ -20,19 +20,19 @@ Follow these steps in your command line to get started or [create a new StackBli
 ::: code-group
 
 ```bash [npm]
-$ npm init minze@latest my-project -- --template js
+$ npm create minze@latest my-project -- --template vite
 $ cd my-project
 $ npm install
 ```
 
 ```bash [yarn]
-$ yarn create minze my-project --template js
+$ yarn create minze my-project --template vite
 $ cd my-project
 $ yarn install
 ```
 
 ```bash [pnpm]
-$ pnpm create minze my-project -- --template js
+$ pnpm create minze my-project -- --template vite
 $ cd my-project
 $ pnpm install
 ```

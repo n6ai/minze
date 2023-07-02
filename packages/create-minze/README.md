@@ -7,7 +7,7 @@
 **npm**
 
 ```bash
-npm init minze@latest
+npm create minze@latest
 ```
 
 **yarn**
@@ -24,26 +24,26 @@ pnpm create minze
 
 Then follow the prompts!
 
-### Templates
+### Command Line Options
 
-There are currently the following templates available:
-
-- JavaScript - `js`
-- TypeScript - `ts`
-
-> The shorthand can be used in command line options, e.g. `--template ts`
-
-### Command line options
-
-You can directly specify the project name and template via additional command line options. For example, to scaffold a TypeScript environment, run:
+You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite environment, run:
 
 ```bash
 # npm
-npm init minze@latest my-project -- --template ts
+npm create minze@latest my-project -- --template vite
 
 # yarn
-yarn create minze my-project --template ts
+yarn create minze my-project --template vite
 
 # pnpm
-pnpm create minze my-project -- --template ts
+pnpm create minze my-project -- --template vite
 ```
+
+Currently supported template presets include:
+
+- `vite`
+- `vite-ts`
+- `storybook`
+- `storybook-ts`
+
+You can use `.` for the project name to scaffold in the current directory.
