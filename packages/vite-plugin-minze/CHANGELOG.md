@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.3...vite-plugin-minze-v1.0.4) (2023-07-02)
+
+
+### Bug Fixes
+
+* return only terser config if no mode provided ([2847917](https://github.com/n6ai/minze/commit/28479175506511fd695997f3962bab843f2866fd))
+
 ## [1.0.3](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.2...vite-plugin-minze-v1.0.3) (2023-07-02)
 
 
