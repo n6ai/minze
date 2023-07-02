@@ -29,6 +29,9 @@ It provides an intuitive abstraction layer around the web components API with it
 - 📦 Shareable - Build component libraries or design systems. Define once, use everywhere.
 - 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, Svelte, etc ...
 - 🔒 Typed API - Scale your component library with ease by using TypeScript.
+- 🧬 CLI - Use the command line to scaffold instant dev environments.
+- 📕 Storybook - Minze x Storybook dev environment integration.
+- 📖 Docs - Extensive documentation and API Reference.
 
 ## Packages
 
