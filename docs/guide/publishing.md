@@ -6,7 +6,7 @@ If you set up an environment via the `create-minze` CLI, you can publish your co
 
 **1. Build**
 
-> This command creates a dist directory with an `es` build, a `CDN` build and Type Declarations (If you selected the TypeScript template).
+> This command creates a `dist/` directory with an `es` build, a `CDN` build and Type Declarations (If you selected the TypeScript template). The `es` build lazy loads all your components outputted to the `dist/lib/` directory.
 
 ::: code-group
 

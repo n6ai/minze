@@ -10,12 +10,12 @@ By following this Style Guide you will be able to write better code and have a b
 - Should start with a unique prefix like your company name.
 
 ```js
-// ✖ Bad
+✖ Bad // [!code --]
 class Text extends MinzeElement {}
 class my_component extends MinzeElement {}
 class MinzeComponent extends MinzeElement {}
 
-// ✔ Good
+✔ Good // [!code ++]
 class UniqueName extends MinzeElement {}
 class UniqueButton extends MinzeElement {}
 ```
@@ -26,17 +26,17 @@ class UniqueButton extends MinzeElement {}
 - Should be named after the component they are exporting.
 
 ```
-// ✖ Bad
+✖ Bad // [!code --]
 my_unique_name.js
 my_Unique-name.js
 myuniquename.js
 MYUNIQUENAME.js
 
-// ✔ Good
+✔ Good // [!code ++]
 my-unique-name.js
 my-unique-name-two.js
 
-// ✔ Good
+✔ Good // [!code ++]
 MyUniqueName.js
 MyUniqueNameTwo.js
 ```
@@ -46,11 +46,11 @@ MyUniqueNameTwo.js
 - Create only one component per file. Otherwise, the file may become too big and hard to maintain.
 
 ```js
-// ✖ Bad
+✖ Bad // [!code --]
 export class MyElement extends MinzeElement {}
 export class MySecondElement extends MinzeElement {}
 
-// ✔ Good
+✔ Good // [!code ++]
 export class MyElement extends MinzeElement {}
 ```
 
@@ -60,7 +60,7 @@ export class MyElement extends MinzeElement {}
 - All other properties and methods should be named in `camelCase`.
 
 ```js
-// ✖ Bad
+✖ Bad // [!code --]
 class MyElement extends MinzeElement {
   reactive = [['my-propery', 'value']]
   attrs = ['myAttribute']
@@ -68,7 +68,7 @@ class MyElement extends MinzeElement {
   my_method() {}
 }
 
-// ✔ Good
+✔ Good // [!code ++]
 class MyElement extends MinzeElement {
   reactive = [['myPropery', 'value']]
   attrs = ['my-attribute']
@@ -82,7 +82,7 @@ class MyElement extends MinzeElement {
 - Should start with the word `when`.
 
 ```js
-// ✖ Bad
+✖ Bad // [!code --]
 class MyElement extends MinzeElement {
   active = true
 
@@ -94,7 +94,7 @@ class MyElement extends MinzeElement {
   html = () => `${this.renderDiv()}`
 }
 
-// ✔ Good
+✔ Good // [!code ++]
 class MyElement extends MinzeElement {
   active = true
 
@@ -113,7 +113,7 @@ class MyElement extends MinzeElement {
 - Should start with the word `handle` or a verb that describes what action is performed.
 
 ```js
-// ✖ Bad
+✖ Bad // [!code --]
 class MyElement extends MinzeElement {
   buttonCallback() {
     console.log('Clicked!')
@@ -122,7 +122,7 @@ class MyElement extends MinzeElement {
   eventListeners = [['.button', 'click', this.buttonCallback.bind(this)]]
 }
 
-// ✔ Good
+✔ Good // [!code ++]
 class MyElement extends MinzeElement {
   handleClick = () => {
     console.log('Clicked!')
@@ -131,7 +131,7 @@ class MyElement extends MinzeElement {
   eventListeners = [['.button', 'click', this.handleClick]]
 }
 
-// ✔ Good
+✔ Good // [!code ++]
 class MyElement extends MinzeElement {
   reactive = [['count', 0]]
 

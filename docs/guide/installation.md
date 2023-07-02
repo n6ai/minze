@@ -41,7 +41,7 @@ MyElement.define()
 Installing via command line:
 
 ::: tip
-The CLI method scaffolds a Minze dev environment running `vite`.
+The CLI method scaffolds a Minze dev environment running `Vite`.
 :::
 
 > Minze requires [Node.js](https://nodejs.dev/) version >= `16.0.0`
