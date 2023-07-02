@@ -7,9 +7,8 @@ on:
     paths:
       - 'packages/**'
       - 'package.json'
-    paths-ignore:
-      - 'packages/playground/**'
-      - '**/README.md'
+      - '!packages/playground/**'
+      - '!**/README.md'
   workflow_dispatch:
 
 env:
