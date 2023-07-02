@@ -23,6 +23,7 @@
     "@storybook/blocks": "^7.0.24",
     "@storybook/web-components": "^7.0.24",
     "@storybook/web-components-vite": "^7.0.24",
+    "lit": "^2.7.5",
     "storybook": "^7.0.24",
     "terser": "^5.18.2",
     "vite": "^4.3.9"

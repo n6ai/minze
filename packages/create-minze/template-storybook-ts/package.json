@@ -25,6 +25,7 @@
     "@storybook/web-components": "^7.0.24",
     "@storybook/web-components-vite": "^7.0.24",
     "@types/node": "^20.3.2",
+    "lit": "^2.7.5",
     "storybook": "^7.0.24",
     "terser": "^5.18.2",
     "typescript": "^5.1.6",
