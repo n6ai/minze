@@ -1,5 +1,5 @@
 {
-  "name": "minze-javascript-starter",
+  "name": "minze-vite",
   "version": "0.0.0",
   "type": "module",
   "main": "dist/module.js",

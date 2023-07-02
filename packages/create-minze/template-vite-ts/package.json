@@ -1,5 +1,5 @@
 {
-  "name": "minze-typescript-starter",
+  "name": "minze-vite-ts",
   "version": "0.0.0",
   "type": "module",
   "main": "dist/module.js",
