@@ -1,5 +1,5 @@
 {
-  "packages/create-minze": "1.2.5",
+  "packages/create-minze": "1.3.0",
   "packages/minze": "1.2.0",
   "packages/minze-elements": "0.2.0",
   "packages/vite-plugin-minze": "1.0.5"

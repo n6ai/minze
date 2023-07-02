@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.3.0](https://github.com/n6ai/minze/compare/minze-cli-test-publish-v1.2.5...minze-cli-test-publish-v1.3.0) (2023-07-02)
+
+
+### Features
+
+* add storybook templates ([3ac0b00](https://github.com/n6ai/minze/commit/3ac0b00b79a227965cfaf849fa8a08d78b308e4b))
+* simplify templates ([05a8f79](https://github.com/n6ai/minze/commit/05a8f799421f3b137399ff3050ba9d67678c9035))
+* update cli tool for multiple frameworks ([b730422](https://github.com/n6ai/minze/commit/b73042254365359c63b7830f9cc1a03ec0ea32b9))
+* update templates to only use vite config ([a070ddc](https://github.com/n6ai/minze/commit/a070ddc032afb8a187aabbb8811ea3ca98df6dc0))
+
+
+### Bug Fixes
+
+* add tslib dependency to ts template dev-deps ([a04d227](https://github.com/n6ai/minze/commit/a04d22706263dd0afbe2a32f85a5309c30099648))
+* embed minze only in es build version ([69b15f4](https://github.com/n6ai/minze/commit/69b15f48f284aced5f9fa6021d26a0f983a0fa38))
+* import rollup options type ([1608a76](https://github.com/n6ai/minze/commit/1608a76922852769b7e025f5453281d805117d42))
+* include templates in create-minze cli ([7c5fca8](https://github.com/n6ai/minze/commit/7c5fca8d00a747a734557b61d3b390c4f7b3cec9))
+* js template vite entry file extension ([1ec9e79](https://github.com/n6ai/minze/commit/1ec9e79b4d43eb51a0a9873d4e94f31851b1bd61))
+* remove initial cloaking ([f9b4e59](https://github.com/n6ai/minze/commit/f9b4e5988a6e2b5a96e9f6a4bde859683bc0f05f))
+* template file glop for npm package ([1406ab2](https://github.com/n6ai/minze/commit/1406ab2bc4d5226f599043985406bdd634d616ed))
+* use cmd flag as fallback for template name ([cf2912f](https://github.com/n6ai/minze/commit/cf2912f5b8753248dc0d568b06394b38e56edd72))
+
+
+### Miscellaneous
+
+* manual release ([8ecad3f](https://github.com/n6ai/minze/commit/8ecad3f6c6e1a9062353f986f80946116c419e65))
+* manual release ([005c114](https://github.com/n6ai/minze/commit/005c114425f6f6cca1e15ef2616d85f0a21ada33))
+* manual release ([d45f57c](https://github.com/n6ai/minze/commit/d45f57c94a88f29f18ac49f7085cffab6170dd5e))
+* manual release ([9688264](https://github.com/n6ai/minze/commit/9688264145847462639a1d8fc3017e35cfbc7288))
+* manual release ([0c6ed73](https://github.com/n6ai/minze/commit/0c6ed7306aa21199b9e821ed2713866a13e592da))
+* manual release ([ff14d34](https://github.com/n6ai/minze/commit/ff14d34b95bfda30f415dddc153b811caee5326b))
+
 ## [1.2.5](https://github.com/n6ai/minze/compare/create-minze-v1.2.4...create-minze-v1.2.5) (2023-07-01)
 
 
