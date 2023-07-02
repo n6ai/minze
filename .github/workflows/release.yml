@@ -9,6 +9,13 @@ on:
       - 'package.json'
       - '!packages/playground/**'
       - '!**/README.md'
+  workflow_run:
+    workflows:
+      - .bumpfile
+    branches:
+      - main
+    types:
+      - completed
   workflow_dispatch:
 
 env:
