@@ -1,9 +1,10 @@
-// @ts-check
+import type { RollupOptions } from 'rollup'
 import { resolve, join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import replace from '@rollup/plugin-replace'
 import typescript from '@rollup/plugin-typescript'
 import terser from '@rollup/plugin-terser'
+import dts from 'rollup-plugin-dts'
 import license from 'rollup-plugin-license'
 import packageJSON from './package.json' assert { type: 'json' }
 
@@ -11,32 +12,28 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const version = packageJSON.version
 
-/**
- * @type { {format: 'es' | 'umd', file: string, onlyProd?: boolean}[] }
- */
-const builds = [
+type BuildConfig = {
+  format: 'es' | 'umd'
+  file: string
+  onlyProd?: boolean
+}
+
+const builds: BuildConfig[] = [
   { format: 'es', file: 'src/module.ts' },
   { format: 'umd', file: 'src/cdn.ts', onlyProd: true }
 ]
 
-/**
- * @param { {format: 'es' | 'umd', file: string} } build
- * @param { {isDev: boolean, isProd: boolean} } env
- * @returns { import('rollup').RollupOptions }
- */
-const createConfig = ({ format, file }, { isDev, isProd }) => {
-  /**
-   * @type { import('rollup').RollupOptions }
-   */
-  const config = {
+const createConfig = (
+  { format, file }: { format: 'es' | 'umd'; file: string },
+  { isDev, isProd }: { isDev: boolean; isProd: boolean }
+): RollupOptions => {
+  return {
     input: resolve(__dirname, file),
     plugins: [
       typescript({
         tsconfig: 'tsconfig.json',
-        ...(isDev && {
-          declaration: true,
-          declarationDir: resolve(__dirname, 'dist/')
-        })
+        declaration: true,
+        declarationDir: resolve(__dirname, 'dist/types')
       }),
       isProd &&
         replace({
@@ -65,20 +62,25 @@ const createConfig = ({ format, file }, { isDev, isProd }) => {
       sourcemap: isDev
     }
   }
-
-  return config
 }
 
-export default (commandLineArgs) => {
+export default (commandLineArgs: Record<string, any>) => {
   const isDev = commandLineArgs.watch
   const isProd = !isDev
-  const configs = []
+  const configs: RollupOptions[] = []
 
   builds
     .filter((build) => !build.onlyProd || isProd)
     .forEach((build) => {
       configs.push(createConfig(build, { isDev, isProd }))
     })
+
+  // roll types
+  configs.push({
+    input: resolve(__dirname, 'dist/types/src/module.d.ts'),
+    output: [{ file: resolve(__dirname, 'dist/module.d.ts'), format: 'es' }],
+    plugins: [dts()]
+  })
 
   return configs
 }

@@ -1,3 +1,5 @@
-export * from './lib/minze-button'
-export * from './lib/minze-counter'
-export * from './lib/minze-logo'
+import { Minze } from 'minze'
+const modules = import.meta.glob('./lib/**/*.js')
+const defineAll = Minze.defineAll
+
+export { modules as default, modules, defineAll }

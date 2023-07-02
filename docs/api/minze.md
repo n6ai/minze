@@ -2,7 +2,7 @@
 
 Minze class with multiple static methods and properties for common tasks.
 
-## version
+## version <Badge type="tip" text="^1.0.0" />
 
 Displays the used version of Minze.
 
@@ -15,10 +15,10 @@ Displays the used version of Minze.
 ```js
 import Minze from 'minze'
 
-console.log(Minze.version)
+console.log(Minze.version) // 1.2.0
 ```
 
-## define
+## define <Badge type="tip" text="^1.0.0" />
 
 Defines a custom web component.
 
@@ -42,7 +42,7 @@ Minze.define('my-element', MyElement)
 <my-element></my-element>
 ```
 
-## defineAll
+## defineAll <Badge type="tip" text="^1.0.0" />
 
 Defines all custom web components in a single call. Your components will be registered with `dash-case` naming.
 
@@ -52,7 +52,7 @@ Your component class names have to be either in `PascalCase` or `camelCase` when
 
 - **Method**
 
-- **Type:** `(elements: (typeof MinzeElement)[] | Record<string, typeof MinzeElement>): void`
+- **Type:** `(elements: (typeof MinzeElement)[] | Record<string, typeof MinzeElement | (() => Promise<Record<string, typeof MinzeElement>>)>): void`
 
 - **Example:**
 
@@ -93,6 +93,7 @@ export class MySecondElement extends MinzeElement {
 ```
 
 ```js
+import { Minze } from 'minze'
 import * as Elements from './elements'
 
 Minze.defineAll(Elements)
@@ -105,7 +106,7 @@ Minze.defineAll(Elements)
 ```
 <!-- prettier-ignore-end -->
 
-## cast
+## cast <Badge type="tip" text="^1.0.0" />
 
 Dispatches a custom event from the `window` object. Shorthand for `Broadcasting`, not to be confused with `Type casting`.
 
@@ -129,7 +130,7 @@ const optionalDetail = {
 Minze.cast('minze:my-event-name', optionalDetail)
 ```
 
-## listen
+## listen <Badge type="tip" text="^1.0.0" />
 
 Adds an event listener to the `window` object.
 
@@ -149,7 +150,7 @@ const callback = (event) => {
 Minze.listen('minze:my-event-name', callback)
 ```
 
-## stopListen
+## stopListen <Badge type="tip" text="^1.0.0" />
 
 Remove an event listener from the `window` object.
 

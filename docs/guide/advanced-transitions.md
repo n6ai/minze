@@ -13,7 +13,7 @@ Animations can be added per component.
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `<div>Hello Minze!</div>`
@@ -41,7 +41,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -55,7 +55,7 @@ By exposing the `rendered` attribute you can add animations to all rendered comp
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   options = {
@@ -72,7 +72,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html

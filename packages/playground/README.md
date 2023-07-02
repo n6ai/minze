@@ -8,5 +8,5 @@ Playground for Minze. This package is equivalent to the `create-minze` TypeScrip
 
 ```bash
 # run minze + playground in watch mode with a vite server
-$ npm run dev
+npm run dev
 ```

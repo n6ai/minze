@@ -1,6 +1,6 @@
-# Minze Elements
+# @minzejs/elements
 
-Native web components built with Minze.
+Helpers for native web component development.
 
 ## Usage
 
@@ -13,17 +13,13 @@ Native web components built with Minze.
 **Example**
 
 ```bash
-$ npm install minze @minzejs/elements
+npm install @minzejs/elements
 ```
 
 ```js
-import Minze from 'minze'
 import { ElementName } from '@minzejs/elements'
 
-Minze.defineAll([
-  ElementName
-  // ...
-])
+ElementName.define()
 ```
 
 ```html
@@ -36,15 +32,14 @@ Minze.defineAll([
 
 **Description**
 
-Lets you switch between unique slotted elements from the browser window by displaying a toggle at the bottom of the screen. Useful during component development.
+Switch between unique slotted elements from the browser window, with a toggle displayed at the bottom of the screen.
 
 **Example**
 
 ```js
-import Minze from 'minze'
 import { MinzeElementSwitch } from '@minzejs/elements'
 
-Minze.defineAll([MinzeElementSwitch])
+MinzeElementSwitch.define()
 ```
 
 ```html

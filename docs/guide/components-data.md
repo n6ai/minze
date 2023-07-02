@@ -9,7 +9,7 @@ Accessing any property or method that is defined on the component requires the u
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 const myProperty = 'Constant'
 
@@ -24,7 +24,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -38,7 +38,7 @@ Regular non-reactive property.
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   myProperty = 'Hello Minze!'
@@ -48,7 +48,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -79,7 +79,7 @@ If you use the shorthand notation and provide a `camelCase` string instead of a 
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   reactive = [
@@ -98,7 +98,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -140,7 +140,7 @@ For attribute property updates to be effective (on attribute changes), you have 
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   attrs = [
@@ -159,7 +159,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -177,7 +177,7 @@ The `observedAttributes` property defines attribute names that should be observe
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   attrs = [
@@ -196,7 +196,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html

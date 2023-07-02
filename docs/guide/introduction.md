@@ -24,7 +24,7 @@ Possible use cases:
 - ⚡ Fast - Tiny footprint ~2KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
 - 📦 Shareable - Build component libraries or design systems. Define once, use everywhere.
-- 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, etc ...
+- 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, Svelte, etc ...
 - 🔒 Typed API - Scale your component library with ease by using TypeScript.
 
 ## Architecture
@@ -34,8 +34,8 @@ Minze consists of two main classes:
 - **Minze** - A class with multiple static methods and properties for common tasks, like defining several components at once.
 - **MinzeElement** - A class that can be used to extend from to create custom web components. It adds an abstraction layer around the web components API and adds several additional features like reactivity.
 
-There's also a [CLI tool](/guide/installation.html#cli) that can be used to create a development and publishing environment for Minze components. Out of the box, it comes with [vite](https://vitejs.dev/) and optionally `TypeScript`.
+There's also a [CLI tool](/guide/installation.html#cli) that can be used to create a development and publishing environment for Minze components. Out of the box, it comes with [Vite](https://vitejs.dev/) and optionally `TypeScript`.
 
 ## Browser Support
 
-By default, Minze is transpiled to `ES6`. Minze should be compatible with all [browsers supporting ES6](https://caniuse.com/?search=es6) and [Custom Elements](https://caniuse.com/?search=Custom%20Elements).
+By default, Minze is transpiled to `ES2020`. Minze should be compatible with all [browsers supporting ES2020](https://caniuse.com/?search=es2020) and [Custom Elements](https://caniuse.com/?search=Custom%20Elements).

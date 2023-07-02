@@ -1,9 +1,7 @@
 import './assets/vite.css'
-import Minze from 'minze'
-import * as Elements from './module'
+import { modules, defineAll } from './module'
 import template from './template'
-
-Minze.defineAll(Elements)
+defineAll(modules)
 
 const app = document.querySelector('#app') || null
 if (app) app.innerHTML = template

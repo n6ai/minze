@@ -92,6 +92,10 @@ export default defineConfig({
           {
             text: '@minzejs/elements',
             link: 'https://github.com/n6ai/minze/blob/main/packages/minze-elements'
+          },
+          {
+            text: '@minzejs/vite-plugin-minze',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/vite-plugin-minze'
           }
         ]
       }
@@ -101,7 +105,7 @@ export default defineConfig({
       '/guide/': [
         {
           text: 'Basics',
-          collapsible: true,
+          collapsed: false,
           items: [
             {
               text: 'Quick Start',
@@ -124,7 +128,7 @@ export default defineConfig({
 
         {
           text: 'Components',
-          collapsible: true,
+          collapsed: false,
           items: [
             {
               text: 'Registration',
@@ -171,7 +175,7 @@ export default defineConfig({
 
         {
           text: 'Minze',
-          collapsible: true,
+          collapsed: false,
           items: [
             {
               text: 'Component Registration',
@@ -186,7 +190,7 @@ export default defineConfig({
 
         {
           text: 'Advanced',
-          collapsible: true,
+          collapsed: false,
           items: [
             {
               text: 'TypeScript',
@@ -215,6 +219,10 @@ export default defineConfig({
             {
               text: 'Element Examples',
               link: '/guide/advanced-element-examples'
+            },
+            {
+              text: 'UnoCSS',
+              link: '/guide/advanced-unocss'
             },
             {
               text: 'Testing',

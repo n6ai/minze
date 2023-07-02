@@ -21,7 +21,7 @@ The `css` property is used to define the scoped CSS for the component. It expect
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   color = 'red'
@@ -35,7 +35,7 @@ class MyElement extends MinzeElement {
   `
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -49,7 +49,7 @@ You can use conditional operators (`Ternary`, `Logical OR`, `Nullish coalescing`
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   isActive = true
@@ -68,7 +68,7 @@ class MyElement extends MinzeElement {
   `
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -82,7 +82,7 @@ The `:host` pseudo-class selector styles the component itself, and not the conte
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `Hello Minze!`
@@ -102,7 +102,7 @@ class MyElement extends MinzeElement {
   `
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -116,7 +116,7 @@ The `:host-context` pseudo-class selector applies styles conditionally based on 
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `<div>Hello Minze!</div>`
@@ -134,7 +134,7 @@ class MyElement extends MinzeElement {
   `
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -162,7 +162,7 @@ The `::slotted` selector only works when used inside the component. Note also th
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `
@@ -181,7 +181,7 @@ class MyElement extends MinzeElement {
   `
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 <!-- prettier-ignore-start -->
@@ -204,7 +204,7 @@ All `CSS` variables defined inside the component can be externally overwritten.
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `<div>Hello Minze!</div>`
@@ -216,7 +216,7 @@ class MyElement extends MinzeElement {
   `
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -236,7 +236,7 @@ The `part` attribute can be accessed outside the component with the `::part` pse
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `
@@ -244,7 +244,7 @@ class MyElement extends MinzeElement {
   `
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html

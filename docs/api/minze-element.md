@@ -2,11 +2,11 @@
 
 Base class which can be used to extend from to create custom web components.
 
-## version
+## version <Badge type="tip" text="^1.2.0" />
 
-Displays the used version of Minze.
+Displays the version of Minze the component was built with.
 
-- **Property**
+- **Static Property**
 
 - **Type:** `readonly string`
 
@@ -15,14 +15,48 @@ Displays the used version of Minze.
 ```js
 import { MinzeElement } from 'minze'
 
-export class MyElement extends MinzeElement {
-  onReady() {
-    console.log(this.version)
-  }
-}
+class MyElement extends MinzeElement {}
+
+console.log(MyElement.version) // 1.2.0
 ```
 
-## define
+## isMinzeElement <Badge type="tip" text="^1.2.0" />
+
+Can by used in conditional checks to determine if the class is a MinzeElement.
+
+- **Static Property**
+
+- **Type:** `readonly true`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {}
+
+console.log(MyElement.isMinzeElement) // true
+```
+
+## dashName <Badge type="tip" text="^1.2.0" />
+
+The class name of the component in dash-case.
+
+- **Static Getter**
+
+- **Type:** `getter`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {}
+
+console.log(MyElement.dashName) // my-element
+```
+
+## define <Badge type="tip" text="^1.0.0" />
 
 Defines a custom web component for the current class.
 
@@ -57,7 +91,7 @@ MyElement.define('my-custom-element')
 ```
 <!-- prettier-ignore-end -->
 
-## options
+## options <Badge type="tip" text="^1.0.0" />
 
 Individual components can be customized by declaring an options property. All currently available options are listed in the example below with their **default values**.
 
@@ -79,7 +113,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## reactive
+## reactive <Badge type="tip" text="^1.0.0" />
 
 Dynamically creates reactive properties on the element. A change to a reactive property will request a component re-render. `reactive` should be an array containing one or more strings or tuples.
 In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
@@ -144,7 +178,7 @@ export class MyElement extends MinzeElement {
 <my-element an-array="[1, 2, 3]"></my-element>
 ```
 
-## attrs
+## attrs <Badge type="tip" text="^1.0.0" />
 
 Dynamically creates reactive properties for attributes. A change to a reactive attribute property will request a component re-render. `attrs` should be an array containing one or more strings or tuples.
 In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
@@ -202,7 +236,7 @@ export class MyElement extends MinzeElement {
 <my-element text="Hello Minze!" bg-color="#000"></my-element>
 ```
 
-## observedAttributes
+## observedAttributes <Badge type="tip" text="^1.0.0" />
 
 Observes the provided attribute names and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChange` and `onAttributeChange` hooks are called.
 
@@ -230,7 +264,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## watch
+## watch <Badge type="tip" text="^1.0.0" />
 
 Watches the given reactive properties and calls the provided callback whenever a change is detected. `watch` should be an array containing one or more tuples. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
@@ -269,7 +303,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## eventListeners
+## eventListeners <Badge type="tip" text="^1.0.0" />
 
 Dynamically creates event listeners, either on/inside the component or on the `window` object. `eventListeners` should be an array containing one or more tuples. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
 
@@ -338,7 +372,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## html
+## html <Badge type="tip" text="^1.0.0" />
 
 Defines the elements `HTML` template.
 
@@ -358,7 +392,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## css
+## css <Badge type="tip" text="^1.0.0" />
 
 Defines the elements scoped `CSS` template.
 
@@ -380,7 +414,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## rerender
+## rerender <Badge type="tip" text="^1.0.0" />
 
 Requests a component re-render. The current template will be compared to the cached template and if they are different, the component will be rerendered. If you want to force-rerender, without any checks, pass `true` as the first argument.
 
@@ -404,7 +438,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## select
+## select <Badge type="tip" text="^1.0.0" />
 
 Selects the first matching element for the given `CSS` selector inside the `html` template.
 
@@ -430,7 +464,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## selectAll
+## selectAll <Badge type="tip" text="^1.0.0" />
 
 Selects all elements matching the given `CSS` selector inside the `html` template.
 
@@ -456,7 +490,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## cast
+## cast <Badge type="tip" text="^1.0.0" />
 
 Dispatches a custom event from the element. Shorthand for `Broadcasting`, not to be confused with `Type casting`.
 
@@ -484,7 +518,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## onStart
+## onStart <Badge type="tip" text="^1.0.0" />
 
 A Hook that runs `once` after the element is added to the DOM, but before the internal lifecycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
 
@@ -508,7 +542,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## onReactive
+## onReactive <Badge type="tip" text="^1.0.0" />
 
 A Hook that runs `once` after the element is added to the DOM, and all reactive properties are initialized but before rendering the template. Can either be a regular or async method.
 
@@ -528,7 +562,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## onReady
+## onReady <Badge type="tip" text="^1.0.0" />
 
 A Hook that runs `once` after the element is added to the DOM and the entire component lifecycle is finished. Can either be a regular or async method.
 
@@ -548,7 +582,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## onDestroy
+## onDestroy <Badge type="tip" text="^1.0.0" />
 
 A Hook that runs `once` after the element is disconnected from the document's DOM and all its event listeners are removed. Can either be a regular or async method.
 
@@ -568,7 +602,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## onMove
+## onMove <Badge type="tip" text="^1.0.0" />
 
 A Hook that runs `once` after the element is moved to a new document but before it's rendered. Can either be a regular or async method.
 
@@ -592,7 +626,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## beforeRender
+## beforeRender <Badge type="tip" text="^1.0.0" />
 
 A Hook that runs `each time` bofore a template render. Can either be a regular or async method.
 
@@ -612,7 +646,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## onRender
+## onRender <Badge type="tip" text="^1.0.0" />
 
 A Hook that runs `each time` after a template render. Can either be a regular or async method.
 
@@ -632,7 +666,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## beforeAttributeChange
+## beforeAttributeChange <Badge type="tip" text="^1.0.0" />
 
 A Hook that runs `each time` before any [observed attribute](#observedattributes) changes. Can either be a regular or async method.
 
@@ -652,7 +686,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## onAttributeChange
+## onAttributeChange <Badge type="tip" text="^1.0.0" />
 
 A Hook that runs `each time` after any [observed attribute](#observedattributes) changes. Can either be a regular or async method.
 

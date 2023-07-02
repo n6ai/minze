@@ -22,18 +22,14 @@ $ pnpm add minze
 
 :::
 
-::: tip
-You can also import the main `Minze` class as a default import: <br> `import Minze, { MinzeElement } from 'minze'`
-:::
-
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `Hello Minze!`
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -45,7 +41,7 @@ Minze.defineAll([MyElement])
 Installing via command line:
 
 ::: tip
-The CLI method scaffolds a Minze Dev and Publishing environment running `vite`.
+The CLI method scaffolds a Minze dev environment running `Vite`.
 :::
 
 > Minze requires [Node.js](https://nodejs.dev/) version >= `16.0.0`

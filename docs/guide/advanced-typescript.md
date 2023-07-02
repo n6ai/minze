@@ -103,10 +103,8 @@ export class MyElement extends MinzeElement {
 ```
 
 ```ts
-import Minze from 'minze'
 import { MyElement } from './my-element'
-
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html

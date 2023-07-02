@@ -74,10 +74,8 @@ minze-project/
 5. Add the following code to your newly created `vite.js` file to register all components:
 
 ```js
-import Minze from 'minze'
-import * as Elements from '../src/module'
-
-Minze.defineAll(Elements)
+import { modules, defineAll } from '../src/module'
+defineAll(modules)
 ```
 
 6. Add the following code to your newly created `index.html` file:

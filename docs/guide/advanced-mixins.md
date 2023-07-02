@@ -18,7 +18,7 @@ export const cssMixin = (color) => `
 ```
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 import { htmlMixin, cssMixin } from './mixins'
 
 class MyElement extends MinzeElement {
@@ -26,7 +26,7 @@ class MyElement extends MinzeElement {
   css = () => cssMixin('red')
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html

@@ -27,18 +27,17 @@ It provides an intuitive abstraction layer around the web components API with it
 - ⚡ Fast - Tiny footprint ~2KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
 - 📦 Shareable - Build component libraries or design systems. Define once, use everywhere.
-- 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, etc ...
+- 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, Svelte, etc ...
 - 🔒 Typed API - Scale your component library with ease by using TypeScript.
 
 ## Packages
 
-| Project                                      | Version                                                                                                                                      | Description                                                                 |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [minze](packages/minze)                      | [![minze version](https://img.shields.io/npm/v/minze.svg?label=%20&color=323232)](packages/minze/CHANGELOG.md)                               | Dead-simple JS framework for native web components.                         |
-| [create-minze](packages/create-minze)        | [![create-minze version](https://img.shields.io/npm/v/create-minze.svg?label=%20&color=323232)](packages/create-minze/CHANGELOG.md)          | Scaffolding CLI tool for setting up a Minze Dev and Publishing environment. |
-| [@minzejs/elements](packages/minze-elements) | [![minze-elements version](https://img.shields.io/npm/v/@minzejs/elements.svg?label=%20&color=323232)](packages/minze-elements/CHANGELOG.md) | Native web components built with Minze.                                     |
-| [playground](packages/playground)            | [![playground private](https://img.shields.io/static/v1?label=&message=private&color=323232)](packages/playground)                           | Internal playground environment for Minze.                                  |
-| [tests](packages/tests)                      | [![tests private](https://img.shields.io/static/v1?label=&message=private&color=323232)](packages/tests)                                     | Internal test environment for Minze.                                        |
+| Project                                                  | Version                                                                                                                                                     | Description                                                  |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| [minze](packages/minze)                                  | [![minze version](https://img.shields.io/npm/v/minze.svg?label=%20&color=323232)](packages/minze/CHANGELOG.md)                                              | Dead-simple JS framework for native web components.          |
+| [create-minze](packages/create-minze)                    | [![create-minze version](https://img.shields.io/npm/v/create-minze.svg?label=%20&color=323232)](packages/create-minze/CHANGELOG.md)                         | Scaffolding CLI tool for setting up a Minze dev environment. |
+| [@minzejs/elements](packages/minze-elements)             | [![minze-elements version](https://img.shields.io/npm/v/@minzejs/elements.svg?label=%20&color=323232)](packages/minze-elements/CHANGELOG.md)                | Helpers for native web component development.                |
+| [@minzejs/vite-plugin-minze](packages/vite-plugin-minze) | [![vite-plugin-minze version](https://img.shields.io/npm/v/@minzejs/vite-plugin-minze.svg?label=%20&color=323232)](packages/vite-plugin-minze/CHANGELOG.md) | Vite plugin for Minze dev environment.                       |
 
 ## Contribution
 

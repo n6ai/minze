@@ -15,7 +15,7 @@ With the following extension you can add syntax highlighting to template strings
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html () => /* html */ `
@@ -29,5 +29,5 @@ class MyElement extends MinzeElement {
   `
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```

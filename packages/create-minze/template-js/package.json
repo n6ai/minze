@@ -13,9 +13,10 @@
     "build": "(vite build -m module) && (vite build -m cdn)"
   },
   "dependencies": {
-    "minze": "^1.1.2"
+    "minze": "^1.2.0"
   },
   "devDependencies": {
+    "@minzejs/vite-plugin-minze": "^1.0.1",
     "terser": "^5.18.2",
     "vite": "^4.3.9"
   }

@@ -26,7 +26,7 @@ When passing a method as a callback, make sure it's either defined as an arrow f
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `
@@ -45,7 +45,7 @@ class MyElement extends MinzeElement {
   ]
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -63,7 +63,7 @@ It's a good idea to prefix your custom event names to avoid collisions with othe
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onReady() {
@@ -72,7 +72,7 @@ export class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html

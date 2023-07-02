@@ -61,21 +61,21 @@ export class MinzeElementSwitch extends MinzeElement {
         const dashName = element.tagName.toLowerCase()
         const isSelected = this.selectedElementKey === dashName
 
-        template.push(/* html */ `
+        template.push(`
           <button data-name="${dashName}" ${isSelected ? 'class="active"' : ''}>
             ${dashName}
           </button>
         `)
       })
     } else {
-      template.push(/* html */ `
+      template.push(`
         <div>
           No slotted elements found.
         </div>
       `)
     }
 
-    return /* html */ `
+    return `
       <div part="aside-overlay">
         ${template.join('')}
       </div>
@@ -83,14 +83,14 @@ export class MinzeElementSwitch extends MinzeElement {
   }
 
   templateButton() {
-    return /* html */ `
+    return `
       <button part="aside-button">
         Select Element
       </button>
     `
   }
 
-  html = () => /* html */ `
+  html = () => `
     <slot></slot>
 
     <aside part="aside">

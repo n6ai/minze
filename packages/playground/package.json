@@ -10,9 +10,10 @@
     "minze": "*"
   },
   "devDependencies": {
-    "terser": "^5.17.3",
-    "typescript": "^5.0.4",
+    "@minzejs/vite-plugin-minze": "*",
+    "terser": "^5.18.2",
+    "typescript": "^5.1.6",
     "vite": "^4.3.9",
-    "vite-plugin-dts": "^2.3.0"
+    "vite-plugin-dts": "^3.0.0-beta.3"
   }
 }

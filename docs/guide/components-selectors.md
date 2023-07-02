@@ -12,7 +12,7 @@ When using selectors with Hooks, keep in mind that the template might not be yet
 **Example**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `
@@ -27,7 +27,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html

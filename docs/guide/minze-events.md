@@ -8,7 +8,7 @@ See the [API Reference](/api/minze.html#cast) for more information.
 
 ```js
 // some component
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   onReady() {
@@ -16,7 +16,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```js

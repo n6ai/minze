@@ -1,46 +1,6 @@
 import { defineConfig } from 'vite'
+import minze from '@minzejs/vite-plugin-minze'
 
-// https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
-  const modes = ['module', 'cdn']
-
-  if (command === 'build' && !modes.includes(mode)) {
-    console.error(`mode must be one of: ${modes.join(', ')}`)
-    process.exit(1)
-  }
-
-  const isModule = mode === 'module'
-
-  return {
-    build: {
-      minify: 'terser',
-      terserOptions: {
-        keep_classnames: true
-      },
-      emptyOutDir: isModule,
-      lib: {
-        name: 'minze',
-        formats: [isModule ? 'es' : 'umd'],
-        entry: isModule ? 'src/module.js' : 'src/cdn.js',
-        fileName: () => (isModule ? 'module.js' : 'cdn.js')
-      },
-      rollupOptions: {
-        output: {
-          inlineDynamicImports: !isModule,
-          minifyInternalExports: false,
-          chunkFileNames: '[name].js',
-          manualChunks: isModule
-            ? (id) => {
-                if (id.includes('lib')) {
-                  const name = id.match(/(?<=lib\/).*(?=\.(ts|js))/i)?.[0]
-                  return `lib/${name}`
-                } else if (id.match(/node_modules|minze\/dist/i)) {
-                  return 'vendor'
-                }
-              }
-            : undefined
-        }
-      }
-    }
-  }
+export default defineConfig({
+  plugins: [minze({ entry: { module: 'src/module.js', cdn: 'src/cdn.js' } })]
 })

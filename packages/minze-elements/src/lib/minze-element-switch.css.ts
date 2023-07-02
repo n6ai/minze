@@ -1,4 +1,4 @@
-export default () => /* css */ `
+export default () => `
   :host {
     --m-color-white: rgb(255, 255, 255);
     --m-color-primary: rgb(20 20 20);

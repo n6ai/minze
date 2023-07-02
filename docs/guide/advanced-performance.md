@@ -7,7 +7,7 @@ If you want to create performant web components, you have to use reactivity sele
 Consider the following example:
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 const nestedArray = []
 
@@ -29,7 +29,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html
@@ -52,7 +52,7 @@ In total, our elements performed about `1000` steps that are not necessary for t
 **A much better approach**
 
 ```js
-import { Minze, MinzeElement } from 'minze'
+import { MinzeElement } from 'minze'
 
 const nestedArray = []
 
@@ -77,7 +77,7 @@ class MyElement extends MinzeElement {
   }
 }
 
-Minze.defineAll([MyElement])
+MyElement.define()
 ```
 
 ```html

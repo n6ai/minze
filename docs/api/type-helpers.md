@@ -2,7 +2,7 @@
 
 Some properties you can define are from the `tuple` type, but TypeScript doesn't automatically infer tuples and rather assumes that they are arrays. So you have to explicitly declare them as tuples. If you are using `reactive`, `attrs`, `watch` or `eventListeners`, you can use the following types to do so:
 
-## Reactive
+## Reactive <Badge type="tip" text="^1.0.0" />
 
 Declares `reactive` property as a mixed array of strings and tuples.
 
@@ -26,7 +26,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## Attrs
+## Attrs <Badge type="tip" text="^1.0.0" />
 
 Declares `attrs` property as a mixed array of strings and tuples.
 
@@ -50,7 +50,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## Watch
+## Watch <Badge type="tip" text="^1.0.0" />
 
 Declares `watch` property as an array of tuples.
 
@@ -78,7 +78,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## EventListeners
+## EventListeners <Badge type="tip" text="^1.0.0" />
 
 Declares `eventListeners` property as an array of tuples.
 
