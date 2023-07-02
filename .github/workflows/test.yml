@@ -2,16 +2,6 @@ name: Test
 
 on:
   workflow_dispatch:
-    inputs:
-      package:
-        type: choice
-        description: 'Package to test'
-        required: true
-        options:
-          - minze
-          - create-minze
-          - '@minzejs/elements'
-          - '@minzejs/vite-plugin-minze'
 
 env:
   NODE_VERSION: 18
@@ -28,4 +18,3 @@ jobs:
         uses: ./.github/actions/test
         with:
           node-version: ${{ env.NODE_VERSION }}
-          package-name: ${{ env.PACKAGE_NAME }}
