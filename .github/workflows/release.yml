@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'packages/**'
+      - 'package.json'
+    paths-ignore:
+      - 'packages/playground/**'
+      - '**/README.md'
   workflow_dispatch:
 
 env:
