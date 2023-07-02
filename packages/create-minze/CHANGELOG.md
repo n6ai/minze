@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.0](https://github.com/n6ai/minze/compare/create-minze-v1.2.5...create-minze-v2.0.0) (2023-07-02)
+
+
+### Features
+
+* add storybook templates ([3ac0b00](https://github.com/n6ai/minze/commit/3ac0b00b79a227965cfaf849fa8a08d78b308e4b))
+* update cli tool for multiple frameworks ([b730422](https://github.com/n6ai/minze/commit/b73042254365359c63b7830f9cc1a03ec0ea32b9))
+
+
+### Bug Fixes
+
+* template file glop for npm package ([1406ab2](https://github.com/n6ai/minze/commit/1406ab2bc4d5226f599043985406bdd634d616ed))
+
 ## [1.2.5](https://github.com/n6ai/minze/compare/create-minze-v1.2.4...create-minze-v1.2.5) (2023-07-01)
 
 
