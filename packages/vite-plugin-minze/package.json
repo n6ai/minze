@@ -1,6 +1,6 @@
 {
   "name": "@minzejs/vite-plugin-minze",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MIT",
   "author": "Sergej Samsonenko",
   "description": "Vite plugin for Minze dev environment.",

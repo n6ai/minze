@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.4...vite-plugin-minze-v1.0.5) (2023-07-02)
+
+
+### Bug Fixes
+
+* display warn msg only during build mode ([b526f16](https://github.com/n6ai/minze/commit/b526f165e70f8d466ce51b4ef555186b76ac0455))
+
 ## [1.0.4](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.3...vite-plugin-minze-v1.0.4) (2023-07-02)
 
 
