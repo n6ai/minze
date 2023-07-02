@@ -9,7 +9,7 @@ export class MinzeButton extends MinzeElement {
 
   css = () => `
     .button {
-      background: linear-gradient(45deg, var(--color-primary, rgb(55 245 220)) 0%,  var(--color-secondary, rgb(50 255 160)) 100%);
+      background: linear-gradient(45deg, var(--color-primary, rgb(55 245 220)) 0%, var(--color-secondary, rgb(50 255 160)) 100%);
       color: var(--color-dark, rgb(45 80 60));
       font-size: 1rem;
       font-weight: 600;
