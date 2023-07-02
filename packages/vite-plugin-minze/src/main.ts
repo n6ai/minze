@@ -28,10 +28,9 @@ export default (options?: PluginOptions): Plugin => {
     name: 'vite-plugin-minze',
     config: (config, { command, mode }: Context) => {
       const modes = ['module', 'cdn']
-      const hasMode = command === 'build' && modes.includes(mode)
       const isModule = mode === 'module'
 
-      if (!hasMode) {
+      if (command === 'build' && !modes.includes(mode)) {
         console.warn(
           `[vite-plugin-minze]: mode must be one of: ${modes.join(', ')}`
         )
