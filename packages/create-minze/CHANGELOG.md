@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/n6ai/minze/compare/create-minze-v2.0.1...create-minze-v2.0.2) (2023-07-03)
+
+
+### Miscellaneous
+
+* manual release ([d755919](https://github.com/n6ai/minze/commit/d7559195942cd9addc16e89379e954d86a1c4c84))
+
 ## [2.0.1](https://github.com/n6ai/minze/compare/create-minze-v2.0.0...create-minze-v2.0.1) (2023-07-02)
 
 
