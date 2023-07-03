@@ -6,7 +6,6 @@ import replace from '@rollup/plugin-replace'
 import typescript from '@rollup/plugin-typescript'
 import terser from '@rollup/plugin-terser'
 import dts from 'rollup-plugin-dts'
-import license from 'rollup-plugin-license'
 
 const pkg = JSON.parse(
   readFileSync(new URL('./package.json', import.meta.url)).toString()
@@ -47,14 +46,6 @@ const createConfig = (
           keep_classnames: true,
           output: {
             comments: false
-          }
-        }),
-      isProd &&
-        license({
-          thirdParty: {
-            output: {
-              file: join(__dirname, 'dist', 'DEPENDENCIES')
-            }
           }
         })
     ],
