@@ -1,12 +1,11 @@
 /**
  * Script that generates a sitemap.txt file for vitepress.
  */
-import { resolve, join, dirname } from 'node:path'
-import { fileURLToPath } from 'url'
 import fs from 'node:fs'
+import { resolve, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 const rootUrl = 'https://minze.dev'
 const docsDir = resolve(__dirname, '../docs')
