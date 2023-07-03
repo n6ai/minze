@@ -1,6 +1,8 @@
 ## Git Commit Message Convention
 
-Your commit messages should follow the [Conventional Commits specification](https://www.conventionalcommits.org/). This repo uses [@n6ai/verify-commit-msg](https://github.com/n6ai/verify-commit-msg) to enforce a consistent commit message format. If your commit message does not follow the rules, you will receive an error.
+Your commit messages should follow the [Conventional Commits specification](https://www.conventionalcommits.org/).
+
+This repo uses [@n6ai/verify-commit-msg](https://github.com/n6ai/verify-commit-msg) to enforce a consistent commit message format. If your commit message does not follow the rules, you will receive an error.
 
 > You can use [commitlint.io](https://commitlint.io/) to help you generate a valid commit message.
 
