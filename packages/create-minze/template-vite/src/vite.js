@@ -1,7 +1,7 @@
 import './assets/vite.css'
-import template from './template.html?raw'
+import preview from './preview.html?raw'
 import { modules, defineAll } from './module'
 defineAll(modules)
 
 const app = document.querySelector('#app') || null
-if (app) app.innerHTML = template
+if (app) app.innerHTML = preview

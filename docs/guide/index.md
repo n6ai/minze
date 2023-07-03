@@ -98,15 +98,15 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-4. Open the `template.html` file. This file is injected into the preview during dev runtime and is what you see on the screen when you are running the dev task.
+4. Open the `preview.html` file. This file is injected into the preview during dev runtime and is what you see on the screen when you are running the dev task.
 
 ```
 src/
 ├─ ...
-└─ template.html
+└─ preview.html
 ```
 
-5. Add your element to `template.html`. This file is essentially a little sandbox for trying out your components.
+5. Add your element to `preview.html`. This file is essentially a little sandbox for trying out and previewing your components.
 
 <!-- prettier-ignore-start -->
 ```html
