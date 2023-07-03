@@ -1,8 +1,6 @@
-# adapted from https://github.com/vitejs/vite/blob/main/.github/ISSUE_TEMPLATE/feature_request.yml
 name: "\U0001F680 New feature proposal"
 description: Propose a new feature to be added to Minze
-labels: ['enhancement: pending']
-title: 'YOUR TITLE HERE'
+labels: ['enhancement: pending triage']
 body:
   - type: markdown
     attributes:
@@ -11,8 +9,9 @@ body:
   - type: textarea
     id: feature-description
     attributes:
-      label: Clear and concise description of the problem
-      description: 'As a developer using Minze I want [goal / wish] so that [benefit]. If you intend to submit a PR for this issue, tell us in the description. Thanks!'
+      label: Description
+      description: 'Clear and concise description of the problem. Please make the reason and usecases as detailed as possible. If you intend to submit a PR for this issue, tell us in the description. Thanks!'
+      placeholder: As a developer using Minze I want [goal / wish] so that [benefit].
     validations:
       required: true
   - type: textarea
