@@ -9,6 +9,7 @@
 # Minze
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-vite?title=Minze&terminal=dev)
+[![Start new PR in StackBlitz Codeflow](https://developer.stackblitz.com/img/start_pr_small.svg)](https://pr.new/n6ai/minze)
 
 > Dead-simple JS framework for native web components.
 
@@ -35,7 +36,7 @@ It provides an intuitive abstraction layer around the web components API with it
 
 ## Packages
 
-| Project                                                  | Version                                                                                                                                                     | Description                                                  |
+| Package                                                  | Version                                                                                                                                                     | Description                                                  |
 | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | [minze](packages/minze)                                  | [![minze version](https://img.shields.io/npm/v/minze.svg?label=%20&color=323232)](packages/minze/CHANGELOG.md)                                              | Dead-simple JS framework for native web components.          |
 | [create-minze](packages/create-minze)                    | [![create-minze version](https://img.shields.io/npm/v/create-minze.svg?label=%20&color=323232)](packages/create-minze/CHANGELOG.md)                         | Scaffolding CLI tool for setting up a Minze dev environment. |
