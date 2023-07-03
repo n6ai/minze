@@ -98,21 +98,18 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-4. Open the `template.js` file. This file is injected into the preview during dev runtime and is what you see on the screen when you are running the dev task.
+4. Open the `template.html` file. This file is injected into the preview during dev runtime and is what you see on the screen when you are running the dev task.
 
 ```
 src/
 ├─ ...
-└─ template.js
+└─ template.html
 ```
 
-5. Add your element to the HTML template inside `template.js`. This file is essentially a little sandbox for trying out your components.
+5. Add your element to `template.html`. This file is essentially a little sandbox for trying out your components.
 
-```js
-export default `
-  <my-element></my-element> // [!code ++]
-  <minze-counter></minze-counter>
-`
+```html
+<my-element></my-element> // [!code ++] <minze-counter></minze-counter>
 ```
 
 6. Profit. Your component/element should be displayed in the browser.
