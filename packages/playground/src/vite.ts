@@ -1,5 +1,5 @@
 import './assets/vite.css'
-import template from './template'
+import template from './template.html?raw'
 import { modules, defineAll } from './module'
 defineAll(modules)
 

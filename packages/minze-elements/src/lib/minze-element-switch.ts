@@ -1,6 +1,6 @@
 import type { Reactive, Watch, EventListeners } from 'minze'
 import { MinzeElement } from 'minze'
-import css from './minze-element-switch.css'
+import css from './minze-element-switch.css?raw'
 
 export interface MinzeElementSwitch {
   overlayActive: boolean
@@ -103,7 +103,7 @@ export class MinzeElementSwitch extends MinzeElement {
   `
 
   // css defined externally
-  css = css
+  css = () => css
 
   onReady() {
     const slot = this.select<HTMLSlotElement>('slot')
