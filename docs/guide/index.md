@@ -108,9 +108,12 @@ src/
 
 5. Add your element to `template.html`. This file is essentially a little sandbox for trying out your components.
 
+<!-- prettier-ignore-start -->
 ```html
-<my-element></my-element> // [!code ++] <minze-counter></minze-counter>
+<my-element></my-element> // [!code ++]
+<minze-counter></minze-counter>
 ```
+<!-- prettier-ignore-end -->
 
 6. Profit. Your component/element should be displayed in the browser.
 
