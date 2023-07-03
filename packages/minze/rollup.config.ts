@@ -8,12 +8,11 @@ import terser from '@rollup/plugin-terser'
 import dts from 'rollup-plugin-dts'
 import license from 'rollup-plugin-license'
 
-const packageJSON = JSON.parse(
+const pkg = JSON.parse(
   readFileSync(new URL('./package.json', import.meta.url)).toString()
 )
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
-const version = packageJSON.version
 
 type BuildConfig = {
   format: 'es' | 'umd'
@@ -41,7 +40,7 @@ const createConfig = (
       isProd &&
         replace({
           preventAssignment: true,
-          __VERSION__: version
+          __VERSION__: pkg.version
         }),
       isProd &&
         terser({
