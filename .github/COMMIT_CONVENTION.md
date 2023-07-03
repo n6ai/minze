@@ -1,55 +1,34 @@
 ## Git Commit Message Convention
 
-Your commit messages should follow the [Conventional Commits specification](https://www.conventionalcommits.org/). This repo uses [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional) to enforce a consistent commit message format. If your commit message does not follow the rules, you will receive an error.
+Your commit messages should follow the [Conventional Commits specification](https://www.conventionalcommits.org/). This repo uses [@n6ai/verify-commit-msg](https://github.com/n6ai/verify-commit-msg) to enforce a consistent commit message format. If your commit message does not follow the rules, you will receive an error.
 
 > You can use [commitlint.io](https://commitlint.io/) to help you generate a valid commit message.
 
-**Commit Message Structure**
+#### TL;DR:
+
+Messages must be matched by the [regex](https://github.com/n6ai/verify-commit-msg#commit-message) enforced by `@n6ai/verify-commit-msg` package.
+
+#### Examples
 
 ```
-<type>(<optional scope>): <subject>
-<BLANK LINE>
-<optional body>
-<BLANK LINE>
-<optional footer>
+feat(dev): add 'comments' option
+fix(dev): fix dev error
+perf(build)!: remove 'foo' option
+revert: feat(compiler): add 'comments' option
 ```
 
-**Allowed Types**
+### Revert
 
-```
-[
-  'build',
-  'chore',
-  'ci',
-  'deps',
-  'docs',
-  'dx',
-  'feat',
-  'fix',
-  'perf',
-  'refactor',
-  'release',
-  'test',
-  'types',
-  'wip',
-  'workflow'
-]
-```
+If the PR reverts a previous commit, it should begin with `revert: `, followed by the header of the reverted commit
 
-**Examples**
+### Scope
 
-```
-feat(core): add an event listener to body tag
-```
+The scope could be anything specifying the place of the commit change. For example `dev`, `build`, `workflow`, `cli` etc...
 
-```
-fix: correct spelling of listenTo method
+### Subject
 
-close #27
-```
+The subject contains a succinct description of the change:
 
-```
-perf(build): remove 'foo' option
-
-BREAKING CHANGE: The 'foo' option has been removed.
-```
+- use the imperative, present tense: "change" not "changed" nor "changes"
+- don't capitalize the first letter
+- no dot (.) at the end
