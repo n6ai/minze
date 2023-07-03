@@ -21,14 +21,14 @@ To develop locally, fork the Minze repository and clone it to your local machine
 1. Run `npm run dev` in the root directory.
 2. Open the browser and navigate to [http://localhost:5173](http://localhost:5173).
 
-The `dev` task will start rollup in watch mode for the `minze` package and start a vite server for the `playground` package. The minze dependency for playground is linked to the local version of minze. Any changes to the minze package can be immediately tried out and previewed in the playground.
+> The `dev` task will start rollup in watch mode for the `minze` package and start a vite server for the `playground` package. The minze dependency for playground is linked to the local version of minze. Any changes to the minze package can be immediately tried out and previewed in the playground.
 
 ### create-minze
 
 1. Run `npm run dev -w create-minze` in the root directory.
 2. Run `npm create minze` in the root directory.
 
-The `dev` task will start TypeScript in watch mode for the `create-minze` package.
+> The `dev` task will start TypeScript in watch mode for the `create-minze` package.
 
 ### @minzejs/elements
 
@@ -36,29 +36,29 @@ The `dev` task will start TypeScript in watch mode for the `create-minze` packag
 2. Run `npm run dev -w @minzejs/elements` in the root directory.
 3. Open the browser and navigate to [http://localhost:5173](http://localhost:5173).
 
-First, you need to build the minze package. Then start the dev task for Minze Elements.
-The `dev` task will start start a vite server for the `@minzejs/elements` package.
+> First, you need to build the minze package. Then start the dev task for Minze Elements.
+> The `dev` task will start start a vite server for the `@minzejs/elements` package.
 
 ### @minzejs/vite-plugin-minze
 
 1. Run `npm run dev -w @minzejs/vite-plugin-minze` in the root directory.
 2. Run `npm run dev -w playground` or `npm run build -w playground` in the root directory.
 
-First, you need to start the dev task for vite-plugin-minze. The `@minzejs/vite-plugin-minze` dependency for playground is linked to the local version of `@minzejs/vite-plugin-minze`. Any changes to the `@minzejs/vite-plugin-minze` package can be immediately tried out and previewed in the playground.
+> First, you need to start the dev task for vite-plugin-minze. The `@minzejs/vite-plugin-minze` dependency for playground is linked to the local version of `@minzejs/vite-plugin-minze`. Any changes to the `@minzejs/vite-plugin-minze` package can be immediately tried out and previewed in the playground.
 
 ### docs
 
 1. Run `npm run docs` in the root directory.
 2. Open the browser and navigate to [http://localhost:5173](http://localhost:5173).
 
-Vitepress will start a server in dev mode for the documentation.
+> Vitepress will start a server in dev mode for the documentation.
 
 ### tests
 
 1. Run `npm run build -w minze` in the root directory.
 2. Run `npm test` in the root directory.
 
-All `minze` core package tests are located in [tests](https://github.com/n6ai/minze/tree/main/packages/tests).
+> All `minze` core package tests are located in [tests](https://github.com/n6ai/minze/tree/main/packages/tests).
 
 ## External Dependencies
 
