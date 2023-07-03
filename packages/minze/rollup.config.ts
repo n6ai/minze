@@ -1,6 +1,6 @@
 import type { RollupOptions } from 'rollup'
 import { readFileSync } from 'node:fs'
-import { resolve, join } from 'node:path'
+import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import replace from '@rollup/plugin-replace'
 import typescript from '@rollup/plugin-typescript'
