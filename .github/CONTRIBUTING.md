@@ -2,15 +2,19 @@
 
 Hi! We're really excited that you're interested in contributing to Minze! Before submitting your contribution, please read through the following guide.
 
-## Remote
+## Setup
+
+### Remote
 
 You can use [StackBlitz Codeflow](https://stackblitz.com/codeflow) to fix bugs or implement features. When using Codeflow, the Minze repository will be cloned for you in an online editor, with the Minze package built in watch mode ready to test your changes. If you'd like to learn more, check out the [Codeflow docs](https://developer.stackblitz.com/codeflow/what-is-codeflow).
 
 [![Open in Codeflow](https://developer.stackblitz.com/img/open_in_codeflow.svg)](https://pr.new/n6ai/minze)
 
-## Local
+### Local
 
 To develop locally, fork the Minze repository and clone it to your local machine, then run `npm i` in the root directory to install all dependencies.
+
+## Workflows
 
 ### minze
 
