@@ -4,8 +4,8 @@ import App from './App.svelte'
 
 Minze.defineAll(Elements)
 
-const app = new App({
-  target: document.getElementById('app')!
-})
+let app: App | null = null
+const target = document.getElementById('app')
+if (target) app = new App({ target })
 
 export default app
