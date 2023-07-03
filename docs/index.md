@@ -4,8 +4,6 @@ layout: home
 title: JS framework for native web components
 description: Minze lets you rapidly build native web components. Create encapsulated, reusable, cross-framework web components and scale your component library with ease.
 
-heroImage: /logo.svg
-
 hero:
   name: Minze
   text: Web components Dead-simple
