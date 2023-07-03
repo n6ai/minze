@@ -1,3 +1,3 @@
-import { Minze } from './lib/minze'
-import { MinzeElement } from './lib/minze-element'
-export { Minze as default, Minze, MinzeElement }
+export { Minze as default } from './lib/minze'
+export * from './lib/minze'
+export * from './lib/minze-element'
