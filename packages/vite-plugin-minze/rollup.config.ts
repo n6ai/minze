@@ -1,12 +1,11 @@
 import type { RollupOptions } from 'rollup'
-import { resolve, dirname } from 'path'
-import { fileURLToPath } from 'url'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import typescript from '@rollup/plugin-typescript'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import dts from 'rollup-plugin-dts'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 const config: RollupOptions[] = [
   {

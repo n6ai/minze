@@ -1,15 +1,18 @@
 import type { RollupOptions } from 'rollup'
-import { resolve, join, dirname } from 'path'
-import { fileURLToPath } from 'url'
+import { readFileSync } from 'node:fs'
+import { resolve, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import replace from '@rollup/plugin-replace'
 import typescript from '@rollup/plugin-typescript'
 import terser from '@rollup/plugin-terser'
 import dts from 'rollup-plugin-dts'
 import license from 'rollup-plugin-license'
-import packageJSON from './package.json' assert { type: 'json' }
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const packageJSON = JSON.parse(
+  readFileSync(new URL('./package.json', import.meta.url)).toString()
+)
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const version = packageJSON.version
 
 type BuildConfig = {
@@ -64,9 +67,8 @@ const createConfig = (
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default (commandLineArgs: Record<string, any>) => {
-  const isDev = commandLineArgs.watch
+export default (commandLineArgs: Record<string, unknown>) => {
+  const isDev = commandLineArgs.watch !== undefined
   const isProd = !isDev
   const configs: RollupOptions[] = []
 
