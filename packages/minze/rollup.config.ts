@@ -64,6 +64,7 @@ const createConfig = (
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default (commandLineArgs: Record<string, any>) => {
   const isDev = commandLineArgs.watch
   const isProd = !isDev

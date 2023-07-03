@@ -1,5 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -7,11 +8,5 @@
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "env": {
-    "node": true,
-    "browser": true
-  },
-  "globals": {
-    "__dirname": "readonly"
-  }
+  "ignorePatterns": ["packages/create-minze/template-**"]
 }

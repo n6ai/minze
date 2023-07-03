@@ -165,6 +165,7 @@ async function init() {
         }
       }
     )
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (cancelled: any) {
     console.log(cancelled.message)
     return
