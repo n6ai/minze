@@ -17,16 +17,16 @@
     "minze": "^1.2.0"
   },
   "devDependencies": {
-    "@minzejs/vite-plugin-minze": "^1.0.1",
-    "@storybook/addon-essentials": "^7.0.24",
-    "@storybook/addon-links": "^7.0.24",
-    "@storybook/blocks": "^7.0.24",
-    "@storybook/web-components": "^7.0.24",
-    "@storybook/web-components-vite": "^7.0.24",
+    "@minzejs/vite-plugin-minze": "^1.0.5",
+    "@storybook/addon-essentials": "^7.0.25",
+    "@storybook/addon-links": "^7.0.25",
+    "@storybook/blocks": "^7.0.25",
+    "@storybook/web-components": "^7.0.25",
+    "@storybook/web-components-vite": "^7.0.25",
     "lit": "^2.7.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.0.24",
+    "storybook": "^7.0.25",
     "terser": "^5.18.2",
     "vite": "^4.3.9"
   }
