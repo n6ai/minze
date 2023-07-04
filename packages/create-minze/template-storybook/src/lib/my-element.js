@@ -5,7 +5,7 @@ export class MyElement extends MinzeElement {
 
   increaseCount = () => this.count++
 
-  text = 'Click on the Minze and Vite logos to learn more'
+  text = 'Click on the Minze and Storybook logos to learn more'
 
   html = () => `
     <div>
