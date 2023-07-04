@@ -2,15 +2,63 @@ import { Meta } from '@storybook/blocks'
 
 <Meta title="Introduction" />
 
-<minze-logo></minze-logo>
+<div class="logos">
+  <a href="https://minze.dev" target="_blank">
+    <minze-logo width="142" height="60" class="logo"></minze-logo>
+  </a>
 
-<br />
+  <a href="https://storybook.js.org" target="_blank">
+    <storybook-logo width="68" height="80" class="logo storybook"></storybook-logo>
+  </a>
+</div>
 
-# Minze x Storybook
+<h1 class="headline">Minze + Storybook</h1>
 
-- Minze is a dead-simple JS framework for native web components.
-- Storybook is a frontend workshop for building UI components and pages in isolation. Made for UI development, testing, and documentation.
+<div class="text">
+  <ul>
+    <li>Minze is a dead-simple JS framework for native web components.</li>
+    <li>
+      Storybook is a frontend workshop for building UI components and pages in
+      isolation. Made for UI development, testing, and documentation.
+    </li>
+  </ul>
 
-Browse example stories by navigating to them in the sidebar.
+  <p>Browse example stories by navigating to them in the sidebar.</p>
 
-View the code for components and stories in the `src/lib` directory to learn how they work.
+  <p>
+    View the code for components and stories in the <code>src/lib</code>
+    directory to learn how they work.
+  </p>
+</div>
+
+<style>
+  {`
+  .logos {
+    text-align: center;
+  }
+
+  .logo {
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+
+  .logo:hover {
+    filter: drop-shadow(0 0 2em rgb(50 255 160 / 65%));
+  }
+
+  .logo.storybook:hover {
+    filter: drop-shadow(0 0 2em rgb(255 70 130 / 65%));
+  }
+
+  .headline {
+    text-align: center;
+  }
+
+  .text {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`}
+</style>

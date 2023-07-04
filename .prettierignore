@@ -3,5 +3,6 @@ package-lock.json
 .*cache
 cache
 *.d.ts
+*.mdx
 CHANGELOG.md
 storybook
