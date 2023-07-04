@@ -63,7 +63,9 @@ export default (options?: PluginOptions): Plugin => {
               manualChunks: isModule
                 ? (id) => {
                     if (id.includes('lib')) {
-                      const name = id.match(/(?<=lib\/).*(?=\.(ts|js))/i)?.[0]
+                      const name = id.match(
+                        /(?<=lib\/).*(?=\.(ts|js|css|html))/i
+                      )?.[0]
                       return `lib/${name}`
                     } else if (id.match(/node_modules|minze\/dist/i)) {
                       return 'vendor'
