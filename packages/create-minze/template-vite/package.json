@@ -2,15 +2,15 @@
   "name": "minze-vite",
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/module.js",
-  "unpkg": "dist/cdn.js",
-  "jsdelivr": "dist/cdn.js",
+  "main": "dist/main.js",
+  "unpkg": "dist/main.js",
+  "jsdelivr": "dist/main.js",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "(vite build -m module) && (vite build -m cdn)"
+    "build": "vite build"
   },
   "dependencies": {
     "minze": "^1.2.0"

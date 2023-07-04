@@ -1,6 +1,6 @@
 import './assets/vite.css'
 import preview from './preview.html?raw'
-import { modules, defineAll } from './module'
+import { modules, defineAll } from './main'
 defineAll(modules)
 
 const app = document.querySelector('#app') || null

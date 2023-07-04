@@ -2,17 +2,17 @@
   "name": "minze-storybook-ts",
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/module.js",
-  "types": "dist/module.d.ts",
-  "unpkg": "dist/cdn.js",
-  "jsdelivr": "dist/cdn.js",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "unpkg": "dist/main.js",
+  "jsdelivr": "dist/main.js",
   "files": [
     "dist",
     "storybook"
   ],
   "scripts": {
     "dev": "storybook dev -p 5173",
-    "build": "(storybook build --docs -o storybook) && (vite build -m module) && (vite build -m cdn)"
+    "build": "(storybook build --docs -o storybook) && (vite build)"
   },
   "dependencies": {
     "minze": "^1.2.0"

@@ -4,9 +4,9 @@ import dts from 'vite-plugin-dts'
 
 export default defineConfig({
   plugins: [
-    minze({ entry: { module: 'src/module.ts', cdn: 'src/cdn.ts' } }),
+    minze(),
     dts({
-      include: ['src/module.ts', 'src/lib/**/!(*.spec|*.test|*.stories).ts']
+      include: ['src/main.ts', 'src/lib/**/!(*.spec|*.test|*.stories).ts']
     })
   ]
 })
