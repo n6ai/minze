@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/n6ai/minze/compare/minze-v1.2.0...minze-v1.3.0) (2023-07-04)
+
+
+### Features
+
+* deprecate umd build use esm as default ([c988e63](https://github.com/n6ai/minze/commit/c988e6360468db5cdd1eff9a902e7f18a0e2ee85))
+
 ## [1.2.0](https://github.com/n6ai/minze/compare/minze-v1.1.2...minze-v1.2.0) (2023-07-01)
 
 
