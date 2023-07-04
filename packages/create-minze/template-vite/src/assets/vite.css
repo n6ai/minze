@@ -1,24 +1,47 @@
+:root {
+  color-scheme: light dark;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  padding: 1rem;
   margin: 0;
 }
 
+#app {
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+:not(:defined) {
+  display: none;
+}
+
 @media (prefers-color-scheme: light) {
-  body {
-    background: rgb(250 250 250);
-    color: rgb(50 50 50);
+  :root {
+    color: rgb(33 53 71);
+    background-color: rgb(255 255 255);
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    background: rgb(30 30 30);
-    color: rgb(220 220 220);
+  :root {
+    color: rgb(255 255 255 87%);
+    background-color: rgb(36 36 36);
   }
 }
