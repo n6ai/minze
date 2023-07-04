@@ -37,6 +37,16 @@ export class MyElement extends MinzeElement {
       margin: 0 auto;
       padding: 2rem;
       text-align: center;
+      font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+      color: rgb(33 53 71);
+      background-color: rgb(255 255 255);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :host {
+        color: rgb(255 255 255 / 87%);
+        background-color: rgb(36 36 36);
+      }
     }
 
     a {

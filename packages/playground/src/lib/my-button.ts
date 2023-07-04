@@ -16,6 +16,7 @@ export class MyButton extends MinzeElement {
       font-size: 1em;
       font-weight: 500;
       font-family: inherit;
+      color: currentColor;
       background-color: rgb(249 249 249);
       cursor: pointer;
       user-select: none;
@@ -34,6 +35,7 @@ export class MyButton extends MinzeElement {
 
     @media (prefers-color-scheme: dark) {
       button {
+        color: currentColor;
         background-color: rgb(26 26 26);
       }
     }
