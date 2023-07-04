@@ -142,11 +142,9 @@ If you have published your package to npm, you can also load it via a CDN link f
 
     <!-- js code -->
     <script type="module">
-      const root = 'https://unpkg.com/my-package/dist'
-
-      const { defineAll } = await import(`${root}/module.js`)
-      const { MyElement } = await import(`${root}/lib/my-element.js`)
-      const { MyElementTwo } = await import(`${root}/lib/my-element-two.js`)
+      import { defineAll } from 'https://unpkg.com/my-package'
+      import { MyElement } from 'https://unpkg.com/my-package/dist/lib/my-element.js'
+      import { MyElementTwo } from 'https://unpkg.com/my-package/dist/lib/my-element-two.js'
 
       defineAll([MyElement, MyElementTwo])
     </script>
