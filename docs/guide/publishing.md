@@ -6,7 +6,7 @@ If you set up an environment via the `create-minze` CLI, you can publish your co
 
 **1. Build**
 
-> This command creates a `dist/` directory with an `es` build, a `CDN` build and Type Declarations (If you selected the TypeScript template). The `es` build lazy loads all your components outputted to the `dist/lib/` directory.
+> This command creates a `dist/` directory with an `es` build and Type Declarations (If you selected the TypeScript template).
 
 ::: code-group
 
@@ -38,22 +38,22 @@ This is a default npm command refer to the npm [docs](https://docs.npmjs.com/cli
 
 To use your package in a project simply install your package and then import and define the elements. `Minze` is embedded directly into the published package.
 
-> Let's assume you published your library under the name `my-awesome-package`
+> Let's assume you published your library under the name `my-package`
 
 ### npm
 
 ::: code-group
 
 ```bash [npm]
-$ npm install my-awesome-package
+$ npm install my-package
 ```
 
 ```bash [yarn]
-$ yarn add my-awesome-package
+$ yarn add my-package
 ```
 
 ```bash [pnpm]
-$ pnpm add my-awesome-package
+$ pnpm add my-package
 ```
 
 :::
@@ -62,61 +62,50 @@ $ pnpm add my-awesome-package
 
 ::: code-group
 
-```js [Define]
-import { MyAwesomeElement } from 'my-awesome-package/dist/lib/my-awesome-element'
-import { MyAwesomeElementTwo } from 'my-awesome-package/dist/lib/my-awesome-element-two'
-
-MyAwesomeElement.define()
-MyAwesomeElementTwo.define()
+```js [Define All]
+import { modules, defineAll } from 'my-package'
+defineAll(modules)
 ```
 
-```js [Define All]
-import { modules, defineAll } from 'my-awesome-package'
-defineAll(modules)
+```js [Define Separate]
+import { MyElement } from 'my-package/dist/lib/my-element'
+import { MyElementTwo } from 'my-package/dist/lib/my-element-two'
+
+MyElement.define()
+MyElementTwo.define()
 ```
 
 :::
 
 ```html
-<my-awesome-element></my-awesome-element>
-<my-awesome-element-two></my-awesome-element-two>
+<my-element></my-element>
+<my-element-two></my-element-two>
 ```
 
 <!-- prettier-ignore-end -->
 
 ### CDN
 
-If you have published your package to npm, you can also load it via a CDN link from `unpkg` or `jsdelivr`. Pick one of the following:
-
-::: tip
-`Module` refers here to the `ES Module` build of your package and `CDN` refers to the `UMD` build.
-:::
+If you have published your package to npm, you can also load it via a CDN link from `unpkg`, `jsdelivr` or `esm.sh`. Pick one of the following:
 
 ::: details unpkg
 
-**Module**
-
-- `//unpkg.com/my-awesome-package@latest/dist/module.js` for latest version
-- `//unpkg.com/my-awesome-package@1.0.0/dist/module.js` pin to specific version
-
-**CDN**
-
-- `//unpkg.com/my-awesome-package@latest` for latest version
-- `//unpkg.com/my-awesome-package@1.0.0` pin to specific version
+- `https://unpkg.com/my-package` for latest version
+- `https://unpkg.com/my-package@1.0.0` pin to specific version
 
 :::
 
 ::: details jsdelivr
 
-**Module**
+- `https://cdn.jsdelivr.net/npm/my-package` for latest version
+- `https://cdn.jsdelivr.net/npm/my-package@1.0.0` pin to specific version
 
-- `//cdn.jsdelivr.net/npm/my-awesome-package@latest/dist/module.js` for latest version
-- `//cdn.jsdelivr.net/npm/my-awesome-package@1.0.0/dist/module.js` pin to specific version
+:::
 
-**CDN**
+::: details esm.sh
 
-- `//cdn.jsdelivr.net/npm/my-awesome-package@latest` for latest version
-- `//cdn.jsdelivr.net/npm/my-awesome-package@1.0.0` pin to specific version
+- `https://esm.sh/my-package` for latest version
+- `https://esm.sh/my-package@1.0.0` pin to specific version
 
 :::
 
@@ -126,55 +115,40 @@ If you have published your package to npm, you can also load it via a CDN link f
 
 ::: code-group
 
-```html [CDN]
+```html [Define All]
 <html>
   <head></head>
   <body>
-    <!-- custom components -->
-    <my-awesome-element></my-awesome-element>
-    <my-awesome-element-two></my-awesome-element-two>
+     <!-- custom elements -->
+    <my-element></my-element>
+    <my-element-two></my-element-two>
 
-    <!-- cdn link -->
-    <script src="//unpkg.com/my-awesome-package@latest" defer></script>
-  </body>
-</html>
-```
-
-```html [Module]
-<html>
-  <head></head>
-  <body>
-    <!-- custom components -->
-    <my-awesome-element></my-awesome-element>
-    <my-awesome-element-two></my-awesome-element-two>
-
-    <!-- import and custom component definition -->
+    <!-- js code -->
     <script type="module">
-      const url = '//unpkg.com/my-awesome-package@latest/dist/module.js'
-      const { modules, defineAll } = await import(url)
+      import { modules, defineAll } from 'https://unpkg.com/my-package'
       defineAll(modules)
     </script>
   </body>
 </html>
 ```
 
-```html [Module > lib]
+```html [Define Separate]
 <html>
   <head></head>
   <body>
-    <!-- custom components -->
-    <my-awesome-element></my-awesome-element>
-    <my-awesome-element-two></my-awesome-element-two>
+     <!-- custom elements -->
+    <my-element></my-element>
+    <my-element-two></my-element-two>
 
-    <!-- import and custom component definition -->
+    <!-- js code -->
     <script type="module">
-      const root = '//unpkg.com/my-awesome-package@latest/dist'
+      const root = 'https://unpkg.com/my-package/dist'
 
       const { defineAll } = await import(`${root}/module.js`)
-      const { MyAwesomeElement } = await import(`${root}/lib/my-awesome-element.js`)
-      const { MyAwesomeElementTwo } = await import(`${root}/lib/my-awesome-element-two.js`)
+      const { MyElement } = await import(`${root}/lib/my-element.js`)
+      const { MyElementTwo } = await import(`${root}/lib/my-element-two.js`)
 
-      defineAll([MyAwesomeElement, MyAwesomeElementTwo])
+      defineAll([MyElement, MyElementTwo])
     </script>
   </body>
 </html>
