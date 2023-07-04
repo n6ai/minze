@@ -17,7 +17,6 @@
   },
   "devDependencies": {
     "@minzejs/vite-plugin-minze": "^1.0.5",
-    "terser": "^5.18.2",
     "vite": "^4.3.9"
   }
 }
