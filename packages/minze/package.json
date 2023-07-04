@@ -11,10 +11,10 @@
     "web elements"
   ],
   "type": "module",
-  "main": "dist/module.js",
-  "types": "dist/module.d.ts",
-  "unpkg": "dist/cdn.js",
-  "jsdelivr": "dist/cdn.js",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "unpkg": "dist/main.js",
+  "jsdelivr": "dist/main.js",
   "files": [
     "dist"
   ],
@@ -31,8 +31,8 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "scripts": {
-    "dev": "rollup -w -c rollup.config.ts --configPlugin typescript",
-    "build": "rollup -c rollup.config.ts --configPlugin typescript",
+    "dev": "rollup -w -c rollup.config.ts --configPlugin typescript --environment BUILD:dev",
+    "build": "rollup -c rollup.config.ts --configPlugin typescript --environment BUILD:prod",
     "predev": "rimraf dist",
     "prebuild": "rimraf dist",
     "postbuild": "rimraf dist/types"

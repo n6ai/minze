@@ -93,37 +93,30 @@ You can use `.` for the project name to scaffold in the current directory.
 
 ## CDN
 
-Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the following:
+Loading Minze via a CDN link from `unpkg`, `jsdelivr` or `esm.sh`. Pick one of the following:
 
-::: tip
-`Module` refers here to the `ES Module` build of Minze and `CDN` refers to the `UMD` build.
+::: warning
+In production always pin the imports to a specific version, otherwise your application might break unexpectedly during a future update.
 :::
 
 ::: details unpkg
 
-**Module**
-
-- `//unpkg.com/minze@latest/dist/module.js` for latest version
-- `//unpkg.com/minze@1.0.0/dist/module.js` pin to specific version
-
-**CDN**
-
-- `//unpkg.com/minze@latest` for latest version
-- `//unpkg.com/minze@1.0.0` pin to specific version
+- `https://unpkg.com/minze` for latest version
+- `https://unpkg.com/minze@1.0.0` pin to specific version
 
 :::
 
 ::: details jsdelivr
 
-**Module**
+- `https://cdn.jsdelivr.net/npm/minze` for latest version
+- `https://cdn.jsdelivr.net/npm/minze@1.0.0` pin to specific version
 
-- `//cdn.jsdelivr.net/npm/minze@latest/dist/module.js` for latest version
-- `//cdn.jsdelivr.net/npm/minze@1.0.0/dist/module.js` pin to specific version
+:::
 
-**CDN**
+::: details esm.sh
 
-- `//cdn.jsdelivr.net/npm/minze@latest` for latest version
-- `//cdn.jsdelivr.net/npm/minze@1.0.0` pin to specific version
+- `https://esm.sh/minze` for latest version
+- `https://esm.sh/minze@1.0.0` pin to specific version
 
 :::
 
@@ -133,36 +126,16 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 
 ::: code-group
 
-```html [CDN]
-<html>
-  <head></head>
-  <body>
-    <!-- custom component -->
-    <my-element></my-element>
-
-    <!-- minze -->
-    <script src="//unpkg.com/minze@latest" defer></script>
-
-    <!-- custom component definition -->
-    <script type="module">
-      (class MyElement extends MinzeElement {
-        html = () => `Hello Minze!`
-      }.define())
-    </script>
-  </body>
-</html>
-```
-
 ```html [Module]
 <html>
   <head></head>
   <body>
-    <!-- custom component -->
+    <!-- custom element -->
     <my-element></my-element>
 
-    <!-- import and custom component definition -->
+    <!-- js code -->
     <script type="module">
-      import { MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
+      import { MinzeElement } from 'https://unpkg.com/minze'
 
       (class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
@@ -176,23 +149,23 @@ Loading Minze via a CDN link from `unpkg` or `jsdelivr`. Pick one of the followi
 <html>
   <head></head>
   <body>
-    <!-- custom components -->
-    <my-element></my-element>
-    <my-element-two></my-element-two>
+    <!-- custom elements -->
+    <my-first-element></my-first-element>
+    <my-second-element></my-second-element>
 
-    <!-- import and custom component definition -->
+    <!-- js code -->
     <script type="module">
-      import { Minze, MinzeElement } from '//unpkg.com/minze@latest/dist/module.js'
+      import { Minze, MinzeElement } from 'https://unpkg.com/minze'
 
-      class MyElement extends MinzeElement {
+      class MyFirstElement extends MinzeElement {
         html = () => `Hello Minze!`
       }
 
-      class MyElementTwo extends MinzeElement {
+      class MySecondElement extends MinzeElement {
         html = () => `Hello Minze again!`
       }
 
-      Minze.defineAll([MyElement, MyElementTwo])
+      Minze.defineAll([MyFirstElement, MySecondElement])
     </script>
   </body>
 </html>

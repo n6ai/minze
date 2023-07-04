@@ -13,23 +13,12 @@ const pkg = JSON.parse(
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
-type BuildConfig = {
-  format: 'es' | 'umd'
-  file: string
-  onlyProd?: boolean
-}
+const isDev = process.env.BUILD === 'dev'
+const isProd = process.env.BUILD === 'prod'
 
-const builds: BuildConfig[] = [
-  { format: 'es', file: 'src/module.ts' },
-  { format: 'umd', file: 'src/cdn.ts', onlyProd: true }
-]
-
-const createConfig = (
-  { format, file }: { format: 'es' | 'umd'; file: string },
-  { isDev, isProd }: { isDev: boolean; isProd: boolean }
-): RollupOptions => {
-  return {
-    input: resolve(__dirname, file),
+const builds: RollupOptions[] = [
+  {
+    input: resolve(__dirname, 'src/main.ts'),
     plugins: [
       typescript({
         tsconfig: 'tsconfig.json',
@@ -51,29 +40,15 @@ const createConfig = (
     ],
     output: {
       dir: resolve(__dirname, 'dist'),
-      format: format,
+      format: 'esm',
       sourcemap: isDev
     }
-  }
-}
-
-export default (commandLineArgs: Record<string, unknown>) => {
-  const isDev = commandLineArgs.watch !== undefined
-  const isProd = !isDev
-  const configs: RollupOptions[] = []
-
-  builds
-    .filter((build) => !build.onlyProd || isProd)
-    .forEach((build) => {
-      configs.push(createConfig(build, { isDev, isProd }))
-    })
-
-  // roll types
-  configs.push({
-    input: resolve(__dirname, 'dist/types/src/module.d.ts'),
-    output: [{ file: resolve(__dirname, 'dist/module.d.ts'), format: 'es' }],
+  },
+  {
+    input: resolve(__dirname, 'dist/types/src/main.d.ts'),
+    output: [{ file: resolve(__dirname, 'dist/main.d.ts'), format: 'esm' }],
     plugins: [dts()]
-  })
+  }
+]
 
-  return configs
-}
+export default builds
