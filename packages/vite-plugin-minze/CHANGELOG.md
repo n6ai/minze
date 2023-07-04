@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.5...vite-plugin-minze-v1.1.0) (2023-07-04)
+
+
+### Features
+
+* build es build only ([3577352](https://github.com/n6ai/minze/commit/357735273193cb6a64238bd5bab4e29ca449e486))
+* use esbuild instead of terser ([9102c3d](https://github.com/n6ai/minze/commit/9102c3d123ffb0d74fc71b1bf04df80a6c8e2783))
+
+
+### Bug Fixes
+
+* process imported css and html files ([aeea67b](https://github.com/n6ai/minze/commit/aeea67bf1160a3d4640ca982bfdece383863d84d))
+
 ## [1.0.5](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.4...vite-plugin-minze-v1.0.5) (2023-07-02)
 
 
