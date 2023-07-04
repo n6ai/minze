@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "predev": "npm run build -w @minzejs/vite-plugin-minze",
-    "dev": "conc -k -n \"m,p\" -c \"green,magenta\" \"npm run dev -w minze\" \"(wait-on -w 1500 packages/minze/dist/module.js) && (npm run dev -w playground)\"",
+    "dev": "conc -k -n \"m,p\" -c \"green,magenta\" \"npm run dev -w minze\" \"(wait-on -w 1500 packages/minze/dist/main.js) && (npm run dev -w playground)\"",
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "docs": "vitepress dev docs",

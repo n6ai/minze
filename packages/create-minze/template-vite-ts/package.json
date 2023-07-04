@@ -14,10 +14,10 @@
     "build": "vite build"
   },
   "dependencies": {
-    "minze": "^1.2.0"
+    "minze": "^1.3.0"
   },
   "devDependencies": {
-    "@minzejs/vite-plugin-minze": "^1.0.5",
+    "@minzejs/vite-plugin-minze": "^1.1.0",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
     "vite-plugin-dts": "^3.0.3"
