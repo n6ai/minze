@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "(vite build -m module) && (vite build -m cdn)"
+    "build": "vite build"
   },
   "dependencies": {
     "minze": "*"
