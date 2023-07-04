@@ -1,6 +1,6 @@
 {
   "name": "@minzejs/elements",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "author": "Sergej Samsonenko",
   "description": "Helpers for native web component development.",
