@@ -16,7 +16,7 @@ import minze from '@minzejs/vite-plugin-minze'
 export default defineConfig({
   plugins: [
     minze({
-      entry: { module: 'src/module.js', cdn: 'src/cdn.js' }
+      entry: 'src/main.js' // default path is 'src/main.js' or 'src/main.ts' for TypeScript projects.
     })
   ]
 })

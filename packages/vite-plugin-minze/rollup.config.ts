@@ -20,12 +20,12 @@ const config: RollupOptions[] = [
     ],
     output: {
       dir: resolve(__dirname, 'dist'),
-      format: 'es'
+      format: 'esm'
     }
   },
   {
     input: resolve(__dirname, 'dist/types/src/main.d.ts'),
-    output: [{ file: resolve(__dirname, 'dist/main.d.ts'), format: 'es' }],
+    output: [{ file: resolve(__dirname, 'dist/main.d.ts'), format: 'esm' }],
     plugins: [dts()]
   }
 ]
