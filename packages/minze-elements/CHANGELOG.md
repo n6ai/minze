@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/n6ai/minze/compare/elements-v0.2.0...elements-v0.3.0) (2023-07-04)
+
+
+### Features
+
+* use es build by default, deprecate umd build ([cf9a0ab](https://github.com/n6ai/minze/commit/cf9a0abe09a497196bfa8293034fa025e6420a34))
+
 ## [0.2.0](https://github.com/n6ai/minze/compare/elements-v0.1.2...elements-v0.2.0) (2023-06-30)
 
 
