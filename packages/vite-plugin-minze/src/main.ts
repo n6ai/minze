@@ -35,23 +35,19 @@ export default (options?: PluginOptions): Plugin => {
           `[vite-plugin-minze]: mode must be one of: ${modes.join(', ')}`
         )
 
-        // return only terser config if no mode is provided to ensure original class names
+        // return only esbuild config if no mode is provided to ensure original class names
         return {
-          build: {
-            minify: 'terser',
-            terserOptions: {
-              keep_classnames: true
-            }
+          esbuild: {
+            keepNames: true
           }
         }
       }
 
       return {
+        esbuild: {
+          keepNames: true
+        },
         build: {
-          minify: 'terser',
-          terserOptions: {
-            keep_classnames: true
-          },
           emptyOutDir: isModule,
           lib: {
             name: 'minze',

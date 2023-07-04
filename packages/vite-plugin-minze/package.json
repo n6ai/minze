@@ -30,6 +30,7 @@
   "scripts": {
     "dev": "rollup -w -c rollup.config.ts --configPlugin typescript",
     "build": "rollup -c rollup.config.ts --configPlugin typescript",
+    "test": "(npm run build) && (npm run build -w playground)",
     "predev": "rimraf dist",
     "prebuild": "rimraf dist",
     "postbuild": "rimraf dist/types"
