@@ -3,6 +3,9 @@ name: Release Commit
 inputs:
   package-dir:
     description: Package directory
+    required: true
+  commit-msg:
+    description: Commit Message
     required: false
 
 runs:
@@ -21,7 +24,7 @@ runs:
     - name: Git commit
       shell: bash
       run: |
-        git commit -am 'release: manual release'
+        git commit -am "release: ${{ inputs.commit-msg || 'manual release' }}"
 
     - name: Push to repo
       shell: bash

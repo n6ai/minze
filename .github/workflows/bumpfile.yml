@@ -13,6 +13,9 @@ on:
           - create-minze
           - '@minzejs/elements'
           - '@minzejs/vite-plugin-minze'
+      commit-msg:
+        type: string
+        description: 'Commit message for release'
 
 env:
   PACKAGE_NAME: ${{ github.event.inputs.package }}
@@ -21,6 +24,7 @@ env:
     contains(github.event.inputs.package, '@minzejs/vite-plugin-minze') && 'vite-plugin-minze' ||
     github.event.inputs.package
     ) }}
+  COMMIT_MSG: ${{ github.event.inputs.commit-msg }}
 
 jobs:
   create-release-commit:
@@ -33,3 +37,4 @@ jobs:
         uses: ./.github/actions/release-commit
         with:
           package-dir: ${{ env.PACKAGE_DIR }}
+          commit-msg: ${{ env.COMMIT_MSG }}
