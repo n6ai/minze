@@ -41,7 +41,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color: rgb(255 255 255 87%);
+    color: rgb(255 255 255 / 87%);
     background-color: rgb(36 36 36);
   }
 }
