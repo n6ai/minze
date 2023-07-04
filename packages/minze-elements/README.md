@@ -17,9 +17,8 @@ npm install @minzejs/elements
 ```
 
 ```js
-import { ElementName } from '@minzejs/elements'
-
-ElementName.define()
+import { modules, defineAll } from '@minzejs/elements'
+defineAll(modules)
 ```
 
 ```html
@@ -37,7 +36,7 @@ Switch between unique slotted elements from the browser window, with a toggle di
 **Example**
 
 ```js
-import { MinzeElementSwitch } from '@minzejs/elements'
+import { MinzeElementSwitch } from '@minzejs/elements/dist/lib/minze-element-switch.js'
 
 MinzeElementSwitch.define()
 ```

@@ -13,10 +13,10 @@
     "minzejs components"
   ],
   "type": "module",
-  "main": "dist/module.js",
-  "types": "dist/module.d.ts",
-  "unpkg": "dist/cdn.js",
-  "jsdelivr": "dist/cdn.js",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "unpkg": "dist/main.js",
+  "jsdelivr": "dist/main.js",
   "files": [
     "dist"
   ],
@@ -31,7 +31,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "(vite build -m module) && (vite build -m cdn)"
+    "build": "vite build"
   },
   "dependencies": {
     "minze": "^1.2.0"
