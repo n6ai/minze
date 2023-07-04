@@ -21,7 +21,13 @@ export default (options?: PluginOptions): Plugin => {
   return {
     name: 'vite-plugin-minze',
     config: (config, { command }: Context) => {
-      if (command === 'serve') {
+      // prevent overriding storybook config
+      const isStorybook =
+        config.define?.['import.meta.env.STORYBOOK'] ||
+        config.envPrefix?.includes('STORYBOOK_')
+
+      // keep original class names
+      if (command === 'serve' || isStorybook) {
         return {
           esbuild: {
             keepNames: true
