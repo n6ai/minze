@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.1.0...vite-plugin-minze-v1.1.1) (2023-07-04)
+
+
+### Bug Fixes
+
+* don't merge full vite config with storybook ([6a51861](https://github.com/n6ai/minze/commit/6a51861a90913eeabbe9a18b573125611b7fec46))
+
 ## [1.1.0](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.0.5...vite-plugin-minze-v1.1.0) (2023-07-04)
 
 
