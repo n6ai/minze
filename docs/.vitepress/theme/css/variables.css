@@ -42,10 +42,12 @@
 
   /* button */
   --vp-button-brand-text: var(--minze-c-mint-darkest);
-  --vp-button-brand-bg: var(--minze-c-mint-light);
-
   --vp-button-brand-hover-text: var(--minze-c-mint-darkest);
+  --vp-button-brand-active-text: var(--minze-c-mint-darkest);
+
+  --vp-button-brand-bg: var(--minze-c-mint-light);
   --vp-button-brand-hover-bg: var(--minze-c-mint);
+
   --vp-button-brand-hover-border: var(--minze-c-mint-light);
 
   /* hero */
@@ -69,10 +71,7 @@
   --vp-c-brand: var(--minze-c-mint);
 
   /* button */
-  --vp-button-brand-text: var(--minze-c-mint-darkest);
   --vp-button-brand-border: var(--minze-c-mint);
-
-  --vp-button-brand-hover-text: var(--minze-c-mint-darkest);
   --vp-button-brand-hover-border: var(--minze-c-mint);
 
   /* hero */

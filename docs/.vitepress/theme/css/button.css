@@ -1,9 +1,14 @@
 .VPButton.brand {
-  transition: color 0.25s, border-color 0.25s, filter 0.25s;
+  transition: all 250ms;
 }
 
 .VPButton.brand:hover {
+  box-shadow: 0 0 20px rgb(var(--minze-c-mint-values) / 50%);
   filter: hue-rotate(25deg);
+}
+
+.VPButton.brand:active {
+  filter: hue-rotate(-10deg);
 }
 
 html:not(.dark) .VPButton.brand {
