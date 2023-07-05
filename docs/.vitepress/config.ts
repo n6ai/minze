@@ -79,15 +79,45 @@ export default defineConfig({
       placement: 'minzedev'
     },
 
+    externalLinkIcon: true,
+
     nav: [
       { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
-      { text: 'API Reference', link: '/api/', activeMatch: '/api/' },
       {
-        text: 'Links',
+        text: 'API',
         items: [
           {
-            text: 'Changelog',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/minze/CHANGELOG.md'
+            text: 'Overview',
+            link: '/api/'
+          },
+          {
+            items: [
+              {
+                text: 'Minze',
+                link: '/api/minze'
+              },
+              {
+                text: 'MinzeElement',
+                link: '/api/minze-element'
+              },
+              {
+                text: 'Type Helpers',
+                link: '/api/type-helpers'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        text: 'Packages',
+        items: [
+          {
+            text: 'minze',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/minze'
+          },
+          {
+            text: 'create-minze',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/create-minze'
           },
           {
             text: '@minzejs/elements',
@@ -241,7 +271,7 @@ export default defineConfig({
       ],
       '/api/': [
         {
-          text: 'API Reference',
+          text: 'API',
           items: [
             {
               text: 'Minze',

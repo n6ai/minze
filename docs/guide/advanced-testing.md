@@ -135,5 +135,5 @@ $ pnpm run test-debug
 :::
 
 ::: tip
-For more details about Playwright refer to the [Playwright documentation](https://playwright.dev/).
+For more details about Playwright refer to the [Playwright docs](https://playwright.dev/).
 :::
