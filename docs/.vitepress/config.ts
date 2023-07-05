@@ -34,6 +34,8 @@ export default defineConfig({
   title: META_TITLE,
   description: META_DESCRIPTION,
 
+  cleanUrls: true,
+
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
@@ -68,10 +70,8 @@ export default defineConfig({
       copyright: 'Copyright © 2021-present Sergej Samsonenko'
     },
 
-    algolia: {
-      appId: 'I0V1VHMVGH',
-      apiKey: '2a3df2bb4ca6d48291a52fb3f82e67f3',
-      indexName: 'minze'
+    search: {
+      provider: 'local'
     },
 
     carbonAds: {
