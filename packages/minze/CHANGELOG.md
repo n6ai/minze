@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1](https://github.com/n6ai/minze/compare/minze-v1.3.0...minze-v1.3.1) (2023-07-05)
+
+
+### Bug Fixes
+
+* check if function before running define ([74c9da5](https://github.com/n6ai/minze/commit/74c9da5182cc39ac3fe30e26ddf6190b2a22da63))
+* vite glob eager module type ([710224c](https://github.com/n6ai/minze/commit/710224cde61892fb1fe07c95407f26ca69b4cef0))
+
 ## [1.3.0](https://github.com/n6ai/minze/compare/minze-v1.2.0...minze-v1.3.0) (2023-07-04)
 
 
