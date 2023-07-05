@@ -84,6 +84,27 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
       {
+        text: 'Integrations',
+        items: [
+          {
+            text: 'Overview',
+            link: '/integrations/'
+          },
+          {
+            items: [
+              {
+                text: 'Vite',
+                link: '/integrations/vite'
+              },
+              {
+                text: 'Storybook',
+                link: '/integrations/storybook'
+              }
+            ]
+          }
+        ]
+      },
+      {
         text: 'API',
         items: [
           {
@@ -265,6 +286,29 @@ export default defineConfig({
             {
               text: 'Style Guide',
               link: '/guide/advanced-style-guide'
+            }
+          ]
+        }
+      ],
+      '/integrations/': [
+        {
+          text: 'Integrations',
+          items: [
+            {
+              text: 'Playwright',
+              link: '/integrations/playwright'
+            },
+            {
+              text: 'Storybook',
+              link: '/integrations/storybook'
+            },
+            {
+              text: 'UnoCSS',
+              link: '/integrations/unocss'
+            },
+            {
+              text: 'Vite',
+              link: '/integrations/vite'
             }
           ]
         }
