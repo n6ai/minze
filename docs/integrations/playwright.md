@@ -67,14 +67,14 @@ minze-project/
 ├─ package.json
 └─ tests/
    ├─ index.html
-   ├─ minze-button.spec.js
+   ├─ my-button.spec.js
    └─ vite.js
 ```
 
 5. Add the following code to your newly created `vite.js` file to register all components:
 
 ```js
-import { modules, defineAll } from '../src/module'
+import { modules, defineAll } from '../src/main'
 defineAll(modules)
 ```
 
@@ -94,18 +94,18 @@ defineAll(modules)
 </html>
 ```
 
-7. Add the following code to your newly created `minze-button.spec.js` file:
+7. Add the following code to your newly created `my-button.spec.js` file:
 
 ```js
 import { test, expect } from '@playwright/test'
 
-test('minze-button', async ({ page }) => {
+test('my-button', async ({ page }) => {
   await page.goto('')
   await page.locator('#app').evaluate((node) => {
-    node.innerHTML = `<minze-button></minze-button>`
+    node.innerHTML = `<my-button></my-button>`
   })
 
-  await expect(page.locator('minze-button')).toHaveCount(1) // check if element exists
+  await expect(page.locator('my-button')).toHaveCount(1) // check if element exists
   // ...
 })
 ```
