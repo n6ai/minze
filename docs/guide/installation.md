@@ -108,8 +108,8 @@ In production always pin the imports to a specific version, otherwise your appli
 
 ::: details jsdelivr
 
-- `https://cdn.jsdelivr.net/npm/minze` for latest version
-- `https://cdn.jsdelivr.net/npm/minze@1.0.0` pin to specific version
+- `https://esm.run/minze` for latest version
+- `https://esm.run/minze@1.0.0` pin to specific version
 
 :::
 

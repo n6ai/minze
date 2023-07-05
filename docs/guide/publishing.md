@@ -6,7 +6,7 @@ If you set up an environment via the `create-minze` CLI, you can publish your co
 
 **1. Build**
 
-> This command creates a `dist/` directory with an `es` build and Type Declarations (If you selected the TypeScript template).
+> This command creates a `dist/` directory with an `ESM` build and Type Declarations (If you selected the TypeScript template).
 
 ::: code-group
 
@@ -97,8 +97,8 @@ If you have published your package to npm, you can also load it via a CDN link f
 
 ::: details jsdelivr
 
-- `https://cdn.jsdelivr.net/npm/my-package` for latest version
-- `https://cdn.jsdelivr.net/npm/my-package@1.0.0` pin to specific version
+- `https://esm.run/my-package` for latest version
+- `https://esm.run/my-package@1.0.0` pin to specific version
 
 :::
 
