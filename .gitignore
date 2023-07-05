@@ -6,4 +6,5 @@ cache
 dist
 .idea
 temp
+test-results
 storybook
