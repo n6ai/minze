@@ -54,8 +54,7 @@ export class Minze {
   ) {
     Object.values(elements).forEach(async (element) => {
       if (
-        typeof element === 'object' &&
-        element !== null &&
+        typeof element === 'function' &&
         'isMinzeElement' in element &&
         'define' in element &&
         typeof element.define === 'function'
@@ -67,8 +66,7 @@ export class Minze {
         if (typeof module === 'object') {
           Object.values(module).forEach(async (value) => {
             if (
-              typeof value === 'object' &&
-              value !== null &&
+              typeof value === 'function' &&
               'isMinzeElement' in value &&
               'define' in value &&
               typeof value.define === 'function'
