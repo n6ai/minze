@@ -1,8 +1,7 @@
-import Minze from 'minze'
-import * as Elements from './module'
 import App from './App.svelte'
 
-Minze.defineAll(Elements)
+import { modules, defineAll } from './main'
+defineAll(modules)
 
 let app: App | null = null
 const target = document.getElementById('app')

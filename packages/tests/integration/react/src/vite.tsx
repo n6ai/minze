@@ -1,8 +1,7 @@
-import Minze from 'minze'
-import * as Elements from './module'
 import ReactDOM from 'react-dom'
 import App from './App'
 
-Minze.defineAll(Elements)
+import { modules, defineAll } from './main'
+defineAll(modules)
 
 ReactDOM.render(<App />, document.getElementById('app'))

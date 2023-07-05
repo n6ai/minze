@@ -1,3 +1,6 @@
-import * as module from './module'
+import { modules } from './main'
 
-Object.values(module).forEach((fn) => fn())
+Object.values(modules).forEach((m) => {
+  // prettier-ignore
+  (m as Record<string, () => void>).run()
+})

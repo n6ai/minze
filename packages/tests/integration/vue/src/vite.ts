@@ -1,9 +1,8 @@
-import Minze from 'minze'
-import * as Elements from './module'
 import { createApp } from 'vue'
 import App from './App.vue'
 
-Minze.defineAll(Elements)
+import { modules, defineAll } from './main'
+defineAll(modules)
 
 const app = createApp(App)
 app.mount('#app')

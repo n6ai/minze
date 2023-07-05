@@ -15,17 +15,17 @@ If you're running the test commands for the first time, you'll need to run `npm 
 npm test
 ```
 
-**Jest**
+**Vitest**
 
 ```bash
-# run jest tests
-npm run test-jest
+# run vitest tests
+npm run test-v
 
 # run specific tests based on their filenames
-npm run test-jest -- utils.spec.ts
+npm run test-v -- utils.spec.ts
 
 # run specific tests with keywords in their filenames
-npm run test-jest -- utils lib
+npm run test-v -- utils lib
 ```
 
 **Playwright**

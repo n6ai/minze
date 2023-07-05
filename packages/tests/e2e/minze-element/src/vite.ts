@@ -1,8 +1,7 @@
 import './assets/vite.css'
-import Minze from 'minze'
-import * as Elements from './module'
 
-Minze.defineAll(Elements)
+import { modules, defineAll } from './main'
+defineAll(modules)
 
 // component define method
 import { MinzeDefine } from './lib/minze-define'

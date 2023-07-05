@@ -5,6 +5,8 @@ node_modules
 cache
 dist
 .idea
+*.timestamp
 temp
 test-results
+coverage
 storybook
