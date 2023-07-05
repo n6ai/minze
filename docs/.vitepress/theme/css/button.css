@@ -1,0 +1,23 @@
+.VPButton.brand {
+  transition: color 0.25s, border-color 0.25s, filter 0.25s;
+}
+
+.VPButton.brand:hover {
+  filter: hue-rotate(25deg);
+}
+
+html:not(.dark) .VPButton.brand {
+  background: linear-gradient(
+    45deg,
+    var(--minze-c-teal-light) 0%,
+    var(--minze-c-mint-light) 100%
+  );
+}
+
+html.dark .VPButton.brand {
+  background: linear-gradient(
+    45deg,
+    var(--minze-c-teal) 0%,
+    var(--minze-c-mint) 100%
+  );
+}

@@ -7,7 +7,9 @@ html.dark .img-light {
 }
 
 html:not(.dark) .image-src {
-  filter: drop-shadow(0 0.25rem 1.5rem rgb(var(--minze-c-brand-dark) / 40%));
+  filter: drop-shadow(
+    0 0.75rem 1rem rgb(var(--minze-c-mint-dark-values) / 50%)
+  );
 }
 
 html.dark .image-src {
