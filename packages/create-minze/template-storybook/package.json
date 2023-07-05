@@ -3,8 +3,6 @@
   "version": "0.0.0",
   "type": "module",
   "main": "dist/main.js",
-  "unpkg": "dist/main.js",
-  "jsdelivr": "dist/main.js",
   "files": [
     "dist",
     "storybook"

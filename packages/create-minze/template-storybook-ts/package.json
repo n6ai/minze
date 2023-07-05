@@ -4,8 +4,6 @@
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
-  "unpkg": "dist/main.js",
-  "jsdelivr": "dist/main.js",
   "files": [
     "dist",
     "storybook"
