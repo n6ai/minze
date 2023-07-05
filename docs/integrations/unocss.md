@@ -37,7 +37,7 @@ import minze from '@minzejs/vite-plugin-minze'
 export default defineConfig({
   plugins: [
     UnoCSS({ mode: 'shadow-dom' }), // [!code ++]
-    minze(/* options */)
+    minze()
   ]
 })
 ```

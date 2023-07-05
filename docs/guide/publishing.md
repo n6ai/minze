@@ -31,7 +31,7 @@ $ npm publish
 ```
 
 ::: tip
-This is a default npm command refer to the npm [docs](https://docs.npmjs.com/cli/v8/commands/npm-publish) for more information.
+This is a default npm command refer to the [npm docs](https://docs.npmjs.com/cli/commands/npm-publish) for more information.
 :::
 
 ## Using

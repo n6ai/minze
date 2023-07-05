@@ -34,6 +34,8 @@ export default defineConfig({
   title: META_TITLE,
   description: META_DESCRIPTION,
 
+  cleanUrls: true,
+
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
@@ -68,10 +70,8 @@ export default defineConfig({
       copyright: 'Copyright © 2021-present Sergej Samsonenko'
     },
 
-    algolia: {
-      appId: 'I0V1VHMVGH',
-      apiKey: '2a3df2bb4ca6d48291a52fb3f82e67f3',
-      indexName: 'minze'
+    search: {
+      provider: 'local'
     },
 
     carbonAds: {
@@ -79,15 +79,66 @@ export default defineConfig({
       placement: 'minzedev'
     },
 
+    externalLinkIcon: true,
+
     nav: [
       { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
-      { text: 'API Reference', link: '/api/', activeMatch: '/api/' },
       {
-        text: 'Links',
+        text: 'Integrations',
         items: [
           {
-            text: 'Changelog',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/minze/CHANGELOG.md'
+            text: 'Overview',
+            link: '/integrations/'
+          },
+          {
+            items: [
+              {
+                text: 'Vite',
+                link: '/integrations/vite'
+              },
+              {
+                text: 'Storybook',
+                link: '/integrations/storybook'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        text: 'API',
+        items: [
+          {
+            text: 'Overview',
+            link: '/api/'
+          },
+          {
+            items: [
+              {
+                text: 'Minze',
+                link: '/api/minze'
+              },
+              {
+                text: 'MinzeElement',
+                link: '/api/minze-element'
+              },
+              {
+                text: 'Type Helpers',
+                link: '/api/type-helpers'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        text: 'Packages',
+        items: [
+          {
+            text: 'minze',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/minze'
+          },
+          {
+            text: 'create-minze',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/create-minze'
           },
           {
             text: '@minzejs/elements',
@@ -239,9 +290,32 @@ export default defineConfig({
           ]
         }
       ],
+      '/integrations/': [
+        {
+          text: 'Integrations',
+          items: [
+            {
+              text: 'Playwright',
+              link: '/integrations/playwright'
+            },
+            {
+              text: 'Storybook',
+              link: '/integrations/storybook'
+            },
+            {
+              text: 'UnoCSS',
+              link: '/integrations/unocss'
+            },
+            {
+              text: 'Vite',
+              link: '/integrations/vite'
+            }
+          ]
+        }
+      ],
       '/api/': [
         {
-          text: 'API Reference',
+          text: 'API',
           items: [
             {
               text: 'Minze',

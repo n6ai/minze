@@ -5,3 +5,13 @@ html:not(.dark) .img-dark {
 html.dark .img-light {
   display: none;
 }
+
+html:not(.dark) .image-src {
+  filter: drop-shadow(
+    0 0.75rem 1rem rgb(var(--minze-c-mint-dark-values) / 50%)
+  );
+}
+
+html.dark .image-src {
+  filter: drop-shadow(0 1rem 1rem rgb(0 0 0 / 20%));
+}
