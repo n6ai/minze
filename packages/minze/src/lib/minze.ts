@@ -50,19 +50,32 @@ export class Minze {
   static defineAll(
     elements:
       | (typeof MinzeElement)[]
-      | Record<string, typeof MinzeElement | (() => Promise<unknown>)>
+      | Record<string, unknown | (() => Promise<unknown>)>
   ) {
     Object.values(elements).forEach(async (element) => {
-      if ('isMinzeElement' in element && 'define' in element) element.define()
-      else if (typeof element === 'object' || typeof element === 'function') {
+      if (
+        typeof element === 'object' &&
+        element !== null &&
+        'isMinzeElement' in element &&
+        'define' in element &&
+        typeof element.define === 'function'
+      ) {
+        element.define()
+      } else if (typeof element === 'object' || typeof element === 'function') {
         const module = typeof element === 'function' ? await element() : element
 
         if (typeof module === 'object') {
-          Object.values(module as Record<string, typeof MinzeElement>).forEach(
-            async (value) => {
-              if ('isMinzeElement' in value && 'define' in value) value.define()
+          Object.values(module).forEach(async (value) => {
+            if (
+              typeof value === 'object' &&
+              value !== null &&
+              'isMinzeElement' in value &&
+              'define' in value &&
+              typeof value.define === 'function'
+            ) {
+              value.define()
             }
-          )
+          })
         }
       }
     })
