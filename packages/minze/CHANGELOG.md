@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/n6ai/minze/compare/minze-v1.3.1...minze-v1.3.2) (2023-07-06)
+
+
+### Bug Fixes
+
+* add dispatch and deprecation warning for cast ([5d51fb9](https://github.com/n6ai/minze/commit/5d51fb95e530143421680d95330e6ffb92f99fc1))
+
 ## [1.3.1](https://github.com/n6ai/minze/compare/minze-v1.3.0...minze-v1.3.1) (2023-07-05)
 
 
