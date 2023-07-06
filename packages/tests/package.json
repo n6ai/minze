@@ -8,12 +8,12 @@
     "test-v": "vitest --run",
     "test-v-ui": "vitest --ui",
     "test-pw": "npx playwright test",
-    "test-pw-debug": "cross-env PWDEBUG=1 npm run test-pw"
+    "test-pw-ui": "npx playwright test --ui",
+    "test-pw-debug": "npx playwright test --debug"
   },
   "devDependencies": {
     "@playwright/test": "^1.35.1",
     "@vitest/ui": "^0.32.4",
-    "cross-env": "^7.0.3",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
     "vitest": "^0.32.4"
