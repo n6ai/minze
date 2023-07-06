@@ -4,7 +4,7 @@
 
 If you used the [CLI method](/guide/installation#cli) to install Minze you can extend your environment with UnoCSS quite quickly by adding `unocss` npm package.
 
-> The following guide is based on a fresh Minze CLI installation of the `vite` template.
+> The following guide is based on a fresh Minze CLI installation.
 
 1. Install `unocss` npm package.
 
@@ -45,10 +45,10 @@ export default defineConfig({
 3. Add `@unocss-placeholder` to the `css` block of any of your components. This placeholder will be replaced with compiled CSS during processing.
 
 ```js
-// src/lib/minze-button.js
+// src/lib/my-button.js
 import { MinzeElement } from 'minze'
 
-export class MinzeButton extends MinzeElement {
+export class MyButton extends MinzeElement {
   html = () => `
     <button class="
       bg-emerald-300 // [!code ++]

@@ -93,8 +93,16 @@ export default defineConfig({
           {
             items: [
               {
+                text: 'Playwright',
+                link: '/integrations/playwright'
+              },
+              {
                 text: 'Vite',
                 link: '/integrations/vite'
+              },
+              {
+                text: 'UnoCSS',
+                link: '/integrations/unocss'
               },
               {
                 text: 'Storybook',

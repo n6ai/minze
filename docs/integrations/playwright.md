@@ -2,29 +2,33 @@
 
 If you used the [CLI method](/guide/installation#cli) to install Minze you can extend your environment with component tests quite quickly by using [Playwright](https://playwright.dev/).
 
-> The following guide is based on a fresh Minze CLI installation of the `vite` template.
+> The following guide is based on a fresh Minze CLI installation.
 
-1. Install `@playwright/test` and `cross-env`.
-
-Installing from npm:
+1. Install `@playwright/test` from npm.
 
 ::: code-group
 
 ```bash [npm]
-$ npm install -D @playwright/test cross-env
+$ npm install -D @playwright/test
 ```
 
 ```bash [yarn]
-$ yarn add @playwright/test cross-env
+$ yarn add -D @playwright/test
 ```
 
 ```bash [pnpm]
-$ pnpm add @playwright/test cross-env
+$ pnpm add -D @playwright/test
 ```
 
 :::
 
-2. Add test scripts to `package.json`.
+2. Initialize Playwright.
+
+```bash [npm]
+npx playwright install
+```
+
+3. Add test scripts to `package.json`.
 
 ```json
 // package.json
@@ -32,104 +36,66 @@ $ pnpm add @playwright/test cross-env
   "scripts": {
     // ...
     "test": "npx playwright test",
-    "test-debug": "cross-env PWDEBUG=1 npm test"
+    "test-ui": "npx playwright test --ui",
+    "test-debug": "npx playwright test --debug"
   }
 }
 ```
 
-3. Add a `playwright.config.js` file to the root directory of your project.
+4. Add a `playwright.config.js` file to the root directory of your project.
 
 ```js
 // playwright.config.js
-export default {
-  use: {
-    baseURL: 'http://localhost:5173/tests/'
-  },
+import { defineConfig } from '@playwright/test'
+
+export default defineConfig({
   webServer: {
-    command: 'npm run dev',
+    command: 'vite',
     port: 5173,
     reuseExistingServer: true
   }
-}
+})
 ```
 
-4. Create a new `tests/` directory with 3 new files:
-   - `index.html`
-   - `vite.js`
-   - `minze-button.spec.js`
-
-Your project should now look something like this:
+5. Create a `my-button.test.js` file inside the `src/lib` directory.
 
 ```
-minze-project/
-├─ ...
-├─ playwright.config.js
-├─ package.json
-└─ tests/
-   ├─ index.html
-   ├─ my-button.spec.js
-   └─ vite.js
+src/
+└─ lib/
+   ├─ ...
+   ├─ my-button.js
+   └─ my-button.test.js // [!code ++]
 ```
 
-5. Add the following code to your newly created `vite.js` file to register all components:
+6. Add the following code to your newly created file:
 
 ```js
-import { modules, defineAll } from '../src/main'
-defineAll(modules)
-```
-
-6. Add the following code to your newly created `index.html` file:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="./vite.js"></script>
-  </body>
-</html>
-```
-
-7. Add the following code to your newly created `my-button.spec.js` file:
-
-```js
+// my-button.test.js
 import { test, expect } from '@playwright/test'
 
 test('my-button', async ({ page }) => {
-  await page.goto('')
-  await page.locator('#app').evaluate((node) => {
-    node.innerHTML = `<my-button></my-button>`
-  })
+  await page.goto('/')
+  await page.setContent('<my-button></my-button>')
 
   await expect(page.locator('my-button')).toHaveCount(1) // check if element exists
   // ...
 })
 ```
 
-8. Run the test script.
+7. Run the test script.
 
 ::: code-group
 
 ```bash [npm]
 $ npm test
-# or
-$ npm run test-debug
 ```
 
 ```bash [yarn]
 $ yarn test
-# or
-$ yarn run test-debug
 ```
 
 ```bash [pnpm]
 $ pnpm test
-# or
-$ pnpm run test-debug
 ```
 
 :::
