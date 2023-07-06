@@ -38,19 +38,22 @@ $ pnpm add -D vitest @vitest/ui jsdom
 
 3. Set the Vitest environment to `jsdom` inside the vite config file.
 
+<!-- prettier-ignore-start -->
+
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
 import minze from '@minzejs/vite-plugin-minze'
 
 export default defineConfig({
-  test: {
-    // [!code ++]
+  test: { // [!code ++]
     environment: 'jsdom' // [!code ++]
   }, // [!code ++]
   plugins: [minze()]
 })
 ```
+
+<!-- prettier-ignore-end -->
 
 4. Create a `my-button.test.js` file inside the `src/lib` directory.
 
