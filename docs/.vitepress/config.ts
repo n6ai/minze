@@ -161,6 +161,37 @@ export default defineConfig({
             link: 'https://github.com/n6ai/minze/blob/main/packages/vite-plugin-minze'
           }
         ]
+      },
+      {
+        text: 'StackBlitz',
+        items: [
+          {
+            text: 'JavaScript',
+            items: [
+              {
+                text: 'Vite',
+                link: 'https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-vite?title=Minze&terminal=dev'
+              },
+              {
+                text: 'Storybook',
+                link: 'https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-storybook?title=Minze&terminal=dev'
+              }
+            ]
+          },
+          {
+            text: 'TypeScript',
+            items: [
+              {
+                text: 'Vite',
+                link: 'https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-vite-ts?title=Minze&terminal=dev'
+              },
+              {
+                text: 'Storybook',
+                link: 'https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-storybook-ts?title=Minze&terminal=dev'
+              }
+            ]
+          }
+        ]
       }
     ],
 
