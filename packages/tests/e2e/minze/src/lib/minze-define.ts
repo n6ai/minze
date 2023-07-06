@@ -1,5 +1,5 @@
 import Minze, { MinzeElement } from 'minze'
-import { appendToApp } from '@minze/utils.js'
+import { appendToApp } from '@tests/minze/utils'
 
 class DefineElement extends MinzeElement {
   html = () => `<div>test</div>`

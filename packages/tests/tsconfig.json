@@ -10,11 +10,11 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@minze/*": ["e2e/minze/src/*"],
-      "@minze-element/*": ["e2e/minze-element/src/*"],
-      "@react/*": ["integration/react/src/*"],
-      "@svelte/*": ["integration/svelte/src/*"],
-      "@vue/*": ["integration/vue/src/*"]
+      "@tests/minze/*": ["e2e/minze/src/*"],
+      "@tests/minze-element/*": ["e2e/minze-element/src/*"],
+      "@tests/react/*": ["integration/react/src/*"],
+      "@tests/svelte/*": ["integration/svelte/src/*"],
+      "@tests/vue/*": ["integration/vue/src/*"]
     }
   },
   "include": ["**/src/**/*", "**/types/**/*"]

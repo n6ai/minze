@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { start } from '@svelte/utils.js'
+import { start } from '@tests/svelte/utils'
 
 test('Integration: Svelte', async ({ page }) => {
   await start(page)

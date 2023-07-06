@@ -1,5 +1,5 @@
 import Minze from 'minze'
-import { appendToApp } from '@minze/utils.js'
+import { appendToApp } from '@tests/minze/utils'
 
 export function run() {
   const callback = (event: Event) => {
