@@ -490,7 +490,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## dispatch <Badge type="tip" text="^1.3.1" />
+## dispatch <Badge type="tip" text="^1.3.2" />
 
 Dispatches a custom event from the element.
 

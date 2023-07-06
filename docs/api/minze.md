@@ -106,7 +106,7 @@ Minze.defineAll(Elements)
 ```
 <!-- prettier-ignore-end -->
 
-## dispatch <Badge type="tip" text="^1.3.1" />
+## dispatch <Badge type="tip" text="^1.3.2" />
 
 Dispatches a custom event from the `window` object.
 
