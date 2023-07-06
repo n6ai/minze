@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { start } from '../utils.js'
+import { start } from '@minze-element/utils.js'
 
 const element = 'minze-reactive-attrs'
 
