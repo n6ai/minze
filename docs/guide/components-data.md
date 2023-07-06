@@ -105,6 +105,48 @@ MyElement.define()
 <my-element></my-element>
 ```
 
+## Computed Properties (Getters)
+
+A computed property is a value that is derived from one or more other values. If one value, the computed property depends on is changed, then the computed property is updated.
+
+::: tip
+In Minze Computed Properties are essentialy JavaScript native getter methods.
+:::
+
+::: warning
+Computed Properties only work with properties that were defined with `reactive` or `attrs`.
+:::
+
+**Example**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  reactive = [['count', 0]]
+
+  increaseCount = () => this.count++
+
+  get doubledCount() {
+    return this.count * 2
+  }
+
+  html = () => `
+    <button>
+      Count is: ${this.doubledCount}
+    </button>
+  `
+
+  eventListeners = [['button', 'click', this.increaseCount]]
+}
+
+MyElement.define()
+```
+
+```html
+<my-element></my-element>
+```
+
 ## Attribute Properties / Attributes
 
 `attrs` dynamically creates reactive properties for attributes. A change to a reactive attribute property will request a component re-render. `attrs` should be an array containing one or more strings or tuples.

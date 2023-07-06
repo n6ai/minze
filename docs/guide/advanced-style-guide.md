@@ -65,6 +65,7 @@ class MyElement extends MinzeElement {
   reactive = [['my-propery', 'value']]
   attrs = ['myAttribute']
   MYPROPERTY = 'value'
+  get MyCoMpUtEdPrOpErTy() {}
   my_method() {}
 }
 
@@ -73,6 +74,7 @@ class MyElement extends MinzeElement {
   reactive = [['myPropery', 'value']]
   attrs = ['my-attribute']
   myProperty = 'value'
+  get myComputedProperty() {}
   myMethod() {}
 }
 ```
@@ -178,6 +180,11 @@ export class MyElement extends MinzeElement {
 
   // non-reactive properties
   amount = 0
+
+  // computed properties (getters)
+  get doubledCount() {
+    return this.count * 2
+  }
 
   // methods
   increaseCount = () => {
