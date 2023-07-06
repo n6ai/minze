@@ -12,16 +12,16 @@ export class MinzeEventListeners extends MinzeElement {
   `
 
   handleClick = () => {
-    this.cast('minze:click', 'clicked')
+    this.dispatch('minze:click', 'clicked')
   }
 
-  handleCast = (event: Event) => {
+  handleDispatch = (event: Event) => {
     this.text = (event as CustomEvent<clickDetail>).detail
     this.rerender()
   }
 
   eventListeners: EventListeners = [
     ['button', 'click', this.handleClick],
-    [window, 'minze:click', this.handleCast]
+    [window, 'minze:click', this.handleDispatch]
   ]
 }

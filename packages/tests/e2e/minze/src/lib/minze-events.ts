@@ -14,6 +14,6 @@ export function run() {
 
   Minze.listen('minze:events-test', callback)
 
-  Minze.cast('minze:events-test', 'test')
-  Minze.cast('minze:events-test', 'test') // check if stopListen works
+  Minze.dispatch('minze:events-test', 'test')
+  Minze.dispatch('minze:events-test', 'test') // check if stopListen works
 }

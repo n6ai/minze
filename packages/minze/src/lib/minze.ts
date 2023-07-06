@@ -1,4 +1,5 @@
 import type { MinzeElement } from './minze-element'
+import { warn } from './utils'
 
 /**
  * Minze class with multiple static methods and properties for common tasks.
@@ -87,11 +88,19 @@ export class Minze {
    *
    * @example
    * ```
-   * Minze.cast('minze:update', { amount: 10 })
+   * Minze.dispatch('minze:update', { amount: 10 })
    * ```
    */
-  static cast(eventName: string, detail?: unknown) {
+  static dispatch(eventName: string, detail?: unknown) {
     dispatchEvent(new CustomEvent(eventName, { detail }))
+  }
+
+  /**
+   * @deprecated use dispatch instead.
+   */
+  static cast(eventName: string, detail?: unknown) {
+    warn('cast is deprecated use dispatch instead.')
+    this.dispatch(eventName, detail)
   }
 
   /**

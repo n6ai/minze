@@ -676,11 +676,19 @@ export class MinzeElement extends HTMLElement {
    *
    * @example
    * ```
-   * this.cast('minze:update', { amount: 10 })
+   * this.dispatch('minze:update', { amount: 10 })
    * ```
    */
-  cast(eventName: string, detail?: unknown) {
+  dispatch(eventName: string, detail?: unknown) {
     this.dispatchEvent(new CustomEvent(eventName, { detail }))
+  }
+
+  /**
+   * @deprecated use dispatch instead.
+   */
+  cast(eventName: string, detail?: unknown) {
+    warn('cast is deprecated use dispatch instead.')
+    this.dispatch(eventName, detail)
   }
 
   /**
