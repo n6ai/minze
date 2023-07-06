@@ -107,6 +107,10 @@ export default defineConfig({
               {
                 text: 'Vite',
                 link: '/integrations/vite'
+              },
+              {
+                text: 'Vitest',
+                link: '/integrations/vitest'
               }
             ]
           }
@@ -309,6 +313,10 @@ export default defineConfig({
             {
               text: 'Vite',
               link: '/integrations/vite'
+            },
+            {
+              text: 'Vitest',
+              link: '/integrations/vitest'
             }
           ]
         }

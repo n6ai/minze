@@ -1,6 +1,6 @@
 # Playwright
 
-If you used the [CLI method](/guide/installation#cli) to install Minze you can extend your environment with component tests quite quickly by using [Playwright](https://playwright.dev/).
+If you used the [CLI method](/guide/installation#cli) to install Minze you can extend your environment with e2e tests quite quickly by using [Playwright](https://playwright.dev/).
 
 > The following guide is based on a fresh Minze CLI installation.
 
