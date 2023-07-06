@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { start } from '../utils.js'
+import { start } from '@tests/minze/utils'
 
 test('Minze: events', async ({ page }) => {
   await start(page)

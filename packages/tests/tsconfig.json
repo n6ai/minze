@@ -8,7 +8,14 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "jsx": "react-jsx"
+    "baseUrl": ".",
+    "paths": {
+      "@tests/minze/*": ["e2e/minze/src/*"],
+      "@tests/minze-element/*": ["e2e/minze-element/src/*"],
+      "@tests/react/*": ["integration/react/src/*"],
+      "@tests/svelte/*": ["integration/svelte/src/*"],
+      "@tests/vue/*": ["integration/vue/src/*"]
+    }
   },
   "include": ["**/src/**/*", "**/types/**/*"]
 }

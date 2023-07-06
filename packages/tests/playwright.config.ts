@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
     browserName: 'chromium'
   },
   webServer: {
-    command: 'npm run dev',
+    command: 'vite',
     port: 5173,
     reuseExistingServer: !process.env.CI
   },

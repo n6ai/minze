@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { start } from '../utils.js'
+import { start } from '@tests/minze-element/utils'
 
 const element = 'minze-define'
 

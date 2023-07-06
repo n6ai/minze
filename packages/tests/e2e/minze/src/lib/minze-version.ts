@@ -1,5 +1,5 @@
 import Minze from 'minze'
-import { appendToApp } from '../utils.js'
+import { appendToApp } from '@tests/minze/utils'
 
 export function run() {
   appendToApp(`

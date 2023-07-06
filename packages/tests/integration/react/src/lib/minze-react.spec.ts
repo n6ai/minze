@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { start } from '../utils.js'
+import { start } from '@tests/react/utils'
 
 test('Integration: React', async ({ page }) => {
   await start(page)
