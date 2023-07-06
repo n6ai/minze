@@ -13,21 +13,21 @@
     "build": "(storybook build --docs -o storybook) && (vite build)"
   },
   "dependencies": {
-    "minze": "^1.3.0"
+    "minze": "^1.3.2"
   },
   "devDependencies": {
     "@minzejs/vite-plugin-minze": "^1.1.1",
-    "@storybook/addon-essentials": "^7.0.25",
-    "@storybook/addon-links": "^7.0.25",
-    "@storybook/blocks": "^7.0.25",
-    "@storybook/web-components": "^7.0.25",
-    "@storybook/web-components-vite": "^7.0.25",
-    "lit": "^2.7.5",
+    "@storybook/addon-essentials": "^7.0.26",
+    "@storybook/addon-links": "^7.0.26",
+    "@storybook/blocks": "^7.0.26",
+    "@storybook/web-components": "^7.0.26",
+    "@storybook/web-components-vite": "^7.0.26",
+    "lit": "^2.7.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.0.25",
+    "storybook": "^7.0.26",
     "typescript": "^5.1.6",
-    "vite": "^4.3.9",
-    "vite-plugin-dts": "^3.0.3"
+    "vite": "^4.4.1",
+    "vite-plugin-dts": "^3.1.0"
   }
 }

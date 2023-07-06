@@ -12,7 +12,7 @@
   "devDependencies": {
     "@minzejs/vite-plugin-minze": "*",
     "typescript": "^5.1.6",
-    "vite": "^4.3.9",
-    "vite-plugin-dts": "^3.0.3"
+    "vite": "^4.4.1",
+    "vite-plugin-dts": "^3.1.0"
   }
 }
