@@ -8,9 +8,6 @@
 
 # Minze
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-vite?title=Minze&terminal=dev)
-[![Start new PR in StackBlitz Codeflow](https://developer.stackblitz.com/img/start_pr_small.svg)](https://pr.new/n6ai/minze)
-
 > Dead-simple JS framework for native web components.
 
 Minze (German shorthand for "Peppermint", pronounced [/ˈmɪnt͡sə/](https://upload.wikimedia.org/wikipedia/commons/c/c2/De-Minze.ogg)) lets you rapidly build native web components.
@@ -44,6 +41,11 @@ It provides an intuitive abstraction layer around the web components API with it
 | [@minzejs/vite-plugin-minze](packages/vite-plugin-minze) | [![vite-plugin-minze version](https://img.shields.io/npm/v/@minzejs/vite-plugin-minze.svg?label=%20&color=323232)](packages/vite-plugin-minze/CHANGELOG.md) | Vite plugin for Minze dev environment.                       |
 
 ## Contribution
+
+Create a new Pull Request via Codeflow or open in StackBlitz.
+
+[![Start new PR in StackBlitz Codeflow](https://developer.stackblitz.com/img/start_pr_small.svg)](https://pr.new/n6ai/minze)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/n6ai/minze?title=minze&terminal=dev)
 
 See [Contributing Guide](https://github.com/n6ai/minze/blob/main/.github/CONTRIBUTING.md).
 
