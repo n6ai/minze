@@ -37,8 +37,8 @@ export default defineConfig({
   cleanUrls: true,
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
-    ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=1' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png?v=1' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:url', content: META_URL }],
     ['meta', { property: 'og:title', content: META_TITLE }],
