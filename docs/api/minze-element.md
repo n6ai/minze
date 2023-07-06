@@ -344,10 +344,10 @@ export class MyElement extends MinzeElement {
       msg: 'Hello Minze!'
     }
 
-    this.cast('minze:my-event-name', optionalDetail)
+    this.dispatch('minze:my-event-name', optionalDetail)
   }
 
-  handleCast = (event) => {
+  handleDispatch = (event) => {
     console.log(event.detail)
   }
 
@@ -360,14 +360,14 @@ export class MyElement extends MinzeElement {
    * since they don't have their own 'this' binding
    * and instead are bound to the component by default.
    */
-  handleNestedCast(event) {
+  handleNestedDispatch(event) {
     console.log(event.detail)
   }
 
   eventListeners = [
     ['.button', 'click', this.handleClick],
-    [window, 'minze:my-event-name', this.handleCast],
-    [this, 'minze:my-nested-event-name', this.handleNestedCast.bind(this)]
+    [window, 'minze:my-event-name', this.handleDispatch],
+    [this, 'minze:my-nested-event-name', this.handleNestedDispatch.bind(this)]
   ]
 }
 ```
@@ -490,9 +490,9 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-## cast <Badge type="tip" text="^1.0.0" />
+## dispatch <Badge type="tip" text="^1.3.1" />
 
-Dispatches a custom event from the element. Shorthand for `Broadcasting`, not to be confused with `Type casting`.
+Dispatches a custom event from the element.
 
 ::: tip
 It's a good idea to prefix your custom event names to avoid collisions with other libraries.
@@ -513,7 +513,7 @@ export class MyElement extends MinzeElement {
       msg: 'Hello Minze!'
     }
 
-    this.cast('minze:ready', optionalDetail)
+    this.dispatch('minze:ready', optionalDetail)
   }
 }
 ```
@@ -705,3 +705,7 @@ export class MyElement extends MinzeElement {
   }
 }
 ```
+
+## cast <Badge type="warning" text="deprecated" />
+
+Use [dispatch](/api/minze-element#dispatch) instead.

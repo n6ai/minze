@@ -106,9 +106,9 @@ Minze.defineAll(Elements)
 ```
 <!-- prettier-ignore-end -->
 
-## cast <Badge type="tip" text="^1.0.0" />
+## dispatch <Badge type="tip" text="^1.3.1" />
 
-Dispatches a custom event from the `window` object. Shorthand for `Broadcasting`, not to be confused with `Type casting`.
+Dispatches a custom event from the `window` object.
 
 ::: tip
 It's a good idea to prefix your custom event names to avoid collisions with other libraries.
@@ -127,7 +127,7 @@ const optionalDetail = {
   msg: 'Hello Minze!'
 }
 
-Minze.cast('minze:my-event-name', optionalDetail)
+Minze.dispatch('minze:my-event-name', optionalDetail)
 ```
 
 ## listen <Badge type="tip" text="^1.0.0" />
@@ -169,3 +169,7 @@ const callback = (event) => {
 
 Minze.stopListen('minze:my-event-name', callback)
 ```
+
+## cast <Badge type="warning" text="deprecated" />
+
+Use [dispatch](/api/minze#dispatch) instead.

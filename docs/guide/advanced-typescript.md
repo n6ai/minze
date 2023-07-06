@@ -73,20 +73,20 @@ export class MyElement extends MinzeElement {
 
   /**
    * A click callback handler.
-   * We are (broad)casting a custom event on click.
+   * We are dispatching a custom event on click.
    */
   handleClick = (event: Event) => {
     console.log(event)
     const myDetailData = this.anObject
-    this.cast('minze:click', myDetailData)
+    this.dispatch('minze:click', myDetailData)
   }
 
   /**
-   * A (broad)cast callback handler.
+   * A dispatch callback handler.
    * The event is a CustomEvent so we have to type cast it to such,
    * before accessing the detail data.
    */
-  handleCast = (event: Event) => {
+  handleDispatch = (event: Event) => {
     const detail = (event as CustomEvent).detail
     console.log(detail)
   }
@@ -97,7 +97,7 @@ export class MyElement extends MinzeElement {
    */
   eventListeners: EventListeners = [
     ['.button', 'click', this.handleClick],
-    [this, 'minze:click', this.handleCast]
+    [this, 'minze:click', this.handleDispatch]
   ]
 }
 ```

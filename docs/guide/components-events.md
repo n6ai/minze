@@ -52,9 +52,9 @@ MyElement.define()
 <my-element></my-element>
 ```
 
-## Casting
+## Dispatching
 
-Casting (shorthand for `Broadcasting`) is the process of dispatching a custom event from a component and broadcasting it through the document up the component tree. This event can be either listened to by other components or the outside world.
+Dispatch a custom event from a component and broadcasting it through the document up the component tree. This event can be either listened to by other components or the outside world.
 
 ::: tip
 It's a good idea to prefix your custom event names to avoid collisions with other libraries.
@@ -68,7 +68,7 @@ import { MinzeElement } from 'minze'
 export class MyElement extends MinzeElement {
   onReady() {
     const optionalDetail = { msg: 'Hello Minze!' }
-    this.cast('minze:ready', optionalDetail)
+    this.dispatch('minze:ready', optionalDetail)
   }
 }
 
