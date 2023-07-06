@@ -97,16 +97,16 @@ export default defineConfig({
                 link: '/integrations/playwright'
               },
               {
-                text: 'Vite',
-                link: '/integrations/vite'
+                text: 'Storybook',
+                link: '/integrations/storybook'
               },
               {
                 text: 'UnoCSS',
                 link: '/integrations/unocss'
               },
               {
-                text: 'Storybook',
-                link: '/integrations/storybook'
+                text: 'Vite',
+                link: '/integrations/vite'
               }
             ]
           }
