@@ -240,7 +240,7 @@ You can hide all custom web components until they are defined with the following
 
 ```css
 :not(:defined) {
-  display: none;
+  visibility: hidden;
 }
 ```
 

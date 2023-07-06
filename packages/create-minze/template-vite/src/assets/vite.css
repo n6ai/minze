@@ -29,7 +29,7 @@ body {
 }
 
 :not(:defined) {
-  display: none;
+  visibility: hidden;
 }
 
 @media (prefers-color-scheme: light) {

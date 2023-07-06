@@ -82,7 +82,7 @@ MyElement.define()
 ```css
 /* hide all custom web components until they are defined */
 :not(:defined) {
-  display: none;
+  visibility: hidden;
 }
 
 [rendered] {
