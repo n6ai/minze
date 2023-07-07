@@ -93,10 +93,17 @@ You can use `.` for the project name to scaffold in the current directory.
 
 ## CDN
 
-Loading Minze via a CDN link from `unpkg`, `jsdelivr` or `esm.sh`. Pick one of the following:
+Loading Minze via a CDN link from `esm.sh`, `unpkg` or `jsdelivr`. Pick one of the following:
 
 ::: warning
 In production always pin the imports to a specific version, otherwise your application might break unexpectedly during a future update.
+:::
+
+::: details esm.sh
+
+- `https://esm.sh/minze` for latest version
+- `https://esm.sh/minze@1.0.0` pin to specific version
+
 :::
 
 ::: details unpkg
@@ -110,13 +117,6 @@ In production always pin the imports to a specific version, otherwise your appli
 
 - `https://esm.run/minze` for latest version
 - `https://esm.run/minze@1.0.0` pin to specific version
-
-:::
-
-::: details esm.sh
-
-- `https://esm.sh/minze` for latest version
-- `https://esm.sh/minze@1.0.0` pin to specific version
 
 :::
 
@@ -135,7 +135,7 @@ In production always pin the imports to a specific version, otherwise your appli
 
     <!-- js code -->
     <script type="module">
-      import { MinzeElement } from 'https://unpkg.com/minze'
+      import { MinzeElement } from 'https://esm.sh/minze'
 
       (class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
@@ -155,7 +155,7 @@ In production always pin the imports to a specific version, otherwise your appli
 
     <!-- js code -->
     <script type="module">
-      import { Minze, MinzeElement } from 'https://unpkg.com/minze'
+      import { Minze, MinzeElement } from 'https://esm.sh/minze'
 
       class MyFirstElement extends MinzeElement {
         html = () => `Hello Minze!`

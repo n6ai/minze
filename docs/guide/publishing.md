@@ -86,7 +86,14 @@ MyElementTwo.define()
 
 ### CDN
 
-If you have published your package to npm, you can also load it via a CDN link from `unpkg`, `jsdelivr` or `esm.sh`. Pick one of the following:
+If you have published your package to npm, you can also load it via a CDN link from `esm.sh`, `unpkg` or `jsdelivr`. Pick one of the following:
+
+::: details esm.sh
+
+- `https://esm.sh/my-package` for latest version
+- `https://esm.sh/my-package@1.0.0` pin to specific version
+
+:::
 
 ::: details unpkg
 
@@ -99,13 +106,6 @@ If you have published your package to npm, you can also load it via a CDN link f
 
 - `https://esm.run/my-package` for latest version
 - `https://esm.run/my-package@1.0.0` pin to specific version
-
-:::
-
-::: details esm.sh
-
-- `https://esm.sh/my-package` for latest version
-- `https://esm.sh/my-package@1.0.0` pin to specific version
 
 :::
 
@@ -125,7 +125,7 @@ If you have published your package to npm, you can also load it via a CDN link f
 
     <!-- js code -->
     <script type="module">
-      import { modules, defineAll } from 'https://unpkg.com/my-package'
+      import { modules, defineAll } from 'https://esm.sh/my-package'
       defineAll(modules)
     </script>
   </body>
@@ -142,9 +142,9 @@ If you have published your package to npm, you can also load it via a CDN link f
 
     <!-- js code -->
     <script type="module">
-      import { defineAll } from 'https://unpkg.com/my-package'
-      import { MyElement } from 'https://unpkg.com/my-package/dist/lib/my-element.js'
-      import { MyElementTwo } from 'https://unpkg.com/my-package/dist/lib/my-element-two.js'
+      import { defineAll } from 'https://esm.sh/my-package'
+      import { MyElement } from 'https://esm.sh/my-package/dist/lib/my-element.js'
+      import { MyElementTwo } from 'https://esm.sh/my-package/dist/lib/my-element-two.js'
 
       defineAll([MyElement, MyElementTwo])
     </script>
