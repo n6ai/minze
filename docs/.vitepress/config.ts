@@ -159,6 +159,10 @@ export default defineConfig({
           {
             text: '@minzejs/vite-plugin-minze',
             link: 'https://github.com/n6ai/minze/blob/main/packages/vite-plugin-minze'
+          },
+          {
+            text: 'minze-vscode',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/minze-vscode'
           }
         ]
       },

@@ -9,4 +9,5 @@ dist
 temp
 test-results
 coverage
+*.vsix
 storybook

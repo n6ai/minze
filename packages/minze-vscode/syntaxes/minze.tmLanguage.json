@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "injectionSelector": "L:source.js -comment, L:source.ts -comment",
+  "name": "Minze Template Literals",
+  "patterns": [
+    {
+      "include": "#css-template"
+    },
+    {
+      "include": "#html-template"
+    },
+    {
+      "include": "source.ts#template-substitution-element"
+    }
+  ],
+  "repository": {
+    "css-template": {
+      "begin": "(?<!\\.)(?:(?:css\\s*(=)\\s*\\(.*\\)\\s*(=>))|((?:\\/\\*)\\*(?:\\s*\\*\\/)))\\s*(`|'|\")",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.operator.assignment.ts"
+        },
+        "2": {
+          "name": "storage.type.function.arrow.ts"
+        },
+        "3": {
+          "name": "comment.block.ts"
+        },
+        "4": {
+          "name": "punctuation.definition.string.template.begin.ts"
+        }
+      },
+      "contentName": "meta.embedded.block.css",
+      "end": "(`|'|\")",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.template.end.ts"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.css"
+        }
+      ]
+    },
+    "html-template": {
+      "begin": "(?<!\\.)(?:(?:html\\s*(=)\\s*\\(.*\\)\\s*(=>))|((?:\\/\\*\\s*\\*\\/)))\\s*(`|'|\")",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.operator.assignment.ts"
+        },
+        "2": {
+          "name": "storage.type.function.arrow.ts"
+        },
+        "3": {
+          "name": "comment.block.ts"
+        },
+        "4": {
+          "name": "punctuation.definition.string.template.begin.ts"
+        }
+      },
+      "contentName": "meta.embedded.block.html",
+      "end": "(`|'|\")",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.template.end.ts"
+        }
+      },
+      "patterns": [
+        {
+          "begin": "(</?)(?=\\$\\{)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.html"
+            }
+          },
+          "end": "((?: ?/)?>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.html"
+            }
+          },
+          "name": "meta.tag.other.unrecognized.html.derivative",
+          "patterns": [
+            {
+              "include": "source.ts#template-subsitution-element"
+            },
+            {
+              "include": "text.html.basic#attribute"
+            }
+          ]
+        },
+        {
+          "include": "text.html.derivative"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.js.minze.injection"
+}

@@ -1,0 +1,57 @@
+{
+  "name": "minze-vscode",
+  "displayName": "Minze",
+  "version": "0.1.0",
+  "license": "MIT",
+  "publisher": "n6ai",
+  "author": "Sergej Samsonenko",
+  "description": "Language support for Minze.",
+  "keywords": [
+    "minze",
+    "minzejs"
+  ],
+  "homepage": "https://minze.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/n6ai/minze.git",
+    "directory": "packages/vscode-minze"
+  },
+  "bugs": {
+    "url": "https://github.com/n6ai/minze/issues"
+  },
+  "icon": "images/logo.png",
+  "galleryBanner": {
+    "color": "#1E1E20",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "grammars": [
+      {
+        "embeddedLanguages": {
+          "meta.embedded.block.css": "css",
+          "meta.embedded.block.html": "html"
+        },
+        "injectTo": [
+          "source.js",
+          "source.ts"
+        ],
+        "path": "./syntaxes/minze.tmLanguage.json",
+        "scopeName": "source.js.minze.injection"
+      }
+    ]
+  },
+  "scripts": {
+    "vsce": "vsce",
+    "pack": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies --no-git-tag-version --no-update-package-json"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^2.19.0"
+  }
+}

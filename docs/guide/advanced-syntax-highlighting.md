@@ -4,9 +4,35 @@ Once your HTML and CSS templates grow in size you might want to add some syntax 
 
 ## VS Code
 
-### Comment tagged templates
+### [Minze VS Code Extension](https://marketplace.visualstudio.com/items?itemName=n6ai.minze-vscode)
 
-With the following extension you can add syntax highlighting to template strings:
+Minze VS Code extension adds auto-highlighting to `html` and `css` class properties/methods defined as arrow functions. Additionally you can manually prefix any template literals or strings with `/**/` to highlight HTML code inside them, or `/***/` to highlight CSS code.
+
+**Example**
+
+```js
+import { MinzeElement } from Minze
+
+class MyElement extends MinzeElement {
+  // auto
+  html = () => `<div></div>`
+  css = () => `:host {}`
+
+  // manual: html
+  htmlTemplateLiteral = /**/`<div></div>`
+  htmlSingleQuotes = /**/'<div></div>'
+  htmlDoubleQuotes = /**/"<div></div>"
+
+  // manual: css
+  cssTemplateLiteral = /***/`:host {}`
+  cssSingleQuotes = /***/':host {}'
+  cssDoubleQuotes = /***/":host {}"
+}
+```
+
+### 3rd party extensions
+
+With the following extension you can also add syntax highlighting to template strings:
 
 - [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html)
 - [Comment tagged templates](https://marketplace.visualstudio.com/items?itemName=bierner.comment-tagged-templates)
