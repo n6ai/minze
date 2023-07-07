@@ -11,6 +11,7 @@
     "packages/create-minze": {},
     "packages/minze": {},
     "packages/minze-elements": {},
+    "packages/minze-vscode": {},
     "packages/vite-plugin-minze": {}
   }
 }

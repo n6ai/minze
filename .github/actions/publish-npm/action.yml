@@ -1,4 +1,4 @@
-name: npm Publish
+name: Publish npm
 
 inputs:
   node-version:

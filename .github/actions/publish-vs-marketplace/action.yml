@@ -1,0 +1,25 @@
+name: Publish VS Marketplace
+
+inputs:
+  node-version:
+    description: Node.js version
+  package-name:
+    description: Package name
+  vs-marketplace-token:
+    description: vsce tocken
+
+runs:
+  using: composite
+  steps:
+    - name: Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Publish to Visual Studio Marketplace
+      uses: HaaLeo/publish-vscode-extension@v1
+      with:
+        pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+        registryUrl: https://marketplace.visualstudio.com
+        packagePath: ./packages/${{ inputs.package-name }}

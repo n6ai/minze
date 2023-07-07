@@ -1,4 +1,4 @@
-name: Release Commit
+name: Create Release Commit
 
 inputs:
   package-dir:

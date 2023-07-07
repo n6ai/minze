@@ -11,6 +11,7 @@ on:
         options:
           - minze
           - create-minze
+          - minze-vscode
           - '@minzejs/elements'
           - '@minzejs/vite-plugin-minze'
       commit-msg:
@@ -34,7 +35,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Create commit
-        uses: ./.github/actions/release-commit
+        uses: ./.github/actions/create-release-commit
         with:
           package-dir: ${{ env.PACKAGE_DIR }}
           commit-msg: ${{ env.COMMIT_MSG }}
