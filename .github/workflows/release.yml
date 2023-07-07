@@ -109,4 +109,4 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           package-name: ${{ needs.release-please.outputs.package-name }}
-          vsce-token: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+          vs-marketplace-token: ${{ secrets.VS_MARKETPLACE_TOKEN }}
