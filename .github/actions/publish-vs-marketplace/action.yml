@@ -6,7 +6,7 @@ inputs:
   package-name:
     description: Package name
   vs-marketplace-token:
-    description: vsce tocken
+    description: VS Marketplace tocken
 
 runs:
   using: composite
@@ -20,6 +20,6 @@ runs:
     - name: Publish to Visual Studio Marketplace
       uses: HaaLeo/publish-vscode-extension@v1
       with:
-        pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+        pat: ${{ inputs.vs-marketplace-token }}
         registryUrl: https://marketplace.visualstudio.com
         packagePath: ./packages/${{ inputs.package-name }}
