@@ -75,9 +75,9 @@ MyElement.define()
 <my-element></my-element>
 ```
 
-### Host
+### :host
 
-The `:host` pseudo-class selector styles the component itself, and not the content inside its template.
+The `:host` pseudo-class selector selects the component itself (shadow host) inserted into the regular DOM.
 
 **Example**
 
@@ -109,9 +109,35 @@ MyElement.define()
 <my-element>Hello Minze!</my-element>
 ```
 
-### Host Context
+### :host()
 
-The `:host-context` pseudo-class selector applies styles conditionally based on parent elements.
+The `:host` pseudo-class function selects the component itself, but only if the selector given as the function's parameter matches the shadow host.
+
+**Example**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  html = () => `Hello Minze!`
+
+  css = () => `
+    :host(.themed) {
+      background: red;
+    }
+  `
+}
+
+MyElement.define()
+```
+
+```html
+<my-element class="themed">Hello Minze!</my-element>
+```
+
+### :host-context()
+
+The `:host-context()` pseudo-class function applies styles conditionally based on parent elements which are outside of the component.
 
 **Example**
 
@@ -151,9 +177,9 @@ MyElement.define()
 </div>
 ```
 
-### Slots
+### ::slotted
 
-The `::slotted` pseudo-class selector applies styles to any element that has been placed into a slot.
+The `::slotted` pseudo-element applies styles to any element that has been placed into a slot.
 
 ::: warning
 The `::slotted` selector only works when used inside the component. Note also that this selector won't select any text nodes placed into a slot, it only targets actual elements.
@@ -231,7 +257,7 @@ MyElement.define()
 
 ### Parts
 
-The `part` attribute can be accessed outside the component with the `::part` pseudo-class selector.
+The `part` attribute can be accessed outside the component with the `::part()` pseudo-element selector.
 
 **Example**
 
