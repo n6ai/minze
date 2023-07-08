@@ -244,3 +244,35 @@ MyElement.define()
 ```html
 <my-element my-attribute="Hello Minze!"></my-element>
 ```
+
+## JSON Attributes
+
+If you pass a valid JSON object in an attribute, it will be returned as a string inside the component. You can use `JSON.parse` to convert it to a JavaScript object.
+
+::: warning
+Make sure the HTML attribute on the element is enclosed in signle quotes or the double quotes of the JSON object are properly escaped.
+:::
+
+**Example**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  attrs = ['data']
+
+  get parsedData() {
+    return this.data ? JSON.parse(this.data) : null
+  }
+
+  onReady() {
+    console.log(this.parsedData) // {text: 'Hello Minze!'}
+  }
+}
+
+MyElement.define()
+```
+
+```html
+<my-element data='{"text": "Hello Minze!"}'></my-element>
+```
