@@ -13,6 +13,7 @@ const outputFile = join(docsDir, '.vitepress/dist/sitemap.txt')
 
 const dirs = {
   guide: join(docsDir, 'guide'),
+  integrations: join(docsDir, 'integrations'),
   api: join(docsDir, 'api')
 }
 
