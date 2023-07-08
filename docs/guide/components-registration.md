@@ -39,7 +39,7 @@ MyElement.define('my-custom-element')
 ```js
 import { MinzeElement } from 'minze'
 
-(class MyElement extends MinzeElement {
+;(class MyElement extends MinzeElement {
   // ...
 }).define()
 ```

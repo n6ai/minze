@@ -137,7 +137,7 @@ In production always pin the imports to a specific version, otherwise your appli
     <script type="module">
       import { MinzeElement } from 'https://esm.sh/minze'
 
-      (class MyElement extends MinzeElement {
+      ;(class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
       }).define()
     </script>
