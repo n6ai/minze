@@ -105,6 +105,10 @@ export default defineConfig({
                 link: '/integrations/storybook'
               },
               {
+                text: 'TensorFlow',
+                link: '/integrations/tensorflow'
+              },
+              {
                 text: 'UnoCSS',
                 link: '/integrations/unocss'
               },
@@ -352,6 +356,10 @@ export default defineConfig({
             {
               text: 'Storybook',
               link: '/integrations/storybook'
+            },
+            {
+              text: 'TensorFlow',
+              link: '/integrations/tensorflow'
             },
             {
               text: 'UnoCSS',
