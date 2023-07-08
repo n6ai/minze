@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.1.1...vite-plugin-minze-v1.1.2) (2023-07-08)
+
+
+### Bug Fixes
+
+* chunk vendor modules & check for src/lib last ([1d8e695](https://github.com/n6ai/minze/commit/1d8e6950ecd1c19ebeeba153dfbe0bb489c21544))
+
 ## [1.1.1](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.1.0...vite-plugin-minze-v1.1.1) (2023-07-04)
 
 
