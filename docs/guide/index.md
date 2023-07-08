@@ -59,11 +59,11 @@ $ pnpm run dev
 
 :::
 
-2. Navigate to the `src/lib` directory and create a new `my-element.js` file. The `lib` directory is where all of your web components live. During development all of them are auto-registered and ready to use.
+2. Navigate to the `src/lib` directory and create a new `new-element.js` file. The `lib` directory is where all of your web components live. During development all of them are auto-registered and ready to use.
 
 ::: tip
 
-You can also use sub-directories inside the lib directory e.g. `lib/sub-dir/my-element.js`
+You can also use sub-directories inside the lib directory e.g. `lib/sub-dir/new-element.js`
 
 :::
 
@@ -71,10 +71,10 @@ You can also use sub-directories inside the lib directory e.g. `lib/sub-dir/my-e
 src/
 └─ lib/
    ├─ ...
-   └─ my-element.js // [!code ++]
+   └─ new-element.js // [!code ++]
 ```
 
-3. Paste the following code into the file. The component will be auto-registered with dash-case naming `my-element` inferred from the class name `MyElement`.
+3. Paste the following code into the file. The component will be auto-registered with dash-case naming `new-element` inferred from the class name `NewElement`.
 
 ::: warning
 Keep in mind to name your component classes in `PascalCase`, otherwise the auto-inferrence from class to `dash-case` element name will not work.
@@ -83,7 +83,7 @@ Keep in mind to name your component classes in `PascalCase`, otherwise the auto-
 ```js
 import { MinzeElement } from 'minze'
 
-export class MyElement extends MinzeElement {
+export class NewElement extends MinzeElement {
   // html template
   html = () => `<div>My very own component!</div>`
 
@@ -110,8 +110,10 @@ src/
 
 <!-- prettier-ignore-start -->
 ```html
-<my-element></my-element> // [!code ++]
-<minze-counter></minze-counter>
+<new-element></new-element> // [!code ++]
+<my-element>
+  <h1>Minze + Vite</h1>
+</my-element>
 ```
 <!-- prettier-ignore-end -->
 
