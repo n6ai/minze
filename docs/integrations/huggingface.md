@@ -6,6 +6,8 @@
 
 State-of-the-art Machine Learning for the web. Run Hugging Face Transformers directly in your browser, with no need for a server!
 
+> The following guide is based on a fresh Minze CLI installation.
+
 1. Install dependencies.
 
 ::: code-group
@@ -33,7 +35,7 @@ src/
    └─ hf-element.js // [!code ++]
 ```
 
-3. Import `@xenova/transformers` and define a component.
+3. Import `@xenova/transformers` and define a component inside the new file.
 
 ```js
 import { MinzeElement } from 'minze'
@@ -107,7 +109,7 @@ src/
    └─ hf-element.js // [!code ++]
 ```
 
-3. Import `@huggingface/inference` and define a component.
+3. Import `@huggingface/inference` and define a component inside the new file.
 
 ::: danger
 Never expose your `access token` to the public, it should be kept private! If you need to protect it in front-end applications, we suggest setting up a proxy server that stores the access token.
