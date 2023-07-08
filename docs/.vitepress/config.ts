@@ -319,6 +319,10 @@ export default defineConfig({
               link: '/guide/advanced-storage'
             },
             {
+              text: 'Web Workers',
+              link: '/guide/advanced-web-workers'
+            },
+            {
               text: 'Element Examples',
               link: '/guide/advanced-element-examples'
             },
