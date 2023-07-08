@@ -93,6 +93,10 @@ export default defineConfig({
           {
             items: [
               {
+                text: 'Hugging Face',
+                link: '/integrations/huggingface'
+              },
+              {
                 text: 'Playwright',
                 link: '/integrations/playwright'
               },
@@ -333,6 +337,10 @@ export default defineConfig({
         {
           text: 'Integrations',
           items: [
+            {
+              text: 'Hugging Face',
+              link: '/integrations/huggingface'
+            },
             {
               text: 'Playwright',
               link: '/integrations/playwright'
