@@ -139,7 +139,7 @@ In production always pin the imports to a specific version, otherwise your appli
 
       (class MyElement extends MinzeElement {
         html = () => `Hello Minze!`
-      }.define())
+      }).define()
     </script>
   </body>
 </html>
