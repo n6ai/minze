@@ -13,11 +13,11 @@ $ npm install minze
 ```
 
 ```bash [yarn]
-$ yarn add -D minze
+$ yarn add minze
 ```
 
 ```bash [pnpm]
-$ pnpm add -D minze
+$ pnpm add minze
 ```
 
 :::
