@@ -54,12 +54,33 @@ export default (options?: PluginOptions): Plugin => {
                 minifyInternalExports: false,
                 chunkFileNames: '[name].js',
                 manualChunks: (id) => {
-                  if (id.includes('lib')) {
-                    const regex = /(?<=lib\/).*(?=\.(ts|js|css|html))/i
+                  const chunkName = (
+                    id: string,
+                    regex: RegExp,
+                    dir: string
+                  ) => {
                     const name = id.match(regex)?.[0]
-                    return `lib/${name}`
-                  } else if (id.match(/node_modules|minze\/dist/i)) {
-                    return 'vendor'
+                    return `${dir}/${name}`
+                  }
+
+                  if (id.includes('/node_modules/')) {
+                    return chunkName(
+                      id,
+                      /(?<=node_modules\/).*(?=\.(?:ts|m?js|css|html))/i,
+                      'vendor'
+                    )
+                  } else if (id.includes('/minze/dist/')) {
+                    return chunkName(
+                      id,
+                      /(?<=minze\/dist\/).*(?=\.m?js)/i,
+                      'vendor/minze/dist'
+                    )
+                  } else if (id.includes('/lib/')) {
+                    return chunkName(
+                      id,
+                      /(?<=lib\/).*(?=\.(?:ts|js|css|html))/i,
+                      'lib'
+                    )
                   }
                 }
               }
