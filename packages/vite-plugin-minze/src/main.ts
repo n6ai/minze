@@ -12,7 +12,20 @@ interface Context {
 }
 
 /**
- * Vite plugin for Minze dev environment.
+ * vite-plugin-minze
+ *
+ * @example
+ * ```
+ * import { defineConfig } from 'vite'
+ * import minze from '@minzejs/vite-plugin-minze'
+ *
+ * export default defineConfig({
+ *   plugins: [
+ *     minze({ entry: 'src/main.js' }),
+ *     // ...
+ *   ]
+ * })
+ * ```
  */
 export default (options?: PluginOptions): Plugin => {
   const isTypeScript = fs.existsSync(path.join(process.cwd(), 'tsconfig.json'))
