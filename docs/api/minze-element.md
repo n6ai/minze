@@ -442,6 +442,10 @@ export class MyElement extends MinzeElement {
 
 Selects the first matching element for the given `CSS` selector inside the `html` template.
 
+::: warning
+`this.select` selects elements inside the initial `html` template, if you want to select a slotted element use the JavaScript native `this.querySelector` method instead.
+:::
+
 - **Method**
 
 - **Type:** `(selectors: string): Element | null`
@@ -467,6 +471,10 @@ export class MyElement extends MinzeElement {
 ## selectAll <Badge type="tip" text="^1.0.0" />
 
 Selects all elements matching the given `CSS` selector inside the `html` template.
+
+::: warning
+`this.selectAll` selects elements inside the initial `html` template, if you want to select slotted elements use the JavaScript native `this.querySelectorAll` method instead.
+:::
 
 - **Method**
 

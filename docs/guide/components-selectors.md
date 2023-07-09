@@ -9,6 +9,10 @@ You can use selectors to select elements within the components `html` template (
 When using selectors with Hooks, keep in mind that the template might not be yet rendered during certain Hooks like `onStart` and `onReactive`.
 :::
 
+::: warning
+`this.select` and `this.selectAll` select elements inside the initial `html` template, if you want to select slotted elements use the JavaScript native `this.querySelector` and `this.querySelectorAll` methods instead.
+:::
+
 **Example**
 
 ```js

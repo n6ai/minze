@@ -91,11 +91,25 @@ export default defineConfig({
             link: '/integrations/'
           },
           {
+            text: 'AI / ML',
             items: [
+              {
+                text: 'Gradio',
+                link: '/integrations/gradio'
+              },
               {
                 text: 'Hugging Face',
                 link: '/integrations/huggingface'
               },
+              {
+                text: 'TensorFlow',
+                link: '/integrations/tensorflow'
+              }
+            ]
+          },
+          {
+            text: 'Dev Environment',
+            items: [
               {
                 text: 'Playwright',
                 link: '/integrations/playwright'
@@ -103,10 +117,6 @@ export default defineConfig({
               {
                 text: 'Storybook',
                 link: '/integrations/storybook'
-              },
-              {
-                text: 'TensorFlow',
-                link: '/integrations/tensorflow'
               },
               {
                 text: 'UnoCSS',
@@ -346,32 +356,46 @@ export default defineConfig({
           text: 'Integrations',
           items: [
             {
-              text: 'Hugging Face',
-              link: '/integrations/huggingface'
+              text: 'AI / ML',
+              items: [
+                {
+                  text: 'Gradio',
+                  link: '/integrations/gradio'
+                },
+                {
+                  text: 'Hugging Face',
+                  link: '/integrations/huggingface'
+                },
+                {
+                  text: 'TensorFlow',
+                  link: '/integrations/tensorflow'
+                }
+              ]
             },
             {
-              text: 'Playwright',
-              link: '/integrations/playwright'
-            },
-            {
-              text: 'Storybook',
-              link: '/integrations/storybook'
-            },
-            {
-              text: 'TensorFlow',
-              link: '/integrations/tensorflow'
-            },
-            {
-              text: 'UnoCSS',
-              link: '/integrations/unocss'
-            },
-            {
-              text: 'Vite',
-              link: '/integrations/vite'
-            },
-            {
-              text: 'Vitest',
-              link: '/integrations/vitest'
+              text: 'Dev Environment',
+              items: [
+                {
+                  text: 'Playwright',
+                  link: '/integrations/playwright'
+                },
+                {
+                  text: 'Storybook',
+                  link: '/integrations/storybook'
+                },
+                {
+                  text: 'UnoCSS',
+                  link: '/integrations/unocss'
+                },
+                {
+                  text: 'Vite',
+                  link: '/integrations/vite'
+                },
+                {
+                  text: 'Vitest',
+                  link: '/integrations/vitest'
+                }
+              ]
             }
           ]
         }
