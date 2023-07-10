@@ -30,7 +30,9 @@ const createNonEmptyDir = () => {
 const templateFiles = fs
   .readdirSync(join(CLI_PATH, 'template-vite'))
   // _gitignore is renamed to .gitignore
-  .map((filePath: any) => (filePath === '_gitignore' ? '.gitignore' : filePath))
+  .map((filePath: unknown) =>
+    filePath === '_gitignore' ? '.gitignore' : filePath
+  )
   .sort()
 
 beforeAll(() => fs.remove(genPath))
