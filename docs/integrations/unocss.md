@@ -48,10 +48,11 @@ module.exports = {
 import { defineConfig, presetUno } from 'unocss'
 
 export default defineConfig({
+  theme: {},
+  presets: [presetUno()],
   content: {
     filesystem: ['src/lib/**/*.{js,ts}']
-  },
-  presets: [presetUno()]
+  }
 })
 ```
 
