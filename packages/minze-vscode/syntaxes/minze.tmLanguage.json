@@ -15,7 +15,7 @@
   ],
   "repository": {
     "css-template": {
-      "begin": "(?<!\\.)(?:(?:css\\s*(=)\\s*\\(.*\\)\\s*(=>))|((?:\\/\\*)\\*(?:\\s*\\*\\/)))\\s*(`|'|\")",
+      "begin": "(?<!\\.)(?:(?:css\\s*(=)\\s*\\(.*\\)\\s*(=>))|(css|((?:/\\*\\s*?)css(?:\\s*\\*/))))\\s*(`)",
       "beginCaptures": {
         "1": {
           "name": "keyword.operator.assignment.ts"
@@ -24,14 +24,17 @@
           "name": "storage.type.function.arrow.ts"
         },
         "3": {
-          "name": "comment.block.ts"
+          "name": "entity.name.function.tagged-template.ts"
         },
         "4": {
+          "name": "comment.block.ts"
+        },
+        "5": {
           "name": "punctuation.definition.string.template.begin.ts"
         }
       },
       "contentName": "meta.embedded.block.css",
-      "end": "(`|'|\")",
+      "end": "(`)",
       "endCaptures": {
         "1": {
           "name": "punctuation.definition.string.template.end.ts"
@@ -44,7 +47,7 @@
       ]
     },
     "html-template": {
-      "begin": "(?<!\\.)(?:(?:html\\s*(=)\\s*\\(.*\\)\\s*(=>))|((?:\\/\\*\\s*\\*\\/)))\\s*(`|'|\")",
+      "begin": "(?<!\\.)(?:(?:html\\s*(=)\\s*\\(.*\\)\\s*(=>))|(html|((?:/\\*\\s*?)html(?:\\s*\\*/))))\\s*(`)",
       "beginCaptures": {
         "1": {
           "name": "keyword.operator.assignment.ts"
@@ -53,14 +56,17 @@
           "name": "storage.type.function.arrow.ts"
         },
         "3": {
-          "name": "comment.block.ts"
+          "name": "entity.name.function.tagged-template.ts"
         },
         "4": {
+          "name": "comment.block.ts"
+        },
+        "5": {
           "name": "punctuation.definition.string.template.begin.ts"
         }
       },
       "contentName": "meta.embedded.block.html",
-      "end": "(`|'|\")",
+      "end": "(`)",
       "endCaptures": {
         "1": {
           "name": "punctuation.definition.string.template.end.ts"

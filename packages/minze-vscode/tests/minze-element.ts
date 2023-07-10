@@ -4,6 +4,7 @@
 class MyElement extends MinzeElement {
   text = 'Hello Minze!'
   value = 'rgb(200 200 200 / 50%)'
+  literal = `<div>${this.text}</div>`
 
   html = () => `
     <div>
@@ -11,9 +12,10 @@ class MyElement extends MinzeElement {
     </div>
   `
 
-  htmlTemplateLiterals = /**/ `<div>${this.text}</div>`
-  htmlSingleQuotes = /**/ '<div>${this.text}</div>'
-  htmlDoubleQuotes = /**/ '<div>${this.text}</div>'
+  html1 = /* html */ `<div>${this.text}</div>`
+  html1 = /*html*/ `<div>${this.text}</div>`
+  html2 = /*html*/ `<div>${this.text}</div>`
+  html3 = html`<div>${this.text}</div>`
 
   css = () => `
     :host {
@@ -23,7 +25,12 @@ class MyElement extends MinzeElement {
     }
   `
 
-  cssTemplateLiterals = /***/ `:host { background: ${this.value}; }`
-  cssSingleQuotes = /***/ ':host { background: ${this.value}; }'
-  cssDoubleQuotes = /***/ ':host { background: ${this.value}; }'
+  css2 = /* css */ `:host { background: ${this.value}; }`
+  css2 = /*css*/ `:host { background: ${this.value}; }`
+  css3 = /*css*/ `:host { background: ${this.value}; }`
+  css4 = css`
+    :host {
+      background: ${this.value};
+    }
+  `
 }
