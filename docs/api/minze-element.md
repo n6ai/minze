@@ -442,8 +442,8 @@ export class MyElement extends MinzeElement {
 
 Selects the first matching element for the given `CSS` selector inside the `html` template.
 
-::: warning
-`this.select` selects elements inside the initial `html` template, if you want to select a slotted element use the JavaScript native `this.querySelector` method instead.
+::: tip
+Best place to use `select` is inside the `onRender` and `onReady` Hooks.
 :::
 
 - **Method**
@@ -472,8 +472,8 @@ export class MyElement extends MinzeElement {
 
 Selects all elements matching the given `CSS` selector inside the `html` template.
 
-::: warning
-`this.selectAll` selects elements inside the initial `html` template, if you want to select slotted elements use the JavaScript native `this.querySelectorAll` method instead.
+::: tip
+Best place to use `selectAll` is inside the `onRender` and `onReady` Hooks.
 :::
 
 - **Method**
@@ -494,6 +494,37 @@ export class MyElement extends MinzeElement {
   onReady() {
     const elements = this.selectAll('div')
     console.log(elements)
+  }
+}
+```
+
+## slotted <Badge type="tip" text="^1.4.0" />
+
+Returns an array of slotted element(s) for provided slot name, otherwise `null` if none found.
+
+::: tip
+Best place to use `slotted` is inside the `onRender` and `onReady` Hooks.
+:::
+
+- **Method**
+
+- **Type:** `(name?: string): Element[] | null`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+export class MyElement extends MinzeElement {
+  html = () => `
+    <slot></slot>
+    <slot name="named-slot"></slot>
+  `
+
+  onReady() {
+    const defaultSlottedElements = this.slotted('default')
+    const namedSlottedElements = this.slotted('named-slot')
+    console.log(defaultSlottedElements, namedSlottedElements)
   }
 }
 ```

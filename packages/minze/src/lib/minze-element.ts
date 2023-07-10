@@ -348,6 +348,30 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Returns an array of slotted element(s) for provided slot name, otherwise `null` if none found.
+   * Works only after the template has rendered, otherwise returns `null`.
+   * Can be used inside the `onRender` or `onReady` hooks.
+   *
+   * @param name - The name of the slot or empty / `default` for the default slot.
+   *
+   * @example
+   * ```
+   * this.slotted('default')
+   * ```
+   */
+  slotted(name?: string) {
+    const slots = this.selectAll<HTMLSlotElement>('slot')
+
+    if (slots) {
+      const slotName = name === 'default' || name === undefined ? '' : name
+      const slot = Array.from(slots).filter((el) => el.name === slotName)
+      return slot?.[0]?.assignedElements() ?? null
+    }
+
+    return null
+  }
+
+  /**
    * Exposes property as an attribute on the element.
    *
    * @param name - The name of the attribute.
