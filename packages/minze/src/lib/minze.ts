@@ -36,8 +36,8 @@ export class Minze {
    *
    * @example
    * ```
-   * import * as Elements from './module'
-   * Minze.defineAll(Elements)
+   * import * as elements from './module'
+   * Minze.defineAll(elements)
    *
    * // or
    * import { MinzeElement, MinzeElementTwo } from './module'

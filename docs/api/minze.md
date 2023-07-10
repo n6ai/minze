@@ -94,9 +94,9 @@ export class MySecondElement extends MinzeElement {
 
 ```js
 import { Minze } from 'minze'
-import * as Elements from './elements'
+import * as elements from './elements'
 
-Minze.defineAll(Elements)
+Minze.defineAll(elements)
 ```
 
 <!-- prettier-ignore-start -->
