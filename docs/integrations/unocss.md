@@ -6,30 +6,56 @@ If you used the [CLI method](/guide/installation#cli) to install Minze you can e
 
 > The following guide is based on a fresh Minze CLI installation.
 
-1. Install `unocss` npm package.
-
-Installing from npm:
+1. Install dependencies.
 
 ::: code-group
 
 ```bash [npm]
-$ npm install -D unocss
+$ npm install -D unocss @unocss/postcss
 ```
 
 ```bash [yarn]
-$ yarn add -D unocss
+$ yarn add -D unocss @unocss/postcss
 ```
 
 ```bash [pnpm]
-$ pnpm add -D unocss
+$ pnpm add -D unocss @unocss/postcss
 ```
 
 :::
 
-2. Add UnoCSS Vite plugin, with the shadow-dom mode enabled, to your `vite.config.js` file.
+2. Create and populate `postcss.config.cjs` and `uno.config.js` files. Add UnoCSS Vite plugin, with the shadow-dom mode enabled, to your `vite.config.js` file.
 
-```js
-// vite.config.js
+::: code-group
+
+```txt [files]
+├─ src/
+├─ ...
+├─ postcss.config.cjs // [!code ++]
+├─ uno.config.js // [!code ++]
+└─ vite.config.js
+```
+
+```js [postcss.config.cjs]
+module.exports = {
+  plugins: {
+    '@unocss/postcss': {}
+  }
+}
+```
+
+```js [uno.config.js]
+import { defineConfig, presetUno } from 'unocss'
+
+export default defineConfig({
+  content: {
+    filesystem: ['src/lib/**/*.{js,ts}']
+  },
+  presets: [presetUno()]
+})
+```
+
+```js [vite.config.js]
 import { defineConfig } from 'vite'
 import UnoCSS from 'unocss/vite' // [!code ++]
 import minze from '@minzejs/vite-plugin-minze'
@@ -42,33 +68,50 @@ export default defineConfig({
 })
 ```
 
-3. Add `@unocss-placeholder` to the `css` block of any of your components. This placeholder will be replaced with compiled CSS during processing.
+:::
+
+3. Create `my-button.css` file and populate it's contents.
+
+::: code-group
+
+```txt [files]
+src/
+└─ lib/
+   ├─ ...
+   ├─ my-button.css // [!code ++]
+   └─ my-button.js
+```
+
+```css [my-button.css]
+button {
+  @apply w-full sm:w-auto text-base font-bold rounded transition duration-100 px-4 py-3;
+
+  color: var(--button-color, theme('colors.white'));
+  background: var(--button-bg, theme('colors.sky.400'));
+
+  &:hover {
+    background: var(--button-bg-hover, theme('colors.sky.500'));
+  }
+}
+```
+
+:::
+
+4. Import the CSS file as `?inline` and replace the css block with `@unocss-placeholder ${css}`. This block will be augmented with compiled CSS during processing.
 
 ```js
 // src/lib/my-button.js
 import { MinzeElement } from 'minze'
+import css from './my-button.css?inline'
 
 export class MyButton extends MinzeElement {
   html = () => `
-    <button class="
-      bg-emerald-300 // [!code ++]
-      hover:bg-emerald-400 // [!code ++]
-      active:bg-emerald-500 // [!code ++]
-      text-black // [!code ++]
-      rounded-sm // [!code ++]
-      border-0 // [!code ++]
-      cursor-pointer // [!code ++]
-      transition // [!code ++]
-      duration-100 // [!code ++]
-      px-3 py-2 // [!code ++]
-    ">
+    <button class="border-0 cursor-pointer"> // [!code ++]
       <slot></slot>
     </button>
   `
 
-  css = () => `
-    @unocss-placeholder // [!code ++]
-  `
+  css = () => `@unocss-placeholder ${css}` // [!code ++]
 }
 ```
 

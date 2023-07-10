@@ -8,7 +8,7 @@ TensorFlow.js is a JavaScript library for training, deploying and consuming mach
 
 > The following guide is based on a fresh Minze CLI installation.
 
-1. Install `@tensorflow/tfjs`.
+1. Install dependencies.
 
 ::: code-group
 

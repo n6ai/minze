@@ -4,7 +4,7 @@ The default Minze dev environment runs with Vite. If you want to build a compone
 
 If you want to add Minze to a fresh Vite project follow these steps:
 
-1. Install minze package.
+1. Install dependencies.
 
 ::: code-group
 

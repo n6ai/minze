@@ -4,7 +4,7 @@ If you used the [CLI method](/guide/installation#cli) to install Minze you can e
 
 > The following guide is based on a fresh Minze CLI installation.
 
-1. Install `@playwright/test` from npm.
+1. Install dependencies.
 
 ::: code-group
 
