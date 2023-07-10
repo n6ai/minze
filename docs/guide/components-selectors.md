@@ -6,7 +6,7 @@ When using selectors with Hooks, keep in mind that the template might not yet be
 
 ## select / selectAll
 
-You can use selectors to select elements within the components `html` template (shadow DOM) by providing a valid `CSS` selector.
+Selects elements within the components `html` template (shadow DOM) by providing a valid `CSS` selector.
 
 - `select` - Selects the first element that matches the selector.
 - `selectAll` - Selects all elements that match the selector.
