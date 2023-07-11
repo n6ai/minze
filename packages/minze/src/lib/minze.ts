@@ -1,4 +1,4 @@
-import type { MinzeElement } from './minze-element'
+import { MinzeElement } from './minze-element'
 import { warn } from './utils'
 
 /**

@@ -95,7 +95,7 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   static define(name?: string) {
-    if (!name) name = camelToDash(this.name)
+    name ??= camelToDash(this.name)
     if (customElements) customElements.define(name, this)
   }
 
