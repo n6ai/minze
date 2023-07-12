@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/n6ai/minze/compare/minze-v1.4.0...minze-v1.4.1) (2023-07-12)
+
+
+### Bug Fixes
+
+* remove redundand  function arg for rerender ([f3e7682](https://github.com/n6ai/minze/commit/f3e7682fb389ae4742041ca76cb2f2109eaea6cb))
+
 ## [1.4.0](https://github.com/n6ai/minze/compare/minze-v1.3.2...minze-v1.4.0) (2023-07-10)
 
 
