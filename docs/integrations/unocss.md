@@ -51,7 +51,9 @@ export default defineConfig({
   theme: {},
   presets: [presetUno()],
   content: {
-    filesystem: ['src/lib/**/*.{js,ts}']
+    pipeline: {
+      include: 'src/lib/**/*.{js,ts,html}'
+    }
   }
 })
 ```
