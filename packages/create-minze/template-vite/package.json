@@ -11,10 +11,10 @@
     "build": "vite build"
   },
   "dependencies": {
-    "minze": "^1.4.0"
+    "minze": "^1.4.1"
   },
   "devDependencies": {
     "@minzejs/vite-plugin-minze": "^1.1.2",
-    "vite": "^4.4.2"
+    "vite": "^4.4.3"
   }
 }
