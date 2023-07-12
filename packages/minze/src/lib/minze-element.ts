@@ -304,17 +304,15 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Re-renders the component template.
-   *
-   * @param force - Forces the re-rendering of the template regardless of caching.
+   * Re-renders the component template, invalidating all caches.
    *
    * @example
    * ```
    * this.rerender()
    * ```
    */
-  rerender(force?: boolean) {
-    this.render(force)
+  rerender() {
+    this.render(true)
   }
 
   /**

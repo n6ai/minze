@@ -17,7 +17,7 @@ export class MinzeReactivePatch extends MinzeElement {
   }
 
   handleClick = () => {
-    this.rerender(true)
+    this.rerender()
   }
 
   eventListeners: EventListeners = [

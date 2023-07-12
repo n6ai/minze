@@ -416,11 +416,11 @@ export class MyElement extends MinzeElement {
 
 ## rerender <Badge type="tip" text="^1.0.0" />
 
-Requests a component re-render. The current template will be compared to the cached template and if they are different, the component will be rerendered. If you want to force-rerender, without any checks, pass `true` as the first argument.
+Requests a component re-render, invalidating all caches.
 
 - **Method**
 
-- **Type:** `(force?: boolean): void`
+- **Type:** `(): void`
 
 - **Example:**
 
@@ -433,7 +433,7 @@ export class MyElement extends MinzeElement {
   `
 
   onReady() {
-    this.rerender(true)
+    this.rerender()
   }
 }
 ```
