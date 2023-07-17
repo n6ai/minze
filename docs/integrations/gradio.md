@@ -70,8 +70,8 @@ export class GrElement extends MinzeElement {
   `
 
   async onReady() {
-    const context = this.querySelector('[slot=context]')?.innerText
-    const question = this.querySelector('[slot=question]')?.innerText
+    const context = this.slotted('context')?.[0].innerText
+    const question = this.slotted('question')?.[0].innerText
 
     const app = await client('https://gradio-question-answering.hf.space/')
     const result = await app.predict('/predict', [context, question])
