@@ -39,8 +39,14 @@ jobs:
     needs:
       - run-tests
     runs-on: ubuntu-latest
+    if: always()
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - name: Fail if run-tests failed
+        if: ${{ needs.*.result == 'failure' }}
+        run: exit 1
+
+      - name: Release Please
+        uses: google-github-actions/release-please-action@v3
         id: release
         with:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
@@ -57,7 +63,6 @@ jobs:
 
   bump-lockfile:
     needs:
-      - run-tests
       - release-please
     runs-on: ubuntu-latest
     if: ${{ needs.release-please.outputs.releases-created }}
@@ -74,7 +79,6 @@ jobs:
 
   publish-npm:
     needs:
-      - run-tests
       - release-please
       - bump-lockfile
     runs-on: ubuntu-latest
@@ -94,7 +98,6 @@ jobs:
 
   publish-vs-marketplace:
     needs:
-      - run-tests
       - release-please
       - bump-lockfile
     runs-on: ubuntu-latest
