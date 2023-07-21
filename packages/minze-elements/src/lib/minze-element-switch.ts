@@ -4,7 +4,6 @@ import css from './minze-element-switch.css?raw'
 
 export interface MinzeElementSwitch {
   overlayActive: boolean
-  slottedElements: Element[] | null
   selectedElementKey: string | null
   selectedElement: string | null
 }
@@ -25,7 +24,6 @@ export interface MinzeElementSwitch {
 export class MinzeElementSwitch extends MinzeElement {
   reactive: Reactive = [
     ['overlayActive', false],
-    ['slottedElements', null],
     ['selectedElementKey', null],
     ['selectedElement', null]
   ]
@@ -37,11 +35,9 @@ export class MinzeElementSwitch extends MinzeElement {
 
   watchSelectedElementKey = (newValue: string) => {
     const dashName = newValue
-    const element = this.slottedElements
-      ? this.slottedElements.filter(
-          (element) => element.tagName.toLowerCase() === dashName
-        )
-      : null
+    const element = this.slotted('default')?.filter(
+      (element) => element.tagName.toLowerCase() === dashName
+    )
 
     if (element?.length) {
       this.selectedElement = element[0].outerHTML
@@ -56,8 +52,8 @@ export class MinzeElementSwitch extends MinzeElement {
   templateOverlay() {
     const template: string[] = []
 
-    if (this.slottedElements?.length) {
-      this.slottedElements.forEach((element) => {
+    if (this.slotted('default')) {
+      this.slotted('default')?.forEach((element) => {
         const dashName = element.tagName.toLowerCase()
         const isSelected = this.selectedElementKey === dashName
 
@@ -106,13 +102,9 @@ export class MinzeElementSwitch extends MinzeElement {
   css = () => css
 
   onReady() {
-    const slot = this.select<HTMLSlotElement>('slot')
-    if (slot) this.slottedElements = slot.assignedElements()
-
     const selectedElementKey = sessionStorage.getItem(this.storageKey)
-    const firstElementdashName = this.slottedElements
-      ? Object.values(this.slottedElements)[0].tagName.toLowerCase()
-      : null
+    const firstElementdashName =
+      this.slotted('default')?.[0].tagName.toLowerCase() ?? null
     this.selectedElementKey = selectedElementKey ?? firstElementdashName
   }
 
