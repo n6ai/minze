@@ -10,4 +10,5 @@ temp
 test-results
 coverage
 *.vsix
+*.dev.html
 storybook

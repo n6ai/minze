@@ -4,5 +4,6 @@ package-lock.json
 cache
 *.d.ts
 *.mdx
+*.dev.html
 CHANGELOG.md
 storybook
