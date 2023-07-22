@@ -49,10 +49,10 @@ import { defineConfig, presetUno } from 'unocss'
 
 export default defineConfig({
   theme: {},
-  presets: [presetUno()],
+  presets: [presetUno({ dark: 'media' })],
   content: {
     pipeline: {
-      include: 'src/lib/**/*.{js,ts,html}'
+      include: 'src/**/*.{js,ts,html}'
     }
   }
 })
