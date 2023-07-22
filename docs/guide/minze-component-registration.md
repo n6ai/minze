@@ -37,7 +37,7 @@ Minze.define('my-element', MyElement)
 Define multiple components at once. They will be automatically defined in `dash-case` format.
 
 ::: warning
-Your component class names have to be either in `PascalCase` or `camelCase` when using this registration method.
+Your component class names should be in `PascalCase` when using this registration method.
 :::
 
 ```js

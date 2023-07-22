@@ -7,7 +7,7 @@ Alternatively, you can register multiple components at once by using the `define
 :::
 
 ::: warning
-Your component class name has to be either in `PascalCase` or `camelCase` when using this registration method.
+Your component class name should be in `PascalCase` when using this registration method.
 :::
 
 **Example**

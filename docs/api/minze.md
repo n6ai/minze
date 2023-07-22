@@ -2,7 +2,9 @@
 
 Minze class with multiple static methods and properties for common tasks.
 
-## version <Badge type="tip" text="^1.0.0" />
+## STATIC
+
+### version <Badge type="tip" text="^1.0.0" />
 
 Displays the used version of Minze.
 
@@ -18,7 +20,7 @@ import Minze from 'minze'
 console.log(Minze.version) // 1.2.0
 ```
 
-## define <Badge type="tip" text="^1.0.0" />
+### define <Badge type="tip" text="^1.0.0" />
 
 Defines a custom web component.
 
@@ -42,12 +44,12 @@ Minze.define('my-element', MyElement)
 <my-element></my-element>
 ```
 
-## defineAll <Badge type="tip" text="^1.0.0" />
+### defineAll <Badge type="tip" text="^1.0.0" />
 
 Defines all custom web components in a single call. Your components will be registered with `dash-case` naming.
 
 ::: warning
-Your component class names have to be either in `PascalCase` or `camelCase` when using this registration method.
+Your component class names should be in `PascalCase` when using this registration method.
 :::
 
 - **Method**
@@ -106,7 +108,9 @@ Minze.defineAll(elements)
 ```
 <!-- prettier-ignore-end -->
 
-## dispatch <Badge type="tip" text="^1.3.2" />
+## EVENTS
+
+### dispatch <Badge type="tip" text="^1.3.2" />
 
 Dispatches a custom event from the `window` object.
 
@@ -130,7 +134,7 @@ const optionalDetail = {
 Minze.dispatch('minze:my-event-name', optionalDetail)
 ```
 
-## listen <Badge type="tip" text="^1.0.0" />
+### listen <Badge type="tip" text="^1.0.0" />
 
 Adds an event listener to the `window` object.
 
@@ -150,7 +154,7 @@ const callback = (event) => {
 Minze.listen('minze:my-event-name', callback)
 ```
 
-## stopListen <Badge type="tip" text="^1.0.0" />
+### stopListen <Badge type="tip" text="^1.0.0" />
 
 Remove an event listener from the `window` object.
 
@@ -170,6 +174,8 @@ const callback = (event) => {
 Minze.stopListen('minze:my-event-name', callback)
 ```
 
-## cast <Badge type="warning" text="deprecated" />
+## DEPRECATED
+
+### cast <Badge type="warning" text="deprecated" />
 
 Use [dispatch](/api/minze#dispatch) instead.
