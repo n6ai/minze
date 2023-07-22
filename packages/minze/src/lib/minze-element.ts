@@ -45,8 +45,6 @@ export type MinzeEventListeners = EventListeners
  * ```
  */
 export class MinzeElement extends HTMLElement {
-  [key: string]: unknown
-
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
