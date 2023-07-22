@@ -29,7 +29,7 @@ export class Minze {
   /**
    * Defines multiple custom elements.
    *
-   * All class names have to be either PascalCase or camelCase for automatic dash-case name conversion.
+   * All class names have to be in PascalCase for automatic dash-case name conversion.
    * Example: `MinzeElement` will be registered as `<minze-element></minze-element>`.
    *
    * @param elements - A module object or an array of custom Minze elements.
