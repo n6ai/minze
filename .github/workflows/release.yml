@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'packages/**'
-      - 'package.json'
-      - '!packages/create-minze/template-**'
-      - '!packages/playground/**'
-      - '!**/README.md'
   workflow_run:
     workflows:
       - .bumpfile
@@ -23,28 +17,11 @@ env:
   NODE_VERSION: 18
 
 jobs:
-  run-tests:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Run tests
-        uses: ./.github/actions/run-tests
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
   release-please:
     needs:
       - run-tests
     runs-on: ubuntu-latest
-    if: always()
     steps:
-      - name: Fail if run-tests failed
-        if: ${{ needs.*.result == 'failure' }}
-        run: exit 1
-
       - name: Release Please
         uses: google-github-actions/release-please-action@v3
         id: release

@@ -1,6 +1,13 @@
 name: Test
 
 on:
+  pull_request:
+    paths:
+      - 'packages/**'
+      - 'package.json'
+      - '!packages/create-minze/template-**'
+      - '!packages/playground/**'
+      - '!**/README.md'
   workflow_dispatch:
 
 env:
