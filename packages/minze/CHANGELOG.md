@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/n6ai/minze/compare/minze-v1.4.1...minze-v1.4.2) (2023-07-22)
+
+
+### Bug Fixes
+
+* remove typescript index signature ([df431c3](https://github.com/n6ai/minze/commit/df431c36a466cb04da0c1a38464e2bb4798796a7))
+
 ## [1.4.1](https://github.com/n6ai/minze/compare/minze-v1.4.0...minze-v1.4.1) (2023-07-12)
 
 
