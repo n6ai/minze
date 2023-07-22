@@ -9,6 +9,10 @@ There are two main differences:
 
 By going through and understanding the example below, you will have a firm grasp of how to work with Minze components in TypeScript.
 
+::: warning
+If you are using [typescript-eslint](https://typescript-eslint.io) with Minze, you have to disable the `@typescript-eslint/no-unsafe-declaration-merging` rule.
+:::
+
 **Example**
 
 ```ts
