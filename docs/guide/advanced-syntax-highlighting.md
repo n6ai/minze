@@ -24,7 +24,7 @@ class MyElement extends MinzeElement {
 }
 ```
 
-### 3rd party extensions
+### 3rd Party Extensions
 
 With the following extension you can also add syntax highlighting to template strings:
 

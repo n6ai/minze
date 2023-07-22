@@ -98,29 +98,27 @@ export class NewElement extends MinzeElement {
 }
 ```
 
-4. Open the `preview.html` file. This file is injected into the preview during dev runtime and is what you see on the screen when you are running the dev task.
+4. Create a `preview.dev.html` file in the `src` directory (by default, git won't track this file). The file is injected into the preview during dev runtime and is what you see on the screen when you are running the dev task, if no `preview.dev.html` file is present, it falls back to `preview.html` (which is tracked by git).
 
 ```
 src/
 ├─ ...
+├─ preview.dev.html // [!code ++]
 └─ preview.html
 ```
 
-5. Add your element to `preview.html`. This file is essentially a little sandbox for trying out and previewing your components.
+5. Add your element to `preview.dev.html`. This file is essentially a little sandbox for trying out and previewing your components.
 
-<!-- prettier-ignore-start -->
 ```html
+<!-- preview.dev.html -->
 <new-element></new-element> // [!code ++]
-<my-element>
-  <h1>Minze + Vite</h1>
-</my-element>
 ```
-<!-- prettier-ignore-end -->
 
 6. Profit. Your component/element should be displayed in the browser.
 
 ::: tip Next steps:
 
+- Add [HTML/CSS Syntax Highlighting](/guide/advanced-syntax-highlighting) with VS Code Plugin.
 - Learn how to [publish and use](/guide/publishing) your components.
 - Learn how to use Minze with [TypeScript](/guide/advanced-typescript).
 
