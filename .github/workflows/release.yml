@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'packages/**'
+      - 'package.json'
+      - '!packages/playground/**'
+      - '!**/README.md'
   workflow_run:
     workflows:
       - .bumpfile
