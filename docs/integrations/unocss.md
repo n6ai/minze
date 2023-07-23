@@ -114,7 +114,7 @@ export class MyButton extends MinzeElement {
     </button>
   `
 
-  css = () => `@unocss-placeholder ${css}` // [!code ++]
+  css = () => `@unocss-placeholder ${css};` // [!code ++]
 }
 ```
 
