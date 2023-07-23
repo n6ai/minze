@@ -39,7 +39,31 @@ MyElement.define()
 ```
 
 ```html
-<my-element>Hello Minze!</my-element>
+<my-element></my-element>
+```
+
+### CSS Reset
+
+Global CSS Resets don't work with web components, out of the box, that's why Minze uses an internal CSS Reset Stylesheet optimized for web components. You can disable it in the component options, if required.
+
+**Example**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  options = {
+    cssReset: false // enabled by default
+  }
+
+  html = () => `<h1>Hello Minze!</h1>`
+}
+
+MyElement.define()
+```
+
+```html
+<my-element></my-element>
 ```
 
 ### Conditional Styling
@@ -106,7 +130,7 @@ MyElement.define()
 ```
 
 ```html
-<my-element>Hello Minze!</my-element>
+<my-element></my-element>
 ```
 
 ### :host()
@@ -132,7 +156,7 @@ MyElement.define()
 ```
 
 ```html
-<my-element class="themed">Hello Minze!</my-element>
+<my-element class="themed"></my-element>
 ```
 
 ### :host-context()
@@ -166,13 +190,13 @@ MyElement.define()
 ```html
 <div class="light">
   <div>
-    <my-element>Hello Minze!</my-element>
+    <my-element></my-element>
   </div>
 </div>
 
 <div class="dark">
   <div>
-    <my-element>Hello Minze!</my-element>
+    <my-element></my-element>
   </div>
 </div>
 ```
@@ -246,7 +270,7 @@ MyElement.define()
 ```
 
 ```html
-<my-element>Hello Minze!</my-element>
+<my-element></my-element>
 ```
 
 ```css
@@ -274,7 +298,7 @@ MyElement.define()
 ```
 
 ```html
-<my-element>Hello Minze!</my-element>
+<my-element></my-element>
 ```
 
 ```css
@@ -319,7 +343,7 @@ Minze.defineAll([MyElement, MyOuterElement])
 ```
 
 ```html
-<my-outer-element>Hello Minze!</my-outer-element>
+<my-outer-element></my-outer-element>
 ```
 
 ```css
