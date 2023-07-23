@@ -2,6 +2,12 @@ import { MinzeElement, Attrs } from 'minze'
 
 export interface MinzeReactiveAttrs {
   count: string
+  shorthand: null
+  empty: null
+  undefined: undefined
+  null: null
+  boolean: boolean
+  object: Record<string, unknown>
 }
 
 export class MinzeReactiveAttrs extends MinzeElement {

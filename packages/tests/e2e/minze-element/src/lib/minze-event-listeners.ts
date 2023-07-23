@@ -3,7 +3,7 @@ import { MinzeElement, EventListeners } from 'minze'
 type clickDetail = string
 
 export class MinzeEventListeners extends MinzeElement {
-  text = ''
+  text = 'not-clicked'
 
   html = () => `
     <button>

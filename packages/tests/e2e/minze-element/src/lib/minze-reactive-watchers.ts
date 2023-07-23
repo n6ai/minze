@@ -52,7 +52,7 @@ export class MinzeReactiveWatchers extends MinzeElement {
     <div class="str"></div>
     <div class="arr"></div>
     <div class="obj"></div>
-    <button></button>
+    <button>Change values</button>
   `
 
   handleClick = () => {

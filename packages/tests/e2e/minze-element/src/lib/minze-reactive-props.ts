@@ -1,6 +1,7 @@
 import { MinzeElement, Reactive, EventListeners } from 'minze'
 
 export interface MinzeReactiveProps {
+  shorthand: string | null
   str: string
   arr: number[]
   obj: {
@@ -31,7 +32,7 @@ export class MinzeReactiveProps extends MinzeElement {
     <div class="str">${this.str}</div>
     <div class="arr">${this.arr}</div>
     <div class="obj">${this.obj.nested.prop}</div>
-    <button></button>
+    <button>Change values</button>
   `
 
   handleClick = () => {

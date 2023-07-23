@@ -9,7 +9,7 @@ test(`MinzeElement: ${element}`, async ({ page }) => {
 
   const selector = `${element} button`
 
-  expect(await page.locator(selector).innerText()).toBe('')
+  expect(await page.locator(selector).innerText()).toBe('not-clicked')
 
   await page.click(selector)
 

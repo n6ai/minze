@@ -1,7 +1,7 @@
 import { MinzeElement, Reactive, EventListeners } from 'minze'
 
 export interface MinzeReactivePatch {
-  count: number
+  value: number
 }
 
 export class MinzeReactivePatch extends MinzeElement {
@@ -9,11 +9,11 @@ export class MinzeReactivePatch extends MinzeElement {
 
   html = () => `
     <input type="number" value="${this.value}" />
-    <button></button>
+    <button>Change value</button>
   `
 
   handleKeyUp = (event: Event) => {
-    this.value = (event.target as HTMLInputElement).value
+    this.value = parseInt((event.target as HTMLInputElement).value)
   }
 
   handleClick = () => {
