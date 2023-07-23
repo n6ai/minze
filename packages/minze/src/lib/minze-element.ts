@@ -104,14 +104,16 @@ export class MinzeElement extends HTMLElement {
    * ```
    * MyElement extends MinzeElement {
    *   options = {
+   *     cssReset: true,
    *     exposeAttrs: {
-   *       rendered: true
+   *       rendered: false
    *     }
    *   }
    * }
    * ```
    */
   options?: {
+    cssReset?: boolean
     exposeAttrs?: {
       rendered?: boolean
     }
@@ -243,11 +245,20 @@ export class MinzeElement extends HTMLElement {
    * Creates the template for the shadow root, which will be inserted into the Shadow root.
    */
   private template() {
+    const cssReset =
+      this.options?.cssReset || this.options?.cssReset === undefined
+
+    // prettier-ignore
     return `
       <style>
         :host { box-sizing: border-box; display: block; }
         :host([hidden]) { display: none; }
-        * { box-sizing: border-box; }
+        *, ::before, ::after, :host::before, :host::after { box-sizing: border-box; ${cssReset ? 'color: inherit; text-decoration: inherit; font-size: inherit; line-height: inherit; font-weight: inherit; font-family: inherit; text-indent: 0; background-color: transparent; border: 0 solid transparent; padding: 0; margin: 0;' : '' }}
+        ${cssReset ? `
+        table { border-color: inherit; border-collapse: collapse; }
+        img, svg, video, canvas, audio, iframe, embed, object { display: block; max-width: 100%; height: auto; }
+        button, [role="button"] { font-size: 100%; text-transform: none; cursor: pointer; }
+        ` : '' }
         ${this.css?.() ?? ''}
       </style>
       ${this.html?.() ?? '<slot></slot>'}

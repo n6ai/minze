@@ -7,6 +7,7 @@ import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   options = {
+    cssReset: true,
     exposeAttrs: {
       rendered: true
     }
