@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/n6ai/minze/compare/minze-v1.4.2...minze-v1.5.0) (2023-07-23)
+
+
+### Features
+
+* add css reset styling and option to disable ([614f0f6](https://github.com/n6ai/minze/commit/614f0f649b7e90acd247a6a7c09e7cb2725be425))
+
 ## [1.4.2](https://github.com/n6ai/minze/compare/minze-v1.4.1...minze-v1.4.2) (2023-07-22)
 
 
