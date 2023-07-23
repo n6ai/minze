@@ -78,6 +78,7 @@ export class MyElement extends MinzeElement {
 
     .text {
       color: rgb(136 136 136);
+      margin: 1rem 0;
     }
 
     ::slotted(h1) {
