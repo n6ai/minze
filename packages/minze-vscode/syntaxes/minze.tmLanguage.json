@@ -15,7 +15,7 @@
   ],
   "repository": {
     "css-template": {
-      "begin": "(?<!\\.)(?:(?:css\\s*(=)\\s*\\(.*\\)\\s*(=>))|(css|((?:/\\*\\s*?)css(?:\\s*\\*/))))\\s*(`)",
+      "begin": "(?<!\\.)(?:(?:css\\w*\\s*(=)\\s*\\(.*\\)\\s*(=>))|(css|((?:/\\*\\s*?)css(?:\\s*\\*/))))\\s*(`)",
       "beginCaptures": {
         "1": {
           "name": "keyword.operator.assignment.ts"
@@ -47,7 +47,7 @@
       ]
     },
     "html-template": {
-      "begin": "(?<!\\.)(?:(?:html\\s*(=)\\s*\\(.*\\)\\s*(=>))|(html|((?:/\\*\\s*?)html(?:\\s*\\*/))))\\s*(`)",
+      "begin": "(?<!\\.)(?:(?:html\\w*\\s*(=)\\s*\\(.*\\)\\s*(=>))|(html|((?:/\\*\\s*?)html(?:\\s*\\*/))))\\s*(`)",
       "beginCaptures": {
         "1": {
           "name": "keyword.operator.assignment.ts"

@@ -6,7 +6,7 @@ Once your HTML and CSS templates grow in size you might want to add some syntax 
 
 ### [Minze VS Code Extension](https://marketplace.visualstudio.com/items?itemName=n6ai.minze-vscode)
 
-Minze VS Code extension adds auto-highlighting to `html` and `css` class properties/methods defined as arrow functions. Additionally you can manually prefix any template literals with `/*html*/` to highlight HTML code inside them, or `/*css*/` to highlight CSS code.
+Minze VS Code extension adds auto-highlighting to class methods defined as arrow functions starting with `html` and `css` keyword. Additionally you can manually prefix any template literals with `/*html*/` to highlight HTML code inside them, or `/*css*/` to highlight CSS code.
 
 **Example**
 
@@ -18,13 +18,17 @@ class MyElement extends MinzeElement {
   html = () => `<div></div>`
   css = () => `:host {}`
 
+  // auto
+  htmlTemplate = () => `<div></div>`
+  cssTemplate = () => `:host {}`
+
   // manual
   htmlCode = /*html*/ `<div></div>`
   cssCode = /*css*/ `:host {}`
 }
 ```
 
-### 3rd Party Extensions
+### 3rd-Party Extensions
 
 With the following extension you can also add syntax highlighting to template strings:
 

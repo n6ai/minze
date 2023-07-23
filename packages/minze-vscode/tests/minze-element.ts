@@ -12,12 +12,26 @@ class MyElement extends MinzeElement {
     </div>
   `
 
+  htmlTemplate = () => `
+    <div>
+      <p>${this.text}</p>
+    </div>
+  `
+
   html1 = /* html */ `<div>${this.text}</div>`
   html1 = /*html*/ `<div>${this.text}</div>`
   html2 = /*html*/ `<div>${this.text}</div>`
   html3 = html`<div>${this.text}</div>`
 
   css = () => `
+    :host {
+      display: inline-block;
+      background: ${this.value};
+      padding: 1rem;
+    }
+  `
+
+  cssTemplate = () => `
     :host {
       display: inline-block;
       background: ${this.value};
