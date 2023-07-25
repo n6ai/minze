@@ -115,6 +115,10 @@ export default defineConfig({
                 link: '/integrations/playwright'
               },
               {
+                text: 'Prettier',
+                link: '/integrations/prettier'
+              },
+              {
                 text: 'Storybook',
                 link: '/integrations/storybook'
               },
@@ -378,6 +382,10 @@ export default defineConfig({
                 {
                   text: 'Playwright',
                   link: '/integrations/playwright'
+                },
+                {
+                  text: 'Prettier',
+                  link: '/integrations/prettier'
                 },
                 {
                   text: 'Storybook',
