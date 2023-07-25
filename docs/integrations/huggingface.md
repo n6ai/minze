@@ -151,5 +151,79 @@ export class HfElement extends MinzeElement {
 <!-- prettier-ignore-end -->
 
 ::: tip
-For more details about Huggingface.js refer to the [Huggingface.js docs](https://huggingface.co/docs/huggingface.js).
+For more details about Huggingface.js refer to the [Huggingface.js docs](https://huggingface.co/docs/huggingface.js/inference/README).
+:::
+
+### [@huggingface/agents](https://www.npmjs.com/package/@huggingface/agents)
+
+A way to call Hugging Face models and inference APIs from natural language, using an LLM.
+
+1. Install dependencies.
+
+::: code-group
+
+```bash [npm]
+$ npm install @huggingface/agents
+```
+
+```bash [yarn]
+$ yarn add @huggingface/agents
+```
+
+```bash [pnpm]
+$ pnpm add @huggingface/agents
+```
+
+:::
+
+2. Create a `hf-element.js` file inside the `src/lib` directory.
+
+```
+src/
+└─ lib/
+   ├─ ...
+   └─ hf-element.js // [!code ++]
+```
+
+3. Import `@huggingface/agents` and define a component inside the new file.
+
+::: danger
+Never expose your `access token` to the public, it should be kept private! If you need to protect it in front-end applications, we suggest setting up a proxy server that stores the access token.
+:::
+
+```js
+import { MinzeElement } from 'minze'
+import { HfAgent } from '@huggingface/agents'
+
+const agent = new HfAgent('YOUR_HF_ACCESS_TOKEN')
+
+export class HfElement extends MinzeElement {
+  reactive = [['text', '']]
+
+  attrs = ['instructions']
+
+  html = () => `${this.text}`
+
+  async onReactive() {
+    const code = await agent.generateCode(this.instructions)
+    const result = await agent.evaluateCode(code)
+
+    this.text = result
+  }
+}
+```
+
+4. Add the new element to `src/preview.html` file.
+
+<!-- prettier-ignore-start -->
+```html
+<hf-element instructions="Draw a picture of a cat, wearing a top hat."></hf-element> // [!code ++]
+<my-element>
+  <h1>Minze + Vite</h1>
+</my-element>
+```
+<!-- prettier-ignore-end -->
+
+::: tip
+For more details about Huggingface.js refer to the [Huggingface.js docs](https://huggingface.co/docs/huggingface.js/agents/README).
 :::
