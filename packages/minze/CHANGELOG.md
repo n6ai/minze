@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/n6ai/minze/compare/minze-v1.5.0...minze-v1.5.1) (2023-07-25)
+
+
+### Bug Fixes
+
+* skip defining element if it's already defined ([b800af8](https://github.com/n6ai/minze/commit/b800af8b87d5617f6f4c4a5a8001e42ef0246183))
+
 ## [1.5.0](https://github.com/n6ai/minze/compare/minze-v1.4.2...minze-v1.5.0) (2023-07-23)
 
 
