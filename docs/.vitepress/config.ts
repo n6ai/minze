@@ -111,6 +111,10 @@ export default defineConfig({
             text: 'Dev Environment',
             items: [
               {
+                text: 'ESLint',
+                link: '/integrations/eslint'
+              },
+              {
                 text: 'Playwright',
                 link: '/integrations/playwright'
               },
@@ -379,6 +383,10 @@ export default defineConfig({
             {
               text: 'Dev Environment',
               items: [
+                {
+                  text: 'ESLint',
+                  link: '/integrations/eslint'
+                },
                 {
                   text: 'Playwright',
                   link: '/integrations/playwright'
