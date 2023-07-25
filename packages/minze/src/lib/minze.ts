@@ -23,7 +23,7 @@ export class Minze {
    * ```
    */
   static define(name: string, element: typeof MinzeElement) {
-    customElements.define(name, element)
+    customElements.get(name) ?? customElements.define(name, element)
   }
 
   /**
