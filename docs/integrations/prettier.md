@@ -2,7 +2,7 @@
 
 [Prettier](https://prettier.io) is an opinionated code formatter.
 
-If you used the [CLI method](/guide/installation#cli) to install Minze you can extend your environment with auto-code formatting.
+If you used the [CLI method](/guide/installation#cli) to install Minze you can extend your environment with auto-code formatting quite quickly.
 
 > The following guide is based on a fresh Minze CLI installation.
 
