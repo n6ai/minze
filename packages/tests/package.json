@@ -12,10 +12,10 @@
     "test-pw-debug": "npx playwright test --debug"
   },
   "devDependencies": {
-    "@playwright/test": "^1.36.1",
+    "@playwright/test": "^1.36.2",
     "@vitest/ui": "^0.32.4",
     "typescript": "^5.1.6",
-    "vite": "^4.4.6",
+    "vite": "^4.4.7",
     "vitest": "^0.32.4"
   }
 }
