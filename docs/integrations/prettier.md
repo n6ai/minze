@@ -36,7 +36,7 @@ $ pnpm add -D prettier
 }
 ```
 
-2. Create and populate `.prettierrc.json` and `.prettierignore` files.
+2. Create and populate `.prettierignore` and `.prettierrc.json` files.
 
 ::: code-group
 
