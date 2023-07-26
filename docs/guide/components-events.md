@@ -9,7 +9,7 @@ Events can be used to communicate between components and the outside world.
 **Structure:** The attribute name starts with an `@` sign and is directly followed by a valid [JavaScript DOM event type](https://en.wikipedia.org/wiki/DOM_event#HTML_events), the value of the attribute is the name of the method, that should be called when the event is triggered. `@click="callback"`
 
 ::: warning
-`@events` only work with methods defined on the component class.
+`@events` only work with methods defined inside the component class.
 :::
 
 **Example**
