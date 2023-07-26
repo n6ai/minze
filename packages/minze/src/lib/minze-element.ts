@@ -26,7 +26,7 @@ export type MinzeEvent = [
 export type Reactive = ReadonlyArray<MinzeProp>
 export type Attrs = ReadonlyArray<MinzeAttr>
 export type Watch = ReadonlyArray<MinzeWatcher>
-export type EventListeners = ReadonlyArray<MinzeEvent>
+export type EventListeners = Array<MinzeEvent>
 
 // aliases
 export type MinzeReactive = Reactive
@@ -303,6 +303,8 @@ export class MinzeElement extends HTMLElement {
           // patches only the difference between the new template and the current shadow dom
           deepPatch(template, this.shadowRoot)
         }
+
+        if (this.html) this.mergeEvents(this.html)
 
         this.eventListeners?.forEach(async (eventTuple) =>
           this.registerEvent(eventTuple, 'add')
@@ -665,6 +667,44 @@ export class MinzeElement extends HTMLElement {
         }
       }
     })
+  }
+
+  /**
+   * Merges any at-events from the provided template with the eventListeners array.
+   *
+   * @param template - A template function or string with html markup.
+   *
+   * @example
+   * ```
+   * this.mergeEvents(this.html)
+   * ```
+   */
+  private mergeEvents(template: (() => string) | string) {
+    const renderedTemplate =
+      typeof template === 'function' ? template() : template
+
+    const atEvents = Array.from(
+      renderedTemplate.matchAll(/@(\w+)=["']?(\w+)["']?/gi)
+    )
+
+    if (atEvents) {
+      this.eventListeners ??= []
+      const eventListenersLength = this.eventListeners.length
+      const atEventsLength = atEvents.length
+
+      // run only if atEvents aren't yet added to the eventListeners array
+      if (eventListenersLength !== eventListenersLength + atEventsLength) {
+        atEvents.forEach(async ([selector, eventName, callbackName]) => {
+          const eventTuple: MinzeEvent = [
+            `[\\${selector}]`,
+            eventName,
+            this[callbackName]
+          ]
+
+          this.eventListeners?.push(eventTuple)
+        })
+      }
+    }
   }
 
   /**

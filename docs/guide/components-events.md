@@ -2,6 +2,38 @@
 
 Events can be used to communicate between components and the outside world.
 
+## @events
+
+`@events` are a shorthand form of [Event Listeners](#event-listeners) that are directly defined inside the html template as attributes.
+
+**Structure:** The attribute name starts with an `@` sign and is directly followed by a valid [JavaScript DOM event type](https://en.wikipedia.org/wiki/DOM_event#HTML_events), the value of the attribute is the name of the method, that should be called when the event is triggered. `@click="callback"`
+
+::: warning
+`@events` only work with methods defined on the component class.
+:::
+
+**Example**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  html = () => `
+    <button @click="handleClick">
+      Button
+    </button>
+  `
+
+  handleClick = () => console.log('clicked')
+}
+
+MyElement.define()
+```
+
+```html
+<my-element></my-element>
+```
+
 ## Event Listeners
 
 An event Listener can listen for specific events and run a callback function whenever the event is triggered.
