@@ -683,9 +683,15 @@ export class MinzeElement extends HTMLElement {
     const renderedTemplate =
       typeof template === 'function' ? template() : template
 
-    const atEvents = Array.from(
-      renderedTemplate.matchAll(/@(\w+)=["']?(\w+)["']?/gi)
-    )
+    // get all @event attributes and remove duplicates
+    const atEventsRE = /@(\w+)=["']?(\w+)["']?/gi
+    const atEvents = [
+      ...new Set(
+        [...renderedTemplate.matchAll(atEventsRE)].map((m) =>
+          JSON.stringify(m.slice(0, 3))
+        )
+      )
+    ].map((e) => JSON.parse(e))
 
     if (atEvents) {
       this.eventListeners ??= []
