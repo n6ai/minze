@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/n6ai/minze/compare/minze-v1.5.1...minze-v1.6.0) (2023-07-26)
+
+
+### Features
+
+* add support for defining in-template [@events](https://github.com/events) ([#214](https://github.com/n6ai/minze/issues/214)) ([d94f545](https://github.com/n6ai/minze/commit/d94f545affe85e20910ef4909ddbafe1bf4b5dbb))
+
 ## [1.5.1](https://github.com/n6ai/minze/compare/minze-v1.5.0...minze-v1.5.1) (2023-07-25)
 
 
