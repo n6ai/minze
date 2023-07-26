@@ -24,9 +24,7 @@ class MyElement extends MinzeElement {
     </button>
   `
 
-  handleClick = (event) => {
-    console.log(event)
-  }
+  handleClick = () => console.log('clicked')
 }
 
 MyElement.define()
