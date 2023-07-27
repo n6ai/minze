@@ -11,7 +11,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "minze": "^1.6.0"
+    "minze": "^1.7.0"
   },
   "devDependencies": {
     "@minzejs/vite-plugin-minze": "^1.1.2",
