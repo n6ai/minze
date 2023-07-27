@@ -211,8 +211,8 @@ All created attribute properties can be accessed inside the component with the `
 The attribute on the component is always the source of truth and not the created attribute property. So when the attribute value changes, the property will be updated. But changing the property will **not** update the attribute.
 :::
 
-::: warning
-With the exception of `undefined`, `null`, `false` or `true`, all attribute properties will always be from type `string`, no matter the provided value type.
+::: tip
+Attributes with values from type `undefined`, `null`, `boolean`, `number` or any values that are JSON parsable are automatically converted to the right type inside the component. If the type can't be auto-inferred from the attribute value, then the value is returned as a string.
 :::
 
 ::: warning
@@ -229,25 +229,40 @@ For attribute property updates to be effective (on attribute changes), you have 
 
 - **Example:**
 
+<!-- prettier-ignore-start -->
 ```js
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  attrs = ['text', ['bg-color', '#000']]
+  attrs = [
+    'text',
+    ['bg-color', '#000'],
+    ['json-parsable', { key: 'value' }]
+  ]
 
   onReady() {
     console.log(this.text, this.bgColor)
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
+<!-- prettier-ignore-start -->
 ```html
 <!-- usage -->
 <my-element text="Hello Minze!"></my-element>
 
-<!-- bg-color attribute will be created on the element, since no attribute was provided and an initial value is defined -->
-<my-element text="Hello Minze!" bg-color="#000"></my-element>
+<!--
+  bg-color and json-parsable attributes will be created on the element,
+  since no attribute was provided and an initial value is defined
+-->
+<my-element
+  text="Hello Minze!"
+  bg-color="#000"
+  json-parsable="{&quot;key&quot;:&quot;value&quot;}"
+></my-element>
 ```
+<!-- prettier-ignore-end -->
 
 ### observedAttributes <Badge type="tip" text="^1.0.0" />
 

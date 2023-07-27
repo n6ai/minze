@@ -28,9 +28,8 @@ import { MinzeElement } from 'minze'
  * are defined dynamically, we are defining
  * their types separately in an interface.
  *
- * With the exception of undefined, null, false or true
- * all attribute properties will always be strings
- * no matter the initial value.
+ * Also see: https://minze.dev/api/minze-element#attrs
+ * for more details about attribute-type auto-conversion.
  */
 export interface MyElement {
   // reactive properties
@@ -41,6 +40,7 @@ export interface MyElement {
   // reactive attribute properties
   text: string | null
   bgColor: string
+  config: Record<string, unknown>
 }
 
 /**
@@ -62,12 +62,16 @@ export class MyElement extends MinzeElement {
    * as a mixed array of strings and tuples.
    * Otherwise, TypeScript will infer them as an array of strings and arrays.
    */
-  attrs: Attrs = ['text', ['bg-color', '#000']]
+  attrs: Attrs = [
+    'text',
+    ['bg-color', '#000'],
+    ['config', { key1: 'value', key2: 'value' }]
+  ]
 
   /**
    * Here we are defining which attributes should be observed.
    */
-  static observedAttributes = ['text', 'bg-color']
+  static observedAttributes = ['text', 'bg-color', 'config']
 
   /**
    * Watchers have to be explicitly defined as an array of tuples.

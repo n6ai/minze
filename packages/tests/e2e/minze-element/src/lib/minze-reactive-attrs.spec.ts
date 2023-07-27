@@ -27,8 +27,14 @@ test(`MinzeElement: ${element}`, async ({ page }) => {
   expect(await page.locator(`${element} .boolean`).innerText()).toBe('boolean')
   expect(await page.getAttribute(element, 'boolean')).toBe('false')
 
-  expect(await page.locator(`${element} .object`).innerText()).toBe('string')
-  expect(await page.getAttribute(element, 'object')).toBe('{}')
+  expect(await page.locator(`${element} .int`).innerText()).toBe('number')
+  expect(await page.getAttribute(element, 'int')).toBe('1')
+
+  expect(await page.locator(`${element} .float`).innerText()).toBe('number')
+  expect(await page.getAttribute(element, 'float')).toBe('1.1')
+
+  expect(await page.locator(`${element} .object`).innerText()).toBe('object')
+  expect(await page.getAttribute(element, 'object')).toBe('{"key":"value"}')
 
   await page.locator(element).evaluate((node) => {
     node.setAttribute('count', '1')

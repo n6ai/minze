@@ -167,8 +167,8 @@ All created attribute properties can be accessed inside the component with the `
 The attribute on the component is always the source of truth and not the created attribute property. So when the attribute value changes, the property will be updated. But changing the property will **not** update the attribute.
 :::
 
-::: warning
-With the exception of `undefined`, `null`, `false` or `true`, all attribute properties will always be from type `string`, no matter the provided value type.
+::: tip
+Attributes with values from type `undefined`, `null`, `boolean`, `number` or any values that are JSON parsable are automatically converted to the right type inside the component. If the type can't be auto-inferred from the attribute value, then the value is returned as a string.
 :::
 
 ::: warning
@@ -247,7 +247,7 @@ MyElement.define()
 
 ## JSON Attributes
 
-If you pass a valid JSON object in an attribute, it will be returned as a string inside the component. You can use `JSON.parse` to convert it to a JavaScript object.
+If you pass a valid JSON object in an attribute, it will be auto-converted inside the component.
 
 ::: warning
 Make sure the HTML attribute on the element is enclosed in signle quotes or the double quotes of the JSON object are properly escaped.
@@ -261,12 +261,8 @@ import { MinzeElement } from 'minze'
 class MyElement extends MinzeElement {
   attrs = ['data']
 
-  get parsedData() {
-    return this.data ? JSON.parse(this.data) : null
-  }
-
   onReady() {
-    console.log(this.parsedData) // {text: 'Hello Minze!'}
+    console.log(this.data.text) // 'Hello Minze!'
   }
 }
 

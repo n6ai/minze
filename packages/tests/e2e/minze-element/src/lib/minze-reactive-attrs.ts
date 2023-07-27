@@ -7,6 +7,8 @@ export interface MinzeReactiveAttrs {
   undefined: undefined
   null: null
   boolean: boolean
+  int: number
+  float: number
   object: Record<string, unknown>
 }
 
@@ -18,7 +20,9 @@ export class MinzeReactiveAttrs extends MinzeElement {
     ['undefined', undefined],
     ['null', null],
     ['boolean', false],
-    ['object', {}]
+    ['int', 1],
+    ['float', 1.1],
+    ['object', { key: 'value' }]
   ]
 
   static observedAttributes = ['count']
@@ -46,6 +50,14 @@ export class MinzeReactiveAttrs extends MinzeElement {
 
     <div class="boolean">
       ${typeof this.boolean}
+    </div>
+
+    <div class="int">
+      ${typeof this.int}
+    </div>
+
+    <div class="float">
+      ${typeof this.float}
     </div>
 
     <div class="object">

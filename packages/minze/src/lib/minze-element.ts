@@ -638,12 +638,27 @@ export class MinzeElement extends HTMLElement {
       get: () => {
         const value = this.getAttribute(dashName)
 
-        // convert undefined, null and booleans
-        if (value == 'undefined') return undefined
-        else if (value == 'null') return null
-        else if (value === '') return true // attributes without values
-        else if (value?.match(/^(true|false)$/)) return JSON.parse(value)
-        else return value
+        // try to auto-convert the attribute value to the proper type,
+        // otherwise return the value as a string
+        if (value === 'undefined' || value === undefined) {
+          return undefined
+        } else if (value === 'null' || value === null) {
+          return null
+        } else if (value === '') {
+          return true // return set attributes without values as true
+        } else if (value.match(/^(true|false)$/)) {
+          return JSON.parse(value)
+        } else if (value.match(/^[-+]?\d+$/)) {
+          return parseInt(value)
+        } else if (value.match(/^[+-]?\d*\.\d+$/)) {
+          return parseFloat(value)
+        } else {
+          try {
+            return JSON.parse(value)
+          } catch {
+            return value
+          }
+        }
       },
       set: (newValue) => {
         const oldValue = this[stashName]
