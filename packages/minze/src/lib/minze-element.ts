@@ -732,7 +732,7 @@ export class MinzeElement extends HTMLElement {
       elements = this.shadowRoot?.querySelectorAll(eventTarget)
     }
 
-    elements?.forEach((element) => {
+    elements?.forEach((element: Node | MinzeElement | typeof window) => {
       action === 'add'
         ? element.addEventListener(eventName, callback, true)
         : element.removeEventListener(eventName, callback, true)
