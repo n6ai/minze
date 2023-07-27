@@ -405,7 +405,6 @@ export class MinzeElement extends HTMLElement {
    *
    * @param type - The type of property that changed.
    * @param rootName - The name of the root property that changed.
-   * @param rootProp - The value of the root property that changed.
    * @param target - The target of the property that changed.
    * @param key - The name of the property that changed.
    * @param newValue - The new value of the property that changed.
@@ -413,13 +412,12 @@ export class MinzeElement extends HTMLElement {
    *
    * @example
    * ```
-   * this.reactiveChange(type, rootName, rootProp, target, prop, newValue, oldValue)
+   * this.reactiveChange(type, rootName, target, prop, newValue, oldValue)
    * ```
    */
-  private async reactiveChange<T = object>(
+  private async reactiveChange(
     type: 'complex' | 'primitive' | 'attr',
     rootName: string,
-    rootProp: T,
     target: object | typeof MinzeElement,
     key: string,
     newValue: unknown,
@@ -490,7 +488,6 @@ export class MinzeElement extends HTMLElement {
             this.reactiveChange(
               'complex',
               rootName,
-              rootProp,
               target,
               prop,
               newValue,
@@ -548,10 +545,9 @@ export class MinzeElement extends HTMLElement {
           // expose attribute
           exposeAttr && this.exposeAttr(name, newValue)
 
-          this.reactiveChange<unknown>(
+          this.reactiveChange(
             'primitive',
             rootName,
-            this[stashName],
             this,
             rootName,
             newValue,
@@ -655,10 +651,9 @@ export class MinzeElement extends HTMLElement {
         if (oldValue !== newValue) {
           this[stashName] = newValue
 
-          this.reactiveChange<undefined | null | boolean | string>(
+          this.reactiveChange(
             'attr',
             rootName,
-            this[stashName] as undefined | null | boolean | string,
             this,
             rootName,
             newValue,
