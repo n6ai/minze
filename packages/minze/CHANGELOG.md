@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.0](https://github.com/n6ai/minze/compare/minze-v1.6.0...minze-v1.7.0) (2023-07-27)
+
+
+### Features
+
+* auto-convert number and JSON-parsable attrs ([306efc7](https://github.com/n6ai/minze/commit/306efc7a0471533bf973bbcc3f4102b309e3f219))
+
+
+### Bug Fixes
+
+* de-duplicate template events ([8292ee8](https://github.com/n6ai/minze/commit/8292ee88cc91e3adc560847c2f008053674b821f))
+
 ## [1.6.0](https://github.com/n6ai/minze/compare/minze-v1.5.1...minze-v1.6.0) (2023-07-26)
 
 
