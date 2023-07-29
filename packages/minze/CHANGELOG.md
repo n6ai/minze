@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/n6ai/minze/compare/minze-v1.7.0...minze-v1.7.1) (2023-07-29)
+
+
+### Bug Fixes
+
+* layers directive for css reset, no-reset attr ([942a24e](https://github.com/n6ai/minze/commit/942a24e456bbfed3a1952359ed83de7515f792eb))
+
 ## [1.7.0](https://github.com/n6ai/minze/compare/minze-v1.6.0...minze-v1.7.0) (2023-07-27)
 
 
