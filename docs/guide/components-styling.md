@@ -46,6 +46,8 @@ MyElement.define()
 
 Global CSS Resets don't work with web components, out of the box, that's why Minze uses an internal CSS Reset Stylesheet optimized for web components. You can disable it in the component options, if required.
 
+Additionally you can add the `no-css-reset` attribute to any element to exclude it from the CSS Reset.
+
 **Example**
 
 ```js
@@ -56,7 +58,7 @@ class MyElement extends MinzeElement {
     cssReset: false // enabled by default
   }
 
-  html = () => `<h1>Hello Minze!</h1>`
+  html = () => `<h1 no-css-reset>Hello Minze!</h1>`
 }
 
 MyElement.define()
