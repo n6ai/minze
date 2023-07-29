@@ -119,7 +119,7 @@ If you have published your package to npm, you can also load it via a CDN link f
 <html>
   <head></head>
   <body>
-     <!-- custom elements -->
+    <!-- custom elements -->
     <my-element></my-element>
     <my-element-two></my-element-two>
 
@@ -136,7 +136,7 @@ If you have published your package to npm, you can also load it via a CDN link f
 <html>
   <head></head>
   <body>
-     <!-- custom elements -->
+    <!-- custom elements -->
     <my-element></my-element>
     <my-element-two></my-element-two>
 
