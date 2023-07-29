@@ -533,7 +533,7 @@ export class MinzeElement extends HTMLElement {
     this[stashName] = prop
 
     // expose attribute
-    exposeAttr && this.exposeAttr(name, prop)
+    if (exposeAttr) this.exposeAttr(name, prop)
 
     Object.defineProperty(this, name, {
       get: () => this[stashName],
@@ -544,7 +544,7 @@ export class MinzeElement extends HTMLElement {
           this[stashName] = newValue
 
           // expose attribute
-          exposeAttr && this.exposeAttr(name, newValue)
+          if (exposeAttr) this.exposeAttr(name, newValue)
 
           this.reactiveChange(
             'primitive',
