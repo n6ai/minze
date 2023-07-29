@@ -36,6 +36,10 @@ export default defineConfig({
 
   cleanUrls: true,
 
+  sitemap: {
+    hostname: 'https://minze.dev'
+  },
+
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=1' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png?v=1' }],

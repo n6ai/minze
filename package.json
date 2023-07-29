@@ -17,7 +17,7 @@
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "docs": "vitepress dev docs",
-    "docs-build": "(vitepress build docs) && (npx -y tsx scripts/sitemap.ts)",
+    "docs-build": "vitepress build docs",
     "docs-serve": "vitepress serve docs",
     "format": "prettier --write --cache .",
     "lint": "eslint --cache **/*.{ts,js}",
