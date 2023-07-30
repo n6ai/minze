@@ -92,7 +92,14 @@ export class Minze {
    * ```
    */
   static dispatch(eventName: string, detail?: unknown) {
-    dispatchEvent(new CustomEvent(eventName, { detail }))
+    dispatchEvent(
+      new CustomEvent(eventName, {
+        detail,
+        bubbles: true,
+        composed: true,
+        cancelable: true
+      })
+    )
   }
 
   /**

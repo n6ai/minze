@@ -768,7 +768,14 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   dispatch(eventName: string, detail?: unknown) {
-    this.dispatchEvent(new CustomEvent(eventName, { detail }))
+    this.dispatchEvent(
+      new CustomEvent(eventName, {
+        detail,
+        bubbles: true,
+        composed: true,
+        cancelable: true
+      })
+    )
   }
 
   /**
