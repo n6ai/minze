@@ -1,6 +1,6 @@
 {
   "name": "minze",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "license": "MIT",
   "author": "Sergej Samsonenko",
   "description": "Dead-simple JS framework for native web components.",
