@@ -86,7 +86,7 @@ MyElement.define()
 
 ## Dispatching
 
-Dispatch a custom event from a component and broadcasting it through the document up the component tree. This event can be either listened to by other components or the outside world.
+Dispatch a custom event from a component and broadcast it through the document up the component tree. This event can be either listened to by other components or the outside world.
 
 ::: tip
 It's a good idea to prefix your custom event names to avoid collisions with other libraries.
@@ -98,6 +98,14 @@ It's a good idea to prefix your custom event names to avoid collisions with othe
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
+  html = () => `
+    <button @click="handleClick">
+      Button
+    </button>
+  `
+
+  handleClick = () => this.dispatch('minze:click')
+
   onReady() {
     const optionalDetail = { msg: 'Hello Minze!' }
     this.dispatch('minze:ready', optionalDetail)
