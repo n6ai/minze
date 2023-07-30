@@ -107,6 +107,7 @@ export class MinzeElement extends HTMLElement {
    *   options = {
    *     cssReset: true,
    *     exposeAttrs: {
+   *       exportparts: false
    *       rendered: false
    *     }
    *   }
@@ -116,6 +117,7 @@ export class MinzeElement extends HTMLElement {
   options?: {
     cssReset?: boolean
     exposeAttrs?: {
+      exportparts?: boolean
       rendered?: boolean
     }
   }
@@ -326,6 +328,28 @@ export class MinzeElement extends HTMLElement {
    */
   rerender() {
     this.render(true)
+  }
+
+  /**
+   * Automatically exports all parts present in the tempalte.
+   *
+   * @param template - A template function or string with html markup.
+   *
+   * @example
+   * ```
+   * this.exportParts(this.html)
+   * ```
+   */
+  private exportParts(template: (() => string) | string) {
+    template = typeof template === 'function' ? template() : template
+
+    // get all parts inside the template
+    const partsRE = /part=["']?([\w\-_]+)["']?/gi
+    const parts = [
+      ...new Set([...template.matchAll(partsRE)].map((m) => m.at(1)))
+    ]
+
+    this.setAttribute('exportparts', parts.join(', '))
   }
 
   /**
@@ -792,6 +816,10 @@ export class MinzeElement extends HTMLElement {
   private async connectedCallback() {
     this.onStart?.()
 
+    if (this.options?.exposeAttrs?.exportparts && this.html) {
+      this.exportParts(this.html) // auto-export all parts
+    }
+
     this.reactive?.forEach(async (prop) => this.registerProp(prop))
     this.attrs?.forEach(async (attr) => this.registerAttr(attr))
 
@@ -800,7 +828,7 @@ export class MinzeElement extends HTMLElement {
     await this.render()
 
     // sets rendered attribute on the component
-    this.options?.exposeAttrs?.rendered && this.setAttribute('rendered', '')
+    if (this.options?.exposeAttrs?.rendered) this.setAttribute('rendered', '')
 
     this.onReady?.()
   }

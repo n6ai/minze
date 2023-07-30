@@ -9,6 +9,7 @@ class MyElement extends MinzeElement {
   options = {
     cssReset: true,
     exposeAttrs: {
+      exportparts: true,
       rendered: true
     }
   }

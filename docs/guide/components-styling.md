@@ -316,7 +316,11 @@ MyElement.define()
 
 ### Exportparts
 
-The `exportparts` attribute allows you to select and style elements existing in nested components, by exporting their part names. This can be done by creating an [attribute property](/guide/components-data.html#attribute-properties-attributes) inside the component.
+The `exportparts` attribute allows you to select and style elements existing in nested components, by exporting their part names.
+
+This can be done by creating an [attribute property](/guide/components-data.html#attribute-properties-attributes) inside the component. Alternatively you can set the `exportparts` option to `true` to automatically export all parts present in the current component.
+
+See [mdn docs](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/exportparts) for more information.
 
 ::: warning
 The value of the `exportparts` attribute should be a comma-separated list of part names present in the component and which should be made available via a DOM outside of the current structure.
@@ -324,7 +328,9 @@ The value of the `exportparts` attribute should be a comma-separated list of par
 
 **Example**
 
-```js
+::: code-group
+
+```js [manual]
 import { Minze, MinzeElement } from 'minze'
 
 // nested component
@@ -348,6 +354,33 @@ class MyOuterElement extends MinzeElement {
 
 Minze.defineAll([MyElement, MyOuterElement])
 ```
+
+```js [auto]
+import { Minze, MinzeElement } from 'minze'
+
+// nested component
+class MyElement extends MinzeElement {
+  options = { exposeAttrs: { exportparts: true } }
+
+  html = () => `
+    <div>
+      <span part="my-part">Hello</span>
+      <span part="my-part-two">Minze!</span>
+    </div>
+  `
+}
+
+// outer component
+class MyOuterElement extends MinzeElement {
+  html = () => `
+    <my-element></my-element>
+  `
+}
+
+Minze.defineAll([MyElement, MyOuterElement])
+```
+
+:::
 
 ```html
 <my-outer-element></my-outer-element>
