@@ -811,10 +811,55 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Adds or removes a mutation observer.
+   *
+   * @param action - The action to be performed.
+   * @param key - The name for the oberver.
+   *
+   * @example
+   * ```
+   * this.registerMutationObserver('add', 'defaultMO')
+   * ```
+   */
+  registerMutationObserver(
+    action: 'add' | 'remove',
+    key: string = '$defaultMO'
+  ) {
+    if (action === 'add' && this.shadowRoot) {
+      this[key] = new MutationObserver((mutationList) => {
+        mutationList.forEach((mutation) => {
+          // auto-export all dynamically defined parts and exportparts
+          const conditions = [
+            this.options?.exposeAttrs?.exportparts,
+            this.cachedTemplate !== this.shadowRoot?.innerHTML,
+            mutation.type === 'attributes',
+            mutation.attributeName === 'exportparts'
+          ]
+
+          if (conditions.every((c) => c === true)) {
+            this.exportParts(this.shadowRoot?.innerHTML ?? '')
+          }
+        })
+      })
+
+      this[key].observe(this.shadowRoot, {
+        attributes: true,
+        childList: true,
+        subtree: true
+      })
+    } else if (action === 'remove' && this[key]) {
+      this[key]?.disconnect()
+      delete this[key]
+    }
+  }
+
+  /**
    * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
    */
   private async connectedCallback() {
     this.onStart?.()
+
+    this.registerMutationObserver('add')
 
     // auto-export all statically defined parts and exportparts
     if (this.options?.exposeAttrs?.exportparts && this.html) {
@@ -828,15 +873,6 @@ export class MinzeElement extends HTMLElement {
 
     await this.render()
 
-    // auto-export all dynamically defined parts and exportparts
-    if (
-      this.options?.exposeAttrs?.exportparts &&
-      this.cachedTemplate !== this.shadowRoot?.innerHTML &&
-      this.shadowRoot
-    ) {
-      this.exportParts(this.shadowRoot?.innerHTML)
-    }
-
     // sets rendered attribute on the component
     if (this.options?.exposeAttrs?.rendered) this.setAttribute('rendered', '')
 
@@ -848,6 +884,7 @@ export class MinzeElement extends HTMLElement {
    */
   private async disconnectedCallback() {
     this.cachedTemplate = null
+    this.registerMutationObserver('remove')
 
     this.eventListeners?.forEach(async (eventTuple) =>
       this.registerEvent(eventTuple, 'remove')
