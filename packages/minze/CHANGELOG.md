@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/n6ai/minze/compare/minze-v1.7.3...minze-v1.8.0) (2023-07-30)
+
+
+### Features
+
+* automatically exportparts via option toggle ([54fc8ae](https://github.com/n6ai/minze/commit/54fc8aead61941b7094f0a325ea40ba571854231))
+
 ## [1.7.3](https://github.com/n6ai/minze/compare/minze-v1.7.2...minze-v1.7.3) (2023-07-30)
 
 
