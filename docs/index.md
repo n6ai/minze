@@ -27,7 +27,7 @@ features:
     linkText: Quick Start
   - icon: ⚡
     title: Fast
-    details: Tiny footprint ~2KB (minified and compressed).
+    details: Tiny footprint ~3KB (minified and compressed).
     link: https://www.cloudflare.com/learning/performance/why-site-speed-matters
     linkText: Why site speed matters
   - icon: 🚀
