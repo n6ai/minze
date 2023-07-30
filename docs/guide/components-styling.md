@@ -54,10 +54,15 @@ Additionally you can add the `no-css-reset` attribute to any element to exclude 
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
+  // disable reset styles in this component (via options)
   options = {
     cssReset: false // enabled by default
   }
 
+  // disable reset styles of the parent component (via attrs)
+  attrs = [['no-css-reset', '']]
+
+  // disable reset styles for a specific element in the template (via attribute)
   html = () => `<h1 no-css-reset>Hello Minze!</h1>`
 }
 
