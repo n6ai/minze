@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.2](https://github.com/n6ai/minze/compare/minze-v1.8.1...minze-v1.8.2) (2023-07-30)
+
+
+### Bug Fixes
+
+* extract all parts, even initially hidden ones ([ab2ddd2](https://github.com/n6ai/minze/commit/ab2ddd20ec61d2ae18957a4cbec0b9caa58148a2))
+
 ## [1.8.1](https://github.com/n6ai/minze/compare/minze-v1.8.0...minze-v1.8.1) (2023-07-30)
 
 
