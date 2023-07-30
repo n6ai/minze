@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.2](https://github.com/n6ai/minze/compare/minze-v1.7.1...minze-v1.7.2) (2023-07-30)
+
+
+### Bug Fixes
+
+* **patching:** don't remove dynamically set attrs ([25256e3](https://github.com/n6ai/minze/commit/25256e3ed5c5850fa1dba56a2be9317b7ade0f77))
+* use previousCachedTemplate when patching ([17bc37f](https://github.com/n6ai/minze/commit/17bc37f9938de34c698604471a151732eb47ef42))
+
 ## [1.7.1](https://github.com/n6ai/minze/compare/minze-v1.7.0...minze-v1.7.1) (2023-07-29)
 
 
