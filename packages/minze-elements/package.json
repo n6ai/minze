@@ -32,7 +32,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "minze": "^1.8.0"
+    "minze": "^1.8.1"
   },
   "devDependencies": {
     "@minzejs/vite-plugin-minze": "^1.1.2",
