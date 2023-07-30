@@ -341,7 +341,7 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   private exportParts(template: (() => string) | string) {
-    template = typeof template === 'function' ? template() : template
+    template = typeof template === 'function' ? template.toString() : template
 
     // get all parts inside the template
     const partsRE = /(?:part|exportparts)=["']?([\w\-_,\s]+)["']?/gi
