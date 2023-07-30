@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.3](https://github.com/n6ai/minze/compare/minze-v1.7.2...minze-v1.7.3) (2023-07-30)
+
+
+### Bug Fixes
+
+* dispatch events through shadow dom boundary ([af06d20](https://github.com/n6ai/minze/commit/af06d205c5499d6375dd551743939d8d7afd5fe7))
+
 ## [1.7.2](https://github.com/n6ai/minze/compare/minze-v1.7.1...minze-v1.7.2) (2023-07-30)
 
 
