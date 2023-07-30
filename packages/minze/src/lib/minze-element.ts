@@ -302,7 +302,7 @@ export class MinzeElement extends HTMLElement {
           this.shadowRoot.innerHTML = template
         } else {
           // patches only the difference between the new template and the current shadow dom
-          deepPatch(template, this.cachedTemplate, this.shadowRoot)
+          deepPatch(template, previousCachedTemplate, this.shadowRoot)
         }
 
         if (this.html) this.mergeEvents(this.html)
