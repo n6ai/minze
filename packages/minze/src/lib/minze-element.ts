@@ -331,7 +331,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Automatically exports all parts present in the tempalte.
+   * Automatically exports all parts present in the template.
    *
    * @param template - A template function or string with html markup.
    *
