@@ -344,7 +344,7 @@ export class MinzeElement extends HTMLElement {
     template = typeof template === 'function' ? template() : template
 
     // get all parts inside the template
-    const partsRE = /part=["']?([\w\-_]+)["']?/gi
+    const partsRE = /(?:part|exportparts)=["']?([\w\-_,\s]+)["']?/gi
     const parts = [
       ...new Set([...template.matchAll(partsRE)].map((m) => m.at(1)))
     ]
@@ -816,8 +816,9 @@ export class MinzeElement extends HTMLElement {
   private async connectedCallback() {
     this.onStart?.()
 
+    // auto-export all statically defined parts and exportparts
     if (this.options?.exposeAttrs?.exportparts && this.html) {
-      this.exportParts(this.html) // auto-export all parts
+      this.exportParts(this.html)
     }
 
     this.reactive?.forEach(async (prop) => this.registerProp(prop))
@@ -826,6 +827,15 @@ export class MinzeElement extends HTMLElement {
     this.onReactive?.()
 
     await this.render()
+
+    // auto-export all dynamically defined parts and exportparts
+    if (
+      this.options?.exposeAttrs?.exportparts &&
+      this.cachedTemplate !== this.shadowRoot?.innerHTML &&
+      this.shadowRoot
+    ) {
+      this.exportParts(this.shadowRoot?.innerHTML)
+    }
 
     // sets rendered attribute on the component
     if (this.options?.exposeAttrs?.rendered) this.setAttribute('rendered', '')
