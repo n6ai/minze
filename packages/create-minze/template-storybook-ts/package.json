@@ -13,7 +13,7 @@
     "build": "(storybook build --docs -o storybook) && (vite build)"
   },
   "dependencies": {
-    "minze": "^1.7.1"
+    "minze": "^1.7.2"
   },
   "devDependencies": {
     "@minzejs/vite-plugin-minze": "^1.1.2",
@@ -28,6 +28,6 @@
     "storybook": "^7.1.1",
     "typescript": "^5.1.6",
     "vite": "^4.4.7",
-    "vite-plugin-dts": "^3.3.1"
+    "vite-plugin-dts": "^3.4.0"
   }
 }
