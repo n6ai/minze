@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/n6ai/minze/compare/minze-v1.8.0...minze-v1.8.1) (2023-07-30)
+
+
+### Bug Fixes
+
+* auto-export dynamically generated exportparts ([476bc45](https://github.com/n6ai/minze/commit/476bc457c4ce41d708861e14d40f24fa8b395035))
+
 ## [1.8.0](https://github.com/n6ai/minze/compare/minze-v1.7.3...minze-v1.8.0) (2023-07-30)
 
 
