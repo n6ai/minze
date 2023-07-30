@@ -6,7 +6,9 @@ Events can be used to communicate between components and the outside world.
 
 `@events` are a shorthand form of [Event Listeners](#event-listeners) that are directly defined inside the html template as attributes.
 
-**Structure:** The attribute name starts with an `@` sign and is directly followed by a valid [JavaScript DOM event type](https://en.wikipedia.org/wiki/DOM_event#HTML_events), the value of the attribute is the name of the method, that should be called when the event is triggered. `@click="callback"`
+**Structure:** The attribute name starts with an `@` sign and is directly followed by a valid [JavaScript DOM event type](https://en.wikipedia.org/wiki/DOM_event#HTML_events) or a `CustomEvent` name, the value of the attribute is the name of the method, that should be called when the event is triggered.
+
+**Example:** `@click="callback"` `@custom-event-name="callback"`
 
 ::: warning
 `@events` only work with methods defined inside the component class.
