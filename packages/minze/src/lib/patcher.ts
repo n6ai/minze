@@ -2,8 +2,9 @@
  * Deeply patches the shadow root DOM.
  * Tries to gracefully replace, before hard replacing.
  *
- * @param template - The new template.
- * @param shadowRoot - The old shadow root.
+ * @param newTemplate - The new template.
+ * @param oldTemplate - The old template.
+ * @param shadowRoot - The current shadow root.
  *
  * @example
  * ```
@@ -11,36 +12,38 @@
  * ```
  */
 export function deepPatch(
-  template: (() => string) | string,
+  newTemplate: (() => string) | string,
+  oldTemplate: (() => string) | string,
   shadowRoot: ShadowRoot
 ) {
-  const renderedTemplate =
-    typeof template === 'function' ? template() : template
+  const render = (template: (() => string) | string) => {
+    template = typeof template === 'function' ? template() : template
+    const renderedTemplate = document.createElement('template')
+    renderedTemplate.innerHTML = template
+    return renderedTemplate
+  }
 
-  const newTemplate = document.createElement('template')
-  newTemplate.innerHTML = renderedTemplate
-
-  deepPatchText(newTemplate, shadowRoot)
-  deepPatchElement(newTemplate, shadowRoot)
+  deepPatchText(render(newTemplate), shadowRoot)
+  deepPatchElement(render(newTemplate), render(oldTemplate), shadowRoot)
 }
 
 /**
  * Deeply patches text nodes.
  *
- * If a new template/node has a text node that is not equal to the old template/node,
- * the old text node content is replaced with the new text node content.
+ * If a new template/node has a text node that is not equal to the current template/node,
+ * the current text node content is replaced with the new text node content.
  *
  * @param newTemplate - The new template.
- * @param oldTemplate - The old template.
+ * @param currentTemplate - The current shadow root or a Node of the shadow root.
  *
  * @example
  * ```
- * deepPatchText(newTemplate, oldTemplate)
+ * deepPatchText(newTemplate, currentTemplate)
  * ```
  */
 function deepPatchText(
   newTemplate: HTMLTemplateElement | Node,
-  oldTemplate: ShadowRoot | Node
+  currentTemplate: ShadowRoot | Node
 ) {
   const isTemplateEl = newTemplate instanceof HTMLTemplateElement
   const newTemplateChildNodes = isTemplateEl
@@ -48,24 +51,24 @@ function deepPatchText(
     : newTemplate.childNodes
 
   // if the amount of children doesn't match, skip graceful patching
-  if (newTemplateChildNodes.length !== oldTemplate.childNodes.length) {
-    oldTemplate.textContent = newTemplate.textContent
+  if (newTemplateChildNodes.length !== currentTemplate.childNodes.length) {
+    currentTemplate.textContent = newTemplate.textContent
     return
   }
 
   Array.from(newTemplateChildNodes).forEach((node, index) => {
     const newNode = node
-    const oldNode = oldTemplate.childNodes[index]
-    const isEqual = newNode.isEqualNode(oldNode)
+    const currentNode = currentTemplate.childNodes[index]
+    const isEqual = newNode.isEqualNode(currentNode)
 
     if (!isEqual) {
       if (
-        oldNode.nodeType === Node.TEXT_NODE ||
-        oldNode.nodeType === Node.COMMENT_NODE
+        currentNode.nodeType === Node.TEXT_NODE ||
+        currentNode.nodeType === Node.COMMENT_NODE
       ) {
-        oldNode.textContent = newNode.textContent
-      } else if (oldNode.nodeType === Node.ELEMENT_NODE) {
-        deepPatchText(newNode, oldNode)
+        currentNode.textContent = newNode.textContent
+      } else if (currentNode.nodeType === Node.ELEMENT_NODE) {
+        deepPatchText(newNode, currentNode)
       }
     }
   })
@@ -79,53 +82,60 @@ function deepPatchText(
  *
  * @param newTemplate - The new template.
  * @param oldTemplate - The old template.
+ * @param currentTemplate - The current shadow root or a Node of the shadow root.
  *
  * @example
  * ```
- * deepPatchElement(newTemplate, oldTemplate)
+ * deepPatchElement(newTemplate, oldTemplate, currentTemplate)
  * ```
  */
 function deepPatchElement(
   newTemplate: HTMLTemplateElement | Element,
-  oldTemplate: ShadowRoot | Element
+  oldTemplate: HTMLTemplateElement | Element,
+  currentTemplate: ShadowRoot | Element
 ) {
-  const isTemplateEl = newTemplate instanceof HTMLTemplateElement
-  const newTemplateChildren = isTemplateEl
-    ? newTemplate.content.children
-    : newTemplate.children
+  const children = (template: HTMLTemplateElement | Element) => {
+    return template instanceof HTMLTemplateElement
+      ? template.content.children
+      : template.children
+  }
+
+  const newTemplateChildren = children(newTemplate)
+  const oldTemplateChildren = children(oldTemplate)
 
   // if the amount of children doesn't match, skip graceful patching
-  if (newTemplateChildren.length !== oldTemplate.children.length) {
-    oldTemplate.innerHTML = newTemplate.innerHTML
+  if (newTemplateChildren.length !== currentTemplate.children.length) {
+    currentTemplate.innerHTML = newTemplate.innerHTML
     return
   }
 
   Array.from(newTemplateChildren).some((element, index) => {
     const newEl = element
-    const oldEl = oldTemplate.children[index]
-    const isEqual = newEl.isEqualNode(oldEl)
+    const oldEl = oldTemplateChildren[index]
+    const currentEl = currentTemplate.children[index]
+    const isEqual = newEl.isEqualNode(currentEl)
 
     if (!isEqual) {
-      // if the new element and the old element aren't from the same type,
-      // replace the old element with the new one and stop patching
-      if (newEl.nodeName !== oldEl.nodeName) {
-        oldEl.replaceWith(newEl)
+      // if the new element and the current element aren't from the same type,
+      // replace the current element with the new one and stop patching
+      if (newEl.nodeName !== currentEl.nodeName) {
+        currentEl.replaceWith(newEl)
         return
       }
 
       Array.from(newEl.attributes).forEach((attr) => {
-        if (attr.value !== oldEl.getAttribute(attr.name)) {
-          oldEl.setAttribute(attr.name, attr.value)
+        if (attr.value !== currentEl.getAttribute(attr.name)) {
+          currentEl.setAttribute(attr.name, attr.value)
         }
       })
 
-      Array.from(oldEl.attributes).forEach((attr) => {
-        if (!newEl.hasAttribute(attr.name)) {
-          oldEl.removeAttribute(attr.name)
+      Array.from(currentEl.attributes).forEach((attr) => {
+        if (!newEl.hasAttribute(attr.name) && oldEl.hasAttribute(attr.name)) {
+          currentEl.removeAttribute(attr.name)
         }
       })
 
-      deepPatchElement(newEl, oldEl)
+      deepPatchElement(newEl, oldEl, currentEl)
     }
   })
 }

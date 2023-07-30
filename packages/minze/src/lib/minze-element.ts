@@ -302,7 +302,7 @@ export class MinzeElement extends HTMLElement {
           this.shadowRoot.innerHTML = template
         } else {
           // patches only the difference between the new template and the current shadow dom
-          deepPatch(template, this.shadowRoot)
+          deepPatch(template, this.cachedTemplate, this.shadowRoot)
         }
 
         if (this.html) this.mergeEvents(this.html)
@@ -691,14 +691,13 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   private mergeEvents(template: (() => string) | string) {
-    const renderedTemplate =
-      typeof template === 'function' ? template() : template
+    template = typeof template === 'function' ? template() : template
 
     // get all @event attributes and remove duplicates
     const atEventsRE = /@(\w+)=["']?(\w+)["']?/gi
     const atEvents = [
       ...new Set(
-        [...renderedTemplate.matchAll(atEventsRE)].map((m) =>
+        [...template.matchAll(atEventsRE)].map((m) =>
           JSON.stringify(m.slice(0, 3))
         )
       )
