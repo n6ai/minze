@@ -1,5 +1,3 @@
-import { MinzeElement } from './minze-element'
-
 /**
  * Creates a symbol that makes it possible to check
  * if an object is a proxy.
@@ -53,7 +51,7 @@ export function dashToCamel(value: string) {
  * ```
  */
 export function createObserver(
-  element: Node | ShadowRoot | MinzeElement,
+  element: Node | ShadowRoot,
   callback: MutationCallback,
   options: MutationObserverInit = {
     attributes: true,
@@ -61,9 +59,6 @@ export function createObserver(
     subtree: true
   }
 ) {
-  if (element instanceof MinzeElement && element.shadowRoot)
-    element = element.shadowRoot
-
   const observer = new MutationObserver(callback)
   observer.observe(element, options)
 

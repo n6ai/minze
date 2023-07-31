@@ -834,7 +834,7 @@ export class MinzeElement extends HTMLElement {
     const add = action === 'add' && !this[key]
     const remove = action === 'remove' && this[key]
 
-    if (add) {
+    if (add && this.shadowRoot) {
       const callback: MutationCallback = (mutations) => {
         if (mutations && this.shadowRoot) {
           this.exportParts(this.shadowRoot.innerHTML)
@@ -843,7 +843,7 @@ export class MinzeElement extends HTMLElement {
 
       const options = { subtree: true, attributeFilter: ['exportparts'] }
 
-      this[key] = createObserver(this, callback, options)
+      this[key] = createObserver(this.shadowRoot, callback, options)
     } else if (remove) {
       this[key].disconnect()
       delete this[key]
