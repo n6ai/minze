@@ -570,8 +570,7 @@ export class MinzeElement extends HTMLElement {
     exposeAttr?: boolean
   ) {
     const rootName = name
-    const stashPrefix = '$minze_stash_prop_'
-    const stashName = `${stashPrefix}${name}`
+    const stashName = `_$reactive-primitive-${name}`
     this[stashName] = prop
 
     // expose attribute
@@ -662,8 +661,7 @@ export class MinzeElement extends HTMLElement {
       return
     }
 
-    const stashPrefix = '$minze_stash_attr_'
-    const stashName = `${stashPrefix}${camelName}`
+    const stashName = `_$reactive-attr-${camelName}`
     this[stashName] = rootProp
 
     // set an attribute on the element if no attribute exists
