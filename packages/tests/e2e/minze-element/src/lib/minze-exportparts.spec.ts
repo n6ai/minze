@@ -18,6 +18,6 @@ test(`MinzeElement: ${element}`, async ({ page }) => {
 
   await expect(page.locator(element)).toHaveAttribute(
     'exportparts',
-    'button, button--primmary, another-part'
+    'button, button--primary, another-part'
   )
 })
