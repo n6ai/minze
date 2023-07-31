@@ -811,7 +811,9 @@ export class MinzeElement extends HTMLElement {
     const partsRE = /(?:part|exportparts)=["']?([\w\-_,\s]+)["']?/gi
     const parts = [
       ...new Set(
-        [...template.matchAll(partsRE)].flatMap((m) => m.at(1)?.split(','))
+        [...template.matchAll(partsRE)].flatMap((m) => {
+          return m.at(1)?.replace(/,?\s+/g, ',').split(',')
+        })
       )
     ]
 
