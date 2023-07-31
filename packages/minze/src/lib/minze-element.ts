@@ -1,5 +1,11 @@
 import { deepPatch } from './patcher'
-import { isProxy, camelToDash, dashToCamel, warn } from './utils'
+import {
+  isProxy,
+  camelToDash,
+  dashToCamel,
+  createObserver,
+  warn
+} from './utils'
 
 export type MinzeProp =
   | string
@@ -328,28 +334,6 @@ export class MinzeElement extends HTMLElement {
    */
   rerender() {
     this.render(true)
-  }
-
-  /**
-   * Automatically exports all parts present in the template.
-   *
-   * @param template - A template function or string with html markup.
-   *
-   * @example
-   * ```
-   * this.exportParts(this.html)
-   * ```
-   */
-  private exportParts(template: (() => string) | string) {
-    template = typeof template === 'function' ? template.toString() : template
-
-    // get all parts inside the template
-    const partsRE = /(?:part|exportparts)=["']?([\w\-_,\s]+)["']?/gi
-    const parts = [
-      ...new Set([...template.matchAll(partsRE)].map((m) => m.at(1)))
-    ]
-
-    this.setAttribute('exportparts', parts.join(', '))
   }
 
   /**
@@ -811,44 +795,55 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Adds or removes a mutation observer.
+   * Automatically exports all parts and exportparts present in the template.
+   *
+   * @param template - A template function or string with html markup.
+   *
+   * @example
+   * ```
+   * this.exportParts(this.html)
+   * ```
+   */
+  private exportParts(template: (() => string) | string) {
+    template = typeof template === 'function' ? template() : template
+
+    // get all parts inside the template
+    const partsRE = /(?:part|exportparts)=["']?([\w\-_,\s]+)["']?/gi
+    const parts = [
+      ...new Set([...template.matchAll(partsRE)].map((m) => m.at(1)))
+    ]
+
+    this.setAttribute('exportparts', parts.join(', '))
+  }
+
+  /**
+   * Adds or removes exportparts attribute observer.
    *
    * @param action - The action to be performed.
    * @param key - The name for the oberver.
    *
    * @example
    * ```
-   * this.registerMutationObserver('add', 'defaultMO')
+   * this.registerExportpartsObserver('add')
    * ```
    */
-  registerMutationObserver(
-    action: 'add' | 'remove',
-    key: string = '$defaultMO'
-  ) {
-    if (action === 'add' && this.shadowRoot) {
-      this[key] = new MutationObserver((mutationList) => {
-        mutationList.forEach((mutation) => {
-          // auto-export all dynamically defined parts and exportparts
-          const conditions = [
-            this.options?.exposeAttrs?.exportparts,
-            this.cachedTemplate !== this.shadowRoot?.innerHTML,
-            mutation.type === 'attributes',
-            mutation.attributeName === 'exportparts'
-          ]
+  private registerExportpartsObserver(action: 'add' | 'remove') {
+    const key = '$exportpartsObserver'
+    const add = action === 'add' && !this[key]
+    const remove = action === 'remove' && this[key]
 
-          if (conditions.every((c) => c === true)) {
-            this.exportParts(this.shadowRoot?.innerHTML ?? '')
-          }
-        })
-      })
+    if (add) {
+      const callback: MutationCallback = (mutations) => {
+        if (mutations && this.shadowRoot) {
+          this.exportParts(this.shadowRoot.innerHTML)
+        }
+      }
 
-      this[key].observe(this.shadowRoot, {
-        attributes: true,
-        childList: true,
-        subtree: true
-      })
-    } else if (action === 'remove' && this[key]) {
-      this[key]?.disconnect()
+      const options = { subtree: true, attributeFilter: ['exportparts'] }
+
+      this[key] = createObserver(this, callback, options)
+    } else if (remove) {
+      this[key].disconnect()
       delete this[key]
     }
   }
@@ -859,11 +854,9 @@ export class MinzeElement extends HTMLElement {
   private async connectedCallback() {
     this.onStart?.()
 
-    this.registerMutationObserver('add')
-
-    // auto-export all statically defined parts and exportparts
-    if (this.options?.exposeAttrs?.exportparts && this.html) {
-      this.exportParts(this.html)
+    if (this.options?.exposeAttrs?.exportparts) {
+      if (this.html) this.exportParts(this.html) // auto-export all static parts and exportparts
+      this.registerExportpartsObserver('add') // observe dynamic exportparts
     }
 
     this.reactive?.forEach(async (prop) => this.registerProp(prop))
@@ -884,7 +877,10 @@ export class MinzeElement extends HTMLElement {
    */
   private async disconnectedCallback() {
     this.cachedTemplate = null
-    this.registerMutationObserver('remove')
+
+    if (this.options?.exposeAttrs?.exportparts) {
+      this.registerExportpartsObserver('remove')
+    }
 
     this.eventListeners?.forEach(async (eventTuple) =>
       this.registerEvent(eventTuple, 'remove')
