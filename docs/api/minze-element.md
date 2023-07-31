@@ -4,8 +4,8 @@ Base class which can be used to extend from to create custom web components.
 
 ## READ-ONLY
 
-::: warning
-Read-only Properties/Getters/Methods are present on every single component from the start, ready for usage, but shouldn't be altered.
+::: tip
+Read-only Properties/Getters/Methods are present on every component class extending MinzeElement.
 :::
 
 ### version <Badge type="tip" text="^1.2.0" />
@@ -56,7 +56,7 @@ The class name of the component.
 
 ::: code-group
 
-```js [outside]
+```js [class]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
@@ -64,7 +64,7 @@ class MyElement extends MinzeElement {}
 console.log(MyElement.name) // MyElement
 ```
 
-```js [inside]
+```js [instance]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
@@ -88,7 +88,7 @@ The class name of the component in dash-case.
 
 ::: code-group
 
-```js [outside]
+```js [class]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
@@ -96,7 +96,7 @@ class MyElement extends MinzeElement {}
 console.log(MyElement.dashName) // my-element
 ```
 
-```js [inside]
+```js [intance]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
