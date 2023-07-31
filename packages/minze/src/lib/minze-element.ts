@@ -133,11 +133,12 @@ export class MinzeElement extends HTMLElement {
   /**
    * Defines options for the web component.
    *
-   * @example
+   * @default
    * ```
    * MyElement extends MinzeElement {
    *   options = {
    *     cssReset: true,
+   *     debug: false,
    *     exposeAttrs: {
    *       exportparts: false
    *       rendered: false
@@ -148,6 +149,7 @@ export class MinzeElement extends HTMLElement {
    */
   options?: {
     cssReset?: boolean
+    debug?: boolean
     exposeAttrs?: {
       exportparts?: boolean
       rendered?: boolean
