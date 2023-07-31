@@ -817,7 +817,7 @@ export class MinzeElement extends HTMLElement {
       )
     ]
 
-    this.setAttribute('exportparts', parts.join(', '))
+    if (parts.length) this.setAttribute('exportparts', parts.join(', '))
   }
 
   /**
