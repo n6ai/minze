@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "test": "npm run test-v && npm run test-pw",
+    "test": "npm run test-vi && npm run test-pw",
     "test-vi": "vitest --run",
     "test-vi-ui": "vitest --ui",
     "test-pw": "npx playwright test",
