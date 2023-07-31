@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "test": "npm run test-v && npm run test-pw",
-    "test-v": "vitest --run",
-    "test-v-ui": "vitest --ui",
+    "test": "npm run test-vi && npm run test-pw",
+    "test-vi": "vitest --run",
+    "test-vi-ui": "vitest --ui",
     "test-pw": "npx playwright test",
     "test-pw-ui": "npx playwright test --ui",
     "test-pw-debug": "npx playwright test --debug"
@@ -14,6 +14,7 @@
   "devDependencies": {
     "@playwright/test": "^1.36.2",
     "@vitest/ui": "^0.32.4",
+    "jsdom": "^22.1.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.7",
     "vitest": "^0.32.4"

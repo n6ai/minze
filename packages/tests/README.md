@@ -19,13 +19,13 @@ npm test
 
 ```bash
 # run vitest tests
-npm run test-v
+npm run test-vi
 
 # run specific tests based on their filenames
-npm run test-v -- utils.spec.ts
+npm run test-vi -- utils.spec.ts
 
 # run specific tests with keywords in their filenames
-npm run test-v -- utils lib
+npm run test-vi -- utils lib
 ```
 
 **Playwright**
