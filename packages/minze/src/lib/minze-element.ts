@@ -80,6 +80,38 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * The class name of the component instance in dash-case.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   onStart() {
+   *     console.log(this.dashName) // my-element
+   *   }
+   * }
+   * ```
+   */
+  get dashName() {
+    return camelToDash(this.constructor.name)
+  }
+
+  /**
+   * The class name of the component instance.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   onStart() {
+   *     console.log(this.name) // MyElement
+   *   }
+   * }
+   * ```
+   */
+  get name() {
+    return this.constructor.name
+  }
+
+  /**
    * Registers element as a custom web component.
    *
    * @param name - The name of the custom web component.

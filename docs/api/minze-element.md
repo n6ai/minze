@@ -44,23 +44,69 @@ class MyElement extends MinzeElement {}
 console.log(MyElement.isMinzeElement) // true
 ```
 
-### dashName <Badge type="tip" text="^1.2.0" />
+### name <Badge type="tip" text="^1.9.0" />
 
-The class name of the component in dash-case.
+The class name of the component.
 
-- **Static Getter**
+- **Static Getter / Getter**
 
 - **Type:** `getter`
 
 - **Example:**
 
-```js
+::: code-group
+
+```js [outside]
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {}
+
+console.log(MyElement.name) // MyElement
+```
+
+```js [inside]
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  onStart() {
+    console.log(this.name) // MyElement
+  }
+}
+```
+
+:::
+
+### dashName <Badge type="tip" text="^1.9.0" />
+
+The class name of the component in dash-case.
+
+- **Static Getter / Getter**
+
+- **Type:** `getter`
+
+- **Example:**
+
+::: code-group
+
+```js [outside]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
 
 console.log(MyElement.dashName) // my-element
 ```
+
+```js [inside]
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  onStart() {
+    console.log(this.dashName) // my-element
+  }
+}
+```
+
+:::
 
 ### define <Badge type="tip" text="^1.0.0" />
 
