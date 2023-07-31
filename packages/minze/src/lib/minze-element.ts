@@ -1,5 +1,11 @@
 import { deepPatch } from './patcher'
-import { isProxy, camelToDash, dashToCamel, warn } from './utils'
+import {
+  isProxy,
+  camelToDash,
+  dashToCamel,
+  createObserver,
+  warn
+} from './utils'
 
 export type MinzeProp =
   | string
@@ -362,28 +368,6 @@ export class MinzeElement extends HTMLElement {
    */
   rerender() {
     this.render(true)
-  }
-
-  /**
-   * Automatically exports all parts present in the template.
-   *
-   * @param template - A template function or string with html markup.
-   *
-   * @example
-   * ```
-   * this.exportParts(this.html)
-   * ```
-   */
-  private exportParts(template: (() => string) | string) {
-    template = typeof template === 'function' ? template.toString() : template
-
-    // get all parts inside the template
-    const partsRE = /(?:part|exportparts)=["']?([\w\-_,\s]+)["']?/gi
-    const parts = [
-      ...new Set([...template.matchAll(partsRE)].map((m) => m.at(1)))
-    ]
-
-    this.setAttribute('exportparts', parts.join(', '))
   }
 
   /**
@@ -845,14 +829,72 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Automatically exports all parts and exportparts present in the template.
+   *
+   * @param template - A template function or string with html markup.
+   *
+   * @example
+   * ```
+   * this.exportParts(this.html)
+   * ```
+   */
+  private exportParts(template: (() => string) | string) {
+    template = typeof template === 'function' ? template() : template
+
+    // get all parts inside the template
+    const partsRE = /(?:part|exportparts)=["']?([\w\-_,\s]+)["']?/gi
+    const parts = [
+      ...new Set(
+        [...template.matchAll(partsRE)].flatMap((m) => {
+          return m.at(1)?.replace(/,?\s+/g, ',').split(',')
+        })
+      )
+    ]
+
+    if (parts.length) this.setAttribute('exportparts', parts.join(', '))
+  }
+
+  /**
+   * Adds or removes exportparts attribute observer.
+   *
+   * @param action - The action to be performed.
+   * @param key - The name for the oberver.
+   *
+   * @example
+   * ```
+   * this.registerExportpartsObserver('add')
+   * ```
+   */
+  private registerExportpartsObserver(action: 'add' | 'remove') {
+    const key = '$exportpartsObserver'
+    const add = action === 'add' && !this[key]
+    const remove = action === 'remove' && this[key]
+
+    if (add && this.shadowRoot) {
+      const callback: MutationCallback = (mutations) => {
+        if (mutations && this.shadowRoot) {
+          this.exportParts(this.shadowRoot.innerHTML)
+        }
+      }
+
+      const options = { subtree: true, attributeFilter: ['exportparts'] }
+
+      this[key] = createObserver(this.shadowRoot, callback, options)
+    } else if (remove) {
+      this[key].disconnect()
+      delete this[key]
+    }
+  }
+
+  /**
    * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
    */
   private async connectedCallback() {
     this.onStart?.()
 
-    // auto-export all statically defined parts and exportparts
-    if (this.options?.exposeAttrs?.exportparts && this.html) {
-      this.exportParts(this.html)
+    if (this.options?.exposeAttrs?.exportparts) {
+      if (this.html) this.exportParts(this.html) // auto-export all static parts and exportparts
+      this.registerExportpartsObserver('add') // observe dynamic exportparts
     }
 
     this.reactive?.forEach(async (prop) => this.registerProp(prop))
@@ -861,15 +903,6 @@ export class MinzeElement extends HTMLElement {
     this.onReactive?.()
 
     await this.render()
-
-    // auto-export all dynamically defined parts and exportparts
-    if (
-      this.options?.exposeAttrs?.exportparts &&
-      this.cachedTemplate !== this.shadowRoot?.innerHTML &&
-      this.shadowRoot
-    ) {
-      this.exportParts(this.shadowRoot?.innerHTML)
-    }
 
     // sets rendered attribute on the component
     if (this.options?.exposeAttrs?.rendered) this.setAttribute('rendered', '')
@@ -882,6 +915,10 @@ export class MinzeElement extends HTMLElement {
    */
   private async disconnectedCallback() {
     this.cachedTemplate = null
+
+    if (this.options?.exposeAttrs?.exportparts) {
+      this.registerExportpartsObserver('remove')
+    }
 
     this.eventListeners?.forEach(async (eventTuple) =>
       this.registerEvent(eventTuple, 'remove')

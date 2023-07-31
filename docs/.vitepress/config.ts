@@ -345,6 +345,10 @@ export default defineConfig({
               link: '/guide/advanced-storage'
             },
             {
+              text: 'Observers',
+              link: '/guide/advanced-observers'
+            },
+            {
               text: 'Web Workers',
               link: '/guide/advanced-web-workers'
             },

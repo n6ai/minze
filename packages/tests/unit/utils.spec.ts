@@ -1,5 +1,11 @@
 import { describe, it, expect, vi } from 'vitest'
-import { isProxy, camelToDash, dashToCamel, warn } from 'minze/src/lib/utils'
+import {
+  isProxy,
+  camelToDash,
+  dashToCamel,
+  createObserver,
+  warn
+} from 'minze/src/lib/utils'
 
 describe('isProxy', () => {
   it('should return true if the object is a proxy', () => {
@@ -53,6 +59,16 @@ describe('dashToCamel', () => {
       expect(dashToCamel(input)).toBe(expected)
     }
   )
+})
+
+// @vitest-environment jsdom
+describe('createObserver', () => {
+  it('should return an Mutation Observer', () => {
+    const element = document.createElement('div')
+    const observer = createObserver(element, () => {})
+
+    expect(observer).toBeInstanceOf(MutationObserver)
+  })
 })
 
 describe('warn', () => {
