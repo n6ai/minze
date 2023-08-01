@@ -31,7 +31,7 @@
     "concurrently": "^8.2.0",
     "eslint": "^8.46.0",
     "lint-staged": "^13.2.3",
-    "prettier": "2.8.8",
+    "prettier": "3.0.0",
     "simple-git-hooks": "^2.9.0",
     "vitepress": "^1.0.0-beta.7",
     "wait-on": "^7.0.1"
