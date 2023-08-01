@@ -885,6 +885,18 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Logs to the console, essentialy an enhanced console.log().
+   *
+   * @exampe
+   * ```
+   * this.log('some text')
+   * ```
+   */
+  log(msg: string, ...args: unknown[]) {
+    console.log(`[Minze: ${this.name}] %o`, msg, ...args)
+  }
+
+  /**
    * Logs debug information to the console.
    *
    * @example
