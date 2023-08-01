@@ -864,7 +864,7 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   private registerExportpartsObserver(action: 'add' | 'remove') {
-    const key = '$exportpartsObserver'
+    const key = '_exportpartsObserver'
     const add = action === 'add' && !this[key]
     const remove = action === 'remove' && this[key]
 
