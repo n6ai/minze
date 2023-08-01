@@ -847,7 +847,7 @@ export class MinzeElement extends HTMLElement {
           return m.at(1)?.replace(/,?\s+/g, ',').split(',')
         })
       )
-    ]
+    ].sort()
 
     if (parts.length) this.setAttribute('exportparts', parts.join(', '))
   }
