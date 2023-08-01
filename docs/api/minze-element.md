@@ -2,10 +2,10 @@
 
 Base class which can be used to extend from to create custom web components.
 
-## STATIC
+## READ-ONLY
 
-::: warning
-Static Properties/Getters/Methods are present on every single component from the start and shouldn't be altered.
+::: tip
+Read-only Properties/Getters/Methods are present on every component class extending MinzeElement.
 :::
 
 ### version <Badge type="tip" text="^1.2.0" />
@@ -44,23 +44,69 @@ class MyElement extends MinzeElement {}
 console.log(MyElement.isMinzeElement) // true
 ```
 
-### dashName <Badge type="tip" text="^1.2.0" />
+### name <Badge type="tip" text="^1.9.0" />
 
-The class name of the component in dash-case.
+The class name of the component.
 
-- **Static Getter**
+- **Static Getter / Getter**
 
 - **Type:** `getter`
 
 - **Example:**
 
-```js
+::: code-group
+
+```js [class]
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {}
+
+console.log(MyElement.name) // MyElement
+```
+
+```js [instance]
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  onStart() {
+    console.log(this.name) // MyElement
+  }
+}
+```
+
+:::
+
+### dashName <Badge type="tip" text="^1.9.0" />
+
+The class name of the component in dash-case.
+
+- **Static Getter / Getter**
+
+- **Type:** `getter`
+
+- **Example:**
+
+::: code-group
+
+```js [class]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
 
 console.log(MyElement.dashName) // my-element
 ```
+
+```js [intance]
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  onStart() {
+    console.log(this.dashName) // my-element
+  }
+}
+```
+
+:::
 
 ### define <Badge type="tip" text="^1.0.0" />
 
@@ -97,35 +143,7 @@ MyElement.define('my-custom-element')
 ```
 <!-- prettier-ignore-end -->
 
-## DYNAMIC
-
-::: tip
-Dynamic Properties/Getters/Methods can be defined on each component individually and usually differ from component to component.
-:::
-
-### options <Badge type="tip" text="^1.0.0" />
-
-Individual components can be customized by declaring an options property. All currently available options are listed in the example below with their **default values**.
-
-- **Property**
-
-- **Type:** `Object`
-
-- **Example:**
-
-```js
-import { MinzeElement } from 'minze'
-
-export class MyElement extends MinzeElement {
-  options = {
-    cssReset: true, // Applies CSS reset styles to the components Shadow DOM template.
-    exposeAttrs: {
-      exportparts: false, // Automatically exports all parts present in the template. E.g. <my-element exportparts="button, headline"></my-element>
-      rendered: false // After the component is rendered for the first time, exposes a 'rendered' attribute on the element. E.g. <my-element rendered></my-element>
-    }
-  }
-}
-```
+## DATA
 
 ### reactive <Badge type="tip" text="^1.0.0" />
 
@@ -332,75 +350,6 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-### eventListeners <Badge type="tip" text="^1.0.0" />
-
-Dynamically creates event listeners, either on/inside the component or on the `window` object. `eventListeners` should be an array containing one or more tuples. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
-
-Every tuple takes exactly 3 values.
-
-Tuple structure: [`eventTarget`, `eventName`, `callback`]
-
-1. **eventTarget:** where the event listener should be attached to. Can be a valid CSS selector (for elements inside the `html` property), `this` (The component itself) or `window`.
-2. **eventName:** the name of the event to listen to.
-3. **callback:** a callback function that runs when the eventName is matched.
-
-::: warning
-Web components are meant to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object, to prevent `event-listener-pollution`.
-:::
-
-::: danger
-When passing a method as a callback, make sure it's either defined as an arrow function or properly bound to the component.
-:::
-
-- **Property**
-
-- **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window, eventName: string, callback: (event: Event) => void][]`
-
-- **Example:**
-
-```js
-import { MinzeElement } from 'minze'
-
-export class MyElement extends MinzeElement {
-  html = () => `
-    <button class="button">
-      Button
-    </button>
-  `
-
-  handleClick = () => {
-    const optionalDetail = {
-      msg: 'Hello Minze!'
-    }
-
-    this.dispatch('minze:my-event-name', optionalDetail)
-  }
-
-  handleDispatch = (event) => {
-    console.log(event.detail)
-  }
-
-  /*
-   * Passing a callback to eventListeners
-   *
-   * Regular methods have to be bound to the component
-   * in order to access any properties or methods of the component.
-   * Properties defined with arrow functions don't need to be bound,
-   * since they don't have their own 'this' binding
-   * and instead are bound to the component by default.
-   */
-  handleNestedDispatch(event) {
-    console.log(event.detail)
-  }
-
-  eventListeners = [
-    ['.button', 'click', this.handleClick],
-    [window, 'minze:my-event-name', this.handleDispatch],
-    [this, 'minze:my-nested-event-name', this.handleNestedDispatch.bind(this)]
-  ]
-}
-```
-
 ## TEMPLATE
 
 ### html <Badge type="tip" text="^1.0.0" />
@@ -563,6 +512,75 @@ export class MyElement extends MinzeElement {
 ```
 
 ## EVENTS
+
+### eventListeners <Badge type="tip" text="^1.0.0" />
+
+Dynamically creates event listeners, either on/inside the component or on the `window` object. `eventListeners` should be an array containing one or more tuples. In JavaScript, tuples are ordinary arrays, but in TypeScript they are their own type, defining the length of the array and the types of its elements.
+
+Every tuple takes exactly 3 values.
+
+Tuple structure: [`eventTarget`, `eventName`, `callback`]
+
+1. **eventTarget:** where the event listener should be attached to. Can be a valid CSS selector (for elements inside the `html` property), `this` (The component itself) or `window`.
+2. **eventName:** the name of the event to listen to.
+3. **callback:** a callback function that runs when the eventName is matched.
+
+::: warning
+Web components are meant to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object, to prevent `event-listener-pollution`.
+:::
+
+::: danger
+When passing a method as a callback, make sure it's either defined as an arrow function or properly bound to the component.
+:::
+
+- **Property**
+
+- **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window, eventName: string, callback: (event: Event) => void][]`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+export class MyElement extends MinzeElement {
+  html = () => `
+    <button class="button">
+      Button
+    </button>
+  `
+
+  handleClick = () => {
+    const optionalDetail = {
+      msg: 'Hello Minze!'
+    }
+
+    this.dispatch('minze:my-event-name', optionalDetail)
+  }
+
+  handleDispatch = (event) => {
+    console.log(event.detail)
+  }
+
+  /*
+   * Passing a callback to eventListeners
+   *
+   * Regular methods have to be bound to the component
+   * in order to access any properties or methods of the component.
+   * Properties defined with arrow functions don't need to be bound,
+   * since they don't have their own 'this' binding
+   * and instead are bound to the component by default.
+   */
+  handleNestedDispatch(event) {
+    console.log(event.detail)
+  }
+
+  eventListeners = [
+    ['.button', 'click', this.handleClick],
+    [window, 'minze:my-event-name', this.handleDispatch],
+    [this, 'minze:my-nested-event-name', this.handleNestedDispatch.bind(this)]
+  ]
+}
+```
 
 ### dispatch <Badge type="tip" text="^1.3.2" />
 
@@ -778,6 +796,33 @@ import { MinzeElement } from 'minze'
 export class MyElement extends MinzeElement {
   onAttributeChange(name, oldValue, newValue) {
     console.log('onAttributeChange: ', name, oldValue, newValue)
+  }
+}
+```
+
+## MISC
+
+### options <Badge type="tip" text="^1.0.0" />
+
+Individual components can be customized by declaring an options property. All currently available options are listed in the example below with their **default values**.
+
+- **Property**
+
+- **Type:** `Object`
+
+- **Example:**
+
+```js
+import { MinzeElement } from 'minze'
+
+export class MyElement extends MinzeElement {
+  options = {
+    cssReset: true, // Apply CSS reset styles to the components Shadow DOM.
+    debug: false, // Log information about the component to the console.
+    exposeAttrs: {
+      exportparts: false, // Expose an 'exportparts' attribute on the element that includes all parts present in the component. E.g. <my-element exportparts="button, headline"></my-element>
+      rendered: false // Expose a 'rendered' attribute on the element, after it's rendered for the first time. E.g. <my-element rendered></my-element>
+    }
   }
 }
 ```

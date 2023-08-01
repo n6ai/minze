@@ -86,6 +86,38 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * The class name of the component instance in dash-case.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   onStart() {
+   *     console.log(this.dashName) // my-element
+   *   }
+   * }
+   * ```
+   */
+  get dashName() {
+    return camelToDash(this.constructor.name)
+  }
+
+  /**
+   * The class name of the component instance.
+   *
+   * @example
+   * ```
+   * class MyElement extends MinzeElement {
+   *   onStart() {
+   *     console.log(this.name) // MyElement
+   *   }
+   * }
+   * ```
+   */
+  get name() {
+    return this.constructor.name
+  }
+
+  /**
    * Registers element as a custom web component.
    *
    * @param name - The name of the custom web component.
@@ -107,11 +139,12 @@ export class MinzeElement extends HTMLElement {
   /**
    * Defines options for the web component.
    *
-   * @example
+   * @default
    * ```
    * MyElement extends MinzeElement {
    *   options = {
    *     cssReset: true,
+   *     debug: false,
    *     exposeAttrs: {
    *       exportparts: false
    *       rendered: false
@@ -122,6 +155,7 @@ export class MinzeElement extends HTMLElement {
    */
   options?: {
     cssReset?: boolean
+    debug?: boolean
     exposeAttrs?: {
       exportparts?: boolean
       rendered?: boolean
@@ -278,7 +312,7 @@ export class MinzeElement extends HTMLElement {
   /**
    * Stores the previously rendered template.
    */
-  private cachedTemplate: string | null = null
+  private _cachedTemplate?: string | null
 
   /**
    * Renders the template into the shadow DOM.
@@ -296,9 +330,9 @@ export class MinzeElement extends HTMLElement {
     if (this.shadowRoot) {
       const template = this.template()
 
-      if (template !== this.cachedTemplate || force) {
-        const previousCachedTemplate = this.cachedTemplate
-        this.cachedTemplate = template // cache early
+      if (template !== this._cachedTemplate || force) {
+        const previousCachedTemplate = this._cachedTemplate
+        this._cachedTemplate = template // cache early
 
         await this.beforeRender?.()
 
@@ -536,8 +570,7 @@ export class MinzeElement extends HTMLElement {
     exposeAttr?: boolean
   ) {
     const rootName = name
-    const stashPrefix = '$minze_stash_prop_'
-    const stashName = `${stashPrefix}${name}`
+    const stashName = `_$reactive-${name}`
     this[stashName] = prop
 
     // expose attribute
@@ -628,8 +661,7 @@ export class MinzeElement extends HTMLElement {
       return
     }
 
-    const stashPrefix = '$minze_stash_attr_'
-    const stashName = `${stashPrefix}${camelName}`
+    const stashName = `_$attr-${camelName}`
     this[stashName] = rootProp
 
     // set an attribute on the element if no attribute exists
@@ -853,6 +885,58 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Logs debug information to the console.
+   *
+   * @example
+   * ```
+   * this.debug()
+   * ```
+   */
+  private debug() {
+    if (!console) return
+
+    const hooks = Object.fromEntries(
+      [
+        'onStart',
+        'onReactive',
+        'beforeRender',
+        'onRender',
+        'onReady',
+        'onDestroy',
+        'onMove',
+        'beforeAttributeChange',
+        'onAttributeChange'
+      ]
+        .filter((key) => this[key])
+        .map((key) => [[key], this[key]])
+    )
+
+    console.groupCollapsed(
+      `%c[Minze: ${this.name}]`,
+      'color: rgb(110, 150, 245);'
+    )
+    ;[
+      ['Class: %O', this],
+      ['Element: %o', this]
+    ].forEach(([msg, value]) => console.log(msg, value))
+
+    console.groupCollapsed('Internals')
+    ;[
+      ['hooks: %o', hooks],
+      ['eventListeners: %o', this.eventListeners],
+      ['options: %o', this.options],
+      [
+        'reactive: %o',
+        { attrs: this.attrs, reactive: this.reactive, watch: this.watch }
+      ],
+      ['template: %o', { css: this.css, html: this.html }]
+    ].forEach(([msg, value]) => console.log(msg, value))
+
+    console.groupEnd()
+    console.groupEnd()
+  }
+
+  /**
    * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
    */
   private async connectedCallback() {
@@ -874,13 +958,15 @@ export class MinzeElement extends HTMLElement {
     if (this.options?.exposeAttrs?.rendered) this.setAttribute('rendered', '')
 
     this.onReady?.()
+
+    if (this.options?.debug) this.debug()
   }
 
   /**
    * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
    */
   private async disconnectedCallback() {
-    this.cachedTemplate = null
+    this._cachedTemplate = null
 
     if (this.options?.exposeAttrs?.exportparts) {
       this.registerExportpartsObserver('remove')

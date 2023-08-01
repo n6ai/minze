@@ -329,6 +329,10 @@ export default defineConfig({
               link: '/guide/advanced-syntax-highlighting'
             },
             {
+              text: 'Debugging',
+              link: '/guide/advanced-debugging'
+            },
+            {
               text: 'Mixins',
               link: '/guide/advanced-mixins'
             },
