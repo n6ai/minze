@@ -312,7 +312,7 @@ export class MinzeElement extends HTMLElement {
   /**
    * Stores the previously rendered template.
    */
-  private cachedTemplate: string | null = null
+  private _cachedTemplate?: string | null
 
   /**
    * Renders the template into the shadow DOM.
@@ -330,9 +330,9 @@ export class MinzeElement extends HTMLElement {
     if (this.shadowRoot) {
       const template = this.template()
 
-      if (template !== this.cachedTemplate || force) {
-        const previousCachedTemplate = this.cachedTemplate
-        this.cachedTemplate = template // cache early
+      if (template !== this._cachedTemplate || force) {
+        const previousCachedTemplate = this._cachedTemplate
+        this._cachedTemplate = template // cache early
 
         await this.beforeRender?.()
 
@@ -912,7 +912,7 @@ export class MinzeElement extends HTMLElement {
    * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
    */
   private async disconnectedCallback() {
-    this.cachedTemplate = null
+    this._cachedTemplate = null
 
     if (this.options?.exposeAttrs?.exportparts) {
       this.registerExportpartsObserver('remove')
