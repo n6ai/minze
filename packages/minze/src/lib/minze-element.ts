@@ -885,6 +885,58 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Logs debug information to the console.
+   *
+   * @example
+   * ```
+   * this.debug()
+   * ```
+   */
+  private debug() {
+    if (!console) return
+
+    const hooks = Object.fromEntries(
+      [
+        'onStart',
+        'onReactive',
+        'beforeRender',
+        'onRender',
+        'onReady',
+        'onDestroy',
+        'onMove',
+        'beforeAttributeChange',
+        'onAttributeChange'
+      ]
+        .filter((key) => this[key])
+        .map((key) => [[key], this[key]])
+    )
+
+    console.groupCollapsed(
+      `%c[Minze: ${this.name}]`,
+      'color: rgb(110, 150, 245);'
+    )
+    ;[
+      ['Class: %O', this],
+      ['Element: %o', this]
+    ].forEach(([msg, value]) => console.log(msg, value))
+
+    console.groupCollapsed('Internals')
+    ;[
+      ['hooks: %o', hooks],
+      ['eventListeners: %o', this.eventListeners],
+      ['options: %o', this.options],
+      [
+        'reactive: %o',
+        { attrs: this.attrs, reactive: this.reactive, watch: this.watch }
+      ],
+      ['template: %o', { css: this.css, html: this.html }]
+    ].forEach(([msg, value]) => console.log(msg, value))
+
+    console.groupEnd()
+    console.groupEnd()
+  }
+
+  /**
    * Lifecycle (Internal) - Runs whenever the element is appended into a document-connected element.
    */
   private async connectedCallback() {
@@ -906,6 +958,8 @@ export class MinzeElement extends HTMLElement {
     if (this.options?.exposeAttrs?.rendered) this.setAttribute('rendered', '')
 
     this.onReady?.()
+
+    if (this.options?.debug) this.debug()
   }
 
   /**
