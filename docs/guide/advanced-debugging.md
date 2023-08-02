@@ -4,7 +4,7 @@ You can debug a MinzeElement in several different ways.
 
 ## options
 
-The component logs useful information about itself to the console when the `debug` property inside the component is set to `true`.
+The component logs useful information about itself to the console when the `debug` property inside the component is set to `true`. The logging happens after the [`onReady`](/guide/components-hooks#lifecycle) hook.
 
 **Example**
 
