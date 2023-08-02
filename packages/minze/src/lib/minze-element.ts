@@ -939,7 +939,12 @@ export class MinzeElement extends HTMLElement {
       ['options: %o', this.options],
       [
         'reactive: %o',
-        { attrs: this.attrs, reactive: this.reactive, watch: this.watch }
+        {
+          attrs: this.attrs,
+          observedAttributes: this.constructor['observedAttributes'],
+          reactive: this.reactive,
+          watch: this.watch
+        }
       ],
       ['template: %o', { css: this.css, html: this.html }]
     ].forEach(([msg, value]) => console.log(msg, value))
