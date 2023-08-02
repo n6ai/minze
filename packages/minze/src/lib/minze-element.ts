@@ -933,7 +933,7 @@ export class MinzeElement extends HTMLElement {
     console.groupCollapsed('Internals')
     ;[
       ['🧨 eventListeners: %o', this.eventListeners],
-      ['🪝 hooks: %o', hooks],
+      ['🪝 hooks: %o', Object.keys(hooks).length ? hooks : undefined],
       ['⚙️ options: %o', this.options],
       [
         '♻️ reactive: %o',
