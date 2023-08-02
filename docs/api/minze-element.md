@@ -149,7 +149,7 @@ Logs to the console. Enhanced version of `console.log()` for debugging.
 
 - **Method**
 
-- **Type:** `(msg: string, ...args: unknown[]): void`
+- **Type:** `(msg: unknown, ...args: unknown[]): void`
 
 - **Example:**
 

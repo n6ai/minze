@@ -892,7 +892,7 @@ export class MinzeElement extends HTMLElement {
    * this.log('some text')
    * ```
    */
-  log(msg: string, ...args: unknown[]) {
+  log(msg: unknown, ...args: unknown[]) {
     console.log(`[Minze: ${this.name}] %o`, msg, ...args)
   }
 
