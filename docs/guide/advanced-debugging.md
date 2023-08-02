@@ -4,7 +4,7 @@ You can debug a MinzeElement in several different ways.
 
 ## options
 
-The component logs useful information about itself to the console when the `debug` option inside the component is set to `true`.
+The component logs useful information about itself to the console when the `debug` property inside the component is set to `true`.
 
 **Example**
 
@@ -12,7 +12,7 @@ The component logs useful information about itself to the console when the `debu
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  options = { debug: true } // [!code ++]
+  debug = true // [!code ++]
 }
 
 MyElement.define()

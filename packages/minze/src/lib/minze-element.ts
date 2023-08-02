@@ -144,7 +144,6 @@ export class MinzeElement extends HTMLElement {
    * MyElement extends MinzeElement {
    *   options = {
    *     cssReset: true,
-   *     debug: false,
    *     exposeAttrs: {
    *       exportparts: false
    *       rendered: false
@@ -155,12 +154,23 @@ export class MinzeElement extends HTMLElement {
    */
   options?: {
     cssReset?: boolean
-    debug?: boolean
     exposeAttrs?: {
       exportparts?: boolean
       rendered?: boolean
     }
   }
+
+  /**
+   * Toggles debug mode.
+   *
+   * @example
+   * ```
+   * MyElement extends MinzeElement {
+   *   debug = true
+   * }
+   * ```
+   */
+  debug?: boolean
 
   /**
    * Defines properties that should be created as reactive.
@@ -964,7 +974,7 @@ export class MinzeElement extends HTMLElement {
 
     this.onReady?.()
 
-    if (this.options?.debug) this.debuglog()
+    if (this.debug) this.debuglog()
   }
 
   /**

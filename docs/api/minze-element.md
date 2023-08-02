@@ -818,7 +818,6 @@ import { MinzeElement } from 'minze'
 export class MyElement extends MinzeElement {
   options = {
     cssReset: true, // Apply CSS reset styles to the components Shadow DOM.
-    debug: false, // Log information about the component to the console.
     exposeAttrs: {
       exportparts: false, // Expose an 'exportparts' attribute on the element that includes all parts present in the component. E.g. <my-element exportparts="button, headline"></my-element>
       rendered: false // Expose a 'rendered' attribute on the element, after it's rendered for the first time. E.g. <my-element rendered></my-element>
