@@ -211,9 +211,10 @@ export class MinzeElement extends HTMLElement {
   attrs?: Attrs
 
   /**
-   * Defines attributes which should be observed.
+   * Defines which attributes should be observed.
+   * A change to an observed attribute requests a template update.
    *
-   * observedAttributes takes an array strings.
+   * observedAttributes takes an array of strings.
    *
    * @example
    * ```
