@@ -39,6 +39,10 @@ Minze consists of two main classes:
 
 There's also a [CLI tool](/guide/installation.html#cli) that can be used to create a development environment for Minze components. Out of the box, it runs with vanilla [Vite](https://vitejs.dev/) or [Storybook](https://storybook.js.org) and optionally `TypeScript`.
 
+::: tip
+Minze and MinzeElement are based on JavaScript classes, if you need a basic refresher on JavaScript classes check the ["Using classes" mdn guide](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_classes) or the [Classes API](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Classes).
+:::
+
 ## Browser Support
 
 By default, Minze is transpiled to `ES2020`. Minze should be compatible with all [browsers supporting ES2020](https://caniuse.com/?search=es2020) and [Custom Elements](https://caniuse.com/?search=Custom%20Elements).
