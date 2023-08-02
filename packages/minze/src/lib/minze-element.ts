@@ -889,10 +889,10 @@ export class MinzeElement extends HTMLElement {
    *
    * @example
    * ```
-   * this.debug()
+   * this.debuglog()
    * ```
    */
-  private debug() {
+  private debuglog() {
     if (!console) return
 
     const hooks = Object.fromEntries(
@@ -964,7 +964,7 @@ export class MinzeElement extends HTMLElement {
 
     this.onReady?.()
 
-    if (this.options?.debug) this.debug()
+    if (this.options?.debug) this.debuglog()
   }
 
   /**
