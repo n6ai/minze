@@ -143,28 +143,6 @@ MyElement.define('my-custom-element')
 ```
 <!-- prettier-ignore-end -->
 
-### log <Badge type="tip" text="^1.9.0" />
-
-Logs to the console. Enhanced version of `console.log()` for debugging.
-
-- **Method**
-
-- **Type:** `(msg: unknown, ...args: unknown[]): void`
-
-- **Example:**
-
-```js
-import { MinzeElement } from 'minze'
-
-class MyElement extends MinzeElement {
-  key = 'value'
-
-  onReady() {
-    this.log(this.key) // [Minze: MyElement] 'value'
-  }
-}
-```
-
 ## REACTIVE DATA
 
 ### reactive <Badge type="tip" text="^1.0.0" />
