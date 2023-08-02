@@ -1,6 +1,8 @@
 # Debugging
 
-## Options
+You can debug a MinzeElement in several different ways.
+
+## options
 
 The component logs useful information about itself to the console when the `debug` option inside the component is set to `true`.
 
@@ -20,12 +22,36 @@ MyElement.define()
 <my-element></my-element>
 ```
 
+## console
+
+You can use `console.log()` or `console.dir()` anywhere inside the component to log to the console.
+
+**Example**
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  key = 'value'
+
+  onReady() {
+    console.log(this.key) // [!code ++]
+  }
+}
+
+MyElement.define()
+```
+
+```html
+<my-element></my-element>
+```
+
 ## debugger
 
 The `debugger` statement, invokes any available debugging functionality.
 
 ::: warning
-Browser DevTools needs to be open for this to work.
+The Browser DevTools need to be open for this to work.
 :::
 
 **Example**
