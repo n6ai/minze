@@ -924,7 +924,7 @@ export class MinzeElement extends HTMLElement {
     )
 
     console.groupCollapsed(
-      `%c[Minze: ${this.name}]`,
+      `%c[Minze: ${this.name}] 🧪`,
       'color: rgb(110, 150, 245);'
     )
     ;[
@@ -934,11 +934,11 @@ export class MinzeElement extends HTMLElement {
 
     console.groupCollapsed('Internals')
     ;[
-      ['eventListeners: %o', this.eventListeners],
-      ['hooks: %o', hooks],
-      ['options: %o', this.options],
+      ['🧨 eventListeners: %o', this.eventListeners],
+      ['🪝 hooks: %o', hooks],
+      ['⚙️ options: %o', this.options],
       [
-        'reactive: %o',
+        '♻️ reactive: %o',
         {
           attrs: this.attrs,
           observedAttributes: this.constructor['observedAttributes'],
@@ -946,7 +946,7 @@ export class MinzeElement extends HTMLElement {
           watch: this.watch
         }
       ],
-      ['template: %o', { css: this.css, html: this.html }]
+      ['✨ template: %o', { css: this.css, html: this.html }]
     ].forEach(([msg, value]) => console.log(msg, value))
 
     console.groupEnd()
