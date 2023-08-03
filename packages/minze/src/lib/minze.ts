@@ -32,15 +32,15 @@ export class Minze {
    * All class names have to be in PascalCase for automatic dash-case name conversion.
    * Example: `MinzeElement` will be registered as `<minze-element></minze-element>`.
    *
-   * The parameters filter and mapRE have only an effect when elementsOrModules is actually a
+   * The parameters filter and keysRE have only an effect when elementsOrModules is actually a
    * module-map. E.g. Object returned by vite `import.meta.glob`.
    *
    * @param elementsOrModules - A module object, a module-map or an array of Minze elements.
    * @param filter - An array of keys that narrows down which modules of a module-map should be defined.
-   * @param mapRE - A regular expression that is used to strip the matches from the module-map keys.
+   * @param keysRE - A regular expression that is used to strip the matches from the module-map keys.
    *
    * @default
-   * mapRE = /^\.\/lib\/|\.(ts|js)$/gi // removes './lib/', '.ts' and '.js'
+   * keysRE = /^\.\/lib\/|\.(ts|js)$/gi // removes './lib/', '.ts' and '.js'
    *
    * @example
    * ```
@@ -68,7 +68,7 @@ export class Minze {
       | (typeof MinzeElement)[]
       | Record<string, unknown | (() => Promise<unknown>)>,
     filter?: string[],
-    mapRE: RegExp | false | null = /^\.\/lib\/|\.(ts|js)$/gi
+    keysRE: RegExp | false | null = /^\.\/lib\/|\.(ts|js)$/gi
   ) {
     const isMinzeElement = (x: unknown): x is typeof MinzeElement => {
       return (
@@ -83,7 +83,11 @@ export class Minze {
       Array.isArray(filter) &&
       filter.every((x) => typeof x === 'string')
     ) {
-      elementsOrModules = Minze.enhanceModules(elementsOrModules, filter, mapRE)
+      elementsOrModules = Minze.enhanceModules(
+        elementsOrModules,
+        filter,
+        keysRE
+      )
     }
 
     // defines a MinzeElement
@@ -119,7 +123,7 @@ export class Minze {
    *
    * @param modules - A module object.
    * @param filter - An array of strings that narrows down which modules should be included.
-   * @param mapRE - A regular expression that is used to strip the matches from the module keys.
+   * @param keysRE - A regular expression that is used to strip the matches from the module keys.
    *
    * @example
    * ```
@@ -129,12 +133,12 @@ export class Minze {
   private static enhanceModules(
     modules: Record<string, unknown | (() => Promise<unknown>)>,
     filter?: string[],
-    mapRE?: RegExp | false | null
+    keysRE?: RegExp | false | null
   ) {
     return Object.fromEntries(
       Object.entries(modules)
         .map(([k, v]) => {
-          if (mapRE) k = k.replace(mapRE, '')
+          if (keysRE) k = k.replace(keysRE, '')
           return filter?.includes(k) || !filter ? [k, v] : []
         })
         .filter((arr) => arr.length)
