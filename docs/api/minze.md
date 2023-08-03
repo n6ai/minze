@@ -54,7 +54,7 @@ Your component class names should be in `PascalCase` when using this registratio
 
 - **Method**
 
-- **Type:** `(elementsOrModules: (typeof MinzeElement)[] | Record<string, unknown | (() => Promise<unknown>)>, filter?: string[], mapRE?: RegExp | false | null)`
+- **Type:** `(elementsOrModules: (typeof MinzeElement)[] | Record<string, unknown | (() => Promise<unknown>)>, filter?: string[], mapRE?: RegExp | false | null): void`
 
 - **Example:**
 
@@ -114,6 +114,53 @@ export class MySecondElement extends MinzeElement {
 <my-second-element></my-second-element>
 ```
 <!-- prettier-ignore-end -->
+
+- **Extensive Module-Map Example:**
+
+::: code-group
+
+```txt [Files]
+src/
+├─ lib/
+|  ├─ nested/
+|  |  └─ my-first-element.js
+|  └─ my-second-element.js
+└─ main.js
+```
+
+<!-- prettier-ignore-start -->
+```js [main.js]
+import { Minze } from 'minze'
+
+const modules = {
+  'lib/nested/my-first-element.js': () => import('./nested/my-first-element.js'),
+  'lib/my-second-element.js': () => import('./my-second-element.js')
+}
+
+const filter = ['my-first-element', 'my-second-element'] // the elements to define (optional)
+const mapRE = /^lib\/(nested)?|\.js/g // regex matches will be removed from keys (optional)
+
+Minze.defineAll(modules, filter, mapRE)
+```
+<!-- prettier-ignore-end -->
+
+```js [my-first-element.js]
+import { MinzeElement } from 'minze'
+
+export class MyFirstElement extends MinzeElement {
+  // ...
+}
+```
+
+```js [my-second-element.js]
+import { MinzeElement } from 'minze'
+
+export class MySecondElement extends MinzeElement {
+  // ...
+}
+```
+
+:::
 
 ## EVENTS
 
