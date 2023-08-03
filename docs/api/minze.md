@@ -46,7 +46,7 @@ Minze.define('my-element', MyElement)
 
 ### defineAll <Badge type="tip" text="^1.0.0" />
 
-Defines all custom web components in a single call. Your components will be registered with `dash-case` naming. The provided compnents can either be an array of Minze Elements, a module object, or a module-map generated with tools like vite's `import.meta.glob`
+Defines all custom web components in a single call. Your components will be registered with `dash-case` naming. The provided components can either be an array of Minze Elements, a module object, or a module-map generated with tools like vite's `import.meta.glob`
 
 ::: warning
 Your component class names should be in `PascalCase` when using this registration method.
@@ -74,9 +74,22 @@ import * as elements from './elements.js'
 Minze.defineAll(elements)
 ```
 
+<!-- prettier-ignore-start -->
 ```js [Module-Map]
 import { Minze } from 'minze'
-const modules = import.meta.glob('./lib/**/*.@(ts|js)') // vite specific
+const modules = {
+  'my-first-element': async () => (await import('./element.js')).MyFirstElement,
+  'my-second-element': async () => (await import('./element.js')).MySecondElement,
+  'all': () => import('./element.js')
+}
+
+Minze.defineAll(modules)
+```
+<!-- prettier-ignore-end -->
+
+```js [Module-Map (Vite)]
+import { Minze } from 'minze'
+const modules = import.meta.glob('./lib/**/*.@(ts|js)')
 
 Minze.defineAll(modules)
 ```

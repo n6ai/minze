@@ -34,39 +34,49 @@ Minze.define('my-element', MyElement)
 
 ## defineAll
 
-Define multiple components at once. They will be automatically defined in `dash-case` format.
+Define multiple components at once. They will be automatically defined in `dash-case` format. The provided components can either be an array of Minze Elements, a module object, or a module-map generated with tools like vite's `import.meta.glob`
 
 ::: warning
 Your component class names should be in `PascalCase` when using this registration method.
 :::
 
-```js
-import { Minze, MinzeElement } from 'minze'
+::: code-group
 
-class MyFirstElement extends MinzeElement {
-  html = () => `<div>my first element</div>`
-}
-
-class MySecondElement extends MinzeElement {
-  html = () => `<div>my second element</div>`
-}
+```js [Array]
+import { Minze } from 'minze'
+import { MyFirstElement, MySecondElement } from './elements.js'
 
 Minze.defineAll([MyFirstElement, MySecondElement])
 ```
 
+```js [Module]
+import { Minze } from 'minze'
+import * as elements from './elements.js'
+
+Minze.defineAll(elements)
+```
+
 <!-- prettier-ignore-start -->
-```html
-<my-first-element></my-first-element>
-<my-second-element></my-second-element>
+```js [Module-Map]
+import { Minze } from 'minze'
+const modules = {
+  'my-first-element': async () => (await import('./element.js')).MyFirstElement,
+  'my-second-element': async () => (await import('./element.js')).MySecondElement,
+  'all': () => import('./element.js')
+}
+
+Minze.defineAll(modules)
 ```
 <!-- prettier-ignore-end -->
 
-**Modules**
+```js [Module-Map (Vite)]
+import { Minze } from 'minze'
+const modules = import.meta.glob('./lib/**/*.@(ts|js)')
 
-If you are using modules you can register all exported components at once:
+Minze.defineAll(modules)
+```
 
-```js
-// elements.js
+```js [elements.js]
 import { MinzeElement } from 'minze'
 
 export class MyFirstElement extends MinzeElement {
@@ -78,11 +88,7 @@ export class MySecondElement extends MinzeElement {
 }
 ```
 
-```js
-import * as elements from './elements'
-
-Minze.defineAll(elements)
-```
+:::
 
 <!-- prettier-ignore-start -->
 ```html
@@ -90,3 +96,7 @@ Minze.defineAll(elements)
 <my-second-element></my-second-element>
 ```
 <!-- prettier-ignore-end -->
+
+::: tip
+If you are using the module-map registration method, you can specify which components should be registered by providing an array of keys as the second argument. E.g. `Minze.defineAll(modules, ['my-first-element'])`
+:::
