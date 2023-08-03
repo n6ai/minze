@@ -32,52 +32,95 @@ export class Minze {
    * All class names have to be in PascalCase for automatic dash-case name conversion.
    * Example: `MinzeElement` will be registered as `<minze-element></minze-element>`.
    *
-   * @param elements - A module object or an array of custom Minze elements.
+   * The parameters filter and mapRE have only an effect when elementsOrModules is actually a generated module-map. E.g. Object returned by vite `import.meta.glob`.
+   *
+   * @param elementsOrModules - A module object, a module-map or an array of Minze elements.
+   * @param filter - An array of strings that narrows down which modules of a module-map should be defined.
+   * @param mapRE - A regular expression that is used to strip the matches from the module keys.
+   *
+   * @default
+   * mapRE = /^\.\/lib\/|\.(ts|js)$/gi
    *
    * @example
    * ```
-   * import * as elements from './module'
-   * Minze.defineAll(elements)
-   *
-   * // or
-   * import { MinzeElement, MinzeElementTwo } from './module'
+   * // array
+   * import { MinzeElement, MinzeElementTwo } from './elements'
    * Minze.defineAll([ MinzeElement, MinzeElementTwo ])
    *
-   * // or for vite glob import
-   * const modules = import.meta.glob('./lib/*.(ts|js)')
+   * // module
+   * import * as elements from './elements'
+   * Minze.defineAll(elements)
+   *
+   * // module-map (vite)
+   * const modules = import.meta.glob('./lib/*.@(ts|js)')
    * Minze.defineAll(modules)
    * ```
    */
   static defineAll(
-    elements:
+    elementsOrModules:
       | (typeof MinzeElement)[]
-      | Record<string, unknown | (() => Promise<unknown>)>
+      | Record<string, unknown | (() => Promise<unknown>)>,
+    filter?: string[],
+    mapRE: RegExp | false | null = /^\.\/lib\/|\.(ts|js)$/gi
   ) {
-    Object.values(elements).forEach(async (element) => {
+    if (
+      !Array.isArray(elementsOrModules) &&
+      Array.isArray(filter) &&
+      filter.every((x) => typeof x === 'string')
+    ) {
+      elementsOrModules = Minze.enhanceModules(elementsOrModules, filter, mapRE)
+    }
+
+    Object.values(elementsOrModules).forEach(async (elOrM) => {
       if (
-        typeof element === 'function' &&
-        'isMinzeElement' in element &&
-        'define' in element &&
-        typeof element.define === 'function'
+        typeof elOrM === 'function' &&
+        'define' in elOrM &&
+        typeof elOrM.define === 'function'
       ) {
-        element.define()
-      } else if (typeof element === 'object' || typeof element === 'function') {
-        const module = typeof element === 'function' ? await element() : element
+        elOrM.define()
+      } else if (typeof elOrM === 'object' || typeof elOrM === 'function') {
+        const module = typeof elOrM === 'function' ? await elOrM() : elOrM
 
         if (typeof module === 'object') {
-          Object.values(module).forEach(async (value) => {
+          Object.values(module).forEach(async (el) => {
             if (
-              typeof value === 'function' &&
-              'isMinzeElement' in value &&
-              'define' in value &&
-              typeof value.define === 'function'
+              typeof el === 'function' &&
+              'define' in el &&
+              typeof el.define === 'function'
             ) {
-              value.define()
+              el.define()
             }
           })
         }
       }
     })
+  }
+
+  /**
+   * Creates an enhanced consumable map of modules for `Minze.defineAll`.
+   *
+   * @param modules - A module object.
+   * @param filter - An array of strings that narrows down which modules should be included.
+   * @param mapRE - A regular expression that is used to strip the matches from the module keys.
+   *
+   * @example
+   * ```
+   * Minze.enhanceModules(modules, ['first-module', 'second-module'], /^\.\/lib\/|\.(ts|js)$/gi)
+   * ```
+   */
+  private static enhanceModules(
+    modules: Record<string, unknown | (() => Promise<unknown>)>,
+    filter?: string[],
+    mapRE?: RegExp | false | null
+  ) {
+    return Object.fromEntries(
+      Object.entries(modules)
+        .map(([k, v]) => {
+          if (mapRE) k = k.replace(mapRE, '')
+          return filter?.includes(k) || !filter ? [k, v] : []
+        })
+        .filter((arr) => arr.length)
+    )
   }
 
   /**
