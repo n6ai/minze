@@ -54,7 +54,7 @@ Your component class names should be in `PascalCase` when using this registratio
 
 - **Method**
 
-- **Type:** `(elementsOrModules: (typeof MinzeElement)[] | Record<string, unknown | (() => Promise<unknown>)>, filter?: string[], keysRE?: RegExp | false | null): void`
+- **Type:** `(elementsOrModules: (typeof MinzeElement)[] | Record<string, unknown | (() => Promise<unknown>)>, filter?: string[] | null, keys?: ((key: string) => string) | false | null): void`
 
 - **Example:**
 
@@ -138,9 +138,9 @@ const modules = {
 }
 
 const filter = ['my-first-element', 'my-second-element'] // the elements to define (optional)
-const keysRE = /^lib\/(nested)?|\.js/g // any regex matches will be removed from keys (optional)
+const keys = (key) => key.replace(/^lib\/(nested)?|\.js/g, '') // will be applied to every key (optional)
 
-Minze.defineAll(modules, filter, keysRE)
+Minze.defineAll(modules, filter, keys)
 ```
 <!-- prettier-ignore-end -->
 

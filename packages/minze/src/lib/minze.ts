@@ -37,10 +37,10 @@ export class Minze {
    *
    * @param elementsOrModules - A module object, a module-map or an array of Minze elements.
    * @param filter - An array of keys that narrows down which modules of a module-map should be defined.
-   * @param keysRE - A regular expression that is used to strip the matches from the module-map keys.
+   * @param keys - A callback function that will be applied to every key.
    *
    * @default
-   * keysRE = /^\.\/lib\/|\.(ts|js)$/gi // removes './lib/', '.ts' and '.js'
+   * keys = (key) => key.replace(/^\.\/lib\/|\.(ts|js)$/gi, '') // removes './lib/', '.ts' and '.js'
    *
    * @example
    * ```
@@ -67,8 +67,9 @@ export class Minze {
     elementsOrModules:
       | (typeof MinzeElement)[]
       | Record<string, unknown | (() => Promise<unknown>)>,
-    filter?: string[],
-    keysRE: RegExp | false | null = /^\.\/lib\/|\.(ts|js)$/gi
+    filter?: string[] | null,
+    keys: ((key: string) => string) | false | null = (key) =>
+      key.replace(/^\.\/lib\/|\.(ts|js)$/gi, '')
   ) {
     const isMinzeElement = (x: unknown): x is typeof MinzeElement => {
       return (
@@ -83,11 +84,7 @@ export class Minze {
       Array.isArray(filter) &&
       filter.every((x) => typeof x === 'string')
     ) {
-      elementsOrModules = Minze.enhanceModules(
-        elementsOrModules,
-        filter,
-        keysRE
-      )
+      elementsOrModules = Minze.enhanceModules(elementsOrModules, filter, keys)
     }
 
     // defines a MinzeElement
@@ -123,22 +120,22 @@ export class Minze {
    *
    * @param modules - A module object.
    * @param filter - An array of strings that narrows down which modules should be included.
-   * @param keysRE - A regular expression that is used to strip the matches from the module keys.
+   * @param keys - A callback function that will be applied to every key.
    *
    * @example
    * ```
-   * Minze.enhanceModules(modules, ['first-module', 'second-module'], /^\.\/lib\/|\.(ts|js)$/gi)
+   * Minze.enhanceModules(modules, ['first-module', 'second-module'], (key) => key)
    * ```
    */
   private static enhanceModules(
     modules: Record<string, unknown | (() => Promise<unknown>)>,
     filter?: string[],
-    keysRE?: RegExp | false | null
+    keys?: ((key: string) => string) | false | null
   ) {
     return Object.fromEntries(
       Object.entries(modules)
         .map(([k, v]) => {
-          if (keysRE) k = k.replace(keysRE, '')
+          if (keys && typeof keys === 'function') k = keys(k)
           return filter?.includes(k) || !filter ? [k, v] : []
         })
         .filter((arr) => arr.length)
