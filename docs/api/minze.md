@@ -46,7 +46,7 @@ Minze.define('my-element', MyElement)
 
 ### defineAll <Badge type="tip" text="^1.0.0" />
 
-Defines all custom web components in a single call. Your components will be registered with `dash-case` naming.
+Defines all custom web components in a single call. Your components will be registered with `dash-case` naming. The provided compnents can either be an array of Minze Elements, a module object, or a module-map generated with tools like vite's `import.meta.glob`
 
 ::: warning
 Your component class names should be in `PascalCase` when using this registration method.
@@ -58,31 +58,30 @@ Your component class names should be in `PascalCase` when using this registratio
 
 - **Example:**
 
-```js
-import { Minze, MinzeElement } from 'minze'
+::: code-group
 
-class MyFirstElement extends MinzeElement {
-  // ...
-}
-
-class MySecondElement extends MinzeElement {
-  // ...
-}
+```js [Array]
+import { Minze } from 'minze'
+import { MyFirstElement, MySecondElement } from './elements.js'
 
 Minze.defineAll([MyFirstElement, MySecondElement])
 ```
 
-<!-- prettier-ignore-start -->
-```html
-<my-first-element></my-first-element>
-<my-second-element></my-second-element>
+```js [Module]
+import { Minze } from 'minze'
+import * as elements from './elements.js'
+
+Minze.defineAll(elements)
 ```
-<!-- prettier-ignore-end -->
 
-- **Modules Example:**
+```js [Module-Map]
+import { Minze } from 'minze'
+const modules = import.meta.glob('./lib/**/*.@(ts|js)') // vite specific
 
-```js
-// elements.js
+Minze.defineAll(modules)
+```
+
+```js [elements.js]
 import { MinzeElement } from 'minze'
 
 export class MyFirstElement extends MinzeElement {
@@ -94,12 +93,7 @@ export class MySecondElement extends MinzeElement {
 }
 ```
 
-```js
-import { Minze } from 'minze'
-import * as elements from './elements'
-
-Minze.defineAll(elements)
-```
+:::
 
 <!-- prettier-ignore-start -->
 ```html
