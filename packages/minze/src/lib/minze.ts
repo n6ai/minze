@@ -32,10 +32,10 @@ export class Minze {
    * All class names have to be in PascalCase for automatic dash-case name conversion.
    * Example: `MinzeElement` will be registered as `<minze-element></minze-element>`.
    *
-   * The parameters filter and mapRE are only used if elementsOrModules is actually a module.
+   * The parameters filter and mapRE have only an effect when elementsOrModules is actually a generated module-map. E.g. Object returned by vite `import.meta.glob`.
    *
-   * @param elementsOrModules - A module object or an array of Minze elements.
-   * @param filter - An array of strings that narrows down which modules should be defined.
+   * @param elementsOrModules - A module object, a module-map or an array of Minze elements.
+   * @param filter - An array of strings that narrows down which modules of a module-map should be defined.
    * @param mapRE - A regular expression that is used to strip the matches from the module keys.
    *
    * @default
@@ -43,16 +43,17 @@ export class Minze {
    *
    * @example
    * ```
-   * import * as elements from './module'
-   * Minze.defineAll(elements)
-   *
-   * // or
-   * import { MinzeElement, MinzeElementTwo } from './module'
+   * // array
+   * import { MinzeElement, MinzeElementTwo } from './elements'
    * Minze.defineAll([ MinzeElement, MinzeElementTwo ])
    *
-   * // or for vite glob import
+   * // module
+   * import * as elements from './elements'
+   * Minze.defineAll(elements)
+   *
+   * // module-map (vite)
    * const modules = import.meta.glob('./lib/*.@(ts|js)')
-   * Minze.defineAll(modules, ['first-module', 'second-module'])
+   * Minze.defineAll(modules)
    * ```
    */
   static defineAll(
