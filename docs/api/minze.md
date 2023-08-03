@@ -54,7 +54,7 @@ Your component class names should be in `PascalCase` when using this registratio
 
 - **Method**
 
-- **Type:** `(elements: (typeof MinzeElement)[] | Record<string, unknown | (() => Promise<Record<string, unknown>>)>): void`
+- **Type:** `(elementsOrModules: (typeof MinzeElement)[] | Record<string, unknown | (() => Promise<unknown>)>, filter?: string[], mapRE?: RegExp): void`
 
 - **Example:**
 

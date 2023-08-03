@@ -67,12 +67,17 @@ import { modules, defineAll } from 'my-package'
 defineAll(modules)
 ```
 
-```js [Define Separate]
-import { MyElement } from 'my-package/dist/lib/my-element'
-import { MyElementTwo } from 'my-package/dist/lib/my-element-two'
+```js [Define Individual]
+import { modules, defineAll } from 'my-package'
+defineAll(modules, ['my-element', 'nested/my-element-two'])
+```
 
-MyElement.define()
-MyElementTwo.define()
+```txt [Source Files]
+src/
+└─ lib/
+   ├─ nested/
+   |  └─ my-element-two.js // [!code ++]
+   └─ my-element.js // [!code ++]
 ```
 
 :::
@@ -83,6 +88,14 @@ MyElementTwo.define()
 ```
 
 <!-- prettier-ignore-end -->
+
+::: tip
+You can provide an array of shorthand file-paths as the second argument to the `defineAll` function, to define individual elements.
+
+The paths are derived from the directory structure of the source files.
+
+Every path starts from the `src/lib/` directory and ends without the file-extension. E.g. for `src/lib/nested/some-element.js` it's `nested/some-element`.
+:::
 
 ### CDN
 
@@ -132,7 +145,7 @@ If you have published your package to npm, you can also load it via a CDN link f
 </html>
 ```
 
-```html [Define Separate]
+```html [Define Individual]
 <html>
   <head></head>
   <body>
@@ -142,14 +155,19 @@ If you have published your package to npm, you can also load it via a CDN link f
 
     <!-- js code -->
     <script type="module">
-      import { defineAll } from 'https://esm.sh/my-package'
-      import { MyElement } from 'https://esm.sh/my-package/dist/lib/my-element.js'
-      import { MyElementTwo } from 'https://esm.sh/my-package/dist/lib/my-element-two.js'
-
-      defineAll([MyElement, MyElementTwo])
+      import { modules, defineAll } from 'https://esm.sh/my-package'
+      defineAll(modules, ['my-element', 'nested/my-element-two'])
     </script>
   </body>
 </html>
+```
+
+```txt [Source Files]
+src/
+└─ lib/
+   ├─ nested/
+   |  └─ my-element-two.js // [!code ++]
+   └─ my-element.js // [!code ++]
 ```
 
 :::
