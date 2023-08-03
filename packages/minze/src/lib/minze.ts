@@ -32,14 +32,15 @@ export class Minze {
    * All class names have to be in PascalCase for automatic dash-case name conversion.
    * Example: `MinzeElement` will be registered as `<minze-element></minze-element>`.
    *
-   * The parameters filter and mapRE have only an effect when elementsOrModules is actually a generated module-map. E.g. Object returned by vite `import.meta.glob`.
+   * The parameters filter and mapRE have only an effect when elementsOrModules is actually a
+   * module-map. E.g. Object returned by vite `import.meta.glob`.
    *
    * @param elementsOrModules - A module object, a module-map or an array of Minze elements.
-   * @param filter - An array of strings that narrows down which modules of a module-map should be defined.
-   * @param mapRE - A regular expression that is used to strip the matches from the module keys.
+   * @param filter - An array of keys that narrows down which modules of a module-map should be defined.
+   * @param mapRE - A regular expression that is used to strip the matches from the module-map keys.
    *
    * @default
-   * mapRE = /^\.\/lib\/|\.(ts|js)$/gi
+   * mapRE = /^\.\/lib\/|\.(ts|js)$/gi // removes './lib/', '.ts' and '.js'
    *
    * @example
    * ```
@@ -50,6 +51,12 @@ export class Minze {
    * // module
    * import * as elements from './elements'
    * Minze.defineAll(elements)
+   *
+   * // module-map
+   * const modules = {
+   *   'element': () => import('./path/to/file.js')
+   * }
+   * Minze.defineAll(modules)
    *
    * // module-map (vite)
    * const modules = import.meta.glob('./lib/*.@(ts|js)')
@@ -63,6 +70,14 @@ export class Minze {
     filter?: string[],
     mapRE: RegExp | false | null = /^\.\/lib\/|\.(ts|js)$/gi
   ) {
+    const isMinzeElement = (x: unknown): x is typeof MinzeElement => {
+      return (
+        typeof x === 'function' &&
+        'define' in x &&
+        typeof x.define === 'function'
+      )
+    }
+
     if (
       !Array.isArray(elementsOrModules) &&
       Array.isArray(filter) &&
@@ -71,27 +86,30 @@ export class Minze {
       elementsOrModules = Minze.enhanceModules(elementsOrModules, filter, mapRE)
     }
 
-    Object.values(elementsOrModules).forEach(async (elOrM) => {
-      if (
-        typeof elOrM === 'function' &&
-        'define' in elOrM &&
-        typeof elOrM.define === 'function'
-      ) {
-        elOrM.define()
-      } else if (typeof elOrM === 'object' || typeof elOrM === 'function') {
-        const module = typeof elOrM === 'function' ? await elOrM() : elOrM
+    // defines a MinzeElement
+    function defineMinzeElement(el: unknown) {
+      if (isMinzeElement(el)) el.define()
+    }
 
-        if (typeof module === 'object') {
-          Object.values(module).forEach(async (el) => {
-            if (
-              typeof el === 'function' &&
-              'define' in el &&
-              typeof el.define === 'function'
-            ) {
-              el.define()
-            }
-          })
-        }
+    // defines all MinzeElements in a module
+    function defineModule(modules: unknown) {
+      if (typeof modules === 'object' && modules !== null) {
+        Object.values(modules).forEach(async (el) => {
+          defineMinzeElement(el)
+        })
+      }
+    }
+
+    // iterate over all values in array, module or module-map
+    Object.values(elementsOrModules).forEach(async (el) => {
+      if (isMinzeElement(el)) defineMinzeElement(el)
+
+      // module-map
+      if (typeof el === 'object' || typeof el === 'function') {
+        const module = typeof el === 'function' ? await el() : el
+
+        if (isMinzeElement(module)) defineMinzeElement(module)
+        else defineModule(module)
       }
     })
   }
