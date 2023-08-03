@@ -149,13 +149,13 @@ class MyElement extends MinzeElement {
 
 - The structure isn't set in stone, but by following the below example you will have a well-structured component that is easy to maintain.
 - The structure should be as follows:
-  1. Properties (Data)
-  2. Methods
-  3. Watchers
-  4. Templates
-  5. Hooks
-  6. Callbacks
-  7. Event Listeners
+  1. Options
+  2. Data (`reactive`, `attrs`, `observedAttributes`, properties, getters)
+  3. Watchers (`watch`)
+  4. Methods
+  5. Templates (`html`, `css`)
+  6. Hooks (`onStart`, `onReactive`, `onReady`, ...)
+  7. Event Listeners (`eventListeners`)
 
 **Example**
 
@@ -169,44 +169,29 @@ export interface MyElement {
 
 // custom component
 export class MyElement extends MinzeElement {
-  // reactive properties
+  options = {}
+
   reactive = [['count', 0]]
 
-  // reactive attributes
   attrs = ['text', 'bg-color']
-
-  // observed attributes
   static observedAttributes = ['text', 'bg-color']
 
-  // non-reactive properties
-  amount = 0
-
-  // computed properties (getters)
-  get doubledCount() {
-    return this.count * 2
-  }
-
-  // methods
-  increaseCount = () => {
-    this.count++
-  }
-
-  // watchers
   watch = [['count', () => {}]]
 
-  // html template
+  increaseCount = () => this.count++
+
   html = () => `
-    <slot></slot>
+    <button>
+      <slot></slot>
+    </button>
   `
 
-  // css template
   css = () => `
     :host {
       display: block;
     }
   `
 
-  // hooks
   onStart = () => {
     console.log('onStart')
   }
@@ -215,12 +200,6 @@ export class MyElement extends MinzeElement {
     console.log('onReady')
   }
 
-  // callbacks
-  handleClick = () => {
-    console.log('clicked')
-  }
-
-  // event listeners
-  eventListeners = [['.button', 'click', this.handleClick]]
+  eventListeners = [['button', 'click', this.increaseCount]]
 }
 ```
