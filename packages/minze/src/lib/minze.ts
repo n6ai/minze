@@ -32,7 +32,7 @@ export class Minze {
    * All class names have to be in PascalCase for automatic dash-case name conversion.
    * Example: `MinzeElement` will be registered as `<minze-element></minze-element>`.
    *
-   * The parameters filter and keysRE have only an effect when elementsOrModules is actually a
+   * The parameters filter and keys have only an effect when elementsOrModules is actually a
    * module-map. E.g. Object returned by vite `import.meta.glob`.
    *
    * @param elementsOrModules - A module object, a module-map or an array of Minze elements.
