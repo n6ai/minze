@@ -94,7 +94,7 @@ You can provide an array of shorthand file-paths as the second argument to the `
 
 The paths are derived from the directory structure of the source files.
 
-Every path starts from the `src/lib/` directory and ends without the file-extension. E.g. for `src/lib/nested/some-element.js` it's `nested/some-element`.
+Every path starts from the `src/lib/` directory (no starting slash) and ends without the file-extension. E.g. for `src/lib/nested/some-element.js` it's `nested/some-element`.
 :::
 
 ### CDN
