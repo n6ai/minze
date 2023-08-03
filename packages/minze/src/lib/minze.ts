@@ -60,7 +60,7 @@ export class Minze {
       | (typeof MinzeElement)[]
       | Record<string, unknown | (() => Promise<unknown>)>,
     filter?: string[],
-    mapRE: RegExp = /^\.\/lib\/|\.(ts|js)$/gi
+    mapRE: RegExp | false | null = /^\.\/lib\/|\.(ts|js)$/gi
   ) {
     if (
       !Array.isArray(elementsOrModules) &&
@@ -110,7 +110,7 @@ export class Minze {
   private static enhanceModules(
     modules: Record<string, unknown | (() => Promise<unknown>)>,
     filter?: string[],
-    mapRE?: RegExp
+    mapRE?: RegExp | false | null
   ) {
     return Object.fromEntries(
       Object.entries(modules)
