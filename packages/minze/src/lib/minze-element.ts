@@ -923,7 +923,7 @@ export class MinzeElement extends HTMLElement {
     )
 
     console.groupCollapsed(
-      `%c[Minze: ${this.name}] 🧪`,
+      `%c[Minze: ${this.name}] 🚧`,
       'color: rgb(110, 150, 245);'
     )
     ;[
@@ -935,9 +935,9 @@ export class MinzeElement extends HTMLElement {
     ;[
       ['🧨 eventListeners: %o', this.eventListeners],
       ['🪝 hooks: %o', Object.keys(hooks).length ? hooks : undefined],
-      ['⚙️ options: %o', this.options],
+      ['🔩 options: %o', this.options],
       [
-        '♻️ reactive: %o',
+        '🧬 reactive: %o',
         {
           attrs: this.attrs,
           observedAttributes: this.constructor['observedAttributes'],
