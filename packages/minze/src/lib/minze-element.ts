@@ -744,9 +744,11 @@ export class MinzeElement extends HTMLElement {
   private mergeEvents(template: (() => string) | string) {
     template = typeof template === 'function' ? template() : template
 
+    type atEvent = [attribute: string, event: string, callback: string]
+
     // get all @event attributes and remove duplicates
     const atEventsRE = /@(\w+)=["']?(\w+)["']?/gi
-    const atEvents = [
+    const atEvents: atEvent[] = [
       ...new Set(
         [...template.matchAll(atEventsRE)].map((m) =>
           JSON.stringify(m.slice(0, 3))
@@ -754,7 +756,7 @@ export class MinzeElement extends HTMLElement {
       )
     ].map((e) => JSON.parse(e))
 
-    if (atEvents) {
+    if (atEvents.length) {
       this.eventListeners ??= []
       const eventListenersLength = this.eventListeners.length
       const atEventsLength = atEvents.length
