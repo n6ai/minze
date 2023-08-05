@@ -24,16 +24,29 @@ $ pnpm add -D unocss @unocss/postcss
 
 :::
 
-2. Create and populate `postcss.config.cjs` and `uno.config.js` files. Add UnoCSS Vite plugin, with the shadow-dom mode enabled, to your `vite.config.js` file.
+2. Setup files. This will allow you to use UnoCSS in the entire project (components, css files, as well as preview templates).
+
+- Create and populate `uno.css`, `postcss.config.cjs` and `uno.config.js` files.
+- Import the `uno.css` file into `vite.js`.
+- Add UnoCSS Vite plugin, with the shadow-dom mode enabled, to your `vite.config.js` file.
 
 ::: code-group
 
 ```txt [files]
 ├─ src/
+|  └─ assets/
+|  |  ├─ uno.css // [!code ++]
+|  |  └─ vite.css
+|  ├─ ...
+|  └─ vite.js // [!code warning]
 ├─ ...
 ├─ postcss.config.cjs // [!code ++]
 ├─ uno.config.js // [!code ++]
-└─ vite.config.js
+└─ vite.config.js // [!code warning]
+```
+
+```css [uno.css]
+@unocss all;
 ```
 
 ```js [postcss.config.cjs]
@@ -49,13 +62,14 @@ import { defineConfig, presetUno } from 'unocss'
 
 export default defineConfig({
   theme: {},
-  presets: [presetUno({ dark: 'media' })],
-  content: {
-    pipeline: {
-      include: 'src/**/*.{js,ts,html}'
-    }
-  }
+  presets: [presetUno({ dark: 'media' })]
 })
+```
+
+```js [vite.js]
+import './assets/uno.css' // [!code ++]
+import './assets/vite.css'
+// ...
 ```
 
 ```js [vite.config.js]
@@ -113,7 +127,7 @@ import css from './my-button.css?inline'
 
 export class MyButton extends MinzeElement {
   html = () => `
-    <button class="border-0 cursor-pointer"> // [!code ++]
+    <button class="border-2 border-sky-500"> // [!code ++]
       <slot></slot>
     </button>
   `
