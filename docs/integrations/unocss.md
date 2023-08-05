@@ -60,10 +60,14 @@ export default defineConfig({
 
 ```js [vite.config.js]
 import { defineConfig } from 'vite'
+import { fileURLToPath, URL } from 'url'
 import UnoCSS from 'unocss/vite' // [!code ++]
 import minze from '@minzejs/vite-plugin-minze'
 
 export default defineConfig({
+  resolve: {
+    alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) }
+  },
   plugins: [
     UnoCSS({ mode: 'shadow-dom' }), // [!code ++]
     minze()
