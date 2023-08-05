@@ -96,7 +96,7 @@ You can use `.` for the project name to scaffold in the current directory.
 Loading Minze via a CDN link from `esm.sh`, `unpkg` or `jsdelivr`. Pick one of the following:
 
 ::: warning
-In production always pin the imports to a specific version, otherwise your application could break unexpectedly during a future update.
+In production, always pin your imports to a specific version to prevent your application from breaking unexpectedly during a future update.
 :::
 
 ::: details esm.sh
