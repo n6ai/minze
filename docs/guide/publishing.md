@@ -99,7 +99,7 @@ Every path starts from the `src/lib/` directory (no starting slash) and ends wit
 
 ### CDN
 
-If you have published your package to npm, you can also load it via a CDN link from `esm.sh`, `unpkg` or `jsdelivr`. Pick one of the following:
+If you have published your package to npm, you can also load it via a CDN link from [`esm.sh`](https://esm.sh), [`unpkg`](https://unpkg.com) or [`jsdelivr`](https://www.jsdelivr.com). Pick one of the following:
 
 ::: details esm.sh
 
