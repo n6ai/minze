@@ -960,15 +960,15 @@ export class MinzeElement extends HTMLElement {
   private async connectedCallback() {
     this.onStart?.()
 
-    if (this.options?.exposeAttrs?.exportparts) {
-      if (this.html) this.exportParts(this.html) // auto-export all static parts and exportparts
-      this.registerExportpartsObserver('add') // observe dynamic exportparts
-    }
-
     this.reactive?.forEach(async (prop) => this.registerProp(prop))
     this.attrs?.forEach(async (attr) => this.registerAttr(attr))
 
     this.onReactive?.()
+
+    if (this.options?.exposeAttrs?.exportparts) {
+      if (this.html) this.exportParts(this.html) // auto-export all static parts and exportparts
+      this.registerExportpartsObserver('add') // observe dynamic exportparts
+    }
 
     await this.render()
 
