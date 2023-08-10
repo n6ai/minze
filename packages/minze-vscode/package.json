@@ -52,6 +52,6 @@
     "publish": "vsce publish --no-dependencies --no-git-tag-version --no-update-package-json"
   },
   "devDependencies": {
-    "@vscode/vsce": "^2.20.0"
+    "@vscode/vsce": "^2.20.1"
   }
 }
