@@ -9,8 +9,6 @@ export default defineConfig({
   },
   plugins: [
     minze(),
-    dts({
-      include: ['src/main.ts', 'src/lib/**/!(*.spec|*.test|*.stories).ts']
-    })
+    dts({ exclude: ['src/vite.ts', 'src/**/*.{spec,test,stories}.ts'] })
   ]
 })
