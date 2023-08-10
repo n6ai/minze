@@ -48,6 +48,7 @@
   --vp-button-brand-bg: var(--minze-c-mint-light);
   --vp-button-brand-hover-bg: var(--minze-c-mint);
 
+  --vp-button-brand-border: var(--minze-c-mint-light);
   --vp-button-brand-hover-border: var(--minze-c-mint-light);
 
   /* hero */
@@ -87,9 +88,4 @@
     rgb(var(--minze-c-mint-dark-values) / 60%) 50%,
     rgb(var(--minze-c-teal-dark-values) / 60%) 50%
   );
-
-  /* tips */
-  --vp-custom-block-tip-text: var(--vp-c-brand);
-  --vp-custom-block-warning-border: var(--vp-c-yellow-light);
-  --vp-custom-block-warning-text: var(--vp-c-yellow-lighter);
 }
