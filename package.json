@@ -9,7 +9,8 @@
     "packages/minze",
     "packages/vite-plugin-minze",
     "packages/*",
-    "packages/tests/**/*"
+    "packages/tests/**/*",
+    "playground"
   ],
   "scripts": {
     "predev": "npm run build -w @minzejs/vite-plugin-minze",
