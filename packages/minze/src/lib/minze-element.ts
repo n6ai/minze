@@ -747,7 +747,7 @@ export class MinzeElement extends HTMLElement {
     type atEvent = [attribute: string, event: string, callback: string]
 
     // get all @event attributes and remove duplicates
-    const atEventsRE = /@(\w+)=["']?(\w+)["']?/gi
+    const atEventsRE = /@([a-zA-Z]+[\w\-_|:.]*)=["']?(\w+)["']?/gi
     const atEvents: atEvent[] = [
       ...new Set(
         [...template.matchAll(atEventsRE)].map((m) =>
