@@ -747,7 +747,7 @@ export class MinzeElement extends HTMLElement {
     type atEvent = [attribute: string, event: string, callback: string]
 
     // get all @event attributes and remove duplicates
-    const atEventsRE = /@([a-zA-Z]+[\w\-_|:.]*)=["']?(\w+)["']?/gi
+    const atEventsRE = /@([\w\-_|:.]+)=["']?(\w+)["']?/gi
     const atEvents: atEvent[] = [
       ...new Set(
         [...template.matchAll(atEventsRE)].map((m) =>
@@ -765,7 +765,7 @@ export class MinzeElement extends HTMLElement {
       if (eventListenersLength !== eventListenersLength + atEventsLength) {
         atEvents.forEach(async ([selector, eventName, callbackName]) => {
           const eventTuple: MinzeEvent = [
-            `[\\${selector}]`,
+            `[${selector}]`,
             eventName,
             this[callbackName]
           ]
@@ -797,7 +797,9 @@ export class MinzeElement extends HTMLElement {
     } else if (eventTarget instanceof MinzeElement) {
       elements = [this]
     } else if (typeof eventTarget === 'string') {
-      elements = this.shadowRoot?.querySelectorAll(eventTarget)
+      const escapeTarget = (name: string) =>
+        name.replace(/(@|\||:|\.)/g, (_, $1) => `\\${$1}`)
+      elements = this.shadowRoot?.querySelectorAll(escapeTarget(eventTarget))
     }
 
     elements?.forEach((element: Node | MinzeElement | typeof window) => {
