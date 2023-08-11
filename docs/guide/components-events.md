@@ -53,10 +53,6 @@ Tuple structure: [`eventTarget`, `eventName`, `callback`]
 Web components are meant to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object, to prevent `event-listener-pollution`.
 :::
 
-::: danger
-When passing a method as a callback, make sure it's either defined as an arrow function or properly bound to the component.
-:::
-
 **Example**
 
 ```js
