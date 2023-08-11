@@ -788,13 +788,13 @@ export class MinzeElement extends HTMLElement {
    * this.bindEvents()
    * ```
    */
-  bindEvents() {
+  private bindEvents() {
     if (this.eventListeners) {
       this.eventListeners = this.eventListeners?.map((eventTuple) => {
         const [eventTarget, eventName, callback] = eventTuple
 
         const isUnboundMethod =
-          this[callback.name] && !callback.name.startsWith('bound ')
+          callback && this[callback.name] && !callback.name.startsWith('bound ')
 
         return [
           eventTarget,
