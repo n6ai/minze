@@ -1,6 +1,6 @@
 # Injection
 
-Sometimes, you want to pass some data from the current component to a nested child element inside the html template. That's where the injection pattern (via attributes) comes in.
+Sometimes, you want to pass some data from the current component to a nested child element inside the html template. Instead of passing individual attributes you can use the following injection pattern.
 
 **Example**
 
