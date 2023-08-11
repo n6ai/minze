@@ -554,34 +554,19 @@ export class MyElement extends MinzeElement {
   `
 
   handleClick = () => {
-    const optionalDetail = {
+    this.dispatch('minze:my-event-name', {
       msg: 'Hello Minze!'
-    }
-
-    this.dispatch('minze:my-event-name', optionalDetail)
+    })
   }
 
   handleDispatch = (event) => {
-    console.log(event.detail)
-  }
-
-  /*
-   * Passing a callback to eventListeners
-   *
-   * Regular methods have to be bound to the component
-   * in order to access any properties or methods of the component.
-   * Properties defined with arrow functions don't need to be bound,
-   * since they don't have their own 'this' binding
-   * and instead are bound to the component by default.
-   */
-  handleNestedDispatch(event) {
-    console.log(event.detail)
+    console.log(event.detail) // {msg: 'Hello Minze!'}
   }
 
   eventListeners = [
     ['.button', 'click', this.handleClick],
-    [window, 'minze:my-event-name', this.handleDispatch],
-    [this, 'minze:my-nested-event-name', this.handleNestedDispatch.bind(this)]
+    [this, 'minze:my-event-name', this.handleDispatch],
+    [window, 'minze:my-event-name', this.handleDispatch]
   ]
 }
 ```

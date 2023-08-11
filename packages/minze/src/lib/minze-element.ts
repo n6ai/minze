@@ -359,6 +359,7 @@ export class MinzeElement extends HTMLElement {
         }
 
         if (this.html) this.mergeEvents(this.html)
+        if (this.eventListeners) this.bindEvents()
 
         this.eventListeners?.forEach(async (eventTuple) =>
           this.registerEvent(eventTuple, 'add')
@@ -776,6 +777,31 @@ export class MinzeElement extends HTMLElement {
           this.eventListeners?.push(eventTuple)
         })
       }
+    }
+  }
+
+  /**
+   * Automatically binds all event listener callbacks that are component methods.
+   *
+   * @example
+   * ```
+   * this.bindEvents()
+   * ```
+   */
+  bindEvents() {
+    if (this.eventListeners) {
+      this.eventListeners = this.eventListeners?.map((eventTuple) => {
+        const [eventTarget, eventName, callback] = eventTuple
+
+        const isUnboundMethod =
+          this[callback.name] && !callback.name.startsWith('bound ')
+
+        return [
+          eventTarget,
+          eventName,
+          isUnboundMethod ? callback.bind(this) : callback
+        ]
+      })
     }
   }
 

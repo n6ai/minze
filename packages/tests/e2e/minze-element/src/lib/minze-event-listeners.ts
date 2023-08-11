@@ -15,7 +15,7 @@ export class MinzeEventListeners extends MinzeElement {
     this.dispatch('minze:click', 'clicked')
   }
 
-  handleDispatch = (event: Event) => {
+  handleDispatch(event: Event) {
     this.text = (event as CustomEvent<clickDetail>).detail
     this.rerender()
   }
