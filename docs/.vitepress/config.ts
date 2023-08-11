@@ -345,6 +345,10 @@ export default defineConfig({
               link: '/guide/advanced-injection'
             },
             {
+              text: 'Event Bus',
+              link: '/guide/advanced-event-bus'
+            },
+            {
               text: 'Transitions',
               link: '/guide/advanced-transitions'
             },
