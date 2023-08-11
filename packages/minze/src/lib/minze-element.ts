@@ -701,9 +701,9 @@ export class MinzeElement extends HTMLElement {
         } else if (value.match(/^(true|false)$/)) {
           return JSON.parse(value)
         } else if (value.match(/^[-+]?\d+$/)) {
-          return parseInt(value)
+          return Number.parseInt(value)
         } else if (value.match(/^[+-]?\d*\.\d+$/)) {
-          return parseFloat(value)
+          return Number.parseFloat(value)
         } else {
           try {
             return JSON.parse(value)
