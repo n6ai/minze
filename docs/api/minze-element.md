@@ -56,7 +56,7 @@ The class name of the component.
 
 ::: code-group
 
-```js [class]
+```js [outside]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
@@ -64,7 +64,7 @@ class MyElement extends MinzeElement {}
 console.log(MyElement.name) // MyElement
 ```
 
-```js [instance]
+```js [inside]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
@@ -88,7 +88,7 @@ The class name of the component in dash-case.
 
 ::: code-group
 
-```js [class]
+```js [outside]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
@@ -96,7 +96,7 @@ class MyElement extends MinzeElement {}
 console.log(MyElement.dashName) // my-element
 ```
 
-```js [intance]
+```js [inside]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
@@ -164,6 +164,10 @@ The created property is always the source of truth and not the exposed attribute
 
 ::: warning
 If you use the shorthand notation and provide a `camelCase` string instead of a tuple for a reactive property, the reactive property will be created with a default value of `null`.
+:::
+
+::: danger
+Never destructure reactive properties or attrs, otherwise the destructured values lose their reactivity.
 :::
 
 - **Property**

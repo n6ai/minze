@@ -163,30 +163,6 @@ MyElement.define()
 <my-element></my-element>
 ```
 
-### Destructuring
-
-You can destructure the properties and methods of a component to avoid writing `this` over and over again. Simply pass them as an argument to the template.
-
-**Example**
-
-```js
-import { MinzeElement } from 'minze'
-
-class MyElement extends MinzeElement {
-  someValue = 'Hello Minze!'
-
-  html = ({ someValue } = this) => `
-    <div>${someValue}</div>
-  `
-}
-
-MyElement.define()
-```
-
-```html
-<my-element></my-element>
-```
-
 ### Loading Indicators
 
 If you are fetching some data from an external API you can use a loading indicator to display a loading state. In the example below the template is automatically rerendered after the reactive data property is reassigned.

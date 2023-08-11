@@ -76,6 +76,10 @@ The created property is always the source of truth and not the exposed attribute
 If you use the shorthand notation and provide a `camelCase` string instead of a tuple for a reactive property, the reactive property will be created with a default value of `null`.
 :::
 
+::: danger
+Never destructure reactive properties or attrs, otherwise the destructured values lose their reactivity.
+:::
+
 **Example**
 
 ```js
@@ -250,7 +254,7 @@ MyElement.define()
 If you pass a valid JSON object in an attribute, it will be auto-converted inside the component.
 
 ::: warning
-Make sure the HTML attribute on the element is enclosed in signle quotes or the double quotes of the JSON object are properly escaped.
+Make sure the HTML attribute on the element is enclosed in signle quotes, no quotes at all or the double quotes of the JSON object are properly escaped.
 :::
 
 **Example**
@@ -269,6 +273,17 @@ class MyElement extends MinzeElement {
 MyElement.define()
 ```
 
+::: code-group
+
 ```html
 <my-element data='{"text": "Hello Minze!"}'></my-element>
 ```
+
+```js
+class SomeElement extends MinzeElement {
+  html = () =>
+    `<my-element data=JSON.stringify({ text: 'Hello Minze!' })></my-element>`
+}
+```
+
+:::
