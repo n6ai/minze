@@ -185,7 +185,7 @@ export class Minze {
    * ```
    */
   static listen(eventName: string, callback: (event: Event) => void) {
-    addEventListener(eventName, callback, true)
+    addEventListener(eventName, callback)
   }
 
   /**
@@ -201,6 +201,6 @@ export class Minze {
    * ```
    */
   static stopListen(eventName: string, callback: (event: Event) => void) {
-    removeEventListener(eventName, callback, true)
+    removeEventListener(eventName, callback)
   }
 }

@@ -805,8 +805,8 @@ export class MinzeElement extends HTMLElement {
 
     elements?.forEach((element: Node | MinzeElement | typeof window) => {
       action === 'add'
-        ? element.addEventListener(eventName, callback, true)
-        : element.removeEventListener(eventName, callback, true)
+        ? element.addEventListener(eventName, callback)
+        : element.removeEventListener(eventName, callback)
     })
   }
 
