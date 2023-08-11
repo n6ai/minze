@@ -40,6 +40,9 @@ ElementTwo.define()
 
 :::
 
+<!-- prettier-ignore-start -->
 ```html
-<element-one></element-one> <element-two></element-two>
+<element-one></element-one>
+<element-two></element-two>
 ```
+<!-- prettier-ignore-end -->
