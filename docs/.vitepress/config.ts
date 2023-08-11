@@ -341,6 +341,10 @@ export default defineConfig({
               link: '/guide/advanced-extending'
             },
             {
+              text: 'Injection',
+              link: '/guide/advanced-injection'
+            },
+            {
               text: 'Transitions',
               link: '/guide/advanced-transitions'
             },
