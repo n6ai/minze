@@ -757,6 +757,9 @@ export class MinzeElement extends HTMLElement {
     ].map((e) => JSON.parse(e))
 
     if (atEvents.length) {
+      const escapeSelector = (name: string) =>
+        name.replace(/(@|\||:|\.)/g, (_, $1) => `\\${$1}`)
+
       this.eventListeners ??= []
       const eventListenersLength = this.eventListeners.length
       const atEventsLength = atEvents.length
@@ -765,7 +768,7 @@ export class MinzeElement extends HTMLElement {
       if (eventListenersLength !== eventListenersLength + atEventsLength) {
         atEvents.forEach(async ([selector, eventName, callbackName]) => {
           const eventTuple: MinzeEvent = [
-            `[${selector}]`,
+            `[${escapeSelector(selector)}]`,
             eventName,
             this[callbackName]
           ]
@@ -797,9 +800,7 @@ export class MinzeElement extends HTMLElement {
     } else if (eventTarget instanceof MinzeElement) {
       elements = [this]
     } else if (typeof eventTarget === 'string') {
-      const escapeTarget = (name: string) =>
-        name.replace(/(@|\||:|\.)/g, (_, $1) => `\\${$1}`)
-      elements = this.shadowRoot?.querySelectorAll(escapeTarget(eventTarget))
+      elements = this.shadowRoot?.querySelectorAll(eventTarget)
     }
 
     elements?.forEach((element: Node | MinzeElement | typeof window) => {
