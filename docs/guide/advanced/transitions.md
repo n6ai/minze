@@ -1,14 +1,14 @@
 # Transitions
 
-You can determine how components should appear when they are rendered. This can be especially useful if you are using an async call to an external API and are awaiting an answer.
+You can determine how components should appear when they are rendered. This can be especially useful if you want to animate componets.
 
 ::: tip
-CSS transitions are not 100% reliable, since a transition isn't triggered when the component is immediately rendered.
+CSS transitions are not 100% reliable, since a transition isn't triggered when the component is immediately rendered under certain circumstances.
 :::
 
-## Local
+## Component
 
-Animations can be added per component.
+Animations can be defined inside of component.
 
 ```js
 import { MinzeElement } from 'minze'
@@ -18,10 +18,10 @@ class MyElement extends MinzeElement {
 
   css = () => `
     :host {
-      animation: minze-rendered 0.25s ease-in;
+      animation: rendered 0.25s ease-in;
     }
 
-    @keyframes minze-rendered {
+    @keyframes rendered {
       0% {
         opacity: 0%;
         transform: translateY(100%);
@@ -32,11 +32,6 @@ class MyElement extends MinzeElement {
       }
     }
   `
-
-  async onStart() {
-    const delay = 500 // ms
-    await new Promise((resolve) => setTimeout(resolve, delay))
-  }
 }
 
 MyElement.define()
@@ -56,18 +51,9 @@ By exposing the `rendered` attribute you can add animations to all rendered comp
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  options = {
-    exposeAttrs: {
-      rendered: true
-    }
-  }
+  options = { exposeAttrs: { rendered: true } }
 
   html = () => `<div>Hello Minze!</div>`
-
-  async onStart() {
-    const delay = 500 // ms
-    await new Promise((resolve) => setTimeout(resolve, delay))
-  }
 }
 
 MyElement.define()
@@ -80,11 +66,10 @@ MyElement.define()
 }
 
 [rendered] {
-  display: block;
-  animation: minze-rendered 0.25s ease-in;
+  animation: rendered 0.25s ease-in;
 }
 
-@keyframes minze-rendered {
+@keyframes rendered {
   0% {
     opacity: 0%;
     transform: translateY(100%);
