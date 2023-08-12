@@ -331,12 +331,12 @@ export default defineConfig({
               link: '/guide/advanced/debugging'
             },
             {
-              text: 'Patterns',
-              link: '/guide/advanced/patterns'
-            },
-            {
               text: 'TypeScript',
               link: '/guide/advanced/typescript'
+            },
+            {
+              text: 'Patterns',
+              link: '/guide/advanced/patterns'
             },
             {
               text: 'Transitions',
