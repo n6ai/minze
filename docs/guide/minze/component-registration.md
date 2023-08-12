@@ -79,13 +79,8 @@ Minze.defineAll(modules)
 ```js [./elements.js]
 import { MinzeElement } from 'minze'
 
-export class FirstElement extends MinzeElement {
-  // ...
-}
-
-export class SecondElement extends MinzeElement {
-  // ...
-}
+export class FirstElement extends MinzeElement {}
+export class SecondElement extends MinzeElement {}
 ```
 
 :::
