@@ -107,7 +107,7 @@ export class MyElement extends MinzeElement {
 type EventListener = [
   eventTarget: string | MinzeElement | typeof Window | BroadcastChannel,
   eventName: string,
-  callback: (event: Event) => void
+  callback: (event: any) => void
 ]
 
 type EventListeners = EventListener[]

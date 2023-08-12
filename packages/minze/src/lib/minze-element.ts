@@ -16,8 +16,8 @@ export type MinzeAttr = string | [name: string, value?: unknown]
 export type MinzeWatcher = [
   name: string,
   callback: (
-    newValue?: any, // eslint-disable-line @typescript-eslint/no-explicit-any
-    oldValue?: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    newValue?: any,
+    oldValue?: any,
     key?: string,
     target?: object | typeof MinzeElement
   ) => Promise<void> | void
@@ -26,7 +26,7 @@ export type MinzeWatcher = [
 export type MinzeEvent = [
   eventTarget: string | MinzeElement | typeof window | BroadcastChannel,
   eventName: string,
-  callback: (event: Event) => void
+  callback: (event: any) => void
 ]
 
 export type Reactive = ReadonlyArray<MinzeProp>

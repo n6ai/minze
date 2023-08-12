@@ -11,6 +11,7 @@
   "plugins": ["@typescript-eslint"],
   "ignorePatterns": ["packages/create-minze/template-**"],
   "rules": {
-    "@typescript-eslint/no-unsafe-declaration-merging": "off"
+    "@typescript-eslint/no-unsafe-declaration-merging": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

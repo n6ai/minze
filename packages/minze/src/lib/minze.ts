@@ -184,7 +184,7 @@ export class Minze {
    * Minze.listen('minze:update', (event) => {})
    * ```
    */
-  static listen(eventName: string, callback: (event: Event) => void) {
+  static listen(eventName: string, callback: (event: any) => void) {
     addEventListener(eventName, callback)
   }
 
@@ -200,7 +200,7 @@ export class Minze {
    * Minze.stopListen('minze:update', (event) => {})
    * ```
    */
-  static stopListen(eventName: string, callback: (event: Event) => void) {
+  static stopListen(eventName: string, callback: (event: any) => void) {
     removeEventListener(eventName, callback)
   }
 }

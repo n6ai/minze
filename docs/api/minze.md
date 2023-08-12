@@ -205,7 +205,7 @@ Minze.listen('minze:event', callback)
 ```
 
 ```ts [Type]
-(method) Minze.listen(eventName: string, callback: (event: Event) => void): void
+(method) Minze.listen(eventName: string, callback: (event: any) => void): void
 ```
 
 :::
@@ -225,7 +225,7 @@ Minze.stopListen('minze:event', callback)
 ```
 
 ```ts [Type]
-(method) Minze.stopListen(eventName: string, callback: (event: Event) => void): void
+(method) Minze.stopListen(eventName: string, callback: (event: any) => void): void
 ```
 
 :::
