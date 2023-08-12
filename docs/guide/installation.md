@@ -9,7 +9,7 @@ Installing from npm:
 ::: code-group
 
 ```bash [npm]
-$ npm install minze
+$ npm add minze
 ```
 
 ```bash [yarn]

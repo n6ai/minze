@@ -13,7 +13,7 @@ State-of-the-art Machine Learning for the web. Run Hugging Face Transformers dir
 ::: code-group
 
 ```bash [npm]
-$ npm install @xenova/transformers
+$ npm add @xenova/transformers
 ```
 
 ```bash [yarn]
@@ -87,7 +87,7 @@ A wrapper for the Hugging Face Inference API.
 ::: code-group
 
 ```bash [npm]
-$ npm install @huggingface/inference
+$ npm add @huggingface/inference
 ```
 
 ```bash [yarn]

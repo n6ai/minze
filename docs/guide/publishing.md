@@ -45,7 +45,7 @@ To use your package in a project simply install your package and then import and
 ::: code-group
 
 ```bash [npm]
-$ npm install my-package
+$ npm add my-package
 ```
 
 ```bash [yarn]

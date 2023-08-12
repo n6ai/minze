@@ -13,7 +13,7 @@ TensorFlow.js is a JavaScript library for training, deploying and consuming mach
 ::: code-group
 
 ```bash [npm]
-$ npm install @tensorflow/tfjs
+$ npm add @tensorflow/tfjs
 ```
 
 ```bash [yarn]

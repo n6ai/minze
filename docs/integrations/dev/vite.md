@@ -9,7 +9,7 @@ If you want to add Minze to a fresh Vite project follow these steps:
 ::: code-group
 
 ```bash [npm]
-$ npm install minze
+$ npm add minze
 ```
 
 ```bash [yarn]

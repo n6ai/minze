@@ -13,7 +13,7 @@ A javascript (and typescript) client to call Gradio APIs.
 ::: code-group
 
 ```bash [npm]
-$ npm install @gradio/client
+$ npm add @gradio/client
 ```
 
 ```bash [yarn]

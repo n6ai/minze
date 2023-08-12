@@ -9,7 +9,7 @@ If you used the [CLI method](/guide/installation#cli) to install Minze you can e
 ::: code-group
 
 ```bash [npm]
-$ npm install -D @playwright/test
+$ npm add -D @playwright/test
 ```
 
 ```bash [yarn]

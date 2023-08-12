@@ -13,7 +13,7 @@ If you used the [CLI method](/guide/installation#cli) to install Minze you can e
 ::: code-group
 
 ```bash [npm]
-$ npm install -D eslint
+$ npm add -D eslint
 ```
 
 ```bash [yarn]
@@ -101,7 +101,7 @@ For more details about ESLint refer to the [ESLint docs](https://eslint.org).
 ::: code-group
 
 ```bash [npm]
-$ npm install -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
+$ npm add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
 ```bash [yarn]

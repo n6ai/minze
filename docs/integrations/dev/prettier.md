@@ -11,7 +11,7 @@ If you used the [CLI method](/guide/installation#cli) to install Minze you can e
 ::: code-group
 
 ```bash [npm]
-$ npm install -D prettier
+$ npm add -D prettier
 ```
 
 ```bash [yarn]
