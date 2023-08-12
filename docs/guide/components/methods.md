@@ -1,8 +1,10 @@
 # Methods
 
-You can define regular methods on the component to extend its functionality.
+You can define methods on the component to extend its functionality.
 
-**Example**
+::: tip
+Certain keywords are reserved for special functionality and shouldn't be overwritten. E.g. `reactive`, `attrs`, etc. See the [API reference](/api/minze-element) for a comprehensive list.
+:::
 
 ```js
 import { MinzeElement } from 'minze'
@@ -13,7 +15,7 @@ class MyElement extends MinzeElement {
   }
 
   onReady() {
-    this.myMethod()
+    this.myMethod() // 'Hello Minze!'
   }
 }
 

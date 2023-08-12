@@ -446,7 +446,7 @@ export class MyElement extends MinzeElement {
 ## SELECTORS
 
 ::: tip
-The safest place to use `select`, `selectAll` and `slotted` is inside the `onRender` and `onReady` Hooks, when the template has already rendered.
+Selectors access the rendered component template, see [Hooks Overview](/guide/components/hooks#overview) to know during which hooks the template is already rendered.
 :::
 
 ### select <Badge text="^1.0.0" />

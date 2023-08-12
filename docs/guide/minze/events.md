@@ -4,8 +4,6 @@ Abstraction layer for custom events. Useful for listening to events dispatched f
 
 See the [API reference](/api/minze#events) for more information.
 
-**Example**
-
 ::: code-group
 
 ```js [./my-element.js]

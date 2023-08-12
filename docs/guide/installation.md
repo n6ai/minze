@@ -42,8 +42,6 @@ Installing via command line:
 
 > Minze requires [Node.js](https://nodejs.dev/) version >= `16.0.0`
 
-**npm**
-
 ::: code-group
 
 ```bash [npm]
@@ -119,8 +117,6 @@ Loading Minze via a CDN link from [`esm.sh`](https://esm.sh), [`unpkg`](https://
 ::: warning
 In production, always pin your imports to a specific version to prevent your application from breaking unexpectedly during a future update.
 :::
-
-**Example**
 
 <!-- prettier-ignore-start -->
 

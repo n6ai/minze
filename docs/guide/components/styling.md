@@ -1,6 +1,6 @@
 # Styling
 
-By default, any CSS defined in the `css` property is scoped to the component and is not affecting the global CSS. Global CSS doesn't affect the styling of the component either. However, there are ways to make the component's styling overwritable by the global CSS.
+By default, any CSS defined in the `css` property is scoped to the component and is not affecting the global CSS. Global CSS doesn't affect the styling of the component either. However, there are ways to make the component's styling overwritable by global CSS.
 
 ::: tip
 By default, all [typography](https://cssreference.io/typography/) properties are inherited from the global CSS, like `color`, `font-family`, `font-size`, `font-weight` etc.
@@ -17,8 +17,6 @@ Components can be styled internally without affecting the CSS outside the compon
 ### CSS
 
 The `css` property is used to define the scoped CSS for the component. It expects a function with a return value of type `string`.
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
@@ -48,16 +46,12 @@ Global CSS Resets don't work with web components, out of the box, that's why Min
 
 Additionally you can add the `no-css-reset` attribute to any element to exclude it from the CSS Reset.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   // disable reset styles in this component (via options)
-  options = {
-    cssReset: false // enabled by default
-  }
+  options = { cssReset: false }
 
   // disable reset styles of the parent component (via attrs)
   attrs = [['no-css-reset', '']]
@@ -76,8 +70,6 @@ MyElement.define()
 ### Conditional Styling
 
 You can use conditional operators (`Ternary`, `Logical OR`, `Nullish coalescing`, ...) inside the `css` property to conditionally apply styling.
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
@@ -110,8 +102,6 @@ MyElement.define()
 
 The `:host` pseudo-class selector selects the component itself (shadow host) inserted into the regular DOM.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -142,9 +132,7 @@ MyElement.define()
 
 ### :host()
 
-The `:host` pseudo-class function selects the component itself, but only if the selector given as the function's parameter matches the shadow host.
-
-**Example**
+The `:host` pseudo-class function selects the component itself, but only if the selector given, as the function's parameter, matches the shadow host.
 
 ```js
 import { MinzeElement } from 'minze'
@@ -169,8 +157,6 @@ MyElement.define()
 ### :host-context()
 
 The `:host-context()` pseudo-class function applies styles conditionally based on parent elements which are outside of the component.
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
@@ -213,10 +199,8 @@ MyElement.define()
 The `::slotted` pseudo-element applies styles to any element that has been placed into a slot.
 
 ::: warning
-The `::slotted` selector only works when used inside the component. Note also that this selector won't select any text nodes placed into a slot, it only targets actual elements.
+The `::slotted` selector won't select any text nodes placed into a slot, it only targets actual elements.
 :::
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
@@ -258,8 +242,6 @@ By default, global CSS doesn't affect the styling of the component. You can howe
 
 All `CSS` variables defined inside the component can be externally overwritten.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -290,8 +272,6 @@ MyElement.define()
 
 The `part` attribute can be accessed outside the component with the `::part()` pseudo-element selector.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -318,7 +298,7 @@ MyElement.define()
 
 The `exportparts` attribute allows you to select and style elements existing in nested components, by exporting their part names.
 
-This can be done by creating an [attribute property](/guide/components/data#attribute-properties-attributes) inside the component. Alternatively you can set the `exportparts` option to `true` to automatically export all parts present in the current component.
+This can be done by creating an [attribute property](/guide/components/data#attribute-properties-attributes) inside the component. Alternatively you can set the `exportparts` option to `true`, to automatically export all parts present in the current component.
 
 See [mdn docs](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/exportparts) for more information.
 
@@ -326,11 +306,9 @@ See [mdn docs](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/exp
 The value of the `exportparts` attribute should be a comma-separated list of part names present in the component and which should be made available via a DOM outside of the current structure.
 :::
 
-**Example**
-
 ::: code-group
 
-```js [manual]
+```js [Manual]
 import { Minze, MinzeElement } from 'minze'
 
 // nested component
@@ -355,7 +333,7 @@ class MyOuterElement extends MinzeElement {
 Minze.defineAll([MyElement, MyOuterElement])
 ```
 
-```js [auto]
+```js [Auto]
 import { Minze, MinzeElement } from 'minze'
 
 // nested component

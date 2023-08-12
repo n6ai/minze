@@ -122,8 +122,6 @@ If you have published your package to npm, you can also load it via a CDN link f
 
 :::
 
-**Example**
-
 <!-- prettier-ignore-start -->
 
 ::: code-group

@@ -13,8 +13,6 @@ Tuple structure: [`name`, `callback`]
 `watch` only works with reactive properties that were defined with `reactive` or `attrs`.
 :::
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -22,7 +20,7 @@ class MyElement extends MinzeElement {
   reactive = [['count', 0]]
 
   watchCount = (newValue, oldValue, key, target) => {
-    console.log(newValue, oldValue, key, target) // 1, 0, count, this
+    console.log(newValue, oldValue, key, target) // 1, 0, 'count', MyElement
   }
 
   watch = [['count', this.watchCount]]

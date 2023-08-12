@@ -10,41 +10,34 @@ Alternatively, you can register multiple components at once by using the `define
 Your component class name should be in `PascalCase` when using this registration method.
 :::
 
-**Example**
+::: code-group
 
-```js
+```js [Regular]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   // ...
 }
 
-// automatic naming based on the class name
-MyElement.define()
-
-// manual naming
-MyElement.define('my-custom-element')
+MyElement.define() // automatic naming based on the class name
+MyElement.define('my-custom-element') // manual naming
 ```
 
 <!-- prettier-ignore-start -->
-```html
-<my-element></my-element>
-<my-custom-element></my-custom-element>
-```
-<!-- prettier-ignore-end -->
-
-**Shorthand Example**
-
-<!-- prettier-ignore-start -->
-```js
+```js [Shorthand]
 import { MinzeElement } from 'minze'
 
 ;(class MyElement extends MinzeElement {
   // ...
 }).define()
 ```
+<!-- prettier-ignore-end -->
 
+:::
+
+<!-- prettier-ignore-start -->
 ```html
 <my-element></my-element>
+<my-custom-element></my-custom-element>
 ```
 <!-- prettier-ignore-end -->

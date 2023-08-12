@@ -14,8 +14,6 @@ Events can be used to communicate between components and the outside world.
 `@events` only work with methods defined inside the component class.
 :::
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -26,7 +24,9 @@ class MyElement extends MinzeElement {
     </button>
   `
 
-  handleClick = () => console.log('clicked')
+  handleClick = (event) => {
+    console.log(event.target) // <button @click="handleClick"></button>
+  }
 }
 
 MyElement.define()
@@ -50,10 +50,8 @@ Tuple structure: [`eventTarget`, `eventName`, `callback`]
 3. **callback:** a callback function that runs when the eventName is matched.
 
 ::: warning
-Web components are meant to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object, to prevent `event-listener-pollution`.
+Web components are meant to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object.
 :::
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
@@ -66,7 +64,7 @@ class MyElement extends MinzeElement {
   `
 
   handleClick = (event) => {
-    console.log(event)
+    console.log(event.target) // <button class="button"></button>
   }
 
   eventListeners = [
@@ -90,23 +88,12 @@ Dispatch a custom event from a component and broadcast it through the document u
 It's a good idea to prefix your custom event names to avoid collisions with other libraries.
 :::
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  html = () => `
-    <button @click="handleClick">
-      Button
-    </button>
-  `
-
-  handleClick = () => this.dispatch('minze:click')
-
   onReady() {
-    const optionalDetail = { msg: 'Hello Minze!' }
-    this.dispatch('minze:ready', optionalDetail)
+    this.dispatch('minze:event', { msg: 'Hello Minze!' })
   }
 }
 

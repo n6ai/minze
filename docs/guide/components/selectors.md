@@ -1,7 +1,7 @@
 # Selectors
 
-::: warning
-When using selectors with Hooks, keep in mind that the template might not yet be rendered during certain Hooks like `onStart`, `onReactive` and `beforeRender`. The safest place to use them is inside the `onRender` and `onReady` Hooks.
+::: tip
+Selectors access the rendered component template, see [Hooks Overview](/guide/components/hooks#overview) to know during which hooks the template is already rendered.
 :::
 
 ## select / selectAll
@@ -10,8 +10,6 @@ Selects elements within the components `html` template (shadow DOM) by providing
 
 - `select` - Selects the first element that matches the selector.
 - `selectAll` - Selects all elements that match the selector.
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
@@ -23,9 +21,8 @@ class MyElement extends MinzeElement {
   `
 
   onReady() {
-    const element = this.select('#my-div')
-    const elements = this.selectAll('div')
-    console.log(element, elements)
+    console.log(this.select('#my-div')) // <div id="my-div"></div>
+    console.log(this.selectAll('div')) // [div, div]
   }
 }
 
@@ -38,9 +35,7 @@ MyElement.define()
 
 ## slotted
 
-Returns an array of slotted element(s) for provided slot name or the `default` slot, otherwise `null` if none found.
-
-**Example**
+Returns an array of slotted element(s) for provided slot name or the `default` slot.
 
 ```js
 import { MinzeElement } from 'minze'

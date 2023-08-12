@@ -1,21 +1,62 @@
 # Hooks
 
-Hooks are methods that can be defined within a component and are called at various points in the lifecycle of a component. All hooks can be asynchronous.
+Hooks are methods that can be defined within a component and are called at various points in the lifecycle of a component. Some hooks run only once during the component lifecycle, while others can re-run under certain circumstances. All hooks can be asynchronous. See the [API reference](/api/minze-element#hooks) for more details.
 
-**Run only once:**
+::: code-group
 
-- `onStart`
-- `onReactive`
-- `onReady`
-- `onDestroy`
-- `onMove`
+```js [sync]
+import { MinzeElement } from 'minze'
 
-**Can run multiple times:**
+class MyElement extends MinzeElement {
+  onReady() {
+    console.log('onReady') // 'onReady'
+  }
+}
 
-- `beforeRender`
-- `onRender`
-- `beforeAttributeChange`
-- `onAttributeChange`
+MyElement.define()
+```
+
+```js [async]
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  async onReady() {
+    console.log('onReady') // 'onReady'
+  }
+}
+
+MyElement.define()
+```
+
+:::
+
+```html
+<my-element></my-element>
+```
+
+## Overview
+
+This overview should help you to decide which of the available hooks to choose for a particular situation.
+
+- **Order:** Execution order of the hook.
+- **Common:** This hook always runs during a component lifecycle. Uncommon hooks run under specific circumstances. E.g. `onDestroy` hook runs only when the element is removed from the DOM.
+- **Re-runs:** Hook can run more than once during a component lifecycle, before the element is moved or destroyed.
+- **Reactive:** If reactive properties can be accessed within the hook.
+- **Template:** Hook has access to the **rendered** template when it runs.
+
+`✅ Yes` `❌ No` `❔ depends on execution context`
+
+| Hook                                                                | Order | Common | Re-runs | Reactive | Template |
+| ------------------------------------------------------------------- | ----- | ------ | ------- | -------- | -------- |
+| [`onStart`](/api/minze-element#onstart)                             | `1`   | ✅     | ❌      | ❌       | ❌       |
+| [`onReactive`](/api/minze-element#onreactive)                       | `2`   | ✅     | ❌      | ✅       | ❌       |
+| [`beforeRender`](/api/minze-element#beforerender)                   | `3`   | ✅     | ✅      | ✅       | ❌       |
+| [`onRender`](/api/minze-element#onrender)                           | `4`   | ✅     | ✅      | ✅       | ✅       |
+| [`onReady`](/api/minze-element#onready)                             | `5`   | ✅     | ❌      | ✅       | ✅       |
+| [`onDestroy`](/api/minze-element#ondestroy)                         | ❔    | ❌     | ❌      | ✅       | ✅       |
+| [`onMove`](/api/minze-element#onmove)                               | ❔    | ❌     | ❌      | ✅       | ✅       |
+| [`beforeAttributeChange`](/api/minze-element#beforeattributechange) | ❔    | ❌     | ✅      | ❔       | ❔       |
+| [`onAttributeChange`](/api/minze-element#onattributechange)         | ❔    | ❌     | ✅      | ❔       | ❔       |
 
 ## Lifecycle
 
@@ -23,105 +64,3 @@ Hooks are methods that can be defined within a component and are called at vario
   <img class="img-light" src="/hooks.svg">
   <img class="img-dark" src="/hooks-dark.svg">
 </p>
-
-## Example
-
-```js
-import { MinzeElement } from 'minze'
-
-class MyElement extends MinzeElement {
-  /**
-   * Component has been inserted into the DOM,
-   * but the internal lifecycle hasn't started yet.
-   *
-   * Runs once.
-   */
-  onStart() {
-    console.log('onStart')
-  }
-
-  /**
-   * Reactive properties have been initialized.
-   *
-   * Runs once.
-   */
-  onReactive() {
-    console.log('onReactive')
-  }
-
-  /**
-   * The internal lifecycle has finished,
-   * and the component is rendered.
-   *
-   * Runs once.
-   */
-  onReady() {
-    console.log('onReady')
-  }
-
-  /**
-   * The component is removed from the DOM.
-   * All internally defined event listeners have been removed.
-   *
-   * Runs once.
-   */
-  onDestroy() {
-    console.log('onDestroy')
-  }
-
-  /**
-   * The component is moved to a different document.
-   * You probably won't need this hook often.
-   *
-   * Runs once.
-   */
-  onMove() {
-    console.log('onMove')
-  }
-
-  /**
-   * The template hasn't been rendered yet
-   * but is about to.
-   *
-   * Can run multiple times.
-   */
-  beforeRender() {
-    console.log('beforeRender')
-  }
-
-  /**
-   * The template has been rendered.
-   *
-   * Can run multiple times.
-   */
-  onRender() {
-    console.log('onRender')
-  }
-
-  /**
-   * An observed attribute has changed,
-   * but the attribute property has not yet been updated.
-   *
-   * Can run multiple times.
-   */
-  beforeAttributeChange() {
-    console.log('beforeAttributeChange')
-  }
-
-  /**
-   * An observed attribute has changed,
-   * and the attribute property has been updated.
-   *
-   * Can run multiple times.
-   */
-  onAttributeChange() {
-    console.log('onAttributeChange')
-  }
-}
-
-MyElement.define()
-```
-
-```html
-<my-element></my-element>
-```

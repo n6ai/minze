@@ -4,9 +4,7 @@ A Minze component has multiple ways of defining data. Every method serves its ow
 
 ## this
 
-Accessing any property or method that is defined on the component requires the use of `this`. Inside the component, `this` refers to the component itself. The example below illustrates this.
-
-**Example**
+Accessing any property or method that is defined on the component requires the use of `this`. Inside the component, `this` refers to the component itself.
 
 ```js
 import { MinzeElement } from 'minze'
@@ -17,10 +15,8 @@ class MyElement extends MinzeElement {
   myProperty = 'Component Property'
 
   onReady() {
-    console.log(
-      myProperty, // Constant
-      this.myProperty // Component Property
-    )
+    console.log(myProperty) // 'Constant'
+    console.log(this.myProperty) // 'Component Property'
   }
 }
 
@@ -33,9 +29,11 @@ MyElement.define()
 
 ## Properties
 
-Regular non-reactive property.
+Non-reactive properties.
 
-**Example**
+::: tip
+Certain keywords are reserved for special functionality and shouldn't be overwritten. E.g. `reactive`, `attrs`, etc. See the [API reference](/api/minze-element) for a comprehensive list.
+:::
 
 ```js
 import { MinzeElement } from 'minze'
@@ -44,7 +42,7 @@ class MyElement extends MinzeElement {
   myProperty = 'Hello Minze!'
 
   onReady() {
-    console.log(this.myProperty) // Hello Minze!
+    console.log(this.myProperty) // 'Hello Minze!'
   }
 }
 
@@ -77,10 +75,8 @@ If you use the shorthand notation and provide a `camelCase` string instead of a 
 :::
 
 ::: danger
-Never destructure reactive properties or attrs, otherwise the destructured values lose their reactivity.
+Never destructure `reactive` properties, otherwise the destructured values lose their reactivity.
 :::
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
@@ -94,11 +90,9 @@ class MyElement extends MinzeElement {
   ]
 
   onReady() {
-    console.log(
-      this.myShorthand, // null
-      this.myProperty, // Hello Minze!
-      this.myNumber // 99
-    )
+    console.log(this.myShorthand) // null
+    console.log(this.myProperty) // 'Hello Minze!'
+    console.log(this.myNumber) // 99
   }
 }
 
@@ -121,8 +115,6 @@ In Minze Computed Properties are essentialy JavaScript native getter methods.
 Computed Properties only work with properties that were defined with `reactive` or `attrs`.
 :::
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -136,12 +128,10 @@ class MyElement extends MinzeElement {
   }
 
   html = () => `
-    <button>
+    <button @click="increaseCount">
       Count is: ${this.doubledCount}
     </button>
   `
-
-  eventListeners = [['button', 'click', this.increaseCount]]
 }
 
 MyElement.define()
@@ -164,11 +154,11 @@ Tuple structure: [`name`, `value?`]
 2. **value:** (optional) not defined or any value type, which will be used to set the initial attribute, if none is found on the HTML element.
 
 ::: tip
-All created attribute properties can be accessed inside the component with the `camelCase` notation. E.g. for `my-attribute` the attribute property will be `myAttribute`.
+The attribute on the element is always the source of truth and not the created attribute property inside the component. So when the attribute value changes, the property will be updated. But changing the property will **not** update the attribute.
 :::
 
 ::: tip
-The attribute on the component is always the source of truth and not the created attribute property. So when the attribute value changes, the property will be updated. But changing the property will **not** update the attribute.
+All created attribute properties can be accessed inside the component with the `camelCase` notation. E.g. for `my-attribute` the attribute property will be `myAttribute`.
 :::
 
 ::: tip
@@ -183,8 +173,6 @@ If you use the shorthand notation and provide a `dash-case` string instead of a 
 For attribute property updates to be effective (on attribute changes), you have to make these attributes **observable**. It can be done by providing them to **[observedAttributes](#observed-attributes)**.
 :::
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -197,11 +185,9 @@ class MyElement extends MinzeElement {
   ]
 
   onReady() {
-    console.log(
-      this.myAttribute, // null
-      this.mySecondAttribute, // Hello Minze!
-      this.myThirdAttribute // Hello Minze again!
-    )
+    console.log(this.myAttribute) // null
+    console.log(this.mySecondAttribute) // 'Hello Minze!'
+    console.log(this.myThirdAttribute) // 'Hello Minze again!''
   }
 }
 
@@ -214,27 +200,22 @@ MyElement.define()
 
 ## Observed Attributes
 
-The `observedAttributes` property defines attribute names that should be observed and updates any attribute properties defined by `attrs` accordingly.
+The `observedAttributes` property defines attribute names that should be observed, on the element, and updates any attribute properties defined by `attrs` inside the component accordingly.
 
 ::: warning
 `observedAttributes` has to be a `static` property.
 :::
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  attrs = [
-    'my-attribute'
-    // ...
-  ]
+  attrs = ['my-attribute']
 
-  static observedAttributes = ['my-attribute']
+  static observedAttributes = ['my-attribute'] // [!code ++]
 
   onReady() {
-    console.log(this.myAttribute) // Hello Minze!
+    console.log(this.myAttribute) // 'Hello Minze!'
   }
 
   onAttributeChange() {
@@ -256,8 +237,6 @@ If you pass a valid JSON object in an attribute, it will be auto-converted insid
 ::: warning
 Make sure the HTML attribute on the element is enclosed in signle quotes, no quotes at all or the double quotes of the JSON object are properly escaped.
 :::
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'

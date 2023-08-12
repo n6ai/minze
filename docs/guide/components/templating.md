@@ -2,15 +2,9 @@
 
 By default, templating is done through [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). The `html` property expects a function with a return value of type `string`.
 
-::: tip
-There is a private property called `template` that combines the defined `html` and `css` properties into one. The final result is what's being rendered.
-:::
-
 ## HTML
 
 The `html` property defines the `html` template of the component. If no `html` property is defined on the component it defaults to `<slot></slot>`.
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
@@ -29,8 +23,6 @@ MyElement.define()
 ```html
 <my-element></my-element>
 ```
-
-**Example**
 
 ::: tip
 You can get started without even declaring any properties, it's still a valid component.
@@ -54,8 +46,6 @@ Slots are a way to add elements from the outside world to the element. There are
 
 - **default slots** - only one slot per component can be the default slot.
 - **named slots** - as many as you like.
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
@@ -85,8 +75,6 @@ Some advanced techniques can be used in `html` and `css` templates.
 
 If you want to render a part of the template based on a specific condition, you can use the `ternary` operator, or define the logic in a separate method.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -115,8 +103,6 @@ MyElement.define()
 
 Conditional rendering can also be used for attributes.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -141,8 +127,6 @@ MyElement.define()
 
 To render a list in a template literal you can use the `map` method in cobination with `join`.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -165,9 +149,7 @@ MyElement.define()
 
 ### Loading Indicators
 
-If you are fetching some data from an external API you can use a loading indicator to display a loading state. In the example below the template is automatically rerendered after the reactive data property is reassigned.
-
-**Example**
+If you are fetching some data from an external API you can use a loading indicator to display a loading state. In the example below the template is automatically re-rendered after the reactive data property is re-assigned.
 
 ```js
 import { MinzeElement } from 'minze'
@@ -198,7 +180,7 @@ class MyElement extends MinzeElement {
     await new Promise((resolve) => setTimeout(resolve, delay))
 
     this.data = 'Hello Minze!'
-    console.log(`simulated response time: ${delay}`)
+    console.log(`response time: ${delay}ms`) // 'response time: 2000ms'
   }
 }
 
@@ -225,14 +207,8 @@ You can hide all custom web components until they are defined with the following
 Under the hood, Minze uses a concept called `patching`. It always tries to gracefully patch in and out all attributes and text before hard rerendering parts of, or the whole template. It achieves this by comparing the new template to the current one and changing only what's needed. Patching only works if the number of elements plus their types and amount of text nodes stay the same during reactive changes.
 
 ::: tip
-Patching is not necessary for every component, sometimes a hard rerender can be a better choice.
-:::
-
-::: tip
 If you want to take advantage of patching, your templates should always return the exact same amount of elements and text nodes between different states.
 :::
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
