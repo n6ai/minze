@@ -45,7 +45,7 @@ Every eventListeners tuple takes exactly 3 values.
 
 Tuple structure: [`eventTarget`, `eventName`, `callback`]
 
-1. **eventTarget:** where the event listener should be attached to. Can be a valid CSS selector (for elements inside the `html` property), `this` (The component itself) or `window`.
+1. **eventTarget:** where the event listener should be attached to. Can be a valid CSS selector (for elements inside the `html` property), `this` (The component itself), `window` or a `BroadcastChannel`.
 2. **eventName:** the name of the event to listen to.
 3. **callback:** a callback function that runs when the eventName is matched.
 
