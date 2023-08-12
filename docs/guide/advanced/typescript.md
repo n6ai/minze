@@ -13,39 +13,38 @@ If you are using [typescript-eslint](https://typescript-eslint.io) with Minze, y
 
 ::: code-group
 
+<!-- prettier-ignore-start -->
 ```ts [Reactive]
 import { type Reactive } from 'minze' // [!code focus]
 import { MinzeElement } from 'minze'
 
-export interface MyElement {
-  // [!code focus]
+export interface MyElement { // [!code focus]
   aBoolean: boolean // [!code focus]
   anObject: { foo: string } // [!code focus]
 } // [!code focus]
 
 export class MyElement extends MinzeElement {
-  reactive: Reactive = [
-    // [!code focus]
+  reactive: Reactive = [ // [!code focus]
     ['aBoolean', false],
     ['anObject', { foo: 'bar' }]
   ]
 }
 ```
+<!-- prettier-ignore-end -->
 
+<!-- prettier-ignore-start -->
 ```ts [Attrs]
 import type { Attrs } from 'minze' // [!code focus]
 import { MinzeElement } from 'minze'
 
-export interface MyElement {
-  // [!code focus]
+export interface MyElement { // [!code focus]
   text: string | null // [!code focus]
   bgColor: string // [!code focus]
   config: Record<string, string> // [!code focus]
 } // [!code focus]
 
 export class MyElement extends MinzeElement {
-  attrs: Attrs = [
-    // [!code focus]
+  attrs: Attrs = [ // [!code focus]
     'text',
     ['bg-color', '#000'],
     ['config', { key1: 'value', key2: 'value' }]
@@ -54,6 +53,7 @@ export class MyElement extends MinzeElement {
   static observedAttributes = ['text', 'bg-color', 'config']
 }
 ```
+<!-- prettier-ignore-end -->
 
 ```ts [Watch]
 import type { Watch } from 'minze' // [!code focus]
@@ -64,6 +64,7 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+<!-- prettier-ignore-start -->
 ```ts [EventListeners]
 import type { EventListeners } from 'minze' // [!code focus]
 import { MinzeElement } from 'minze'
@@ -75,12 +76,12 @@ export class MyElement extends MinzeElement {
     console.log(event.target) // <button class="button">Click me!</button>
   }
 
-  eventListeners: EventListeners = [
-    // [!code focus]
+  eventListeners: EventListeners = [ // [!code focus]
     ['.button', 'click', this.handleClick]
   ]
 }
 ```
+<!-- prettier-ignore-end -->
 
 ```ts [./main.ts]
 import { MyElement } from './my-element'
