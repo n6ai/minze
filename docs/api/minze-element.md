@@ -535,7 +535,7 @@ Web components are meant to be encapsulated HTML elements, it's a bad idea to cr
 
 - **Property**
 
-- **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window, eventName: string, callback: (event: Event) => void][]`
+- **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window | BroadcastChannel, eventName: string, callback: (event: Event) => void][]`
 
 - **Example:**
 

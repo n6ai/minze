@@ -3,25 +3,41 @@ import { MinzeElement, EventListeners } from 'minze'
 type clickDetail = string
 
 export class MinzeEventListeners extends MinzeElement {
-  text = 'not-clicked'
+  textDispatch = 'not-clicked'
+  textBroadcast = 'not-clicked'
 
   html = () => `
-    <button>
-      ${this.text}
+    <button class="dispatch">
+      ${this.textDispatch}
+    </button>
+
+    <button class="broadcast">
+      ${this.textBroadcast}
     </button>
   `
 
-  handleClick = () => {
+  handleClickDispatch = () => {
     this.dispatch('minze:click', 'clicked')
   }
 
+  handleClickBroadcast = () => {
+    new BroadcastChannel('$').postMessage('clicked')
+  }
+
   handleDispatch(event: Event) {
-    this.text = (event as CustomEvent<clickDetail>).detail
+    this.textDispatch = (event as CustomEvent<clickDetail>).detail
+    this.rerender()
+  }
+
+  handleBroadcast(event: Event) {
+    this.textBroadcast = (event as MessageEvent<clickDetail>).data
     this.rerender()
   }
 
   eventListeners: EventListeners = [
-    ['button', 'click', this.handleClick],
-    [window, 'minze:click', this.handleDispatch]
+    ['button.dispatch', 'click', this.handleClickDispatch],
+    ['button.broadcast', 'click', this.handleClickBroadcast],
+    [window, 'minze:click', this.handleDispatch],
+    [new BroadcastChannel('$'), 'message', this.handleBroadcast]
   ]
 }

@@ -82,7 +82,7 @@ export class MyElement extends MinzeElement {
 
 Declares `eventListeners` property as an array of tuples.
 
-- **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window, eventName: string, callback: (event: Event) => void][]`
+- **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window | BroadcastChannel, eventName: string, callback: (event: Event) => void][]`
 
 - **Alias:** `MinzeEventListeners`
 

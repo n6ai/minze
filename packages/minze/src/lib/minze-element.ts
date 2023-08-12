@@ -24,7 +24,7 @@ export type MinzeWatcher = [
 ]
 
 export type MinzeEvent = [
-  eventTarget: string | MinzeElement | typeof window,
+  eventTarget: string | MinzeElement | typeof window | BroadcastChannel,
   eventName: string,
   callback: (event: Event) => void
 ]
@@ -250,15 +250,16 @@ export class MinzeElement extends HTMLElement {
    *
    * possible event targets are:
    * - global: window (limited to prevent event-listener-pollution)
-   * - local: this, or any elements inside the shadow DOM (by passing a valid CSS selector string)
+   * - local: this, a BroadcastChannel, or any elements inside the shadow DOM (by passing a valid CSS selector string)
    *
    * @example
    * ```
    * class MyElement extends MinzeElement {
    *   eventListeners = [
    *     ['.my-class', 'click', () => {}],
+   *     [this, 'minze:event', () => {}],
    *     [window, 'resize', () => {}],
-   *     [this, 'minze:event', () => {}]
+   *     [new BroadcastChannel('$'), 'message', () => {}]
    *   ]
    * }
    * ```
@@ -817,19 +818,22 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   private registerEvent(eventTuple: MinzeEvent, action: 'add' | 'remove') {
+    type EventTarget = Node | MinzeElement | typeof window | BroadcastChannel
+    type EventTargetList = EventTarget[] | NodeList
+
     const [eventTarget, eventName, callback] = eventTuple
 
-    let elements: NodeList | MinzeElement[] | (typeof window)[] | undefined
+    let elements: EventTargetList | undefined
 
-    if (eventTarget === window) {
-      elements = [window]
+    if (eventTarget === window || eventTarget instanceof BroadcastChannel) {
+      elements = [eventTarget]
     } else if (eventTarget instanceof MinzeElement) {
       elements = [this]
     } else if (typeof eventTarget === 'string') {
       elements = this.shadowRoot?.querySelectorAll(eventTarget)
     }
 
-    elements?.forEach((element: Node | MinzeElement | typeof window) => {
+    elements?.forEach((element: EventTarget) => {
       action === 'add'
         ? element.addEventListener(eventName, callback)
         : element.removeEventListener(eventName, callback)
