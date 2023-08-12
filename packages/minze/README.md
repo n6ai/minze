@@ -13,7 +13,7 @@ It provides an intuitive abstraction layer around the web components API with it
 
 ## Features
 
-- 👶 Simple - Dive right in by scaffolding a project, installing via npm or using a CDN link.
+- 👶 Simple - Dive right in by scaffolding a project, installing from npm or using a CDN link.
 - ⚡ Fast - Tiny footprint ~3KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
 - 📦 Shareable - Build component libraries or design systems. Define once, use everywhere.
