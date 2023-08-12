@@ -56,7 +56,7 @@ The class name of the component.
 
 ::: code-group
 
-```js [outside]
+```js [Outside]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
@@ -64,7 +64,7 @@ class MyElement extends MinzeElement {}
 console.log(MyElement.name) // MyElement
 ```
 
-```js [inside]
+```js [Inside]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
@@ -88,7 +88,7 @@ The class name of the component in dash-case.
 
 ::: code-group
 
-```js [outside]
+```js [Outside]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
@@ -96,7 +96,7 @@ class MyElement extends MinzeElement {}
 console.log(MyElement.dashName) // my-element
 ```
 
-```js [inside]
+```js [Inside]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {

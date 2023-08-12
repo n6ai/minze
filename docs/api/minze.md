@@ -8,37 +8,39 @@ Global class with helpful static methods.
 
 Displays the used version of Minze.
 
-- **Property**
+::: code-group
 
-- **Type:** `readonly string`
-
-- **Example:**
-
-```js
-import Minze from 'minze'
+```js [Code]
+import { Minze } from 'minze'
 
 console.log(Minze.version) // 1.2.0
 ```
 
+```ts [Type]
+(property) Minze.version: "__VERSION__"
+```
+
+:::
+
 ### define <Badge type="tip" text="^1.0.0" />
 
-Defines a custom web component.
+Defines a custom web component. Doesn't throw any errors if the component is already defined.
 
-- **Method**
+::: code-group
 
-- **Type:** `(name: string, element: typeof MinzeElement): void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { Minze, MinzeElement } from 'minze'
 
-class MyElement extends MinzeElement {
-  // ...
-}
+class MyElement extends MinzeElement {}
 
 Minze.define('my-element', MyElement)
 ```
+
+```ts [Type]
+(method) Minze.define(name: string, element: typeof MinzeElement): void
+```
+
+:::
 
 ```html
 <my-element></my-element>
@@ -46,25 +48,40 @@ Minze.define('my-element', MyElement)
 
 ### defineAll <Badge type="tip" text="^1.0.0" />
 
-Defines all custom web components in a single call. Your components will be registered with `dash-case` naming. The provided components can either be an array of Minze Elements, a module object, or a module-map generated with tools like vite's `import.meta.glob`
+Defines all custom web components in a single call. Your components will be registered with `dash-case` naming. The provided components can either be an array of Minze elements, a module object, or a module-map generated with tools like vite's `import.meta.glob` Doesn't throw any errors if a component is already defined.
 
 ::: warning
 Your component class names should be in `PascalCase` when using this registration method.
 :::
 
-- **Method**
+::: code-group
 
-- **Type:** `(elementsOrModules: (typeof MinzeElement)[] | Record<string, unknown | (() => Promise<unknown>)>, filter?: string[] | null, keys?: ((key: string) => string) | false | null): void`
+```js [Code]
+import { Minze, MinzeElement } from 'minze'
 
-- **Example:**
+class FirstElement extends MinzeElement {}
+class SecondElement extends MinzeElement {}
+
+Minze.defineAll([FirstElement, SecondElement])
+```
+
+```ts [Type]
+(method) Minze.defineAll(elementsOrModules: (typeof MinzeElement)[] | Record<string, unknown | (() => Promise<unknown>)>, filter?: string[] | null, keys?: false | ((key: string) => string) | null): void
+```
+
+:::
+
+---
+
+**Examples**
 
 ::: code-group
 
 ```js [Array]
 import { Minze } from 'minze'
-import { MyFirstElement, MySecondElement } from './elements.js'
+import { FirstElement, SecondElement } from './elements.js'
 
-Minze.defineAll([MyFirstElement, MySecondElement])
+Minze.defineAll([FirstElement, SecondElement])
 ```
 
 ```js [Module]
@@ -78,8 +95,8 @@ Minze.defineAll(elements)
 ```js [Module-Map]
 import { Minze } from 'minze'
 const modules = {
-  'my-first-element': async () => (await import('./element.js')).MyFirstElement,
-  'my-second-element': async () => (await import('./element.js')).MySecondElement,
+  'first-element': async () => (await import('./element.js')).FirstElement,
+  'second-element': async () => (await import('./element.js')).SecondElement,
   'all': () => import('./element.js')
 }
 
@@ -94,28 +111,23 @@ const modules = import.meta.glob('./lib/**/*.@(ts|js)')
 Minze.defineAll(modules)
 ```
 
-```js [elements.js]
+```js [./elements.js]
 import { MinzeElement } from 'minze'
 
-export class MyFirstElement extends MinzeElement {
-  // ...
-}
-
-export class MySecondElement extends MinzeElement {
-  // ...
-}
+export class FirstElement extends MinzeElement {}
+export class SecondElement extends MinzeElement {}
 ```
 
 :::
 
 <!-- prettier-ignore-start -->
 ```html
-<my-first-element></my-first-element>
-<my-second-element></my-second-element>
+<first-element></first-element>
+<second-element></second-element>
 ```
 <!-- prettier-ignore-end -->
 
-- **Extensive Module-Map Example:**
+**Example (Module-Map)**
 
 ::: code-group
 
@@ -123,8 +135,8 @@ export class MySecondElement extends MinzeElement {
 src/
 ├─ lib/
 |  ├─ nested/
-|  |  └─ my-first-element.js
-|  └─ my-second-element.js
+|  |  └─ first-element.js
+|  └─ second-element.js
 └─ main.js
 ```
 
@@ -133,31 +145,27 @@ src/
 import { Minze } from 'minze'
 
 const modules = {
-  'lib/nested/my-first-element.js': () => import('./nested/my-first-element.js'),
-  'lib/my-second-element.js': () => import('./my-second-element.js')
+  'lib/nested/first-element.js': () => import('./nested/first-element.js'),
+  'lib/second-element.js': () => import('./second-element.js')
 }
 
-const filter = ['my-first-element', 'my-second-element'] // the elements to define (optional)
+const filter = ['first-element', 'second-element'] // the elements to define (optional)
 const keys = (key) => key.replace(/^lib\/(nested)?|\.js/g, '') // will be applied to every key (optional)
 
 Minze.defineAll(modules, filter, keys)
 ```
 <!-- prettier-ignore-end -->
 
-```js [my-first-element.js]
+```js [./nested/first-element.js]
 import { MinzeElement } from 'minze'
 
-export class MyFirstElement extends MinzeElement {
-  // ...
-}
+export class FirstElement extends MinzeElement {}
 ```
 
-```js [my-second-element.js]
+```js [./second-element.js]
 import { MinzeElement } from 'minze'
 
-export class MySecondElement extends MinzeElement {
-  // ...
-}
+export class SecondElement extends MinzeElement {}
 ```
 
 :::
@@ -168,65 +176,59 @@ export class MySecondElement extends MinzeElement {
 
 Dispatches a custom event from the `window` object.
 
-::: tip
-It's a good idea to prefix your custom event names to avoid collisions with other libraries.
-:::
+::: code-group
 
-- **Method**
+```js [Code]
+import { Minze } from 'minze'
 
-- **Type:** `(eventName: string, detail?: unknown): void`
-
-- **Example:**
-
-```js
-import Minze from 'minze'
-
-const optionalDetail = {
-  msg: 'Hello Minze!'
-}
-
-Minze.dispatch('minze:my-event-name', optionalDetail)
+Minze.dispatch('minze:event', { msg: 'Hello Minze!' })
 ```
+
+```ts [Type]
+(method) Minze.dispatch(eventName: string, detail?: unknown): void
+```
+
+:::
 
 ### listen <Badge type="tip" text="^1.0.0" />
 
 Adds an event listener to the `window` object.
 
-- **Method**
+::: code-group
 
-- **Type:** `(eventName: string, callback: (event: Event) => void): void`
+```js [Code]
+import { Minze } from 'minze'
 
-- **Example:**
+const callback = (event) => console.log(event.detail) // {msg: 'Hello Minze!'}
 
-```js
-import Minze from 'minze'
-
-const callback = (event) => {
-  console.log(event.detail)
-}
-
-Minze.listen('minze:my-event-name', callback)
+Minze.listen('minze:event', callback)
 ```
+
+```ts [Type]
+(method) Minze.listen(eventName: string, callback: (event: Event) => void): void
+```
+
+:::
 
 ### stopListen <Badge type="tip" text="^1.0.0" />
 
 Remove an event listener from the `window` object.
 
-- **Method**
+::: code-group
 
-- **Type:** `(eventName: string, callback: (event: Event) => void): void`
+```js [Code]
+import { Minze } from 'minze'
 
-- **Example:**
+const callback = (event) => console.log(event.detail) // {msg: 'Hello Minze!'}
 
-```js
-import Minze from 'minze'
-
-const callback = (event) => {
-  // do something
-}
-
-Minze.stopListen('minze:my-event-name', callback)
+Minze.stopListen('minze:event', callback)
 ```
+
+```ts [Type]
+(method) Minze.stopListen(eventName: string, callback: (event: Event) => void): void
+```
+
+:::
 
 ## DEPRECATED
 

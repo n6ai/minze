@@ -34,7 +34,7 @@ Minze.define('my-element', MyElement)
 
 ## defineAll
 
-Define multiple components at once. They will be automatically defined in `dash-case` format. The provided components can either be an array of Minze Elements, a module object, or a module-map generated with tools like vite's `import.meta.glob`
+Define multiple components at once. They will be automatically defined in `dash-case` format. The provided components can either be an array of Minze elements, a module object, or a module-map generated with tools like vite's `import.meta.glob`
 
 ::: warning
 Your component class names should be in `PascalCase` when using this registration method.
