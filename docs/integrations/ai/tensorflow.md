@@ -1,6 +1,6 @@
 # TensorFlow
 
-TensorFlow is an end-to-end machine learning platform.
+> TensorFlow is an end-to-end machine learning platform.
 
 ## [TensorFlow.js](https://www.tensorflow.org/js)
 
