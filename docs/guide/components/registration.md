@@ -3,7 +3,7 @@
 The quickest way to register a component is to use the `define` method of the respective component.
 
 ::: tip
-Alternatively, you can register multiple components at once by using the `defineAll` method of the `Minze` class. See the [API Reference](/api/minze.html#defineall) for more information.
+Alternatively, you can register multiple components at once by using the `defineAll` method of the `Minze` class. See the [API reference](/api/minze.html#defineall) for more information.
 :::
 
 ::: warning

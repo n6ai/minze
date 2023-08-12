@@ -29,7 +29,7 @@ It provides an intuitive abstraction layer around the web components API with it
 - 🔒 Typed API - Scale your component library with ease by using TypeScript.
 - 🧬 CLI - Use the command line to scaffold instant dev environments.
 - 📕 Storybook - Minze x Storybook dev environment integration.
-- 📖 Docs - Extensive documentation and API Reference.
+- 📖 Docs - Extensive documentation and API reference.
 
 ## Packages
 

@@ -7,7 +7,7 @@ You can register components in two different ways: one by one or all at once.
 Define a single component by providing a name and a component class.
 
 ::: tip
-Alternatively, you can define components by calling their respective `define` method. See the [API Reference](/api/minze.html#define) for more information.
+Alternatively, you can define components by calling their respective `define` method. See the [API reference](/api/minze.html#define) for more information.
 :::
 
 ::: tip

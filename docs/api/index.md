@@ -1,4 +1,4 @@
-# API Reference
+# API
 
 All publicly intended API methods, properties and types can be found under their respective sections.
 
