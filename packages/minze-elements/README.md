@@ -13,7 +13,7 @@ Helpers for native web component development.
 **Example**
 
 ```bash
-npm install @minzejs/elements
+npm add @minzejs/elements
 ```
 
 ```js

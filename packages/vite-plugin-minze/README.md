@@ -5,7 +5,7 @@ Vite plugin for Minze dev environment.
 ## Usage
 
 ```bash
-npm install -D @minzejs/vite-plugin-minze
+npm add -D @minzejs/vite-plugin-minze
 ```
 
 ```js
