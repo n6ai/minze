@@ -12,31 +12,29 @@ Read-only Properties/Getters/Methods are present on every component class extend
 
 Displays the version of Minze the component was built with.
 
-- **Static Property**
+::: code-group
 
-- **Type:** `readonly string`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
 
-console.log(MyElement.version) // 1.2.0
+console.log(MyElement.version) // '1.2.0'
 ```
+
+```ts [Type]
+(property) MinzeElement.version: "__VERSION__"
+```
+
+:::
 
 ### isMinzeElement <Badge type="tip" text="^1.2.0" />
 
-Can by used in conditional checks to determine if the class is a MinzeElement.
+Returns `true` if class is a MinzeElement.
 
-- **Static Property**
+::: code-group
 
-- **Type:** `readonly true`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
@@ -44,97 +42,96 @@ class MyElement extends MinzeElement {}
 console.log(MyElement.isMinzeElement) // true
 ```
 
+```ts [Type]
+(property) MinzeElement.isMinzeElement: true
+```
+
+:::
+
 ### name <Badge type="tip" text="^1.9.0" />
 
 The class name of the component.
 
-- **Static Getter / Getter**
-
-- **Type:** `getter`
-
-- **Example:**
-
 ::: code-group
 
-```js [Outside]
+```js [Code (Outside)]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
 
-console.log(MyElement.name) // MyElement
+console.log(MyElement.name) // 'MyElement'
 ```
 
-```js [Inside]
+```js [Code (Inside)]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   onStart() {
-    console.log(this.name) // MyElement
+    console.log(this.name) // 'MyElement'
   }
 }
+```
+
+```ts [Type]
+(getter) MinzeElement.name: string
 ```
 
 :::
 
 ### dashName <Badge type="tip" text="^1.9.0" />
 
-The class name of the component in dash-case.
-
-- **Static Getter / Getter**
-
-- **Type:** `getter`
-
-- **Example:**
+The class name of the component in `dash-case`.
 
 ::: code-group
 
-```js [Outside]
+```js [Code (Outside)]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {}
 
-console.log(MyElement.dashName) // my-element
+console.log(MyElement.dashName) // 'my-element'
 ```
 
-```js [Inside]
+```js [Code (Inside)]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   onStart() {
-    console.log(this.dashName) // my-element
+    console.log(this.dashName) // 'my-element'
   }
 }
+```
+
+```ts [Type]
+(getter) MinzeElement.dashName: string
 ```
 
 :::
 
 ### define <Badge type="tip" text="^1.0.0" />
 
-Defines a custom web component for the current class.
+Defines a custom web component of the current class.
 
 ::: warning
 Your component class name should be in `PascalCase` when using this registration method.
 :::
 
-- **Static Method**
+::: code-group
 
-- **Type:** `(name?: string): void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
-class MyElement extends MinzeElement {
-  // ...
-}
+class MyElement extends MinzeElement {}
 
-// automatic naming based on the class name
-MyElement.define()
-
-// manual naming
-MyElement.define('my-custom-element')
+MyElement.define() // automatic naming based on the class name
+MyElement.define('my-custom-element') // manual naming
 ```
+
+```ts [Type]
+(method) MinzeElement.define(name?: string): void
+```
+
+:::
 
 <!-- prettier-ignore-start -->
 ```html
@@ -167,16 +164,12 @@ If you use the shorthand notation and provide a `camelCase` string instead of a 
 :::
 
 ::: danger
-Never destructure reactive properties or attrs, otherwise the destructured values lose their reactivity.
+Never destructure `reactive` properties, otherwise the destructured values lose their reactivity.
 :::
 
-- **Property**
+::: code-group
 
-- **Type:** `readonly (string | [name: string, value: unknown, exposeAttr?: boolean])[]`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -188,16 +181,14 @@ export class MyElement extends MinzeElement {
     ['anObject', { foo: 'bar' }]
   ]
 
-  html = () => `
-    <div>${this.aString}</div>
-  `
+  html = () => `<div>${this.aString}</div>`
 
   onReady() {
     this.aString = 'bar'
 
     console.log(
       this.aShorthand, // null
-      this.aString, // bar
+      this.aString, // 'bar'
       this.aBoolean, // false
       this.anArray, // [1, 2, 3]
       this.anObject // { foo: 'bar' }
@@ -206,13 +197,25 @@ export class MyElement extends MinzeElement {
 }
 ```
 
-```html
-<!-- usage -->
-<my-element></my-element>
+```ts [Type]
+(property) MinzeElement.reactive?: Reactive | undefined
+// for 'Reactive' type see: https://minze.dev/api/type-helpers#reactive
+```
 
+:::
+
+::: code-group
+
+```html [HTML]
+<my-element></my-element>
+```
+
+```html [HTML (Rendered)]
 <!-- an-array attribute will be exposed automatically and look like this: -->
 <my-element an-array="[1, 2, 3]"></my-element>
 ```
+
+:::
 
 ### attrs <Badge type="tip" text="^1.0.0" />
 
@@ -227,11 +230,11 @@ Tuple structure: [`name`, `value?`]
 2. **value:** (optional) not defined or any value type, which will be used to set the initial attribute, if none is found on the HTML element.
 
 ::: tip
-All created attribute properties can be accessed inside the component with the `camelCase` notation. E.g. for `my-attribute` the attribute property will be `myAttribute`.
+The attribute on the element is always the source of truth and not the created attribute property inside the component. So when the attribute value changes, the property will be updated. But changing the property will **not** update the attribute.
 :::
 
 ::: tip
-The attribute on the component is always the source of truth and not the created attribute property. So when the attribute value changes, the property will be updated. But changing the property will **not** update the attribute.
+All created attribute properties can be accessed inside the component with the `camelCase` notation. E.g. for `my-attribute` the attribute property will be `myAttribute`.
 :::
 
 ::: tip
@@ -243,17 +246,13 @@ If you use the shorthand notation and provide a `dash-case` string instead of a 
 :::
 
 ::: danger
-For attribute property updates to be effective (on attribute changes), you have to make these attributes **observable**. It can be done by providing them to **[observedAttributes](#observedattributes)**.
+For attribute property updates to be effective (on attribute changes on the element), you have to make these attributes **observable**. It can be done by providing them to **[observedAttributes](#observedattributes)**.
 :::
 
-- **Property**
-
-- **Type:** `readonly (string | [name: string, value?: unknown])[]`
-
-- **Example:**
+::: code-group
 
 <!-- prettier-ignore-start -->
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -264,44 +263,53 @@ export class MyElement extends MinzeElement {
   ]
 
   onReady() {
-    console.log(this.text, this.bgColor)
+    console.log(this.text, this.bgColor) // null, '#000'
   }
 }
 ```
 <!-- prettier-ignore-end -->
 
-<!-- prettier-ignore-start -->
-```html
-<!-- usage -->
-<my-element text="Hello Minze!"></my-element>
+```ts [Type]
+(property) MinzeElement.attrs?: Attrs | undefined
+// for 'Attrs' type see: https://minze.dev/api/type-helpers#attrs
+```
 
-<!--
-  bg-color and json-parsable attributes will be created on the element,
-  since no attribute was provided and an initial value is defined
--->
+:::
+
+::: code-group
+
+```html [HTML]
+<my-element text="Hello Minze!"></my-element>
+```
+
+<!-- prettier-ignore-start -->
+```html [HTML (Rendered)]
 <my-element
   text="Hello Minze!"
   bg-color="#000"
   json-parsable="{&quot;key&quot;:&quot;value&quot;}"
 ></my-element>
+
+<!--
+  bg-color and json-parsable attributes will be created on the element,
+  since no attribute was provided and an initial value is defined
+-->
 ```
 <!-- prettier-ignore-end -->
 
+:::
+
 ### observedAttributes <Badge type="tip" text="^1.0.0" />
 
-Observes the provided attribute names and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChange` and `onAttributeChange` hooks are called.
+Observes attributtes on the element that are defined in `observedAttributes` array and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChange` and `onAttributeChange` hooks are called.
 
 ::: warning
 `observedAttributes` has to be a `static` property.
 :::
 
-- **Static Property**
+::: code-group
 
-- **Type:** `string[]`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -310,10 +318,16 @@ export class MyElement extends MinzeElement {
   static observedAttributes = ['text', 'bg-color']
 
   onAttributeChange() {
-    console.log(this.text, this.bgColor)
+    console.log(this.text, this.bgColor) // whatever the new values are
   }
 }
 ```
+
+```ts [Type]
+(property) MinzeElement.observedAttributes?: string[] | undefined
+```
+
+:::
 
 ### watch <Badge type="tip" text="^1.0.0" />
 
@@ -330,20 +344,16 @@ Tuple structure: [`name`, `callback`]
 `watch` only works with reactive properties that were defined with `reactive` or `attrs`.
 :::
 
-- **Property**
+::: code-group
 
-- **Type:** `readonly [name: string, callback: (newValue?: any, oldValue?: any, key?: string, target?: object | typeof MinzeElement) => Promise<void> | void][]`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   reactive = [['count', 0]]
 
   watchCount = (newValue, oldValue, key, target) => {
-    console.log(newValue, oldValue, key, target) // 1, 0, count, this
+    console.log(newValue, oldValue, key, target) // 1, 0, 'count', MyElement
   }
 
   watch = [['count', this.watchCount]]
@@ -354,19 +364,22 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+```ts [Type]
+(property) MinzeElement.watch?: Watch | undefined
+// for 'Watch' type see: https://minze.dev/api/type-helpers#watch
+```
+
+:::
+
 ## TEMPLATE
 
 ### html <Badge type="tip" text="^1.0.0" />
 
-Defines the elements `HTML` template.
+Defines the components `HTML` template.
 
-- **Method**
+::: code-group
 
-- **Type:** `(): string`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -376,17 +389,19 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.html?(): string
+```
+
+:::
+
 ### css <Badge type="tip" text="^1.0.0" />
 
-Defines the elements scoped `CSS` template.
+Defines the components scoped `CSS` template.
 
-- **Method**
+::: code-group
 
-- **Type:** `(): string`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -398,23 +413,23 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.css?(): string
+```
+
+:::
+
 ### rerender <Badge type="tip" text="^1.0.0" />
 
 Requests a component re-render, invalidating all caches.
 
-- **Method**
+::: code-group
 
-- **Type:** `(): void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  html = () => `
-    <div>Hello Minze!</div>
-  `
+  html = () => `<div>Hello Minze!</div>`
 
   onReady() {
     this.rerender()
@@ -422,23 +437,25 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.rerender(): void
+```
+
+:::
+
 ## SELECTORS
+
+::: tip
+The safest place to use `select`, `selectAll` and `slotted` is inside the `onRender` and `onReady` Hooks, when the template has already rendered.
+:::
 
 ### select <Badge type="tip" text="^1.0.0" />
 
 Selects the first matching element for the given `CSS` selector inside the `html` template.
 
-::: tip
-Best place to use `select` is inside the `onRender` and `onReady` Hooks.
-:::
+::: code-group
 
-- **Method**
-
-- **Type:** `(selectors: string): Element | null`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -449,26 +466,24 @@ export class MyElement extends MinzeElement {
 
   onReady() {
     const element = this.select('#my-div')
-    console.log(element)
+    console.log(element) // <div id="my-div"></div>
   }
 }
 ```
+
+```ts [Type]
+(method) MinzeElement.select<E extends Element = Element>(selectors: string): E | null
+```
+
+:::
 
 ### selectAll <Badge type="tip" text="^1.0.0" />
 
 Selects all elements matching the given `CSS` selector inside the `html` template.
 
-::: tip
-Best place to use `selectAll` is inside the `onRender` and `onReady` Hooks.
-:::
+::: code-group
 
-- **Method**
-
-- **Type:** `(selectors: string): NodeListOf<Element> | null`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -479,26 +494,24 @@ export class MyElement extends MinzeElement {
 
   onReady() {
     const elements = this.selectAll('div')
-    console.log(elements)
+    console.log(elements) // [div, div]
   }
 }
 ```
 
-### slotted <Badge type="tip" text="^1.4.0" />
+```ts [Type]
+(method) MinzeElement.selectAll<E extends Element = Element>(selectors: string): NodeListOf<E> | null
+```
 
-Returns an array of slotted element(s) for provided slot name, otherwise `null` if none found.
-
-::: tip
-Best place to use `slotted` is inside the `onRender` and `onReady` Hooks.
 :::
 
-- **Method**
+### slotted <Badge type="tip" text="^1.4.0" />
 
-- **Type:** `(name?: string): Element[] | null`
+Returns an array of slotted element(s) for provided slot name.
 
-- **Example:**
+::: code-group
 
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -508,12 +521,18 @@ export class MyElement extends MinzeElement {
   `
 
   onReady() {
-    const defaultSlottedElements = this.slotted('default')
-    const namedSlottedElements = this.slotted('named-slot')
-    console.log(defaultSlottedElements, namedSlottedElements)
+    const defaultSlotted = this.slotted('default')
+    const namedSlotted = this.slotted('named-slot')
+    console.log(defaultSlotted, namedSlotted) // slotted elements
   }
 }
 ```
+
+```ts [Type]
+(method) MinzeElement.slotted(name?: string): Element[] | null
+```
+
+:::
 
 ## EVENTS
 
@@ -530,27 +549,19 @@ Tuple structure: [`eventTarget`, `eventName`, `callback`]
 3. **callback:** a callback function that runs when the eventName is matched.
 
 ::: warning
-Web components are meant to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object, to prevent `event-listener-pollution`.
+Web components are meant to be encapsulated HTML elements, it's a bad idea to create event listeners inside the component and attach them all over the place. That's why the targets outside of the component are intentionally limited to the `window` object.
 :::
 
-- **Property**
+::: code-group
 
-- **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window | BroadcastChannel, eventName: string, callback: (event: Event) => void][]`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  html = () => `
-    <button class="button">
-      Button
-    </button>
-  `
+  html = () => `<button class="button">Click me!</button>`
 
   handleClick = () => {
-    this.dispatch('minze:my-event-name', {
+    this.dispatch('minze:event', {
       msg: 'Hello Minze!'
     })
   }
@@ -561,201 +572,216 @@ export class MyElement extends MinzeElement {
 
   eventListeners = [
     ['.button', 'click', this.handleClick],
-    [this, 'minze:my-event-name', this.handleDispatch],
-    [window, 'minze:my-event-name', this.handleDispatch]
+    [this, 'minze:event', this.handleDispatch],
+    [window, 'minze:event', this.handleDispatch]
   ]
 }
 ```
 
-### dispatch <Badge type="tip" text="^1.3.2" />
+```ts [Type]
+(property) MinzeElement.eventListeners?: EventListeners | undefined
+// for 'EventListeners' type see: https://minze.dev/api/type-helpers#eventlisteners
+```
 
-Dispatches a custom event from the element.
-
-::: tip
-It's a good idea to prefix your custom event names to avoid collisions with other libraries.
 :::
 
-- **Method**
+### dispatch <Badge type="tip" text="^1.3.2" />
 
-- **Type:** `(eventName: string, detail?: unknown): void`
+Dispatches a custom event from inside the component.
 
-- **Example:**
+::: code-group
 
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onReady() {
-    const optionalDetail = {
-      msg: 'Hello Minze!'
-    }
-
-    this.dispatch('minze:ready', optionalDetail)
+    this.dispatch('minze:ready', { msg: 'Hello Minze!' })
   }
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.dispatch(eventName: string, detail?: unknown): void
+```
+
+:::
+
 ## HOOKS
+
+::: tip
+All hooks can be defined as asynchronous with the `async` keyword. E.g. `async onStart () {}`
+:::
 
 ### onStart <Badge type="tip" text="^1.0.0" />
 
-A Hook that runs `once` after the element is added to the DOM, but before the internal lifecycle, like creating reactive properties, or rendering the template. Can either be a regular or async method.
+A Hook that runs `once` after the element is added to the DOM, but before the internal lifecycle, like creating reactive properties, or rendering the template.
 
 ::: tip
-This hook runs after the `beforeAttributeChange` and `onAttributeChange` hooks if any `observed` attributes are present on the element.
+This hook runs after the `beforeAttributeChange` and `onAttributeChange` hooks if any `observed` attributes are defined on the component.
 :::
 
-- **Method**
+::: code-group
 
-- **Type:** `(): Promise<void> | void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onStart() {
-    console.log('onStart')
+    console.log('onStart') // 'onStart'
   }
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.onStart?(): Promise<void> | void
+```
+
+:::
+
 ### onReactive <Badge type="tip" text="^1.0.0" />
 
-A Hook that runs `once` after the element is added to the DOM, and all reactive properties are initialized but before rendering the template. Can either be a regular or async method.
+A Hook that runs `once` after the element is added to the DOM, and all reactive properties are initialized but before rendering the template.
 
-- **Method**
+::: code-group
 
-- **Type:** `(): Promise<void> | void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onReactive() {
-    console.log('onReactive')
+    console.log('onReactive') // 'onReactive'
   }
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.onReactive?(): Promise<void> | void
+```
+
+:::
+
 ### onReady <Badge type="tip" text="^1.0.0" />
 
-A Hook that runs `once` after the element is added to the DOM and the entire component lifecycle is finished. Can either be a regular or async method.
+A Hook that runs `once` after the element is added to the DOM and the entire component lifecycle is finished.
 
-- **Method**
+::: code-group
 
-- **Type:** `(): Promise<void> | void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onReady() {
-    console.log('onReady')
+    console.log('onReady') // 'onReady'
   }
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.onReady?(): Promise<void> | void
+```
+
+:::
+
 ### onDestroy <Badge type="tip" text="^1.0.0" />
 
-A Hook that runs `once` after the element is disconnected from the document's DOM and all its event listeners are removed. Can either be a regular or async method.
+A Hook that runs `once` after the element is disconnected from the document's DOM and all its event listeners are removed.
 
-- **Method**
+::: code-group
 
-- **Type:** `(): Promise<void> | void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onDestroy() {
-    console.log('onDestroy')
+    console.log('onDestroy') // 'onDestroy'
   }
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.onDestroy?(): Promise<void> | void
+```
+
+:::
+
 ### onMove <Badge type="tip" text="^1.0.0" />
 
-A Hook that runs `once` after the element is moved to a new document but before it's rendered. Can either be a regular or async method.
+A Hook that runs `once` after the element is moved to a new document but before it's rendered.
 
 ::: tip
 If the element is moved within the same document, this hook will not be called.
 :::
 
-- **Method**
+::: code-group
 
-- **Type:** `(): Promise<void> | void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onMove() {
-    console.log('onMove')
+    console.log('onMove') // 'onMove'
   }
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.onMove?(): Promise<void> | void
+```
+
+:::
+
 ### beforeRender <Badge type="tip" text="^1.0.0" />
 
-A Hook that runs `each time` bofore a template render. Can either be a regular or async method.
+A Hook that runs `each time` bofore a template render.
 
-- **Method**
+::: code-group
 
-- **Type:** `(): Promise<void> | void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   beforeRender() {
-    console.log('beforeRender')
+    console.log('beforeRender') // 'beforeRender'
   }
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.beforeRender?(): Promise<void> | void
+```
+
+:::
+
 ### onRender <Badge type="tip" text="^1.0.0" />
 
-A Hook that runs `each time` after a template render. Can either be a regular or async method.
+A Hook that runs `each time` after a template render.
 
-- **Method**
+::: code-group
 
-- **Type:** `(): Promise<void> | void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
   onRender() {
-    console.log('onRender')
+    console.log('onRender') // 'onRender'
   }
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.onRender?(): Promise<void> | void
+```
+
+:::
+
 ### beforeAttributeChange <Badge type="tip" text="^1.0.0" />
 
-A Hook that runs `each time` before any [observed attribute](#observedattributes) changes. Can either be a regular or async method.
+A Hook that runs `each time` before any of the [observed attributes](#observedattributes) change.
 
-- **Method**
+::: code-group
 
-- **Type:** `(name?: string, oldValue?: string | null, newValue?: string | null): Promise<void> | void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -765,17 +791,19 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.beforeAttributeChange?(name?: string, oldValue?: string | null, newValue?: string | null): Promise<void> | void
+```
+
+:::
+
 ### onAttributeChange <Badge type="tip" text="^1.0.0" />
 
-A Hook that runs `each time` after any [observed attribute](#observedattributes) changes. Can either be a regular or async method.
+A Hook that runs `each time` after any of the [observed attributes](#observedattributes) change.
 
-- **Method**
+::: code-group
 
-- **Type:** `(name?: string, oldValue?: string | null, newValue?: string | null): Promise<void> | void`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -785,19 +813,21 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+```ts [Type]
+(method) MinzeElement.onAttributeChange?(name?: string, oldValue?: string | null, newValue?: string | null): Promise<void> | void
+```
+
+:::
+
 ## MISC
 
 ### options <Badge type="tip" text="^1.0.0" />
 
 Individual components can be customized by declaring an options property. All currently available options are listed in the example below with their **default values**.
 
-- **Property**
+::: code-group
 
-- **Type:** `Object`
-
-- **Example:**
-
-```js
+```js [Code]
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
@@ -810,6 +840,18 @@ export class MyElement extends MinzeElement {
   }
 }
 ```
+
+```ts [Type]
+(property) MinzeElement.options?: {
+  cssReset?: boolean | undefined;
+  exposeAttrs?: {
+    exportparts?: boolean | undefined;
+    rendered?: boolean | undefined;
+  } | undefined;
+} | undefined
+```
+
+:::
 
 ## DEPRECATED
 

@@ -13,7 +13,7 @@ Displays the used version of Minze.
 ```js [Code]
 import { Minze } from 'minze'
 
-console.log(Minze.version) // 1.2.0
+console.log(Minze.version) // '1.2.0'
 ```
 
 ```ts [Type]

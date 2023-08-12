@@ -97,7 +97,7 @@ import { MinzeElement, type EventListeners } from 'minze'
 export class MyElement extends MinzeElement {
   html = () => `<button>Click me!</button>`
 
-  handleClick = (event: Event) => console.log(event)
+  handleClick = (event: Event) => {}
 
   eventListeners: EventListeners = [['.button', 'click', this.handleClick]]
 }
