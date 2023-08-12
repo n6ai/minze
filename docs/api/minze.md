@@ -4,7 +4,7 @@ Global class with helpful static methods.
 
 ## STATIC
 
-### version <Badge type="tip" text="^1.0.0" />
+### version <Badge text="^1.0.0" />
 
 Displays the used version of Minze.
 
@@ -22,7 +22,7 @@ console.log(Minze.version) // '1.2.0'
 
 :::
 
-### define <Badge type="tip" text="^1.0.0" />
+### define <Badge text="^1.0.0" />
 
 Defines a custom web component. Doesn't throw any errors if the component is already defined.
 
@@ -46,7 +46,7 @@ Minze.define('my-element', MyElement)
 <my-element></my-element>
 ```
 
-### defineAll <Badge type="tip" text="^1.0.0" />
+### defineAll <Badge text="^1.0.0" />
 
 Defines all custom web components in a single call. Your components will be registered with `dash-case` naming. The provided components can either be an array of Minze elements, a module object, or a module-map generated with tools like vite's `import.meta.glob` Doesn't throw any errors if a component is already defined.
 
@@ -172,7 +172,7 @@ export class SecondElement extends MinzeElement {}
 
 ## EVENTS
 
-### dispatch <Badge type="tip" text="^1.3.2" />
+### dispatch <Badge text="^1.3.2" />
 
 Dispatches a custom event from the `window` object.
 
@@ -190,7 +190,7 @@ Minze.dispatch('minze:event', { msg: 'Hello Minze!' })
 
 :::
 
-### listen <Badge type="tip" text="^1.0.0" />
+### listen <Badge text="^1.0.0" />
 
 Adds an event listener to the `window` object.
 
@@ -210,7 +210,7 @@ Minze.listen('minze:event', callback)
 
 :::
 
-### stopListen <Badge type="tip" text="^1.0.0" />
+### stopListen <Badge text="^1.0.0" />
 
 Remove an event listener from the `window` object.
 

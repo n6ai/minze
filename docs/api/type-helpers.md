@@ -2,7 +2,7 @@
 
 The properties `reactive`, `attrs`, `watch` and `eventListeners` are from the `tuple` type, but TypeScript doesn't automatically infer tuples and rather assumes that they are arrays. So you have to explicitly declare them as tuples. You can use the following types to do so:
 
-## Reactive <Badge type="tip" text="^1.0.0" />
+## Reactive <Badge text="^1.0.0" />
 
 Declares `reactive` property as a mixed array of strings and tuples.
 
@@ -27,7 +27,7 @@ type Reactive = readonly Prop[]
 
 :::
 
-## Attrs <Badge type="tip" text="^1.0.0" />
+## Attrs <Badge text="^1.0.0" />
 
 Declares `attrs` property as a mixed array of strings and tuples.
 
@@ -52,7 +52,7 @@ type Attrs = readonly Attr[]
 
 :::
 
-## Watch <Badge type="tip" text="^1.0.0" />
+## Watch <Badge text="^1.0.0" />
 
 Declares `watch` property as an array of tuples.
 
@@ -85,7 +85,7 @@ type Watch = readonly [name: string, callback: Callback][]
 
 :::
 
-## EventListeners <Badge type="tip" text="^1.0.0" />
+## EventListeners <Badge text="^1.0.0" />
 
 Declares `eventListeners` property as an array of tuples.
 
