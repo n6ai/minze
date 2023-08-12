@@ -41,7 +41,7 @@ export type MinzeWatch = Watch
 export type MinzeEventListeners = EventListeners
 
 /**
- * MinzeElement: Can be used to extend from to create custom web components.
+ * MinzeElement: Base class for custom web components.
  *
  * @example
  * ```

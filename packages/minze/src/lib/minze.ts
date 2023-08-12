@@ -2,7 +2,7 @@ import { MinzeElement } from './minze-element'
 import { warn } from './utils'
 
 /**
- * Minze class with multiple static methods and properties for common tasks.
+ * Minze: Global class with helpful static methods.
  */
 export class Minze {
   /**
