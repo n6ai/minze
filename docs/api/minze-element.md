@@ -821,6 +821,26 @@ export class MyElement extends MinzeElement {
 
 ## MISC
 
+### debug <Badge type="tip" text="^1.9.0" />
+
+The component logs useful information about itself to the console when the debug property inside the component is set to `true`. The logging happens after the `onReady` hook.
+
+::: code-group
+
+```js [Code]
+import { MinzeElement } from 'minze'
+
+export class MyElement extends MinzeElement {
+  debug = true
+}
+```
+
+```ts [Type]
+(property) MinzeElement.debug?: boolean | undefined
+```
+
+:::
+
 ### options <Badge type="tip" text="^1.0.0" />
 
 Individual components can be customized by declaring an options property. All currently available options are listed in the example below with their **default values**.
