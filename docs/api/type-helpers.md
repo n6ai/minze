@@ -1,108 +1,114 @@
 # Type Helpers
 
-Some properties you can define are from the `tuple` type, but TypeScript doesn't automatically infer tuples and rather assumes that they are arrays. So you have to explicitly declare them as tuples. If you are using `reactive`, `attrs`, `watch` or `eventListeners`, you can use the following types to do so:
+The properties `reactive`, `attrs`, `watch` and `eventListeners` are from the `tuple` type, but TypeScript doesn't automatically infer tuples and rather assumes that they are arrays. So you have to explicitly declare them as tuples. You can use the following types to do so:
 
 ## Reactive <Badge type="tip" text="^1.0.0" />
 
 Declares `reactive` property as a mixed array of strings and tuples.
 
-- **Type:** `readonly (string | [name: string, value: unknown, exposeAttr?: boolean])[]`
+::: code-group
 
-- **Alias:** `MinzeReactive`
-
-- **Example:**
-
-```ts
-import type { Reactive } from 'minze'
-import { MinzeElement } from 'minze'
+```ts [Code]
+import { MinzeElement, type Reactive } from 'minze'
 
 export interface MyElement {
-  foo: null
   count: number
 }
 
 export class MyElement extends MinzeElement {
-  reactive: Reactive = ['foo', ['count', 0]]
+  reactive: Reactive = [['count', 0]]
 }
 ```
+
+```ts [Type]
+type Prop = string | [name: string, value: unknown, exposeAttr?: boolean]
+type Reactive = readonly Prop[]
+```
+
+:::
 
 ## Attrs <Badge type="tip" text="^1.0.0" />
 
 Declares `attrs` property as a mixed array of strings and tuples.
 
-- **Type:** `readonly (string | [name: string, value?: unknown])[]`
+::: code-group
 
-- **Alias:** `MinzeAttrs`
-
-- **Example:**
-
-```ts
-import type { Attrs } from 'minze'
-import { MinzeElement } from 'minze'
+```ts [Code]
+import { MinzeElement, type Attrs } from 'minze'
 
 export interface MyElement {
-  foo: null
-  count: string
+  count: number
 }
 
 export class MyElement extends MinzeElement {
-  attrs: Attrs = ['foo', ['count', 0]]
+  attrs: Attrs = [['count', 0]]
 }
 ```
+
+```ts [Type]
+type Attr = string | [name: string, value?: unknown]
+type Attrs = readonly Attr[]
+```
+
+:::
 
 ## Watch <Badge type="tip" text="^1.0.0" />
 
 Declares `watch` property as an array of tuples.
 
-- **Type:** `readonly [name: string, callback: (newValue?: any, oldValue?: any, key?: string, target?: object | typeof MinzeElement) => Promise<void> | void][]`
+::: code-group
 
-- **Alias:** `MinzeWatch`
+```ts [Code]
+import { MinzeElement, type Watch } from 'minze'
 
-- **Example:**
-
-```ts
-import type { Watch } from 'minze'
-import { MinzeElement } from 'minze'
+export interface MyElement {
+  count: number
+}
 
 export class MyElement extends MinzeElement {
-  watchCount = (
-    newValue: any,
-    oldValue: any,
-    key: string,
-    target: object | typeof MinzeElement
-  ) => {
-    console.log(newValue, oldValue, key, target)
-  }
-
-  watch: Watch = [['count', this.watchCount]]
+  watch: Watch = [
+    ['count', (newValue, oldValue) => console.log(newValue, oldValue)]
+  ]
 }
 ```
+
+```ts [Type]
+type Callback = (
+  newValue?: any,
+  oldValue?: any,
+  key?: string,
+  target?: object | typeof MinzeElement
+) => Promise<void> | void
+
+type Watch = readonly [name: string, callback: Callback][]
+```
+
+:::
 
 ## EventListeners <Badge type="tip" text="^1.0.0" />
 
 Declares `eventListeners` property as an array of tuples.
 
-- **Type:** `readonly [eventTarget: string | MinzeElement | typeof Window | BroadcastChannel, eventName: string, callback: (event: Event) => void][]`
+::: code-group
 
-- **Alias:** `MinzeEventListeners`
-
-- **Example:**
-
-```ts
-import type { EventListeners } from 'minze'
-import { MinzeElement } from 'minze'
+```ts [Code]
+import { MinzeElement, type EventListeners } from 'minze'
 
 export class MyElement extends MinzeElement {
-  html = () => `
-    <button class="button">
-      Button
-    </button>
-  `
+  html = () => `<button>Click me!</button>`
 
-  handleClick = (event: Event) => {
-    console.log(event)
-  }
+  handleClick = (event: Event) => console.log(event)
 
   eventListeners: EventListeners = [['.button', 'click', this.handleClick]]
 }
+```
+
+```ts [Type]
+type EventListener = [
+  eventTarget: string | MinzeElement | typeof Window | BroadcastChannel,
+  eventName: string,
+  callback: (event: Event) => void
+]
+
+type EventListeners = EventListener[]
 ```
