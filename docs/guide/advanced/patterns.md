@@ -158,7 +158,7 @@ MyElement.define()
 
 A global event bus allows for rather easy cross-component comunication. You can implement one either with a [BroadcastChannel](https://developer.mozilla.org/docs/Web/API/BroadcastChannel) or with events.
 
-### Broadcasting
+### Broadcast
 
 Cross-component comunication via `BroadcastChannel`.
 
