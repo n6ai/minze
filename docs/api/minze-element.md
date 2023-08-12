@@ -1,6 +1,6 @@
 # MinzeElement
 
-Base class which can be used to extend from to create custom web components.
+Base class for custom web components.
 
 ## READ-ONLY
 

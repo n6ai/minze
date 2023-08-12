@@ -1,6 +1,6 @@
 # Minze
 
-Minze class with multiple static methods and properties for common tasks.
+Global class with helpful static methods.
 
 ## STATIC
 
