@@ -22,7 +22,7 @@ hero:
 features:
   - icon: 👶
     title: Simple
-    details: Dive right in by scaffolding a project or using a CDN link.
+    details: Dive right in by scaffolding a project, installing via npm or using a CDN link.
     link: /guide/
     linkText: Quick Start
   - icon: ⚡
@@ -34,7 +34,7 @@ features:
     title: Modern
     details: Based on the latest technologies around web components.
     link: https://developer.mozilla.org/docs/Web/API/Web_components
-    linkText: About Web Components on mdn
+    linkText: Web Components on mdn
   - icon: 📦
     title: Shareable
     details: Build component libraries or design systems. Define once, use everywhere.
@@ -44,25 +44,20 @@ features:
     title: Framework Agnostic
     details: Use Minze with any common framework - React, Vue, Svelte, etc ...
     link: https://stackoverflow.com/questions/64725017/what-does-it-mean-by-framework-agnostic
-    linkText: What does Framework Agnostic mean
-  - icon: 🔒
-    title: Typed API
-    details: Scale your component library with ease by using TypeScript.
-    link: /api/
-    linkText: API Reference
-  - icon: 🧬
-    title: CLI
-    details: Use the command line to scaffold instant dev environments.
-    link: /guide/installation#cli
-    linkText: CLI installation
+    linkText: Framework Agnostic?
   - icon: 📕
     title: Storybook
     details: Minze x Storybook dev environment integration.
     link: /guide/installation#cli
-    linkText: CLI installation
+    linkText: npm crate minze
   - icon: 📖
-    title: Docs
-    details: Extensive documentation and API Reference.
+    title: Extensive Docs
+    details: Comprehensive documentation and API reference.
     link: /guide/
     linkText: Guide
+  - icon: 🔒
+    title: Typed API
+    details: Scale your component library with ease by using TypeScript.
+    link: /api/
+    linkText: API reference
 ---

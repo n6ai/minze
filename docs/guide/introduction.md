@@ -20,15 +20,14 @@ Possible use cases:
 
 ## Features
 
-- 👶 Simple - Dive right in by [scaffolding a project](/guide/installation#cli) or using a [CDN link](/guide/installation#cdn).
+- 👶 Simple - Dive right in by [scaffolding a project](/guide/installation#cli), installing via [npm](/guide/installation#npm) or using [CDN link](/guide/installation#cdn).
 - ⚡ Fast - Tiny footprint ~3KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
 - 📦 Shareable - Build component libraries or design systems. Define once, use everywhere.
 - 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, Svelte, etc ...
-- 🔒 Typed API - Scale your component library with ease by using TypeScript.
-- 🧬 CLI - Use the command line to scaffold instant dev environments.
 - 📕 Storybook - Minze x Storybook dev environment integration.
-- 📖 Docs - Extensive documentation and API Reference.
+- 📖 Extensive Docs - Comprehensive documentation and API reference.
+- 🔒 Typed API - Scale your component library with ease by using TypeScript.
 
 ## Architecture
 

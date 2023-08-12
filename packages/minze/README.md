@@ -13,12 +13,11 @@ It provides an intuitive abstraction layer around the web components API with it
 
 ## Features
 
-- 👶 Simple - Dive right in by scaffolding a project or using a CDN link.
+- 👶 Simple - Dive right in by scaffolding a project, installing via npm or using a CDN link.
 - ⚡ Fast - Tiny footprint ~3KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
 - 📦 Shareable - Build component libraries or design systems. Define once, use everywhere.
 - 🎲 Framework Agnostic - Use Minze with any common framework - React, Vue, Svelte, etc ...
-- 🔒 Typed API - Scale your component library with ease by using TypeScript.
-- 🧬 CLI - Use the command line to scaffold instant dev environments.
 - 📕 Storybook - Minze x Storybook dev environment integration.
-- 📖 Docs - Extensive documentation and API Reference.
+- 📖 Extensive Docs - Comprehensive documentation and API reference.
+- 🔒 Typed API - Scale your component library with ease by using TypeScript.
