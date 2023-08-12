@@ -40,6 +40,8 @@ export default defineConfig({
     hostname: 'https://minze.dev'
   },
 
+  ignoreDeadLinks: [/^https?:\/\/localhost/],
+
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=1' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png?v=1' }],
@@ -99,15 +101,15 @@ export default defineConfig({
             items: [
               {
                 text: 'Gradio',
-                link: '/integrations/gradio'
+                link: '/integrations/ai/gradio'
               },
               {
                 text: 'Hugging Face',
-                link: '/integrations/huggingface'
+                link: '/integrations/ai/huggingface'
               },
               {
                 text: 'TensorFlow',
-                link: '/integrations/tensorflow'
+                link: '/integrations/ai/tensorflow'
               }
             ]
           },
@@ -116,31 +118,31 @@ export default defineConfig({
             items: [
               {
                 text: 'ESLint',
-                link: '/integrations/eslint'
+                link: '/integrations/dev/eslint'
               },
               {
                 text: 'Playwright',
-                link: '/integrations/playwright'
+                link: '/integrations/dev/playwright'
               },
               {
                 text: 'Prettier',
-                link: '/integrations/prettier'
+                link: '/integrations/dev/prettier'
               },
               {
                 text: 'Storybook',
-                link: '/integrations/storybook'
+                link: '/integrations/dev/storybook'
               },
               {
                 text: 'UnoCSS',
-                link: '/integrations/unocss'
+                link: '/integrations/dev/unocss'
               },
               {
                 text: 'Vite',
-                link: '/integrations/vite'
+                link: '/integrations/dev/vite'
               },
               {
                 text: 'Vitest',
-                link: '/integrations/vitest'
+                link: '/integrations/dev/vitest'
               }
             ]
           }
@@ -260,43 +262,43 @@ export default defineConfig({
           items: [
             {
               text: 'Registration',
-              link: '/guide/components-registration'
+              link: '/guide/components/registration'
             },
             {
               text: 'Data',
-              link: '/guide/components-data'
+              link: '/guide/components/data'
             },
             {
               text: 'Methods',
-              link: '/guide/components-methods'
+              link: '/guide/components/methods'
             },
             {
               text: 'Templating',
-              link: '/guide/components-templating'
+              link: '/guide/components/templating'
             },
             {
               text: 'Styling',
-              link: '/guide/components-styling'
+              link: '/guide/components/styling'
             },
             {
               text: 'Selectors',
-              link: '/guide/components-selectors'
+              link: '/guide/components/selectors'
             },
             {
               text: 'Watchers',
-              link: '/guide/components-watchers'
+              link: '/guide/components/watchers'
             },
             {
               text: 'Events',
-              link: '/guide/components-events'
+              link: '/guide/components/events'
             },
             {
               text: 'Hooks',
-              link: '/guide/components-hooks'
+              link: '/guide/components/hooks'
             },
             {
               text: 'Options',
-              link: '/guide/components-options'
+              link: '/guide/components/options'
             }
           ]
         },
@@ -307,11 +309,11 @@ export default defineConfig({
           items: [
             {
               text: 'Component Registration',
-              link: '/guide/minze-component-registration'
+              link: '/guide/minze/component-registration'
             },
             {
               text: 'Events',
-              link: '/guide/minze-events'
+              link: '/guide/minze/events'
             }
           ]
         },
@@ -322,59 +324,59 @@ export default defineConfig({
           items: [
             {
               text: 'TypeScript',
-              link: '/guide/advanced-typescript'
+              link: '/guide/advanced/typescript'
             },
             {
               text: 'Syntax Highlighting',
-              link: '/guide/advanced-syntax-highlighting'
+              link: '/guide/advanced/syntax-highlighting'
             },
             {
               text: 'Debugging',
-              link: '/guide/advanced-debugging'
+              link: '/guide/advanced/debugging'
             },
             {
               text: 'Mixins',
-              link: '/guide/advanced-mixins'
+              link: '/guide/advanced/mixins'
             },
             {
               text: 'Extending',
-              link: '/guide/advanced-extending'
+              link: '/guide/advanced/extending'
             },
             {
               text: 'Injection',
-              link: '/guide/advanced-injection'
+              link: '/guide/advanced/injection'
             },
             {
               text: 'Event Bus',
-              link: '/guide/advanced-event-bus'
+              link: '/guide/advanced/event-bus'
             },
             {
               text: 'Transitions',
-              link: '/guide/advanced-transitions'
+              link: '/guide/advanced/transitions'
             },
             {
               text: 'Storage',
-              link: '/guide/advanced-storage'
+              link: '/guide/advanced/storage'
             },
             {
               text: 'Observers',
-              link: '/guide/advanced-observers'
+              link: '/guide/advanced/observers'
             },
             {
               text: 'Web Workers',
-              link: '/guide/advanced-web-workers'
+              link: '/guide/advanced/web-workers'
             },
             {
               text: 'Element Examples',
-              link: '/guide/advanced-element-examples'
+              link: '/guide/advanced/element-examples'
             },
             {
               text: 'Performance',
-              link: '/guide/advanced-performance'
+              link: '/guide/advanced/performance'
             },
             {
               text: 'Style Guide',
-              link: '/guide/advanced-style-guide'
+              link: '/guide/advanced/style-guide'
             }
           ]
         }
@@ -388,15 +390,15 @@ export default defineConfig({
               items: [
                 {
                   text: 'Gradio',
-                  link: '/integrations/gradio'
+                  link: '/integrations/ai/gradio'
                 },
                 {
                   text: 'Hugging Face',
-                  link: '/integrations/huggingface'
+                  link: '/integrations/ai/huggingface'
                 },
                 {
                   text: 'TensorFlow',
-                  link: '/integrations/tensorflow'
+                  link: '/integrations/ai/tensorflow'
                 }
               ]
             },
@@ -405,31 +407,31 @@ export default defineConfig({
               items: [
                 {
                   text: 'ESLint',
-                  link: '/integrations/eslint'
+                  link: '/integrations/dev/eslint'
                 },
                 {
                   text: 'Playwright',
-                  link: '/integrations/playwright'
+                  link: '/integrations/dev/playwright'
                 },
                 {
                   text: 'Prettier',
-                  link: '/integrations/prettier'
+                  link: '/integrations/dev/prettier'
                 },
                 {
                   text: 'Storybook',
-                  link: '/integrations/storybook'
+                  link: '/integrations/dev/storybook'
                 },
                 {
                   text: 'UnoCSS',
-                  link: '/integrations/unocss'
+                  link: '/integrations/dev/unocss'
                 },
                 {
                   text: 'Vite',
-                  link: '/integrations/vite'
+                  link: '/integrations/dev/vite'
                 },
                 {
                   text: 'Vitest',
-                  link: '/integrations/vitest'
+                  link: '/integrations/dev/vitest'
                 }
               ]
             }

@@ -41,7 +41,7 @@ $ pnpm install
 
 ## Creating a component
 
-1. In the root directory of your project start the development server and open the `http://localhost:5173` URL.
+1. In the root directory of your project start the development server and open the [`http://localhost:5173`](http://localhost:5173) URL.
 
 ::: code-group
 
@@ -118,8 +118,8 @@ src/
 
 ::: tip Next steps:
 
-- Add [HTML/CSS Syntax Highlighting](/guide/advanced-syntax-highlighting) with VS Code Plugin.
+- Add [HTML/CSS Syntax Highlighting](/guide/advanced/syntax-highlighting) with VS Code Plugin.
 - Learn how to [publish and use](/guide/publishing) your components.
-- Learn how to use Minze with [TypeScript](/guide/advanced-typescript).
+- Learn how to use Minze with [TypeScript](/guide/advanced/typescript).
 
 :::

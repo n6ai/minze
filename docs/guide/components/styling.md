@@ -318,7 +318,7 @@ MyElement.define()
 
 The `exportparts` attribute allows you to select and style elements existing in nested components, by exporting their part names.
 
-This can be done by creating an [attribute property](/guide/components-data.html#attribute-properties-attributes) inside the component. Alternatively you can set the `exportparts` option to `true` to automatically export all parts present in the current component.
+This can be done by creating an [attribute property](/guide/components/data.html#attribute-properties-attributes) inside the component. Alternatively you can set the `exportparts` option to `true` to automatically export all parts present in the current component.
 
 See [mdn docs](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/exportparts) for more information.
 
