@@ -150,22 +150,22 @@ In production, always pin your imports to a specific version to prevent your app
   <head></head>
   <body>
     <!-- custom elements -->
-    <my-first-element></my-first-element>
-    <my-second-element></my-second-element>
+    <first-element></first-element>
+    <second-element></second-element>
 
     <!-- js code -->
     <script type="module">
       import { Minze, MinzeElement } from 'https://esm.sh/minze'
 
-      class MyFirstElement extends MinzeElement {
+      class FirstElement extends MinzeElement {
         html = () => `Hello Minze!`
       }
 
-      class MySecondElement extends MinzeElement {
+      class SecondElement extends MinzeElement {
         html = () => `Hello Minze again!`
       }
 
-      Minze.defineAll([MyFirstElement, MySecondElement])
+      Minze.defineAll([FirstElement, SecondElement])
     </script>
   </body>
 </html>

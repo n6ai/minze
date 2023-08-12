@@ -22,7 +22,7 @@ hero:
 features:
   - icon: 👶
     title: Simple
-    details: Dive right in by scaffolding a project, installing via npm or using a CDN link.
+    details: Dive right in by scaffolding a project, installing from npm or using a CDN link.
     link: /guide/
     linkText: Quick Start
   - icon: ⚡

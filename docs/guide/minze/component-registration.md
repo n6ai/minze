@@ -60,8 +60,8 @@ Minze.defineAll(elements)
 ```js [Module-Map]
 import { Minze } from 'minze'
 const modules = {
-  'my-first-element': async () => (await import('./element.js')).MyFirstElement,
-  'my-second-element': async () => (await import('./element.js')).MySecondElement,
+  'first-element': async () => (await import('./element.js')).FirstElement,
+  'second-element': async () => (await import('./element.js')).SecondElement,
   'all': () => import('./element.js')
 }
 
@@ -76,14 +76,14 @@ const modules = import.meta.glob('./lib/**/*.@(ts|js)')
 Minze.defineAll(modules)
 ```
 
-```js [elements.js]
+```js [./elements.js]
 import { MinzeElement } from 'minze'
 
-export class MyFirstElement extends MinzeElement {
+export class FirstElement extends MinzeElement {
   // ...
 }
 
-export class MySecondElement extends MinzeElement {
+export class SecondElement extends MinzeElement {
   // ...
 }
 ```
@@ -92,11 +92,11 @@ export class MySecondElement extends MinzeElement {
 
 <!-- prettier-ignore-start -->
 ```html
-<my-first-element></my-first-element>
-<my-second-element></my-second-element>
+<first-element></first-element>
+<second-element></second-element>
 ```
 <!-- prettier-ignore-end -->
 
 ::: tip
-If you are using the module-map registration method, you can specify which components should be registered by providing an array of keys as the second argument. E.g. `Minze.defineAll(modules, ['my-first-element'])`
+If you are using the module-map registration method, you can specify which components should be registered by providing an array of keys as the second argument. E.g. `Minze.defineAll(modules, ['first-element'])`
 :::

@@ -20,7 +20,7 @@ Possible use cases:
 
 ## Features
 
-- 👶 Simple - Dive right in by [scaffolding a project](/guide/installation#cli), installing via [npm](/guide/installation#npm) or using [CDN link](/guide/installation#cdn).
+- 👶 Simple - Dive right in by [scaffolding a project](/guide/installation#cli), installing from [npm](/guide/installation#npm) or using [CDN link](/guide/installation#cdn).
 - ⚡ Fast - Tiny footprint ~3KB (minified and compressed).
 - 🚀 Modern - Based on the latest technologies around web components.
 - 📦 Shareable - Build component libraries or design systems. Define once, use everywhere.
@@ -33,8 +33,8 @@ Possible use cases:
 
 Minze consists of two main classes:
 
-- **Minze** - A class with multiple static methods and properties for common tasks, like defining several components at once.
-- **MinzeElement** - A class that can be used to extend from to create custom web components. It adds an abstraction layer around the web components API and adds several additional features like reactivity.
+- **Minze** - A class with multiple static methods for common tasks, like defining several components at once.
+- **MinzeElement** - Base class for custom web components. It adds an abstraction layer around the web components API and several additional features like reactivity.
 
 There's also a [CLI tool](/guide/installation.html#cli) that can be used to create a development environment for Minze components. Out of the box, it runs with vanilla [Vite](https://vitejs.dev/) or [Storybook](https://storybook.js.org) and optionally `TypeScript`.
 

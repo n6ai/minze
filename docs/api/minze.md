@@ -135,8 +135,8 @@ export class SecondElement extends MinzeElement {}
 src/
 ├─ lib/
 |  ├─ nested/
-|  |  └─ first-element.js
-|  └─ second-element.js
+|  |  └─ second-element.js
+|  └─ first-element.js
 └─ main.js
 ```
 
@@ -145,8 +145,8 @@ src/
 import { Minze } from 'minze'
 
 const modules = {
-  'lib/nested/first-element.js': () => import('./nested/first-element.js'),
-  'lib/second-element.js': () => import('./second-element.js')
+  'lib/first-element.js': () => import('./first-element.js'),
+  'lib/nested/second-element.js': () => import('./nested/second-element.js')
 }
 
 const filter = ['first-element', 'second-element'] // the elements to define (optional)
@@ -156,13 +156,13 @@ Minze.defineAll(modules, filter, keys)
 ```
 <!-- prettier-ignore-end -->
 
-```js [./nested/first-element.js]
+```js [./first-element.js]
 import { MinzeElement } from 'minze'
 
 export class FirstElement extends MinzeElement {}
 ```
 
-```js [./second-element.js]
+```js [./nested/second-element.js]
 import { MinzeElement } from 'minze'
 
 export class SecondElement extends MinzeElement {}
