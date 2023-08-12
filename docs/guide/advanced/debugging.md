@@ -6,8 +6,6 @@ You can debug a MinzeElement in several different ways.
 
 The component logs useful information about itself to the console when the `debug` property inside the component is set to `true`. The logging happens after the [`onReady`](/guide/components/hooks#lifecycle) hook.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -25,8 +23,6 @@ MyElement.define()
 ## console
 
 You can use `console.log()` or `console.dir()` anywhere inside the component to log to the console.
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'
@@ -53,8 +49,6 @@ The `debugger` statement, invokes any available debugging functionality.
 ::: warning
 The Browser DevTools need to be open for this to work.
 :::
-
-**Example**
 
 ```js
 import { MinzeElement } from 'minze'

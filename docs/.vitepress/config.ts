@@ -323,10 +323,6 @@ export default defineConfig({
           collapsed: false,
           items: [
             {
-              text: 'TypeScript',
-              link: '/guide/advanced/typescript'
-            },
-            {
               text: 'Syntax Highlighting',
               link: '/guide/advanced/syntax-highlighting'
             },
@@ -335,36 +331,20 @@ export default defineConfig({
               link: '/guide/advanced/debugging'
             },
             {
-              text: 'Mixins',
-              link: '/guide/advanced/mixins'
+              text: 'Patterns',
+              link: '/guide/advanced/patterns'
             },
             {
-              text: 'Extending',
-              link: '/guide/advanced/extending'
-            },
-            {
-              text: 'Injection',
-              link: '/guide/advanced/injection'
-            },
-            {
-              text: 'Event Bus',
-              link: '/guide/advanced/event-bus'
+              text: 'TypeScript',
+              link: '/guide/advanced/typescript'
             },
             {
               text: 'Transitions',
               link: '/guide/advanced/transitions'
             },
             {
-              text: 'Storage',
-              link: '/guide/advanced/storage'
-            },
-            {
-              text: 'Observers',
-              link: '/guide/advanced/observers'
-            },
-            {
-              text: 'Web Workers',
-              link: '/guide/advanced/web-workers'
+              text: 'Style Guide',
+              link: '/guide/advanced/style-guide'
             },
             {
               text: 'Element Examples',
@@ -373,10 +353,6 @@ export default defineConfig({
             {
               text: 'Performance',
               link: '/guide/advanced/performance'
-            },
-            {
-              text: 'Style Guide',
-              link: '/guide/advanced/style-guide'
             }
           ]
         }

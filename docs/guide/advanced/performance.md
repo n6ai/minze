@@ -18,9 +18,7 @@ for (let i = 0; i < 100; i++) {
 class MyElement extends MinzeElement {
   reactive = [['nestedArray', nestedArray]]
 
-  html = () => `
-    ${this.nestedArray[0].num}
-  `
+  html = () => `${this.nestedArray[0].num}`
 
   onReady() {
     for (let i = 0; i < 100; i++) {
@@ -64,9 +62,7 @@ class MyElement extends MinzeElement {
   reactive = [['nestedArray', nestedArray]] // [!code --]
   nestedArray = nestedArray // [!code ++]
 
-  html = () => `
-    ${this.nestedArray[0].num}
-  `
+  html = () => `${this.nestedArray[0].num}`
 
   onReady() {
     for (let i = 0; i < 100; i++) {

@@ -10,8 +10,6 @@ Check out the [Creating Native Web Components](https://tympanus.net/codrops/2022
 
 Recreating some basic functionality of the `<a></a>` link element with Minze.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -43,56 +41,9 @@ CustomLink.define()
 <!-- prettier-start-ignore -->
 
 ```html
-<custom-link href="https://google.com" target="_blank">
+<custom-link href="https://google.com" target="_blank" role="link">
   Hello Minze!
 </custom-link>
-```
-
-<!-- prettier-end-ignore -->
-
-## Input Wrapper
-
-Creating a wrapper element around the `<input />` element with Minze.
-
-**Example**
-
-```js
-import { MinzeElement } from 'minze'
-
-class CustomInput extends MinzeElement {
-  reactive = [['value', '', true]]
-
-  attrs = ['placeholder', 'type', 'name']
-
-  static observedAttributes = ['placeholder', 'type', 'name']
-
-  html = () => `
-    <input
-      ${this.attrs
-        .map((attr) => (this[attr] ? `${attr}="${this[attr]}"` : ''))
-        .join(' ')}
-      value="${this.value}"
-    />
-  `
-
-  handleInput = (event) => {
-    this.value = event.target.value
-  }
-
-  eventListeners = [['input', 'keyup', this.handleInput]]
-}
-
-CustomInput.define()
-```
-
-<!-- prettier-start-ignore -->
-
-```html
-<custom-input
-  placeholder="Placeholder"
-  type="text"
-  name="my-input"
-></custom-input>
 ```
 
 <!-- prettier-end-ignore -->
@@ -101,22 +52,25 @@ CustomInput.define()
 
 Implementing persistent storage inside a Minze Element with Local Storage.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   reactive = [['count', 0]]
 
-  watchCount = (newValue) => {
-    localStorage.setItem('count', String(newValue))
-  }
+  increaseCount = () => this.count++
 
-  watch = [['count', this.watchCount]]
+  watch = [
+    [
+      'count',
+      (newValue) => {
+        localStorage.setItem('count', String(newValue))
+      }
+    ]
+  ]
 
   html = () => `
-    <button>
+    <button @click="increaseCount">
       Count: ${this.count}
     </button>
   `
@@ -125,12 +79,6 @@ class MyElement extends MinzeElement {
     const count = localStorage.getItem('count')
     if (count) this.count = Number(count)
   }
-
-  handleClick = () => {
-    this.count++
-  }
-
-  eventListeners = [['button', 'click', this.handleClick]]
 }
 
 MyElement.define()

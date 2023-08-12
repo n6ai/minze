@@ -10,8 +10,6 @@ CSS transitions are not 100% reliable, since a transition isn't triggered when t
 
 Animations can be added per component.
 
-**Example**
-
 ```js
 import { MinzeElement } from 'minze'
 
@@ -52,7 +50,7 @@ MyElement.define()
 
 By exposing the `rendered` attribute you can add animations to all rendered components, or define more specific rules.
 
-**Example**
+::: code-group
 
 ```js
 import { MinzeElement } from 'minze'
@@ -73,10 +71,6 @@ class MyElement extends MinzeElement {
 }
 
 MyElement.define()
-```
-
-```html
-<my-element></my-element>
 ```
 
 ```css
@@ -100,4 +94,10 @@ MyElement.define()
     transform: translateY(0);
   }
 }
+```
+
+:::
+
+```html
+<my-element></my-element>
 ```
