@@ -487,6 +487,7 @@ export class MinzeElement extends HTMLElement {
         watcherName === camelName ||
         (type === 'attr' && watcherName === dashName)
       ) {
+        callback = callback.bind(this)
         callback(newValue, oldValue, key, target)
       }
     })
