@@ -890,7 +890,7 @@ export class MinzeElement extends HTMLElement {
     const parts = [
       ...new Set(
         [...template.matchAll(partsRE)].flatMap((m) => {
-          return m.at(1)?.replace(/,?\s+/g, ',').split(',')
+          return m.at(1)?.trim().replace(/,?\s+/g, ',').split(',')
         })
       )
     ].sort()
