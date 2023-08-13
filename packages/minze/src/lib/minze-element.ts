@@ -525,7 +525,7 @@ export class MinzeElement extends HTMLElement {
           let value = Reflect.get(target, prop)
 
           // create proxy on demand and assign it
-          if (typeof value === 'object' && !value[isProxy]) {
+          if (typeof value === 'object' && value && !value[isProxy]) {
             value = createProxy(value)
             Reflect.set(target, prop, value)
           }
