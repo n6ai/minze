@@ -749,7 +749,7 @@ export class MinzeElement extends HTMLElement {
     type atEvent = [attribute: string, event: string, callback: string]
 
     // get all @event attributes and remove duplicates
-    const atEventsRE = /@([\w\-_|:.]+)=["']?(\w+)["']?/gi
+    const atEventsRE = /@([\w\-_|:.]+)(?:=["']?(\w+)["'])?/gi
     const atEvents: atEvent[] = [
       ...new Set(
         [...template.matchAll(atEventsRE)].map((m) =>
@@ -769,6 +769,8 @@ export class MinzeElement extends HTMLElement {
       // run only if atEvents aren't yet added to the eventListeners array
       if (eventListenersLength !== eventListenersLength + atEventsLength) {
         atEvents.forEach(async ([selector, eventName, callbackName]) => {
+          callbackName ??= eventName
+
           const eventTuple: MinzeEvent = [
             `[${escapeSelector(selector)}]`,
             eventName,

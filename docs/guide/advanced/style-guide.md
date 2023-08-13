@@ -112,6 +112,7 @@ class MyElement extends MinzeElement {
 ## Event Callbacks
 
 - Should start with the word `handle` or a verb that describes what action is performed.
+- Should be called the same as the `@event`, when the shorthand notation is used.
 
 ```js
 ✖ Bad // [!code --]
@@ -192,11 +193,11 @@ export class MyElement extends MinzeElement {
   `
 
   onStart = () => {
-    console.log('onStart')
+    console.log('onStart') // 'onStart'
   }
 
   onReady = () => {
-    console.log('onReady')
+    console.log('onReady') // 'onReady'
   }
 
   eventListeners = [['button', 'click', this.increaseCount]]

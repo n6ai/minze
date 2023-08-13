@@ -14,7 +14,13 @@ Events can be used to communicate between components and the outside world.
 `@events` only work with methods defined inside the component class.
 :::
 
-```js
+::: tip
+When using the shorthand notation, the event name and the method name inside the component have to match.
+:::
+
+::: code-group
+
+```js [Regular]
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
@@ -31,6 +37,26 @@ class MyElement extends MinzeElement {
 
 MyElement.define()
 ```
+
+```js [Shorthand]
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  html = () => `
+    <button @click>
+      Button
+    </button>
+  `
+
+  click = (event) => {
+    console.log(event.target) // <button @click="handleClick"></button>
+  }
+}
+
+MyElement.define()
+```
+
+:::
 
 ```html
 <my-element></my-element>
