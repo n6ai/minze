@@ -110,5 +110,5 @@ type EventListener = [
   callback: (event: any) => void
 ]
 
-type EventListeners = EventListener[]
+type EventListeners = readonly EventListener[]
 ```

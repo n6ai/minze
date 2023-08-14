@@ -32,7 +32,7 @@ export type MinzeEvent = [
 export type Reactive = ReadonlyArray<MinzeProp>
 export type Attrs = ReadonlyArray<MinzeAttr>
 export type Watch = ReadonlyArray<MinzeWatcher>
-export type EventListeners = Array<MinzeEvent>
+export type EventListeners = ReadonlyArray<MinzeEvent>
 
 // aliases
 export type MinzeReactive = Reactive
@@ -267,6 +267,16 @@ export class MinzeElement extends HTMLElement {
   eventListeners?: EventListeners
 
   /**
+   * Enhanced eventListeners with merged at-events and callbacks binded to the component.
+   *
+   * @example
+   * ```
+   * this._eventListeners
+   * ```
+   */
+  private _eventListeners?: MinzeEvent[]
+
+  /**
    * Defines the shadow DOM HTML content.
    *
    * @example
@@ -348,7 +358,7 @@ export class MinzeElement extends HTMLElement {
 
         await this.beforeRender?.()
 
-        this.eventListeners?.forEach(async (eventTuple) =>
+        this._eventListeners?.forEach(async (eventTuple) =>
           this.registerEvent(eventTuple, 'remove')
         )
 
@@ -359,10 +369,14 @@ export class MinzeElement extends HTMLElement {
           deepPatch(template, previousCachedTemplate, this.shadowRoot)
         }
 
-        if (this.html) this.mergeEvents(this.html)
-        if (this.eventListeners) this.bindEvents()
+        // enhance eventListeners with at-events and binding
+        const mergedEvents = await this.mergeEvents(
+          this._eventListeners,
+          this.html
+        )
+        this._eventListeners = await this.bindEvents(mergedEvents)
 
-        this.eventListeners?.forEach(async (eventTuple) =>
+        this._eventListeners?.forEach(async (eventTuple) =>
           this.registerEvent(eventTuple, 'add')
         )
 
@@ -737,14 +751,20 @@ export class MinzeElement extends HTMLElement {
   /**
    * Merges any at-events from the provided template with the eventListeners array.
    *
+   * @param eventListeners - An eventListeners array.
    * @param template - A template function or string with html markup.
    *
    * @example
    * ```
-   * this.mergeEvents(this.html)
+   * this.mergeEvents(this._eventListeners, this.html)
    * ```
    */
-  private mergeEvents(template: (() => string) | string) {
+  private async mergeEvents(
+    eventListeners?: EventListeners,
+    template?: (() => string) | string
+  ) {
+    if (!template) return eventListeners
+
     template = typeof template === 'function' ? template() : template
 
     type atEvent = [attribute: string, event: string, callback: string]
@@ -759,54 +779,54 @@ export class MinzeElement extends HTMLElement {
       )
     ].map((e) => JSON.parse(e))
 
-    if (atEvents.length) {
-      const escapeSelector = (name: string) =>
+    const atEventsLength = atEvents.length
+    const eventListenersLength = eventListeners?.length ?? 0
+
+    // run only if atEvents aren't yet added to the eventListeners array
+    if (
+      atEventsLength &&
+      eventListenersLength !== eventListenersLength + atEventsLength
+    ) {
+      eventListeners ??= []
+
+      const escape = (name: string) =>
         name.replace(/(@|\||:|\.)/g, (_, $1) => `\\${$1}`)
 
-      this.eventListeners ??= []
-      const eventListenersLength = this.eventListeners.length
-      const atEventsLength = atEvents.length
-
-      // run only if atEvents aren't yet added to the eventListeners array
-      if (eventListenersLength !== eventListenersLength + atEventsLength) {
-        atEvents.forEach(async ([selector, eventName, callbackName]) => {
-          callbackName ??= eventName
-
-          const eventTuple: MinzeEvent = [
-            `[${escapeSelector(selector)}]`,
+      return atEvents.map(
+        ([selector, eventName, callbackName]) =>
+          [
+            `[${escape(selector)}]`,
             eventName,
-            this[callbackName]
-          ]
-
-          this.eventListeners?.push(eventTuple)
-        })
-      }
+            this[callbackName ?? eventName]
+          ] as MinzeEvent
+      )
     }
+
+    return eventListeners
   }
 
   /**
    * Automatically binds all event listener callbacks that are component methods.
    *
+   * @param eventListeners - An eventListeners array.
+   *
    * @example
    * ```
-   * this.bindEvents()
+   * this.bindEvents(this._eventListeners)
    * ```
    */
-  private bindEvents() {
-    if (this.eventListeners) {
-      this.eventListeners = this.eventListeners?.map((eventTuple) => {
-        const [eventTarget, eventName, callback] = eventTuple
+  private async bindEvents(eventListeners?: EventListeners) {
+    if (!eventListeners) return
 
-        const isUnboundMethod =
-          callback && this[callback.name] && !callback.name.startsWith('bound ')
+    return eventListeners.map((eventTuple) => {
+      const callback = eventTuple[2]
+      const isUnboudMethod =
+        callback && this[callback.name] && !callback.name.startsWith('bound ')
 
-        return [
-          eventTarget,
-          eventName,
-          isUnboundMethod ? callback.bind(this) : callback
-        ]
-      })
-    }
+      if (isUnboudMethod) eventTuple[2] = callback.bind(this)
+
+      return eventTuple
+    })
   }
 
   /**
@@ -971,7 +991,7 @@ export class MinzeElement extends HTMLElement {
 
     console.groupCollapsed('Internals')
     ;[
-      ['🧨 eventListeners: %o', this.eventListeners],
+      ['🧨 eventListeners: %o', this._eventListeners],
       ['🪝 hooks: %o', Object.keys(hooks).length ? hooks : undefined],
       ['🔩 options: %o', this.options],
       [
@@ -995,6 +1015,8 @@ export class MinzeElement extends HTMLElement {
    */
   private async connectedCallback() {
     this.onStart?.()
+
+    if (this.eventListeners) this._eventListeners = [...this.eventListeners]
 
     this.reactive?.forEach(async (prop) => this.registerProp(prop))
     this.attrs?.forEach(async (attr) => this.registerAttr(attr))
@@ -1026,7 +1048,7 @@ export class MinzeElement extends HTMLElement {
       this.registerExportpartsObserver('remove')
     }
 
-    this.eventListeners?.forEach(async (eventTuple) =>
+    this._eventListeners?.forEach(async (eventTuple) =>
       this.registerEvent(eventTuple, 'remove')
     )
 
@@ -1037,7 +1059,7 @@ export class MinzeElement extends HTMLElement {
    * Lifecycle (Internal) - Runs each time the element is moved to a new document.
    */
   private async adoptedCallback() {
-    this.eventListeners?.forEach(async (eventTuple) =>
+    this._eventListeners?.forEach(async (eventTuple) =>
       this.registerEvent(eventTuple, 'remove')
     )
 
