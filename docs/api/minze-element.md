@@ -301,7 +301,7 @@ export class MyElement extends MinzeElement {
 
 ### observedAttributes <Badge text="^1.0.0" />
 
-Observes attributtes on the element that are defined in `observedAttributes` array and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChange` and `onAttributeChange` hooks are called.
+Observes attributtes on the element that are defined in `observedAttributes` array and updates any attribute properties defined by `attrs` accordingly. When an observed attribute changes, the `beforeAttributeChange` and `afterAttributeChange` hooks are called.
 
 ::: warning
 `observedAttributes` has to be a `static` property.
@@ -317,7 +317,7 @@ export class MyElement extends MinzeElement {
 
   static observedAttributes = ['text', 'bg-color']
 
-  onAttributeChange() {
+  afterAttributeChange() {
     console.log(this.text, this.bgColor) // whatever the new values are
   }
 }
@@ -618,7 +618,7 @@ All hooks can be defined as asynchronous with the `async` keyword. E.g. `async o
 A Hook that runs `once` after the element is added to the DOM, but before the internal lifecycle, like creating reactive properties, or rendering the template.
 
 ::: tip
-This hook runs after the `beforeAttributeChange` and `onAttributeChange` hooks if any `observed` attributes are defined on the component.
+This hook runs after the `beforeAttributeChange` and `afterAttributeChange` hooks if any `observed` attributes are defined on the component.
 :::
 
 ::: code-group
@@ -753,7 +753,7 @@ export class MyElement extends MinzeElement {
 
 :::
 
-### onRender <Badge text="^1.0.0" />
+### afterRender <Badge text="^1.0.0" />
 
 A Hook that runs `each time` after a template render.
 
@@ -763,14 +763,14 @@ A Hook that runs `each time` after a template render.
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  onRender() {
-    console.log('onRender') // 'onRender'
+  afterRender() {
+    console.log('afterRender') // 'afterRender'
   }
 }
 ```
 
 ```ts [Type]
-(method) MinzeElement.onRender?(): Promise<void> | void
+(method) MinzeElement.afterRender?(): Promise<void> | void
 ```
 
 :::
@@ -797,7 +797,7 @@ export class MyElement extends MinzeElement {
 
 :::
 
-### onAttributeChange <Badge text="^1.0.0" />
+### afterAttributeChange <Badge text="^1.0.0" />
 
 A Hook that runs `each time` after any of the [observed attributes](#observedattributes) change.
 
@@ -807,14 +807,14 @@ A Hook that runs `each time` after any of the [observed attributes](#observedatt
 import { MinzeElement } from 'minze'
 
 export class MyElement extends MinzeElement {
-  onAttributeChange(name, oldValue, newValue) {
-    console.log('onAttributeChange: ', name, oldValue, newValue)
+  afterAttributeChange(name, oldValue, newValue) {
+    console.log('afterAttributeChange: ', name, oldValue, newValue)
   }
 }
 ```
 
 ```ts [Type]
-(method) MinzeElement.onAttributeChange?(name?: string, oldValue?: string | null, newValue?: string | null): Promise<void> | void
+(method) MinzeElement.afterAttributeChange?(name?: string, oldValue?: string | null, newValue?: string | null): Promise<void> | void
 ```
 
 :::
@@ -878,3 +878,11 @@ export class MyElement extends MinzeElement {
 ### cast <Badge type="warning" text="deprecated" />
 
 Use [dispatch](/api/minze-element#dispatch) instead.
+
+### onRender <Badge type="warning" text="deprecated" />
+
+Use [afterRender](/api/minze-element#afterrender) instead.
+
+### onAttributeChange <Badge type="warning" text="deprecated" />
+
+Use [afterAttributeChange](/api/minze-element#afterattributechange) instead.

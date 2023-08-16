@@ -51,12 +51,12 @@ This overview should help you to decide which of the available hooks to choose f
 | [`onStart`](/api/minze-element#onstart)                             | `1`   | ✅     | ❌      | ❌       | ❌       |
 | [`onReactive`](/api/minze-element#onreactive)                       | `2`   | ✅     | ❌      | ✅       | ❌       |
 | [`beforeRender`](/api/minze-element#beforerender)                   | `3`   | ✅     | ✅      | ✅       | ❌       |
-| [`onRender`](/api/minze-element#onrender)                           | `4`   | ✅     | ✅      | ✅       | ✅       |
+| [`afterRender`](/api/minze-element#afterrender)                     | `4`   | ✅     | ✅      | ✅       | ✅       |
 | [`onReady`](/api/minze-element#onready)                             | `5`   | ✅     | ❌      | ✅       | ✅       |
 | [`onDestroy`](/api/minze-element#ondestroy)                         | ❔    | ❌     | ❌      | ✅       | ✅       |
 | [`onMove`](/api/minze-element#onmove)                               | ❔    | ❌     | ❌      | ✅       | ✅       |
 | [`beforeAttributeChange`](/api/minze-element#beforeattributechange) | ❔    | ❌     | ✅      | ❔       | ❔       |
-| [`onAttributeChange`](/api/minze-element#onattributechange)         | ❔    | ❌     | ✅      | ❔       | ❔       |
+| [`afterAttributeChange`](/api/minze-element#afterattributechange)   | ❔    | ❌     | ✅      | ❔       | ❔       |
 
 ## Lifecycle
 

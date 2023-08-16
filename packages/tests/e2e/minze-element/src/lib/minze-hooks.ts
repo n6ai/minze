@@ -34,15 +34,15 @@ export class MinzeHooks extends MinzeElement {
     this.text += 'beforeRender '
   }
 
-  onRender() {
-    this.text += 'onRender '
+  afterRender() {
+    this.text += 'afterRender '
   }
 
   beforeAttributeChange() {
     this.text += 'beforeAttributeChange '
   }
 
-  onAttributeChange() {
-    this.text += 'onAttributeChange '
+  afterAttributeChange() {
+    this.text += 'afterAttributeChange '
   }
 }

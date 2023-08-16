@@ -14,8 +14,8 @@ test(`MinzeElement: ${element}`, async ({ page }) => {
     'beforeAttributeChange',
     'onReactive',
     'beforeRender',
-    'onAttributeChange',
-    'onRender',
+    'afterAttributeChange',
+    'afterRender',
     'onReady'
   ].join(' ')
 
@@ -32,7 +32,7 @@ test(`MinzeElement: ${element}`, async ({ page }) => {
     'onStart',
     'onReactive',
     'beforeRender',
-    'onRender',
+    'afterRender',
     'onReady'
   ].join(' ')
 

@@ -380,6 +380,7 @@ export class MinzeElement extends HTMLElement {
           this.registerEvent(eventTuple, 'add')
         )
 
+        this.afterRender?.()
         this.onRender?.()
       }
     }
@@ -430,7 +431,7 @@ export class MinzeElement extends HTMLElement {
   /**
    * Returns an array of slotted element(s) for provided slot name, otherwise `null` if none found.
    * Works only after the template has rendered, otherwise returns `null`.
-   * Can be used inside the `onRender` or `onReady` hooks.
+   * Can be used inside the `afterRender` or `onReady` hooks.
    *
    * @param name - The name of the slot or empty / `default` for the default slot.
    *
@@ -969,12 +970,12 @@ export class MinzeElement extends HTMLElement {
         'onStart',
         'onReactive',
         'beforeRender',
-        'onRender',
+        'afterRender',
         'onReady',
         'onDestroy',
         'onMove',
         'beforeAttributeChange',
-        'onAttributeChange'
+        'afterAttributeChange'
       ]
         .filter((key) => this[key])
         .map((key) => [[key], this[key]])
@@ -1085,6 +1086,7 @@ export class MinzeElement extends HTMLElement {
       this[camelName] = newValue
     }
 
+    this.afterAttributeChange?.(name, oldValue, newValue)
     this.onAttributeChange?.(name, oldValue, newValue)
   }
 
@@ -1154,7 +1156,7 @@ export class MinzeElement extends HTMLElement {
    * @example
    * ```
    * class MyElement extends MinzeElement {
-   *   onRender = () => console.log('onRender')
+   *   beforeRender = () => console.log('beforeRender')
    * }
    * ```
    */
@@ -1166,11 +1168,16 @@ export class MinzeElement extends HTMLElement {
    * @example
    * ```
    * class MyElement extends MinzeElement {
-   *   onRender = () => console.log('onRender')
+   *   afterRender = () => console.log('afterRender')
    * }
    * ```
    */
-  onRender?(): Promise<void> | void
+  afterRender?(): Promise<void> | void
+
+  /**
+   * @deprecated use afterRender instead.
+   */
+  onRender?(): typeof this.afterRender
 
   /**
    * Lifecycle - Runs each time at the start of the attributeChangedCallback method.
@@ -1208,13 +1215,18 @@ export class MinzeElement extends HTMLElement {
    * @example
    * ```
    * class MyElement extends MinzeElement {
-   *   onAttributeChange = (name, oldValue, newValue) => console.log('onAttributeChange')
+   *   afterAttributeChange = (name, oldValue, newValue) => console.log('afterAttributeChange')
    * }
    * ```
    */
-  onAttributeChange?(
+  afterAttributeChange?(
     name?: string,
     oldValue?: string | null,
     newValue?: string | null
   ): Promise<void> | void
+
+  /**
+   * @deprecated use afterAttributeChange instead.
+   */
+  onAttributeChange?: typeof this.afterAttributeChange
 }

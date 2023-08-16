@@ -218,7 +218,7 @@ class MyElement extends MinzeElement {
     console.log(this.myAttribute) // 'Hello Minze!'
   }
 
-  onAttributeChange() {
+  afterAttributeChange() {
     console.log(this.myAttribute) // whatever the new attribute value is
   }
 }
