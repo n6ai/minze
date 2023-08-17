@@ -51,6 +51,9 @@
       "patterns": [
         {
           "include": "source.css"
+        },
+        {
+          "include": "source.ts#template-substitution-element"
         }
       ]
     },
@@ -113,6 +116,9 @@
         },
         {
           "include": "text.html.derivative"
+        },
+        {
+          "include": "source.ts#template-substitution-element"
         }
       ]
     }
