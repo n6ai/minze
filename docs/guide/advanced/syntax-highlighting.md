@@ -38,7 +38,7 @@ With the following extension you can also add syntax highlighting to template st
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  html () => /*html*/ `<div>Hello Minze!</div>`
-  css () => /*css*/ `:host { display: flex; }`
+  html = () => /*html*/ `<div>Hello Minze!</div>`
+  css = () => /*css*/ `:host { display: flex; }`
 }
 ```
