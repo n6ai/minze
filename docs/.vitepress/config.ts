@@ -1,5 +1,6 @@
 import type { HeadConfig } from 'vitepress'
 import { defineConfig } from 'vitepress'
+import { languages } from './syntaxes'
 
 const isProduction = process.env.NODE_ENV
 
@@ -58,6 +59,8 @@ export default defineConfig({
     ['meta', { property: 'twitter:image', content: META_IMAGE }],
     ...(isProduction ? productionHead : [])
   ],
+
+  markdown: { languages },
 
   themeConfig: {
     logo: '/logo.svg',
