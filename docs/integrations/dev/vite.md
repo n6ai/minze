@@ -41,7 +41,7 @@ export default defineConfig({
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  html = () => `Hello Minze!`
+  html = () => 'Hello Minze!'
 }
 
 MyElement.define()

@@ -106,7 +106,7 @@ The `:host` pseudo-class selector selects the component itself (shadow host) ins
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  html = () => `Hello Minze!`
+  html = () => 'Hello Minze!'
 
   css = () => `
     :host {
@@ -138,7 +138,7 @@ The `:host` pseudo-class function selects the component itself, but only if the 
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  html = () => `Hello Minze!`
+  html = () => 'Hello Minze!'
 
   css = () => `
     :host(.themed) {

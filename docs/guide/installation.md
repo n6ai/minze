@@ -26,7 +26,7 @@ $ pnpm add minze
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  html = () => `Hello Minze!`
+  html = () => 'Hello Minze!'
 }
 
 MyElement.define()
@@ -134,7 +134,7 @@ In production, always pin your imports to a specific version to prevent your app
       import { MinzeElement } from 'https://esm.sh/minze'
 
       ;(class MyElement extends MinzeElement {
-        html = () => `Hello Minze!`
+        html = () => 'Hello Minze!'
       }).define()
     </script>
   </body>
@@ -154,7 +154,7 @@ In production, always pin your imports to a specific version to prevent your app
       import { Minze, MinzeElement } from 'https://esm.sh/minze'
 
       class FirstElement extends MinzeElement {
-        html = () => `Hello Minze!`
+        html = () => 'Hello Minze!'
       }
 
       class SecondElement extends MinzeElement {
