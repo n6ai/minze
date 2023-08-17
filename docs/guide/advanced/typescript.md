@@ -15,7 +15,7 @@ If you are using [typescript-eslint](https://typescript-eslint.io) with Minze, y
 
 <!-- prettier-ignore-start -->
 ```ts [Reactive]
-import { type Reactive } from 'minze' // [!code focus]
+import type { Reactive } from 'minze' // [!code focus]
 import { MinzeElement } from 'minze'
 
 export interface MyElement { // [!code focus]
