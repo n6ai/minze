@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.9.0](https://github.com/n6ai/minze/compare/minze-v1.8.2...minze-v1.9.0) (2023-08-17)
+
+
+### Features
+
+* add debug option, name & dashName properties ([#231](https://github.com/n6ai/minze/issues/231)) ([171007a](https://github.com/n6ai/minze/commit/171007ac3eb66bff04ee719380861ae76ef53afc))
+* add emojis to debug log ([a0f88e0](https://github.com/n6ai/minze/commit/a0f88e0b3797ab3bca256786931e34b4421929c2))
+* add log method for debugging ([ee801cd](https://github.com/n6ai/minze/commit/ee801cdbd6cbcfb5031a4a2bc11f5c1dc850b7e9))
+* add observedAttributes to debug log ([71527c4](https://github.com/n6ai/minze/commit/71527c47607954f3e9e8ea10b3c4aed0d50de60e))
+* add shorthand at-events notation ([a9d5f3a](https://github.com/n6ai/minze/commit/a9d5f3af35b97f590b0ff0b7e281d2af8a15bb24))
+* allow any events via ts in callbacks ([9aa54d8](https://github.com/n6ai/minze/commit/9aa54d8d650e61139deecb67d39d15bb8486eaaf))
+* allow BroadcastChannel as an event target ([30020e4](https://github.com/n6ai/minze/commit/30020e44ecc64a2d7a0e6c8c79528d3e56935aaf))
+* auto-bind event callback methods to element ([486f3a7](https://github.com/n6ai/minze/commit/486f3a7b39ed16c07ef191be57adec01924e1318))
+* deprecate on hooks in favour of after hooks ([c4ddf48](https://github.com/n6ai/minze/commit/c4ddf48838c1aaaed03717f3eaf69a9f8a788a7d))
+* move debug from an option to a property ([3ddd6a8](https://github.com/n6ai/minze/commit/3ddd6a883ed1783183476fb71550dd4dcfe7aaa8))
+* simplify the process of defining individual modules from module-maps ([#232](https://github.com/n6ai/minze/issues/232)) ([85029dc](https://github.com/n6ai/minze/commit/85029dc568a287e3167a8db4674d80aef4749571))
+* use a callback paramerter to transform keys ([4ef9949](https://github.com/n6ai/minze/commit/4ef9949ee878b351de568f8e08a26b2d896a05a5))
+
+
+### Bug Fixes
+
+* allow events preventDefault & stopPropagation ([043af20](https://github.com/n6ai/minze/commit/043af20bba0ec38875827d539cbfb75126c08b4d))
+* bind watch callbacks to component ([12273d2](https://github.com/n6ai/minze/commit/12273d277949de49efe7d9fc41bfbd5d409c6886))
+* check for null when making objects reactive ([8f59b0c](https://github.com/n6ai/minze/commit/8f59b0c45f8e6ae5f773d19e42d9fcb0b145f4dc))
+* check if a callback exists before binding ([59e540f](https://github.com/n6ai/minze/commit/59e540fe8b857bb890ca8928ce8063aa7e706d81))
+* don't consider white space as a part ([0eddc56](https://github.com/n6ai/minze/commit/0eddc56248bc089f19d08c9ce7d40d9b7cea190f))
+* don't try to merge at-events without matches ([b6c5218](https://github.com/n6ai/minze/commit/b6c521896fff81e322953eaf136487eb5e000205))
+* escape event target selector string ([a1dee96](https://github.com/n6ai/minze/commit/a1dee9630610d0f532b6ea3c671b151523c4c590))
+* escape only at-event selectors automatically ([3113402](https://github.com/n6ai/minze/commit/31134029d589bc136d70f4d0ad487656efa27fb1))
+* exportparts after reactive props initialized ([607aa34](https://github.com/n6ai/minze/commit/607aa3425e57c1e8b1909974f0fd6574d86908ca))
+* exportparts extraction ([#223](https://github.com/n6ai/minze/issues/223)) ([21615d7](https://github.com/n6ai/minze/commit/21615d7dcac14acd7e0526b0cb90f0b184323291))
+* select at-events with special chars in name ([d078c07](https://github.com/n6ai/minze/commit/d078c070b1d850954d39aeb1b1e9e2925beb6192))
+* sort exportparts alphabetically ([5948a8e](https://github.com/n6ai/minze/commit/5948a8e0c55f09dc2c3296f60f352ad31977901d))
+
 ## [1.8.2](https://github.com/n6ai/minze/compare/minze-v1.8.1...minze-v1.8.2) (2023-07-30)
 
 
