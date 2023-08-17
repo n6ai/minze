@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/n6ai/minze/compare/minze-vscode-v0.3.0...minze-vscode-v0.3.1) (2023-08-17)
+
+
+### Bug Fixes
+
+* add syntax highlighting for function params ([5c6f5b6](https://github.com/n6ai/minze/commit/5c6f5b6ca1245c60f26f91d42eea39d0cef44c9a))
+* match properties with html and css ([c0e6afb](https://github.com/n6ai/minze/commit/c0e6afbd215e2703356f751afdb97ec398d0a5e3))
+
 ## [0.3.0](https://github.com/n6ai/minze/compare/minze-vscode-v0.2.0...minze-vscode-v0.3.0) (2023-07-23)
 
 

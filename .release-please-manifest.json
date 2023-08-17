@@ -2,6 +2,6 @@
   "packages/create-minze": "2.0.8",
   "packages/minze": "1.8.2",
   "packages/minze-elements": "0.3.0",
-  "packages/minze-vscode": "0.3.0",
+  "packages/minze-vscode": "0.3.1",
   "packages/vite-plugin-minze": "1.1.2"
 }
