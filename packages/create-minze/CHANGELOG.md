@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/n6ai/minze/compare/create-minze-v2.0.8...create-minze-v2.1.0) (2023-08-17)
+
+
+### Features
+
+* simplify the process of defining individual modules from module-maps ([#232](https://github.com/n6ai/minze/issues/232)) ([85029dc](https://github.com/n6ai/minze/commit/85029dc568a287e3167a8db4674d80aef4749571))
+
+
+### Miscellaneous
+
+* update templates ([9c0d6fc](https://github.com/n6ai/minze/commit/9c0d6fcdfb28418f831a49fd890e010282cc404b))
+
 ## [2.0.8](https://github.com/n6ai/minze/compare/create-minze-v2.0.7...create-minze-v2.0.8) (2023-07-23)
 
 
