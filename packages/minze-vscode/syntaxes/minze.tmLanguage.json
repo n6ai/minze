@@ -15,7 +15,7 @@
   ],
   "repository": {
     "css-template": {
-      "begin": "(?<!\\.)(?:(?:(css\\w*)\\s*(=)\\s*\\(.*\\)\\s*(=>))|(css|((?:/\\*\\s*?)css(?:\\s*\\*/))))\\s*(`)",
+      "begin": "(?<!\\.)(?:(?:(css\\w*)\\s*(=)\\s*(\\(.*\\))\\s*(=>))|(css|((?:/\\*\\s*?)css(?:\\s*\\*/))))\\s*(`)",
       "beginCaptures": {
         "1": {
           "name": "entity.name.function.member.ts"
@@ -24,15 +24,19 @@
           "name": "keyword.operator.assignment.ts"
         },
         "3": {
-          "name": "storage.type.function.arrow.ts"
+          "name": "meta.field.declaration.ts",
+          "patterns": [{ "include": "source.ts#function-parameters" }]
         },
         "4": {
-          "name": "entity.name.function.tagged-template.ts"
+          "name": "storage.type.function.arrow.ts"
         },
         "5": {
-          "name": "comment.block.ts"
+          "name": "entity.name.function.tagged-template.ts"
         },
         "6": {
+          "name": "comment.block.ts"
+        },
+        "7": {
           "name": "punctuation.definition.string.template.begin.ts"
         }
       },
@@ -50,7 +54,7 @@
       ]
     },
     "html-template": {
-      "begin": "(?<!\\.)(?:(?:(html\\w*)\\s*(=)\\s*\\(.*\\)\\s*(=>))|(html|((?:/\\*\\s*?)html(?:\\s*\\*/))))\\s*(`)",
+      "begin": "(?<!\\.)(?:(?:(html\\w*)\\s*(=)\\s*(\\(.*\\))\\s*(=>))|(html|((?:/\\*\\s*?)html(?:\\s*\\*/))))\\s*(`)",
       "beginCaptures": {
         "1": {
           "name": "entity.name.function.member.ts"
@@ -59,15 +63,19 @@
           "name": "keyword.operator.assignment.ts"
         },
         "3": {
-          "name": "storage.type.function.arrow.ts"
+          "name": "meta.field.declaration.ts",
+          "patterns": [{ "include": "source.ts#function-parameters" }]
         },
         "4": {
-          "name": "entity.name.function.tagged-template.ts"
+          "name": "storage.type.function.arrow.ts"
         },
         "5": {
-          "name": "comment.block.ts"
+          "name": "entity.name.function.tagged-template.ts"
         },
         "6": {
+          "name": "comment.block.ts"
+        },
+        "7": {
           "name": "punctuation.definition.string.template.begin.ts"
         }
       },
