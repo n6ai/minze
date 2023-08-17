@@ -1,17 +1,17 @@
-# @minzejs/vite-plugin-minze
+# vite-plugin-minze
 
 Vite plugin for Minze dev environment.
 
 ## Usage
 
 ```bash
-npm add -D @minzejs/vite-plugin-minze
+npm add -D vite-plugin-minze
 ```
 
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
-import minze from '@minzejs/vite-plugin-minze'
+import minze from 'vite-plugin-minze'
 
 export default defineConfig({
   plugins: [

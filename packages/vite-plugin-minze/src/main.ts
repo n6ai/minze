@@ -17,7 +17,7 @@ interface Context {
  * @example
  * ```
  * import { defineConfig } from 'vite'
- * import minze from '@minzejs/vite-plugin-minze'
+ * import minze from 'vite-plugin-minze'
  *
  * export default defineConfig({
  *   plugins: [

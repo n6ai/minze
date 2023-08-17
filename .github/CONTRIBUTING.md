@@ -30,12 +30,12 @@ To develop locally, fork the Minze repository and clone it to your local machine
 
 > The `dev` task will start TypeScript in watch mode for the `create-minze` package.
 
-### @minzejs/vite-plugin-minze
+### vite-plugin-minze
 
-1. Run `npm run dev -w @minzejs/vite-plugin-minze` in the root directory.
+1. Run `npm run dev -w vite-plugin-minze` in the root directory.
 2. Run `npm run dev -w playground` or `npm run build -w playground` in the root directory.
 
-> First, you need to start the dev task for vite-plugin-minze. The @minzejs/vite-plugin-minze dependency for playground is linked to the local version of @minzejs/vite-plugin-minze. Any changes to the @minzejs/vite-plugin-minze package can be immediately tried out and previewed in the playground.
+> First, you need to start the dev task for vite-plugin-minze. The vite-plugin-minze dependency for playground is linked to the local version of vite-plugin-minze. Any changes to the vite-plugin-minze package can be immediately tried out and previewed in the playground.
 
 ### docs
 
