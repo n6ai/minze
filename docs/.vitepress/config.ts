@@ -180,20 +180,20 @@ export default defineConfig({
         text: 'Packages',
         items: [
           {
-            text: 'minze',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/minze'
-          },
-          {
             text: 'create-minze',
             link: 'https://github.com/n6ai/minze/blob/main/packages/create-minze'
           },
           {
-            text: 'vite-plugin-minze',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/vite-plugin-minze'
+            text: 'minze',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/minze'
           },
           {
             text: 'minze-vscode',
             link: 'https://github.com/n6ai/minze/blob/main/packages/minze-vscode'
+          },
+          {
+            text: 'vite-plugin-minze',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/vite-plugin-minze'
           }
         ]
       },
