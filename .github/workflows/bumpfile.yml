@@ -21,7 +21,6 @@ on:
 env:
   PACKAGE_NAME: ${{ github.event.inputs.package }}
   PACKAGE_DIR: ${{ (
-    contains(github.event.inputs.package, '@minzejs/elements') && 'minze-elements' ||
     contains(github.event.inputs.package, '@minzejs/vite-plugin-minze') && 'vite-plugin-minze' ||
     github.event.inputs.package
     ) }}
