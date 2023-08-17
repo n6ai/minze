@@ -30,15 +30,6 @@ To develop locally, fork the Minze repository and clone it to your local machine
 
 > The `dev` task will start TypeScript in watch mode for the `create-minze` package.
 
-### @minzejs/elements
-
-1. Run `npm run build -w minze` in the root directory.
-2. Run `npm run dev -w @minzejs/elements` in the root directory.
-3. Open the browser and navigate to [http://localhost:5173](http://localhost:5173).
-
-> First, you need to build the minze package. Then start the dev task for Minze Elements.
-> The `dev` task will start start a vite server for the `@minzejs/elements` package.
-
 ### @minzejs/vite-plugin-minze
 
 1. Run `npm run dev -w @minzejs/vite-plugin-minze` in the root directory.
@@ -62,7 +53,7 @@ To develop locally, fork the Minze repository and clone it to your local machine
 
 ## External Dependencies
 
-Minze aims to be extremely lightweight and as such the core `minze` and `@minzejs/elements` packages don't include any external dependencies in the published build. Unless not otherwise possible, all fixes and features should be implemented without external dependencies these two packages.
+Minze aims to be extremely lightweight and as such the core `minze` package doesn't include any external dependencies in the published build. Unless not otherwise possible, all fixes and features should be implemented without external dependencies these two packages.
 
 ## Pull Request Guidelines
 

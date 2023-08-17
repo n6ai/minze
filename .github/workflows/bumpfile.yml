@@ -12,7 +12,6 @@ on:
           - minze
           - create-minze
           - minze-vscode
-          - '@minzejs/elements'
           - '@minzejs/vite-plugin-minze'
       commit-msg:
         type: string
