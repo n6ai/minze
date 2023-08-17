@@ -12,19 +12,14 @@ on:
           - minze
           - create-minze
           - minze-vscode
-          - '@minzejs/elements'
-          - '@minzejs/vite-plugin-minze'
+          - vite-plugin-minze
       commit-msg:
         type: string
         description: 'Commit message for release'
 
 env:
   PACKAGE_NAME: ${{ github.event.inputs.package }}
-  PACKAGE_DIR: ${{ (
-    contains(github.event.inputs.package, '@minzejs/elements') && 'minze-elements' ||
-    contains(github.event.inputs.package, '@minzejs/vite-plugin-minze') && 'vite-plugin-minze' ||
-    github.event.inputs.package
-    ) }}
+  PACKAGE_DIR: ${{ github.event.inputs.package }}
   COMMIT_MSG: ${{ github.event.inputs.commit-msg }}
 
 jobs:

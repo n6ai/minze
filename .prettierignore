@@ -7,3 +7,4 @@ cache
 *.dev.html
 CHANGELOG.md
 storybook
+docs/.vitepress/syntaxes/*.json

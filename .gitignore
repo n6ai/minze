@@ -12,3 +12,4 @@ coverage
 *.vsix
 *.dev.html
 storybook
+docs/.vitepress/syntaxes/*.json

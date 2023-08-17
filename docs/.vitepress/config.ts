@@ -1,5 +1,6 @@
 import type { HeadConfig } from 'vitepress'
 import { defineConfig } from 'vitepress'
+import { languages } from './syntaxes'
 
 const isProduction = process.env.NODE_ENV
 
@@ -58,6 +59,8 @@ export default defineConfig({
     ['meta', { property: 'twitter:image', content: META_IMAGE }],
     ...(isProduction ? productionHead : [])
   ],
+
+  markdown: { languages },
 
   themeConfig: {
     logo: '/logo.svg',
@@ -177,24 +180,20 @@ export default defineConfig({
         text: 'Packages',
         items: [
           {
-            text: 'minze',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/minze'
-          },
-          {
             text: 'create-minze',
             link: 'https://github.com/n6ai/minze/blob/main/packages/create-minze'
           },
           {
-            text: '@minzejs/elements',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/minze-elements'
-          },
-          {
-            text: '@minzejs/vite-plugin-minze',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/vite-plugin-minze'
+            text: 'minze',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/minze'
           },
           {
             text: 'minze-vscode',
             link: 'https://github.com/n6ai/minze/blob/main/packages/minze-vscode'
+          },
+          {
+            text: 'vite-plugin-minze',
+            link: 'https://github.com/n6ai/minze/blob/main/packages/vite-plugin-minze'
           }
         ]
       },

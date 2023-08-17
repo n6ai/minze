@@ -13,7 +13,8 @@
     "playground"
   ],
   "scripts": {
-    "predev": "npm run build -w @minzejs/vite-plugin-minze",
+    "prepare": "npx -y tsx ./scripts/syntaxes.ts",
+    "predev": "npm run build -w vite-plugin-minze",
     "dev": "conc -k -n \"m,p\" -c \"green,magenta\" \"npm run dev -w minze\" \"(wait-on -w 2000 packages/minze/dist/main.js) && (npm run dev -w playground)\"",
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
