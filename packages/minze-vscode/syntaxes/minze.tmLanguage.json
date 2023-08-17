@@ -1,7 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Minze",
   "injectionSelector": "L:source.js -comment, L:source.ts -comment",
-  "name": "Minze Template Literals",
+  "scopeName": "source.js.minze.injection",
   "patterns": [
     {
       "include": "#css-template"
@@ -115,6 +116,5 @@
         }
       ]
     }
-  },
-  "scopeName": "source.js.minze.injection"
+  }
 }
