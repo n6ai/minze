@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.1.2...vite-plugin-minze-v1.1.3) (2023-08-17)
+
+
+### Miscellaneous
+
+* new package name ([e6e0a3c](https://github.com/n6ai/minze/commit/e6e0a3cb94e943815869feb4b5aaa7f9af973b6c))
+
 ## [1.1.2](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.1.1...vite-plugin-minze-v1.1.2) (2023-07-08)
 
 
