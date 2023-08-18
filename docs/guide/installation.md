@@ -158,7 +158,7 @@ In production, always pin your imports to a specific version to prevent your app
       }
 
       class SecondElement extends MinzeElement {
-        html = () => `Hello Minze again!`
+        html = () => 'Hello Minze again!'
       }
 
       Minze.defineAll([FirstElement, SecondElement])
