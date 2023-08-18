@@ -49,7 +49,7 @@ class MyElement extends MinzeElement {
   `
 
   click = (event) => {
-    console.log(event.target) // <button @click="handleClick"></button>
+    console.log(event.target) // <button @click></button>
   }
 }
 
