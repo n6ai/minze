@@ -307,8 +307,8 @@ export default defineConfig({
           collapsed: false,
           items: [
             {
-              text: 'Component Registration',
-              link: '/guide/minze/component-registration'
+              text: 'Registration',
+              link: '/guide/minze/registration'
             },
             {
               text: 'Events',

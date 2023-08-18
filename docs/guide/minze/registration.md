@@ -1,4 +1,4 @@
-# Component Registration
+# Registration
 
 You can register components in two different ways: one by one or all at once.
 

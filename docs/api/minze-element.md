@@ -823,7 +823,7 @@ export class MyElement extends MinzeElement {
 
 ### debug <Badge text="^1.9.0" />
 
-The component logs useful information about itself to the console when the debug property inside the component is set to `true`. The logging happens after the `onReady` hook.
+The component logs useful information about itself to the console when the debug property inside the component is set to `true`. The logging happens after the [`onReady`](#onready) hook.
 
 ::: code-group
 
