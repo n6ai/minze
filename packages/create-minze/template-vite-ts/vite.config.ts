@@ -1,11 +1,10 @@
 import { defineConfig } from 'vite'
-import { fileURLToPath, URL } from 'url'
 import minze from 'vite-plugin-minze'
 import dts from 'vite-plugin-dts'
 
 export default defineConfig({
   resolve: {
-    alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) }
+    alias: { '@': new URL('./src', import.meta.url).pathname }
   },
   plugins: [
     minze(),

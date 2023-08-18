@@ -2,7 +2,6 @@
  * Generates Minze syntax files for vitepress.
  */
 import { readFile, writeFile } from 'node:fs/promises'
-import { URL } from 'node:url'
 
 const injectSyntax = await readFile(
   new URL(

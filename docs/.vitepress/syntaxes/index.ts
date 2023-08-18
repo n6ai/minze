@@ -1,5 +1,5 @@
 import type { ILanguageRegistration } from 'shiki'
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath } from 'node:url'
 
 export const languages: ILanguageRegistration[] = [
   {

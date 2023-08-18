@@ -9,15 +9,15 @@ If you used the [CLI method](/guide/installation#cli) to install Minze you can e
 ::: code-group
 
 ```bash [npm]
-$ npm add -D vitest @vitest/ui jsdom
+$ npm add -D vitest @vitest/ui happy-dom
 ```
 
 ```bash [yarn]
-$ yarn add -D vitest @vitest/ui jsdom
+$ yarn add -D vitest @vitest/ui happy-dom
 ```
 
 ```bash [pnpm]
-$ pnpm add -D vitest @vitest/ui jsdom
+$ pnpm add -D vitest @vitest/ui happy-dom
 ```
 
 :::
@@ -30,8 +30,7 @@ $ pnpm add -D vitest @vitest/ui jsdom
 {
   "scripts": {
     // ...
-    "test": "vitest --run",
-    "test-watch": "vitest",
+    "test": "vitest",
     "test-ui": "vitest --ui"
   }
 }
@@ -39,22 +38,21 @@ $ pnpm add -D vitest @vitest/ui jsdom
 
 :::
 
-3. Set the Vitest environment to `jsdom` inside the vite config file.
+3. Set the Vitest environment to `happy-dom` inside the vite config file.
 
 ::: code-group
 
 <!-- prettier-ignore-start -->
 ```js [vite.config.js]
 import { defineConfig } from 'vite'
-import { fileURLToPath, URL } from 'url'
 import minze from 'vite-plugin-minze'
 
 export default defineConfig({
   resolve: {
-    alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) }
+    alias: { '@': new URL('./src', import.meta.url).pathname }
   },
   test: { // [!code ++]
-    environment: 'jsdom' // [!code ++]
+    environment: 'happy-dom' // [!code ++]
   }, // [!code ++]
   plugins: [minze()]
 })
