@@ -34,11 +34,11 @@
   --minze-c-mint-lightest: rgb(var(--minze-c-mint-lightest-values));
 
   /* brand */
-  --vp-c-brand-darker: var(--minze-c-mint-darker);
-  --vp-c-brand-dark: var(--minze-c-mint-dark);
-  --vp-c-brand: var(--minze-c-mint-dark);
-  --vp-c-brand-light: var(--minze-c-mint-light);
-  --vp-c-brand-lighter: var(--minze-c-mint-lighter);
+  --vp-c-brand-darker: var(--vp-c-black);
+  --vp-c-brand-dark: var(--minze-c-mint-darkest);
+  --vp-c-brand: var(--minze-c-mint-darker);
+  --vp-c-brand-light: var(--minze-c-mint-dark);
+  --vp-c-brand-lighter: var(--minze-c-mint);
 
   /* button */
   --vp-button-brand-text: var(--minze-c-mint-darkest);
@@ -65,11 +65,19 @@
     rgb(var(--minze-c-teal-values) / 100%) 50%
   );
   --vp-home-hero-image-filter: blur(6rem);
+
+  /* custom-block */
+  --vp-custom-block-warning-text: var(--vp-c-yellow-dark);
+  --vp-custom-block-danger-text: var(--vp-c-red-dark);
 }
 
 :root.dark {
   /* brand */
+  --vp-c-brand-darker: var(--minze-c-mint-darker);
+  --vp-c-brand-dark: var(--minze-c-mint-dark);
   --vp-c-brand: var(--minze-c-mint);
+  --vp-c-brand-light: var(--minze-c-mint-light);
+  --vp-c-brand-lighter: var(--minze-c-mint-lighter);
 
   /* button */
   --vp-button-brand-border: var(--minze-c-mint);
@@ -88,4 +96,8 @@
     rgb(var(--minze-c-mint-dark-values) / 60%) 50%,
     rgb(var(--minze-c-teal-dark-values) / 60%) 50%
   );
+
+  /* custom-block */
+  --vp-custom-block-warning-text: var(--vp-c-yellow);
+  --vp-custom-block-danger-text: var(--vp-c-red);
 }

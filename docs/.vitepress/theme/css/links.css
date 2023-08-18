@@ -1,0 +1,7 @@
+html:not(.dark) .VPSidebarItem.level-1:is(.is-active, .has-active) .text {
+  font-weight: 600;
+}
+
+html:not(.dark) .VPSidebarItem.level-1.is-active .indicator {
+  background-color: var(--vp-c-brand);
+}
