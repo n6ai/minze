@@ -315,7 +315,7 @@ import { MinzeElement } from 'minze'
 export class MyElement extends MinzeElement {
   attrs = ['text', ['bg-color', '#000']]
 
-  static observedAttributes = ['text', 'bg-color']
+  static observedAttributes = ['text', 'bg-color'] // [!code ++]
 
   afterAttributeChange() {
     console.log(this.text, this.bgColor) // whatever the new values are
