@@ -187,7 +187,7 @@ class MyElement extends MinzeElement {
   onReady() {
     console.log(this.myAttribute) // null
     console.log(this.mySecondAttribute) // 'Hello Minze!'
-    console.log(this.myThirdAttribute) // 'Hello Minze again!''
+    console.log(this.myThirdAttribute) // 'Hello Minze again!'
   }
 }
 

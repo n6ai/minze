@@ -141,7 +141,7 @@ class MyElement extends MinzeElement {
 
   onReady() {
     const msg = localStorage.getItem('minze:store')
-    console.log(msg) // 'Hello Minze!''
+    console.log(msg) // 'Hello Minze!'
   }
 }
 
