@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, test, expect, vi } from 'vitest'
 import {
   isProxy,
   camelToDash,
@@ -8,7 +8,7 @@ import {
 } from '@minze/lib/utils'
 
 describe('isProxy', () => {
-  it('should return true if the object is a proxy', () => {
+  test('is true', () => {
     const obj: Record<string | symbol, unknown> = new Proxy(
       {},
       {
@@ -21,7 +21,7 @@ describe('isProxy', () => {
     expect(obj[isProxy]).toBe(true)
   })
 
-  it('should return false if the object is not a proxy', () => {
+  test('is false', () => {
     const obj: Record<string | symbol, unknown> = {}
 
     expect(obj[isProxy]).toBeFalsy()
@@ -30,40 +30,33 @@ describe('isProxy', () => {
 
 describe('camelToDash', () => {
   const data = [
-    { input: 'camel', expected: 'camel' },
-    { input: 'camelCase', expected: 'camel-case' },
-    { input: 'camelCaseString', expected: 'camel-case-string' },
-    { input: 'Pascal', expected: 'pascal' },
-    { input: 'PascalCase', expected: 'pascal-case' },
-    { input: 'PascalCaseString', expected: 'pascal-case-string' }
+    { input: 'camel', output: 'camel' },
+    { input: 'camelCase', output: 'camel-case' },
+    { input: 'camelCaseString', output: 'camel-case-string' },
+    { input: 'Pascal', output: 'pascal' },
+    { input: 'PascalCase', output: 'pascal-case' },
+    { input: 'PascalCaseString', output: 'pascal-case-string' }
   ]
 
-  it.each(data)(
-    'should transform $input to $expected',
-    ({ input, expected }) => {
-      expect(camelToDash(input)).toBe(expected)
-    }
-  )
+  test.each(data)('transform $input to $output', ({ input, output }) => {
+    expect(camelToDash(input)).toBe(output)
+  })
 })
 
 describe('dashToCamel', () => {
   const data = [
-    { input: 'dash', expected: 'dash' },
-    { input: 'dash-case', expected: 'dashCase' },
-    { input: 'dash-case-string', expected: 'dashCaseString' }
+    { input: 'dash', output: 'dash' },
+    { input: 'dash-case', output: 'dashCase' },
+    { input: 'dash-case-string', output: 'dashCaseString' }
   ]
 
-  it.each(data)(
-    'should transform $input to $expected',
-    ({ input, expected }) => {
-      expect(dashToCamel(input)).toBe(expected)
-    }
-  )
+  test.each(data)('transforms $input to $output', ({ input, output }) => {
+    expect(dashToCamel(input)).toBe(output)
+  })
 })
 
-// @vitest-environment happy-dom
 describe('createObserver', () => {
-  it('should return an Mutation Observer', () => {
+  test('returns a Mutation Observer', () => {
     const element = document.createElement('div')
     const observer = createObserver(element, () => {})
 
@@ -74,16 +67,11 @@ describe('createObserver', () => {
 describe('warn', () => {
   vi.spyOn(global.console, 'warn')
 
-  const data = [
-    { input: 'Hello Minze!', expected: '[Minze warn] Hello Minze!' }
-  ]
+  const data = [{ input: 'Hello Minze!', output: '[Minze warn] Hello Minze!' }]
 
-  it.each(data)(
-    'should take $input and display $expected',
-    ({ input, expected }) => {
-      warn(input)
-      expect(console.warn).toBeCalledTimes(1)
-      expect(console.warn).toBeCalledWith(expected)
-    }
-  )
+  test.each(data)('takes $input and displays $output', ({ input, output }) => {
+    warn(input)
+    expect(console.warn).toBeCalledTimes(1)
+    expect(console.warn).toBeCalledWith(output)
+  })
 })
