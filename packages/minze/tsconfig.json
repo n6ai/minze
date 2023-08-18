@@ -8,8 +8,10 @@
     "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
+    "paths": {
+      "minze": ["./src/main.ts"],
+      "@/*": ["./play/*"]
+    }
   },
-  "include": ["./src/**/*.ts", "rollup.config.ts"]
+  "include": ["./src/**/*.ts", "./play/**/*.ts"]
 }

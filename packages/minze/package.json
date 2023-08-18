@@ -29,19 +29,15 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "scripts": {
-    "dev": "rollup -w -c rollup.config.ts --configPlugin typescript --environment BUILD:dev",
-    "build": "rollup -c rollup.config.ts --configPlugin typescript --environment BUILD:prod",
-    "predev": "rimraf dist",
-    "prebuild": "rimraf dist",
-    "postbuild": "rimraf dist/types"
+    "dev": "vite -c vite.config.play.ts",
+    "build": "vite build",
+    "build-play": "vite build -c vite.config.play.ts",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@rollup/plugin-replace": "^5.0.2",
-    "@rollup/plugin-terser": "^0.4.3",
-    "@rollup/plugin-typescript": "^11.1.2",
-    "rimraf": "^5.0.1",
-    "rollup": "^3.28.0",
-    "rollup-plugin-dts": "^5.3.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.5.2",
+    "vite-plugin-minze": "*"
   }
 }

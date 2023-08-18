@@ -59,7 +59,7 @@ export class MinzeElement extends HTMLElement {
   /**
    * The current Minze version.
    */
-  static readonly version = '__VERSION__'
+  static readonly version = __VERSION__
 
   /**
    * Can by used in conditional checks to determine if the class is a MinzeElement.
