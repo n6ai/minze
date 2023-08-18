@@ -37,7 +37,10 @@ src/
 
 3. Import `@tensorflow/tfjs` and define a component inside the new file.
 
-```js
+::: code-group
+
+<!-- prettier-ignore-start -->
+```js [src/lib/tf-element.js]
 import { MinzeElement } from 'minze'
 import * as tf from '@tensorflow/tfjs'
 
@@ -80,16 +83,22 @@ export class MyElement extends MinzeElement {
 }
 ```
 
+:::
+
 4. Add the new element to `src/preview.html` file.
 
+::: code-group
+
 <!-- prettier-ignore-start -->
-```html
+```html [src/preview.html]
 <tf-element></tf-element> // [!code ++]
 <my-element>
   <h1>Minze + Vite</h1>
 </my-element>
 ```
 <!-- prettier-ignore-end -->
+
+:::
 
 ::: tip
 For more details about TensorFlow.js refer to the [TensorFlow.js docs](https://www.tensorflow.org/js).

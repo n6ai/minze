@@ -24,8 +24,9 @@ $ pnpm add minze
 
 2. Set `keepNames` to true, to keep class names as is.
 
-```js
-// vite.config.js
+::: code-group
+
+```js [vite.config.js]
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -34,6 +35,8 @@ export default defineConfig({
   }
 })
 ```
+
+:::
 
 3. Import `MinzeElement` and define a component.
 

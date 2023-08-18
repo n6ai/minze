@@ -37,7 +37,9 @@ src/
 
 3. Import `@xenova/transformers` and define a component inside the new file.
 
-```js
+::: code-group
+
+```js [src/lib/hf-element.js]
 import { MinzeElement } from 'minze'
 import { pipeline } from '@xenova/transformers'
 
@@ -57,16 +59,22 @@ export class HfElement extends MinzeElement {
 }
 ```
 
+:::
+
 4. Add the new element to `src/preview.html` file.
 
+::: code-group
+
 <!-- prettier-ignore-start -->
-```html
+```html [src/preview.html]
 <hf-element inputs="I love transformers!"></hf-element> // [!code ++]
 <my-element>
   <h1>Minze + Vite</h1>
 </my-element>
 ```
 <!-- prettier-ignore-end -->
+
+:::
 
 ::: tip
 For more details about Transformers.js refer to the [Transformers.js docs](https://huggingface.co/docs/transformers.js).
@@ -115,7 +123,9 @@ src/
 Never expose your `access token` to the public, it should be kept private! If you need to protect it in front-end applications, we suggest setting up a proxy server that stores the access token.
 :::
 
-```js
+::: code-group
+
+```js [src/lib/hf-element.js]
 import { MinzeElement } from 'minze'
 import { HfInference } from '@huggingface/inference'
 
@@ -139,16 +149,22 @@ export class HfElement extends MinzeElement {
 }
 ```
 
+:::
+
 4. Add the new element to `src/preview.html` file.
 
+::: code-group
+
 <!-- prettier-ignore-start -->
-```html
+```html [src/preview.html]
 <hf-element inputs="The answer to the universe is"></hf-element> // [!code ++]
 <my-element>
   <h1>Minze + Vite</h1>
 </my-element>
 ```
 <!-- prettier-ignore-end -->
+
+:::
 
 ::: tip
 For more details about Huggingface.js refer to the [Huggingface.js docs](https://huggingface.co/docs/huggingface.js).

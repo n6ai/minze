@@ -26,8 +26,9 @@ $ pnpm add -D prettier
 
 2. Add format script to `package.json`.
 
-```json
-// package.json
+::: code-group
+
+```json [package.json]
 {
   "scripts": {
     // ...
@@ -35,6 +36,8 @@ $ pnpm add -D prettier
   }
 }
 ```
+
+:::
 
 2. Create and populate `.prettierignore` and `.prettierrc.json` files.
 

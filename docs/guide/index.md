@@ -80,7 +80,9 @@ src/
 Keep in mind to name your component classes in `PascalCase`, otherwise the auto-inferrence from class to `dash-case` element name will not work.
 :::
 
-```js
+::: code-group
+
+```js [src/lib/new-element.js]
 import { MinzeElement } from 'minze'
 
 export class NewElement extends MinzeElement {
@@ -98,6 +100,8 @@ export class NewElement extends MinzeElement {
 }
 ```
 
+:::
+
 4. Create a `preview.dev.html` file in the `src` directory (by default, git won't track this file). The file is injected into the preview during dev runtime and is what you see on the screen when you are running the dev task, if no `preview.dev.html` file is present, it falls back to `preview.html` (which is tracked by git).
 
 ```
@@ -109,10 +113,13 @@ src/
 
 5. Add your element to `preview.dev.html`. This file is essentially a little sandbox for trying out and previewing your components.
 
-```html
-<!-- preview.dev.html -->
+::: code-group
+
+```html [src/preview.dev.html]
 <new-element></new-element> // [!code ++]
 ```
+
+:::
 
 6. Profit. Your component/element should be displayed in the browser.
 

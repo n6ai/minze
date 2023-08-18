@@ -28,8 +28,9 @@ $ pnpm add -D eslint
 
 2. Add lint script to `package.json`.
 
-```json
-// package.json
+::: code-group
+
+```json [package.json]
 {
   "scripts": {
     // ...
@@ -37,6 +38,8 @@ $ pnpm add -D eslint
   }
 }
 ```
+
+:::
 
 2. Create and populate `.eslintignore` and `.eslintrc.json` files.
 
@@ -116,8 +119,9 @@ $ pnpm add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
 
 2. Add lint script to `package.json`.
 
-```json
-// package.json
+::: code-group
+
+```json [package.json]
 {
   "scripts": {
     // ...
@@ -125,6 +129,8 @@ $ pnpm add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
   }
 }
 ```
+
+:::
 
 2. Create and populate `.eslintignore` and `.eslintrc.json` files.
 

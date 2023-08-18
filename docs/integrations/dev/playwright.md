@@ -30,8 +30,9 @@ npx playwright install
 
 3. Add test scripts to `package.json`.
 
-```json
-// package.json
+::: code-group
+
+```json [package.json]
 {
   "scripts": {
     // ...
@@ -42,10 +43,13 @@ npx playwright install
 }
 ```
 
+:::
+
 4. Add a `playwright.config.js` file to the root directory of your project.
 
-```js
-// playwright.config.js
+::: code-group
+
+```js [playwright.config.js]
 import { defineConfig } from '@playwright/test'
 
 export default defineConfig({
@@ -56,6 +60,8 @@ export default defineConfig({
   }
 })
 ```
+
+:::
 
 5. Create a `my-button.test.js` file inside the `src/lib` directory.
 
@@ -69,8 +75,9 @@ src/
 
 6. Add the following code to your newly created file:
 
-```js
-// my-button.test.js
+::: code-group
+
+```js [src/lib/my-button.test.js]
 import { test, expect } from '@playwright/test'
 
 test('my-button', async ({ page }) => {
@@ -81,6 +88,8 @@ test('my-button', async ({ page }) => {
   // ...
 })
 ```
+
+:::
 
 7. Run the test script.
 

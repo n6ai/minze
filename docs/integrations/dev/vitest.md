@@ -24,8 +24,9 @@ $ pnpm add -D vitest @vitest/ui jsdom
 
 2. Add test scripts to `package.json`.
 
-```json
-// package.json
+::: code-group
+
+```json [package.json]
 {
   "scripts": {
     // ...
@@ -36,12 +37,14 @@ $ pnpm add -D vitest @vitest/ui jsdom
 }
 ```
 
+:::
+
 3. Set the Vitest environment to `jsdom` inside the vite config file.
 
-<!-- prettier-ignore-start -->
+::: code-group
 
-```js
-// vite.config.js
+<!-- prettier-ignore-start -->
+```js [vite.config.js]
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'url'
 import minze from 'vite-plugin-minze'
@@ -56,8 +59,9 @@ export default defineConfig({
   plugins: [minze()]
 })
 ```
-
 <!-- prettier-ignore-end -->
+
+:::
 
 4. Create a `my-button.test.js` file inside the `src/lib` directory.
 
@@ -71,8 +75,9 @@ src/
 
 5. Add the following code to your newly created file:
 
-```js
-// my-button.test.js
+::: code-group
+
+```js [src/lib/my-button.test.js]
 import { test, expect } from 'vitest'
 import { MyButton } from './my-button'
 
@@ -81,6 +86,8 @@ test('my-button', () => {
   // ...
 })
 ```
+
+:::
 
 6. Run the test script.
 

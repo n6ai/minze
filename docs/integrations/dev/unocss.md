@@ -120,8 +120,9 @@ button {
 
 4. Import the CSS file as `?inline` and replace the css block with `@unocss-placeholder ${css}`. This block will be augmented with compiled CSS during processing.
 
-```js
-// src/lib/my-button.js
+::: code-group
+
+```js [src/lib/my-button.js]
 import { MinzeElement } from 'minze'
 import css from './my-button.css?inline'
 
@@ -135,6 +136,8 @@ export class MyButton extends MinzeElement {
   css = () => `@unocss-placeholder ${css};` // [!code ++]
 }
 ```
+
+:::
 
 ::: tip
 For more details about UnoCSS and web components refer to the [UnoCSS documentation](https://unocss.dev/integrations/vite#web-components).

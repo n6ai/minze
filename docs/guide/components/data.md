@@ -260,8 +260,9 @@ MyElement.define()
 
 ```js
 class SomeElement extends MinzeElement {
-  html = () =>
-    `<my-element data=JSON.stringify({ text: 'Hello Minze!' })></my-element>`
+  html = () => `
+    <my-element data=JSON.stringify({ text: 'Hello Minze!' })></my-element>
+  `
 }
 ```
 
