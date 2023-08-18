@@ -60,7 +60,13 @@ export default defineConfig({
     ...(isProduction ? productionHead : [])
   ],
 
-  markdown: { languages },
+  markdown: {
+    languages,
+    theme: {
+      light: 'github-light',
+      dark: 'material-theme-palenight'
+    }
+  },
 
   themeConfig: {
     logo: '/logo.svg',
