@@ -5,7 +5,7 @@ import {
   dashToCamel,
   createObserver,
   warn
-} from 'minze/src/lib/utils'
+} from '@minze/lib/utils'
 
 describe('isProxy', () => {
   it('should return true if the object is a proxy', () => {
@@ -61,7 +61,7 @@ describe('dashToCamel', () => {
   )
 })
 
-// @vitest-environment jsdom
+// @vitest-environment happy-dom
 describe('createObserver', () => {
   it('should return an Mutation Observer', () => {
     const element = document.createElement('div')

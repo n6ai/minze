@@ -10,8 +10,9 @@
     "skipLibCheck": true,
     "paths": {
       "minze": ["./src/main.ts"],
+      "@minze/*": ["./src/*"],
       "@/*": ["./play/*"]
     }
   },
-  "include": ["./src/**/*.ts", "./play/**/*.ts"]
+  "include": ["./src/**/*.ts", "./tests/**/*.ts", "./play/**/*.ts"]
 }

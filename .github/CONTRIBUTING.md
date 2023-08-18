@@ -45,7 +45,7 @@ To develop locally, fork the Minze repository and clone it to your local machine
 ### tests
 
 1. Run `npm run build -w minze` in the root directory.
-2. Run `npm test` in the root directory.
+2. Run `npm test -w tests` in the root directory.
 
 > All `minze` core package tests are located in [tests](https://github.com/n6ai/minze/tree/main/packages/tests).
 

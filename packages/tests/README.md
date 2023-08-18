@@ -15,34 +15,21 @@ If you're running the test commands for the first time, you'll need to run `npm 
 npm test
 ```
 
-**Vitest**
-
-```bash
-# run vitest tests
-npm run test-vi
-
-# run specific tests based on their filenames
-npm run test-vi -- utils.spec.ts
-
-# run specific tests with keywords in their filenames
-npm run test-vi -- utils lib
-```
-
 **Playwright**
 
 ```bash
 # run playwright tests
-npm run test-pw
+npm test
 
 # run specific tests based on their filenames
-npm run test-pw -- minze-options.spec.ts
+npm test -- minze-options.spec.ts
 
 # run specific tests with keywords in their filenames
-npm run test-pw -- options reactive
+npm test -- options reactive
 
 # run tests in debug mode
 # this will open a UI for each test, it's more useful when running a specific test
 # options can be provided in a similar manner like above
-npm run test-pw-debug
-npm run test-pw-debug -- minze-options.spec.ts
+npm run test-debug
+npm run test-debug -- minze-options.spec.ts
 ```

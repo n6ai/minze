@@ -6,6 +6,11 @@ export default defineConfig({
   define: {
     __VERSION__: JSON.stringify(pkg.version)
   },
+  resolve: {
+    alias: {
+      '@minze': new URL('./src', import.meta.url).pathname
+    }
+  },
   esbuild: {
     keepNames: true
   },
@@ -29,8 +34,7 @@ export default defineConfig({
     dts({
       rollupTypes: true,
       entryRoot: './src',
-      include: ['src'],
-      exclude: ['src/**/*.test.ts']
+      include: ['src']
     })
   ]
 })

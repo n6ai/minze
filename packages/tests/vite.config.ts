@@ -1,5 +1,3 @@
-/// <reference types='vitest' />
-
 import { defineConfig } from 'vite'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -10,9 +8,6 @@ import vue from '@vitejs/plugin-vue'
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 export default defineConfig({
-  test: {
-    exclude: ['(e2e|integration)/**']
-  },
   resolve: {
     alias: {
       '@tests/minze': resolve(__dirname, 'e2e/minze/src'),
