@@ -5,11 +5,9 @@
     "moduleResolution": "node",
     "allowJs": false,
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
+    "skipLibCheck": true
   },
-  "include": ["./src/**/*.ts", "rollup.config.ts"]
+  "include": ["./src/**/*.ts"]
 }

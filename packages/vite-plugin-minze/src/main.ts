@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite'
-import fs from 'node:fs'
-import path from 'node:path'
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 
 interface PluginOptions {
   entry?: string
@@ -28,7 +28,7 @@ interface Context {
  * ```
  */
 export default (options?: PluginOptions): Plugin => {
-  const isTypeScript = fs.existsSync(path.join(process.cwd(), 'tsconfig.json'))
+  const isTypeScript = existsSync(join(process.cwd(), 'tsconfig.json'))
   const entry = options?.entry ?? `src/main.${isTypeScript ? 'ts' : 'js'}`
 
   return {

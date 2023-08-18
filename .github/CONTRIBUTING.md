@@ -30,10 +30,10 @@ To develop locally, fork the Minze repository and clone it to your local machine
 
 ### vite-plugin-minze
 
-1. Run `npm run dev -w vite-plugin-minze` in the root directory.
+1. Run `npm run stub -w vite-plugin-minze` in the root directory.
 2. Run `npm run build-play -w minze` to test if the plugin works correctly.
 
-> First, you need to start the dev task for vite-plugin-minze. The vite-plugin-minze dependency for the minze package is linked to the local version of vite-plugin-minze. Any changes to the vite-plugin-minze package can be immediately tried out.
+> First, you need to stub vite-plugin-minze. The vite-plugin-minze dependency for the minze package is linked to the local version of vite-plugin-minze. Any changes to the vite-plugin-minze package can be immediately tried out.
 
 ### docs
 

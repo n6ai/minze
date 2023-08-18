@@ -6,14 +6,11 @@
     "node": ">=v16.0.0"
   },
   "workspaces": [
-    "packages/minze",
-    "packages/vite-plugin-minze",
     "packages/*",
     "packages/tests/**/*"
   ],
   "scripts": {
     "prepare": "npx -y tsx ./scripts/syntaxes.ts",
-    "predev": "npm run build -w vite-plugin-minze",
     "dev": "npm run dev -w minze",
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",

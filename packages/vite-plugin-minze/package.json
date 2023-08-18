@@ -10,7 +10,7 @@
     "minzejs"
   ],
   "type": "module",
-  "main": "dist/main.js",
+  "main": "dist/main.mjs",
   "types": "dist/main.d.ts",
   "files": [
     "dist"
@@ -28,20 +28,14 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "scripts": {
-    "dev": "rollup -w -c rollup.config.ts --configPlugin typescript",
-    "build": "rollup -c rollup.config.ts --configPlugin typescript",
+    "prepare": "npm run stub",
+    "stub": "unbuild --stub",
+    "build": "unbuild",
     "test": "(npm run build) && (npm run build-play -w minze)",
-    "posttest": "npm run build -w minze",
-    "predev": "rimraf dist",
-    "prebuild": "rimraf dist",
-    "postbuild": "rimraf dist/types"
+    "posttest": "(npm run stub) && (npm run build -w minze)"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.0",
-    "@rollup/plugin-typescript": "^11.1.2",
-    "rimraf": "^5.0.1",
-    "rollup": "^3.28.0",
-    "rollup-plugin-dts": "^5.3.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "unbuild": "^1.2.1"
   }
 }
