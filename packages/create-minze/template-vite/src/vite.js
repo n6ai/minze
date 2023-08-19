@@ -6,5 +6,5 @@ defineAll(modules)
 const previews = import.meta.glob('./*.html', { eager: true, as: 'raw' })
 const preview = previews['./preview.dev.html'] ?? previews['./preview.html']
 
-const app = document.querySelector('#app') ?? null
+const app = document.querySelector('#app')
 if (app) app.innerHTML = preview
