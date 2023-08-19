@@ -8,11 +8,12 @@
     "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
     "paths": {
       "minze": ["./src/main.ts"],
-      "@minze/*": ["./src/*"],
+      "src/*": ["./src/*"],
       "@/*": ["./play/*"]
     }
   },
-  "include": ["./src/**/*.ts", "./tests/**/*.ts", "./play/**/*.ts"]
+  "include": ["./src", "./test", "./play"]
 }

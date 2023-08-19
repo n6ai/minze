@@ -30,13 +30,18 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build -c vite.config.minze.ts",
+    "build": "vite build -c vite.config.build.ts",
     "build-play": "vite build",
     "preview": "vite preview",
-    "test": "vitest",
-    "test-ui": "vitest --ui"
+    "test": "(npm run test-vi) && (npm run test-pw)",
+    "test-vi": "vitest --run",
+    "test-vi-ui": "vitest --ui",
+    "test-pw": "npx playwright test",
+    "test-pw-ui": "npx playwright test --ui",
+    "test-pw-debug": "npx playwright test --debug"
   },
   "devDependencies": {
+    "@playwright/test": "^1.37.1",
     "@vitest/ui": "^0.34.2",
     "happy-dom": "^10.10.4",
     "typescript": "^5.1.6",

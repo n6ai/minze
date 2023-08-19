@@ -7,9 +7,7 @@ export default defineConfig({
     __VERSION__: JSON.stringify(pkg.version)
   },
   resolve: {
-    alias: {
-      '@minze': new URL('./src', import.meta.url).pathname
-    }
+    alias: { src: new URL('./src', import.meta.url).pathname }
   },
   esbuild: {
     keepNames: true

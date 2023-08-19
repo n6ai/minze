@@ -18,7 +18,7 @@ runs:
 
     - name: Update playwright
       shell: bash
-      run: npx playwright install
+      run: npx playwright install --with-deps
 
     - name: Create builds
       shell: bash

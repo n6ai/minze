@@ -7,6 +7,7 @@ import dts from 'vite-plugin-dts'
 
 export default defineConfig({
   test: {
+    include: ['src/**/*.test.*'],
     environment: 'happy-dom'
   },
   define: {
@@ -14,12 +15,11 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': new URL('./play', import.meta.url).pathname,
-      '@minze': new URL('./src', import.meta.url).pathname,
-      minze: new URL('./src/main.ts', import.meta.url).pathname
+      minze: new URL('./src/main.ts', import.meta.url).pathname,
+      src: new URL('./src', import.meta.url).pathname,
+      '@': new URL('./play', import.meta.url).pathname
     }
   },
-  publicDir: 'play/public',
   plugins: [
     minze({ entry: 'play/main.ts' }),
     dts({

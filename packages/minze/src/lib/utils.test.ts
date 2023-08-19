@@ -5,7 +5,7 @@ import {
   dashToCamel,
   createObserver,
   warn
-} from '@minze/lib/utils'
+} from 'src/lib/utils'
 
 describe('isProxy', () => {
   test('is true', () => {
