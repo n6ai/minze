@@ -16,38 +16,64 @@ To develop locally, fork the Minze repository and clone it to your local machine
 
 ## Workflows
 
-### create-minze
+### [create-minze](../packages/create-minze)
 
 1. Run `npm run dev -w create-minze` in the root directory.
 2. Run `npm create minze` in the root directory.
 
 > The `dev` task will start TypeScript in watch mode for the `create-minze` package.
 
-### minze
+### [minze](../packages/minze)
 
 1. Run `npm run dev` in the root directory.
 2. Open the browser and navigate to [http://localhost:5173](http://localhost:5173).
 
 > The playground and all tests are inside the `test` directory.
 
-### minze-vscode
+### [minze-vscode](../packages/minze-vscode)
 
 1. Click on `Run and Debug` in the VS Code sidebar.
 2. Click on `Start Debugging` with the `Extension` option selected.
 
-### vite-plugin-minze
+### [vite-plugin-minze](../packages/vite-plugin-minze)
 
 1. Run `npm run stub -w vite-plugin-minze` in the root directory.
 2. Run `npm run build-test -w minze` to test if the plugin works correctly.
 
 > First, you need to stub vite-plugin-minze. The vite-plugin-minze dependency for the minze package is linked to the local version of vite-plugin-minze. Any changes to the vite-plugin-minze package can be immediately tried out.
 
-### docs
+### [docs](../docs)
 
 1. Run `npm run docs` in the root directory.
 2. Open the browser and navigate to [http://localhost:5173](http://localhost:5173).
 
 > Vitepress will start a server in dev mode for the documentation.
+
+## Testing
+
+### All
+
+```bash
+npm test
+```
+
+### Workspace
+
+```bash
+npm test -w minze
+```
+
+### Filtering
+
+```bash
+npm run test-vi -w minze -- events
+npm run test-pw -w minze -- events
+```
+
+**Read more about filtering for specific tests:**
+
+- [Vitest](https://vitest.dev/guide/filtering)
+- [Playwright](https://playwright.dev/docs/running-tests)
 
 ## External Dependencies
 

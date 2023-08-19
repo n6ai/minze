@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { setup } from '@/utils'
 
-test.describe('MinzeTemplating', () => {
+test.describe('MinzeHooks', () => {
   test.beforeEach(async ({ page }) => {
     await setup(page, '<minze-hooks></minze-hooks>')
   })
