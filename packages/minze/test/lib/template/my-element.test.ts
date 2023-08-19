@@ -1,19 +1,16 @@
 import { test, expect } from '@playwright/test'
+import { setup } from '@/utils'
 
 test.describe('MyElement', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/')
-
-    await page.evaluate(() => {
-      const app = document.querySelector<HTMLDivElement>('#app')
-      if (app) app.innerHTML = '<my-element><h1>Minze + Vite</h1></my-element>'
-    })
+    await setup(page, '<my-element><h1>Minze + Vite</h1></my-element>')
   })
 
   test('reactive', async ({ page }) => {
-    await expect(page.locator('my-button')).toContainText('count is 0')
-    page.locator('my-button').click()
-    await expect(page.locator('my-button')).toContainText('count is 1')
+    const el = page.locator('my-button')
+    await expect(el).toContainText('count is 0')
+    el.click()
+    await expect(el).toContainText('count is 1')
   })
 
   test('html', async ({ page }) => {

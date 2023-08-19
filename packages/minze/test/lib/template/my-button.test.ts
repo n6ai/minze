@@ -1,13 +1,9 @@
 import { test, expect } from '@playwright/test'
+import { setup } from '@/utils'
 
 test.describe('MyButton', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/')
-
-    await page.evaluate(() => {
-      const app = document.querySelector<HTMLDivElement>('#app')
-      if (app) app.innerHTML = '<my-button></my-button>'
-    })
+    await setup(page, '<my-button></my-button>')
   })
 
   test('html', async ({ page }) => {
