@@ -71,7 +71,7 @@ export default defineConfig({
 ```
 
 ```js [src/utils.js]
-export function setup(page, html) {
+export async function setup(page, html) {
   await page.goto('/')
 
   await page.evaluate((html) => {
@@ -81,14 +81,14 @@ export function setup(page, html) {
 }
 ```
 
+<!-- prettier-ignore-start -->
 ```js [src/vite.js]
 import './assets/vite.css'
 
 import { modules, defineAll } from './main'
 defineAll(modules)
 
-if (import.meta.env.MODE !== 'testing') {
-  // [!code ++]
+if (import.meta.env.MODE !== 'testing') { // [!code ++]
   const previews = import.meta.glob('./*.html', { eager: true, as: 'raw' })
   const preview = previews['./preview.dev.html'] ?? previews['./preview.html']
 
@@ -96,6 +96,7 @@ if (import.meta.env.MODE !== 'testing') {
   if (app) app.innerHTML = preview
 } // [!code ++]
 ```
+<!-- prettier-ignore-end -->
 
 :::
 
