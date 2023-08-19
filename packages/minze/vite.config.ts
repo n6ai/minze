@@ -8,7 +8,10 @@ import dts from 'vite-plugin-dts'
 export default defineConfig({
   test: {
     include: ['src/**/*.test.*'],
-    environment: 'happy-dom'
+    environment: 'happy-dom',
+    onConsoleLog(log) {
+      if (log.includes('Minze')) return false
+    }
   },
   define: {
     __VERSION__: JSON.stringify(pkg.version)

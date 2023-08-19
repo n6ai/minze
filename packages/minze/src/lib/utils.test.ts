@@ -38,7 +38,7 @@ describe('camelToDash', () => {
     { input: 'PascalCaseString', output: 'pascal-case-string' }
   ]
 
-  test.each(data)('transform $input to $output', ({ input, output }) => {
+  test.each(data)('transforms $input to $output', ({ input, output }) => {
     expect(camelToDash(input)).toBe(output)
   })
 })
@@ -71,7 +71,7 @@ describe('warn', () => {
 
   test.each(data)('takes $input and displays $output', ({ input, output }) => {
     warn(input)
-    expect(console.warn).toBeCalledTimes(1)
+    expect(console.warn).toHaveBeenCalledOnce()
     expect(console.warn).toBeCalledWith(output)
   })
 })
