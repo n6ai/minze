@@ -216,8 +216,10 @@ import { MinzeElement } from 'minze'
 class MyElement extends MinzeElement {
   reactive = [['active', false]]
 
+  toggleState = () => (this.active = !this.active)
+
   html = () => `
-    <button>
+    <button @click="toggleState">
       Toggle state
     </button>
 
@@ -251,12 +253,6 @@ class MyElement extends MinzeElement {
       ${this.active ? '<div>true</div> <div>&nbsp;</div>' : '<div>false</div>'}
     </div>
   `
-
-  handleClick = () => {
-    this.active = !this.active
-  }
-
-  eventListeners = [['button', 'click', this.handleClick]]
 }
 
 MyElement.define()
