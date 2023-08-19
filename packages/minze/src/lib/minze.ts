@@ -104,9 +104,8 @@ export class Minze {
     // iterate over all values in array, module or module-map
     Object.values(elementsOrModules).forEach(async (el) => {
       if (isMinzeElement(el)) defineMinzeElement(el)
-
       // module-map
-      if (typeof el === 'object' || typeof el === 'function') {
+      else if (typeof el === 'object' || typeof el === 'function') {
         const module = typeof el === 'function' ? await el() : el
 
         if (isMinzeElement(module)) defineMinzeElement(module)
