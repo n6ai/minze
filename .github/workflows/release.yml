@@ -7,7 +7,6 @@ on:
     paths:
       - 'packages/**'
       - 'package.json'
-      - '!play/**'
       - '!**/README.md'
   workflow_run:
     workflows:

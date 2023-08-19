@@ -17,15 +17,15 @@ export default defineConfig({
     alias: {
       minze: new URL('./src/main.ts', import.meta.url).pathname,
       src: new URL('./src', import.meta.url).pathname,
-      '@': new URL('./play', import.meta.url).pathname
+      '@': new URL('./test', import.meta.url).pathname
     }
   },
   plugins: [
-    minze({ entry: 'play/main.ts' }),
+    minze({ entry: 'test/main.ts' }),
     dts({
-      entryRoot: 'play',
-      include: ['play'],
-      exclude: ['play/vite.ts', 'play/**/*.{spec,test,stories}.ts']
+      entryRoot: 'test',
+      include: ['test'],
+      exclude: ['test/vite.ts', 'test/**/*.{spec,test,stories}.ts']
     })
   ]
 })

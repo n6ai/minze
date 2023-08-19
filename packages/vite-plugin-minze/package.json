@@ -31,7 +31,7 @@
     "prepare": "npm run stub",
     "stub": "unbuild --stub",
     "build": "unbuild",
-    "test": "(npm run build) && (npm run build-play -w minze)",
+    "test": "(npm run build) && (npm run build-test -w minze)",
     "posttest": "(npm run stub) && (npm run build -w minze)"
   },
   "devDependencies": {

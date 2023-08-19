@@ -6,7 +6,6 @@ on:
       - 'packages/**'
       - 'package.json'
       - '!packages/create-minze/template-**'
-      - '!play/**'
       - '!**/README.md'
   workflow_dispatch:
 

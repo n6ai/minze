@@ -12,8 +12,8 @@
     "paths": {
       "minze": ["./src/main.ts"],
       "src/*": ["./src/*"],
-      "@/*": ["./play/*"]
+      "@/*": ["./test/*"]
     }
   },
-  "include": ["./src", "./test", "./play"]
+  "include": ["./src", "./test"]
 }
