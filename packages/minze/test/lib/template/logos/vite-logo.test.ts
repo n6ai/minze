@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test'
+import { setup } from '@/utils'
 
 test.describe('ViteLogo', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/')
-    await page.setContent('<vite-logo></vite-logo>')
+    await setup(page, '<vite-logo></vite-logo>')
   })
 
   test('attrs', async ({ page }) => {
