@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test'
-import { setup } from '@/utils'
 
 test.describe('MyButton', () => {
   test.beforeEach(async ({ page }) => {
-    await setup(page, '<my-button></my-button>')
+    await page.goto('/')
+    await page.setContent('<my-button></my-button>')
   })
 
   test('html', async ({ page }) => {

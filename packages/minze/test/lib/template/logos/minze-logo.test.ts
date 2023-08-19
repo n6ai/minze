@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test'
-import { setup } from '@/utils'
 
 test.describe('MinzeLogo', () => {
   test.beforeEach(async ({ page }) => {
-    await setup(page, '<minze-logo></minze-logo>')
+    await page.goto('/')
+    await page.setContent('<minze-logo></minze-logo>')
   })
 
   test('attrs', async ({ page }) => {

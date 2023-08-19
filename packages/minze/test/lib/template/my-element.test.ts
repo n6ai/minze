@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test'
-import { setup } from '@/utils'
 
 test.describe('MyElement', () => {
   test.beforeEach(async ({ page }) => {
-    await setup(page, '<my-element><h1>Minze + Vite</h1></my-element>')
+    await page.goto('/')
+    await page.setContent('<my-element><h1>Minze + Vite</h1></my-element>')
   })
 
   test('reactive', async ({ page }) => {
