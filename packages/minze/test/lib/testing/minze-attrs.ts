@@ -1,6 +1,6 @@
 import { MinzeElement, Attrs } from 'minze'
 
-export interface MinzeReactiveAttrs {
+export interface MinzeAttrs {
   count: string
   shorthand: null
   empty: null
@@ -12,7 +12,7 @@ export interface MinzeReactiveAttrs {
   object: Record<string, unknown>
 }
 
-export class MinzeReactiveAttrs extends MinzeElement {
+export class MinzeAttrs extends MinzeElement {
   attrs: Attrs = [
     ['count', 0],
     'shorthand',

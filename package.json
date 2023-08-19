@@ -6,8 +6,7 @@
     "node": ">=v16.0.0"
   },
   "workspaces": [
-    "packages/*",
-    "packages/tests/**/*"
+    "packages/*"
   ],
   "scripts": {
     "prepare": "npx -y tsx ./scripts/syntaxes.ts",

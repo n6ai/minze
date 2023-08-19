@@ -1,4 +1,5 @@
-import { MinzeElement, Attrs } from 'minze'
+import type { Attrs } from 'minze'
+import { MinzeElement } from 'minze'
 
 export class MinzeHooks extends MinzeElement {
   attrs: Attrs = [['hooks', 'test']]

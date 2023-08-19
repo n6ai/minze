@@ -8,10 +8,10 @@ export interface MinzeAtEvents {
 export class MinzeAtEvents extends MinzeElement {
   reactive: Reactive = [['text', 'not-clicked']]
 
-  changeText = () => (this.text = 'clicked')
+  click = () => (this.text = 'clicked')
 
   html = () => `
-    <button @click="changeText">
+    <button @click>
       ${this.text}
     </button>
   `
