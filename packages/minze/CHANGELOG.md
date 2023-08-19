@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/n6ai/minze/compare/minze-v1.9.0...minze-v1.9.1) (2023-08-19)
+
+
+### Bug Fixes
+
+* conditional defineAll module-map check ([80df7cd](https://github.com/n6ai/minze/commit/80df7cd0712040f1d134c4bd38be2b2b6222e578))
+
 ## [1.9.0](https://github.com/n6ai/minze/compare/minze-v1.8.2...minze-v1.9.0) (2023-08-17)
 
 
