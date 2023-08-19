@@ -1,40 +1,31 @@
+/// <reference types='vitest' />
+
 import { defineConfig } from 'vite'
 import pkg from './package.json'
+import minze from 'vite-plugin-minze'
 import dts from 'vite-plugin-dts'
 
 export default defineConfig({
+  test: {
+    environment: 'happy-dom'
+  },
   define: {
     __VERSION__: JSON.stringify(pkg.version)
   },
   resolve: {
     alias: {
-      '@minze': new URL('./src', import.meta.url).pathname
+      '@': new URL('./play', import.meta.url).pathname,
+      '@minze': new URL('./src', import.meta.url).pathname,
+      minze: new URL('./src/main.ts', import.meta.url).pathname
     }
   },
-  esbuild: {
-    keepNames: true
-  },
-  build: {
-    emptyOutDir: true,
-    copyPublicDir: false,
-    lib: {
-      name: 'minze',
-      formats: ['es'],
-      entry: 'src/main.ts',
-      fileName: () => 'main.js'
-    },
-    rollupOptions: {
-      output: {
-        inlineDynamicImports: true,
-        minifyInternalExports: false
-      }
-    }
-  },
+  publicDir: 'play/public',
   plugins: [
+    minze({ entry: 'play/main.ts' }),
     dts({
-      rollupTypes: true,
-      entryRoot: './src',
-      include: ['src']
+      entryRoot: 'play',
+      include: ['play'],
+      exclude: ['play/vite.ts', 'play/**/*.{spec,test,stories}.ts']
     })
   ]
 })

@@ -29,12 +29,12 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "scripts": {
-    "dev": "vite -c vite.config.play.ts",
-    "build": "vite build",
-    "build-play": "vite build -c vite.config.play.ts",
+    "dev": "vite",
+    "build": "vite build -c vite.config.minze.ts",
+    "build-play": "vite build",
     "preview": "vite preview",
-    "test": "vitest -c vite.config.play.ts",
-    "test-ui": "vitest -c vite.config.play.ts --ui"
+    "test": "vitest",
+    "test-ui": "vitest --ui"
   },
   "devDependencies": {
     "@vitest/ui": "^0.34.2",
