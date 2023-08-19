@@ -45,20 +45,56 @@ npx playwright install
 
 :::
 
-4. Add a `playwright.config.js` file to the root directory of your project.
+4. Create and populate `playwright.config.js` and `utils.js` files. Wrap the preview code inside `vite.js` in a conditional.
 
 ::: code-group
+
+```txt [files]
+├─ src/
+|  ├─ ...
+|  ├─ utils.js // [!code ++]
+|  └─ vite.js // [!code warning]
+├─ ...
+└─ playwright.config.js // [!code ++]
+```
 
 ```js [playwright.config.js]
 import { defineConfig } from '@playwright/test'
 
 export default defineConfig({
   webServer: {
-    command: 'vite',
+    command: 'vite -m testing',
     port: 5173,
-    reuseExistingServer: true
+    reuseExistingServer: !process.env.CI
   }
 })
+```
+
+```js [src/utils.js]
+export function setup(page, html) {
+  await page.goto('/')
+
+  await page.evaluate((html) => {
+    const app = document.querySelector('#app')
+    if (app) app.innerHTML = html
+  }, html)
+}
+```
+
+```js [src/vite.js]
+import './assets/vite.css'
+
+import { modules, defineAll } from './main'
+defineAll(modules)
+
+if (import.meta.env.MODE !== 'testing') {
+  // [!code ++]
+  const previews = import.meta.glob('./*.html', { eager: true, as: 'raw' })
+  const preview = previews['./preview.dev.html'] ?? previews['./preview.html']
+
+  const app = document.querySelector('#app')
+  if (app) app.innerHTML = preview
+} // [!code ++]
 ```
 
 :::
@@ -79,12 +115,17 @@ src/
 
 ```js [src/lib/my-button.test.js]
 import { test, expect } from '@playwright/test'
+import { setup } from '@/utils'
 
-test('my-button', async ({ page }) => {
-  await page.goto('/')
-  await page.setContent('<my-button></my-button>')
+test.describe('my-button', () => {
+  test.beforeEach(async ({ page }) => {
+    await setup(page, '<my-button>Hello Minze!</my-button>')
+  })
 
-  await expect(page.locator('my-button')).toHaveCount(1) // check if element exists
+  test('html', async ({ page }) => {
+    await expect(page.locator('my-button button')).toBeVisible()
+  })
+
   // ...
 })
 ```
