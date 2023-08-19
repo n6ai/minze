@@ -10,7 +10,6 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 export default defineConfig({
   resolve: {
     alias: {
-      '@tests/minze': resolve(__dirname, 'e2e/minze/src'),
       '@tests/minze-element': resolve(__dirname, 'e2e/minze-element/src'),
       '@tests/react': resolve(__dirname, 'integration/react/src'),
       '@tests/svelte': resolve(__dirname, 'integration/svelte/src'),

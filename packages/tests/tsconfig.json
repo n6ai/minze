@@ -10,7 +10,6 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@tests/minze/*": ["e2e/minze/src/*"],
       "@tests/minze-element/*": ["e2e/minze-element/src/*"],
       "@tests/react/*": ["integration/react/src/*"],
       "@tests/svelte/*": ["integration/svelte/src/*"],

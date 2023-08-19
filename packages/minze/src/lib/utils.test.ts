@@ -5,7 +5,7 @@ import {
   dashToCamel,
   createObserver,
   warn
-} from 'src/lib/utils'
+} from './utils'
 
 describe('isProxy', () => {
   test('is true', () => {
