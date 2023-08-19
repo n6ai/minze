@@ -10,10 +10,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@tests/minze-element/*": ["e2e/minze-element/src/*"],
-      "@tests/react/*": ["integration/react/src/*"],
-      "@tests/svelte/*": ["integration/svelte/src/*"],
-      "@tests/vue/*": ["integration/vue/src/*"]
+      "@tests/minze-element/*": ["e2e/minze-element/src/*"]
     }
   },
   "include": ["**/src/**/*", "**/types/**/*"]

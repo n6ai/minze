@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
     port: 5173,
     reuseExistingServer: !process.env.CI
   },
-  testMatch: ['{e2e,integration}/**/*.spec.*']
+  testMatch: ['e2e/**/*.spec.*']
 }
 
 export default config
