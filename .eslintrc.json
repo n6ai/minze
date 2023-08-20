@@ -9,7 +9,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "ignorePatterns": ["packages/create-minze/template-**"],
+  "env": { "browser": true, "node": true },
   "rules": {
     "@typescript-eslint/no-unsafe-declaration-merging": "off",
     "@typescript-eslint/no-explicit-any": "off"
