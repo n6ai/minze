@@ -82,12 +82,6 @@ export default (options?: PluginOptions): Plugin => {
                       /(?<=node_modules\/).*(?=\.(?:ts|m?js|css|html))/i,
                       'vendor'
                     )
-                  } else if (id.includes('/minze/dist/')) {
-                    return chunkName(
-                      id,
-                      /(?<=minze\/dist\/).*(?=\.m?js)/i,
-                      'vendor/minze/dist'
-                    )
                   } else if (id.includes('/lib/')) {
                     return chunkName(
                       id,
