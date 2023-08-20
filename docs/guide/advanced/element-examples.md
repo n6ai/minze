@@ -15,6 +15,12 @@ import { MinzeElement } from 'minze'
 
 class CustomLink extends MinzeElement {
   attrs = ['href', 'target']
+  static observedAttributes = ['href', 'target']
+
+  onStart() {
+    this.role = 'link'
+    this.tabIndex = 0
+  }
 
   css = () => `
     :host {
@@ -27,12 +33,18 @@ class CustomLink extends MinzeElement {
     }
   `
 
-  handleClick = () => {
-    if (this.target && this.href) window.open(this.href, this.target)
-    else if (this.href) location.href = this.href
+  open = (event) => {
+    const keys = ['Enter', 'Spacebar', ' ']
+
+    if ((this.href && event.type === 'click') || keys.includes(event.key)) {
+      window.open(this.href, this.target ?? '_self')
+    }
   }
 
-  eventListeners = [[this, 'click', this.handleClick]]
+  eventListeners = [
+    [this, 'click', this.open],
+    [this, 'keydown', this.open]
+  ]
 }
 
 CustomLink.define()
@@ -41,7 +53,7 @@ CustomLink.define()
 <!-- prettier-start-ignore -->
 
 ```html
-<custom-link href="https://google.com" target="_blank" role="link">
+<custom-link href="https://minze.dev" target="_blank">
   Hello Minze!
 </custom-link>
 ```
