@@ -291,6 +291,14 @@ export class MinzeElement extends HTMLElement {
   html?(): string
 
   /**
+   * HTML template (Internal)
+   */
+  private _html: { cached: string | null; template: () => Promise<string> } = {
+    cached: null,
+    template: async () => this.html?.() ?? '<slot></slot>'
+  }
+
+  /**
    * Defines the shadow DOM styling.
    *
    * @example
@@ -307,34 +315,29 @@ export class MinzeElement extends HTMLElement {
   css?(): string
 
   /**
-   * Creates the template for the shadow root, which will be inserted into the Shadow root.
+   * CSS template (Internal)
    */
-  private template() {
-    const cssReset =
-      this.options?.cssReset || this.options?.cssReset === undefined
+  private _css: { cached: string | null; template: () => Promise<string> } = {
+    cached: null,
+    template: async () => {
+      const cssReset =
+        this.options?.cssReset || this.options?.cssReset === undefined
 
-    // prettier-ignore
-    return `
-      <style>
+      // prettier-ignore
+      return `
         @layer reset, default; @layer reset {
-        :host { box-sizing: border-box; display: block; }
-        :host([hidden]) { display: none; }
-        :where(*, ::before, ::after, :host::before, :host::after):not([no-css-reset]) { box-sizing: border-box; ${cssReset ? 'color: inherit; text-decoration: inherit; font-size: inherit; line-height: inherit; font-weight: inherit; font-family: inherit; text-indent: 0; background-color: transparent; border: 0 solid transparent; padding: 0; margin: 0;' : '' }}
-        ${cssReset ? `
-        :where(table):not([no-css-reset]) { border-color: inherit; border-collapse: collapse; }
-        :where(img, svg, video, canvas, audio, iframe, embed, object):not([no-css-reset]) { display: block; max-width: 100%; height: auto; }
-        :where(button, [role="button"]):not([no-css-reset]) { font-size: 100%; text-transform: none; cursor: pointer; }
-        ` : '' }}
+          :host { box-sizing: border-box; display: block; }
+          :host([hidden]) { display: none; }
+          :where(*, ::before, ::after, :host::before, :host::after):not([no-css-reset]) { box-sizing: border-box; ${cssReset ? 'color: inherit; text-decoration: inherit; font-size: inherit; line-height: inherit; font-weight: inherit; font-family: inherit; text-indent: 0; background-color: transparent; border: 0 solid transparent; padding: 0; margin: 0;' : '' }}
+          ${cssReset ? `
+          :where(table):not([no-css-reset]) { border-color: inherit; border-collapse: collapse; }
+          :where(img, svg, video, canvas, audio, iframe, embed, object):not([no-css-reset]) { display: block; max-width: 100%; height: auto; }
+          :where(button, [role="button"]):not([no-css-reset]) { font-size: 100%; text-transform: none; cursor: pointer; }
+          ` : '' }}
         ${`@layer default {${this.css?.()}}` ?? ''}
-      </style>
-      ${this.html?.() ?? '<slot></slot>'}
-    `
+      `
+    }
   }
-
-  /**
-   * Stores the previously rendered template.
-   */
-  private _cachedTemplate?: string | null
 
   /**
    * Renders the template into the shadow DOM.
@@ -350,11 +353,25 @@ export class MinzeElement extends HTMLElement {
    */
   private async render(force?: boolean) {
     if (this.shadowRoot) {
-      const template = this.template()
+      const html = await this._html.template()
+      const css = await this._css.template()
 
-      if (template !== this._cachedTemplate || force) {
-        const previousCachedTemplate = this._cachedTemplate
-        this._cachedTemplate = template // cache early
+      if (css !== this._css.cached || force) {
+        // prevent blocking via async function
+        ;(async () => {
+          this._css.cached = css // cache early
+
+          if (this.shadowRoot) {
+            this.shadowRoot.adoptedStyleSheets = [
+              await new CSSStyleSheet().replace(css)
+            ]
+          }
+        })()
+      }
+
+      if (html !== this._html.cached || force) {
+        const prevCachedHTML = this._html.cached
+        this._html.cached = html // cache early
 
         await this.beforeRender?.()
 
@@ -362,11 +379,11 @@ export class MinzeElement extends HTMLElement {
           this.registerEvent(eventTuple, 'remove')
         )
 
-        if (!previousCachedTemplate || force) {
-          this.shadowRoot.innerHTML = template
+        if (!prevCachedHTML || force) {
+          this.shadowRoot.innerHTML = html
         } else {
           // patches only the difference between the new template and the current shadow dom
-          deepPatch(template, previousCachedTemplate, this.shadowRoot)
+          deepPatch(html, prevCachedHTML, this.shadowRoot)
         }
 
         // enhance eventListeners with at-events and binding
@@ -1043,7 +1060,8 @@ export class MinzeElement extends HTMLElement {
    * Lifecycle (Internal) - Runs each time the element is disconnected from the document's DOM.
    */
   private async disconnectedCallback() {
-    this._cachedTemplate = null
+    this._html.cached = null
+    this._css.cached = null
 
     if (this.options?.exposeAttrs?.exportparts) {
       this.registerExportpartsObserver('remove')

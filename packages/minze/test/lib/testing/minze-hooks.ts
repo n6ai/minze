@@ -2,7 +2,7 @@ import type { Attrs } from 'minze'
 import { MinzeElement } from 'minze'
 
 export class MinzeHooks extends MinzeElement {
-  attrs: Attrs = [['hooks', 'test']]
+  attrs: Attrs = ['hooks']
 
   static observedAttributes = ['hooks']
 

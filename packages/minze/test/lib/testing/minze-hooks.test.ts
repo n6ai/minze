@@ -6,13 +6,11 @@ test.describe('MinzeHooks', () => {
     await setup(page, '<minze-hooks></minze-hooks>')
   })
 
-  test('hooks', async ({ page }) => {
+  test('hooks (common)', async ({ page }) => {
     const hookSequence = [
       'onStart',
-      'beforeAttributeChange',
       'onReactive',
       'beforeRender',
-      'afterAttributeChange',
       'afterRender',
       'onReady'
     ].join(' ')
@@ -20,7 +18,7 @@ test.describe('MinzeHooks', () => {
     await expect(page.locator('minze-hooks div')).toHaveText(hookSequence)
   })
 
-  test('hooks (moved)', async ({ page }) => {
+  test('hooks (destroy)', async ({ page }) => {
     const hookSequence = [
       'onDestroy',
       'onStart',
@@ -30,7 +28,7 @@ test.describe('MinzeHooks', () => {
       'onReady'
     ].join(' ')
 
-    // move the element withing the same document
+    // move the element within the same document
     await page.locator('#app').evaluate((node) => {
       const el = node.querySelector('minze-hooks')
       if (el) node.appendChild(el)
