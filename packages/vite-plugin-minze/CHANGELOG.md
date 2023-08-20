@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.5](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.1.4...vite-plugin-minze-v1.1.5) (2023-08-20)
+
+
+### Miscellaneous
+
+* fix build ([633299c](https://github.com/n6ai/minze/commit/633299caf40f39fa256c6217c8899b98f94e6a32))
+
 ## [1.1.4](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.1.3...vite-plugin-minze-v1.1.4) (2023-08-20)
 
 
