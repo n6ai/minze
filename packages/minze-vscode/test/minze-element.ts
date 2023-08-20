@@ -19,7 +19,6 @@ class MyElement extends MinzeElement {
   `
 
   html1 = /* html */ `<div>${this.text}</div>`
-  html1 = /*html*/ `<div>${this.text}</div>`
   html2 = /*html*/ `<div>${this.text}</div>`
   html3 = html`<div>${this.text}</div>`
 
@@ -39,10 +38,9 @@ class MyElement extends MinzeElement {
     }
   `
 
-  css2 = /* css */ `:host { background: ${this.value}; }`
+  css1 = /* css */ `:host { background: ${this.value}; }`
   css2 = /*css*/ `:host { background: ${this.value}; }`
-  css3 = /*css*/ `:host { background: ${this.value}; }`
-  css4 = css`
+  css3 = css`
     :host {
       background: ${this.value};
     }
