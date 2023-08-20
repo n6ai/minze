@@ -19,16 +19,11 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run: npm ci
-
-    - name: Create minze build
-      if: ${{ inputs.package-name != 'minze' }}
-      shell: bash
-      run: npm run build -w minze
+      run: npm ci --ignore-scripts
 
     - name: Create builds
       shell: bash
-      run: npm run build -w ${{ inputs.package-name }} --if-present
+      run: npm run build -w ${{ inputs.package-name }}
 
     - name: Publish ${{ inputs.package-name }}
       shell: bash

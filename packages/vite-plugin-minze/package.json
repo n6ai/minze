@@ -28,7 +28,6 @@
     "url": "https://github.com/n6ai/minze/issues"
   },
   "scripts": {
-    "prepare": "npm run stub",
     "stub": "unbuild --stub",
     "build": "unbuild",
     "test": "(npm run build) && (npm run build-test -w minze)",

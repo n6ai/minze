@@ -9,8 +9,9 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "npx -y tsx ./scripts/syntaxes.ts",
+    "prepare": "(npm run stub) && (npx -y tsx ./scripts/syntaxes.ts)",
     "dev": "npm run dev -w minze",
+    "stub": "npm run stub --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "docs": "vitepress dev docs",
