@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.1.3...vite-plugin-minze-v1.1.4) (2023-08-20)
+
+
+### Bug Fixes
+
+* generate non lib chunks in separate directory ([7d374fc](https://github.com/n6ai/minze/commit/7d374fc211ef13310d509d0c84324d2f18c5bd11))
+
 ## [1.1.3](https://github.com/n6ai/minze/compare/vite-plugin-minze-v1.1.2...vite-plugin-minze-v1.1.3) (2023-08-17)
 
 
