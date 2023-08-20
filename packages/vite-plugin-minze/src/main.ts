@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite'
 import { existsSync } from 'node:fs'
-import { join } from 'node:path'
+import { normalize, join } from 'node:path'
 
 interface PluginOptions {
   entry?: string
@@ -66,28 +66,31 @@ export default (options?: PluginOptions): Plugin => {
                 inlineDynamicImports: false,
                 minifyInternalExports: false,
                 chunkFileNames: '[name].js',
-                manualChunks: (id) => {
-                  const chunkName = (
-                    id: string,
-                    regex: RegExp,
-                    dir: string
-                  ) => {
-                    const name = id.match(regex)?.[0]
-                    return `${dir}/${name}`
-                  }
+                manualChunks: (id, match) => {
+                  const isIncluded = match.getModuleInfo(id)?.isIncluded
+                  const idIcludesCWD = normalize(id).includes(
+                    normalize(process.cwd())
+                  )
 
-                  if (id.includes('/node_modules/')) {
-                    return chunkName(
-                      id,
-                      /(?<=node_modules\/).*(?=\.(?:ts|m?js|css|html))/i,
-                      'vendor'
-                    )
-                  } else if (id.includes('/lib/')) {
-                    return chunkName(
-                      id,
-                      /(?<=lib\/).*(?=\.(?:ts|js|css|html))/i,
-                      'lib'
-                    )
+                  if (isIncluded && id.includes('/node_modules/')) {
+                    const pathRE = /(?<=node_modules\/).*(?=\.(?:ts|m?js))/i
+                    const match = id.match(pathRE)?.[0]
+
+                    if (match) return `vendor/${match}`
+                  } else if (
+                    isIncluded &&
+                    idIcludesCWD &&
+                    id.includes('/lib/')
+                  ) {
+                    const pathRE = /(?<=lib\/).*(?=\.(?:ts|m?js))/i
+                    const match = id.match(pathRE)?.[0]
+
+                    if (match) return `lib/${match}`
+                  } else if (isIncluded) {
+                    const pathRE = /(?:\/)([\w\-+. ]+)(?:\..*)$/i
+                    const match = id.match(pathRE)?.[1]
+
+                    if (match) return `chunks/${match}`
                   }
                 }
               }
