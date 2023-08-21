@@ -723,22 +723,16 @@ export class MinzeElement extends HTMLElement {
     // make property reactive
     Object.defineProperty(this, camelName, {
       get: () => {
-        const value = this.getAttribute(dashName)
+        const value = this.getAttribute(dashName)?.trim()
 
         // try to auto-convert the attribute value to the proper type,
         // otherwise return the value as a string
-        if (value === 'undefined' || value === undefined) {
-          return undefined
-        } else if (value === 'null' || value === null) {
+        if (value == null) {
           return null
+        } else if (value === 'undefined') {
+          return undefined
         } else if (value === '') {
           return true // return set attributes without values as true
-        } else if (value.match(/^(true|false)$/)) {
-          return JSON.parse(value)
-        } else if (value.match(/^[-+]?\d+$/)) {
-          return Number.parseInt(value)
-        } else if (value.match(/^[+-]?\d*\.\d+$/)) {
-          return Number.parseFloat(value)
         } else {
           try {
             return JSON.parse(value)
