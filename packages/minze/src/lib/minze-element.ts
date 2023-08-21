@@ -91,7 +91,7 @@ export class MinzeElement extends HTMLElement {
    * @example
    * ```
    * class MyElement extends MinzeElement {
-   *   onStart() {
+   *   onStart = () => {
    *     console.log(this.dashName) // my-element
    *   }
    * }
@@ -107,7 +107,7 @@ export class MinzeElement extends HTMLElement {
    * @example
    * ```
    * class MyElement extends MinzeElement {
-   *   onStart() {
+   *   onStart = () => {
    *     console.log(this.name) // MyElement
    *   }
    * }
