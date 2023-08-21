@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/n6ai/minze/compare/minze-vscode-v0.3.1...minze-vscode-v0.4.0) (2023-08-21)
+
+
+### Features
+
+* add code-snippets ([d898f5f](https://github.com/n6ai/minze/commit/d898f5f39520fe3e6361840d6ca9376020697f0e))
+* improve snippet triggering ([66c5873](https://github.com/n6ai/minze/commit/66c5873856fe5086322472d9d129ade2afd0d918))
+
+
+### Bug Fixes
+
+* barebones snippet code ([99ebbb0](https://github.com/n6ai/minze/commit/99ebbb09cff14c685c7d66da1e1ebfe15f47b9a8))
+
 ## [0.3.1](https://github.com/n6ai/minze/compare/minze-vscode-v0.3.0...minze-vscode-v0.3.1) (2023-08-17)
 
 
