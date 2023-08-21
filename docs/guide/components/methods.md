@@ -10,12 +10,17 @@ Certain keywords are reserved for special functionality and shouldn't be overwri
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
-  myMethod() {
+  firstMethod() {
     console.log('Hello Minze!')
   }
 
-  onReady() {
-    this.myMethod() // 'Hello Minze!'
+  secondMethod = () => {
+    console.log('Hello Minze again!')
+  }
+
+  onReady = () => {
+    this.firstMethod() // 'Hello Minze!'
+    this.secondMethod() // 'Hello Minze again!'
   }
 }
 

@@ -1,11 +1,12 @@
 {
-  "minze:empty": {
+  "minze:el": {
     "isFileTemplate": true,
-    "prefix": "minze:empty",
+    "prefix": "minze:el",
     "body": [
       "import type { Reactive, Attrs, Watch, EventListeners } from 'minze'",
       "import { MinzeElement } from 'minze'",
-      "\nexport class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends MinzeElement {",
+      "\nexport interface ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Element {}",
+      "\nexport class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Element extends MinzeElement {",
       "\t$0",
       "}"
     ],

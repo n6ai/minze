@@ -1,7 +1,7 @@
 {
   "static observedAttributes": {
     "scope": "javascript,typescript",
-    "prefix": ["observedAttributes", "static observedAttributes"],
+    "prefix": "observedAttributes",
     "body": ["static observedAttributes = ['${1:name}'$2]"],
     "description": "observed attributes"
   },
@@ -22,102 +22,39 @@
 
   "select": {
     "scope": "javascript,typescript",
-    "prefix": ["select", "this.select"],
+    "prefix": "select",
     "body": ["this.select('$1')"],
     "description": "select method"
   },
 
   "selectAll": {
     "scope": "javascript,typescript",
-    "prefix": ["selectAll", "this.selectAll"],
+    "prefix": "selectAll",
     "body": ["this.selectAll('$1')"],
     "description": "selectAll method"
   },
 
   "slotted": {
     "scope": "javascript,typescript",
-    "prefix": ["slotted", "this.slotted"],
+    "prefix": "slotted",
     "body": ["this.slotted('$1')"],
     "description": "slotted method"
   },
 
   "dispatch": {
     "scope": "javascript,typescript",
-    "prefix": ["dispatch", "this.dispatch"],
+    "prefix": "dispatch",
     "body": ["this.dispatch('${1:event}', ${2:'detail'})"],
     "description": "dispatch method"
   },
 
   "hook": {
     "scope": "javascript,typescript",
-    "prefix": "hook",
+    "prefix": ["hook", "on", "before", "after"],
     "body": [
-      "${1|afterAttributeChange,afterRender,beforeAttributeChange,beforeRender,onDestory,onMove,onReactive,onReady,onStart|} = () => {$2}"
+      "${1|onStart,onReactive,onReady,onDestory,onMove,beforeRender,afterRender,beforeAttributeChange,afterAttributeChange|}() {$2}"
     ],
     "description": "all available hooks"
-  },
-
-  "onStart": {
-    "scope": "javascript,typescript",
-    "prefix": "onStart",
-    "body": ["onStart = () => {$1}"],
-    "description": "onStart hook"
-  },
-
-  "onReactive": {
-    "scope": "javascript,typescript",
-    "prefix": "onReactive",
-    "body": ["onReactive = () => {$1}"],
-    "description": "onReactive hook"
-  },
-
-  "onReady": {
-    "scope": "javascript,typescript",
-    "prefix": "onReady",
-    "body": ["onReady = () => {$1}"],
-    "description": "onReady hook"
-  },
-
-  "onDestory": {
-    "scope": "javascript,typescript",
-    "prefix": "onDestory",
-    "body": ["onDestory = () => {$1}"],
-    "description": "onDestory hook"
-  },
-
-  "onMove": {
-    "scope": "javascript,typescript",
-    "prefix": "onMove",
-    "body": ["onMove = () => {$1}"],
-    "description": "onMove hook"
-  },
-
-  "beforeRender": {
-    "scope": "javascript,typescript",
-    "prefix": "beforeRender",
-    "body": ["beforeRender = () => {$1}"],
-    "description": "beforeRender hook"
-  },
-
-  "afterRender": {
-    "scope": "javascript,typescript",
-    "prefix": "afterRender",
-    "body": ["afterRender = () => {$1}"],
-    "description": "afterRender hook"
-  },
-
-  "beforeAttributeChange": {
-    "scope": "javascript,typescript",
-    "prefix": "beforeAttributeChange",
-    "body": ["beforeAttributeChange = (${1:name, oldValue, newValue}) => {$2}"],
-    "description": "beforeAttributeChange hook"
-  },
-
-  "afterAttributeChange": {
-    "scope": "javascript,typescript",
-    "prefix": "afterAttributeChange",
-    "body": ["afterAttributeChange = (${1:name, oldValue, newValue}) => {$2}"],
-    "description": "afterAttributeChange hook"
   },
 
   "debug": {
