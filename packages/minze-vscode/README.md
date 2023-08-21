@@ -7,6 +7,7 @@ Language support for Minze.
 ## Features
 
 - HTML/CSS Syntax Highlighting
+- Code Snippets
 
 ### Syntax Highlighting
 

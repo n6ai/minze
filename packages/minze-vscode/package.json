@@ -28,7 +28,8 @@
     "vscode": "^1.5.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Snippets"
   ],
   "contributes": {
     "grammars": [
@@ -43,6 +44,19 @@
         ],
         "path": "./syntaxes/minze.tmLanguage.json",
         "scopeName": "source.js.minze.injection"
+      }
+    ],
+    "snippets": [
+      {
+        "path": "./snippets/common.code-snippets"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/javascript.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/typescript.json"
       }
     ]
   },

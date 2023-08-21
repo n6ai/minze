@@ -1,0 +1,157 @@
+{
+  "static observedAttributes": {
+    "scope": "javascript,typescript",
+    "prefix": ["observedAttributes", "static observedAttributes"],
+    "body": ["static observedAttributes = ['${1:name}'$2]"],
+    "description": "observed attributes"
+  },
+
+  "html": {
+    "scope": "javascript,typescript",
+    "prefix": "html",
+    "body": ["html${1} = () => `${2:<slot></slot>}`"],
+    "description": "html template"
+  },
+
+  "css": {
+    "scope": "javascript,typescript",
+    "prefix": "css",
+    "body": ["css${1} = () => `${2::host {\\}}`"],
+    "description": "css template"
+  },
+
+  "select": {
+    "scope": "javascript,typescript",
+    "prefix": ["select", "this.select"],
+    "body": ["this.select('$1')"],
+    "description": "select method"
+  },
+
+  "selectAll": {
+    "scope": "javascript,typescript",
+    "prefix": ["selectAll", "this.selectAll"],
+    "body": ["this.selectAll('$1')"],
+    "description": "selectAll method"
+  },
+
+  "slotted": {
+    "scope": "javascript,typescript",
+    "prefix": ["slotted", "this.slotted"],
+    "body": ["this.slotted('$1')"],
+    "description": "slotted method"
+  },
+
+  "dispatch": {
+    "scope": "javascript,typescript",
+    "prefix": ["dispatch", "this.dispatch"],
+    "body": ["this.dispatch('${1:event}', ${2:'detail'})"],
+    "description": "dispatch method"
+  },
+
+  "hook": {
+    "scope": "javascript,typescript",
+    "prefix": "hook",
+    "body": [
+      "${1|afterAttributeChange,afterRender,beforeAttributeChange,beforeRender,onDestory,onMove,onReactive,onReady,onStart|} = () => {$2}"
+    ],
+    "description": "all available hooks"
+  },
+
+  "onStart": {
+    "scope": "javascript,typescript",
+    "prefix": "onStart",
+    "body": ["onStart = () => {$1}"],
+    "description": "onStart hook"
+  },
+
+  "onReactive": {
+    "scope": "javascript,typescript",
+    "prefix": "onReactive",
+    "body": ["onReactive = () => {$1}"],
+    "description": "onReactive hook"
+  },
+
+  "onReady": {
+    "scope": "javascript,typescript",
+    "prefix": "onReady",
+    "body": ["onReady = () => {$1}"],
+    "description": "onReady hook"
+  },
+
+  "onDestory": {
+    "scope": "javascript,typescript",
+    "prefix": "onDestory",
+    "body": ["onDestory = () => {$1}"],
+    "description": "onDestory hook"
+  },
+
+  "onMove": {
+    "scope": "javascript,typescript",
+    "prefix": "onMove",
+    "body": ["onMove = () => {$1}"],
+    "description": "onMove hook"
+  },
+
+  "beforeRender": {
+    "scope": "javascript,typescript",
+    "prefix": "beforeRender",
+    "body": ["beforeRender = () => {$1}"],
+    "description": "beforeRender hook"
+  },
+
+  "afterRender": {
+    "scope": "javascript,typescript",
+    "prefix": "afterRender",
+    "body": ["afterRender = () => {$1}"],
+    "description": "afterRender hook"
+  },
+
+  "beforeAttributeChange": {
+    "scope": "javascript,typescript",
+    "prefix": "beforeAttributeChange",
+    "body": ["beforeAttributeChange = (${1:name, oldValue, newValue}) => {$2}"],
+    "description": "beforeAttributeChange hook"
+  },
+
+  "afterAttributeChange": {
+    "scope": "javascript,typescript",
+    "prefix": "afterAttributeChange",
+    "body": ["afterAttributeChange = (${1:name, oldValue, newValue}) => {$2}"],
+    "description": "afterAttributeChange hook"
+  },
+
+  "debug": {
+    "scope": "javascript,typescript",
+    "prefix": "debug",
+    "body": ["debug = ${1:true}"],
+    "description": "debug mode"
+  },
+
+  "options": {
+    "scope": "javascript,typescript",
+    "prefix": "options",
+    "body": ["options = {$1}"],
+    "description": "options."
+  },
+
+  "options:cssreset": {
+    "scope": "javascript,typescript",
+    "prefix": "options:cssreset",
+    "body": ["options = { cssReset: ${1:true} }"],
+    "description": "cssReset option"
+  },
+
+  "options:exportparts": {
+    "scope": "javascript,typescript",
+    "prefix": "options:exportparts",
+    "body": ["options = { exposeAttrs: { exportparts: ${1:true} } }"],
+    "description": "exportparts option"
+  },
+
+  "options:rendered": {
+    "scope": "javascript,typescript",
+    "prefix": "options:rendered",
+    "body": ["options = { exposeAttrs: { rendered: ${1:true} } }"],
+    "description": "rendered option"
+  }
+}

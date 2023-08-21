@@ -1,0 +1,42 @@
+{
+  "minze:empty": {
+    "isFileTemplate": true,
+    "prefix": "minze:empty",
+    "body": [
+      "import type { Reactive, Attrs, Watch, EventListeners } from 'minze'",
+      "import { MinzeElement } from 'minze'",
+      "\nexport class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends MinzeElement {",
+      "\t$0",
+      "}"
+    ],
+    "description": "barebones MinzeElement component"
+  },
+
+  "reactive": {
+    "prefix": "reactive",
+    "body": ["reactive: Reactive = [['${1:name}', ${2:'value'}]$3]"],
+    "description": "reactive properties"
+  },
+
+  "attrs": {
+    "prefix": "attrs",
+    "body": ["attrs: Attrs = [['${1:name}', ${2:'value'}]$3]"],
+    "description": "reactive attributes"
+  },
+
+  "watch": {
+    "prefix": "watch",
+    "body": [
+      "watch: Watch = [['${1:name}', (${2:newValue, oldValue, key, target}) => {$3}]$4]"
+    ],
+    "description": "reactive watch"
+  },
+
+  "eventListeners": {
+    "prefix": "eventListeners",
+    "body": [
+      "eventListeners: EventListeners = [[${1:this}, '${2:click}', (${3:event: Event}) => {$4}]$5]"
+    ],
+    "description": "event listeners"
+  }
+}
