@@ -15,7 +15,7 @@ An `on:event` is a shorthand form of an [Event Listener](#event-listeners) that 
 :::
 
 ::: danger
-For compatibility reasons it's possible to use the `@event` notation. E.g. `@click="run"`, but it's discouraged, since the `@` symbol isn't a valid attribute name, and isn't 100% percent compatible with Minzes [patching](/guide/components/templating#patching) mechanism.
+For compatibility reasons it's possible to use the `@event` notation. E.g. `@click="callback"`, but it's discouraged, since an attribute with an `@` symbol isn't a valid attribute name, thus isn't 100% compatible with Minzes [patching](/guide/components/templating#patching) mechanism.
 :::
 
 ::: code-group
