@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.9.2](https://github.com/n6ai/minze/compare/minze-v1.9.1...minze-v1.9.2) (2023-08-21)
+
+
+### Bug Fixes
+
+* add `on:` event notation for template events ([f6fefd5](https://github.com/n6ai/minze/commit/f6fefd57d7d1fd5eb72e89e4ea57c8053bad687c))
+* allow any typescript return type in hooks ([8e5f079](https://github.com/n6ai/minze/commit/8e5f079336751f171ab14a099c87a240a01fab23))
+* insert css via adoptedStyleSheets ([2790d00](https://github.com/n6ai/minze/commit/2790d0056d16acc3eeb80f5b3eaedeedb53d48a8))
+* log internal html and css properties on debug ([6f50c46](https://github.com/n6ai/minze/commit/6f50c463796697c40a8fd9abc97ecd2ef9c9cad4))
+
 ## [1.9.1](https://github.com/n6ai/minze/compare/minze-v1.9.0...minze-v1.9.1) (2023-08-19)
 
 
