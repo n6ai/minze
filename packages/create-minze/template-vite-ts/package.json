@@ -13,7 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "minze": "^1.9.1"
+    "minze": "^1.9.2"
   },
   "devDependencies": {
     "typescript": "^5.1.6",
