@@ -1,4 +1,4 @@
-import type { Reactive, EventListeners } from 'minze'
+import type { Reactive } from 'minze'
 import { MinzeElement } from 'minze'
 
 export interface MyElement {
@@ -26,7 +26,7 @@ export class MyElement extends MinzeElement {
     <slot></slot>
 
     <div class="card">
-      <my-button role="button" class="button">
+      <my-button on:click="increaseCount">
         count is ${this.count}
       </my-button>
     </div>
@@ -81,6 +81,4 @@ export class MyElement extends MinzeElement {
       ${this.count >= 5 ? 'rotate: 360deg;' : ''}
     }
   `
-
-  eventListeners: EventListeners = [['.button', 'click', this.increaseCount]]
 }
