@@ -767,7 +767,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Merges any on-events from the provided template with the eventListeners array.
+   * Merges any on:events from the provided template with the eventListeners array.
    *
    * @param eventListeners - An eventListeners array.
    * @param template - A template function or string with html markup.
@@ -800,7 +800,7 @@ export class MinzeElement extends HTMLElement {
     const onEventsLength = onEvents.length
     const eventListenersLength = eventListeners?.length ?? 0
 
-    // run only if onEvents aren't yet added to the eventListeners array
+    // run only if on:events aren't yet added to the eventListeners array
     if (
       onEventsLength &&
       eventListenersLength !== eventListenersLength + onEventsLength
