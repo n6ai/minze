@@ -112,7 +112,7 @@ class MyElement extends MinzeElement {
 ## Event Callbacks
 
 - Should start with the word `handle` or a verb that describes what action is performed.
-- Should be called the same as the `@event`, when the shorthand notation is used.
+- Should be called the same as the `on:event`, when the shorthand notation is used.
 
 ```js
 ✖ Bad // [!code --]

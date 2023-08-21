@@ -171,7 +171,7 @@ const $ = new BroadcastChannel('$')
 
 class ElementOne extends MinzeElement {
   msg = () => $.postMessage('Hello Minze!')
-  html = () => `<button @click="msg">Click me!</button>`
+  html = () => `<button on:click="msg">Click me!</button>`
 }
 
 ElementOne.define()
@@ -210,7 +210,7 @@ import { MinzeElement } from 'minze'
 
 class ElementOne extends MinzeElement {
   msg = () => this.dispatch('minze:event', 'Hello Minze!')
-  html = () => `<button @click="msg">Click me!</button>`
+  html = () => `<button on:click="msg">Click me!</button>`
 }
 
 ElementOne.define()

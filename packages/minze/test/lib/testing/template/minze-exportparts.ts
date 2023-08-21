@@ -14,7 +14,7 @@ export class MinzeExportparts extends MinzeElement {
 
   html = () => `
     <button
-      @click="click"
+      on:click
       part="button button--primary"
       ${this.clicked ? 'exportparts="button,  another-part"' : ''}
     >

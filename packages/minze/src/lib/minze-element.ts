@@ -767,7 +767,7 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
-   * Merges any at-events from the provided template with the eventListeners array.
+   * Merges any on-events from the provided template with the eventListeners array.
    *
    * @param eventListeners - An eventListeners array.
    * @param template - A template function or string with html markup.
@@ -785,32 +785,32 @@ export class MinzeElement extends HTMLElement {
 
     template = typeof template === 'function' ? template() : template
 
-    type atEvent = [attribute: string, event: string, callback: string]
+    type onEvent = [attribute: string, event: string, callback: string]
 
-    // get all @event attributes and remove duplicates
-    const atEventsRE = /@([\w\-_|:.]+)(?:=["']?(\w+)["'])?/gi
-    const atEvents: atEvent[] = [
+    // get all on:event attributes and remove duplicates
+    const onEventsRE = /(?:on:|@)([\w\-:.]+)(?:=["']?(\w+)["'])?/gi
+    const onEvents: onEvent[] = [
       ...new Set(
-        [...template.matchAll(atEventsRE)].map((m) =>
+        [...template.matchAll(onEventsRE)].map((m) =>
           JSON.stringify(m.slice(0, 3))
         )
       )
     ].map((e) => JSON.parse(e))
 
-    const atEventsLength = atEvents.length
+    const onEventsLength = onEvents.length
     const eventListenersLength = eventListeners?.length ?? 0
 
-    // run only if atEvents aren't yet added to the eventListeners array
+    // run only if onEvents aren't yet added to the eventListeners array
     if (
-      atEventsLength &&
-      eventListenersLength !== eventListenersLength + atEventsLength
+      onEventsLength &&
+      eventListenersLength !== eventListenersLength + onEventsLength
     ) {
       eventListeners ??= []
 
       const escape = (name: string) =>
-        name.replace(/(@|\||:|\.)/g, (_, $1) => `\\${$1}`)
+        name.replace(/(@|:|\.)/g, (_, $1) => `\\${$1}`)
 
-      return atEvents.map(
+      return onEvents.map(
         ([selector, eventName, callbackName]) =>
           [
             `[${escape(selector)}]`,

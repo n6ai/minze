@@ -40,6 +40,6 @@ export class MinzeReactive extends MinzeElement {
     <div class="str">${this.str}</div>
     <div class="arr">${this.arr}</div>
     <div class="obj">${this.obj.nested.prop}</div>
-    <button @click>Change values</button>
+    <button on:click>Change values</button>
   `
 }

@@ -219,7 +219,7 @@ class MyElement extends MinzeElement {
   toggleState = () => (this.active = !this.active)
 
   html = () => `
-    <button @click="toggleState">
+    <button on:click="toggleState">
       Toggle state
     </button>
 

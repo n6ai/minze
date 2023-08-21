@@ -82,7 +82,7 @@ class MyElement extends MinzeElement {
   ]
 
   html = () => `
-    <button @click="increaseCount">
+    <button on:click="increaseCount">
       Count: ${this.count}
     </button>
   `

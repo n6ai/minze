@@ -59,6 +59,6 @@ export class MinzeWatch extends MinzeElement {
     <div class="str"></div>
     <div class="arr"></div>
     <div class="obj"></div>
-    <button @click>Change values</button>
+    <button on:click>Change values</button>
   `
 }

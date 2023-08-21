@@ -2,20 +2,20 @@
 
 Events can be used to communicate between components and the outside world.
 
-## @events
+## on:events
 
-`@events` are a shorthand form of [Event Listeners](#event-listeners) that are directly defined inside the html template as attributes.
+An `on:event` is a shorthand form of an [Event Listener](#event-listeners) that is directly defined inside the html template as an attribute.
 
-**Structure:** The attribute name starts with an `@` sign and is directly followed by a valid [JavaScript DOM event type](https://en.wikipedia.org/wiki/DOM_event#HTML_events) or a `CustomEvent` name, the value of the attribute is the name of the method, that should be called when the event is triggered.
+**Structure:** The attribute name starts with the keyword `on:` and is directly followed by a valid [JavaScript DOM event type](https://en.wikipedia.org/wiki/DOM_event#HTML_events) or a `CustomEvent` name, the value of the attribute is the name of the method, that should be called when the event is triggered.
 
-**Example:** `@click="callback"` `@custom-event-name="callback"`
+**Example:** `on:click="callback"` `on:custom-event-name="callback"`
 
 ::: warning
-`@events` only work with methods defined inside the component class.
+`on:events` only work with methods defined inside the component class. When using the shorthand notation, the event name and the method name inside the component have to match.
 :::
 
-::: tip
-When using the shorthand notation, the event name and the method name inside the component have to match.
+::: danger
+For compatibility reasons it's possible to use the `@event` notation. E.g. `@click="run"`, but it's discouraged, since the `@` symbol isn't a valid attribute name, and isn't 100% percent compatible with Minzes [patching](/guide/components/templating#patching) mechanism.
 :::
 
 ::: code-group
@@ -25,13 +25,13 @@ import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `
-    <button @click="handleClick">
+    <button on:click="handleClick">
       Button
     </button>
   `
 
   handleClick = (event) => {
-    console.log(event.target) // <button @click="handleClick"></button>
+    console.log(event.target) // <button on:click="handleClick"></button>
   }
 }
 
@@ -43,13 +43,13 @@ import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
   html = () => `
-    <button @click>
+    <button on:click>
       Button
     </button>
   `
 
   click = (event) => {
-    console.log(event.target) // <button @click></button>
+    console.log(event.target) // <button on:click></button>
   }
 }
 

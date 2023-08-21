@@ -1,17 +1,21 @@
 import type { Reactive } from 'minze'
 import { MinzeElement } from 'minze'
 
-export interface MinzeAtEvents {
+export interface MinzeOnEvents {
   text: string
 }
 
-export class MinzeAtEvents extends MinzeElement {
+export class MinzeOnEvents extends MinzeElement {
   reactive: Reactive = [['text', 'not-clicked']]
 
   click = () => (this.text = 'clicked')
 
   html = () => `
-    <button @click>
+    <button class="on" on:click>
+      ${this.text}
+    </button>
+
+    <button class="at" on:click>
       ${this.text}
     </button>
   `

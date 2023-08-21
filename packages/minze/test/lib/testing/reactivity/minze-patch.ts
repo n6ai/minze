@@ -18,6 +18,6 @@ export class MinzePatch extends MinzeElement {
 
   html = () => `
     <input type="number" value="${this.value}" @keyup />
-    <button @click>Change value</button>
+    <button on:click>Change value</button>
   `
 }
