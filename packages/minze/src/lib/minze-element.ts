@@ -1021,7 +1021,7 @@ export class MinzeElement extends HTMLElement {
           watch: this.watch
         }
       ],
-      ['✨ template: %o', { css: this.css, html: this.html }]
+      ['✨ template: %o', { css: this._css, html: this._html }]
     ].forEach(([msg, value]) => console.log(msg, value))
 
     console.groupEnd()
