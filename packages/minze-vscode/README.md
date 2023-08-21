@@ -11,7 +11,7 @@ Language support for Minze.
 
 ### Syntax Highlighting
 
-Minze VS Code extension adds auto-highlighting to class methods defined as arrow functions starting with `html` and `css` keyword. Additionally you can manually prefix any template literals with `/*html*/` to highlight HTML code inside them, or `/*css*/` to highlight CSS code.
+The Minze VS Code extension comes bundled with snippets for auto-completion. It also adds auto-highlighting to class methods defined as arrow functions starting with `html` and `css` keyword. Additionally you can manually prefix any template literals with `/*html*/` to highlight HTML code inside them, or `/*css*/` to highlight CSS code.
 
 **Example**
 
