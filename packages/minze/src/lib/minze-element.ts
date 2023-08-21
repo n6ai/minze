@@ -1112,7 +1112,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  onStart?(): Promise<void> | void
+  onStart?(): Promise<any> | any
 
   /**
    * Lifecycle - Runs once after reactive properties are initialized.
@@ -1124,7 +1124,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  onReactive?(): Promise<void> | void
+  onReactive?(): Promise<any> | any
 
   /**
    * Lifecycle - Runs once at the end of the connectedCallback method.
@@ -1136,7 +1136,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  onReady?(): Promise<void> | void
+  onReady?(): Promise<any> | any
 
   /**
    * Lifecycle - Runs once at the end of the disconnectedCallback method.
@@ -1148,7 +1148,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  onDestroy?(): Promise<void> | void
+  onDestroy?(): Promise<any> | any
 
   /**
    * Lifecycle - Runs once at the start of the adoptedCallback method.
@@ -1160,7 +1160,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  onMove?(): Promise<void> | void
+  onMove?(): Promise<any> | any
 
   /**
    * Lifecycle - Runs each time at before of every render.
@@ -1172,7 +1172,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  beforeRender?(): Promise<void> | void
+  beforeRender?(): Promise<any> | any
 
   /**
    * Lifecycle - Runs each time at the end of every render.
@@ -1184,7 +1184,7 @@ export class MinzeElement extends HTMLElement {
    * }
    * ```
    */
-  afterRender?(): Promise<void> | void
+  afterRender?(): Promise<any> | any
 
   /**
    * @deprecated use afterRender instead.
@@ -1212,7 +1212,7 @@ export class MinzeElement extends HTMLElement {
     name?: string,
     oldValue?: string | null,
     newValue?: string | null
-  ): Promise<void> | void
+  ): Promise<any> | any
 
   /**
    * Lifecycle - Runs each time at the end of the attributeChangedCallback method.
@@ -1235,7 +1235,7 @@ export class MinzeElement extends HTMLElement {
     name?: string,
     oldValue?: string | null,
     newValue?: string | null
-  ): Promise<void> | void
+  ): Promise<any> | any
 
   /**
    * @deprecated use afterAttributeChange instead.

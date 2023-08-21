@@ -634,7 +634,7 @@ export class MyElement extends MinzeElement {
 ```
 
 ```ts [Type]
-(method) MinzeElement.onStart?(): Promise<void> | void
+(method) MinzeElement.onStart?(): Promise<any> | any
 ```
 
 :::
@@ -656,7 +656,7 @@ export class MyElement extends MinzeElement {
 ```
 
 ```ts [Type]
-(method) MinzeElement.onReactive?(): Promise<void> | void
+(method) MinzeElement.onReactive?(): Promise<any> | any
 ```
 
 :::
@@ -678,7 +678,7 @@ export class MyElement extends MinzeElement {
 ```
 
 ```ts [Type]
-(method) MinzeElement.onReady?(): Promise<void> | void
+(method) MinzeElement.onReady?(): Promise<any> | any
 ```
 
 :::
@@ -700,7 +700,7 @@ export class MyElement extends MinzeElement {
 ```
 
 ```ts [Type]
-(method) MinzeElement.onDestroy?(): Promise<void> | void
+(method) MinzeElement.onDestroy?(): Promise<any> | any
 ```
 
 :::
@@ -726,7 +726,7 @@ export class MyElement extends MinzeElement {
 ```
 
 ```ts [Type]
-(method) MinzeElement.onMove?(): Promise<void> | void
+(method) MinzeElement.onMove?(): Promise<any> | any
 ```
 
 :::
@@ -748,7 +748,7 @@ export class MyElement extends MinzeElement {
 ```
 
 ```ts [Type]
-(method) MinzeElement.beforeRender?(): Promise<void> | void
+(method) MinzeElement.beforeRender?(): Promise<any> | any
 ```
 
 :::
@@ -770,7 +770,7 @@ export class MyElement extends MinzeElement {
 ```
 
 ```ts [Type]
-(method) MinzeElement.afterRender?(): Promise<void> | void
+(method) MinzeElement.afterRender?(): Promise<any> | any
 ```
 
 :::
@@ -792,7 +792,7 @@ export class MyElement extends MinzeElement {
 ```
 
 ```ts [Type]
-(method) MinzeElement.beforeAttributeChange?(name?: string, oldValue?: string | null, newValue?: string | null): Promise<void> | void
+(method) MinzeElement.beforeAttributeChange?(name?: string, oldValue?: string | null, newValue?: string | null): Promise<any> | any
 ```
 
 :::
@@ -814,7 +814,7 @@ export class MyElement extends MinzeElement {
 ```
 
 ```ts [Type]
-(method) MinzeElement.afterAttributeChange?(name?: string, oldValue?: string | null, newValue?: string | null): Promise<void> | void
+(method) MinzeElement.afterAttributeChange?(name?: string, oldValue?: string | null, newValue?: string | null): Promise<any> | any
 ```
 
 :::
