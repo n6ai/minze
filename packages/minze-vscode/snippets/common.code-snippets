@@ -1,56 +1,63 @@
 {
-  "static observedAttributes": {
+  "observedAttributes": {
     "scope": "javascript,typescript",
-    "prefix": "observedAttributes",
-    "body": ["static observedAttributes = ['${1:name}'$2]"],
+    "prefix": "_minze:observedAttributes",
+    "body": ["static observedAttributes = ['${1:name}'$0]"],
+    "description": "observed attributes"
+  },
+
+  "get": {
+    "scope": "javascript,typescript",
+    "prefix": "_minze:get",
+    "body": ["get ${1:getterName}() {\n\treturn $0\n}"],
     "description": "observed attributes"
   },
 
   "html": {
     "scope": "javascript,typescript",
-    "prefix": "html",
-    "body": ["html${1} = () => `${2:<slot></slot>}`"],
+    "prefix": "_minze:html",
+    "body": ["html${1} = () => `${0:<slot></slot>}`"],
     "description": "html template"
   },
 
   "css": {
     "scope": "javascript,typescript",
-    "prefix": "css",
-    "body": ["css${1} = () => `${2::host {\\}}`"],
+    "prefix": "_minze:css",
+    "body": ["css${1} = () => `${0::host {\\}}`"],
     "description": "css template"
   },
 
   "select": {
     "scope": "javascript,typescript",
-    "prefix": "select",
+    "prefix": "_minze:select",
     "body": ["this.select('$1')"],
     "description": "select method"
   },
 
   "selectAll": {
     "scope": "javascript,typescript",
-    "prefix": "selectAll",
+    "prefix": "_minze:selectAll",
     "body": ["this.selectAll('$1')"],
     "description": "selectAll method"
   },
 
   "slotted": {
     "scope": "javascript,typescript",
-    "prefix": "slotted",
+    "prefix": "_minze:slotted",
     "body": ["this.slotted('$1')"],
     "description": "slotted method"
   },
 
   "dispatch": {
     "scope": "javascript,typescript",
-    "prefix": "dispatch",
-    "body": ["this.dispatch('${1:event}', ${2:'detail'})"],
+    "prefix": "_minze:dispatch",
+    "body": ["this.dispatch('${1:minze:event}', ${2:'value'})"],
     "description": "dispatch method"
   },
 
   "hook": {
     "scope": "javascript,typescript",
-    "prefix": ["hook", "on", "before", "after"],
+    "prefix": "_minze:hook",
     "body": [
       "${1|onStart,onReactive,onReady,onDestory,onMove,beforeRender,afterRender,beforeAttributeChange,afterAttributeChange|}() {$2}"
     ],
@@ -59,36 +66,110 @@
 
   "debug": {
     "scope": "javascript,typescript",
-    "prefix": "debug",
+    "prefix": "_minze:debug",
     "body": ["debug = ${1:true}"],
     "description": "debug mode"
   },
 
   "options": {
     "scope": "javascript,typescript",
-    "prefix": "options",
+    "prefix": "_minze:options",
     "body": ["options = {$1}"],
-    "description": "options."
+    "description": "options"
   },
 
-  "options:cssreset": {
+  "option:cssreset": {
     "scope": "javascript,typescript",
-    "prefix": "options:cssreset",
+    "prefix": "_minze:option:cssreset",
     "body": ["options = { cssReset: ${1:true} }"],
     "description": "cssReset option"
   },
 
-  "options:exportparts": {
+  "option:exportparts": {
     "scope": "javascript,typescript",
-    "prefix": "options:exportparts",
+    "prefix": "_minze:option:exportparts",
     "body": ["options = { exposeAttrs: { exportparts: ${1:true} } }"],
     "description": "exportparts option"
   },
 
-  "options:rendered": {
+  "option:rendered": {
     "scope": "javascript,typescript",
-    "prefix": "options:rendered",
+    "prefix": "_minze:option:rendered",
     "body": ["options = { exposeAttrs: { rendered: ${1:true} } }"],
     "description": "rendered option"
+  },
+
+  "expression": {
+    "scope": "html,css",
+    "prefix": "_minze:expression",
+    "body": ["\\${this.${1:data}}"],
+    "description": "component property"
+  },
+
+  "expression:fallback": {
+    "scope": "html,css",
+    "prefix": "_minze:expression:fallback",
+    "body": ["\\${this.${1:data} ?? ${2:'value'}}"],
+    "description": "nullish coalescing"
+  },
+
+  "expression:ternary": {
+    "scope": "html,css",
+    "prefix": "_minze:expression:ternary",
+    "body": ["\\${this.${1:data} ? ${2:true} : ${3:false}}"],
+    "description": "ternary conditional"
+  },
+
+  "html:list": {
+    "scope": "html",
+    "prefix": "_minze:list",
+    "body": [
+      "<${1:ul}>",
+      "\t\\${this.${2:data}.map((item) => `<${3:li}>\\${item}</${3:li}>`).join('')}",
+      "</${1:ul}>"
+    ],
+    "description": "list rendering markup"
+  },
+
+  "html:slot": {
+    "scope": "html",
+    "prefix": "_minze:slot",
+    "body": ["<slot slot=\"${1:name}\" name=\"${1:name}\">$0</slot>"],
+    "description": "slot markup"
+  },
+
+  "attribute:on": {
+    "scope": "html",
+    "prefix": "_minze:attribute:on",
+    "body": ["on:${1:click}=\"${2:callback}\""],
+    "description": "on:event attribute"
+  },
+
+  "attribute:part": {
+    "scope": "html",
+    "prefix": "_minze:attribute:part",
+    "body": ["part=\"${1:name}\""],
+    "description": "part attribute"
+  },
+
+  "attribute:json": {
+    "scope": "html",
+    "prefix": "_minze:attribute:json",
+    "body": ["${1:data}=\\${JSON.stringify(this.${1:data})}"],
+    "description": "json attribute"
+  },
+
+  "attribute:no-css-reset": {
+    "scope": "html",
+    "prefix": "_minze:attribute:no-css-reset",
+    "body": ["no-css-reset"],
+    "description": "no-css-reset attribute"
+  },
+
+  "css:part": {
+    "scope": "css",
+    "prefix": "_minze:part",
+    "body": ["$1::part(${2:name}) {$0}"],
+    "description": "part attribute"
   }
 }

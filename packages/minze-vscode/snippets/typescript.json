@@ -1,42 +1,50 @@
 {
-  "minze:el": {
+  "el": {
     "isFileTemplate": true,
     "prefix": "minze:el",
     "body": [
       "import type { Reactive, Attrs, Watch, EventListeners } from 'minze'",
       "import { MinzeElement } from 'minze'",
-      "\nexport interface ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Element {}",
-      "\nexport class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Element extends MinzeElement {",
+      "\nexport interface ${2:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Element} {}",
+      "\nexport class ${2:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Element} extends MinzeElement {",
       "\t$0",
       "}"
     ],
-    "description": "barebones MinzeElement component"
+    "description": "MinzeElement component base"
+  },
+
+  "types": {
+    "prefix": "minze:types",
+    "body": [
+      "import type { ${1:Reactive,} ${2:Attrs,} ${3:Watch,} ${4:EventListeners} } from 'minze'"
+    ],
+    "description": "MinzeElement types"
   },
 
   "reactive": {
-    "prefix": "reactive",
-    "body": ["reactive: Reactive = [['${1:name}', ${2:'value'}]$3]"],
+    "prefix": "_minze:reactive",
+    "body": ["reactive: Reactive = [['${1:name}', ${2:'value'}]$0]"],
     "description": "reactive properties"
   },
 
   "attrs": {
-    "prefix": "attrs",
-    "body": ["attrs: Attrs = [['${1:name}', ${2:'value'}]$3]"],
+    "prefix": "_minze:attrs",
+    "body": ["attrs: Attrs = [['${1:name}', ${2:'value'}]$0]"],
     "description": "reactive attributes"
   },
 
   "watch": {
-    "prefix": "watch",
+    "prefix": "_minze:watch",
     "body": [
-      "watch: Watch = [['${1:name}', (${2:newValue, oldValue, key, target}) => {$3}]$4]"
+      "watch: Watch = [['${1:name}', (${2:newValue, oldValue, key, target}) => {$3}]$0]"
     ],
     "description": "reactive watch"
   },
 
   "eventListeners": {
-    "prefix": "eventListeners",
+    "prefix": "_minze:eventListeners",
     "body": [
-      "eventListeners: EventListeners = [[${1:this}, '${2:click}', (${3:event: Event}) => {$4}]$5]"
+      "eventListeners: EventListeners = [[${1|'.class','#id','[attribute=\"value\"]',this,window|}, '${2:click}', (${3:event: Event}) => {$4}]$0]"
     ],
     "description": "event listeners"
   }

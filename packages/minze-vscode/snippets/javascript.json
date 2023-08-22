@@ -1,40 +1,40 @@
 {
-  "minze:el": {
+  "el": {
     "isFileTemplate": true,
     "prefix": "minze:el",
     "body": [
       "import { MinzeElement } from 'minze'",
-      "\nexport class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Element extends MinzeElement {",
+      "\nexport class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}Element} extends MinzeElement {",
       "\t$0",
       "}"
     ],
-    "description": "barebones MinzeElement component"
+    "description": "MinzeElement component base"
   },
 
   "reactive": {
-    "prefix": "reactive",
-    "body": ["reactive = [['${1:name}', ${2:'value'}]$3]"],
+    "prefix": "_minze:reactive",
+    "body": ["reactive = [['${1:name}', ${2:'value'}]$0]"],
     "description": "reactive properties"
   },
 
   "attrs": {
-    "prefix": "attrs",
-    "body": ["attrs = [['${1:name}', ${2:'value'}]$3]"],
+    "prefix": "_minze:attrs",
+    "body": ["attrs = [['${1:name}', ${2:'value'}]$0]"],
     "description": "reactive attributes"
   },
 
   "watch": {
-    "prefix": "watch",
+    "prefix": "_minze:watch",
     "body": [
-      "watch = [['${1:name}', (${2:newValue, oldValue, key, target}) => {$3}]$4]"
+      "watch = [['${1:name}', (${2:newValue, oldValue, key, target}) => {$3}]$0]"
     ],
     "description": "reactive watch"
   },
 
   "eventListeners": {
-    "prefix": "eventListeners",
+    "prefix": "_minze:eventListeners",
     "body": [
-      "eventListeners = [[${1:this}, '${2:click}', (${3:event}) => {$4}]$5]"
+      "eventListeners = [[${1|'.class','#id','[attribute=\"value\"]',this,window|}, '${2:click}', (${3:event}) => {$4}]$0]"
     ],
     "description": "event listeners"
   }
