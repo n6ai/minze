@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/n6ai/minze/compare/minze-vscode-v0.4.0...minze-vscode-v0.5.0) (2023-08-22)
+
+
+### Features
+
+* add new snippets + improve naming & grouping ([dc88fe3](https://github.com/n6ai/minze/commit/dc88fe3c95b6678398c91c2f162cd7c2486da878))
+
 ## [0.4.0](https://github.com/n6ai/minze/compare/minze-vscode-v0.3.1...minze-vscode-v0.4.0) (2023-08-21)
 
 
