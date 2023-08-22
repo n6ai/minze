@@ -10,7 +10,7 @@
     "scope": "javascript,typescript",
     "prefix": "_minze:get",
     "body": ["get ${1:getterName}() {\n\treturn $0\n}"],
-    "description": "observed attributes"
+    "description": "getter"
   },
 
   "html": {
@@ -30,21 +30,21 @@
   "select": {
     "scope": "javascript,typescript",
     "prefix": "_minze:select",
-    "body": ["this.select('$1')"],
+    "body": ["this.select('$0')"],
     "description": "select method"
   },
 
   "selectAll": {
     "scope": "javascript,typescript",
     "prefix": "_minze:selectAll",
-    "body": ["this.selectAll('$1')"],
+    "body": ["this.selectAll('$0')"],
     "description": "selectAll method"
   },
 
   "slotted": {
     "scope": "javascript,typescript",
     "prefix": "_minze:slotted",
-    "body": ["this.slotted('$1')"],
+    "body": ["this.slotted('$0')"],
     "description": "slotted method"
   },
 
@@ -59,50 +59,59 @@
     "scope": "javascript,typescript",
     "prefix": "_minze:hook",
     "body": [
-      "${1|onStart,onReactive,onReady,onDestory,onMove,beforeRender,afterRender,beforeAttributeChange,afterAttributeChange|}() {$2}"
+      "${1|onStart,onReactive,onReady,onDestory,onMove,beforeRender,afterRender,beforeAttributeChange,afterAttributeChange|}() {$0}"
     ],
     "description": "all available hooks"
+  },
+
+  "hook:arrow": {
+    "scope": "javascript,typescript",
+    "prefix": "_minze:hook:arrow",
+    "body": [
+      "${1|onStart,onReactive,onReady,onDestory,onMove,beforeRender,afterRender,beforeAttributeChange,afterAttributeChange|} = () => {$0}"
+    ],
+    "description": "all available hooks in arrow fn format"
   },
 
   "debug": {
     "scope": "javascript,typescript",
     "prefix": "_minze:debug",
-    "body": ["debug = ${1:true}"],
+    "body": ["debug = ${0:true}"],
     "description": "debug mode"
   },
 
   "options": {
     "scope": "javascript,typescript",
     "prefix": "_minze:options",
-    "body": ["options = {$1}"],
+    "body": ["options = {$0}"],
     "description": "options"
   },
 
   "option:cssreset": {
     "scope": "javascript,typescript",
     "prefix": "_minze:option:cssreset",
-    "body": ["options = { cssReset: ${1:true} }"],
+    "body": ["options = { cssReset: ${0:true} }"],
     "description": "cssReset option"
   },
 
   "option:exportparts": {
     "scope": "javascript,typescript",
     "prefix": "_minze:option:exportparts",
-    "body": ["options = { exposeAttrs: { exportparts: ${1:true} } }"],
+    "body": ["options = { exposeAttrs: { exportparts: ${0:true} } }"],
     "description": "exportparts option"
   },
 
   "option:rendered": {
     "scope": "javascript,typescript",
     "prefix": "_minze:option:rendered",
-    "body": ["options = { exposeAttrs: { rendered: ${1:true} } }"],
+    "body": ["options = { exposeAttrs: { rendered: ${0:true} } }"],
     "description": "rendered option"
   },
 
   "expression": {
     "scope": "html,css",
     "prefix": "_minze:expression",
-    "body": ["\\${this.${1:data}}"],
+    "body": ["\\${this.${0:data}}"],
     "description": "component property"
   },
 
@@ -148,7 +157,7 @@
   "attribute:part": {
     "scope": "html",
     "prefix": "_minze:attribute:part",
-    "body": ["part=\"${1:name}\""],
+    "body": ["part=\"${0:name}\""],
     "description": "part attribute"
   },
 
