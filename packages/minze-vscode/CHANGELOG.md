@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/n6ai/minze/compare/minze-vscode-v0.5.0...minze-vscode-v0.5.1) (2023-08-22)
+
+
+### Bug Fixes
+
+* improve code-snippet navigation ([e0ffdaf](https://github.com/n6ai/minze/commit/e0ffdaf3761ce6c0a1969592e9c63a486490b6a2))
+
 ## [0.5.0](https://github.com/n6ai/minze/compare/minze-vscode-v0.4.0...minze-vscode-v0.5.0) (2023-08-22)
 
 
