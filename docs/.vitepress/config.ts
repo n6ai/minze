@@ -340,12 +340,12 @@ export default defineConfig({
               link: '/guide/advanced/typescript'
             },
             {
-              text: 'Patterns',
-              link: '/guide/advanced/patterns'
-            },
-            {
               text: 'Transitions',
               link: '/guide/advanced/transitions'
+            },
+            {
+              text: 'Patterns',
+              link: '/guide/advanced/patterns'
             },
             {
               text: 'Style Guide',

@@ -404,6 +404,26 @@ export class MinzeElement extends HTMLElement {
   }
 
   /**
+   * Leverages the View Transition API while rendering.
+   *
+   * @param force - Forces the re-rendering of the template regardless of caching.
+   *
+   * @url https://developer.mozilla.org/docs/Web/API/View_Transitions_API
+   *
+   * @example
+   * ```
+   * this.render()
+   * ```
+   */
+  private async renderWithTransition(force?: boolean) {
+    if (document.startViewTransition) {
+      document.startViewTransition(async () => this.render(force))
+    } else {
+      this.render(force)
+    }
+  }
+
+  /**
    * Re-renders the component template, invalidating all caches.
    *
    * @example
@@ -412,7 +432,7 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   rerender() {
-    this.render(true)
+    this.renderWithTransition(true)
   }
 
   /**
@@ -524,7 +544,7 @@ export class MinzeElement extends HTMLElement {
       }
     })
 
-    this.render()
+    this.renderWithTransition()
   }
 
   /**
