@@ -89,16 +89,18 @@ MyElement.define()
 
 ## View Transitions <Badge text="experimental" type="warning" />
 
-Minze leverages the [View Transitions API](https://developer.mozilla.org/docs/Web/API/View_Transitions_API) under the hood when a reactive change is made and the template changes. You don't have to do anything as it's enabled by default. Currently this only works with supported browsers, see [Can I use](https://caniuse.com/?search=View%20Transition%20API) for more info.
+You can activate View Transitions for a specific element by setting the `viewTransitions` option. Minze then leverages the [View Transitions API](https://developer.mozilla.org/docs/Web/API/View_Transitions_API) when the template changes. Currently this only works with supported browsers, see [Can I use](https://caniuse.com/?search=View%20Transition%20API) for more info.
 
 ::: tip
-By default, View Transitions API animates CSS `opacity`. Read more about customizing View Transitions on [developer.chrome.com](https://developer.chrome.com/docs/web-platform/view-transitions/).
+By default, View Transitions API animates CSS `opacity`. Read more about customizing View Transitions with CSS on [developer.chrome.com](https://developer.chrome.com/docs/web-platform/view-transitions/).
 :::
 
 ```js
 import { MinzeElement } from 'minze'
 
 class MyElement extends MinzeElement {
+  options = { viewTransitions: true }
+
   reactive = [['active', false]]
 
   toggle = () => (this.active = !this.active)

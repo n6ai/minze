@@ -856,7 +856,8 @@ export class MyElement extends MinzeElement {
     exposeAttrs: {
       exportparts: false, // Expose an 'exportparts' attribute on the element that includes all parts present in the component. E.g. <my-element exportparts="button, headline"></my-element>
       rendered: false // Expose a 'rendered' attribute on the element, after it's rendered for the first time. E.g. <my-element rendered></my-element>
-    }
+    },
+    viewTransitions: false // Uses the View Transition API when set to true.
   }
 }
 ```

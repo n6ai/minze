@@ -158,6 +158,7 @@ export class MinzeElement extends HTMLElement {
       exportparts?: boolean
       rendered?: boolean
     }
+    viewTransitions?: boolean
   }
 
   /**
@@ -416,7 +417,7 @@ export class MinzeElement extends HTMLElement {
    * ```
    */
   private async renderWithTransition(force?: boolean) {
-    if (document.startViewTransition) {
+    if (this.options?.viewTransitions && document.startViewTransition) {
       document.startViewTransition(async () => this.render(force))
     } else {
       this.render(force)
