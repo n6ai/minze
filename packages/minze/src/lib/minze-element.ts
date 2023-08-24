@@ -145,9 +145,10 @@ export class MinzeElement extends HTMLElement {
    *   options = {
    *     cssReset: true,
    *     exposeAttrs: {
-   *       exportparts: false
+   *       exportparts: false,
    *       rendered: false
-   *     }
+   *     },
+   *     viewTransitions: false
    *   }
    * }
    * ```
