@@ -1,12 +1,12 @@
 # Transitions
 
-You can determine how components should appear when they are rendered. This can be especially useful if you want to animate componets.
+You can determine how components are animated when they are rendered for the first time or between state changes.
 
-::: tip
-CSS transitions are not 100% reliable, since a transition isn't triggered when the component is immediately rendered under certain circumstances.
-:::
+## Entry Transitions
 
-## Component
+Entry transitions run when an element is rendered for the very first time.
+
+### Local
 
 Animations can be defined inside of component.
 
@@ -22,11 +22,11 @@ class MyElement extends MinzeElement {
     }
 
     @keyframes rendered {
-      0% {
+      from {
         opacity: 0%;
         transform: translateY(100%);
       }
-      100% {
+      to {
         opacity: 100%;
         transform: translateY(0);
       }
@@ -41,7 +41,7 @@ MyElement.define()
 <my-element></my-element>
 ```
 
-## Global
+### Global
 
 By exposing the `rendered` attribute you can add animations to all rendered components, or define more specific rules.
 
@@ -82,6 +82,38 @@ MyElement.define()
 ```
 
 :::
+
+```html
+<my-element></my-element>
+```
+
+## View Transitions <Badge text="experimental" type="warning" />
+
+You can activate View Transitions for a specific element by setting the `viewTransitions` option. Minze then leverages the [View Transitions API](https://developer.mozilla.org/docs/Web/API/View_Transitions_API) when the template changes. Currently this only works with supported browsers, see [Can I use](https://caniuse.com/?search=View%20Transition%20API) for more info.
+
+::: tip
+By default, View Transitions API animates CSS `opacity`. Read more about customizing View Transitions with CSS on [developer.chrome.com](https://developer.chrome.com/docs/web-platform/view-transitions/).
+:::
+
+```js
+import { MinzeElement } from 'minze'
+
+class MyElement extends MinzeElement {
+  options = { viewTransitions: true }
+
+  reactive = [['active', false]]
+
+  toggle = () => (this.active = !this.active)
+
+  html = () => `
+    <button on:click="toggle">
+      ${this.active ? 'Active' : 'Inactive'}
+    </button>
+  `
+}
+
+MyElement.define()
+```
 
 ```html
 <my-element></my-element>
