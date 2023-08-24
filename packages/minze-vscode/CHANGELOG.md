@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/n6ai/minze/compare/minze-vscode-v0.5.1...minze-vscode-v0.5.2) (2023-08-24)
+
+
+### Bug Fixes
+
+* consolidate options snippets ([3da1939](https://github.com/n6ai/minze/commit/3da193976b4391baa5352d00a887d410ae1f5c08))
+
 ## [0.5.1](https://github.com/n6ai/minze/compare/minze-vscode-v0.5.0...minze-vscode-v0.5.1) (2023-08-22)
 
 
