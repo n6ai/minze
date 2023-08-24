@@ -83,29 +83,13 @@
   "options": {
     "scope": "javascript,typescript",
     "prefix": "_minze:options",
-    "body": ["options = {$0}"],
+    "body": [
+      "options = {",
+      "\tcssReset: ${1:true},",
+      "\texposeAttrs: { exportparts: ${2:false}, rendered: ${3:false} }",
+      "}"
+    ],
     "description": "options"
-  },
-
-  "option:cssreset": {
-    "scope": "javascript,typescript",
-    "prefix": "_minze:option:cssreset",
-    "body": ["options = { cssReset: ${0:true} }"],
-    "description": "cssReset option"
-  },
-
-  "option:exportparts": {
-    "scope": "javascript,typescript",
-    "prefix": "_minze:option:exportparts",
-    "body": ["options = { exposeAttrs: { exportparts: ${0:true} } }"],
-    "description": "exportparts option"
-  },
-
-  "option:rendered": {
-    "scope": "javascript,typescript",
-    "prefix": "_minze:option:rendered",
-    "body": ["options = { exposeAttrs: { rendered: ${0:true} } }"],
-    "description": "rendered option"
   },
 
   "expression": {
