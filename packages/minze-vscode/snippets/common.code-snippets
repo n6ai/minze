@@ -86,7 +86,8 @@
     "body": [
       "options = {",
       "\tcssReset: ${1:true},",
-      "\texposeAttrs: { exportparts: ${2:false}, rendered: ${3:false} }",
+      "\texposeAttrs: { exportparts: ${2:false}, rendered: ${3:false} },",
+      "\tviewTransitions: ${4:false}",
       "}"
     ],
     "description": "options"
