@@ -17,18 +17,18 @@
     "minze": "^1.9.2"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.3.2",
-    "@storybook/addon-links": "^7.3.2",
-    "@storybook/blocks": "^7.3.2",
-    "@storybook/web-components": "^7.3.2",
-    "@storybook/web-components-vite": "^7.3.2",
+    "@storybook/addon-essentials": "^7.4.0",
+    "@storybook/addon-links": "^7.4.0",
+    "@storybook/blocks": "^7.4.0",
+    "@storybook/web-components": "^7.4.0",
+    "@storybook/web-components-vite": "^7.4.0",
     "lit": "^2.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.3.2",
-    "typescript": "^5.1.6",
+    "storybook": "^7.4.0",
+    "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vite-plugin-dts": "^3.5.2",
+    "vite-plugin-dts": "^3.5.3",
     "vite-plugin-minze": "^1.1.5"
   }
 }
