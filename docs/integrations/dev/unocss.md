@@ -34,7 +34,7 @@ $ pnpm add -D unocss @unocss/postcss
 
 ```txt [files]
 ├─ src/
-|  └─ assets/
+|  ├─ assets/
 |  |  ├─ uno.css // [!code ++]
 |  |  └─ vite.css
 |  ├─ ...

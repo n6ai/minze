@@ -269,7 +269,7 @@ export class MinzeElement extends HTMLElement {
   eventListeners?: EventListeners
 
   /**
-   * Enhanced eventListeners with merged at-events and callbacks binded to the component.
+   * Enhanced eventListeners with merged on-events and callbacks binded to the component.
    *
    * @example
    * ```
@@ -388,7 +388,7 @@ export class MinzeElement extends HTMLElement {
           deepPatch(html, prevCachedHTML, this.shadowRoot)
         }
 
-        // enhance eventListeners with at-events and binding
+        // enhance eventListeners with on-events and binding
         const mergedEvents = await this.mergeEvents(
           this._eventListeners,
           this.html
