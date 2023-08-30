@@ -1,103 +1,79 @@
 :root {
   /* teal */
-  --minze-c-teal-darkest-values: 50 70 60;
-  --minze-c-teal-darker-values: 80 130 120;
-  --minze-c-teal-dark-values: 90 170 160;
-  --minze-c-teal-values: 80 220 200;
-  --minze-c-teal-light-values: 50 250 220;
-  --minze-c-teal-lighter-values: 160 255 240;
-  --minze-c-teal-lightest-values: 210 255 245;
+  --minze-c-teal-1-values: 80 220 200;
+  --minze-c-teal-2-values: 50 250 220;
+  --minze-c-teal-3-values: 160 255 240;
 
-  --minze-c-teal-darkest: rgb(var(--minze-c-teal-darkest-values));
-  --minze-c-teal-darker: rgb(var(--minze-c-teal-darker-values));
-  --minze-c-teal-dark: rgb(var(--minze-c-teal-dark-values));
-  --minze-c-teal: rgb(var(--minze-c-teal-values));
-  --minze-c-teal-light: rgb(var(--minze-c-teal-light-values));
-  --minze-c-teal-lighter: rgb(var(--minze-c-teal-lighter-values));
-  --minze-c-teal-lightest: rgb(var(--minze-c-teal-lightest-values));
+  --minze-c-teal-1: rgb(var(--minze-c-teal-1-values));
+  --minze-c-teal-2: rgb(var(--minze-c-teal-2-values));
+  --minze-c-teal-3: rgb(var(--minze-c-teal-3-values));
+  --minze-c-teal-soft: rgb(var(--minze-c-teal-1-values) / 14%);
 
   /* mint */
-  --minze-c-mint-darkest-values: 40 60 50;
-  --minze-c-mint-darker-values: 50 120 90;
-  --minze-c-mint-dark-values: 80 180 140;
-  --minze-c-mint-values: 60 220 150;
-  --minze-c-mint-light-values: 50 255 160;
-  --minze-c-mint-lighter-values: 140 255 200;
-  --minze-c-mint-lightest-values: 200 255 240;
+  --minze-c-mint-1-values: 60 220 150;
+  --minze-c-mint-2-values: 50 255 160;
+  --minze-c-mint-3-values: 140 255 200;
 
-  --minze-c-mint-darkest: rgb(var(--minze-c-mint-darkest-values));
-  --minze-c-mint-darker: rgb(var(--minze-c-mint-darker-values));
-  --minze-c-mint-dark: rgb(var(--minze-c-mint-dark-values));
-  --minze-c-mint: rgb(var(--minze-c-mint-values));
-  --minze-c-mint-light: rgb(var(--minze-c-mint-light-values));
-  --minze-c-mint-lighter: rgb(var(--minze-c-mint-lighter-values));
-  --minze-c-mint-lightest: rgb(var(--minze-c-mint-lightest-values));
+  --minze-c-mint-1: rgb(var(--minze-c-mint-1-values));
+  --minze-c-mint-2: rgb(var(--minze-c-mint-2-values));
+  --minze-c-mint-3: rgb(var(--minze-c-mint-3-values));
+  --minze-c-mint-soft: rgb(var(--minze-c-mint-1-values) / 14%);
 
   /* brand */
-  --vp-c-brand-darker: var(--vp-c-black);
-  --vp-c-brand-dark: var(--minze-c-mint-darkest);
-  --vp-c-brand: var(--minze-c-mint-darker);
-  --vp-c-brand-light: var(--minze-c-mint-dark);
-  --vp-c-brand-lighter: var(--minze-c-mint);
+  --vp-c-brand-1: var(--vp-c-neutral);
+  --vp-c-brand-2: var(--vp-c-text-2);
+  --vp-c-brand-3: var(--minze-c-mint-2);
+  --vp-c-brand-soft: var(--minze-c-mint-soft);
 
   /* button */
-  --vp-button-brand-text: var(--minze-c-mint-darkest);
-  --vp-button-brand-hover-text: var(--minze-c-mint-darkest);
-  --vp-button-brand-active-text: var(--minze-c-mint-darkest);
+  --vp-button-brand-text: var(--vp-c-black);
+  --vp-button-brand-hover-text: var(--vp-c-black);
+  --vp-button-brand-active-text: var(--vp-c-black);
 
-  --vp-button-brand-bg: var(--minze-c-mint-light);
-  --vp-button-brand-hover-bg: var(--minze-c-mint);
+  --vp-button-brand-bg: var(--minze-c-mint-2);
+  --vp-button-brand-hover-bg: var(--minze-c-mint-2);
 
-  --vp-button-brand-border: var(--minze-c-mint-light);
-  --vp-button-brand-hover-border: var(--minze-c-mint-light);
+  --vp-button-brand-border: var(--minze-c-mint-3);
+  --vp-button-brand-hover-border: var(--minze-c-mint-3);
 
   /* hero */
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(
     45deg,
-    var(--minze-c-teal) 0%,
-    var(--minze-c-mint) 60%
+    var(--minze-c-teal-1) 0%,
+    var(--minze-c-mint-1) 60%
   );
 
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    rgb(var(--minze-c-mint-values) / 100%) 50%,
-    rgb(var(--minze-c-teal-values) / 100%) 50%
+    rgb(var(--minze-c-mint-1-values) / 100%) 50%,
+    rgb(var(--minze-c-teal-1-values) / 100%) 50%
   );
   --vp-home-hero-image-filter: blur(6rem);
-
-  /* custom-block */
-  --vp-custom-block-warning-text: var(--vp-c-yellow-dark);
-  --vp-custom-block-danger-text: var(--vp-c-red-dark);
 }
 
 :root.dark {
   /* brand */
-  --vp-c-brand-darker: var(--minze-c-mint-darker);
-  --vp-c-brand-dark: var(--minze-c-mint-dark);
-  --vp-c-brand: var(--minze-c-mint);
-  --vp-c-brand-light: var(--minze-c-mint-light);
-  --vp-c-brand-lighter: var(--minze-c-mint-lighter);
+  --vp-c-brand-1: var(--minze-c-mint-1);
+  --vp-c-brand-2: var(--minze-c-mint-2);
+  --vp-c-brand-3: var(--minze-c-mint-3);
+  --vp-c-brand-soft: var(--minze-c-mint-soft);
 
   /* button */
-  --vp-button-brand-border: var(--minze-c-mint);
-  --vp-button-brand-hover-border: var(--minze-c-mint);
+  --vp-button-brand-border: var(--minze-c-mint-1);
+  --vp-button-brand-hover-border: var(--minze-c-mint-1);
 
   /* hero */
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(
     45deg,
-    var(--minze-c-teal-light) 0%,
-    var(--minze-c-mint-light) 100%
+    var(--minze-c-teal-1) 0%,
+    var(--minze-c-mint-3) 100%
   );
 
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    rgb(var(--minze-c-mint-dark-values) / 60%) 50%,
-    rgb(var(--minze-c-teal-dark-values) / 60%) 50%
+    rgb(var(--minze-c-mint-1-values) / 45%) 50%,
+    rgb(var(--minze-c-teal-1-values) / 45%) 50%
   );
-
-  /* custom-block */
-  --vp-custom-block-warning-text: var(--vp-c-yellow);
-  --vp-custom-block-danger-text: var(--vp-c-red);
 }

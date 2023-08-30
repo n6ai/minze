@@ -2,6 +2,11 @@ html:not(.dark) .VPSidebarItem.level-1:is(.is-active, .has-active) .text {
   font-weight: 600;
 }
 
-html:not(.dark) .VPSidebarItem.level-1.is-active .indicator {
-  background-color: var(--vp-c-brand);
+html:not(.dark) .VPSidebarItem.level-1.is-active .indicator,
+.outline-marker {
+  background-color: var(--minze-c-mint-1) !important;
+}
+
+.VPFeature.link:hover {
+  border-color: var(--minze-c-mint-1) !important;
 }

@@ -3,7 +3,7 @@
 }
 
 .VPButton.brand:hover {
-  box-shadow: 0 0 20px rgb(var(--minze-c-mint-values) / 50%);
+  box-shadow: 0 0 20px rgb(var(--minze-c-mint-1-values) / 50%);
   filter: hue-rotate(25deg);
 }
 
@@ -14,15 +14,15 @@
 html:not(.dark) .VPButton.brand {
   background: linear-gradient(
     45deg,
-    var(--minze-c-teal-light) 0%,
-    var(--minze-c-mint-light) 100%
+    var(--minze-c-teal-2) 0%,
+    var(--minze-c-mint-2) 100%
   );
 }
 
 html.dark .VPButton.brand {
   background: linear-gradient(
     45deg,
-    var(--minze-c-teal) 0%,
-    var(--minze-c-mint) 100%
+    var(--minze-c-teal-1) 0%,
+    var(--minze-c-mint-1) 100%
   );
 }
