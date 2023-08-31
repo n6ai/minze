@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/n6ai/minze/compare/minze-vscode-v0.5.2...minze-vscode-v0.6.0) (2023-08-31)
+
+
+### Features
+
+* use view transitions api when enabled through options ([#246](https://github.com/n6ai/minze/issues/246)) ([94d5723](https://github.com/n6ai/minze/commit/94d57234e3c0b59d5d9a62688a74daf5b73d3d4e))
+
 ## [0.5.2](https://github.com/n6ai/minze/compare/minze-vscode-v0.5.1...minze-vscode-v0.5.2) (2023-08-24)
 
 
