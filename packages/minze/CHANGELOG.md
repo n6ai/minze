@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.10.0](https://github.com/n6ai/minze/compare/minze-v1.9.2...minze-v1.10.0) (2023-08-30)
+
+
+### Features
+
+* use view transitions api when enabled through options ([#246](https://github.com/n6ai/minze/issues/246)) ([94d5723](https://github.com/n6ai/minze/commit/94d57234e3c0b59d5d9a62688a74daf5b73d3d4e))
+
+
+### Bug Fixes
+
+* match attributes without quotation marks ([1fa9a17](https://github.com/n6ai/minze/commit/1fa9a1717bd8f3d2208488f2e4c867ff9837c121))
+
 ## [1.9.2](https://github.com/n6ai/minze/compare/minze-v1.9.1...minze-v1.9.2) (2023-08-21)
 
 
