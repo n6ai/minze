@@ -13,7 +13,7 @@
     "preview": "vite preview --outDir storybook"
   },
   "dependencies": {
-    "minze": "^1.9.2"
+    "minze": "^1.10.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.4.0",

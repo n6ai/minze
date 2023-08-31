@@ -12,7 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "minze": "^1.9.2"
+    "minze": "^1.10.0"
   },
   "devDependencies": {
     "vite": "^4.4.9",
