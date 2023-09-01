@@ -414,7 +414,7 @@ export class MinzeElement extends HTMLElement {
    *
    * @example
    * ```
-   * this.render()
+   * this.renderWithTransition()
    * ```
    */
   private async renderWithTransition(force?: boolean) {
