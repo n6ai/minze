@@ -107,10 +107,11 @@ MyChild.define()
 
 ## Browser Storage
 
-You can use the JavaScript native `sessionStorage` or `localStorage` properties for accessing the Storage object.
+You can use the browser `sessionStorage`, `localStorage` or `IndexedDB` for storing and retrieving data.
 
-- **Session Storage:** The stored data is cleared when the page session ends.
-- **Local Storage:** The stored data is saved across browser sessions.
+- **Session Storage:** The stored data is cleared when the session ends.
+- **Local Storage:** The stored data is saved across sessions.
+- **IndexedDB:** Low-level storage for large amounts of data, persists across sessions.
 
 ::: code-group
 
@@ -141,6 +142,25 @@ class MyElement extends MinzeElement {
 
   onReady() {
     const msg = localStorage.getItem('minze:store')
+    console.log(msg) // 'Hello Minze!'
+  }
+}
+
+MyElement.define()
+```
+
+```js [IndexedDB]
+// 'idb-keyval' npm package needs to be installed for this example
+import { MinzeElement } from 'minze'
+import { get, set } from 'idb-keyval'
+
+class MyElement extends MinzeElement {
+  async onStart() {
+    await set('minze:msg', 'Hello Minze!')
+  }
+
+  async onReady() {
+    const msg = await get('minze:msg')
     console.log(msg) // 'Hello Minze!'
   }
 }
