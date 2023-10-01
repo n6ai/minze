@@ -31,7 +31,7 @@
     "lint-staged": "^14.0.1",
     "prettier": "3.0.3",
     "simple-git-hooks": "^2.9.0",
-    "vitepress": "^1.0.0-rc.14"
+    "vitepress": "^1.0.0-rc.20"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
