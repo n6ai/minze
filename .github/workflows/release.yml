@@ -46,7 +46,7 @@ jobs:
     if: ${{ needs.release-please.outputs.releases-created }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: main # needs to be explicitly set to pull the latest changes
 
@@ -63,7 +63,7 @@ jobs:
     if: ${{ needs.release-please.outputs.releases-created && needs.release-please.outputs.package-name != 'minze-vscode' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: main # needs to be explicitly set to pull the latest changes
 
@@ -82,7 +82,7 @@ jobs:
     if: ${{ needs.release-please.outputs.releases-created && needs.release-please.outputs.package-name == 'minze-vscode' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: main # needs to be explicitly set to pull the latest changes
 
