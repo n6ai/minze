@@ -45,9 +45,9 @@
     "prompts": "^2.4.2"
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.2",
-    "@types/minimist": "^1.2.3",
-    "@types/prompts": "^2.4.6",
+    "@types/fs-extra": "^11.0.3",
+    "@types/minimist": "^1.2.4",
+    "@types/prompts": "^2.4.7",
     "execa": "^8.0.1",
     "fs-extra": "^11.1.1",
     "typescript": "^5.2.2",

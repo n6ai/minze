@@ -15,7 +15,7 @@
     "minze": "^1.10.0"
   },
   "devDependencies": {
-    "vite": "^4.4.11",
+    "vite": "^4.5.0",
     "vite-plugin-minze": "^1.1.5"
   }
 }
