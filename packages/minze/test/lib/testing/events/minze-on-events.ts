@@ -15,7 +15,7 @@ export class MinzeOnEvents extends MinzeElement {
       ${this.text}
     </button>
 
-    <button class="at" on:click>
+    <button class="at" @click>
       ${this.text}
     </button>
   `
