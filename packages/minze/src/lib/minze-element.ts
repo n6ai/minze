@@ -805,7 +805,7 @@ export class MinzeElement extends HTMLElement {
 
     // get all on:event attributes and remove duplicates
     const onEventsRE =
-      /\s(?:on:|@)([\w\-:.]+)(?:=(?:"|')?(\w+)(?:"|')?)?(\s|\/)/gi
+      /(?<=\s+)(?:on:|@)([\w\-:.]+)(?:=(?:"|')?(\w+)(?:"|')?)?(?=\s+|\/|>)/gi
     const onEvents: onEvent[] = [
       ...new Set(
         [...template.matchAll(onEventsRE)].map((m) =>
