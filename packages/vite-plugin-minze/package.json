@@ -34,7 +34,7 @@
     "posttest": "(npm run stub) && (npm run build -w minze)"
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.2",
     "unbuild": "^2.0.0"
   }
 }
