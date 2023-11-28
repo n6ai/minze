@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2](https://github.com/n6ai/minze/compare/create-minze-v2.1.1...create-minze-v2.1.2) (2023-11-28)
+
+
+### Miscellaneous
+
+* update templates ([9cfa7a2](https://github.com/n6ai/minze/commit/9cfa7a2deeba2e85a6a4d06c0d225fe384fe7361))
+
 ## [2.1.1](https://github.com/n6ai/minze/compare/create-minze-v2.1.0...create-minze-v2.1.1) (2023-08-19)
 
 
