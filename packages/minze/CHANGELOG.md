@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.10.1](https://github.com/n6ai/minze/compare/minze-v1.10.0...minze-v1.10.1) (2023-11-28)
+
+
+### Bug Fixes
+
+* event shorthand regex breaking events if attribute value matches event shorthand writing ([#268](https://github.com/n6ai/minze/issues/268)) ([432169e](https://github.com/n6ai/minze/commit/432169e4e519967faee52fc7f2c589b627c7fc88))
+* on:events regex notation ([71d53ec](https://github.com/n6ai/minze/commit/71d53ec0651f02f4fc89c219a9db3927c5e6efe2))
+
 ## [1.10.0](https://github.com/n6ai/minze/compare/minze-v1.9.2...minze-v1.10.0) (2023-08-30)
 
 
