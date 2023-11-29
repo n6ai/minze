@@ -521,9 +521,9 @@ export class MyElement extends MinzeElement {
   `
 
   onReady() {
-    const defaultSlotted = this.slotted('default')
+    const defaultSlotted = this.slotted('default') // or empty string: this.slotted('')
     const namedSlotted = this.slotted('named-slot')
-    console.log(defaultSlotted, namedSlotted) // slotted elements
+    console.log(defaultSlotted, namedSlotted) // '<slot></slot>', '<slot name="named-slot"></slot>'
   }
 }
 ```
