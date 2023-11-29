@@ -99,7 +99,7 @@ export class MyElement extends MinzeElement {
 
   handleClick = (event: Event) => {}
 
-  eventListeners: EventListeners = [['.button', 'click', this.handleClick]]
+  eventListeners: EventListeners = [['button', 'click', this.handleClick]]
 }
 ```
 
