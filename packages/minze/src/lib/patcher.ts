@@ -8,7 +8,7 @@
  *
  * @example
  * ```
- * deepPatch(template, shadowRoot)
+ * deepPatch(newTemplate, oldTemplate, shadowRoot)
  * ```
  */
 export function deepPatch(
