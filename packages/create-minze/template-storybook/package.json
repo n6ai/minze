@@ -16,16 +16,16 @@
     "minze": "^1.10.1"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.3",
-    "@storybook/addon-links": "^7.6.3",
-    "@storybook/blocks": "^7.6.3",
-    "@storybook/web-components": "^7.6.3",
-    "@storybook/web-components-vite": "^7.6.3",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
+    "@storybook/blocks": "^7.6.17",
+    "@storybook/web-components": "^7.6.17",
+    "@storybook/web-components-vite": "^7.6.17",
     "lit": "^2.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.6.3",
-    "vite": "^5.0.4",
+    "storybook": "^7.6.17",
+    "vite": "^5.2.10",
     "vite-plugin-minze": "^1.1.5"
   }
 }
