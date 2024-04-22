@@ -5,7 +5,8 @@ defineAll(modules)
 
 const previews = import.meta.glob<string>('./*.html', {
   eager: true,
-  query: '?raw'
+  query: '?raw',
+  import: 'default'
 })
 const preview = previews['./preview.dev.html'] ?? previews['./preview.html']
 
