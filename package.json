@@ -9,7 +9,7 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "(npm run stub) && (npx -y tsx ./scripts/syntaxes.ts)",
+    "prepare": "npm run stub",
     "dev": "npm run dev -w minze",
     "stub": "npm run stub --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
@@ -31,7 +31,7 @@
     "lint-staged": "^15.2.2",
     "prettier": "3.1.0",
     "simple-git-hooks": "^2.11.1",
-    "vitepress": "1.0.0-rc.29"
+    "vitepress": "1.1.3"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
