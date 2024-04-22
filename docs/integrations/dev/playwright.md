@@ -89,7 +89,7 @@ import { modules, defineAll } from './main'
 defineAll(modules)
 
 if (import.meta.env.MODE !== 'testing') { // [!code ++]
-  const previews = import.meta.glob('./*.html', { eager: true, as: 'raw' })
+  const previews = import.meta.glob('./*.html', { eager: true, query: '?raw', import: 'default' })
   const preview = previews['./preview.dev.html'] ?? previews['./preview.html']
 
   const app = document.querySelector('#app')

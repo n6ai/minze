@@ -1,6 +1,6 @@
 import type { HeadConfig } from 'vitepress'
 import { defineConfig } from 'vitepress'
-import { languages } from './syntaxes'
+import { languages } from './grammar'
 
 const isProduction = process.env.NODE_ENV
 
