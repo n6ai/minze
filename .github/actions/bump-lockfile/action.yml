@@ -14,7 +14,7 @@ runs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: Use Node.js ${{ inputs.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
 
