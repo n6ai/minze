@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  NODE_VERSION: 18
+  NODE_VERSION: 20
   PACKAGE_NAME: ${{ github.event.inputs.package }}
 
 jobs:
