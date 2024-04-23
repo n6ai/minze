@@ -28,7 +28,7 @@ export default defineConfig({
     minze({ entry: 'test/main.ts' }),
     dts({
       entryRoot: 'test',
-      include: ['test'],
+      include: ['test', 'src/env.d.ts'],
       exclude: ['test/{vite,utils}.ts', 'test/**/*.{spec,test,stories}.ts']
     })
   ]
