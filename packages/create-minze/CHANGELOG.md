@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/n6ai/minze/compare/create-minze-v2.1.2...create-minze-v2.2.0) (2024-04-23)
+
+
+### Features
+
+* upgrade storybook templates to use storybook v8 ([#291](https://github.com/n6ai/minze/issues/291)) ([9833168](https://github.com/n6ai/minze/commit/98331680e08db8ba8f4f3a7a02a45d43e3b6e4fc))
+
 ## [2.1.2](https://github.com/n6ai/minze/compare/create-minze-v2.1.1...create-minze-v2.1.2) (2023-11-28)
 
 
