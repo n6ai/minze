@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
     port: 5173,
     reuseExistingServer: !process.env.CI
   },
-  testMatch: ['test/**/*.test.*']
+  testDir: './test'
 }
 
 export default config
