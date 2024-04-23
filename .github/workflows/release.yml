@@ -29,7 +29,6 @@ jobs:
         id: release
         with:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
-          command: manifest
     outputs:
       releases-created: ${{ steps.release.outputs.releases_created }}
       package-name: ${{ (
