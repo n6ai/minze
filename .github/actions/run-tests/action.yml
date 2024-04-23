@@ -16,9 +16,9 @@ runs:
       shell: bash
       run: npm ci
 
-    - name: Update playwright
+    - name: Install Playwright browsers
       shell: bash
-      run: npx playwright install
+      run: npx playwright install --with-deps
 
     - name: Create builds
       shell: bash
