@@ -20,6 +20,10 @@ $ yarn add minze
 $ pnpm add minze
 ```
 
+```bash [bun]
+$ bun add minze
+```
+
 :::
 
 2. Set `keepNames` to true, to keep class names as is.

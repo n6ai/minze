@@ -20,6 +20,10 @@ $ yarn add minze
 $ pnpm add minze
 ```
 
+```bash [bun]
+$ bun add minze
+```
+
 :::
 
 ```js
@@ -56,6 +60,10 @@ $ yarn create minze
 $ pnpm create minze
 ```
 
+```bash [bun]
+$ bun create minze
+```
+
 :::
 
 Then follow the prompts!
@@ -76,6 +84,10 @@ $ yarn create minze my-project --template vite
 
 ```bash [pnpm]
 $ pnpm create minze my-project -- --template vite
+```
+
+```bash [bun]
+$ bun create minze my-project --template vite
 ```
 
 :::

@@ -20,6 +20,10 @@ $ yarn add -D @playwright/test
 $ pnpm add -D @playwright/test
 ```
 
+```bash [bun]
+$ bun add -D @playwright/test
+```
+
 :::
 
 2. Initialize Playwright.
@@ -147,6 +151,10 @@ $ yarn test
 
 ```bash [pnpm]
 $ pnpm test
+```
+
+```bash [bun]
+$ bun test
 ```
 
 :::

@@ -20,6 +20,10 @@ $ yarn add -D vitest @vitest/ui happy-dom
 $ pnpm add -D vitest @vitest/ui happy-dom
 ```
 
+```bash [bun]
+$ bun add -D vitest @vitest/ui happy-dom
+```
+
 :::
 
 2. Add test scripts to `package.json`.
@@ -101,6 +105,10 @@ $ yarn test
 
 ```bash [pnpm]
 $ pnpm test
+```
+
+```bash [bun]
+$ bun test
 ```
 
 :::

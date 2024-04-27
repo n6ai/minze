@@ -24,6 +24,10 @@ $ yarn add -D eslint
 $ pnpm add -D eslint
 ```
 
+```bash [bun]
+$ bun add -D eslint
+```
+
 :::
 
 2. Add lint script to `package.json`.
@@ -91,6 +95,10 @@ $ yarn run lint
 $ pnpm run lint
 ```
 
+```bash [bun]
+$ bun run lint
+```
+
 :::
 
 ::: tip
@@ -113,6 +121,10 @@ $ yarn add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
 
 ```bash [pnpm]
 $ pnpm add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
+```
+
+```bash [bun]
+$ bun add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
 :::
@@ -181,6 +193,10 @@ $ yarn run lint
 
 ```bash [pnpm]
 $ pnpm run lint
+```
+
+```bash [bun]
+$ bun run lint
 ```
 
 :::

@@ -37,6 +37,12 @@ $ cd my-project
 $ pnpm install
 ```
 
+```bash [bun]
+$ bun create minze my-project --template vite
+$ cd my-project
+$ bun install
+```
+
 :::
 
 ## Creating a component
@@ -55,6 +61,10 @@ $ yarn dev
 
 ```bash [pnpm]
 $ pnpm run dev
+```
+
+```bash [bun]
+$ bun run dev
 ```
 
 :::

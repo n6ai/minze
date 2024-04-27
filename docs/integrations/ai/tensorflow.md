@@ -24,6 +24,10 @@ $ yarn add @tensorflow/tfjs
 $ pnpm add @tensorflow/tfjs
 ```
 
+```bash [bun]
+$ bun add @tensorflow/tfjs
+```
+
 :::
 
 2. Create a `tf-element.js` file inside the `src/lib` directory.

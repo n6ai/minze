@@ -22,6 +22,10 @@ $ yarn build
 $ pnpm run build
 ```
 
+```bash [bun]
+$ bun run build
+```
+
 :::
 
 **2. Publish**
@@ -54,6 +58,10 @@ $ yarn add my-package
 
 ```bash [pnpm]
 $ pnpm add my-package
+```
+
+```bash [bun]
+$ bun add my-package
 ```
 
 :::

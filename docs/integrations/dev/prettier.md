@@ -22,6 +22,10 @@ $ yarn add -D prettier
 $ pnpm add -D prettier
 ```
 
+```bash [bun]
+$ bun add -D prettier
+```
+
 :::
 
 2. Add format script to `package.json`.
@@ -86,6 +90,10 @@ $ yarn run format
 
 ```bash [pnpm]
 $ pnpm run format
+```
+
+```bash [bun]
+$ bun run format
 ```
 
 :::

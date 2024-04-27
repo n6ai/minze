@@ -22,6 +22,10 @@ $ yarn add -D unocss @unocss/postcss
 $ pnpm add -D unocss @unocss/postcss
 ```
 
+```bash [bun]
+$ bun add -D unocss @unocss/postcss
+```
+
 :::
 
 2. Setup files. This will allow you to use UnoCSS in the entire project (components, css files, as well as preview templates).

@@ -18,4 +18,8 @@ $ yarn create minze --template storybook
 $ pnpm create minze -- --template storybook
 ```
 
+```bash [bun]
+$ bun create minze --template storybook
+```
+
 :::

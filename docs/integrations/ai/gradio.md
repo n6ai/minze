@@ -24,6 +24,10 @@ $ yarn add @gradio/client
 $ pnpm add @gradio/client
 ```
 
+```bash [bun]
+$ bun add @gradio/client
+```
+
 :::
 
 2. Create a `gr-element.js` file inside the `src/lib` directory.

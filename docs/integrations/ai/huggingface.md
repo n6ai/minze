@@ -24,6 +24,10 @@ $ yarn add @xenova/transformers
 $ pnpm add @xenova/transformers
 ```
 
+```bash [bun]
+$ bun add @xenova/transformers
+```
+
 :::
 
 2. Create a `hf-element.js` file inside the `src/lib` directory.
@@ -104,6 +108,10 @@ $ yarn add @huggingface/inference
 
 ```bash [pnpm]
 $ pnpm add @huggingface/inference
+```
+
+```bash [bun]
+$ bun add @huggingface/inference
 ```
 
 :::
