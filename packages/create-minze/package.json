@@ -50,7 +50,7 @@
     "@types/prompts": "^2.4.9",
     "execa": "^8.0.1",
     "fs-extra": "^11.2.0",
-    "typescript": "^5.4.5",
+    "typescript": "^5.6.3",
     "vitest": "^0.34.6"
   }
 }
