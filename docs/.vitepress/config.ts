@@ -89,11 +89,6 @@ export default defineConfig({
       provider: 'local'
     },
 
-    carbonAds: {
-      code: 'CEAIV2JY',
-      placement: 'minzedev'
-    },
-
     externalLinkIcon: true,
 
     nav: [
