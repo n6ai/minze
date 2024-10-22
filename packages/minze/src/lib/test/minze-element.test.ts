@@ -23,10 +23,12 @@ describe('MinzeElement', () => {
   })
 
   test('define', () => {
-    TestElement.define('test-el')
     TestElement.define()
-
-    expect(customElements.get('test-el')).toBeTruthy()
     expect(customElements.get('test-element')).toBeTruthy()
+  })
+
+  test('define', () => {
+    ;(class TestElement2 extends MinzeElement {}).define('test-el')
+    expect(customElements.get('test-el')).toBeTruthy()
   })
 })
