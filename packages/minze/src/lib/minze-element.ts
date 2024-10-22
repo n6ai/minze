@@ -132,8 +132,10 @@ export class MinzeElement extends HTMLElement {
    */
   static define(name?: string) {
     name ??= camelToDash(this.name)
-    if (customElements)
-      customElements.get(name) ?? customElements.define(name, this)
+
+    if (customElements && !customElements.get(name)) {
+      customElements.define(name, this)
+    }
   }
 
   /**
@@ -892,9 +894,8 @@ export class MinzeElement extends HTMLElement {
     }
 
     elements?.forEach((element: EventTarget) => {
-      action === 'add'
-        ? element.addEventListener(eventName, callback)
-        : element.removeEventListener(eventName, callback)
+      if (action === 'add') element.addEventListener(eventName, callback)
+      else element.removeEventListener(eventName, callback)
     })
   }
 
