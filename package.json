@@ -18,7 +18,7 @@
     "docs-build": "vitepress build docs",
     "docs-preview": "vitepress preview docs",
     "format": "prettier --write --cache .",
-    "lint": "eslint --cache **/*.{ts,js}",
+    "lint": "eslint --cache .",
     "deps": "(npx -y taze -r -w) && (npm i)",
     "postinstall": "simple-git-hooks"
   },
