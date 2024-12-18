@@ -42,11 +42,8 @@ jobs:
     needs:
       - release-please
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.releases-created }}
+    if: ${{ needs.release-please.outputs.releases-created == 'true' }}
     steps:
-      - name: Debug Outputs
-        run: echo ${{ needs.release-please.outputs.releases-created }}
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
