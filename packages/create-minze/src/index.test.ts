@@ -1,5 +1,5 @@
 import { join } from 'node:path'
-import type { ExecaSyncReturnValue, SyncOptions } from 'execa'
+import type { SyncOptions, SyncResult } from 'execa'
 import { execaCommandSync } from 'execa'
 import fs from 'fs-extra'
 import { afterEach, beforeAll, test, expect } from 'vitest'
@@ -9,10 +9,7 @@ const CLI_PATH = join(__dirname, '..')
 const projectName = 'test-app'
 const genPath = join(__dirname, projectName)
 
-const run = (
-  args: string[],
-  options: SyncOptions = {}
-): ExecaSyncReturnValue => {
+const run = (args: string[], options: SyncOptions = {}): SyncResult => {
   return execaCommandSync(`node ${CLI_PATH} ${args.join(' ')}`, options)
 }
 
