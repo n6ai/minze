@@ -44,6 +44,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ needs.release-please.outputs.releases-created }}
     steps:
+      - name: Debug Outputs
+        run: echo ${{ jobs.release-please.outputs.releases-created }}
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
