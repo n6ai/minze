@@ -43,7 +43,7 @@
   "devDependencies": {
     "@playwright/test": "^1.50.1",
     "@vitest/ui": "^2.1.8",
-    "happy-dom": "^15.11.7",
+    "happy-dom": "^17.4.4",
     "typescript": "^5.8.2",
     "vite": "^6.2.0",
     "vite-plugin-dts": "^4.5.1",
