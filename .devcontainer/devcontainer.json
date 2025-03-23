@@ -1,4 +1,4 @@
 {
-  "image": "ghcr.io/n6ai/node-dev",
+  "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node",
   "postCreateCommand": "npm install"
 }
