@@ -16,9 +16,9 @@
     "minze": "^1.10.1"
   },
   "devDependencies": {
-    "typescript": "^5.7.2",
-    "vite": "^6.0.3",
-    "vite-plugin-dts": "^4.3.0",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.2",
+    "vite-plugin-dts": "^4.5.3",
     "vite-plugin-minze": "^1.1.5"
   }
 }
