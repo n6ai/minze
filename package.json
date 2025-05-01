@@ -23,14 +23,14 @@
     "postinstall": "simple-git-hooks"
   },
   "devDependencies": {
-    "@types/node": "^22.13.11",
-    "eslint": "^9.23.0",
+    "@types/node": "^22.15.3",
+    "eslint": "^9.25.1",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^16.0.0",
-    "lint-staged": "^15.5.0",
-    "prettier": "3.5.2",
-    "simple-git-hooks": "^2.12.1",
-    "typescript-eslint": "^8.27.0",
+    "lint-staged": "^15.5.1",
+    "prettier": "3.5.3",
+    "simple-git-hooks": "^2.13.0",
+    "typescript-eslint": "^8.31.1",
     "vitepress": "^1.6.3"
   },
   "simple-git-hooks": {
