@@ -2,7 +2,7 @@
 
 ## Try Minze online
 
-Quickly check out what's Minze all about. You can try Minze in a Sandbox on [CodePen](https://codepen.io/sergejcodes/pen/WNZVjPo) or on StackBlitz by selecting one of the links below.
+Quickly check out what's Minze all about. You can try Minze in a Sandbox on on StackBlitz by selecting one of the links below.
 
 | JavaScript                                                                                                                        | TypeScript                                                                                                                              |
 | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
