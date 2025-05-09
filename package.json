@@ -35,7 +35,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
-    "commit-msg": "npx @n6ai/verify-commit-msg@latest $1"
+    "commit-msg": "npx @sergejcodes/verify-commit-msg $1"
   },
   "lint-staged": {
     "*": [
