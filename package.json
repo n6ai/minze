@@ -27,7 +27,7 @@
     "eslint": "^9.26.0",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^16.1.0",
-    "lint-staged": "^15.5.1",
+    "lint-staged": "^16.0.0",
     "prettier": "3.5.3",
     "simple-git-hooks": "^2.13.0",
     "typescript-eslint": "^8.32.0",
