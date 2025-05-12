@@ -25,7 +25,7 @@
   "devDependencies": {
     "@types/node": "^22.15.17",
     "eslint": "^9.26.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.1.5",
     "globals": "^16.1.0",
     "lint-staged": "^16.0.0",
     "prettier": "3.5.3",
