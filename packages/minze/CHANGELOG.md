@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/sergejcodes/minze/compare/minze-v1.10.1...minze-v1.10.2) (2025-05-23)
+
+
+### Miscellaneous
+
+* update repo ([6674684](https://github.com/sergejcodes/minze/commit/667468402fbec2b3ccae6e1e7bed1587a0e696c5))
+
 ## [1.10.1](https://github.com/sergejcodes/minze/compare/minze-v1.10.0...minze-v1.10.1) (2023-11-28)
 
 
