@@ -42,12 +42,12 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",
-    "@vitest/ui": "^3.1.3",
+    "@vitest/ui": "^3.1.4",
     "happy-dom": "^17.4.7",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.3",
+    "vite-plugin-dts": "^4.5.4",
     "vite-plugin-minze": "*",
-    "vitest": "^3.1.3"
+    "vitest": "^3.1.4"
   }
 }

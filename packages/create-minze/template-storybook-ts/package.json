@@ -18,17 +18,17 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^2.0.2",
-    "@storybook/addon-essentials": "^8.6.12",
-    "@storybook/addon-links": "^8.6.12",
-    "@storybook/blocks": "^8.6.12",
-    "@storybook/test": "^8.6.12",
-    "@storybook/web-components": "^8.6.12",
-    "@storybook/web-components-vite": "^8.6.12",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-links": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/test": "^8.6.14",
+    "@storybook/web-components": "^8.6.14",
+    "@storybook/web-components-vite": "^8.6.14",
     "lit": "^3.3.0",
-    "storybook": "^8.6.12",
+    "storybook": "^8.6.14",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.3",
+    "vite-plugin-dts": "^4.5.4",
     "vite-plugin-minze": "^1.1.5"
   }
 }
