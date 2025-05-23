@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.2](https://github.com/sergejcodes/minze/compare/create-minze-v2.2.1...create-minze-v2.2.2) (2025-05-23)
+
+
+### Miscellaneous
+
+* update repo ([5594513](https://github.com/sergejcodes/minze/commit/55945130f373c9131cc61c60039078eb7430b020))
+
 ## [2.2.1](https://github.com/sergejcodes/minze/compare/create-minze-v2.2.0...create-minze-v2.2.1) (2024-12-18)
 
 
