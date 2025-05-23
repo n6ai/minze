@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.6](https://github.com/sergejcodes/minze/compare/vite-plugin-minze-v1.1.5...vite-plugin-minze-v1.1.6) (2025-05-23)
+
+
+### Miscellaneous
+
+* update repo ([0b59b3e](https://github.com/sergejcodes/minze/commit/0b59b3edb00726093ae5961673fa21215f2a3888))
+
 ## [1.1.5](https://github.com/sergejcodes/minze/compare/vite-plugin-minze-v1.1.4...vite-plugin-minze-v1.1.5) (2023-08-20)
 
 
