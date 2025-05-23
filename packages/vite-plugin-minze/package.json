@@ -18,14 +18,14 @@
   "engines": {
     "node": ">=v16.0.0"
   },
-  "homepage": "https://github.com/n6ai/minze/tree/main/packages/vite-plugin-minze#readme",
+  "homepage": "https://github.com/sergejcodes/minze/tree/main/packages/vite-plugin-minze#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/n6ai/minze.git",
+    "url": "git+https://github.com/sergejcodes/minze.git",
     "directory": "packages/vite-plugin-minze"
   },
   "bugs": {
-    "url": "https://github.com/n6ai/minze/issues"
+    "url": "https://github.com/sergejcodes/minze/issues"
   },
   "scripts": {
     "stub": "unbuild --stub",

@@ -41,10 +41,10 @@ It provides an intuitive abstraction layer around the web components API with it
 
 ## Contribution
 
-See [Contributing Guide](https://github.com/n6ai/minze/blob/main/.github/CONTRIBUTING.md). Open the Minze repo in Codeflow or StackBlitz.
+See [Contributing Guide](https://github.com/sergejcodes/minze/blob/main/.github/CONTRIBUTING.md). Open the Minze repo in Codeflow or StackBlitz.
 
-[![Open in Codeflow](https://developer.stackblitz.com/img/open_in_codeflow_small.svg)](https://pr.new/n6ai/minze)
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/n6ai/minze?title=minze&terminal=dev)
+[![Open in Codeflow](https://developer.stackblitz.com/img/open_in_codeflow_small.svg)](https://pr.new/sergejcodes/minze)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/sergejcodes/minze?title=minze&terminal=dev)
 
 ## License
 

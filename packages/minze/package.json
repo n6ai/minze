@@ -22,11 +22,11 @@
   "homepage": "https://minze.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/n6ai/minze.git",
+    "url": "git+https://github.com/sergejcodes/minze.git",
     "directory": "packages/minze"
   },
   "bugs": {
-    "url": "https://github.com/n6ai/minze/issues"
+    "url": "https://github.com/sergejcodes/minze/issues"
   },
   "scripts": {
     "dev": "vite",

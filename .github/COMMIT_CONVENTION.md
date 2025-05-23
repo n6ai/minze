@@ -2,13 +2,13 @@
 
 Your commit messages should follow the [Conventional Commits specification](https://www.conventionalcommits.org/).
 
-This repo uses [@n6ai/verify-commit-msg](https://github.com/n6ai/verify-commit-msg) to enforce a consistent commit message format. If your commit message does not follow the rules, you will receive an error.
+This repo uses [@sergejcodes/verify-commit-msg](https://www.npmjs.com/package/@sergejcodes/verify-commit-msg) to enforce a consistent commit message format. If your commit message does not follow the rules, you will receive an error.
 
 > You can use [commitlint.io](https://commitlint.io/) to help you generate a valid commit message.
 
 #### TL;DR:
 
-Messages must be matched by the [regex](https://github.com/n6ai/verify-commit-msg#commit-message) enforced by `@n6ai/verify-commit-msg` package.
+Messages must be matched by the [regex](https://www.npmjs.com/package/@sergejcodes/verify-commit-msg) enforced by `@sergejcodes/verify-commit-msg` package.
 
 #### Examples
 

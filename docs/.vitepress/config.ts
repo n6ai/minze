@@ -74,11 +74,13 @@ export default defineConfig({
     outline: [2, 4],
 
     editLink: {
-      pattern: 'https://github.com/n6ai/minze/edit/main/docs/:path',
+      pattern: 'https://github.com/sergejcodes/minze/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
     },
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/n6ai/minze' }],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/sergejcodes/minze' }
+    ],
 
     footer: {
       message: 'Released under the MIT License.',
@@ -182,19 +184,19 @@ export default defineConfig({
         items: [
           {
             text: 'create-minze',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/create-minze'
+            link: 'https://github.com/sergejcodes/minze/blob/main/packages/create-minze'
           },
           {
             text: 'minze',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/minze'
+            link: 'https://github.com/sergejcodes/minze/blob/main/packages/minze'
           },
           {
             text: 'minze-vscode',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/minze-vscode'
+            link: 'https://github.com/sergejcodes/minze/blob/main/packages/minze-vscode'
           },
           {
             text: 'vite-plugin-minze',
-            link: 'https://github.com/n6ai/minze/blob/main/packages/vite-plugin-minze'
+            link: 'https://github.com/sergejcodes/minze/blob/main/packages/vite-plugin-minze'
           }
         ]
       },
@@ -206,11 +208,11 @@ export default defineConfig({
             items: [
               {
                 text: 'Vite',
-                link: 'https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-vite?title=Minze&terminal=dev'
+                link: 'https://stackblitz.com/github/sergejcodes/minze/tree/main/packages/create-minze/template-vite?title=Minze&terminal=dev'
               },
               {
                 text: 'Storybook',
-                link: 'https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-storybook?title=Minze&terminal=dev'
+                link: 'https://stackblitz.com/github/sergejcodes/minze/tree/main/packages/create-minze/template-storybook?title=Minze&terminal=dev'
               }
             ]
           },
@@ -219,11 +221,11 @@ export default defineConfig({
             items: [
               {
                 text: 'Vite',
-                link: 'https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-vite-ts?title=Minze&terminal=dev'
+                link: 'https://stackblitz.com/github/sergejcodes/minze/tree/main/packages/create-minze/template-vite-ts?title=Minze&terminal=dev'
               },
               {
                 text: 'Storybook',
-                link: 'https://stackblitz.com/github/n6ai/minze/tree/main/packages/create-minze/template-storybook-ts?title=Minze&terminal=dev'
+                link: 'https://stackblitz.com/github/sergejcodes/minze/tree/main/packages/create-minze/template-storybook-ts?title=Minze&terminal=dev'
               }
             ]
           }

@@ -32,13 +32,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/n6ai/minze.git",
+    "url": "git+https://github.com/sergejcodes/minze.git",
     "directory": "packages/create-minze"
   },
   "bugs": {
-    "url": "https://github.com/n6ai/minze/issues"
+    "url": "https://github.com/sergejcodes/minze/issues"
   },
-  "homepage": "https://github.com/n6ai/minze/tree/main/packages/create-minze#readme",
+  "homepage": "https://github.com/sergejcodes/minze/tree/main/packages/create-minze#readme",
   "dependencies": {
     "kolorist": "^1.8.0",
     "minimist": "^1.2.8",

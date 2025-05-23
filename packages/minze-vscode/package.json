@@ -3,7 +3,7 @@
   "displayName": "Minze",
   "version": "0.6.0",
   "license": "MIT",
-  "publisher": "n6ai",
+  "publisher": "sergejcodes",
   "author": "Sergej Samsonenko",
   "description": "Language support for Minze.",
   "keywords": [
@@ -13,11 +13,11 @@
   "homepage": "https://minze.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/n6ai/minze.git",
+    "url": "https://github.com/sergejcodes/minze.git",
     "directory": "packages/vscode-minze"
   },
   "bugs": {
-    "url": "https://github.com/n6ai/minze/issues"
+    "url": "https://github.com/sergejcodes/minze/issues"
   },
   "icon": "images/logo.png",
   "galleryBanner": {
