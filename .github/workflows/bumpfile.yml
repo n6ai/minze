@@ -11,7 +11,7 @@ on:
         options:
           - minze
           - create-minze
-          - minze-vscode
+          - minze-vsc
           - vite-plugin-minze
       commit-msg:
         type: string

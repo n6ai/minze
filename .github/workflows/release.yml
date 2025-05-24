@@ -34,7 +34,7 @@ jobs:
       package-name: ${{ (
         (steps.release.outputs['packages/create-minze--release_created'] && 'create-minze') ||
         (steps.release.outputs['packages/minze--release_created'] && 'minze') ||
-        (steps.release.outputs['packages/minze-vscode--release_created'] && 'minze-vscode') ||
+        (steps.release.outputs['packages/minze-vsc--release_created'] && 'minze-vsc') ||
         (steps.release.outputs['packages/vite-plugin-minze--release_created'] && 'vite-plugin-minze')
         ) }}
 
@@ -59,7 +59,7 @@ jobs:
       - release-please
       - bump-lockfile
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.releases-created && needs.release-please.outputs.package-name != 'minze-vscode' }}
+    if: ${{ needs.release-please.outputs.releases-created && needs.release-please.outputs.package-name != 'minze-vsc' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -78,7 +78,7 @@ jobs:
       - release-please
       - bump-lockfile
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.releases-created && needs.release-please.outputs.package-name == 'minze-vscode' }}
+    if: ${{ needs.release-please.outputs.releases-created && needs.release-please.outputs.package-name == 'minze-vsc' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4

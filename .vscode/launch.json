@@ -6,7 +6,7 @@
       "type": "extensionHost",
       "request": "launch",
       "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}/packages/minze-vscode"
+        "--extensionDevelopmentPath=${workspaceFolder}/packages/minze-vsc"
       ]
     }
   ]

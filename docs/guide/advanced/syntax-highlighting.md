@@ -4,7 +4,7 @@ Once your HTML and CSS templates grow in size you might want to add some syntax 
 
 ## VS Code
 
-### [Minze VS Code Extension](https://marketplace.visualstudio.com/items?itemName=n6ai.minze-vscode)
+### [Minze VS Code Extension](https://marketplace.visualstudio.com/items?itemName=sergejcodes.minze-vsc)
 
 The Minze VS Code extension comes bundled with snippets for auto-completion. It also adds auto-highlighting to class methods defined as arrow functions starting with `html` and `css` keyword. Additionally you can manually prefix any template literals with `/*html*/` to highlight HTML code inside them, or `/*css*/` to highlight CSS code.
 

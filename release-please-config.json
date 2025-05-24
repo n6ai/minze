@@ -10,7 +10,7 @@
   "packages": {
     "packages/create-minze": {},
     "packages/minze": {},
-    "packages/minze-vscode": {},
+    "packages/minze-vsc": {},
     "packages/vite-plugin-minze": {}
   }
 }

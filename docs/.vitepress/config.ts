@@ -191,8 +191,8 @@ export default defineConfig({
             link: 'https://github.com/sergejcodes/minze/blob/main/packages/minze'
           },
           {
-            text: 'minze-vscode',
-            link: 'https://github.com/sergejcodes/minze/blob/main/packages/minze-vscode'
+            text: 'minze-vsc',
+            link: 'https://github.com/sergejcodes/minze/blob/main/packages/minze-vsc'
           },
           {
             text: 'vite-plugin-minze',

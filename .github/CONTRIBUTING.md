@@ -30,7 +30,7 @@ To develop locally, fork the Minze repository and clone it to your local machine
 
 > The playground and all tests are inside the `test` directory.
 
-### [minze-vscode](../packages/minze-vscode)
+### [minze-vsc](../packages/minze-vsc)
 
 1. Click on `Run and Debug` in the VS Code sidebar.
 2. Click on `Start Debugging` with the `Extension` option selected.
