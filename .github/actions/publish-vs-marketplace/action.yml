@@ -6,7 +6,7 @@ inputs:
   package-name:
     description: Package name
   vs-marketplace-token:
-    description: VS Marketplace tocken
+    description: VS Marketplace token
 
 runs:
   using: composite
@@ -18,7 +18,7 @@ runs:
         registry-url: 'https://registry.npmjs.org'
 
     - name: Publish to Visual Studio Marketplace
-      uses: HaaLeo/publish-vscode-extension@v1
+      uses: HaaLeo/publish-vscode-extension@v2
       with:
         pat: ${{ inputs.vs-marketplace-token }}
         registryUrl: https://marketplace.visualstudio.com
