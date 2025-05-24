@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.3](https://github.com/sergejcodes/minze/compare/minze-vscode-v0.6.2...minze-vscode-v0.6.3) (2025-05-24)
+
+
+### Miscellaneous
+
+* update repo ([5983766](https://github.com/sergejcodes/minze/commit/5983766467b99b4d3064a951975269e0d052ff24))
+
 ## [0.6.2](https://github.com/sergejcodes/minze/compare/minze-vscode-v0.6.1...minze-vscode-v0.6.2) (2025-05-24)
 
 
