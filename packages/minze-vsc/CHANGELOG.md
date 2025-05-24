@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.4](https://github.com/sergejcodes/minze/compare/minze-vsc-v0.6.3...minze-vsc-v0.6.4) (2025-05-24)
+
+
+### Miscellaneous
+
+* update repo ([03c6e32](https://github.com/sergejcodes/minze/commit/03c6e32066507f18a558ff4edb8f5dd9f7815f83))
+
 ## [0.6.3](https://github.com/sergejcodes/minze/compare/minze-vsc-v0.6.2...minze-vsc-v0.6.3) (2025-05-24)
 
 
