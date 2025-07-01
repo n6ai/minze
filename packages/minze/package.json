@@ -41,13 +41,13 @@
     "test-pw-debug": "npx playwright test --debug"
   },
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "^1.53.2",
     "@vitest/ui": "^3.1.4",
     "happy-dom": "^17.4.7",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-minze": "*",
-    "vitest": "^3.1.4"
+    "vitest": "^3.2.4"
   }
 }
